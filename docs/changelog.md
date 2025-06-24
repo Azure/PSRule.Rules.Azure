@@ -38,6 +38,8 @@ What's changed since v1.44.2:
 - Bug fixes:
   - Fixed incorrect inversion of policy as rules conditions by @BernieWhite.
     [#3419](https://github.com/Azure/PSRule.Rules.Azure/issues/3419)
+  - Fixed string boolean values not converted during evaluation of policy as rules by @BernieWhite.
+    [#3426](https://github.com/Azure/PSRule.Rules.Azure/issues/3426)
 
 ## v1.44.2
 

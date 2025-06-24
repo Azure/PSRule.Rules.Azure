@@ -4,7 +4,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.65db1c629a22",
+      "name": "Azure.Policy.d81b1a6a2e42",
       "displayName": "Deny Storage Account Not Using Minimum TLS version",
       "tags": {
         "Azure.Policy/category": "Storage"
@@ -24,7 +24,8 @@
       ],
       "condition": {
         "field": "properties.minimumTlsVersion",
-        "equals": "TLS1_2"
+        "equals": "TLS1_2",
+        "convert": true
       }
     }
   },
@@ -33,7 +34,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.5af91eb9c997",
+      "name": "Azure.Policy.22d1534810c7",
       "displayName": "Deploy Log Analytics extension for Linux VMs",
       "tags": {
         "Azure.Policy/category": "Monitoring"
@@ -63,7 +64,8 @@
             "allOf": [
               {
                 "field": "properties.storageProfile.imageReference.publisher",
-                "equals": "RedHat"
+                "equals": "RedHat",
+                "convert": true
               },
               {
                 "field": "properties.storageProfile.imageReference.offer",
@@ -94,7 +96,8 @@
             "allOf": [
               {
                 "field": "properties.storageProfile.imageReference.publisher",
-                "equals": "SUSE"
+                "equals": "SUSE",
+                "convert": true
               },
               {
                 "anyOf": [
@@ -159,7 +162,8 @@
             "allOf": [
               {
                 "field": "properties.storageProfile.imageReference.publisher",
-                "equals": "Canonical"
+                "equals": "Canonical",
+                "convert": true
               },
               {
                 "field": "properties.storageProfile.imageReference.offer",
@@ -206,11 +210,13 @@
             "allOf": [
               {
                 "field": "properties.storageProfile.imageReference.publisher",
-                "equals": "credativ"
+                "equals": "credativ",
+                "convert": true
               },
               {
                 "field": "properties.storageProfile.imageReference.offer",
-                "equals": "Debian"
+                "equals": "Debian",
+                "convert": true
               },
               {
                 "anyOf": [
@@ -230,11 +236,13 @@
             "allOf": [
               {
                 "field": "properties.storageProfile.imageReference.publisher",
-                "equals": "Oracle"
+                "equals": "Oracle",
+                "convert": true
               },
               {
                 "field": "properties.storageProfile.imageReference.offer",
-                "equals": "Oracle-Linux"
+                "equals": "Oracle-Linux",
+                "convert": true
               },
               {
                 "anyOf": [
@@ -254,7 +262,8 @@
             "allOf": [
               {
                 "field": "properties.storageProfile.imageReference.publisher",
-                "equals": "OpenLogic"
+                "equals": "OpenLogic",
+                "convert": true
               },
               {
                 "field": "properties.storageProfile.imageReference.offer",
@@ -286,11 +295,13 @@
             "allOf": [
               {
                 "field": "properties.storageProfile.imageReference.publisher",
-                "equals": "cloudera"
+                "equals": "cloudera",
+                "convert": true
               },
               {
                 "field": "properties.storageProfile.imageReference.offer",
-                "equals": "cloudera-centos-os"
+                "equals": "cloudera-centos-os",
+                "convert": true
               },
               {
                 "field": "properties.storageProfile.imageReference.sku",
@@ -305,15 +316,18 @@
         "allOf": [
           {
             "field": "properties.type",
-            "equals": "OmsAgentForLinux"
+            "equals": "OmsAgentForLinux",
+            "convert": true
           },
           {
             "field": "properties.publisher",
-            "equals": "Microsoft.EnterpriseCloud.Monitoring"
+            "equals": "Microsoft.EnterpriseCloud.Monitoring",
+            "convert": true
           },
           {
             "field": "properties.provisioningState",
-            "equals": "Succeeded"
+            "equals": "Succeeded",
+            "convert": true
           }
         ],
         "where": {
@@ -386,7 +400,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.5236dec1a570",
+      "name": "Azure.Policy.dacd34c75fe1",
       "displayName": "DisableLBRuleSNAT",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000004"
@@ -406,7 +420,8 @@
         "allOf": [
           {
             "field": "properties.disableOutboundSnat",
-            "equals": false
+            "equals": false,
+            "convert": true
           }
         ]
       }
@@ -443,7 +458,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.f95588f22a92",
+      "name": "Azure.Policy.adfcc9477a6b",
       "displayName": "UniqueDescriptionNSG",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000006"
@@ -463,7 +478,8 @@
         "allOf": [
           {
             "field": "properties.description",
-            "equals": "My unique description"
+            "equals": "My unique description",
+            "convert": true
           }
         ]
       }
@@ -474,7 +490,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.9aefa39d26cc",
+      "name": "Azure.Policy.aac3ff168ccf",
       "displayName": "DenyNSGRDPInboundPort",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000007"
@@ -494,15 +510,18 @@
         "allOf": [
           {
             "field": "properties.direction",
-            "equals": "Inbound"
+            "equals": "Inbound",
+            "convert": true
           },
           {
             "field": "properties.access",
-            "equals": "Allow"
+            "equals": "Allow",
+            "convert": true
           },
           {
             "field": "properties.destinationPortRange",
-            "equals": "3389"
+            "equals": "3389",
+            "convert": true
           }
         ]
       }
@@ -513,7 +532,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.0d02adda36d8",
+      "name": "Azure.Policy.fe64397c8e69",
       "displayName": "DenyPortsNSG",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000008"
@@ -538,17 +557,20 @@
               },
               {
                 "field": "properties.sourceAddressPrefix",
-                "equals": "*"
+                "equals": "*",
+                "convert": true
               },
               {
                 "anyOf": [
                   {
                     "field": "properties.destinationPortRange",
-                    "equals": "22"
+                    "equals": "22",
+                    "convert": true
                   },
                   {
                     "field": "properties.destinationPortRange",
-                    "equals": "3389"
+                    "equals": "3389",
+                    "convert": true
                   }
                 ]
               }
@@ -566,17 +588,20 @@
                 "allOf": [
                   {
                     "field": "properties.sourceAddressPrefix",
-                    "equals": "*"
+                    "equals": "*",
+                    "convert": true
                   },
                   {
                     "anyOf": [
                       {
                         "field": "properties.destinationPortRange",
-                        "equals": "22"
+                        "equals": "22",
+                        "convert": true
                       },
                       {
                         "field": "properties.destinationPortRange",
-                        "equals": "3389"
+                        "equals": "3389",
+                        "convert": true
                       }
                     ]
                   }
@@ -780,14 +805,14 @@
     "spec": {
       "rule": {
         "include": [
-          "Azure.Policy.65db1c629a22",
-          "Azure.Policy.5af91eb9c997",
+          "Azure.Policy.d81b1a6a2e42",
+          "Azure.Policy.22d1534810c7",
           "Azure.Policy.d56db8a16bcd",
-          "Azure.Policy.5236dec1a570",
+          "Azure.Policy.dacd34c75fe1",
           "Azure.Policy.956f4a31128a",
-          "Azure.Policy.f95588f22a92",
-          "Azure.Policy.9aefa39d26cc",
-          "Azure.Policy.0d02adda36d8",
+          "Azure.Policy.adfcc9477a6b",
+          "Azure.Policy.aac3ff168ccf",
+          "Azure.Policy.fe64397c8e69",
           "Azure.Policy.eac8effcedc0",
           "Azure.Policy.6e7a9b50e524",
           "Azure.Policy.55eedf5a41fd",
