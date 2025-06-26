@@ -43,6 +43,8 @@ internal static class Functions
     private const string PROPERTY_PATH = "path";
     private const string PROPERTY_QUERY = "query";
 
+    private const string FUNCTION_LIST_WITH_SECURE_OUTPUTS = "listOutputsWithSecureValues";
+
     private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
     private const string FORMAT_AZURE_DATETIME = "M/d/yyyy h:mm:ss tt";
 
@@ -1000,10 +1002,18 @@ internal static class Functions
     internal static object List(ITemplateContext context, object[] args)
     {
         var argCount = CountArgs(args);
-        if (argCount is < 2 or > 3)
-            throw ArgumentsOutOfRange(nameof(List), args);
+        if (argCount is < 2 or > 3) throw ArgumentsOutOfRange(nameof(List), args);
 
-        return ExpressionHelpers.TryString(args[0], out var resourceId)
+        if (!ExpressionHelpers.TryString(args[0], out var resourceId))
+            return new Mock.MockSecret(resourceId);
+
+        if (string.Equals(context.DebugSymbol?.SymbolName, FUNCTION_LIST_WITH_SECURE_OUTPUTS, StringComparison.OrdinalIgnoreCase) &&
+            context.TryGetResource(resourceId, out var resource) && resource is DeploymentValue deploymentValue)
+        {
+            return new OutputValues(deploymentValue.GetOutputs());
+        }
+
+        return TryResourceIdOrSymbolicName(context, resourceId, out resourceId)
             ? new MockSecretBuilder().Build(resourceId, context.DebugSymbol?.SymbolName)
             : new Mock.MockSecret(resourceId);
     }
@@ -2587,6 +2597,24 @@ internal static class Functions
     #endregion Availability Zones
 
     #region Helper functions
+
+    /// <summary>
+    /// Try to get the resource ID from a potential symbolic name.
+    /// </summary>
+    private static bool TryResourceIdOrSymbolicName(ITemplateContext context, string resourceIdOrSymbolicName, out string resourceId)
+    {
+        resourceId = null;
+        if (string.IsNullOrWhiteSpace(resourceIdOrSymbolicName))
+            return false;
+
+        if (resourceIdOrSymbolicName.Contains("/"))
+            resourceId = resourceIdOrSymbolicName;
+
+        if (context.TryGetResource(resourceIdOrSymbolicName, out var resource) && resource != null)
+            resourceId = resource.Id;
+
+        return resourceId != null;
+    }
 
     private static int Compare(object left, object right)
     {

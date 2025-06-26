@@ -652,7 +652,7 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
     protected virtual void Resource(TemplateContext context, IResourceValue resource)
     {
         // Get resource type
-        if (TryDeploymentResource(context, resource.Value))
+        if (TryDeploymentResource(context, resource.SymbolicName, resource.Value))
             return;
 
         ResolveProperties(context, resource.Value);
@@ -690,10 +690,12 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
         }
     }
 
+#nullable enable
+
     /// <summary>
     /// Handle a nested deployment resource.
     /// </summary>
-    private bool TryDeploymentResource(TemplateContext context, JObject resource)
+    private bool TryDeploymentResource(TemplateContext context, string? symbolicName, JObject resource)
     {
         var resourceType = context.ExpandProperty<string>(resource, PROPERTY_TYPE);
         if (!IsDeploymentResource(resourceType))
@@ -706,11 +708,28 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
         if (!TryObjectProperty(resource, PROPERTY_PROPERTIES, out var properties))
             return false;
 
-        var deploymentContext = GetDeploymentContext(context, deploymentName, resource, properties);
+        var deploymentContext = GetDeploymentContext(context, symbolicName, deploymentName, resource, properties);
         if (!TryObjectProperty(properties, PROPERTY_TEMPLATE, out var template))
             return false;
 
-        Template(deploymentContext, deploymentName, template, isNested: true);
+        try
+        {
+            Template(deploymentContext, deploymentName, template, isNested: true);
+        }
+        catch (DeploymentEvaluationException)
+        {
+            throw;
+        }
+        catch (Exception ex)
+        {
+            // Let's add info about the current deployment symbol / name being expanded.
+            throw new DeploymentEvaluationException(
+                symbolicName,
+                deploymentName,
+                string.Format(Thread.CurrentThread.CurrentCulture, Diagnostics.FailedDeployment, deploymentContext.Name, symbolicName ?? string.Empty, ex.Message),
+                ex
+            );
+        }
 
         // Collect resource from the completed deployment context in the parent context.
         if (deploymentContext != context)
@@ -724,7 +743,7 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
         return string.Equals(resourceType, RESOURCE_TYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
     }
 
-    private TemplateContext GetDeploymentContext(TemplateContext context, string deploymentName, JObject resource, JObject properties)
+    private TemplateContext GetDeploymentContext(TemplateContext context, string? symbolicName, string deploymentName, JObject resource, JObject properties)
     {
         if (!TryObjectProperty(properties, PROPERTY_EXPRESSION_EVALUATION_OPTIONS, out var options) ||
             !TryStringProperty(options, PROPERTY_SCOPE, out var scope) ||
@@ -767,7 +786,7 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
         resourceGroup.SubscriptionId = subscription.SubscriptionId;
         TryObjectProperty(template, PROPERTY_PARAMETERS, out var templateParameters);
 
-        var deploymentContext = new TemplateContext(context, context.Pipeline, subscription, resourceGroup, tenant, managementGroup, deployer, context.ParameterDefaults);
+        var deploymentContext = new TemplateContext(context, context.Pipeline, deploymentName, subscription, resourceGroup, tenant, managementGroup, deployer, context.ParameterDefaults);
 
         // Handle custom type definitions early to allow type mapping of parameters if required.
         if (TryObjectProperty(template, PROPERTY_DEFINITIONS, out var definitions))
@@ -811,6 +830,8 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
         deploymentContext.SetSource(context.TemplateFile, context.ParameterFile);
         return deploymentContext;
     }
+
+#nullable restore
 
     #endregion Resources
 
@@ -960,7 +981,7 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
 
     internal static string ExpandString(ITemplateContext context, string value)
     {
-        return value != null && value.IsExpressionString() ? context.EvaluateExpression<string>(value, null) : value;
+        return value != null && value.IsExpressionString() ? context.EvaluateExpression<string>(value, null, null) : value;
     }
 
     internal static JToken ExpandPropertyToken(ITemplateContext context, TypePrimitive type, JToken value)

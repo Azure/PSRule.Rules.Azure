@@ -30,6 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.45.0-B0017:
+
+- Bug fixes:
+  - Fixed secure outputs objects may not be fully mocked by @BernieWhite.
+    [#3434](https://github.com/Azure/PSRule.Rules.Azure/issues/3434)
+
 ## v1.45.0-B0017 (pre-release)
 
 What's changed since v1.44.2:

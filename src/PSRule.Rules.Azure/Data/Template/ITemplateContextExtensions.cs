@@ -57,12 +57,14 @@ internal static class ITemplateContextExtensions
 
         var s = value.Value<string>();
         var lineInfo = value.TryLineInfo();
-        return EvaluateExpression<T>(context, s, lineInfo);
+        return EvaluateExpression<T>(context, s, lineInfo, value.Path);
     }
 
-    internal static T EvaluateExpression<T>(this ITemplateContext context, string value, IJsonLineInfo lineInfo)
+#nullable enable
+
+    internal static T? EvaluateExpression<T>(this ITemplateContext context, string? value, IJsonLineInfo? lineInfo, string? path)
     {
-        if (string.IsNullOrEmpty(value))
+        if (string.IsNullOrEmpty(value) || value == null)
             return default;
 
         var exp = Expression<T>(context, value);
@@ -72,9 +74,17 @@ internal static class ITemplateContextExtensions
         }
         catch (Exception inner)
         {
-            throw new ExpressionEvaluationException(value, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ExpressionEvaluateError, value, lineInfo?.LineNumber, inner.Message), inner);
+            throw new ExpressionEvaluationException(
+                value,
+                lineInfo?.LineNumber,
+                path ?? string.Empty,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ExpressionEvaluateError, value, lineInfo?.LineNumber, path ?? string.Empty, inner.Message),
+                inner
+            );
         }
     }
+
+#nullable restore
 
     internal static StringExpression<T> Expression<T>(this ITemplateContext context, string s)
     {

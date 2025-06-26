@@ -27,7 +27,7 @@ internal sealed class Mock
 
         public static new JToken FromObject(object o)
         {
-            return Mock.FromObject(o);
+            return Mock.FromObject(o, secret: false);
         }
 
         public override JToken? GetValue(TypePrimitive type)
@@ -128,7 +128,7 @@ internal sealed class Mock
     /// </summary>
     internal sealed class MockValue : JValue, IMock
     {
-        public MockValue(JValue value)
+        public MockValue(JValue value, bool secret)
             : base(value)
         {
             BaseType = GetTypePrimitive(value);
@@ -187,8 +187,11 @@ internal sealed class Mock
 
     internal class MockArray : JArray, IMock
     {
-        public MockArray(JArray value)
-            : base(value) { }
+        public MockArray(JArray value, bool secret = false)
+            : base(value)
+        {
+            IsSecret = secret;
+        }
 
         public MockArray(bool secret = false)
             : base()
@@ -227,7 +230,7 @@ internal sealed class Mock
                 return new MockUnknownObject(IsSecret);
 
             var t = base[i];
-            return t == null ? new MockUnknownObject(IsSecret) : Mock.FromObject(t);
+            return t == null ? new MockUnknownObject(IsSecret) : Mock.FromObject(t, IsSecret);
         }
 
         public override JToken? this[object key]
@@ -334,12 +337,12 @@ internal sealed class Mock
             }
             else if (result is JObject jObject)
             {
-                result = new MockObject(jObject);
+                result = new MockObject(jObject, IsSecret);
                 base[key] = result;
             }
             else if (result is JArray jArray)
             {
-                result = new MockArray(jArray);
+                result = new MockArray(jArray, IsSecret);
                 base[key] = result;
             }
             return result;
@@ -442,7 +445,7 @@ internal sealed class Mock
         throw new NotImplementedException();
     }
 
-    private static JToken FromObject(object o)
+    private static JToken FromObject(object o, bool secret)
     {
         var token = JToken.FromObject(o);
 
@@ -454,13 +457,13 @@ internal sealed class Mock
             JTokenType.Guid or
             JTokenType.TimeSpan or
             JTokenType.Uri)
-            return new MockValue(token.Value<JValue>()!);
+            return new MockValue(token.Value<JValue>()!, secret);
 
         if (token.Type == JTokenType.Array)
-            return new MockArray(token.Value<JArray>()!);
+            return new MockArray(token.Value<JArray>()!, secret);
 
         if (token.Type == JTokenType.Object)
-            return new MockObject(token.Value<JObject>()!);
+            return new MockObject(token.Value<JObject>()!, secret);
 
         throw new NotImplementedException();
     }

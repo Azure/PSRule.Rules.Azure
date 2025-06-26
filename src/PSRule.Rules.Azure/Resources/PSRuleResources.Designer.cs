@@ -268,7 +268,7 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred evaluating expression &apos;{0}&apos; line {1}. {2}.
+        ///   Looks up a localized string similar to An error occurred evaluating expression &apos;{0}&apos; line {1} at path &apos;{2}&apos;. {3}.
         /// </summary>
         internal static string ExpressionEvaluateError {
             get {

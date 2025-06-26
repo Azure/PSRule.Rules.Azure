@@ -8,6 +8,8 @@ using PSRule.Rules.Azure.Data.Template;
 
 namespace PSRule.Rules.Azure.Arm.Expressions;
 
+#nullable enable
+
 /// <summary>
 /// An exception relating to expression evaluation.
 /// </summary>
@@ -43,10 +45,12 @@ public sealed class ExpressionEvaluationException : TemplateException
     /// <summary>
     /// Create an instance of an expression evaluation exception.
     /// </summary>
-    internal ExpressionEvaluationException(string expression, string message, Exception innerException)
+    internal ExpressionEvaluationException(string expression, int? lineNumber, string? path, string message, Exception innerException)
         : base(message, innerException)
     {
         Expression = expression;
+        LineNumber = lineNumber;
+        Path = path;
     }
 
     /// <summary>
@@ -58,7 +62,17 @@ public sealed class ExpressionEvaluationException : TemplateException
     /// <summary>
     /// The expression that caused the exception.
     /// </summary>
-    public string Expression { get; }
+    public string? Expression { get; }
+
+    /// <summary>
+    /// The line number in the source where the expression was evaluated, if available.
+    /// </summary>
+    public int? LineNumber { get; }
+
+    /// <summary>
+    /// The path through the object where the expression was evaluated, if available.
+    /// </summary>
+    public string? Path { get; }
 
     /// <inheritdoc/>
     [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
@@ -68,3 +82,5 @@ public sealed class ExpressionEvaluationException : TemplateException
         base.GetObjectData(info, context);
     }
 }
+
+#nullable restore

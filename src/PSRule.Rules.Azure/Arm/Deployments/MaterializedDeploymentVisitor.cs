@@ -43,6 +43,11 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
     private const string PROPERTY_SERVICE_BUS_ENDPOINT = "serviceBusEndpoint";
     private const string PROPERTY_PRIMARY_ENDPOINTS = "primaryEndpoints";
     private const string PROPERTY_PRIMARY_LOCATION = "primaryLocation";
+    private const string PROPERTY_ENDPOINT = "endpoint";
+    private const string PROPERTY_ENDPOINTS = "endpoints";
+    private const string PROPERTY_KIND = "kind";
+    private const string PROPERTY_CUSTOM_SUBDOMAIN_NAME = "customSubDomainName";
+    private const string PROPERTY_DOCUMENT_ENDPOINT = "documentEndpoint";
 
     private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
     private const string IDENTITY_SYSTEM_ASSIGNED = "SystemAssigned";
@@ -68,6 +73,8 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
     private const string TYPE_RELAY_NAMESPACE = "Microsoft.Relay/namespaces";
     private const string TYPE_SERVICE_BUS_NAMESPACE = "Microsoft.ServiceBus/namespaces";
     private const string TYPE_STORAGE_ACCOUNT = "Microsoft.Storage/storageAccounts";
+    private const string TYPE_AI_SERVICES_ACCOUNTS = "Microsoft.CognitiveServices/accounts";
+    private const string TYPE_COSMOSDB = "Microsoft.DocumentDB/databaseAccounts";
 
     private static readonly JsonMergeSettings _MergeSettings = new()
     {
@@ -157,6 +164,8 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
             ProjectServiceBusNamespace(context, resource) ||
             ProjectRelayNamespace(context, resource) ||
             ProjectStorageAccount(context, resource) ||
+            ProjectAIServiceAccount(context, resource) ||
+            ProjectCosmosDB(context, resource) ||
             ProjectResource(context, resource);
     }
 
@@ -211,6 +220,69 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
         primaryEndpoints.AddIfNotExists("table", $"https://{resource.Name}.table.core.windows.net/");
 
         return true;
+    }
+
+    /// <summary>
+    /// Project runtime properties for Azure AI Services Account.
+    /// </summary>
+    private static bool ProjectAIServiceAccount(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_AI_SERVICES_ACCOUNTS))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+        properties.AddIfNotExists(PROPERTY_PROVISIONING_STATE, PROVISIONING_STATE_SUCCEEDED);
+        properties.AddIfNotExists(PROPERTY_CUSTOM_SUBDOMAIN_NAME, resource.Name);
+        properties.UseProperty(PROPERTY_ENDPOINTS, out JObject endpoints);
+
+        var kind = resource.Value.TryStringProperty(PROPERTY_KIND, out var v) ? v : string.Empty;
+
+        // Add endpoints for each API.
+        var primaryEndpoint = $"https://{resource.Name}.cognitiveservices.azure.com/";
+        if (kind.Equals("OpenAI", StringComparison.OrdinalIgnoreCase))
+        {
+            primaryEndpoint = $"https://{resource.Name}.openai.azure.com/";
+
+            properties.AddIfNotExists(PROPERTY_ENDPOINT, primaryEndpoint);
+
+            endpoints.AddIfNotExists("OpenAI Language Model Instance API", primaryEndpoint);
+            endpoints.AddIfNotExists("OpenAI Dall-E API", primaryEndpoint);
+            endpoints.AddIfNotExists("OpenAI Sora API", primaryEndpoint);
+            endpoints.AddIfNotExists("OpenAI Moderations API", primaryEndpoint);
+            endpoints.AddIfNotExists("OpenAI Whisper API", primaryEndpoint);
+            endpoints.AddIfNotExists("OpenAI Model Scaleset API", primaryEndpoint);
+            endpoints.AddIfNotExists("OpenAI Realtime API", primaryEndpoint);
+            endpoints.AddIfNotExists("Token Service API", primaryEndpoint);
+        }
+        else if (kind.Equals("Face", StringComparison.OrdinalIgnoreCase))
+        {
+            properties.AddIfNotExists(PROPERTY_ENDPOINT, primaryEndpoint);
+            endpoints.AddIfNotExists("Face", primaryEndpoint);
+        }
+        else
+        {
+            // For other kinds, just add the primary endpoint.
+            properties.AddIfNotExists(PROPERTY_ENDPOINT, primaryEndpoint);
+        }
+
+        return ProjectResource(context, resource);
+    }
+
+    /// <summary>
+    /// Project runtime properties for a Cosmos DB account.
+    /// </summary>
+    private static bool ProjectCosmosDB(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_COSMOSDB))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+        properties.AddIfNotExists(PROPERTY_PROVISIONING_STATE, PROVISIONING_STATE_SUCCEEDED);
+
+        var primaryEndpoint = $"https://{resource.Name}.documents.azure.com:443/";
+        properties.AddIfNotExists(PROPERTY_DOCUMENT_ENDPOINT, primaryEndpoint);
+
+        return ProjectResource(context, resource);
     }
 
     private static bool ProjectResource(TemplateContext context, IResourceValue resource)

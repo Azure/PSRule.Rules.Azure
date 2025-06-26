@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -119,6 +119,9 @@
   </resheader>
   <data name="DebugRunningBicep" xml:space="preserve">
     <value>Running bicep from '{0}'.</value>
+  </data>
+  <data name="FailedDeployment" xml:space="preserve">
+    <value>The deployment '{0}' with symbolic name '{1}' failed. {2}</value>
   </data>
   <data name="VerboseExpandingResource" xml:space="preserve">
     <value>Expanding resource: {0}</value>
