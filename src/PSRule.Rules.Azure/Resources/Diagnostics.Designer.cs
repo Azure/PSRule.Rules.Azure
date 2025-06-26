@@ -70,6 +70,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The deployment &apos;{0}&apos; with symbolic name &apos;{1}&apos; failed. {2}.
+        /// </summary>
+        internal static string FailedDeployment {
+            get {
+                return ResourceManager.GetString("FailedDeployment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expanding resource: {0}.
         /// </summary>
         internal static string VerboseExpandingResource {

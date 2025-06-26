@@ -14,6 +14,8 @@ namespace PSRule.Rules.Azure.Data.Template;
 /// </summary>
 internal interface ITemplateContext : IValidationContext
 {
+    string Name { get; }
+
     CopyIndexStore CopyIndex { get; }
 
     /// <summary>

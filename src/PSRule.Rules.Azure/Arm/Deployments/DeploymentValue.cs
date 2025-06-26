@@ -134,4 +134,9 @@ internal sealed class DeploymentValue : BaseResourceValue, IResourceValue, ILazy
 
         return value != null;
     }
+
+    public IReadOnlyDictionary<string, ILazyValue> GetOutputs()
+    {
+        return _Outputs;
+    }
 }

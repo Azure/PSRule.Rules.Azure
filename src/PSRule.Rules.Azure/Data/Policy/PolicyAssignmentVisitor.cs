@@ -169,6 +169,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _ReplacementRules = [];
             }
 
+            public string Name { get; } = "policy";
             public CopyIndexStore CopyIndex { get; }
             public DeploymentValue Deployment { get; }
             public string ScopeId { get; }

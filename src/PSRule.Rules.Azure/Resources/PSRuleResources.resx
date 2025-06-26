@@ -188,7 +188,7 @@
     <value>The expand resulted in an empty condition being returned for '{0}' from '{1}'.</value>
   </data>
   <data name="ExpressionEvaluateError" xml:space="preserve">
-    <value>An error occurred evaluating expression '{0}' line {1}. {2}</value>
+    <value>An error occurred evaluating expression '{0}' line {1} at path '{2}'. {3}</value>
   </data>
   <data name="ExpressionInvalid" xml:space="preserve">
     <value>Failed to parse expression. The expression may not be valid. Expression: "{0}"</value>

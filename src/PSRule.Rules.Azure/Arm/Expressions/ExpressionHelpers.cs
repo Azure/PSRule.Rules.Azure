@@ -247,6 +247,18 @@ internal static class ExpressionHelpers
         }
 
         // Try dictionary
+        if (o is IDictionary<string, object> dso && dso.TryGetValue(propertyName, out value))
+            return true;
+
+        if (o is IReadOnlyDictionary<string, object> rso && rso.TryGetValue(propertyName, out value))
+            return true;
+
+        if (o is IReadOnlyDictionary<string, ILazyValue> rsl && rsl.TryGetValue(propertyName, out var lazyValue))
+        {
+            value = lazyValue.GetValue();
+            return true;
+        }
+
         if (o is IDictionary dictionary && dictionary.TryGetValue(propertyName, out value))
             return true;
 
@@ -703,8 +715,9 @@ internal static class ExpressionHelpers
     {
         return o is JObject or
             IDictionary or
-            IDictionary<string, string> or
-            Dictionary<string, object>;
+            IEnumerable<KeyValuePair<string, string>> or
+            IEnumerable<KeyValuePair<string, object>> or
+            IEnumerable<KeyValuePair<string, ILazyValue>>;
     }
 
     internal static bool TryJObject(object o, out JObject value)
@@ -715,29 +728,45 @@ internal static class ExpressionHelpers
             value = jObject;
             return true;
         }
-        else if (o is IDictionary<string, string> dss)
+        else if (o is IEnumerable<KeyValuePair<string, string>> dss)
         {
-            value = new JObject();
+            value = [];
             foreach (var kv in dss)
             {
                 if (!value.ContainsKey(kv.Key))
+                {
                     value.Add(kv.Key, JToken.FromObject(kv.Value));
+                }
             }
             return true;
         }
-        else if (o is IDictionary<string, object> dso)
+        else if (o is IEnumerable<KeyValuePair<string, object>> dso)
         {
-            value = new JObject();
+            value = [];
             foreach (var kv in dso)
             {
                 if (!value.ContainsKey(kv.Key))
+                {
                     value.Add(kv.Key, JToken.FromObject(kv.Value));
+                }
+            }
+            return true;
+        }
+        else if (o is IEnumerable<KeyValuePair<string, ILazyValue>> dsl)
+        {
+            value = [];
+            foreach (var kv in dsl)
+            {
+                if (!value.ContainsKey(kv.Key))
+                {
+                    value.Add(kv.Key, JToken.FromObject(kv.Value.GetValue()));
+                }
             }
             return true;
         }
         else if (o is IDictionary d)
         {
-            value = new JObject();
+            value = [];
             foreach (DictionaryEntry kv in d)
             {
                 var key = kv.Key.ToString();
@@ -768,18 +797,25 @@ internal static class ExpressionHelpers
                     ReplaceOrMergeProperty(result, property.Name, property.Value, deepMerge);
                 }
             }
-            else if (o[i] is IDictionary<string, string> dss)
+            else if (o[i] is IEnumerable<KeyValuePair<string, string>> dss)
             {
                 foreach (var kv in dss)
                 {
                     ReplaceOrMergeProperty(result, kv.Key, JToken.FromObject(kv.Value), deepMerge);
                 }
             }
-            else if (o[i] is IDictionary<string, object> dso)
+            else if (o[i] is IEnumerable<KeyValuePair<string, object>> dso)
             {
                 foreach (var kv in dso)
                 {
                     ReplaceOrMergeProperty(result, kv.Key, JToken.FromObject(kv.Value), deepMerge);
+                }
+            }
+            else if (o[i] is IEnumerable<KeyValuePair<string, ILazyValue>> dsl)
+            {
+                foreach (var kv in dsl)
+                {
+                    ReplaceOrMergeProperty(result, kv.Key, JToken.FromObject(kv.Value.GetValue()), deepMerge);
                 }
             }
             else if (o[i] is IDictionary d)

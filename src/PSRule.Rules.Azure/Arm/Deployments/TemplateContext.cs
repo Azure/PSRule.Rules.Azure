@@ -52,7 +52,7 @@ internal abstract partial class DeploymentVisitor
         private EnvironmentData _Environments;
         private ResourceDependencyGraph _DependencyMap;
 
-        internal TemplateContext()
+        internal TemplateContext(string? name = "root")
         {
             _Resources = [];
             _ResourceIds = new Dictionary<string, IResourceValue>(StringComparer.OrdinalIgnoreCase);
@@ -75,12 +75,13 @@ internal abstract partial class DeploymentVisitor
             _SecureValues = [];
             _Definitions = new Dictionary<string, ITypeDefinition>(StringComparer.OrdinalIgnoreCase);
             _Symbols = new Dictionary<string, IDeploymentSymbol>(StringComparer.OrdinalIgnoreCase);
+            Name = name;
         }
 
 #nullable enable
 
-        internal TemplateContext(ITemplateContext? parent, PipelineContext pipelineContext, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, DeployerOption? deployer, IDictionary<string, object> parameterDefaults)
-            : this()
+        internal TemplateContext(ITemplateContext? parent, PipelineContext pipelineContext, string name, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, DeployerOption? deployer, IDictionary<string, object> parameterDefaults)
+            : this(name)
         {
             Parent = parent;
             Pipeline = pipelineContext;
@@ -101,6 +102,11 @@ internal abstract partial class DeploymentVisitor
 
             if (parameterDefaults != null)
                 ParameterDefaults = new Dictionary<string, object>(parameterDefaults, StringComparer.OrdinalIgnoreCase);
+
+            if (Parent != null)
+            {
+                Name = string.Concat(Parent.Name, "/", name);
+            }
         }
 
 #nullable restore
@@ -131,6 +137,8 @@ internal abstract partial class DeploymentVisitor
         private Dictionary<string, IParameterValue> Parameters { get; }
 
         private Dictionary<string, object> Variables { get; }
+
+        public string Name { get; }
 
         public CopyIndexStore CopyIndex { get; }
 

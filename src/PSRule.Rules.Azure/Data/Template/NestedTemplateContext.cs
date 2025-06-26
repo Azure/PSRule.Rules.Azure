@@ -35,6 +35,8 @@ internal abstract class NestedTemplateContext(ITemplateContext context) : Resour
 
     public DeployerOption Deployer => _Inner.Deployer;
 
+    public virtual string Name => _Inner.Name;
+
     public ExpressionFnOuter BuildExpression(string s)
     {
         return _Inner.BuildExpression(s);
