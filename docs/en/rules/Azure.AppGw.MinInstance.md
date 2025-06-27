@@ -16,12 +16,11 @@ Application Gateways should use a minimum of two instances.
 ## DESCRIPTION
 
 Application Gateways should use two or more instances to be covered by the Service Level Agreement (SLA).
-By having two or more instances this allows the App Gateway to meet high availability requirements and reduce downtime.
+By having two or more instances this allows the App Gateway to meet high availability requirements and reduce downtime. By default, Application Gateway v2 is created with two instances.
 
 ## RECOMMENDATION
 
 When using Application Gateway v1 or v2 with auto-scaling disabled, specify the number of instances to be two or more.
-When auto-scaling is enabled with Application Gateway v2, configure the minimum number of instances to be two or more.
 
 ## EXAMPLES
 
