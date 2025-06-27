@@ -20,7 +20,7 @@ By having two or more instances this allows the App Gateway to meet high availab
 
 ## RECOMMENDATION
 
-When using Application Gateway v1 or v2 with auto-scaling disabled, specify the number of instances to be two or more.
+When using Application Gateway v1 with auto-scaling disabled, specify the number of instances to be two or more. Application Gateway v2 is created with two instances by default.
 
 ## EXAMPLES
 
