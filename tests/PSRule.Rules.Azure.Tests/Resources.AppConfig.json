@@ -78,6 +78,14 @@
         "CreatedTime": null,
         "ChangedTime": null,
         "ETag": null
+      },
+      {
+        "type": "Microsoft.AppConfiguration/configurationStores/keyValues",
+        "name": "value-a",
+        "properties": {
+          "value": "{\"uri\":\"https://myKeyVault.vault.azure.net/secrets/mySecret\"}",
+          "contentType": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+        }
       }
     ]
   },
@@ -296,6 +304,14 @@
         "CreatedTime": null,
         "ChangedTime": null,
         "ETag": null
+      },
+      {
+        "type": "Microsoft.AppConfiguration/configurationStores/keyValues",
+        "name": "value-c",
+        "properties": {
+          "value": "{{Secret}}",
+          "contentType": "plain/text"
+        }
       }
     ]
   },
@@ -866,5 +882,29 @@
         "ETag": null
       }
     ]
+  },
+  {
+    "type": "Microsoft.AppConfiguration/configurationStores/keyValues",
+    "name": "app-config-B/value-b",
+    "properties": {
+      "value": "some-value",
+      "contentType": "plain/text"
+    }
+  },
+  {
+    "type": "Microsoft.AppConfiguration/configurationStores/keyValues",
+    "name": "app-config-x/value-x",
+    "properties": {
+      "value": "{{Secret}}",
+      "contentType": "plain/text"
+    }
+  },
+  {
+    "type": "Microsoft.AppConfiguration/configurationStores/keyValues",
+    "name": "app-config-y/value-y",
+    "properties": {
+      "value": "not-a-secret",
+      "contentType": "plain/text"
+    }
   }
 ]

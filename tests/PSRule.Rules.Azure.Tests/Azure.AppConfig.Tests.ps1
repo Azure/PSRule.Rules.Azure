@@ -124,8 +124,8 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'app-config-E', 'app-config-F', 'app-config-H', 'app-config-I';
+            $ruleResult.Length | Should -Be 4;
 
             $ruleResult[0].Reason | Should -BeExactly "The app configuration store 'app-config-E' should have purge protection enabled.";
             $ruleResult[1].Reason | Should -BeExactly "The app configuration store 'app-config-F' should have purge protection enabled.";
@@ -135,8 +135,29 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'app-config-A';
+            $ruleResult.Length | Should -Be 1;
+        }
+
+        It 'Azure.AppConfig.SecretLeak' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.SecretLeak' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'app-config-C', 'app-config-x/value-x';
+            $ruleResult.Length | Should -Be 2;
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.value: The key value 'value-c' property should not contain secrets.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.value: The key value 'app-config-x/value-x' property should not contain secrets.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-B', 'app-config-D', 'app-config-E', 'app-config-F', 'app-config-G', 'app-config-H', 'app-config-I', 'app-config-B/value-b', 'app-config-y/value-y';
+            $ruleResult.Length | Should -Be 10;
         }
     }
 

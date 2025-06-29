@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
 
@@ -33,6 +34,9 @@ internal sealed class ResourceValue : BaseResourceValue, IResourceValue
 
     /// <inheritdoc/>
     public string Scope => string.Empty;
+
+    /// <inheritdoc/>
+    public ICollection<string> SecretProperties { get; } = [];
 }
 
 #nullable restore

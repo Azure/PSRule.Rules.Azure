@@ -126,4 +126,5 @@
     VMAvailabilitySetDistributeTraffic = "The availability set member ({0}) should be a part of a backend pool."
     ResourceHasNoTags = "The resource does not have any tags. Expected tags: {0}."
     ActiveSecurityAlerts = "There are {0} active security alerts of high or medium severity."
+    KeyValueShouldNotContainSecrets = "The key value '{0}' property should not contain secrets."
 }

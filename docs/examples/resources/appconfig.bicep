@@ -18,8 +18,11 @@ param replicaLocation string
 @description('The resource id of the Log Analytics workspace to send diagnostic logs to.')
 param workspaceId string
 
+@description('The name of the configuration key value.')
+param configurationName string
+
 // An example App Configuration store with a Standard SKU.
-resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
+resource store 'Microsoft.AppConfiguration/configurationStores@2024-06-01' = {
   name: name
   location: location
   sku: {
@@ -33,10 +36,29 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
 }
 
 // An example App Configuration store replica in a secondary region.
-resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2023-03-01' = {
+resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2024-06-01' = {
   parent: store
   name: replicaName
   location: replicaLocation
+}
+
+resource vault 'Microsoft.KeyVault/vaults@2024-11-01' existing = {
+  name: 'myKeyVault'
+}
+
+resource secret 'Microsoft.KeyVault/vaults/secrets@2024-11-01' existing = {
+  parent: vault
+  name: 'mySecret'
+}
+
+// An example of a Key Value that holds a reference to a secret in Azure Key Vault.
+resource kvReference 'Microsoft.AppConfiguration/configurationStores/keyValues@2024-06-01' = {
+  parent: store
+  name: configurationName
+  properties: {
+    value: '{"uri":"${secret.properties.secretUri}"}'
+    contentType: 'application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8'
+  }
 }
 
 // Configure audit logs to be saved to a Log Analytics workspace.

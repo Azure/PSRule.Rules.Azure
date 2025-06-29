@@ -41,13 +41,13 @@ public sealed class TokenStreamValidatorTests
     [Fact]
     public void UsesListKeysFunction()
     {
-        Assert.True(Helper.UsesListKeysFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-09-01').keys[0].value]"));
-        Assert.True(Helper.UsesListKeysFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-09-01')]"));
-        Assert.True(Helper.UsesListKeysFunction("[listAdminKeys(resourceId('Microsoft.Search/searchServices', 'search1'), '2022-09-01').primaryKey]"));
-        Assert.True(Helper.UsesListKeysFunction("[listQueryKeys(resourceId('Microsoft.Search/searchServices', 'search1'), '2021-09-01').value[0].key]"));
-        Assert.False(Helper.UsesListKeysFunction("[list(resourceId('Microsoft.OperationalInsights/workspaces', 'workspace1'), '2023-09-01').value[0].properties.name]"));
-        Assert.False(Helper.UsesListKeysFunction("[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"));
-        Assert.False(Helper.UsesListKeysFunction("[if(not(empty(parameters('administratorLogin'))), parameters('administratorLogin'), null())]"));
+        Assert.True(Helper.UsesListFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-09-01').keys[0].value]"));
+        Assert.True(Helper.UsesListFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-09-01')]"));
+        Assert.True(Helper.UsesListFunction("[listAdminKeys(resourceId('Microsoft.Search/searchServices', 'search1'), '2022-09-01').primaryKey]"));
+        Assert.True(Helper.UsesListFunction("[listQueryKeys(resourceId('Microsoft.Search/searchServices', 'search1'), '2021-09-01').value[0].key]"));
+        Assert.False(Helper.UsesListFunction("[list(resourceId('Microsoft.OperationalInsights/workspaces', 'workspace1'), '2023-09-01').value[0].properties.name]"));
+        Assert.False(Helper.UsesListFunction("[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"));
+        Assert.False(Helper.UsesListFunction("[if(not(empty(parameters('administratorLogin'))), parameters('administratorLogin'), null())]"));
     }
 
     [Fact]

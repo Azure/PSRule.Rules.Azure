@@ -40,6 +40,27 @@ Rule 'Azure.AppConfig.PurgeProtect' -Ref 'AZR-000313' -Type 'Microsoft.AppConfig
     $Assert.HasFieldValue($TargetObject, 'properties.enablePurgeProtection', $true).Reason($LocalizedData.AppConfigPurgeProtection, $TargetObject.name)
 }
 
+# Synopsis: Secrets stored as key values in an App Configuration Store may be leaked to unauthorized users.
+Rule 'Azure.AppConfig.SecretLeak' -Ref 'AZR-000490' -Type 'Microsoft.AppConfiguration/configurationStores', 'Microsoft.AppConfiguration/configurationStores/keyValues' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-8') } {
+    $kv = @($TargetObject)
+    if ($PSRule.TargetType -eq 'Microsoft.AppConfiguration/configurationStores') {
+        $kv = @(GetSubResources -ResourceType 'Microsoft.AppConfiguration/configurationStores/keyValues', 'keyValues')
+    }
+
+    if ($kv.Length -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($keyValue in $kv) {
+        if ($Assert.HasFieldValue($keyValue, 'properties.value').Result -and [PSRule.Rules.Azure.Runtime.Helper]::UsesSecretPlaceholder($keyValue.properties.value)) {
+            $Assert.Fail().ReasonFrom('properties.value', $LocalizedData.KeyValueShouldNotContainSecrets, $keyValue.Name)
+        }
+        else {
+            $Assert.Pass()
+        }
+    }
+}
+
 #endregion Rules
 
 #region Helper functions
