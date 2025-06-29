@@ -67,7 +67,7 @@ internal sealed class TemplateHelper(PipelineContext context)
         foreach (var resource in templateContext.GetResources())
             results.Add(resource.Value.ToObject<PSObject>(serializer));
 
-        return results.ToArray();
+        return [.. results];
     }
 
     private static JObject ReadFile(string path)

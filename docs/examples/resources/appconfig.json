@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.28.1.47646",
-      "templateHash": "14916758653741917680"
+      "version": "0.36.1.42791",
+      "templateHash": "11676545441596639219"
     }
   },
   "parameters": {
@@ -39,12 +39,18 @@
       "metadata": {
         "description": "The resource id of the Log Analytics workspace to send diagnostic logs to."
       }
+    },
+    "configurationName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the configuration key value."
+      }
     }
   },
   "resources": [
     {
       "type": "Microsoft.AppConfiguration/configurationStores",
-      "apiVersion": "2023-03-01",
+      "apiVersion": "2024-06-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -58,9 +64,21 @@
     },
     {
       "type": "Microsoft.AppConfiguration/configurationStores/replicas",
-      "apiVersion": "2023-03-01",
+      "apiVersion": "2024-06-01",
       "name": "[format('{0}/{1}', parameters('name'), parameters('replicaName'))]",
       "location": "[parameters('replicaLocation')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.AppConfiguration/configurationStores', parameters('name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.AppConfiguration/configurationStores/keyValues",
+      "apiVersion": "2024-06-01",
+      "name": "[format('{0}/{1}', parameters('name'), parameters('configurationName'))]",
+      "properties": {
+        "value": "[format('{{\"uri\":\"{0}\"}}', reference(resourceId('Microsoft.KeyVault/vaults/secrets', 'myKeyVault', 'mySecret'), '2024-11-01').secretUri)]",
+        "contentType": "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8"
+      },
       "dependsOn": [
         "[resourceId('Microsoft.AppConfiguration/configurationStores', parameters('name'))]"
       ]

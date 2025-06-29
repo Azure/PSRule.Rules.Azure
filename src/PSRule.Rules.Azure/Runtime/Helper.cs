@@ -75,12 +75,12 @@ public static class Helper
     }
 
     /// <summary>
-    /// Returns true if an expression contains a call to the listKeys function.
+    /// Returns true if an expression contains a call to the list* function.
     /// </summary>
-    internal static bool UsesListKeysFunction(string expression)
+    internal static bool UsesListFunction(string expression)
     {
         return IsTemplateExpression(expression) &&
-            TokenStreamValidator.UsesListKeysFunction(ExpressionParser.Parse(expression));
+            TokenStreamValidator.UsesListFunction(ExpressionParser.Parse(expression));
     }
 
     /// <summary>
@@ -97,9 +97,7 @@ public static class Helper
     /// </summary>
     public static bool HasSecureValue(string expression, string[] secureParameters)
     {
-        if ((!string.IsNullOrEmpty(expression) && expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase)) ||
-            UsesListKeysFunction(expression) ||
-            UsesReferenceFunction(expression))
+        if (HasSecureValue(expression))
             return true;
 
         var parameterNamesInExpression = GetParameterTokenValue(expression);
@@ -107,6 +105,24 @@ public static class Helper
         return parameterNamesInExpression != null &&
         parameterNamesInExpression.Length > 0 &&
         parameterNamesInExpression.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == parameterNamesInExpression.Length;
+    }
+
+    /// <summary>
+    /// Check if the value of the expression is secure, whether by using secure parameters, references to KeyVault, or list* functions.
+    /// </summary>
+    public static bool HasSecureValue(string expression)
+    {
+        return UsesSecretPlaceholder(expression) ||
+            UsesListFunction(expression) ||
+            UsesReferenceFunction(expression);
+    }
+
+    /// <summary>
+    /// Check if the expression uses a secret placeholder.
+    /// </summary>
+    public static bool UsesSecretPlaceholder(string expression)
+    {
+        return !string.IsNullOrEmpty(expression) && expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase);
     }
 
     /// <summary>

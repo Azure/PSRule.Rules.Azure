@@ -32,12 +32,12 @@ internal sealed class Mock
 
         public override JToken? GetValue(TypePrimitive type)
         {
-            return TryMutate(type, this, out var replaced) ? replaced : null;
+            return TryMutate(type, this, IsSecret, out var replaced) ? replaced : null;
         }
 
         public override JToken? GetValue(object key)
         {
-            if ((key is int || key is long) && TryMutate<JArray>(this, out var replaced))
+            if ((key is int || key is long) && TryMutate<JArray>(this, IsSecret, out var replaced))
             {
                 var result = new MockUnknownObject(IsSecret);
                 replaced!.Add(result);
@@ -48,12 +48,12 @@ internal sealed class Mock
 
         public override TValue? GetValue<TValue>() where TValue : default
         {
-            return TryMutate<TValue>(this, out var replaced) ? replaced : GetSimpleValue<TValue>(this);
+            return TryMutate<TValue>(this, IsSecret, out var replaced) ? replaced : GetSimpleValue<TValue>(this);
         }
 
         public bool TryMutateTo(TypePrimitive type, out JToken? replaced)
         {
-            return TryMutate(type, this, out replaced);
+            return TryMutate(type, this, IsSecret, out replaced);
         }
     }
 
@@ -66,15 +66,9 @@ internal sealed class Mock
             : base(secret) { }
     }
 
-    internal sealed class MockSecret : MockUnknownObject
+    internal sealed class MockSecret(string resourceId) : MockUnknownObject(secret: true), ISecretPlaceholder
     {
-        public MockSecret(string resourceId)
-            : base(secret: true)
-        {
-            ResourceId = resourceId;
-        }
-
-        public string ResourceId { get; }
+        public string ResourceId { get; } = resourceId;
 
         public override string ToString()
         {
@@ -132,12 +126,14 @@ internal sealed class Mock
             : base(value)
         {
             BaseType = GetTypePrimitive(value);
+            IsSecret = secret;
         }
 
-        public MockValue(string value)
+        public MockValue(string value, bool secret)
             : base(value)
         {
             BaseType = TypePrimitive.String;
+            IsSecret = secret;
         }
 
         public MockValue(int value)
@@ -152,7 +148,7 @@ internal sealed class Mock
             BaseType = TypePrimitive.Bool;
         }
 
-        public bool IsSecret => false;
+        public bool IsSecret { get; }
 
         public TypePrimitive BaseType { get; }
 
@@ -168,7 +164,7 @@ internal sealed class Mock
             if (type == TypePrimitive.None || BaseType == type)
                 return this;
 
-            if (TryMutate(type, this, out var value))
+            if (TryMutate(type, this, IsSecret, out var value))
                 return value;
 
             return null;
@@ -387,7 +383,7 @@ internal sealed class Mock
     /// <summary>
     /// Tokens are mutated when originally the type of token is unknown.
     /// </summary>
-    private static bool TryMutate<TValue>(JToken current, out TValue? replaced)
+    private static bool TryMutate<TValue>(JToken current, bool secret, out TValue? replaced)
     {
         replaced = default;
         if (current is TValue value)
@@ -396,7 +392,7 @@ internal sealed class Mock
             return true;
         }
 
-        var isSecret = current is IMock mock && mock.IsSecret;
+        var isSecret = secret || current is IMock mock && mock.IsSecret;
 
         if (typeof(JArray).IsAssignableFrom(typeof(TValue)))
         {
@@ -417,23 +413,25 @@ internal sealed class Mock
     /// <summary>
     /// Tokens are mutated when originally the type of token is unknown.
     /// </summary>
-    private static bool TryMutate(TypePrimitive type, JToken current, out JToken? replaced)
+    private static bool TryMutate(TypePrimitive type, JToken current, bool secret, out JToken? replaced)
     {
         replaced = default;
         if (type is TypePrimitive.Object or TypePrimitive.SecureObject)
         {
-            replaced = TryMutate<MockUnknownObject>(current, out var uo) ? uo : default;
+            var isSecret = secret || type == TypePrimitive.SecureObject;
+            replaced = TryMutate<MockUnknownObject>(current, isSecret, out var uo) ? uo : default;
             return replaced != default;
         }
         else if (type == TypePrimitive.Array)
         {
-            replaced = TryMutate<MockUnknownArray>(current, out var uo) ? uo : default;
+            var isSecret = secret || current is IMock mock && mock.IsSecret;
+            replaced = TryMutate<MockUnknownArray>(current, isSecret, out var uo) ? uo : default;
             return replaced != default;
         }
         else if (type is TypePrimitive.String or TypePrimitive.SecureString)
         {
-            var isSecret = type == TypePrimitive.SecureString || current is IMock mock && mock.IsSecret;
-            replaced = new MockValue(isSecret ? "{{Secret}}" : string.Empty);
+            var isSecret = secret || type == TypePrimitive.SecureString || current is IMock mock && mock.IsSecret;
+            replaced = new MockValue(isSecret ? "{{Secret}}" : string.Empty, isSecret);
             current.Replace(replaced);
             return true;
         }

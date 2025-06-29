@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
+using PSRule.Rules.Azure.Data.Template;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -65,6 +66,11 @@ public sealed class PSRuleOption
     /// Options that affect how output is generated.
     /// </summary>
     public OutputOption Output { get; set; }
+
+    /// <summary>
+    /// Options that affect how diagnostics are reported.
+    /// </summary>
+    internal DiagnosticBehaviors DiagnosticBehaviors { get; set; }
 
     /// <summary>
     /// Set working path from PowerShell host environment.

@@ -10,6 +10,8 @@ using static PSRule.Rules.Azure.Arm.Deployments.DeploymentVisitor;
 
 namespace PSRule.Rules.Azure;
 
+#nullable enable
+
 public abstract class TemplateVisitorTestsBase : BaseTests
 {
     #region Helper methods
@@ -19,15 +21,15 @@ public abstract class TemplateVisitorTestsBase : BaseTests
         var context = new PipelineContext(PSRuleOption.Default, null);
         var helper = new TemplateHelper(context);
         helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
-        return templateContext.GetResources().Select(i => i.Value).ToArray();
+        return [.. templateContext.GetResources().Select(i => i.Value)];
     }
 
-    internal static JObject[] ProcessTemplate(string templateFile, string parametersFile, out TemplateContext templateContext)
+    internal static JObject[] ProcessTemplate(string templateFile, string parametersFile, out TemplateContext templateContext, PSRuleOption? option = null)
     {
-        var context = new PipelineContext(PSRuleOption.Default, null);
+        var context = new PipelineContext(option ?? PSRuleOption.Default, null);
         var helper = new TemplateHelper(context);
         helper.ProcessTemplate(templateFile, parametersFile, out templateContext);
-        return templateContext.GetResources().Select(i => i.Value).ToArray();
+        return [.. templateContext.GetResources().Select(i => i.Value)];
     }
 
     protected static JObject[] ProcessTemplate(string templateFile, string parametersFile, PSRuleOption option)
@@ -35,8 +37,10 @@ public abstract class TemplateVisitorTestsBase : BaseTests
         var context = new PipelineContext(option, null);
         var helper = new TemplateHelper(context);
         helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
-        return templateContext.GetResources().Select(i => i.Value).ToArray();
+        return [.. templateContext.GetResources().Select(i => i.Value)];
     }
 
     #endregion Helper methods
 }
+
+#nullable restore

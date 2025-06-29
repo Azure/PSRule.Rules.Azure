@@ -657,6 +657,7 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
 
         ResolveProperties(context, resource.Value);
         Trim(resource.Value);
+        TrackSecureProperties(context, resource, resource.Value);
         Emit(context, resource);
     }
 
@@ -686,6 +687,40 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
             foreach (var item in jArray)
             {
                 Trim(item);
+            }
+        }
+    }
+
+    private static void TrackSecureProperties(ITemplateContext context, IResourceValue resource, JToken value)
+    {
+        if (value == null) return;
+
+        if (value is ISecretPlaceholder placeholder)
+        {
+            resource.SecretProperties.Add(placeholder.Path);
+        }
+        else if (value is IMock mock && mock.IsSecret)
+        {
+            resource.SecretProperties.Add(value.Path);
+        }
+        else if (value is JValue jValue && context.IsSecureValue(jValue))
+        {
+            resource.SecretProperties.Add(jValue.Path);
+        }
+
+
+        if (value is JObject jObject)
+        {
+            foreach (var property in jObject.Properties().ToArray())
+            {
+                TrackSecureProperties(context, resource, property.Value);
+            }
+        }
+        else if (value is JArray jArray)
+        {
+            foreach (var item in jArray)
+            {
+                TrackSecureProperties(context, resource, item);
             }
         }
     }
@@ -991,8 +1026,9 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
 
         var result = context.EvaluateExpression<object>(value);
         if (result is IMock mock)
+        {
             return mock.GetValue(type);
-
+        }
         return result == null ? null : JToken.FromObject(result);
     }
 
@@ -1050,7 +1086,9 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
     private static void ResolveProperties(ITemplateContext context, JObject obj)
     {
         foreach (var property in obj.Properties().ToArray())
+        {
             ResolveProperty(context, obj, property.Name);
+        }
     }
 
     private static void ResolveProperty(ITemplateContext context, JObject obj, string propertyName, TypePrimitive type = TypePrimitive.None)

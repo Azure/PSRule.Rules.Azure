@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
@@ -62,6 +63,9 @@ internal sealed class ExistingResourceValue : IResourceValue
 
     /// <inheritdoc/>
     public string Scope => string.Empty;
+
+    /// <inheritdoc/>
+    public ICollection<string> SecretProperties => [];
 
     /// <summary>
     /// Expand <c>id</c> on demand.
