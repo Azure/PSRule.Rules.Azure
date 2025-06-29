@@ -117,4 +117,4 @@ For example:
 - [Use Azure App Configuration in Azure Container Apps](https://learn.microsoft.comazure/azure-app-configuration/quickstart-container-apps)
 - [Use App Configuration references for Azure App Service and Azure Functions](https://learn.microsoft.com/azure/app-service/app-service-configuration-references)
 - [Use Azure App Configuration in Azure Kubernetes Service](https://learn.microsoft.com/azure/azure-app-configuration/quickstart-azure-kubernetes-service)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores/keyvalues)

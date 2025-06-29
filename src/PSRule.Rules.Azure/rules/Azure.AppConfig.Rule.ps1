@@ -41,7 +41,7 @@ Rule 'Azure.AppConfig.PurgeProtect' -Ref 'AZR-000313' -Type 'Microsoft.AppConfig
 }
 
 # Synopsis: Secrets stored as key values in an App Configuration Store may be leaked to unauthorized users.
-Rule 'Azure.AppConfig.SecretLeak' -Ref 'AZR-000490' -Type 'Microsoft.AppConfiguration/configurationStores', 'Microsoft.AppConfiguration/configurationStores/keyValues' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.AppConfig.SecretLeak' -Ref 'AZR-000490' -Type 'Microsoft.AppConfiguration/configurationStores', 'Microsoft.AppConfiguration/configurationStores/keyValues' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-8') } {
     $kv = @($TargetObject)
     if ($PSRule.TargetType -eq 'Microsoft.AppConfiguration/configurationStores') {
         $kv = @(GetSubResources -ResourceType 'Microsoft.AppConfiguration/configurationStores/keyValues', 'keyValues')
