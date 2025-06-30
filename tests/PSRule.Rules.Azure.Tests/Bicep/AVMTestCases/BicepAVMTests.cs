@@ -69,4 +69,16 @@ public sealed class BicepAVMTests : TemplateVisitorTestsBase
         Assert.NotNull(endpoint);
         Assert.Equal("https://test-cosmosdb.documents.azure.com:443/", endpoint["properties"]["value"].Value<string>());
     }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3446
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WhenHandlingMockReplacement_ShouldGetResource()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Bicep/AVMTestCases/Tests.Bicep.4.json"), null, out var templateContext);
+
+        var actual = resources.FirstOrDefault(r => r["name"].Value<string>() == "pe-test");
+        Assert.NotNull(actual);
+    }
 }

@@ -36,6 +36,9 @@ What's changed since pre-release v1.45.0-B0037:
   - App Configuration:
     - Check that App Configuration Key Values do not contain known secrets by @BernieWhite.
       [#3439](https://github.com/Azure/PSRule.Rules.Azure/issues/3439)
+- Bug fixes:
+  - Fixed parent is missing on mocked token when expanding PE AVM module by @BernieWhite.
+    [#3446](https://github.com/Azure/PSRule.Rules.Azure/issues/3446)
 
 ## v1.45.0-B0037 (pre-release)
 
