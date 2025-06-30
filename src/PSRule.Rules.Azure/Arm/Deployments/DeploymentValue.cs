@@ -109,6 +109,9 @@ internal sealed class DeploymentValue : BaseResourceValue, IResourceValue, ILazy
 
     public DeploymentScope DeploymentScope { get; }
 
+    /// <inheritdoc/>
+    public ICollection<string> SecretProperties => [];
+
     public void AddOutput(string name, ILazyValue output)
     {
         _Outputs.Add(name, output);

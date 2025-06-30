@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Arm.Deployments;
@@ -31,4 +32,9 @@ internal interface IResourceValue : IResourceIdentity
     /// Copy state of the resource.
     /// </summary>
     CopyIndexState Copy { get; }
+
+    /// <summary>
+    /// A collection of properties that contain secret values.
+    /// </summary>
+    ICollection<string> SecretProperties { get; }
 }

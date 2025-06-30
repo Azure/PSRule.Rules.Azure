@@ -56,13 +56,13 @@ internal static class TokenStreamValidator
             else if (TryParameters(stream, token, out var parameterName))
                 list.Add(parameterName);
         }
-        return list.ToArray();
+        return [.. list];
     }
 
     /// <summary>
-    /// Returns true if an expression contains a call to the listKeys function.
+    /// Returns true if an expression contains a call to the list* function.
     /// </summary>
-    public static bool UsesListKeysFunction(TokenStream stream)
+    public static bool UsesListFunction(TokenStream stream)
     {
         while (stream.Count > 0)
         {
@@ -117,7 +117,7 @@ internal static class TokenStreamValidator
         while (stream.Count > 0)
             CollectLiteralToken(stream, list);
 
-        return list.ToArray();
+        return [.. list];
     }
 
     private static void CollectLiteralToken(TokenStream stream, IList<ExpressionToken> results)

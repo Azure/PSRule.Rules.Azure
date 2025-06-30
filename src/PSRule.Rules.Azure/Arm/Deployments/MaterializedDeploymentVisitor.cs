@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Arm.Expressions;
+using PSRule.Rules.Azure.Data.Template;
 
 namespace PSRule.Rules.Azure.Arm.Deployments;
 
@@ -48,6 +49,9 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
     private const string PROPERTY_KIND = "kind";
     private const string PROPERTY_CUSTOM_SUBDOMAIN_NAME = "customSubDomainName";
     private const string PROPERTY_DOCUMENT_ENDPOINT = "documentEndpoint";
+    private const string PROPERTY_CUSTOMER_ID = "customerId";
+    private const string PROPERTY_SECRET_URI = "secretUri";
+    private const string PROPERTY_SECRET_URI_WITH_VERSION = "secretUriWithVersion";
 
     private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
     private const string IDENTITY_SYSTEM_ASSIGNED = "SystemAssigned";
@@ -67,6 +71,7 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
     private const string TYPE_SUBSCRIPTION_ALIAS = "Microsoft.Subscription/aliases";
     private const string TYPE_CONTAINER_REGISTRY = "Microsoft.ContainerRegistry/registries";
     private const string TYPE_KEYVAULT = "Microsoft.KeyVault/vaults";
+    private const string TYPE_KEYVAULT_SECRET = "Microsoft.KeyVault/vaults/secrets";
     private const string TYPE_STORAGE_OBJECTREPLICATIONPOLICIES = "Microsoft.Storage/storageAccounts/objectReplicationPolicies";
     private const string TYPE_AUTHORIZATION_ROLE_ASSIGNMENTS = "Microsoft.Authorization/roleAssignments";
     private const string TYPE_MANAGEMENT_GROUPS = "Microsoft.Management/managementGroups";
@@ -75,6 +80,7 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
     private const string TYPE_STORAGE_ACCOUNT = "Microsoft.Storage/storageAccounts";
     private const string TYPE_AI_SERVICES_ACCOUNTS = "Microsoft.CognitiveServices/accounts";
     private const string TYPE_COSMOSDB = "Microsoft.DocumentDB/databaseAccounts";
+    private const string TYPE_LOG_ANALYTICS_WORKSPACE = "Microsoft.OperationalInsights/workspaces";
 
     private static readonly JsonMergeSettings _MergeSettings = new()
     {
@@ -107,6 +113,10 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
 
         // Fill in properties for resources that have known special cases that can be calculated.
         BuildMaterializedView(context, context.GetResources());
+
+        // Replace known secret properties with a placeholder.
+        ReplaceSecretProperties(context, context.GetResources());
+
         base.EndTemplate(context, deploymentName, template);
     }
 
@@ -138,6 +148,26 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
         }
     }
 
+    private static void ReplaceSecretProperties(TemplateContext context, IResourceValue[] resources)
+    {
+        // If the context is configured to keep secret properties, do not replace them.
+        if (context.DiagnosticBehaviors.HasFlag(DiagnosticBehaviors.KeepSecretProperties))
+            return;
+
+        for (var i = 0; resources != null && i < resources.Length; i++)
+        {
+            foreach (var property in resources[i].SecretProperties)
+            {
+                var value = resources[i].Value.SelectToken(property);
+                if (value != null && value.Type == JTokenType.String)
+                {
+                    // Replace the secret value with a placeholder.
+                    value.Replace(new JValue("{{Secret}}"));
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// Project calculated properties into the resource.
     /// </summary>
@@ -159,6 +189,7 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
             ProjectSubscriptionAlias(context, resource) ||
             ProjectStorageObjectReplicationPolicies(context, resource) ||
             ProjectKeyVault(context, resource) ||
+            ProjectKeyVaultSecret(context, resource) ||
             ProjectRoleAssignments(context, resource) ||
             ProjectManagementGroup(context, resource) ||
             ProjectServiceBusNamespace(context, resource) ||
@@ -166,6 +197,7 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
             ProjectStorageAccount(context, resource) ||
             ProjectAIServiceAccount(context, resource) ||
             ProjectCosmosDB(context, resource) ||
+            ProjectLogAnalyticsWorkspace(context, resource) ||
             ProjectResource(context, resource);
     }
 
@@ -281,6 +313,21 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
 
         var primaryEndpoint = $"https://{resource.Name}.documents.azure.com:443/";
         properties.AddIfNotExists(PROPERTY_DOCUMENT_ENDPOINT, primaryEndpoint);
+
+        return ProjectResource(context, resource);
+    }
+
+    /// <summary>
+    /// Project runtime properties for a Log Analytics workspace.
+    /// </summary>
+    private static bool ProjectLogAnalyticsWorkspace(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_LOG_ANALYTICS_WORKSPACE))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+        properties.AddIfNotExists(PROPERTY_PROVISIONING_STATE, PROVISIONING_STATE_SUCCEEDED);
+        properties.AddIfNotExists(PROPERTY_CUSTOMER_ID, PLACEHOLDER_GUID);
 
         return ProjectResource(context, resource);
     }
@@ -458,6 +505,32 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
         }
         return true;
     }
+
+#nullable enable
+
+    private static bool ProjectKeyVaultSecret(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_KEYVAULT_SECRET))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+        // secretUri
+        if (ResourceHelper.ResourceIdComponents(resource.Id, out _, out _, out _, out _, out _, out string[]? nameParts) &&
+            nameParts != null && nameParts.Length == 2)
+        {
+            var vaultName = nameParts[0].ToLower();
+            var secretName = nameParts[1].ToLower();
+
+            properties.AddIfNotExists(PROPERTY_SECRET_URI, $"https://{vaultName}.vault.azure.net/secrets/{secretName}");
+
+            // Use a deterministic secret version.
+            properties.AddIfNotExists(PROPERTY_SECRET_URI_WITH_VERSION, $"https://{vaultName}.vault.azure.net/secrets/{secretName}/ffffffffffffffffffffffffffffffff");
+        }
+        return true;
+    }
+
+#nullable restore
 
     private static bool ProjectStorageObjectReplicationPolicies(TemplateContext context, IResourceValue resource)
     {

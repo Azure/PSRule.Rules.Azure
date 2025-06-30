@@ -170,7 +170,7 @@ public sealed class FunctionTests
             "intProp",
             new Mock.MockValue(1),
             "stringProp",
-            new Mock.MockValue("mock"),
+            new Mock.MockValue("mock", secret:false),
             "boolProp",
             new Mock.MockValue(true),
             "arrayProp",

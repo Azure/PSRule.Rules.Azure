@@ -104,4 +104,9 @@ internal interface ITemplateContext : IValidationContext
     /// <returns>Returns <c>true</c> if the variable exists or <c>false</c> if a variable with the specified name could not be found.</returns>
     /// <exception cref="NotImplementedException">A lambda variable can not be evaluated outside a lambda expression.</exception>
     bool TryLambdaVariable(string variableName, out object value);
+
+    /// <summary>
+    /// Get the current evaluation diagnostic behaviors for the template context.
+    /// </summary>
+    DiagnosticBehaviors DiagnosticBehaviors { get; }
 }

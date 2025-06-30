@@ -27,7 +27,7 @@ internal static class JsonExtensions
     private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
     private const string PROPERTY_RESOURCE_GROUP = "resourceGroup";
 
-    private const string TARGETINFO_KEY = "_PSRule";
+    private const string TARGET_INFO_KEY = "_PSRule";
     private const string TARGETINFO_SOURCE = "source";
     private const string TARGETINFO_FILE = "file";
     private const string TARGETINFO_LINE = "line";
@@ -37,7 +37,7 @@ internal static class JsonExtensions
     private const string TARGETINFO_TYPE_PARAMETER = "Parameter";
     private const string TARGETINFO_ISSUE = "issue";
     private const string TARGETINFO_NAME = "name";
-    private const string TARGETINFO_PATH = "path";
+    private const string TARGET_INFO_PATH = "path";
     private const string TARGETINFO_MESSAGE = "message";
 
     private const string TENANT_SCOPE = "/";
@@ -397,11 +397,11 @@ internal static class JsonExtensions
         var lineInfo = resource.TryLineInfo();
 
         // Populate target info.
-        resource.UseProperty(TARGETINFO_KEY, out JObject targetInfo);
+        resource.UseProperty(TARGET_INFO_KEY, out JObject targetInfo);
 
         // Path.
         path ??= resource.GetResourcePath();
-        targetInfo.Add(TARGETINFO_PATH, path);
+        targetInfo.Add(TARGET_INFO_PATH, path);
 
         var sources = new JArray();
 
@@ -441,7 +441,7 @@ internal static class JsonExtensions
     internal static void SetValidationIssue(this JObject resource, string issueId, string name, string path, string message, params object[] args)
     {
         // Populate target info
-        resource.UseProperty(TARGETINFO_KEY, out JObject targetInfo);
+        resource.UseProperty(TARGET_INFO_KEY, out JObject targetInfo);
 
         var issues = targetInfo.ContainsKey(TARGETINFO_ISSUE) ? targetInfo.Value<JArray>(TARGETINFO_ISSUE) : new JArray();
 
@@ -453,7 +453,7 @@ internal static class JsonExtensions
         {
             [TARGETINFO_TYPE] = issueId,
             [TARGETINFO_NAME] = name,
-            [TARGETINFO_PATH] = path,
+            [TARGET_INFO_PATH] = path,
             [TARGETINFO_MESSAGE] = message,
         };
         issues.Add(issue);

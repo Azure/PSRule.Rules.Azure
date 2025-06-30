@@ -132,6 +132,9 @@ internal abstract partial class DeploymentVisitor
 
             if (pipelineContext?.Option?.Configuration?.ParameterDefaults != null)
                 ParameterDefaults = new Dictionary<string, object>(pipelineContext.Option.Configuration.ParameterDefaults, StringComparer.OrdinalIgnoreCase);
+
+            if (pipelineContext?.Option?.DiagnosticBehaviors != null)
+                DiagnosticBehaviors = pipelineContext.Option.DiagnosticBehaviors;
         }
 
         private Dictionary<string, IParameterValue> Parameters { get; }
@@ -163,6 +166,9 @@ internal abstract partial class DeploymentVisitor
         public string TemplateFile { get; private set; }
 
         public string ParameterFile { get; private set; }
+
+        /// <inheritdoc/>
+        public DiagnosticBehaviors DiagnosticBehaviors { get; }
 
         /// <summary>
         /// The top level deployment.
@@ -356,9 +362,9 @@ internal abstract partial class DeploymentVisitor
             return false;
         }
 
-        private static JToken SecretPlaceholder(string placeholder)
+        private static SecretPlaceholderValue SecretPlaceholder(string placeholder)
         {
-            return new JValue(string.Concat("{{SecretReference:", placeholder, "}}"));
+            return new SecretPlaceholderValue(string.Concat("{{SecretReference:", placeholder, "}}"));
         }
 
         internal void EnterDeployment(string deploymentName, JObject template, bool isNested)

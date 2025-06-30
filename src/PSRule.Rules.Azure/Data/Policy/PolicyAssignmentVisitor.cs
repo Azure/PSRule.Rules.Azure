@@ -180,6 +180,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             public TenantOption Tenant { get; }
             public ManagementGroupOption ManagementGroup { get; }
             public DeployerOption Deployer { get; }
+            public DiagnosticBehaviors DiagnosticBehaviors => DiagnosticBehaviors.None;
 
             public string PolicyRulePrefix { get; }
             public string FieldPrefix

@@ -30,6 +30,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.45.0-B0037:
+
+- New rules:
+  - App Configuration:
+    - Check that App Configuration Key Values do not contain known secrets by @BernieWhite.
+      [#3439](https://github.com/Azure/PSRule.Rules.Azure/issues/3439)
+
 ## v1.45.0-B0037 (pre-release)
 
 What's changed since pre-release v1.45.0-B0017:
