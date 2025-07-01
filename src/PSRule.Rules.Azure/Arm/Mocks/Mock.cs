@@ -432,7 +432,6 @@ internal sealed class Mock
         {
             var isSecret = secret || type == TypePrimitive.SecureString || current is IMock mock && mock.IsSecret;
             replaced = new MockValue(isSecret ? "{{Secret}}" : string.Empty, isSecret);
-            current.Replace(replaced);
             return true;
         }
         return false;
