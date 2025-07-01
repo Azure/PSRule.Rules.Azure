@@ -32,7 +32,7 @@ New name                                  | Old name                            
 
 ### Realignment of rules
 
-The Well-Architected Framework and PSRule are regularly updated.
+The Well-Architected Framework, PSRule, and Azure services are regularly updated.
 As a result, some rules may not have a clear linkage with the latest guidance or practices.
 
 To ensure that PSRule for Azure continues to provide clear guidance, examples, and references some rules will be removed.
@@ -40,6 +40,7 @@ The following rules are deprecated and will be removed in v2:
 
 Reference ID | Name                             | Deprecated from | Reason
 ------------ | ----                             | --------------- | ------
+AZR-000009   | Azure.ACR.ContentTrust           | v1.45.0         | No longer applicable to ACR. [#3443](https://github.com/Azure/PSRule.Rules.Azure/issues/3443)
 AZR-000050   | Azure.APIM.ProductTerms          | v1.41.0         | No clear linkage to WAF.
 AZR-000217   | Azure.Template.UseParameters     | v1.36.0         | Linting already handled by Bicep linter. No clear linkage to WAF.
 AZR-000219   | Azure.Template.UseVariables      | v1.36.0         | Linting already handled by Bicep linter. No clear linkage to WAF.

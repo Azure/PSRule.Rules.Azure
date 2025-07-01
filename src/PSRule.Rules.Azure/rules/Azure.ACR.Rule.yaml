@@ -101,7 +101,7 @@ metadata:
   name: Azure.ACR.ContentTrust
   ref: AZR-000009
   tags:
-    release: GA
+    release: deprecated
     ruleSet: 2020_12
     Azure.WAF/pillar: Security
 spec:

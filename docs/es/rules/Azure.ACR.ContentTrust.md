@@ -1,4 +1,5 @@
 ---
+deprecated: true
 severity: Importante
 pillar: Seguridad
 category: Protección de datos
