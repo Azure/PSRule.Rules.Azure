@@ -96,7 +96,7 @@ The following information outlines how changes to rules are managed within PSRul
 - **Deprecation/ removal** - occurs when checking for the conditions of the rule is no longer necessary or it no longer aligns.
   In these cases, the rule may be removed or if there is still some customer value it may be retained but not run by default.
   For example, the rule may not align to the Well-Architected Framework but is still useful for some customers.
-  This is done by the means of a feature flag, by requiring a configuration value to be set.
+  After a rule is deprecated, it will not be run by default and must be explicitly included in your configuration.
   Check the rule documentation for details on any configuration requirements.
 
   [4]: https://learn.microsoft.com/azure/well-architected/

@@ -15,6 +15,16 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Co
 
 Docker content trust allows images to be signed and verified when pulled from a container registry.
 
+## DEPRECATION
+
+<!-- deprecation:note
+Content trust is replaced by OCI artifact signing.
+
+This rule is deprecated from v1.45.0.
+By default, PSRule will not evaluate this rule unless explicitly enabled.
+See [https://aka.ms/ps-rule-azure/deprecations](https://aka.ms/ps-rule-azure/deprecations).
+-->
+
 ## DESCRIPTION
 
 Azure Container Registry (ACR) content trust enables pushing and pulling of signed images.
@@ -24,10 +34,6 @@ To enable content trust, the container registry must be using a Premium SKU.
 
 Content trust is currently not supported in a registry that's encrypted with a customer-managed key.
 When using customer-managed keys, content trust can not be enabled.
-
-<!-- deprecation:note v1.45.0
-Content trust is replaced by OCI artifact signing, which is supported by Azure Container Registry.
--->
 
 ## RECOMMENDATION
 
@@ -108,12 +114,6 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 ```
 
 <!-- external:avm avm/res/container-registry/registry:0.5.1 trustPolicyStatus -->
-
-## NOTES
-
-This rule is deprecated from v1.45.0.
-By default, PSRule will not evaluate this rule unless explicitly enabled.
-See https://aka.ms/ps-rule-azure/deprecations.
 
 ## LINKS
 
