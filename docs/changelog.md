@@ -42,6 +42,10 @@ What's changed since pre-release v1.45.0-B0037:
       [#3443](https://github.com/Azure/PSRule.Rules.Azure/issues/3443)
       - The Docker content trust feature will retire in March 2028.
       - Content trust is replaced by OCI artifact signing, which is supported by Azure Container Registry.
+  - Virtual Network Gateway:
+    - Updated documentation and promoted `Azure.VNG.MaintenanceConfig` to GA by @BernieWhite.
+      [#3379](https://github.com/Azure/PSRule.Rules.Azure/issues/3379)
+      - Bumped rule set to `2025_06`.
 - Bug fixes:
   - Fixed parent is missing on mocked token when expanding PE AVM module by @BernieWhite.
     [#3446](https://github.com/Azure/PSRule.Rules.Azure/issues/3446)

@@ -27,7 +27,7 @@ Rule 'Azure.VNG.ERAvailabilityZoneSKU' -Ref 'AZR-000273' -Type 'Microsoft.Networ
 }
 
 # Synopsis: Use a customer-controlled maintenance configuration for virtual network gateways.
-Rule 'Azure.VNG.MaintenanceConfig' -Ref 'AZR-000430' -Type 'Microsoft.Network/virtualNetworkGateways' -Tag @{ release = 'preview'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.VNG.MaintenanceConfig' -Ref 'AZR-000430' -Type 'Microsoft.Network/virtualNetworkGateways' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $maintenanceConfig = @(GetSubResources -ResourceType 'Microsoft.Maintenance/configurationAssignments' |
         Where-Object { $_.properties.maintenanceConfigurationId })
     $Assert.GreaterOrEqual($maintenanceConfig, '.', 1).Reason($LocalizedData.VNGMaintenanceConfig, $PSRule.TargetName)
