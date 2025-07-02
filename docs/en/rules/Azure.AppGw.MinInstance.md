@@ -37,7 +37,6 @@ With zero reserved instances, the variable costs are [calculated based on actual
 Consider using Application Gateway v2 with autoscale enabled which includes two instances by default.
 Alternatively, if using manual scaling specify the number of instances to be two or more.
 
-
 ## EXAMPLES
 
 ### Configure with Azure template
