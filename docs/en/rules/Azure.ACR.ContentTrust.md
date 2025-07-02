@@ -1,4 +1,6 @@
 ---
+reviewed: 2025-07-01
+deprecated: true
 severity: Important
 pillar: Security
 category: SE:02 Secured development lifecycle
@@ -7,11 +9,21 @@ resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ContentTrust/
 ---
 
-# Use trusted container images
+# Container Registry Docker content trust is not enabled
 
 ## SYNOPSIS
 
-Use container images signed by a trusted image publisher.
+Docker content trust allows images to be signed and verified when pulled from a container registry.
+
+## DEPRECATION
+
+<!-- deprecation:note
+Content trust is replaced by OCI artifact signing.
+
+This rule is deprecated from v1.45.0.
+By default, PSRule will not evaluate this rule unless explicitly enabled.
+See [https://aka.ms/ps-rule-azure/deprecations](https://aka.ms/ps-rule-azure/deprecations).
+-->
 
 ## DESCRIPTION
 
