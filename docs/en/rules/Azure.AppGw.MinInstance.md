@@ -30,7 +30,7 @@ When manually deploying Application Gateway v2 via the Azure Portal, by default 
 If manually scaling Application Gateway, specify at least two instances for high availability and to support network
 traffic based on expected load.
 
-With zero reserved instances, the variable costs are [calculated based on actual usage](https://learn.microsoft.com/en-us/azure/application-gateway/understanding-pricing#example-3-b--waf_v2-instance-with-autoscaling-with-0-min-instance-count).
+With zero reserved instances, the variable costs are [calculated based on actual usage](https://learn.microsoft.com/azure/application-gateway/understanding-pricing#example-3-b--waf_v2-instance-with-autoscaling-with-0-min-instance-count).
 
 ## RECOMMENDATION
 
