@@ -49,6 +49,8 @@ What's changed since pre-release v1.45.0-B0037:
 - Bug fixes:
   - Fixed parent is missing on mocked token when expanding PE AVM module by @BernieWhite.
     [#3446](https://github.com/Azure/PSRule.Rules.Azure/issues/3446)
+  - Fixed `Azure.AppGw.MinInstance` should allow 0 minimum capacity for v2 with autoscale by @BernieWhite @mbender-ms.
+    [#3452](https://github.com/Azure/PSRule.Rules.Azure/issues/3452)
 
 ## v1.45.0-B0037 (pre-release)
 

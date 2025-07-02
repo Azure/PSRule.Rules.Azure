@@ -536,7 +536,7 @@
       },
       "enableHttp2": false,
       "autoscaleConfiguration": {
-        "minCapacity": 2,
+        "minCapacity": 0,
         "maxCapacity": 3
       }
     },

@@ -1,7 +1,8 @@
 ---
+reviewed: 2025-07-03
 severity: Important
 pillar: Reliability
-category: Load balancing and failover
+category: RE:04 Target metrics
 resource: Application Gateway
 resourceType: Microsoft.Network/applicationGateways
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.MinInstance/
@@ -39,63 +40,20 @@ Alternatively, if using manual scaling specify the number of instances to be two
 
 ## EXAMPLES
 
-### Configure with Azure template
-
-To set capacity for an Application gateway:
-
-- With Autoscaling:
-  - Set `autoscaleConfiguration.minCapacity` to any or all of `2`.
-- With manual scaling:
-  - Set `sku.capacity` to `2` or more.
-
-For example:
-
-```json
-{
-  "name": "appGw-001",
-  "type": "Microsoft.Network/applicationGateways",
-  "apiVersion": "2019-09-01",
-  "location": "[resourceGroup().location]",
-  "zones": [
-    "1",
-    "2",
-    "3"
-  ],
-  "properties": {
-    "sku": {
-      "capacity": 2, // Manual Scale
-      "name": "WAF_v2",
-      "tier": "WAF_v2"
-    },
-    "autoscaleConfiguration": { //Autoscale
-      "minCapacity": 2,
-      "maxCapacity": 3
-    },
-    "webApplicationFirewallConfiguration": {
-      "enabled": true,
-      "firewallMode": "Detection",
-      "ruleSetType": "OWASP",
-      "ruleSetVersion": "3.0"
-    }
-  }
-}
-
-```
-
 ### Configure with Bicep
 
-To set capacity for an Application gateway:
+To configure Applications Gateways that pass this rule:
 
-- With Autoscaling:
-  - Set `autoscaleConfiguration.minCapacity` to any or all of `2`.
+- With v2 and autoscaling enabled:
+  - Set the `autoscaleConfiguration.minCapacity` property to `0` or more.
 - With manual scaling:
-  - Set `sku.capacity` to `2` or more.
+  - Set the `sku.capacity` property to `2` or more.
 
-For example:
+For example with v2 and autoscaling enabled:
 
 ```bicep
-resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
-  name: 'appGw-001'
+resource appgw 'Microsoft.Network/applicationGateways@2024-07-01' = {
+  name: name
   location: location
   zones: [
     '1'
@@ -104,26 +62,158 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
   ]
   properties: {
     sku: {
-      capacity: 2 // Manual scale
       name: 'WAF_v2'
       tier: 'WAF_v2'
     }
-    autoscaleConfiguration: { // Autoscale
-      minCapacity: 1
-      maxCapacity: 2
+    sslPolicy: {
+      policyType: 'Custom'
+      minProtocolVersion: 'TLSv1_2'
+      cipherSuites: [
+        'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
+        'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
+      ]
     }
-    webApplicationFirewallConfiguration: {
-      enabled: true
-      firewallMode: 'Detection'
-      ruleSetType: 'OWASP'
-      ruleSetVersion: '3.0'
+    autoscaleConfiguration: {
+      minCapacity: 0
+      maxCapacity: 4
+    }
+    firewallPolicy: {
+      id: waf.id
     }
   }
 }
 ```
 
+For example manual scaling:
+
+```bicep
+resource appgw_manual 'Microsoft.Network/applicationGateways@2024-07-01' = {
+  name: name
+  location: location
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
+  properties: {
+    sku: {
+      name: 'WAF_v2'
+      tier: 'WAF_v2'
+      capacity: 2
+    }
+    sslPolicy: {
+      policyType: 'Custom'
+      minProtocolVersion: 'TLSv1_2'
+      cipherSuites: [
+        'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
+        'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
+      ]
+    }
+    firewallPolicy: {
+      id: waf.id
+    }
+  }
+}
+```
+
+<!-- external:avm avm/res/network/application-gateway autoscaleMinCapacity -->
+
+### Configure with Azure template
+
+To configure Applications Gateways that pass this rule:
+
+- With v2 and autoscaling enabled:
+  - Set the `autoscaleConfiguration.minCapacity` property to `0` or more.
+- With manual scaling:
+  - Set the `sku.capacity` property to `2` or more.
+
+For example with v2 and autoscaling enabled:
+
+```json
+{
+  "type": "Microsoft.Network/applicationGateways",
+  "apiVersion": "2024-07-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ],
+  "properties": {
+    "sku": {
+      "name": "WAF_v2",
+      "tier": "WAF_v2"
+    },
+    "sslPolicy": {
+      "policyType": "Custom",
+      "minProtocolVersion": "TLSv1_2",
+      "cipherSuites": [
+        "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+        "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+      ]
+    },
+    "autoscaleConfiguration": {
+      "minCapacity": 0,
+      "maxCapacity": 4
+    },
+    "firewallPolicy": {
+      "id": "[resourceId('Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies', 'agwwaf')]"
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies', 'agwwaf')]"
+  ]
+}
+```
+
+For example manual scaling:
+
+```json
+{
+  "type": "Microsoft.Network/applicationGateways",
+  "apiVersion": "2024-07-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ],
+  "properties": {
+    "sku": {
+      "name": "WAF_v2",
+      "tier": "WAF_v2",
+      "capacity": 2
+    },
+    "sslPolicy": {
+      "policyType": "Custom",
+      "minProtocolVersion": "TLSv1_2",
+      "cipherSuites": [
+        "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+        "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+      ]
+    },
+    "firewallPolicy": {
+      "id": "[resourceId('Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies', 'agwwaf')]"
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies', 'agwwaf')]"
+  ]
+}
+```
+
 ## LINKS
 
-- [Azure Application Gateway SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways?pivots=deployment-language-bicep)
-- [Azure Well-Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
+- [Azure Application Gateway SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways)

@@ -8,7 +8,7 @@ param name string
 param location string = resourceGroup().location
 
 // An example of an Application Gateway with a WAF_v2 SKU.
-resource appgw 'Microsoft.Network/applicationGateways@2024-01-01' = {
+resource appgw 'Microsoft.Network/applicationGateways@2024-07-01' = {
   name: name
   location: location
   zones: [
@@ -32,8 +32,8 @@ resource appgw 'Microsoft.Network/applicationGateways@2024-01-01' = {
       ]
     }
     autoscaleConfiguration: {
-      minCapacity: 2
-      maxCapacity: 3
+      minCapacity: 0
+      maxCapacity: 4
     }
     firewallPolicy: {
       id: waf.id
@@ -61,6 +61,37 @@ resource waf 'Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
     policySettings: {
       state: 'Enabled'
       mode: 'Prevention'
+    }
+  }
+}
+
+// An example of an Application Gateway configured with a minimum instances of 2.
+resource appgw_manual 'Microsoft.Network/applicationGateways@2024-07-01' = {
+  name: name
+  location: location
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
+  properties: {
+    sku: {
+      name: 'WAF_v2'
+      tier: 'WAF_v2'
+      capacity: 2
+    }
+    sslPolicy: {
+      policyType: 'Custom'
+      minProtocolVersion: 'TLSv1_2'
+      cipherSuites: [
+        'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
+        'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
+      ]
+    }
+    firewallPolicy: {
+      id: waf.id
     }
   }
 }

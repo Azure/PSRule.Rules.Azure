@@ -24,12 +24,12 @@ spec:
   condition:
     anyOf:
     # Applies to v1 and v2 without autoscale
-    - field: Properties.sku.capacity
+    - field: properties.sku.capacity
       greaterOrEquals: 2
 
     # Applies to v2 with autoscale
-    - field: Properties.autoscaleConfiguration.minCapacity
-      greaterOrEquals: 2
+    - field: properties.autoscaleConfiguration.minCapacity
+      greaterOrEquals: 0
 
 ---
 # Synopsis: Application Gateway should use a minimum instance size of Medium.
