@@ -53,6 +53,16 @@ public static class PipelineBuilder
     }
 
     /// <summary>
+    /// Create a builder to export policy assignment data from Azure.
+    /// </summary>
+    /// <param name="options">>Options that configure PSRule for Azure.</param>
+    /// <returns>A builder object to configure the pipeline.</returns>
+    public static IPolicyAssignmentDataPipelineBuilder AssignmentData(PSRuleOption options)
+    {
+        return new PolicyAssignmentDataPipelineBuilder(options);
+    }
+
+    /// <summary>
     /// Create a builder for creating a pipeline to exporting resource data from Azure.
     /// </summary>
     /// <param name="option">Options that configure PSRule for Azure.</param>

@@ -33,10 +33,4 @@ public interface IResourceDataPipelineBuilder : IExportDataPipelineBuilder
     /// </summary>
     /// <param name="path">The directory path to write output.</param>
     void OutputPath(string path);
-
-    /// <summary>
-    /// Specifies the default tenant to use when the tenant is unknown.
-    /// </summary>
-    /// <param name="tenantId">The tenant Id of the default tenant.</param>
-    void Tenant(string tenantId);
 }

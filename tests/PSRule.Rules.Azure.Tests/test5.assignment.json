@@ -1,49 +1,30 @@
 [
   {
-    "Identity": null,
-    "Location": null,
-    "Name": "000000000000000000000000",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
-    "ResourceName": "000000000000000000000000",
-    "ResourceGroupName": null,
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "name": "000000000000000000000000",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
       "NotScopes": [],
       "DisplayName": "EnsureAtleastOneLBRule",
       "Description": null,
-      "Metadata": {
-        "assignedBy": "Armaan Dhaliwal-McLeod",
-        "parameterScopes": {},
-        "createdBy": "15bd0bad-d884-4479-9860-a3afffae4132",
-        "createdOn": "2022-05-09T13:24:28.6044957Z",
-        "updatedBy": null,
-        "updatedOn": null
+      "metadata": {
+        "parameterScopes": {}
       },
       "EnforcementMode": 0,
-      "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+      "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
       "Parameters": {},
       "NonComplianceMessages": []
     },
     "PolicyDefinitions": [
       {
-        "Name": "00000000-0000-0000-0000-000000000005",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000005",
-        "ResourceName": "00000000-0000-0000-0000-000000000005",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "name": "00000000-0000-0000-0000-000000000005",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000005",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "Enforce atleast more than one LB rule",
           "DisplayName": "EnsureAtleastOneLBRule",
-          "Metadata": {
-            "createdBy": "15bd0bad-d884-4479-9860-a3afffae4132",
-            "createdOn": "2022-05-09T13:24:18.8003947Z",
-            "updatedBy": null,
-            "updatedOn": null
-          },
+          "metadata": {},
           "Mode": "All",
           "Parameters": {},
           "PolicyRule": {
@@ -66,8 +47,7 @@
             }
           },
           "PolicyType": 1
-        },
-        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000005"
+        }
       }
     ]
   }

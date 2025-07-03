@@ -7,18 +7,20 @@ using PSRule.Rules.Azure.Pipeline.Output;
 
 namespace PSRule.Rules.Azure.Pipeline;
 
+#nullable enable
+
 internal sealed class PolicyAssignmentPipelineBuilder : PipelineBuilderBase, IPolicyAssignmentPipelineBuilder
 {
     private bool _PassThru;
     private bool _KeepDuplicates;
-    private const string OUTPUTFILE_PREFIX = "definitions-";
-    private const string OUTPUTFILE_EXTENSION = ".Rule.jsonc";
-    private const string ASSIGNMENTNAME_PREFIX = "export-";
+    private const string OUTPUT_FILE_PREFIX = "definitions-";
+    private const string OUTPUT_FILE_EXTENSION = ".Rule.jsonc";
+    private const string ASSIGNMENT_NAME_PREFIX = "export-";
     private string _AssignmentName;
 
     internal PolicyAssignmentPipelineBuilder(PSRuleOption option)
     {
-        _AssignmentName = string.Concat(ASSIGNMENTNAME_PREFIX, Guid.NewGuid().ToString().Substring(0, 8));
+        _AssignmentName = string.Concat(ASSIGNMENT_NAME_PREFIX, Guid.NewGuid().ToString().Substring(0, 8));
         Configure(option);
     }
 
@@ -67,7 +69,7 @@ internal sealed class PolicyAssignmentPipelineBuilder : PipelineBuilderBase, IPo
                 option: Option,
                 encoding: Option.Output.Encoding.GetEncoding(),
                 path: Option.Output.Path,
-                defaultFile: string.Concat(OUTPUTFILE_PREFIX, _AssignmentName, OUTPUTFILE_EXTENSION),
+                defaultFile: string.Concat(OUTPUT_FILE_PREFIX, _AssignmentName, OUTPUT_FILE_EXTENSION),
                 shouldProcess: CmdletContext.ShouldProcess
             )
             : base.GetOutput();
@@ -84,3 +86,5 @@ internal sealed class PolicyAssignmentPipelineBuilder : PipelineBuilderBase, IPo
         return new PolicyAssignmentPipeline(PrepareContext(), _KeepDuplicates);
     }
 }
+
+#nullable restore

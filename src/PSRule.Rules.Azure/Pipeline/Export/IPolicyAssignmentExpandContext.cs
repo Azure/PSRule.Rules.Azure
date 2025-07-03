@@ -8,13 +8,8 @@ namespace PSRule.Rules.Azure.Pipeline.Export;
 
 #nullable enable
 
-internal interface IResourceExportContext : ILogger
+internal interface IPolicyAssignmentExpandContext : ILogger
 {
-    /// <summary>
-    /// Determines if security alerts are included in the export.
-    /// </summary>
-    bool SecurityAlerts { get; }
-
     /// <summary>
     /// The tenant Id for the export context.
     /// </summary>

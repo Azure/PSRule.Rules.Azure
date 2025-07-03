@@ -1,50 +1,33 @@
 [
   {
-    "Identity": null,
-    "Location": null,
-    "Name": "000000000000000000000000",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
-    "ResourceName": "000000000000000000000000",
-    "ResourceGroupName": "PolicyRG",
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "name": "000000000000000000000000",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG",
       "NotScopes": [],
-      "DisplayName": "Deny Storage Account Not Using Minumum TLS version",
+      "DisplayName": "Deny Storage Account Not Using Minimum TLS version",
       "Description": null,
-      "Metadata": {
-        "assignedBy": "Armaan Dhaliwal-McLeod",
-        "parameterScopes": {},
-        "createdBy": "00000000-0000-0000-0000-000000000000",
-        "createdOn": "2022-03-22T12:58:35.4594114Z",
-        "updatedBy": null,
-        "updatedOn": null
+      "metadata": {
+        "parameterScopes": {}
       },
       "EnforcementMode": 0,
-      "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/Deny-Storage-Account-Not-Using-Minimum-TLS-Version",
+      "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/Deny-Storage-Account-Not-Using-Minimum-TLS-Version",
       "Parameters": {},
       "NonComplianceMessages": []
     },
     "PolicyDefinitions": [
       {
-        "Name": "Deny-Storage-Account-Not-Using-TLS1-2",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/Deny-Storage-Account-Not-Using-Minimum-TLS-Version",
+        "name": "Deny-Storage-Account-Not-Using-TLS1-2",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/Deny-Storage-Account-Not-Using-Minimum-TLS-Version",
         "ResourceName": "Deny-Storage-Account-Not-Using-TLS1-2",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "Minimum TLS version must be used on Storage accounts",
           "DisplayName": "Deny Storage Account Not Using Minimum TLS version",
-          "Metadata": {
+          "metadata": {
             "version": "1.0.0",
-            "category": "Storage",
-            "createdBy": "00000000-0000-0000-0000-000000000000",
-            "createdOn": "2021-06-07T03:21:16.6955366Z",
-            "updatedBy": "00000000-0000-0000-0000-000000000000",
-            "updatedOn": "2022-03-22T12:58:04.8841964Z"
+            "category": "Storage"
           },
           "Mode": "Indexed",
           "Parameters": {
@@ -93,8 +76,7 @@
             }
           },
           "PolicyType": 1
-        },
-        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/Deny-Storage-Account-Not-Using-Minimum-TLS-Version"
+        }
       }
     ]
   }

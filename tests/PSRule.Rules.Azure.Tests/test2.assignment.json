@@ -1,37 +1,19 @@
 [
   {
-    "Identity": {
-      "PrincipalId": "00000000-0000-0000-0000-000000000000",
-      "TenantId": "00000000-0000-0000-0000-000000000000",
-      "IdentityType": "SystemAssigned",
-      "UserAssignedIdentities": null
-    },
-    "Location": "eastus",
-    "Name": "9603713cc5824db6b735d4b2",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/9603713cc5824db6b735d4b2",
-    "ResourceName": "9603713cc5824db6b735d4b2",
-    "ResourceGroupName": "PolicyRG",
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/9603713cc5824db6b735d4b2",
+    "name": "9603713cc5824db6b735d4b2",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Authorization/policyAssignments/9603713cc5824db6b735d4b2",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG",
       "NotScopes": [],
       "DisplayName": "Deploy Log Analytics extension for Linux VMs",
-      "Description": null,
-      "Metadata": {
-        "assignedBy": "Armaan Dhaliwal-McLeod",
+      "metadata": {
         "parameterScopes": {
           "logAnalytics": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eau"
-        },
-        "createdBy": "15bd0bad-d884-4479-9860-a3afffae4132",
-        "createdOn": "2022-03-27T01:49:25.1892076Z",
-        "updatedBy": null,
-        "updatedOn": null
+        }
       },
       "EnforcementMode": 0,
-      "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
       "Parameters": {
         "logAnalytics": {
           "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eau/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eau"
@@ -46,15 +28,13 @@
     },
     "PolicyDefinitions": [
       {
-        "Name": "00000000-0000-0000-0000-000000000002",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002",
-        "ResourceName": "00000000-0000-0000-0000-000000000002",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "SubscriptionId": null,
+        "name": "00000000-0000-0000-0000-000000000002",
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "Deploy Log Analytics extension for Linux VMs if the VM Image (OS) is in the list defined and the extension is not installed.",
           "DisplayName": "Deploy Log Analytics extension for Linux VMs",
-          "Metadata": {
+          "metadata": {
             "version": "2.0.1",
             "category": "Monitoring"
           },
@@ -425,8 +405,7 @@
             }
           },
           "PolicyType": 2
-        },
-        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002"
+        }
       }
     ]
   }

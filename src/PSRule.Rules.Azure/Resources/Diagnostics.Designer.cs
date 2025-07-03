@@ -79,6 +79,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expanding policy assignments with {0} threads..
+        /// </summary>
+        internal static string VerboseExpandingPolicyAssignments {
+            get {
+                return ResourceManager.GetString("VerboseExpandingPolicyAssignments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expanding resource: {0}.
         /// </summary>
         internal static string VerboseExpandingResource {
@@ -102,6 +111,42 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string VerboseFoundFile {
             get {
                 return ResourceManager.GetString("VerboseFoundFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting policy assignments by Id: {0}.
+        /// </summary>
+        internal static string VerboseGetAssignmentById {
+            get {
+                return ResourceManager.GetString("VerboseGetAssignmentById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added {0} assignments by Id..
+        /// </summary>
+        internal static string VerboseGetAssignmentByIdResult {
+            get {
+                return ResourceManager.GetString("VerboseGetAssignmentByIdResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting policy assignments from scope: {0}.
+        /// </summary>
+        internal static string VerboseGetAssignmentByScope {
+            get {
+                return ResourceManager.GetString("VerboseGetAssignmentByScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added {0} assignments from scope &apos;{1}&apos;..
+        /// </summary>
+        internal static string VerboseGetAssignmentByScopeResult {
+            get {
+                return ResourceManager.GetString("VerboseGetAssignmentByScopeResult", resourceCulture);
             }
         }
         
@@ -142,7 +187,7 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrying &apos;{0}&apos; in {1}, attept {2}..
+        ///   Looks up a localized string similar to Retrying &apos;{0}&apos; in {1}, attempt {2}..
         /// </summary>
         internal static string VerboseRetryIn {
             get {
@@ -165,6 +210,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string VerboseTemplateLinkNotFound {
             get {
                 return ResourceManager.GetString("VerboseTemplateLinkNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using TenantId: {0}.
+        /// </summary>
+        internal static string VerboseUsingTenantId {
+            get {
+                return ResourceManager.GetString("VerboseUsingTenantId", resourceCulture);
             }
         }
         

@@ -18,6 +18,7 @@ internal sealed class SubscriptionExportContext : ExportDataContext, ISubscripti
     private readonly string _ResourceEndpoint;
     private readonly string _ResourceGroupEndpoint;
     private readonly string _SubscriptionEndpoint;
+
     private ProviderData _ProviderData;
 
     /// <summary>

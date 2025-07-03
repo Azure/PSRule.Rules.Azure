@@ -1,35 +1,18 @@
 [
   {
-    "Identity": {
-      "PrincipalId": "00000000-0000-0000-0000-000000000000",
-      "TenantId": "00000000-0000-0000-0000-000000000000",
-      "IdentityType": "SystemAssigned",
-      "UserAssignedIdentities": null
-    },
-    "Location": "eastus",
-    "Name": "000000000000000000000000",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
-    "ResourceName": "000000000000000000000000",
-    "ResourceGroupName": null,
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "name": "000000000000000000000000",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
       "NotScopes": [],
       "DisplayName": "FunctionAppPullFromSpecifiedRegistry",
       "Description": null,
-      "Metadata": {
-        "assignedBy": "Armaan Dhaliwal-McLeod",
-        "parameterScopes": {},
-        "createdBy": "00000000-0000-0000-0000-000000000000",
-        "createdOn": "2022-03-28T12:46:12.9565807Z",
-        "updatedBy": null,
-        "updatedOn": null
+      "metadata": {
+        "parameterScopes": {}
       },
       "EnforcementMode": 0,
-      "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000",
+      "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000",
       "Parameters": {
         "registryName": {
           "value": "acrtest"
@@ -39,21 +22,15 @@
     },
     "PolicyDefinitions": [
       {
-        "Name": "00000000-0000-0000-0000-000000000003",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000003",
-        "ResourceName": "0000000000-0000-0000-0000-000000000003",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "name": "00000000-0000-0000-0000-000000000003",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000003",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "Function app must pull from specified registry",
           "DisplayName": "FunctionAppPullFromSpecifiedRegistry",
-          "Metadata": {
+          "metadata": {
             "version": "1.0.0",
-            "category": "App Service",
-            "createdBy": "0000000000-0000-0000-0000-000000000000",
-            "createdOn": "2022-03-28T12:44:20.6424105Z",
-            "updatedBy": null,
-            "updatedOn": null
+            "category": "App Service"
           },
           "Mode": "Indexed",
           "Parameters": {
@@ -173,8 +150,7 @@
             }
           },
           "PolicyType": 1
-        },
-        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000003"
+        }
       }
     ]
   }

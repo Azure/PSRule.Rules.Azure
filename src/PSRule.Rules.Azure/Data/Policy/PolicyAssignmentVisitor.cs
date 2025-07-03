@@ -26,9 +26,9 @@ namespace PSRule.Rules.Azure.Data.Policy
     /// </summary>
     internal abstract class PolicyAssignmentVisitor : ResourceManagerVisitor
     {
-        private const string PROPERTY_POLICYASSIGNMENTID = "policyAssignmentId";
+        private const string PROPERTY_ID = "id";
         private const string PROPERTY_PARAMETERS = "parameters";
-        private const string PROPERTY_POLICYDEFINITIONS = "policyDefinitions";
+        private const string PROPERTY_POLICY_DEFINITIONS = "policyDefinitions";
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_POLICYRULE = "policyRule";
         private const string PROPERTY_MODE = "mode";
@@ -75,7 +75,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_PAD_LEFT = "padLeft";
         private const string PROPERTY_PATH = "path";
         private const string PROPERTY_CONVERT = "convert";
-        private const string PROPERTY_NONCOMPLIANCEMESSAGES = "NonComplianceMessages";
+        private const string PROPERTY_NON_COMPLIANCE_MESSAGES = "nonComplianceMessages";
         private const string PROPERTY_HAS_VALUE = "hasValue";
         private const string PROPERTY_EMPTY = "empty";
         private const string PROPERTY_LENGTH = "length";
@@ -775,7 +775,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         {
             try
             {
-                if (!assignment.TryGetProperty(PROPERTY_POLICYASSIGNMENTID, out var assignmentId))
+                if (!assignment.TryGetProperty(PROPERTY_ID, out var assignmentId))
                     return;
 
                 // Get the Id of the assignment for logging.
@@ -789,12 +789,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                         AssignmentParameters(context, parameters);
 
                     // Get non-compliance messages
-                    if (properties.TryArrayProperty(PROPERTY_NONCOMPLIANCEMESSAGES, out var nonComplianceMessages))
+                    if (properties.TryArrayProperty(PROPERTY_NON_COMPLIANCE_MESSAGES, out var nonComplianceMessages))
                         AssignmentNonComplianceMessages(context, nonComplianceMessages.Values<JObject>());
                 }
 
                 // Get assignment policy definitions Definitions
-                if (assignment.TryArrayProperty(PROPERTY_POLICYDEFINITIONS, out var definitions))
+                if (assignment.TryArrayProperty(PROPERTY_POLICY_DEFINITIONS, out var definitions))
                     Definitions(context, definitions.Values<JObject>());
             }
             finally
@@ -836,7 +836,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 try
                 {
-                    if (definition.TryStringProperty(PROPERTY_POLICYDEFINITIONID, out var definitionId) && !ShouldFilterDefinition(context, definitionId))
+                    if (definition.TryStringProperty(PROPERTY_ID, out var definitionId) && !ShouldFilterDefinition(context, definitionId))
                     {
                         context.SetPolicyDefinitionId(definitionId);
                         if (TryPolicyDefinition(context, definition, definitionId, out var policyDefinition))

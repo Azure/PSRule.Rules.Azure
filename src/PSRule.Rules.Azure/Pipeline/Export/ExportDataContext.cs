@@ -91,9 +91,10 @@ internal abstract class ExportDataContext : IDisposable, ILogger
         return client;
     }
 
-    protected static string GetEndpointUri(string baseEndpoint, string requestUri, string apiVersion)
+    protected static string GetEndpointUri(string baseEndpoint, string requestUri, string apiVersion, string? queryString)
     {
-        return string.Concat(baseEndpoint, "/", requestUri, "?api-version=", apiVersion);
+        var query = string.IsNullOrWhiteSpace(queryString) ? "?" : $"?{queryString}&";
+        return string.Concat(baseEndpoint, "/", requestUri, query, "api-version=", apiVersion);
     }
 
     protected async Task<JObject[]> ListAsync(string tenantId, string uri, bool ignoreNotFound)

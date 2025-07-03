@@ -145,6 +145,19 @@ internal static class JsonExtensions
     }
 
     /// <summary>
+    /// Remove a property from the object if it exists.
+    /// </summary>
+    /// <param name="o">The object to remove the property from.</param>
+    /// <param name="propertyName">The name of the property to remove.</param>
+    internal static void RemoveIfExists(this JObject o, string propertyName)
+    {
+        if (o == null || propertyName == null) return;
+
+        if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var token) && token != null)
+            token.Parent.Remove();
+    }
+
+    /// <summary>
     /// Determine if the token is a value.
     /// </summary>
     internal static bool HasValue(this JToken o)

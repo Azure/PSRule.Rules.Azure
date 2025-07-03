@@ -8,7 +8,7 @@ namespace PSRule.Rules.Azure.Data.Policy;
 public sealed class PolicyIgnoreDataTests
 {
     [Fact]
-    public void PolicyIgnoreData_contains_expected_values()
+    public void GetIndex_WhenPolicyDefinitionIdExists_ShouldMapToExpectedRule()
     {
         var data = GetIndex();
 
