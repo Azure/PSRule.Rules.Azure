@@ -1,9 +1,9 @@
 [
   {
     "Name": "assignment.11",
-    "ResourceId": "/providers/Microsoft.Management/managementGroups/test/providers/Microsoft.Authorization/policyAssignments/assignment.11",
+    "id": "/providers/Microsoft.Management/managementGroups/test/providers/Microsoft.Authorization/policyAssignments/assignment.11",
     "ResourceName": "assignment.11",
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "type": "Microsoft.Authorization/policyAssignments",
     "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/test/providers/Microsoft.Authorization/policyAssignments/assignment.11",
     "Properties": {
       "Scope": "/providers/Microsoft.Management/managementGroups/test",
@@ -19,9 +19,9 @@
     "PolicyDefinitions": [
       {
         "Name": "definition.1",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/definition.1",
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/definition.1",
         "ResourceName": "definition.1",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "This policy audits Windows Azure Arc machines if the Log Analytics extension is not installed.",
           "DisplayName": "[Preview]: Log Analytics extension should be installed on your Windows Azure Arc machines",
@@ -81,7 +81,7 @@
               }
             }
           },
-          "PolicyType": 2
+          "policyType": "BuiltIn"
         },
         "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/definition.1"
       }

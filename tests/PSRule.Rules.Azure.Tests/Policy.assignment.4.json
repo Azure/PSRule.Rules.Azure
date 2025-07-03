@@ -1,29 +1,14 @@
 [
   {
-    "Identity": null,
-    "Location": null,
     "Name": "assignment.4",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.4",
-    "ResourceName": "assignment.4",
-    "ResourceGroupName": null,
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.4",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.4",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
       "NotScopes": [],
       "DisplayName": "Virtual machines' Guest Configuration extension should be deployed with system-assigned managed identity",
-      "Description": null,
-      "Metadata": {
-        "assignedBy": "",
-        "parameterScopes": {},
-        "createdBy": "",
-        "createdOn": "",
-        "updatedBy": null,
-        "updatedOn": null
-      },
-      "EnforcementMode": 1,
+      "Metadata": {},
+      "enforcementMode": "DoNotEnforce",
       "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
       "Parameters": {
         "tagName": {
@@ -32,18 +17,15 @@
       },
       "NonComplianceMessages": [
         {
-          "Message": "Virtual machines' Guest Configuration extension should be deployed with system-assigned managed identity",
-          "PolicyDefinitionReferenceId": null
+          "Message": "Virtual machines' Guest Configuration extension should be deployed with system-assigned managed identity"
         }
       ]
     },
     "PolicyDefinitions": [
       {
         "Name": "d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
-        "ResourceName": "d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "SubscriptionId": null,
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "The Guest Configuration extension requires a system assigned managed identity. Azure virtual machines in the scope of this policy will be non-compliant when they have the Guest Configuration extension installed but do not have a system assigned managed identity. Learn more at https://aka.ms/gcpol",
           "DisplayName": "Virtual machines' Guest Configuration extension should be deployed with system-assigned managed identity",
@@ -91,7 +73,7 @@
               }
             }
           },
-          "PolicyType": 2
+          "policyType": "BuiltIn"
         },
         "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d26f7642-7545-4e18-9b75-8c9bbdee3a9a"
       }

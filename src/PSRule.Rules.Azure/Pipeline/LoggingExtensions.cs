@@ -98,7 +98,7 @@ internal static class LoggingExtensions
     }
 
     /// <summary>
-    /// Retrying '{0}' in {1}, attept {2}.
+    /// Retrying '{0}' in {1}, attempt {2}.
     /// </summary>
     internal static void VerboseRetryIn(this ILogger logger, string uri, TimeSpan retry, int attempt)
     {
@@ -106,6 +106,72 @@ internal static class LoggingExtensions
             return;
 
         logger.WriteVerbose(Diagnostics.VerboseRetryIn, uri, retry, attempt);
+    }
+
+    /// <summary>
+    /// Getting policy assignments from scope: {0}
+    /// </summary>
+    internal static void VerboseGetAssignmentByScope(this ILogger logger, string scopeId)
+    {
+        if (logger == null)
+            return;
+
+        logger.WriteVerbose(Diagnostics.VerboseGetAssignmentByScope, scopeId);
+    }
+
+    /// <summary>
+    /// Added {0} assignments from scope '{1}'.
+    /// </summary>
+    internal static void VerboseGetAssignmentByScopeResult(this ILogger logger, int count, string scopeId)
+    {
+        if (logger == null)
+            return;
+
+        logger.WriteVerbose(Diagnostics.VerboseGetAssignmentByScopeResult, count, scopeId);
+    }
+
+    /// <summary>
+    /// Getting policy assignments by Id: {0}
+    /// </summary>
+    internal static void VerboseGetAssignmentById(this ILogger logger, string assignmentId)
+    {
+        if (logger == null)
+            return;
+
+        logger.WriteVerbose(Diagnostics.VerboseGetAssignmentById, assignmentId);
+    }
+
+    /// <summary>
+    /// Added {0} assignments by Id.
+    /// </summary>
+    internal static void VerboseGetAssignmentByIdResult(this ILogger logger, int count)
+    {
+        if (logger == null)
+            return;
+
+        logger.WriteVerbose(Diagnostics.VerboseGetAssignmentByIdResult, count);
+    }
+
+    /// <summary>
+    /// Using TenantId: {0}
+    /// </summary>
+    internal static void VerboseUsingTenantId(this ILogger logger, string tenantId)
+    {
+        if (logger == null)
+            return;
+
+        logger.WriteVerbose(Diagnostics.VerboseUsingTenantId, tenantId);
+    }
+
+    /// <summary>
+    /// Expanding policy assignments with {0} threads.
+    /// </summary>
+    internal static void VerboseExpandingPolicyAssignments(this ILogger logger, int poolSize)
+    {
+        if (logger == null)
+            return;
+
+        logger.WriteVerbose(Diagnostics.VerboseExpandingPolicyAssignments, poolSize);
     }
 
     /// <summary>

@@ -1,44 +1,29 @@
 [
   {
-    "Identity": null,
-    "Location": null,
-    "Name": "000000000000000000000000",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
-    "ResourceName": "000000000000000000000000",
-    "ResourceGroupName": null,
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "name": "000000000000000000000000",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/000000000000000000000000",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
       "NotScopes": [],
       "DisplayName": "TestInitiative",
-      "Description": null,
-      "Metadata": {
-        "assignedBy": "Armaan McLeod",
-        "parameterScopes": {},
-        "createdBy": "e8c9aad1-7d2c-4d2a-9945-611b7379ee5d",
-        "createdOn": "2022-09-25T10:40:28.8553851Z",
-        "updatedBy": null,
-        "updatedOn": null
+      "metadata": {
+        "parameterScopes": {}
       },
       "EnforcementMode": 0,
-      "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/000000000000000000000000",
+      "policyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/000000000000000000000000",
       "Parameters": {},
       "NonComplianceMessages": []
     },
     "PolicyDefinitions": [
       {
-        "Name": "00000000-0000-0000-0000-000000000011-A",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-A",
-        "ResourceName": "00000000-0000-0000-0000-000000000011-A",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "SubscriptionId": null,
+        "name": "00000000-0000-0000-0000-000000000011-A",
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-A",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "View and configure system diagnostic data",
           "DisplayName": "View and configure system diagnostic data",
-          "Metadata": {
+          "metadata": {
             "version": "1.0.0",
             "category": "Regulatory Compliance"
           },
@@ -70,19 +55,16 @@
             }
           },
           "PolicyType": 2
-        },
-        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-A"
+        }
       },
       {
-        "Name": "00000000-0000-0000-0000-000000000011-B",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-B",
-        "ResourceName": "00000000-0000-0000-0000-000000000011-B",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "SubscriptionId": null,
+        "name": "00000000-0000-0000-0000-000000000011-B",
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-B",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "View and configure system diagnostic data",
           "DisplayName": "View and configure system diagnostic data",
-          "Metadata": {
+          "metadata": {
             "version": "1.0.0",
             "category": "Regulatory Compliance"
           },
@@ -114,8 +96,7 @@
             }
           },
           "PolicyType": 2
-        },
-        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-B"
+        }
       }
     ]
   }

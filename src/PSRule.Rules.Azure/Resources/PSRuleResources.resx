@@ -187,6 +187,9 @@
   <data name="EmptyConditionExpandResult" xml:space="preserve">
     <value>The expand resulted in an empty condition being returned for '{0}' from '{1}'.</value>
   </data>
+  <data name="PFA0002" xml:space="preserve">
+    <value>PFA0002: The target tenant for export could not be determined. See https://aka.ms/ps-rule-azure/troubleshooting.</value>
+  </data>
   <data name="ExpressionEvaluateError" xml:space="preserve">
     <value>An error occurred evaluating expression '{0}' line {1} at path '{2}'. {3}</value>
   </data>

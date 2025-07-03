@@ -412,6 +412,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PFA0002: The target tenant for export could not be determined. See https://aka.ms/ps-rule-azure/troubleshooting..
+        /// </summary>
+        internal static string PFA0002 {
+            get {
+                return ResourceManager.GetString("PFA0002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Policy definition has been ignored based on configuration: {0}.
         /// </summary>
         internal static string PolicyIgnoreConfigured {

@@ -1,29 +1,13 @@
 [
   {
-    "Identity": null,
-    "Location": null,
     "Name": "assignment.6",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.6",
-    "ResourceName": "assignment.6",
-    "ResourceGroupName": null,
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.6",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.6",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
       "NotScopes": [],
       "DisplayName": "App Service Environment should be configured with strongest TLS Cipher suites",
-      "Description": null,
-      "Metadata": {
-        "assignedBy": "",
-        "parameterScopes": {},
-        "createdBy": "",
-        "createdOn": "",
-        "updatedBy": null,
-        "updatedOn": null
-      },
-      "EnforcementMode": 1,
+      "enforcementMode": "DoNotEnforce",
       "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/817dcf37-e83d-4999-a472-644eada2ea1e",
       "Parameters": {},
       "NonComplianceMessages": []
@@ -32,7 +16,7 @@
       {
         "Properties": {
           "DisplayName": "App Service Environment should be configured with strongest TLS Cipher suites",
-          "PolicyType": 2,
+          "policyType": "BuiltIn",
           "Mode": "Indexed",
           "Description": "The two most minimal and strongest cipher suites required for App Service Environment to function correctly are : TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 and TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256.",
           "Metadata": {
@@ -101,10 +85,8 @@
             "1.0.0"
           ]
         },
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/817dcf37-e83d-4999-a472-644eada2ea1e",
-        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/817dcf37-e83d-4999-a472-644eada2ea1e",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "ResourceName": "817dcf37-e83d-4999-a472-644eada2ea1e",
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/817dcf37-e83d-4999-a472-644eada2ea1e",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Name": "817dcf37-e83d-4999-a472-644eada2ea1e"
       }
     ],

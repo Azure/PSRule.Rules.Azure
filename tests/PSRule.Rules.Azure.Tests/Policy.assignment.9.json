@@ -3,10 +3,10 @@
     "Identity": null,
     "Location": null,
     "Name": "assignment.9",
-    "ResourceId": "/providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.9",
+    "id": "/providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.9",
     "ResourceName": "assignment.9",
     "ResourceGroupName": null,
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "type": "Microsoft.Authorization/policyAssignments",
     "SubscriptionId": null,
     "Sku": null,
     "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.9",
@@ -18,7 +18,7 @@
       "Metadata": {
         "Version": "20240706"
       },
-      "EnforcementMode": 0,
+      "enforcementMode": "Default",
       "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/assignment.9",
       "Parameters": null,
       "NonComplianceMessages": null
@@ -26,9 +26,9 @@
     "PolicyDefinitions": [
       {
         "Name": "policyDefinition.1",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/policyDefinition.1",
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/policyDefinition.1",
         "ResourceName": "policyDefinition.1",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
           "Description": "Microsoft Defender for Azure Cosmos DB is an Azure-native layer of security that detects attempts to exploit databases in your Azure Cosmos DB accounts.\r\nDefender for Azure Cosmos DB detects potential SQL injections, known bad actors based on Microsoft Threat Intelligence, suspicious access patterns, and potential exploitations of your database through compromised identities or malicious insiders.",
@@ -102,7 +102,7 @@
               }
             }
           },
-          "PolicyType": 2
+          "policyType": "BuiltIn"
         },
         "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/policyDefinition.1"
       }

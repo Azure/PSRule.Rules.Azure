@@ -8,12 +8,14 @@ using PSRule.Rules.Azure.Pipeline.Export;
 
 namespace PSRule.Rules.Azure;
 
-internal sealed class TestResourceExportContext : ResourceExportContext
+internal sealed class TestResourceExportContext : ResourceExpandContext
 {
+    private const string TENANT_ID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+
     public TestResourceExportContext()
-        : base(null, null, new AccessTokenCache(GetAccessToken), retryCount: 3, retryInterval: 10, securityAlerts: false)
+        : base(null, null, new AccessTokenCache(GetAccessToken), retryCount: 3, retryInterval: 10, tenantId: TENANT_ID, securityAlerts: false)
     {
-        RefreshToken("ffffffff-ffff-ffff-ffff-ffffffffffff");
+        RefreshToken(TENANT_ID);
     }
 
     private static AccessToken GetAccessToken(string tenantId)

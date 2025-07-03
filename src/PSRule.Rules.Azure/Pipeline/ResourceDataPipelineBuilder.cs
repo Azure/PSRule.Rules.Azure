@@ -3,6 +3,7 @@
 
 using System.Collections;
 using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Pipeline;
 
@@ -15,7 +16,6 @@ internal sealed class ResourceDataPipelineBuilder : ExportDataPipelineBuilder, I
     private ExportSubscriptionScope[] _Subscription;
     private Hashtable _Tag;
     private string _OutputPath;
-    private string _TenantId;
     private bool _SecurityAlerts;
 
     internal ResourceDataPipelineBuilder(PSRuleOption option)
@@ -58,12 +58,6 @@ internal sealed class ResourceDataPipelineBuilder : ExportDataPipelineBuilder, I
     }
 
     /// <inheritdoc/>
-    public void Tenant(string tenantId)
-    {
-        _TenantId = tenantId;
-    }
-
-    /// <inheritdoc/>
     public void SecurityAlerts()
     {
         _SecurityAlerts = true;
@@ -72,6 +66,17 @@ internal sealed class ResourceDataPipelineBuilder : ExportDataPipelineBuilder, I
     /// <inheritdoc/>
     public override IPipeline Build()
     {
-        return new ResourceDataPipeline(PrepareContext(), _Subscription, _ResourceGroup, _AccessToken, _Tag, _RetryCount, _RetryInterval, _OutputPath, _TenantId, _SecurityAlerts);
+        return new ResourceDataPipeline(
+            PrepareContext(),
+            _Subscription,
+            _ResourceGroup,
+            _AccessToken,
+            _Tag,
+            GetRetryCount(),
+            GetRetryInterval(),
+            _OutputPath,
+            GetTenantId() ?? throw new ResourceDataPipelineException(PSRuleResources.PFA0002),
+            _SecurityAlerts
+        );
     }
 }

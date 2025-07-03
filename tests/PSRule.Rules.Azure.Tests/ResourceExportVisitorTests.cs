@@ -13,7 +13,7 @@ public sealed class ResourceExportVisitorTests
     public async Task VisitAsync()
     {
         var context = new TestResourceExportContext();
-        var visitor = new ResourceExportVisitor();
+        var visitor = new ResourceExpandVisitor();
         var resource = GetResourceObject("Microsoft.ContainerService/managedClusters");
         await visitor.VisitAsync(context, resource);
 

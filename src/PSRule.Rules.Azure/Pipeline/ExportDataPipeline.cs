@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using PSRule.Rules.Azure.Pipeline.Export;
 
 namespace PSRule.Rules.Azure.Pipeline;
@@ -8,23 +9,24 @@ namespace PSRule.Rules.Azure.Pipeline;
 /// <summary>
 /// A base class for a pipeline that exports data from Azure.
 /// </summary>
-internal abstract class ExportDataPipeline : PipelineBase
+internal abstract class ExportDataPipeline(PipelineContext context, string tenantId, GetAccessTokenFn getToken, int retryCount, int retryInterval, string outputPath) : PipelineBase(context)
 {
     private bool _Disposed;
 
-    protected ExportDataPipeline(PipelineContext context, GetAccessTokenFn getToken)
-        : base(context)
-    {
-        PoolSize = 10;
-        TokenCache = new AccessTokenCache(getToken);
-    }
+    protected int RetryCount { get; } = retryCount;
+
+    protected int RetryInterval { get; } = retryInterval;
+
+    protected string OutputPath { get; } = outputPath;
+
+    protected string TenantId { get; } = tenantId;
 
     /// <summary>
-    /// The size of the thread pool for the pipeline.
+    /// The number of threads to expand the pipeline for parallel processing.
     /// </summary>
-    protected int PoolSize { get; }
+    protected int PoolSize { get; } = Environment.ProcessorCount >= 4 ? Environment.ProcessorCount : 4;
 
-    protected AccessTokenCache TokenCache { get; }
+    protected AccessTokenCache TokenCache { get; } = new AccessTokenCache(getToken);
 
     protected override void Dispose(bool disposing)
     {

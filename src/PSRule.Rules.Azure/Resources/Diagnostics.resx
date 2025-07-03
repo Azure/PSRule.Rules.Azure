@@ -123,6 +123,9 @@
   <data name="FailedDeployment" xml:space="preserve">
     <value>The deployment '{0}' with symbolic name '{1}' failed. {2}</value>
   </data>
+  <data name="VerboseExpandingPolicyAssignments" xml:space="preserve">
+    <value>Expanding policy assignments with {0} threads.</value>
+  </data>
   <data name="VerboseExpandingResource" xml:space="preserve">
     <value>Expanding resource: {0}</value>
   </data>
@@ -131,6 +134,18 @@
   </data>
   <data name="VerboseFoundFile" xml:space="preserve">
     <value>Found file '{0}'.</value>
+  </data>
+  <data name="VerboseGetAssignmentById" xml:space="preserve">
+    <value>Getting policy assignments by Id: {0}</value>
+  </data>
+  <data name="VerboseGetAssignmentByIdResult" xml:space="preserve">
+    <value>Added {0} assignments by Id.</value>
+  </data>
+  <data name="VerboseGetAssignmentByScope" xml:space="preserve">
+    <value>Getting policy assignments from scope: {0}</value>
+  </data>
+  <data name="VerboseGetAssignmentByScopeResult" xml:space="preserve">
+    <value>Added {0} assignments from scope '{1}'.</value>
   </data>
   <data name="VerboseGetResource" xml:space="preserve">
     <value>Getting resource: {0}</value>
@@ -146,7 +161,7 @@
     <comment>Occurs when a parameter file does not have the metadata property set.</comment>
   </data>
   <data name="VerboseRetryIn" xml:space="preserve">
-    <value>Retrying '{0}' in {1}, attept {2}.</value>
+    <value>Retrying '{0}' in {1}, attempt {2}.</value>
   </data>
   <data name="VerboseTemplateFileNotFound" xml:space="preserve">
     <value>Unable to find the specified template file '{0}'.</value>
@@ -155,6 +170,9 @@
   <data name="VerboseTemplateLinkNotFound" xml:space="preserve">
     <value>The parameter file '{0}' does not reference a linked template.</value>
     <comment>Occurs when a parameter file does not have the metadata.template property set.</comment>
+  </data>
+  <data name="VerboseUsingTenantId" xml:space="preserve">
+    <value>Using TenantId: {0}</value>
   </data>
   <data name="WarnFailedToGet" xml:space="preserve">
     <value>Failed to get '{0}': status={1}, correlation-id={2}, {3}</value>

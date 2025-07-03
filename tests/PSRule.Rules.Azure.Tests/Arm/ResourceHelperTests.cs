@@ -1,9 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using PSRule.Rules.Azure.Arm;
-
-namespace PSRule.Rules.Azure;
+namespace PSRule.Rules.Azure.Arm;
 
 #nullable enable
 
@@ -22,65 +20,45 @@ public sealed class ResourceHelperTests
         Assert.False(ResourceHelper.IsResourceType("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace001", "Microsoft.Network/virtualNetworks"));
     }
 
-    [Fact]
-    public void TryResourceIdComponentsFromTypeName()
+    [Theory]
+    [InlineData("Microsoft.OperationalInsights/workspaces", "workspace001", new string[] { "Microsoft.OperationalInsights/workspaces" }, new string[] { "workspace001" })]
+    [InlineData("Microsoft.Network/virtualNetworks/subnets", "vnet-A/GatewaySubnet", new string[] { "Microsoft.Network/virtualNetworks", "subnets" }, new string[] { "vnet-A", "GatewaySubnet" })]
+    public void TryResourceIdComponents_WhenTypeName_ShouldReturnComponents(string resourceType, string resourceName, string[] expectedResourceTypeComponents, string[] expectedNameComponents)
     {
-        var resourceType = new string[]
-        {
-            "microsoft.operationalinsights/workspaces",
-            "Microsoft.Network/virtualNetworks/subnets"
-        };
-        var resourceName = new string[]
-        {
-            "workspace001",
-            "vnet-A/GatewaySubnet"
-        };
-
-        Assert.True(ResourceHelper.TryResourceIdComponents(resourceType[0], resourceName[0], out var resourceTypeComponents, out var nameComponents));
-        Assert.Equal("microsoft.operationalinsights/workspaces", resourceTypeComponents[0]);
-        Assert.Equal("workspace001", nameComponents[0]);
-
-        Assert.True(ResourceHelper.TryResourceIdComponents(resourceType[1], resourceName[1], out resourceTypeComponents, out nameComponents));
-        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents[0]);
-        Assert.Equal("subnets", resourceTypeComponents[1]);
-        Assert.Equal("vnet-A", nameComponents[0]);
-        Assert.Equal("GatewaySubnet", nameComponents[1]);
+        Assert.True(ResourceHelper.TryResourceIdComponents(resourceType, resourceName, out var resourceTypeComponents, out var nameComponents));
+        Assert.Equal(expectedResourceTypeComponents, resourceTypeComponents);
+        Assert.Equal(expectedNameComponents, nameComponents);
     }
 
-    [Fact]
-    public void TryResourceIdComponentsFromResourceId()
+    [Theory]
+    [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace001", "00000000-0000-0000-0000-000000000000", "rg-test", new string[] { "microsoft.operationalinsights/workspaces" }, new string[] { "workspace001" })]
+    [InlineData("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet", "ffffffff-ffff-ffff-ffff-ffffffffffff", "test-rg", new string[] { "Microsoft.Network/virtualNetworks", "subnets" }, new string[] { "vnet-A", "GatewaySubnet" })]
+    public void TryResourceIdComponents_WhenResourceIdInSubscriptionScope_ShouldReturnComponents(string resourceId, string expectedSubscriptionId, string expectedResourceGroupName, string[] expectedResourceTypeComponents, string[] expectedNameComponents)
     {
-        var id = new string[]
-        {
-            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace001",
-            "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet",
-            "Microsoft.Network/virtualNetworks/vnet-A",
-            "Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet"
-        };
+        Assert.True(ResourceHelper.TryResourceIdComponents(resourceId, out var subscriptionId, out var resourceGroupName, out string[]? resourceTypeComponents, out string[]? nameComponents));
+        Assert.Equal(expectedSubscriptionId, subscriptionId);
+        Assert.Equal(expectedResourceGroupName, resourceGroupName);
+        Assert.Equal(expectedResourceTypeComponents, resourceTypeComponents);
+        Assert.Equal(expectedNameComponents, nameComponents);
+    }
 
-        Assert.True(ResourceHelper.TryResourceIdComponents(id[0], out var subscriptionId, out var resourceGroupName, out string[]? resourceTypeComponents, out string[]? nameComponents));
-        Assert.Equal("00000000-0000-0000-0000-000000000000", subscriptionId);
-        Assert.Equal("rg-test", resourceGroupName);
-        Assert.Equal("microsoft.operationalinsights/workspaces", resourceTypeComponents?[0]);
-        Assert.Equal("workspace001", nameComponents?[0]);
+    [Theory]
+    [InlineData("Microsoft.Network/virtualNetworks/vnet-A", new string[] { "Microsoft.Network/virtualNetworks" }, new string[] { "vnet-A" })]
+    [InlineData("Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet", new string[] { "Microsoft.Network/virtualNetworks", "subnets" }, new string[] { "vnet-A", "GatewaySubnet" })]
+    public void TryResourceIdComponents_WhenResourceIdNotQualified_ShouldReturnComponents(string resourceId, string[] expectedResourceTypeComponents, string[] expectedNameComponents)
+    {
+        Assert.True(ResourceHelper.TryResourceIdComponents(resourceId, out _, out _, out string[]? resourceTypeComponents, out string[]? nameComponents));
+        Assert.Equal(expectedResourceTypeComponents, resourceTypeComponents);
+        Assert.Equal(expectedNameComponents, nameComponents);
+    }
 
-        Assert.True(ResourceHelper.TryResourceIdComponents(id[1], out subscriptionId, out resourceGroupName, out resourceTypeComponents, out nameComponents));
-        Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", subscriptionId);
-        Assert.Equal("test-rg", resourceGroupName);
-        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents?[0]);
-        Assert.Equal("subnets", resourceTypeComponents?[1]);
-        Assert.Equal("vnet-A", nameComponents?[0]);
-        Assert.Equal("GatewaySubnet", nameComponents?[1]);
-
-        Assert.True(ResourceHelper.TryResourceIdComponents(id[2], out _, out _, out resourceTypeComponents, out nameComponents));
-        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents?[0]);
-        Assert.Equal("vnet-A", nameComponents?[0]);
-
-        Assert.True(ResourceHelper.TryResourceIdComponents(id[3], out _, out _, out resourceTypeComponents, out nameComponents));
-        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents?[0]);
-        Assert.Equal("subnets", resourceTypeComponents?[1]);
-        Assert.Equal("vnet-A", nameComponents?[0]);
-        Assert.Equal("GatewaySubnet", nameComponents?[1]);
+    [Theory]
+    [InlineData("/providers/Microsoft.Authorization/policyDefinitions/ffffffff-ffff-ffff-ffff-ffffffffffff", new string[] { "Microsoft.Authorization/policyDefinitions" }, new string[] { "ffffffff-ffff-ffff-ffff-ffffffffffff" })]
+    public void TryResourceIdComponents_WhenResourceIdInTenantScope_ShouldReturnComponents(string resourceId, string[] expectedResourceTypeComponents, string[] expectedNameComponents)
+    {
+        Assert.True(ResourceHelper.TryResourceIdComponents(resourceId, out _, out _, out string[]? resourceTypeComponents, out string[]? nameComponents));
+        Assert.Equal(expectedResourceTypeComponents, resourceTypeComponents);
+        Assert.Equal(expectedNameComponents, nameComponents);
     }
 
     [Fact]

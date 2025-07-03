@@ -13,7 +13,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export;
 /// <summary>
 /// Defines a class that gets and sets additional properties and sub-resources of a resource from an Azure subscription.
 /// </summary>
-internal sealed class ResourceExportVisitor
+internal sealed class ResourceExpandVisitor
 {
     private const string PROPERTY_ID = "id";
     private const string PROPERTY_TYPE = "type";
@@ -126,7 +126,7 @@ internal sealed class ResourceExportVisitor
 
     private readonly ProviderData _ProviderData;
 
-    public ResourceExportVisitor()
+    public ResourceExpandVisitor()
     {
         _ProviderData = new ProviderData();
     }
@@ -144,12 +144,12 @@ internal sealed class ResourceExportVisitor
 
         internal async Task<JObject> GetAsync(string resourceId, string apiVersion)
         {
-            return await _Context.GetAsync(TenantId, resourceId, apiVersion);
+            return await _Context.GetAsync(TenantId, resourceId, apiVersion, null);
         }
 
         internal async Task<JObject[]> ListAsync(string resourceId, string apiVersion, bool ignoreNotFound)
         {
-            return await _Context.ListAsync(TenantId, resourceId, apiVersion, ignoreNotFound);
+            return await _Context.ListAsync(TenantId, resourceId, apiVersion, null, ignoreNotFound);
         }
     }
 
@@ -866,7 +866,7 @@ internal sealed class ResourceExportVisitor
         var items = await context.ListAsync(string.Concat(resourceId, type), apiVersion, ignoreNotFound);
         if (filter != null)
         {
-            items = items.Where(filter).ToArray();
+            items = [.. items.Where(filter)];
         }
         return items;
     }

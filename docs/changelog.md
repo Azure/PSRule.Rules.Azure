@@ -30,6 +30,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.45.0-B0068:
+
+- General improvements:
+  - Native support for exporting policy as rules by @BernieWhite.
+    [#2971](https://github.com/Azure/PSRule.Rules.Azure/issues/2971)
+    [#2970](https://github.com/Azure/PSRule.Rules.Azure/issues/2970)
+    - This removes the dependency on the `Az.Resources` module for policy exports.
+- Bug fixes:
+  - Fixed wrong verbose log when running `Export-AzPolicyAssignmentData` by @BernieWhite.
+    [#1877](https://github.com/Azure/PSRule.Rules.Azure/issues/1877)
+
 ## v1.45.0-B0068 (pre-release)
 
 What's changed since pre-release v1.45.0-B0037:

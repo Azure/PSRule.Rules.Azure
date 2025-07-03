@@ -1,29 +1,14 @@
 [
   {
-    "Identity": null,
-    "Location": null,
     "Name": "assignment.5",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.5",
-    "ResourceName": "assignment.5",
-    "ResourceGroupName": null,
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.5",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.5",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
       "NotScopes": [],
       "DisplayName": "Deploy Diagnostic Settings for Key Vault to Log Analytics workspace",
-      "Description": null,
-      "Metadata": {
-        "assignedBy": "",
-        "parameterScopes": {},
-        "createdBy": "",
-        "createdOn": "",
-        "updatedBy": null,
-        "updatedOn": null
-      },
-      "EnforcementMode": 1,
+      "Metadata": {},
+      "enforcementMode": "DoNotEnforce",
       "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/bef3f64c-5290-43b7-85b0-9b254eef4c47",
       "Parameters": {
         "logAnalytics": {
@@ -35,13 +20,11 @@
     "PolicyDefinitions": [
       {
         "Name": "bef3f64c-5290-43b7-85b0-9b254eef4c47",
-        "ResourceName": "bef3f64c-5290-43b7-85b0-9b254eef4c47",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/bef3f64c-5290-43b7-85b0-9b254eef4c47",
-        "SubscriptionId": null,
+        "type": "Microsoft.Authorization/policyDefinitions",
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/bef3f64c-5290-43b7-85b0-9b254eef4c47",
         "Properties": {
           "DisplayName": "Deploy Diagnostic Settings for Key Vault to Log Analytics workspace",
-          "PolicyType": 2,
+          "policyType": "BuiltIn",
           "Mode": "Indexed",
           "Description": "Deploys the diagnostic settings for Key Vault to stream to a regional Log Analytics workspace when any Key Vault which is missing this diagnostic settings is created or updated.",
           "Metadata": {

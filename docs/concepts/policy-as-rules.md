@@ -49,20 +49,13 @@ Run `Export-AzPolicyAssignmentData` to export assignments from Azure to an `*.as
 Key points:
 
 - Before running this command, connect to an Azure subscription by installing the `Az` PowerShell module and using `Connect-AzAccount`.
-- This command has no required parameters, and by default will export all assignments from you current Azure subscription.
+- This command has no required parameters, and by default will export all assignments from your current Azure subscription.
   You can change the current Azure subscription by using `Set-AzContext`.
-
-!!! Bug
-    Currently a known incompatibility exists with 7.x of `Az.Resources` which introduced a breaking change.
-    Please use `Az.Resources` >= v6.7.0 and < v7.0.0.
-    For more information see [Issues with Az.Resources](../troubleshooting.md#issues-with-azresources)
 
 For example:
 
 ```powershell title="PowerShell"
 # Install and import required modules.
-Install-Module Az.Resources -RequiredVersion '6.7.0' -Force -Scope CurrentUser
-Import-Module Az.Resources -RequiredVersion '6.7.0'
 Import-Module PSRule.Rules.Azure
 
 # Connect to Azure
@@ -83,7 +76,7 @@ After the command completes a new file `*.Rule.jsonc` should be generated contai
 For example:
 
 ```powershell title="PowerShell"
-Export-AzPolicyAssignmentRuleData -AssignmentFile '.\<subscriptionId>.assignment.json'
+Export-AzPolicyAssignmentRuleData -AssignmentFile '.\nnnn.assignment.json'
 ```
 
 ## Running policy rules

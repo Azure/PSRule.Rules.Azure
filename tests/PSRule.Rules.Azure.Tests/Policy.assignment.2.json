@@ -1,31 +1,21 @@
 [
   {
-    "Identity": null,
-    "Location": null,
     "Name": "8a3e449a009c485b930b36f2",
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/8a3e449a009c485b930b36f2",
-    "ResourceName": "8a3e449a009c485b930b36f2",
-    "ResourceGroupName": null,
-    "ResourceType": "Microsoft.Authorization/policyAssignments",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Sku": null,
-    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/8a3e449a009c485b930b36f2",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/8a3e449a009c485b930b36f2",
+    "type": "Microsoft.Authorization/policyAssignments",
     "Properties": {
       "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
       "NotScopes": [],
       "DisplayName": "Allowed locations for resource groups",
-      "Description": null,
       "Metadata": {
         "assignedBy": "",
         "parameterScopes": {
           "listOfAllowedLocations": "/subscriptions/00000000-0000-0000-0000-000000000000"
         },
         "createdBy": "",
-        "createdOn": "",
-        "updatedBy": null,
-        "updatedOn": null
+        "createdOn": ""
       },
-      "EnforcementMode": 0,
+      "enforcementMode": "Default",
       "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988",
       "Parameters": {
         "listOfAllowedLocations": {
@@ -42,10 +32,8 @@
     "PolicyDefinitions": [
       {
         "Name": "e765b5de-1225-4ba3-bd56-1ac6695af988",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988",
-        "ResourceName": "e765b5de-1225-4ba3-bd56-1ac6695af988",
-        "ResourceType": "Microsoft.Authorization/policyDefinitions",
-        "SubscriptionId": null,
+        "id": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988",
+        "type": "Microsoft.Authorization/policyDefinitions",
         "Properties": {
           "Description": "This policy enables you to restrict the locations your organization can create resource groups in. Use to enforce your geo-compliance requirements.",
           "DisplayName": "Allowed locations for resource groups",
@@ -81,9 +69,8 @@
               "effect": "deny"
             }
           },
-          "PolicyType": 2
-        },
-        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988"
+          "policyType": "BuiltIn"
+        }
       }
     ],
     "exemptions": []
