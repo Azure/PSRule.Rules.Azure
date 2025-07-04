@@ -1,0 +1,47 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Azure Monitor Alerts
+#
+
+#region Rules
+
+---
+# Synopsis: Alerts that require manual intervention for mitigation can lead to increased personnel time and effort.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Alert.MetricAutoMitigate
+  ref: AZR-000491
+  tags:
+    release: GA
+    ruleSet: 2025_06
+    Azure.WAF/pillar: Cost Optimization
+spec:
+  type:
+    - Microsoft.Insights/metricAlerts
+  condition:
+    field: properties.autoMitigate
+    equals: true
+
+---
+# Synopsis: High frequency scheduled queries are changed as a higher rate than low frequency queries.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Alert.HighFrequencyQuery
+  ref: AZR-000492
+  tags:
+    release: GA
+    ruleSet: 2025_06
+    Azure.WAF/pillar: Cost Optimization
+spec:
+  type:
+    - Microsoft.Insights/scheduledQueryRules
+  condition:
+    field: properties.evaluationFrequency
+    notIn:
+      - PT1M
+
+#endregion Rules
