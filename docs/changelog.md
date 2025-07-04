@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.45.0-B0068:
 
+- New rules:
+  - Monitor Alerts:
+    - Check that metric alerts are configured to automatically mitigate by @BernieWhite.
+      [#3457](https://github.com/Azure/PSRule.Rules.Azure/issues/3457)
+    - Check that scheduled query alerts are configured for lower frequency by @BernieWhite.
+      [#3458](https://github.com/Azure/PSRule.Rules.Azure/issues/3458)
 - General improvements:
   - Native support for exporting policy as rules by @BernieWhite.
     [#2971](https://github.com/Azure/PSRule.Rules.Azure/issues/2971)

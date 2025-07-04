@@ -1,0 +1,154 @@
+[
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.insights/metricAlerts/alert-a",
+    "name": "alert-a",
+    "type": "Microsoft.Insights/metricAlerts",
+    "location": "global",
+    "tags": {},
+    "properties": {
+      "description": "Monitor storage usage in container registry is close to included storage limit.",
+      "severity": 3,
+      "enabled": true,
+      "scopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ContainerRegistry/registries/registry-001"
+      ],
+      "evaluationFrequency": "PT1H",
+      "windowSize": "PT6H",
+      "criteria": {
+        "allOf": [
+          {
+            "threshold": 52428800,
+            "name": "Metric1",
+            "metricNamespace": "Microsoft.ContainerRegistry/registries",
+            "metricName": "StorageUsed",
+            "operator": "GreaterThan",
+            "timeAggregation": "Average",
+            "skipMetricValidation": false,
+            "criterionType": "StaticThresholdCriterion"
+          }
+        ],
+        "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+      },
+      "autoMitigate": true,
+      "targetResourceType": "Microsoft.ContainerRegistry/registries",
+      "targetResourceRegion": "location",
+      "actions": []
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.insights/metricAlerts/alert-b",
+    "name": "alert-b",
+    "type": "Microsoft.Insights/metricAlerts",
+    "location": "global",
+    "tags": {},
+    "properties": {
+      "description": "Monitor storage usage in container registry is close to included storage limit.",
+      "severity": 3,
+      "enabled": true,
+      "scopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ContainerRegistry/registries/registry-001"
+      ],
+      "evaluationFrequency": "PT1H",
+      "windowSize": "PT6H",
+      "criteria": {
+        "allOf": [
+          {
+            "threshold": 52428800,
+            "name": "Metric1",
+            "metricNamespace": "Microsoft.ContainerRegistry/registries",
+            "metricName": "StorageUsed",
+            "operator": "GreaterThan",
+            "timeAggregation": "Average",
+            "skipMetricValidation": false,
+            "criterionType": "StaticThresholdCriterion"
+          }
+        ],
+        "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+      },
+      "autoMitigate": false,
+      "targetResourceType": "Microsoft.ContainerRegistry/registries",
+      "targetResourceRegion": "location",
+      "actions": []
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.insights/scheduledqueryrules/alert-c",
+    "name": "alert-c",
+    "type": "Microsoft.Insights/scheduledQueryRules",
+    "location": "region",
+    "kind": "LogAlert",
+    "properties": {
+      "createdWithApiVersion": "2025-01-01-preview",
+      "displayName": "Key Vault Health - Count of failures",
+      "description": "Monitor Key Vault failures.",
+      "severity": 3,
+      "enabled": true,
+      "evaluationFrequency": "PT6H",
+      "scopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/vault-001"
+      ],
+      "targetResourceTypes": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "windowSize": "PT6H",
+      "criteria": {
+        "allOf": [
+          {
+            "query": "AZKVAuditLogs\n| where HttpStatusCode >= 300 and not(OperationName == \"Authentication\" and HttpStatusCode == 401)\n| summarize count() by RequestUri, ResultSignature, _ResourceId",
+            "timeAggregation": "Total",
+            "metricMeasureColumn": "count_",
+            "dimensions": [],
+            "resourceIdColumn": "",
+            "operator": "GreaterThan",
+            "threshold": 5,
+            "failingPeriods": {
+              "numberOfEvaluationPeriods": 1,
+              "minFailingPeriodsToAlert": 1
+            }
+          }
+        ]
+      },
+      "autoMitigate": false
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.insights/scheduledqueryrules/alert-d",
+    "name": "alert-d",
+    "type": "Microsoft.Insights/scheduledQueryRules",
+    "location": "region",
+    "kind": "LogAlert",
+    "properties": {
+      "createdWithApiVersion": "2025-01-01-preview",
+      "displayName": "Key Vault Health - Count of failures",
+      "description": "Monitor Key Vault failures.",
+      "severity": 3,
+      "enabled": true,
+      "evaluationFrequency": "PT1M",
+      "scopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.KeyVault/vaults/vault-001"
+      ],
+      "targetResourceTypes": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "windowSize": "PT6H",
+      "criteria": {
+        "allOf": [
+          {
+            "query": "AZKVAuditLogs\n| where HttpStatusCode >= 300 and not(OperationName == \"Authentication\" and HttpStatusCode == 401)\n| summarize count() by RequestUri, ResultSignature, _ResourceId",
+            "timeAggregation": "Total",
+            "metricMeasureColumn": "count_",
+            "dimensions": [],
+            "resourceIdColumn": "",
+            "operator": "GreaterThan",
+            "threshold": 5,
+            "failingPeriods": {
+              "numberOfEvaluationPeriods": 1,
+              "minFailingPeriodsToAlert": 1
+            }
+          }
+        ]
+      },
+      "autoMitigate": false
+    }
+  }
+]
