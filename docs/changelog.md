@@ -33,6 +33,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.45.0-B0068:
 
 - New rules:
+  - Event Grid:
+    - Check namespaces use a minimum of TLS 1.2 by @BernieWhite.
+      [#3354](https://github.com/Azure/PSRule.Rules.Azure/issues/3354)
   - Monitor Alerts:
     - Check that metric alerts are configured to automatically mitigate by @BernieWhite.
       [#3457](https://github.com/Azure/PSRule.Rules.Azure/issues/3457)

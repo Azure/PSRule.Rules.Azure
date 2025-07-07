@@ -115,6 +115,22 @@ Describe 'Azure.EventGrid' -Tag 'EventGrid' {
             $ruleResult.TargetName | Should -BeIn 'domain-B';
             $ruleResult.Length | Should -Be 1;
         }
+
+        It 'Azure.EventGrid.NamespaceTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventGrid.NamespaceTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'namespace-B';
+            $ruleResult.Length | Should -Be 1;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'namespace-A';
+            $ruleResult.Length | Should -Be 1;
+        }
     }
 
     Context 'With Template' {
