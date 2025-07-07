@@ -83,7 +83,7 @@ spec:
     equals: true
 
 ---
-# Synopsis: Event Grid topics should reject TLS versions older than 1.2.
+# Synopsis: Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
@@ -101,7 +101,7 @@ spec:
     version: '>=1.2'
 
 ---
-# Synopsis: Event Grid domains should reject TLS versions older than 1.2.
+# Synopsis: Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
@@ -114,6 +114,24 @@ metadata:
 spec:
   type:
   - Microsoft.EventGrid/domains
+  condition:
+    field: properties.minimumTlsVersionAllowed
+    version: '>=1.2'
+
+---
+# Synopsis: Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EventGrid.NamespaceTLS
+  ref: AZR-000493
+  tags:
+    release: GA
+    ruleSet: 2025_06
+    Azure.WAF/pillar: Security
+spec:
+  type:
+    - Microsoft.EventGrid/namespaces
   condition:
     field: properties.minimumTlsVersionAllowed
     version: '>=1.2'

@@ -39,12 +39,8 @@
       "name": "Basic"
     },
     "Location": "region",
-    "ManagedBy": null,
     "ResourceName": "topic-B",
     "Name": "topic-B",
-    "ExtensionResourceName": null,
-    "ParentResource": null,
-    "Plan": null,
     "Properties": {
       "provisioningState": "Succeeded",
       "endpoint": "https://topic-B.region-1.eventgrid.azure.net/api/events",
@@ -61,9 +57,6 @@
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.EventGrid/topics",
     "ResourceType": "Microsoft.EventGrid/topics",
-    "ExtensionResourceType": null,
-    "Sku": null,
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
@@ -79,12 +72,8 @@
       "name": "Basic"
     },
     "Location": "region",
-    "ManagedBy": null,
     "ResourceName": "topic-C",
     "Name": "topic-C",
-    "ExtensionResourceName": null,
-    "ParentResource": null,
-    "Plan": null,
     "Properties": {
       "provisioningState": "Succeeded",
       "endpoint": "https://topic-C.region-1.eventgrid.azure.net/api/events",
@@ -97,9 +86,6 @@
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.EventGrid/topics",
     "ResourceType": "Microsoft.EventGrid/topics",
-    "ExtensionResourceType": null,
-    "Sku": null,
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
@@ -110,14 +96,9 @@
       "TenantId": "00000000-0000-0000-0000-000000000000",
       "Type": "SystemAssigned"
     },
-    "Kind": null,
     "Location": "region",
-    "ManagedBy": null,
     "ResourceName": "domain-A",
     "Name": "domain-A",
-    "ExtensionResourceName": null,
-    "ParentResource": null,
-    "Plan": null,
     "Properties": {
       "provisioningState": "Succeeded",
       "endpoint": "https://domain-A.region-1.eventgrid.azure.net/api/events",
@@ -128,9 +109,6 @@
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.EventGrid/domains",
     "ResourceType": "Microsoft.EventGrid/domains",
-    "ExtensionResourceType": null,
-    "Sku": null,
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
@@ -141,14 +119,9 @@
       "TenantId": "00000000-0000-0000-0000-000000000000",
       "Type": "SystemAssigned"
     },
-    "Kind": null,
     "Location": "region",
-    "ManagedBy": null,
     "ResourceName": "domain-B",
     "Name": "domain-B",
-    "ExtensionResourceName": null,
-    "ParentResource": null,
-    "Plan": null,
     "Properties": {
       "provisioningState": "Succeeded",
       "endpoint": "https://domain-B.region-1.eventgrid.azure.net/api/events",
@@ -161,9 +134,51 @@
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.EventGrid/domains",
     "ResourceType": "Microsoft.EventGrid/domains",
-    "ExtensionResourceType": null,
-    "Sku": null,
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "properties": {
+      "provisioningState": "Succeeded",
+      "topicsConfiguration": {
+        "hostname": "namespace-A.eastus-1.eventgrid.azure.net"
+      },
+      "isZoneRedundant": true,
+      "publicNetworkAccess": "Disabled",
+      "inboundIpRules": [],
+      "minimumTlsVersionAllowed": "1.2"
+    },
+    "sku": {
+      "name": "Standard",
+      "capacity": 1
+    },
+    "identity": {
+      "type": "None"
+    },
+    "location": "eastus",
+    "tags": {},
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/namespaces/namespace-A",
+    "name": "namespace-A",
+    "type": "Microsoft.EventGrid/namespaces"
+  },
+  {
+    "properties": {
+      "provisioningState": "Succeeded",
+      "topicsConfiguration": {
+        "hostname": "namespace-A.region-1.eventgrid.azure.net"
+      },
+      "inboundIpRules": []
+    },
+    "sku": {
+      "name": "Standard",
+      "capacity": 1
+    },
+    "identity": {
+      "type": "None"
+    },
+    "location": "region",
+    "tags": {},
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/namespaces/namespace-B",
+    "name": "namespace-B",
+    "type": "Microsoft.EventGrid/namespaces"
   }
 ]

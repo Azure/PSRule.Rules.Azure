@@ -53,3 +53,17 @@ resource systemTopic 'Microsoft.EventGrid/systemTopics@2025-02-15' = {
     topicType: 'Microsoft.Storage.StorageAccounts'
   }
 }
+
+// An example of an Event Grid Namespace with public access disabled, and zone redundancy enabled.
+resource namespace 'Microsoft.EventGrid/namespaces@2025-02-15' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    publicNetworkAccess: 'Disabled'
+    minimumTlsVersionAllowed: '1.2'
+    isZoneRedundant: true
+  }
+}

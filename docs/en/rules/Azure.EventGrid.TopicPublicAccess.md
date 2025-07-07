@@ -26,31 +26,6 @@ To limit access to Event Grid topics and domains, disable public access.
 
 ## EXAMPLES
 
-### Configure with Azure template
-
-To deploy Event Grid Topics that pass this rule:
-
-- Set the `properties.publicNetworkAccess` property to `Disabled`.
-
-For example:
-
-```json
-{
-  "type": "Microsoft.EventGrid/topics",
-  "apiVersion": "2022-06-15",
-  "name": "[parameters('name')]",
-  "location": "[parameters('location')]",
-  "identity": {
-    "type": "SystemAssigned"
-  },
-  "properties": {
-    "disableLocalAuth": true,
-    "publicNetworkAccess": "Disabled",
-    "inputSchema": "CloudEventSchemaV1_0"
-  }
-}
-```
-
 ### Configure with Bicep
 
 To deploy Event Grid Topics that pass this rule:
@@ -75,6 +50,31 @@ resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
 ```
 
 <!-- external:avm avm/res/event-grid/topic publicNetworkAccess -->
+
+### Configure with Azure template
+
+To deploy Event Grid Topics that pass this rule:
+
+- Set the `properties.publicNetworkAccess` property to `Disabled`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.EventGrid/topics",
+  "apiVersion": "2022-06-15",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "disableLocalAuth": true,
+    "publicNetworkAccess": "Disabled",
+    "inputSchema": "CloudEventSchemaV1_0"
+  }
+}
+```
 
 ## LINKS
 

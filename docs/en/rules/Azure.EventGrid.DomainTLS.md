@@ -51,6 +51,8 @@ resource domain 'Microsoft.EventGrid/domains@2025-02-15' = {
 }
 ```
 
+<!-- external:avm avm/res/event-grid/domain minimumTlsVersionAllowed -->
+
 ### Configure with Azure template
 
 To deploy domains that pass this rule:
@@ -76,7 +78,7 @@ For example:
 
 ## LINKS
 
-- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption)
 - [Enforce a minimum required version of Transport Layer Security (TLS) for an Event Grid topic, domain, or subscription](https://learn.microsoft.com/azure/event-grid/transport-layer-security-enforce-minimum-version)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.eventgrid/domains)

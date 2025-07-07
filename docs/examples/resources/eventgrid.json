@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.34.44.8038",
-      "templateHash": "6907948879870980207"
+      "version": "0.36.1.42791",
+      "templateHash": "6161631745636090470"
     }
   },
   "parameters": {
@@ -70,6 +70,20 @@
       "properties": {
         "source": "[parameters('storageId')]",
         "topicType": "Microsoft.Storage.StorageAccounts"
+      }
+    },
+    {
+      "type": "Microsoft.EventGrid/namespaces",
+      "apiVersion": "2025-02-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "publicNetworkAccess": "Disabled",
+        "minimumTlsVersionAllowed": "1.2",
+        "isZoneRedundant": true
       }
     }
   ]
