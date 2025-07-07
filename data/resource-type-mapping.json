@@ -37,7 +37,7 @@
     "category": "SE:02 Secured development lifecycle",
     "resourceType": "Microsoft.ContainerRegistry/registries",
     "ruleId": "Azure.ACR.ContentTrust",
-    "displayName": "Use trusted container images"
+    "displayName": "Container Registry Docker content trust is not enabled"
   },
   {
     "severity": "Important",
@@ -528,6 +528,22 @@
     "displayName": "Kubernetes Cluster version is old"
   },
   {
+    "severity": "Important",
+    "pillar": "Cost Optimization",
+    "category": "CO:06 Usage and billing increments",
+    "resourceType": "Microsoft.Insights/scheduledQueryRules",
+    "ruleId": "Azure.Alert.HighFrequencyQuery",
+    "displayName": "Scheduled Query Alert is configured to use a high frequency query"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Cost Optimization",
+    "category": "CO:13 Personnel time",
+    "resourceType": "Microsoft.Insights/metricAlerts",
+    "ruleId": "Azure.Alert.MetricAutoMitigate",
+    "displayName": "Metric Alert requires manual mitigation"
+  },
+  {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
     "category": "OE:04 Tools and processes",
@@ -888,6 +904,22 @@
     "displayName": "Purge Protect App Configuration Stores"
   },
   {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:09 Application secrets",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ruleId": "Azure.AppConfig.SecretLeak",
+    "displayName": "App Configuration Store key value is secret"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:09 Application secrets",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores/keyValues",
+    "ruleId": "Azure.AppConfig.SecretLeak",
+    "displayName": "App Configuration Store key value is secret"
+  },
+  {
     "severity": "Important",
     "pillar": "Reliability",
     "category": "RE:04 Target metrics",
@@ -922,7 +954,7 @@
   {
     "severity": "Important",
     "pillar": "Reliability",
-    "category": "Load balancing and failover",
+    "category": "RE:04 Target metrics",
     "resourceType": "Microsoft.Network/applicationGateways",
     "ruleId": "Azure.AppGw.MinInstance",
     "displayName": "Use two or more Application Gateway instances"
@@ -1032,12 +1064,28 @@
     "displayName": "Use Recommended Application Gateway WAF policy rule groups"
   },
   {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.Insights/components",
+    "ruleId": "Azure.AppInsights.LocalAuth",
+    "displayName": "Application Insights local authentication is enabled"
+  },
+  {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
     "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Insights/components",
     "ruleId": "Azure.AppInsights.Name",
     "displayName": "Use valid Application Insights resource names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Insights/components",
+    "ruleId": "Azure.AppInsights.Naming",
+    "displayName": "Application Insights resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -1872,12 +1920,20 @@
     "displayName": "DNS Zone is not signed"
   },
   {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 High-availability multi-region design",
+    "resourceType": "Microsoft.AAD/domainServices",
+    "ruleId": "Azure.EntraDS.MinReplicas",
+    "displayName": "Entra Domain Services is not replicated across multiple regions"
+  },
+  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:07 Encryption",
     "resourceType": "Microsoft.AAD/domainServices",
     "ruleId": "Azure.EntraDS.NTLM",
-    "displayName": "Disable NTLM v1"
+    "displayName": "Entra Domain Services allows insecure version of NTLM"
   },
   {
     "severity": "Critical",
@@ -1885,7 +1941,23 @@
     "category": "SE:07 Encryption",
     "resourceType": "Microsoft.AAD/domainServices",
     "ruleId": "Azure.EntraDS.RC4",
-    "displayName": "Disable RC4 encryption"
+    "displayName": "Entra Domain Services allows insecure version of RC4"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:01 Security baseline",
+    "resourceType": "Microsoft.AAD/domainServices",
+    "ruleId": "Azure.EntraDS.ReplicaLocation",
+    "displayName": "Entra Domain Services replica location is not allowed"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 High-availability multi-region design",
+    "resourceType": "Microsoft.AAD/domainServices",
+    "ruleId": "Azure.EntraDS.SKU",
+    "displayName": "Entra Domain Services uses minimum SKU"
   },
   {
     "severity": "Critical",
@@ -1893,7 +1965,7 @@
     "category": "SE:07 Encryption",
     "resourceType": "Microsoft.AAD/domainServices",
     "ruleId": "Azure.EntraDS.TLS",
-    "displayName": "Disable TLS v1"
+    "displayName": "Entra Domain Services allows insecure version of TLS"
   },
   {
     "severity": "Important",
@@ -1926,6 +1998,14 @@
     "resourceType": "Microsoft.EventGrid/topics",
     "ruleId": "Azure.EventGrid.ManagedIdentity",
     "displayName": "Use Managed Identity for Event Grid Topics"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:07 Encryption",
+    "resourceType": "Microsoft.EventGrid/namespaces",
+    "ruleId": "Azure.EventGrid.NamespaceTLS",
+    "displayName": "Event Grid Namespace accepts insecure TLS versions"
   },
   {
     "severity": "Awareness",
@@ -2464,12 +2544,36 @@
     "displayName": "Load balancers should use Standard SKU"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Continuous integration",
+    "resourceType": "Microsoft.OperationalInsights/workspaces",
+    "ruleId": "Azure.Log.Name",
+    "displayName": "Log workspace name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.OperationalInsights/workspaces",
+    "ruleId": "Azure.Log.Naming",
+    "displayName": "Log workspaces must use standard naming"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:01 Security baseline",
+    "resourceType": "Microsoft.OperationalInsights/workspaces",
+    "ruleId": "Azure.Log.ReplicaLocation",
+    "displayName": "Logs workspace replica location is not allowed"
+  },
+  {
     "severity": "Important",
     "pillar": "Reliability",
     "category": "RE:05 Regions and availability zones",
     "resourceType": "Microsoft.OperationalInsights/workspaces",
-    "ruleId": "Azure.LogAnalytics.Replication",
-    "displayName": "Replicate workspaces across regions"
+    "ruleId": "Azure.Log.Replication",
+    "displayName": "Logs workspace is not replicated across regions"
   },
   {
     "severity": "Critical",
@@ -3458,6 +3562,14 @@
   {
     "severity": "Important",
     "pillar": "Security",
+    "category": "SE:07 Encryption",
+    "resourceType": "Microsoft.ServiceFabric/clusters",
+    "ruleId": "Azure.ServiceFabric.ProtectionLevel",
+    "displayName": "Service Fabric Cluster allows unencrypted node to node communication"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
     "category": "Authentication",
     "resourceType": "Microsoft.SignalRService/signalR",
     "ruleId": "Azure.SignalR.ManagedIdentity",
@@ -4125,7 +4237,7 @@
     "category": "CO:07 Component costs",
     "resourceType": "Microsoft.Compute/virtualMachines",
     "ruleId": "Azure.VM.ShouldNotBeStopped",
-    "displayName": "VMs should not be stopped state"
+    "displayName": "Virtual Machine is stopped but still allocated"
   },
   {
     "severity": "Important",
@@ -4181,7 +4293,7 @@
     "category": "RE:07 Self-preservation",
     "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
     "ruleId": "Azure.VMSS.AutoInstanceRepairs",
-    "displayName": "Automatic instance repairs"
+    "displayName": "Virtual Machine Scale Set automatic repair policy is not enabled"
   },
   {
     "severity": "Important",
@@ -4333,7 +4445,7 @@
     "category": "SE:06 Network controls",
     "resourceType": "Microsoft.Network/virtualNetworks",
     "ruleId": "Azure.VNET.PrivateSubnet",
-    "displayName": "Disable default outbound access"
+    "displayName": "Virtual Network subnet default outbound access is enabled"
   },
   {
     "severity": "Critical",
@@ -4341,7 +4453,7 @@
     "category": "SE:06 Network controls",
     "resourceType": "Microsoft.Network/virtualNetworks/subnets",
     "ruleId": "Azure.VNET.PrivateSubnet",
-    "displayName": "Disable default outbound access"
+    "displayName": "Virtual Network subnet default outbound access is enabled"
   },
   {
     "severity": "Important",
