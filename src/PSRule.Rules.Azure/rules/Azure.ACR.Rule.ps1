@@ -57,6 +57,15 @@ Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry
     $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.retentionDays').Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
 }
 
+# Synopsis: Disable export of artifacts from container registries.
+Rule 'Azure.ACR.ExportPolicy' -Ref 'AZR-000403' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2024_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2') } {
+    # Check that export policy is disabled
+    $Assert.HasFieldValue($TargetObject, 'properties.policies.exportPolicy.status', 'disabled').Reason($LocalizedData.ACRExportPolicyDisabled, $TargetObject.name)
+    
+    # Check that public network access is disabled (required for export policy to work)
+    $Assert.HasFieldValue($TargetObject, 'properties.publicNetworkAccess', 'Disabled').Reason($LocalizedData.ACRPublicNetworkAccessDisabled, $TargetObject.name)
+}
+
 #endregion Rules
 
 #region Helper functions

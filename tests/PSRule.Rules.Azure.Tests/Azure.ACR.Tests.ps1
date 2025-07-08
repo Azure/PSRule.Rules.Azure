@@ -278,6 +278,23 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-C', 'registry-F', 'registry-G', 'registry-H';
         }
+
+        It 'Azure.ACR.ExportPolicy' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.ExportPolicy' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry-K', 'registry-L';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.policies.exportPolicy.status', 'properties.publicNetworkAccess';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'registry-M';
+        }
     }
 
     Context 'Resource name' {

@@ -771,5 +771,95 @@
     },
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K",
+    "Location": "region",
+    "ResourceName": "registry-K",
+    "Name": "registry-K",
+    "Properties": {
+      "loginServer": "registry-K.azurecr.io",
+      "adminUserEnabled": false,
+      "policies": {
+        "exportPolicy": {
+          "status": "enabled"
+        }
+      },
+      "publicNetworkAccess": "Enabled"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "ResourceType": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-L",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-L",
+    "Location": "region",
+    "ResourceName": "registry-L",
+    "Name": "registry-L",
+    "Properties": {
+      "loginServer": "registry-L.azurecr.io",
+      "adminUserEnabled": false,
+      "policies": {
+        "exportPolicy": {
+          "status": "disabled"
+        }
+      },
+      "publicNetworkAccess": "Enabled"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "ResourceType": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-M",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-M",
+    "Location": "region",
+    "ResourceName": "registry-M",
+    "Name": "registry-M",
+    "Properties": {
+      "loginServer": "registry-M.azurecr.io",
+      "adminUserEnabled": false,
+      "policies": {
+        "exportPolicy": {
+          "status": "disabled"
+        }
+      },
+      "publicNetworkAccess": "Disabled"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "ResourceType": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]
