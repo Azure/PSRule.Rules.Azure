@@ -239,6 +239,35 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult.TargetName | Should -BeIn 'registry-G', 'registry-I', 'registry-J';
         }
 
+        It 'Azure.ACR.ReplicaLocation' {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+                Outcome = 'All'
+                Configuration = @{
+                    AZURE_RESOURCE_ALLOWED_LOCATIONS = @('region', 'region2')
+                }
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.ACR.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.ReplicaLocation' };
+
+            # Fail - replica in region3 which is not in allowed list
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'registry-K';
+            $ruleResult[0].Reason | Should -BeExactly "The location 'region3' is not in the allowed set of resource locations.";
+
+            # Pass - registries with replicas in allowed regions or no replicas
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J';
+        }
+
         It 'Azure.ACR.AnonymousAccess' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.AnonymousAccess' };
 

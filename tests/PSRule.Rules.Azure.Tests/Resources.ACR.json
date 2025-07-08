@@ -771,5 +771,61 @@
     },
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K",
+    "Location": "region",
+    "ResourceName": "registry-K",
+    "Name": "registry-K",
+    "Properties": {
+      "loginServer": "registry-K.azurecr.io",
+      "adminUserEnabled": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "ResourceType": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K/replications/region3",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K/replications/region3",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region3",
+        "ManagedBy": null,
+        "ResourceName": "region3",
+        "Name": "region3",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "status": {
+            "displayStatus": "Ready"
+          },
+          "regionEndpointEnabled": true
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries/replications",
+        "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
   }
 ]
