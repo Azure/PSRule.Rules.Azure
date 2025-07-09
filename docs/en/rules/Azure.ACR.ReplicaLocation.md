@@ -35,6 +35,28 @@ Consider configuring container registry replicas to allowed regions to align wit
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy container registries that pass this rule:
+
+- Set the `location` and `name` property of each replica to an allowed region, in the list of supported regions.
+
+For example:
+
+```bicep
+resource registryReplica 'Microsoft.ContainerRegistry/registries/replications@2025-04-01' = {
+  parent: registry
+  name: secondaryLocation
+  location: secondaryLocation
+  properties: {
+    regionEndpointEnabled: true
+    zoneRedundancy: 'Enabled'
+  }
+}
+```
+
+<!-- external:avm avm/res/container-registry/registry replications[*].location -->
+
 ### Configure with Azure template
 
 To deploy container registries that pass this rule:
@@ -46,30 +68,16 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries/replications",
-  "apiVersion": "2023-11-01-preview",
-  "name": "[format('{0}/{1}', parameters('acrName'), parameters('acrReplicaLocation'))]",
-  "location": "[parameters('acrReplicaLocation')]",
-  "properties": {},
+  "apiVersion": "2025-04-01'",
+  "name": "[format('{0}/{1}', parameters('name'), parameters('secondaryLocation'))]",
+  "location": "[parameters('secondaryLocation')]",
+  "properties": {
+    "regionEndpointEnabled": true,
+    "zoneRedundancy": "Enabled"
+  },
   "dependsOn": [
-    "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]"
+    "[resourceId('Microsoft.ContainerRegistry/registries', parameters('name'))]"
   ]
-}
-```
-
-### Configure with Bicep
-
-To deploy container registries that pass this rule:
-
-- Set the `location` and `name` property of each replica to an allowed region, in the list of supported regions.
-
-For example:
-
-```bicep
-resource registryReplica 'Microsoft.ContainerRegistry/registries/replications@2023-11-01-preview' = {
-  parent: registry
-  name: replicaLocation
-  location: replicaLocation
-  properties: {}
 }
 ```
 

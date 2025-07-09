@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.25.53.49325",
-      "templateHash": "18407530808560387725"
+      "version": "0.36.177.2456",
+      "templateHash": "14939577059199292990"
     }
   },
   "parameters": {
@@ -23,12 +23,19 @@
       "metadata": {
         "description": "The location resources will be deployed."
       }
+    },
+    "secondaryLocation": {
+      "type": "string",
+      "defaultValue": "[parameters('location')]",
+      "metadata": {
+        "description": "The location of the container registry replica."
+      }
     }
   },
   "resources": [
     {
       "type": "Microsoft.ContainerRegistry/registries",
-      "apiVersion": "2023-11-01-preview",
+      "apiVersion": "2025-05-01-preview",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -40,13 +47,11 @@
       "properties": {
         "adminUserEnabled": false,
         "anonymousPullEnabled": false,
+        "publicNetworkAccess": "Disabled",
+        "zoneRedundancy": "Enabled",
         "policies": {
           "quarantinePolicy": {
             "status": "enabled"
-          },
-          "trustPolicy": {
-            "status": "enabled",
-            "type": "Notary"
           },
           "retentionPolicy": {
             "days": 30,
@@ -55,9 +60,25 @@
           "softDeletePolicy": {
             "retentionDays": 90,
             "status": "enabled"
+          },
+          "exportPolicy": {
+            "status": "disabled"
           }
         }
       }
+    },
+    {
+      "type": "Microsoft.ContainerRegistry/registries/replications",
+      "apiVersion": "2025-04-01",
+      "name": "[format('{0}/{1}', parameters('name'), parameters('secondaryLocation'))]",
+      "location": "[parameters('secondaryLocation')]",
+      "properties": {
+        "regionEndpointEnabled": true,
+        "zoneRedundancy": "Enabled"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.ContainerRegistry/registries', parameters('name'))]"
+      ]
     }
   ]
 }
