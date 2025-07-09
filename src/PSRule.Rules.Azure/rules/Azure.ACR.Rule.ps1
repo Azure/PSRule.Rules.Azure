@@ -58,7 +58,7 @@ Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry
 }
 
 # Synopsis: Container registry replica locations should be within allowed regions.
-Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000311' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000311' -Type 'Microsoft.ContainerRegistry/registries', 'Microsoft.ContainerRegistry/registries/replications' -Tag @{ release = 'GA'; ruleSet = '2025_09'; 'Azure.WAF/pillar' = 'Security'; } {
     $context = $PSRule.GetService('Azure.Context');
     $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications');
     
@@ -67,8 +67,8 @@ Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000311' -Type 'Microsoft.ContainerReg
     }
 
     foreach ($replica in $replications) {
-        $location = $replica.Location;
-        $Assert.Create('Location', [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
+        $location = $replica.location;
+        $Assert.Create('location', [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
     }
 }
 

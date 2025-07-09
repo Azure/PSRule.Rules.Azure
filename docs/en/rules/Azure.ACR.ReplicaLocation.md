@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-01-08
+reviewed: 2025-07-09
 severity: Important
 pillar: Security
 category: SE:01 Security baseline
@@ -39,7 +39,7 @@ Consider configuring container registry replicas to allowed regions to align wit
 
 To deploy container registries that pass this rule:
 
-- Set the `location` property of replications to an allowed region, in the list of supported regions.
+- Set the `location` and `name` property of each replica to an allowed region, in the list of supported regions.
 
 For example:
 
@@ -60,7 +60,7 @@ For example:
 
 To deploy container registries that pass this rule:
 
-- Set the `location` property of replications to an allowed region, in the list of supported regions.
+- Set the `location` and `name` property of each replica to an allowed region, in the list of supported regions.
 
 For example:
 
@@ -94,7 +94,7 @@ configuration:
 ```
 
 If you configure this `AZURE_RESOURCE_ALLOWED_LOCATIONS` configuration value,
-also consider setting `AZURE_RESOURCE_GROUP` the configuration value to when resources use the location of the resource group.
+also consider setting `AZURE_RESOURCE_GROUP` the configuration value when resources use the location of the resource group.
 
 For example:
 
@@ -108,4 +108,4 @@ configuration:
 
 - [SE:01 Security baseline](https://learn.microsoft.com/azure/well-architected/security/establish-baseline)
 - [Geo-replication in Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication)
-- [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries/replications)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries/replications)
