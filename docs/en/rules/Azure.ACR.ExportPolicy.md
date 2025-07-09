@@ -1,12 +1,11 @@
 ---
-reviewed: 2024-12-16
-severity: High
+reviewed: 2025-07-09
+severity: Important
 pillar: Security
 category: DP:02 Data Protection
 resource: Container Registry
 resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ExportPolicy/
-ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620e
 ---
 
 # Container Registry export policy should be disabled
@@ -31,6 +30,34 @@ This provides additional protection by ensuring the registry is only accessible 
 Consider disabling the export policy and public network access for container registries containing sensitive data.
 
 ## EXAMPLES
+
+### Configure with Bicep
+
+To deploy registries that pass this rule:
+
+- Set `properties.policies.exportPolicy.status` to `disabled`.
+- Set `properties.publicNetworkAccess` to `Disabled`.
+
+For example:
+
+```bicep
+resource containerRegistry 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
+  name: registryName
+  location: location
+  sku: {
+    name: 'Premium'
+  }
+  properties: {
+    adminUserEnabled: false
+    publicNetworkAccess: 'Disabled'
+    policies: {
+      exportPolicy: {
+        status: 'disabled'
+      }
+    }
+  }
+}
+```
 
 ### Configure with Azure template
 
@@ -62,34 +89,6 @@ For example:
 }
 ```
 
-### Configure with Bicep
-
-To deploy registries that pass this rule:
-
-- Set `properties.policies.exportPolicy.status` to `disabled`.
-- Set `properties.publicNetworkAccess` to `Disabled`.
-
-For example:
-
-```bicep
-resource containerRegistry 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
-  name: registryName
-  location: location
-  sku: {
-    name: 'Premium'
-  }
-  properties: {
-    adminUserEnabled: false
-    publicNetworkAccess: 'Disabled'
-    policies: {
-      exportPolicy: {
-        status: 'disabled'
-      }
-    }
-  }
-}
-```
-
 ### Configure with Azure CLI
 
 ```bash
@@ -101,7 +100,6 @@ az acr config export-policy update --registry MyRegistry --status disabled
 
 ```powershell
 Update-AzContainerRegistry -Name MyRegistry -ResourceGroupName MyResourceGroup -PublicNetworkAccess Disabled
-# Export policy configuration requires REST API calls as PowerShell cmdlets don't support it directly
 ```
 
 ## NOTES
