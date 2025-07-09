@@ -12,7 +12,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.
 
 ## SYNOPSIS
 
-Azure Cache for Redis instances should disable access key authentication.
+Access keys allow depersonalized access to Azure Cache for Redis using a shared secret.
 
 ## DESCRIPTION
 
