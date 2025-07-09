@@ -8,7 +8,7 @@ resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ReplicaLocation/
 ---
 
-# Container registry replica location is not allowed
+# Container Registry replica location is not allowed
 
 ## SYNOPSIS
 
@@ -108,4 +108,6 @@ configuration:
 
 - [SE:01 Security baseline](https://learn.microsoft.com/azure/well-architected/security/establish-baseline)
 - [Geo-replication in Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication)
+- [Data residency in Azure](https://azure.microsoft.com/explore/global-infrastructure/data-residency/#overview)
+- [Azure geographies](https://azure.microsoft.com/explore/global-infrastructure/geographies/#geographies)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries/replications)

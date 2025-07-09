@@ -780,7 +780,12 @@
     "Name": "registry-K",
     "Properties": {
       "loginServer": "registry-K.azurecr.io",
-      "adminUserEnabled": false
+      "adminUserEnabled": false,
+      "policies": {
+        "exportPolicy": {
+          "status": "enabled"
+        }
+      }
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",

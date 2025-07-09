@@ -60,8 +60,11 @@ Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry
 # Synopsis: Container registry replica locations should be within allowed regions.
 Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000494' -Type 'Microsoft.ContainerRegistry/registries', 'Microsoft.ContainerRegistry/registries/replications' -Tag @{ release = 'GA'; ruleSet = '2025_09'; 'Azure.WAF/pillar' = 'Security'; } {
     $context = $PSRule.GetService('Azure.Context');
-    $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications', 'replications');
-    
+    $replications = @($TargetObject)
+    if ($PSRule.TargetType -eq 'Microsoft.ContainerRegistry/registries') {
+        $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications', 'replications');
+    }
+
     if ($replications.Length -eq 0) {
         return $Assert.Pass();
     }
