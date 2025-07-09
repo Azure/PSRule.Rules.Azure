@@ -36,6 +36,11 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
             $_.Info.Annotations.severity
         }}
     }
+
+    Section 'Configuration' -If { $PSDocs.TargetObject.Spec.Configuration.Count -gt 0 } {
+        "The following configuration settings are included within the ``$baselineName`` baseline.";
+        $PSDocs.TargetObject.Spec.Configuration | Table -Property Name, Value
+    }
 }
 
 Document 'Azure.MCSB.Baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v1' } {
