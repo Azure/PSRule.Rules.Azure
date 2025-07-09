@@ -1127,5 +1127,65 @@
       "capacity": 15
     },
     "zones": []
+  },
+  {
+    "Name": "redis-T",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-T",
+    "ResourceName": "redis-T",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "6",
+      "sku": {
+        "name": "Standard",
+        "family": "C",
+        "capacity": 1
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "aad-enabled": "true"
+      },
+      "disableAccessKeyAuthentication": true,
+      "accessKeys": null,
+      "hostName": "redis-T.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "publicNetworkAccess": "Disabled"
+    }
+  },
+  {
+    "Name": "redis-U",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-U",
+    "ResourceName": "redis-U",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "6",
+      "sku": {
+        "name": "Standard",
+        "family": "C",
+        "capacity": 1
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "aad-enabled": "true"
+      },
+      "disableAccessKeyAuthentication": false,
+      "accessKeys": null,
+      "hostName": "redis-U.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "publicNetworkAccess": "Disabled"
+    }
   }
 ]
