@@ -285,15 +285,15 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'registry-K', 'registry-L';
-            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.policies.exportPolicy.status', 'properties.publicNetworkAccess';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'registry-K';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.policies.exportPolicy.status';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'registry-M';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry-L', 'registry-M';
         }
     }
 
