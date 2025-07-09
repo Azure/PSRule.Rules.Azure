@@ -14,7 +14,13 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
 
     Title $baselineName;
 
-    Metadata $PSDocs.TargetObject.metadata.annotations
+    $metadata = [ordered]@{}
+    foreach ($key in $PSDocs.TargetObject.metadata.annotations.Keys) {
+        $metadata[$key] = $PSDocs.TargetObject.metadata.annotations[$key];
+    }
+    $metadata['generated'] = 'true';
+
+    Metadata $metadata
 
     if ($obsolete) {
         '<!-- OBSOLETE -->'
@@ -37,9 +43,19 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
         }}
     }
 
-    Section 'Configuration' -If { $PSDocs.TargetObject.Spec.Configuration.Count -gt 0 } {
+    $configurationKV = @()
+    foreach ($key in $PSDocs.TargetObject.Spec.Configuration.Keys) {
+        $configurationKV += [PSCustomObject]@{
+            Name  = $key;
+            Value = $PSDocs.TargetObject.Spec.Configuration[$key];
+        }
+    }
+
+    $configurationKV = $configurationKV | Sort-Object -Property Name;
+
+    Section 'Configuration' -If { $configurationKV.Length -gt 0 } {
         "The following configuration settings are included within the ``$baselineName`` baseline.";
-        $PSDocs.TargetObject.Spec.Configuration | Table -Property Name, Value
+        $configurationKV | Table -Property Name, Value
     }
 }
 
@@ -54,7 +70,13 @@ Document 'Azure.MCSB.Baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v
 
     Title $baselineName;
 
-    Metadata $PSDocs.TargetObject.metadata.annotations
+    $metadata = [ordered]@{}
+    foreach ($key in $PSDocs.TargetObject.metadata.annotations.Keys) {
+        $metadata[$key] = $PSDocs.TargetObject.metadata.annotations[$key];
+    }
+    $metadata['generated'] = 'true';
+
+    Metadata $metadata
 
     if ($experimental) {
         '<!-- EXPERIMENTAL -->'

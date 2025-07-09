@@ -1,9 +1,13 @@
 ---
 export: true
 moduleVersion: v1.42.0
+obsolete: true
+generated: true
 ---
 
 # Azure.GA_2025_03
+
+<!-- OBSOLETE -->
 
 Include rules released March 2025 or prior for Azure GA features.
 

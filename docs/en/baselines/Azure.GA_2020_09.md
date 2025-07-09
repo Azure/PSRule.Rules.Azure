@@ -1,5 +1,6 @@
 ---
 obsolete: true
+generated: true
 ---
 
 # Azure.GA_2020_09

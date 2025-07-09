@@ -1,6 +1,6 @@
 ---
+generated: true
 description: A listing of the rules included in PSRule for Azure organized by resource type.
-generated: True
 ---
 
 # Rules by resource type
@@ -23,8 +23,8 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.AI.DisableLocalAuth](Azure.AI.DisableLocalAuth.md) | Access keys allow depersonalized access to Azure AI using a shared secret. | Important | Error
+[Azure.AI.FoundryNaming](Azure.AI.FoundryNaming.md) | Azure AI Foundry accounts without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.AI.ManagedIdentity](Azure.AI.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
-[Azure.AI.Naming](Azure.AI.Naming.md) | Azure AI services without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.AI.PrivateEndpoints](Azure.AI.PrivateEndpoints.md) | Use Private Endpoints to access Azure AI services accounts. | Important | Error
 [Azure.AI.PublicAccess](Azure.AI.PublicAccess.md) | Restrict access of Azure AI services to authorized virtual networks. | Important | Error
 
@@ -309,6 +309,13 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Grafana.Version](Azure.Grafana.Version.md) | Grafana workspaces should be on Grafana version 10. | Important | Error
 
+## Azure Monitor Alerts
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Alert.HighFrequencyQuery](Azure.Alert.HighFrequencyQuery.md) | High frequency scheduled queries are changed as a higher rate than low frequency queries. | Important | Error
+[Azure.Alert.MetricAutoMitigate](Azure.Alert.MetricAutoMitigate.md) | Alerts that require manual intervention for mitigation can lead to increased personnel time and effort. | Important | Error
+
 ## Azure Monitor Logs
 
 Name | Synopsis | Severity | Level
@@ -459,6 +466,12 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.EventGrid.DomainNaming](Azure.EventGrid.DomainNaming.md) | Event Grid domains without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.EventGrid.DomainTLS](Azure.EventGrid.DomainTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | Critical | Error
+
+## Event Grid Namespace
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.EventGrid.NamespaceTLS](Azure.EventGrid.NamespaceTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | Critical | Error
 
 ## Event Grid Topic
 

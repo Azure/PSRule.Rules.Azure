@@ -1,9 +1,13 @@
 ---
 export: true
 moduleVersion: v1.42.0
+obsolete: true
+generated: true
 ---
 
 # Azure.Preview_2025_03
+
+<!-- OBSOLETE -->
 
 Include rules released March 2025 or prior for Azure preview only features.
 
@@ -11,7 +15,7 @@ Include rules released March 2025 or prior for Azure preview only features.
 
 The following rules are included within the `Azure.Preview_2025_03` baseline.
 
-This baseline includes a total of 9 rules.
+This baseline includes a total of 8 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -23,4 +27,3 @@ Name | Synopsis | Severity
 [Azure.Defender.Storage.DataScan](../rules/Azure.Defender.Storage.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical
 [Azure.ServiceBus.GeoReplica](../rules/Azure.ServiceBus.GeoReplica.md) | Enhance resilience to regional outages by replicating namespaces. | Important
 [Azure.Storage.Defender.DataScan](../rules/Azure.Storage.Defender.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical
-[Azure.VNG.MaintenanceConfig](../rules/Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | Important

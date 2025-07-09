@@ -3,6 +3,7 @@ taxonomy: Azure.WAF
 pillar: Reliability
 export: true
 moduleVersion: v1.35.0
+generated: true
 ---
 
 # Azure.Pillar.Reliability
@@ -13,7 +14,7 @@ Microsoft Azure Well-Architected Framework - Reliability pillar specific baselin
 
 The following rules are included within the `Azure.Pillar.Reliability` baseline.
 
-This baseline includes a total of 95 rules.
+This baseline includes a total of 96 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -108,6 +109,7 @@ Name | Synopsis | Severity
 [Azure.VNET.SingleDNS](../rules/Azure.VNET.SingleDNS.md) | Virtual networks (VNETs) should have at least two DNS servers assigned. | Important
 [Azure.VNG.ERAvailabilityZoneSKU](../rules/Azure.VNG.ERAvailabilityZoneSKU.md) | Use availability zone SKU for virtual network gateways deployed with ExpressRoute gateway type. | Important
 [Azure.VNG.ERLegacySKU](../rules/Azure.VNG.ERLegacySKU.md) | Migrate from legacy SKUs to improve reliability and performance of ExpressRoute (ER) gateways. | Critical
+[Azure.VNG.MaintenanceConfig](../rules/Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | Important
 [Azure.VNG.VPNActiveActive](../rules/Azure.VNG.VPNActiveActive.md) | Use VPN gateways configured to operate in an Active-Active configuration to reduce connectivity downtime. | Important
 [Azure.VNG.VPNAvailabilityZoneSKU](../rules/Azure.VNG.VPNAvailabilityZoneSKU.md) | Use availability zone SKU for virtual network gateways deployed with VPN gateway type. | Important
 [Azure.VNG.VPNLegacySKU](../rules/Azure.VNG.VPNLegacySKU.md) | Migrate from legacy SKUs to improve reliability and performance of VPN gateways. | Critical

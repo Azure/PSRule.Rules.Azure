@@ -1,5 +1,5 @@
 ---
-generated: True
+generated: true
 title: Reference
 ---
 
@@ -450,7 +450,7 @@ AZR-000426 | [Azure.VMSS.AutoInstanceRepairs](Azure.VMSS.AutoInstanceRepairs.md)
 AZR-000427 | [Azure.Redis.EntraID](Azure.Redis.EntraID.md) | Use Entra ID authentication with cache instances. | GA
 AZR-000428 | [Azure.AppService.NodeJsVersion](Azure.AppService.NodeJsVersion.md) | Configure applications to use supported Node.js runtime versions. | GA
 AZR-000429 | [Azure.Firewall.AvailabilityZone](Azure.Firewall.AvailabilityZone.md) | Deploy firewall instances using availability zones in supported regions to ensure high availability and resilience. | GA
-AZR-000430 | [Azure.VNG.MaintenanceConfig](Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | Preview
+AZR-000430 | [Azure.VNG.MaintenanceConfig](Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | GA
 AZR-000431 | [Azure.MySQL.MaintenanceWindow](Azure.MySQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for MySQL servers. | GA
 AZR-000432 | [Azure.MySQL.ZoneRedundantHA](Azure.MySQL.ZoneRedundantHA.md) | Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | GA
 AZR-000433 | [Azure.PostgreSQL.MaintenanceWindow](Azure.PostgreSQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for PostgreSQL servers. | GA
@@ -480,7 +480,7 @@ AZR-000456 | [Azure.DNS.DNSSEC](Azure.DNS.DNSSEC.md) | DNS may be vulnerable to 
 AZR-000457 | [Azure.EventGrid.TopicTLS](Azure.EventGrid.TopicTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
 AZR-000458 | [Azure.EventGrid.DomainTLS](Azure.EventGrid.DomainTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
 AZR-000459 | [Azure.Deployment.SecretLeak](Azure.Deployment.SecretLeak.md) | Sensitive parameters that have been not been marked as secure may leak the secret into deployment history or logs. | GA
-AZR-000460 | [Azure.AI.Naming](Azure.AI.Naming.md) | Azure AI services without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000460 | [Azure.AI.FoundryNaming](Azure.AI.FoundryNaming.md) | Azure AI Foundry accounts without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000461 | [Azure.EventGrid.DomainNaming](Azure.EventGrid.DomainNaming.md) | Event Grid domains without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000462 | [Azure.EventGrid.TopicNaming](Azure.EventGrid.TopicNaming.md) | Event Grid topics without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000463 | [Azure.EventGrid.SystemTopicNaming](Azure.EventGrid.SystemTopicNaming.md) | Event Grid system topics without a standard naming convention may be difficult to identify and manage. | GA
@@ -510,5 +510,8 @@ AZR-000487 | [Azure.Log.Naming](Azure.Log.Naming.md) | Azure Monitor Log workspa
 AZR-000488 | [Azure.ServiceFabric.ProtectionLevel](Azure.ServiceFabric.ProtectionLevel.md) | Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks. | GA
 AZR-000489 | [Azure.DefenderCloud.ActiveAlerts](Azure.DefenderCloud.ActiveAlerts.md) | Alerts that have not received a response may indicate a security issue that requires attention. | GA
 AZR-000490 | [Azure.AppConfig.SecretLeak](Azure.AppConfig.SecretLeak.md) | Secrets stored as key values in an App Configuration Store may be leaked to unauthorized users. | GA
+AZR-000491 | [Azure.Alert.MetricAutoMitigate](Azure.Alert.MetricAutoMitigate.md) | Alerts that require manual intervention for mitigation can lead to increased personnel time and effort. | GA
+AZR-000492 | [Azure.Alert.HighFrequencyQuery](Azure.Alert.HighFrequencyQuery.md) | High frequency scheduled queries are changed as a higher rate than low frequency queries. | GA
+AZR-000493 | [Azure.EventGrid.NamespaceTLS](Azure.EventGrid.NamespaceTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
