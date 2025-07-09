@@ -12,7 +12,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Ex
 
 ## SYNOPSIS
 
-Disable export of artifacts from Azure container registry to ensure data is accessed solely via the data plane.
+Export policy on Azure container registry may allow data exfiltration.
 
 ## DESCRIPTION
 
@@ -105,7 +105,7 @@ An Azure container registry with export policy disabled:
 
 ## LINKS
 
-- [SE:08 Hardening resources](https://learn.microsoft.com/en-us/azure/well-architected/security/harden-resources)
+- [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
 - [Data loss prevention for Azure Container Registry](https://learn.microsoft.com/azure/container-registry/data-loss-prevention)
 - [Azure Security Benchmark - Monitor anomalies and threats targeting sensitive data](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#dp-2-monitor-anomalies-and-threats-targeting-sensitive-data)
 - [Azure Policy - Container registries should have exports disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_ExportPolicy_AuditDeny.json)
