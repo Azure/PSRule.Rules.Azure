@@ -11,7 +11,7 @@ Include rules released March 2025 or prior for Azure GA features.
 
 The following rules are included within the `Azure.GA_2025_03` baseline.
 
-This baseline includes a total of 440 rules.
+This baseline includes a total of 439 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -313,7 +313,6 @@ Name | Synopsis | Severity
 [Azure.RBAC.UseGroups](../rules/Azure.RBAC.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | Important
 [Azure.RBAC.UseRGDelegation](../rules/Azure.RBAC.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Important
 [Azure.Redis.AvailabilityZone](../rules/Azure.Redis.AvailabilityZone.md) | Premium Redis cache should be deployed with availability zones for high availability. | Important
-[Azure.Redis.DisableLocalAuth](../rules/Azure.Redis.DisableLocalAuth.md) | Authenticate Redis Cache clients with Entra ID identities. | Important
 [Azure.Redis.EntraID](../rules/Azure.Redis.EntraID.md) | Use Entra ID authentication with cache instances. | Critical
 [Azure.Redis.FirewallIPRange](../rules/Azure.Redis.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses for the Redis cache. | Critical
 [Azure.Redis.FirewallRuleCount](../rules/Azure.Redis.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules for the Redis cache. | Awareness
