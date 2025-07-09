@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-12-19
+reviewed: 2025-07-10
 severity: Important
 pillar: Security
 category: SE:05 Identity and access management
@@ -12,7 +12,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.
 
 ## SYNOPSIS
 
-Authenticate Redis Cache clients with Entra ID identities.
+Azure Cache for Redis instances should disable access key authentication.
 
 ## DESCRIPTION
 
@@ -31,11 +31,51 @@ Using Entra ID authentication offers several advantages:
 You can disable access key authentication by setting the `disableAccessKeyAuthentication` property to `true`.
 When disabled, only Entra ID authentication will be accepted for connections to the cache.
 
+Before you disable access keys:
+
+- Ensure that Microsoft Entra authentication is enabled and you have at least one Redis User configured.
+- Ensure all applications connecting to your cache instance switch to using Microsoft Entra Authentication.
+- Consider disabling access during the scheduled maintenance window for your cache instance.
+
+For geo-replicated caches, you must:
+
+- Unlink the caches.
+- Disable access keys.
+- Relink the caches.
+
 ## RECOMMENDATION
 
 Consider disabling access key authentication on Azure Cache for Redis and using Entra ID authentication exclusively.
 
 ## EXAMPLES
+
+### Configure with Bicep
+
+To deploy caches that pass this rule:
+
+- Set the `properties.disableAccessKeyAuthentication` property to `true`.
+
+For example:
+
+```bicep
+resource cache 'Microsoft.Cache/Redis@2024-04-01-preview' = {
+  name: name
+  location: location
+  properties: {
+    sku: {
+      name: 'Standard'
+      family: 'C'
+      capacity: 1
+    }
+    redisConfiguration: {
+      'aad-enabled': 'true'
+    }
+    enableNonSslPort: false
+    redisVersion: '6'
+    disableAccessKeyAuthentication: true
+  }
+}
+```
 
 ### Configure with Azure template
 
@@ -67,42 +107,14 @@ For example:
 }
 ```
 
-### Configure with Bicep
-
-To deploy caches that pass this rule:
-
-- Set the `properties.disableAccessKeyAuthentication` property to `true`.
-
-For example:
-
-```bicep
-resource cache 'Microsoft.Cache/Redis@2024-04-01-preview' = {
-  name: name
-  location: location
-  properties: {
-    sku: {
-      name: 'Standard'
-      family: 'C'
-      capacity: 1
-    }
-    redisConfiguration: {
-      'aad-enabled': 'true'
-    }
-    enableNonSslPort: false
-    redisVersion: '6'
-    disableAccessKeyAuthentication: true
-  }
-}
-```
-
 <!-- external:avm avm/res/cache/redis disableAccessKeyAuthentication -->
 
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:
 
-- [Configure Azure Cache for Redis to disable local authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_DisableLocalAuth_Modify.json)
-  `/providers/Microsoft.Authorization/policyDefinitions/470baccb-7e51-4549-8b1a-3e5be069f663`
+- [Azure Cache for Redis should not use access keys for authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_DisableAccessKeysAuth_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/3827af20-8f80-4b15-8300-6db0873ec901`
 
 ## LINKS
 
