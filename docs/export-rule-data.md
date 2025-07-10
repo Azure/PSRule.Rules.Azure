@@ -45,10 +45,9 @@ Export-AzRuleData -OutputPath 'out/';
 
 !!! Important
     There are known issues with different versions of the Azure PowerShell modules.
-    The recommended versions of `Az.Accounts` and `Az.Resources` modules are:
+    The recommended versions of `Az.Accounts` module are:
 
     - `Az.Accounts` &mdash; `3.0.x` ... `5.1.x`
-    - `Az.Resources` &mdash; `6.7.x` ... `6.16.x`
 
     If you are using a different version, you may encounter issues with the export process.
     If you have multiple version of the Azure PowerShell modules installed, you can ensure the correct version is used by:
@@ -59,7 +58,6 @@ Export-AzRuleData -OutputPath 'out/';
 
       ```powershell
       Import-Module Az.Accounts -RequiredVersion 5.1.0;
-      Import-Module Az.Resources -RequiredVersion 6.7.0;
       ```
 
 ### Additional options
