@@ -150,7 +150,6 @@ Additionally, the exporting data from a subscription functionality requires the 
 PowerShell modules:
 
 - Az.Accounts
-- Az.Resources
 
 !!! Note
     Azure PowerShell modules are not installed automatically when installing PSRule for Azure.
@@ -300,7 +299,7 @@ After downloading the modules, copy the module directories to devices with restr
     To save PSRule for Azure for offline use:
 
     ```powershell
-    $modules = @('PSRule', 'PSRule.Rules.Azure', 'Az.Accounts', 'Az.Resources')
+    $modules = @('PSRule', 'PSRule.Rules.Azure', 'Az.Accounts')
     Save-Module -Name $modules -Path '.\modules'
     ```
 
@@ -310,7 +309,7 @@ After downloading the modules, copy the module directories to devices with restr
     To save PSRule for Azure development module dependencies for offline use:
 
     ```powershell
-    $modules = @('PSRule', 'Az.Accounts', 'Az.Resources', 'PlatyPS', 'Pester',
+    $modules = @('PSRule', 'Az.Accounts', 'PlatyPS', 'Pester',
       'PSScriptAnalyzer', 'PowerShellGet', 'PackageManagement', 'InvokeBuild')
     Save-Module -Name $modules -Repository PSGallery -Path '.\modules';
     ```
