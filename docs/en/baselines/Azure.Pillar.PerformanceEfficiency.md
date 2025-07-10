@@ -3,6 +3,7 @@ taxonomy: Azure.WAF
 pillar: Performance Efficiency
 export: true
 moduleVersion: v1.35.0
+generated: true
 ---
 
 # Azure.Pillar.PerformanceEfficiency

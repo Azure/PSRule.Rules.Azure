@@ -2,6 +2,7 @@
 export: true
 moduleVersion: v1.28.0
 obsolete: true
+generated: true
 ---
 
 # Azure.Preview_2023_06

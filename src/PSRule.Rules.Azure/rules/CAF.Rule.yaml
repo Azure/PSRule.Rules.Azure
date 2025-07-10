@@ -72,3 +72,39 @@ spec:
     AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: 'vgw-'
     AZURE_VNET_NAME_FORMAT: '^vnet-'
     AZURE_VNET_SUBNET_NAME_FORMAT: '^snet-'
+
+---
+# Synopsis: Includes rules related to Azure CAF based on a June 2025 snapshot.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.CAF_2025_06
+  annotations:
+    taxonomy: Azure.CAF
+    export: true
+    moduleVersion: v1.45.0
+    experimental: true
+spec:
+  rule:
+    tag:
+      release: GA
+    labels:
+      Azure.CAF: '*'
+
+  configuration:
+    AZURE_AI_SEARCH_NAME_FORMAT: '^srch-'
+    AZURE_AI_SERVICES_NAME_FORMAT: '^aif-'
+    AZURE_EVENTGRID_DOMAIN_NAME_FORMAT: '^evgd-'
+    AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT: '^evgt-'
+    AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT: '^egst-'
+    AZURE_GATEWAY_CONNECTION_NAME_FORMAT: '^con-'
+    AZURE_LOAD_BALANCER_NAME_FORMAT: '^(lbi|lbe)-'
+    AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT: '^nsg-'
+    AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT: '^pip-'
+    AZURE_RESOURCE_GROUP_NAME_FORMAT: '^rg-'
+    AZURE_ROUTE_TABLE_NAME_FORMAT: '^rt-'
+    AZURE_STORAGE_ACCOUNT_NAME_FORMAT: '^(st|stvm)'
+    AZURE_VIRTUAL_MACHINE_NAME_FORMAT: '^vm'
+    AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: 'vgw-'
+    AZURE_VNET_NAME_FORMAT: '^vnet-'
+    AZURE_VNET_SUBNET_NAME_FORMAT: '^snet-'

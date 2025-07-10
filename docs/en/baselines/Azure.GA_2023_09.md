@@ -2,6 +2,7 @@
 export: true
 moduleVersion: v1.30.0
 obsolete: true
+generated: true
 ---
 
 # Azure.GA_2023_09

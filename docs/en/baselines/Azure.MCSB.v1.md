@@ -3,6 +3,7 @@ taxonomy: Azure.MCSB.v1
 export: true
 moduleVersion: v1.25.0
 experimental: true
+generated: true
 ---
 
 # Azure.MCSB.v1

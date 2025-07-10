@@ -226,7 +226,7 @@ To configure the rule for a resource type, set the corresponding configuration v
 Rule                                | Resource type                               | Configuration value
 ----                                | -------------                               | -------------------
 `Azure.Search.Naming`               | `Microsoft.Search/searchServices`           | `AZURE_AI_SEARCH_NAME_FORMAT`
-`Azure.AI.Naming`                   | `Microsoft.CognitiveServices/accounts`      | `AZURE_AI_SERVICES_NAME_FORMAT`
+`Azure.AI.FoundryNaming`            | `Microsoft.CognitiveServices/accounts` with `kind` = `AIServices`      | `AZURE_AI_SERVICES_NAME_FORMAT`
 `Azure.AppInsights.Naming`          | `Microsoft.Insights/components`             | `AZURE_APP_INSIGHTS_NAME_FORMAT`
 `Azure.EventGrid.DomainNaming`      | `Microsoft.EventGrid/domains`               | `AZURE_EVENTGRID_DOMAIN_NAME_FORMAT`
 `Azure.EventGrid.TopicNaming`       | `Microsoft.EventGrid/topics`, `Microsoft.EventGrid/domains/topics` | `AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT`

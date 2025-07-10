@@ -3,6 +3,7 @@ taxonomy: Azure.WAF
 pillar: Cost Optimization
 export: true
 moduleVersion: v1.35.0
+generated: true
 ---
 
 # Azure.Pillar.CostOptimization
@@ -13,13 +14,15 @@ Microsoft Azure Well-Architected Framework - Cost Optimization pillar specific b
 
 The following rules are included within the `Azure.Pillar.CostOptimization` baseline.
 
-This baseline includes a total of 17 rules.
+This baseline includes a total of 19 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.Usage](../rules/Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important
 [Azure.ADX.Usage](../rules/Azure.ADX.Usage.md) | Regularly remove unused resources to reduce costs. | Important
 [Azure.AKS.AuditAdmin](../rules/Azure.AKS.AuditAdmin.md) | Use kube-audit-admin instead of kube-audit to capture administrative actions in AKS clusters. | Important
+[Azure.Alert.HighFrequencyQuery](../rules/Azure.Alert.HighFrequencyQuery.md) | High frequency scheduled queries are changed as a higher rate than low frequency queries. | Important
+[Azure.Alert.MetricAutoMitigate](../rules/Azure.Alert.MetricAutoMitigate.md) | Alerts that require manual intervention for mitigation can lead to increased personnel time and effort. | Important
 [Azure.DevBox.ProjectLimit](../rules/Azure.DevBox.ProjectLimit.md) | Limit the number of Dev Boxes a single user can create for a project. | Important
 [Azure.EventHub.Usage](../rules/Azure.EventHub.Usage.md) | Regularly remove unused resources to reduce costs. | Important
 [Azure.FrontDoor.State](../rules/Azure.FrontDoor.State.md) | Enable Azure Front Door Classic instance. | Important

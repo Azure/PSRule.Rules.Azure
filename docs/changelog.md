@@ -37,6 +37,8 @@ What's changed since pre-release v1.45.0-B0104:
     [#3465](https://github.com/Azure/PSRule.Rules.Azure/issues/3465)
     - Includes rules released before or during June 2025.
     - Marked `Azure.GA_2025_03` and `Azure.Preview_2025_03` baselines as obsolete.
+  - Added June 2025 CAF baseline `Azure.CAF_2025_06` for recent naming changes by @BernieWhite.
+    [#3464](https://github.com/Azure/PSRule.Rules.Azure/issues/3464)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.32.5` as the minimum version by @BernieWhite.

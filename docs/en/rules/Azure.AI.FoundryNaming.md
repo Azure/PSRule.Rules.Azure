@@ -1,18 +1,18 @@
 ---
-reviewed: 2025-04-11
+reviewed: 2025-007-10
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: AI Service
 resourceType: Microsoft.CognitiveServices/accounts
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AI.Naming/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AI.FoundryNaming/
 ---
 
-# Azure AI services must use standard naming
+# Azure AI Foundry accounts must use standard naming
 
 ## SYNOPSIS
 
-Azure AI services without a standard naming convention may be difficult to identify and manage.
+Azure AI Foundry accounts without a standard naming convention may be difficult to identify and manage.
 
 ## DESCRIPTION
 
@@ -29,26 +29,26 @@ Some of the benefits of using standardized tagging and naming conventions are:
 For example, if you come upon a security incident, it's critical to quickly identify affected systems,
 the functions that those systems support, and the potential business impact.
 
-For Azure AI service accounts (previously Cognitive Services),
-the Cloud Adoption Framework (CAF) recommends using the `ais-` prefix.
+For Azure AI Foundry accounts (previously Cognitive Services),
+the Cloud Adoption Framework (CAF) recommends using the `aif-` prefix.
 
-Requirements for AI service account names:
+Requirements for AI Foundry account names:
 
 - At least 2 character, but no more than 64.
 - Can include alphanumeric, and hyphen characters.
 - Can only start and end with a letter or number.
-- Azure AI service accounts must be unique within a resource group.
+- Azure AI Foundry accounts must be unique within a resource group.
 
 ## RECOMMENDATION
 
-Consider creating Azure AI service accounts with a standard name.
+Consider creating Azure AI Foundry accounts with a standard name.
 Additionally consider using Azure Policy to only permit creation using a standard naming convention.
 
 ## EXAMPLES
 
 ### Configure with Bicep
 
-To deploy AI services that pass this rule:
+To deploy AI Foundry accounts that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -85,7 +85,7 @@ resource account 'Microsoft.CognitiveServices/accounts@2024-10-01' = {
 
 ### Configure with Azure template
 
-To deploy AI services that pass this rule:
+To deploy AI Foundry accounts that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -144,8 +144,8 @@ For example:
 
 ## NOTES
 
-This rule does not check if Azure AI service accounts names are unique,
-and specifically targets the resource with the `kind` = `AIServices`.
+This rule does not check if Azure AI Foundry accounts names are unique,
+and specifically targets the resource type `Microsoft.CognitiveServices/accounts` with the `kind` = `AIServices`.
 
 <!-- caf:note name-format -->
 
@@ -160,7 +160,7 @@ For example:
 
 ```yaml
 configuration:
-  AZURE_AI_SERVICES_NAME_FORMAT: '^ais-'
+  AZURE_AI_SERVICES_NAME_FORMAT: '^aif-'
 ```
 
 ## LINKS
