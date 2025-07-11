@@ -57,6 +57,8 @@ Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry
     $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.retentionDays').Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
 }
 
+
+
 #endregion Rules
 
 #region Helper functions
