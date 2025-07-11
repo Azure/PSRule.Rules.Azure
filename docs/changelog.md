@@ -30,6 +30,67 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.45.0
+
+What's changed since v1.44.2:
+
+- New features:
+  - Added June 2025 baselines `Azure.GA_2025_06` and `Azure.Preview_2025_06` by @BernieWhite.
+    [#3465](https://github.com/Azure/PSRule.Rules.Azure/issues/3465)
+    - Includes rules released before or during June 2025.
+    - Marked `Azure.GA_2025_03` and `Azure.Preview_2025_03` baselines as obsolete.
+  - Added June 2025 CAF baseline `Azure.CAF_2025_06` for recent naming changes by @BernieWhite.
+    [#3464](https://github.com/Azure/PSRule.Rules.Azure/issues/3464)
+- New rules:
+  - App Configuration:
+    - Check that App Configuration Key Values do not contain known secrets by @BernieWhite.
+      [#3439](https://github.com/Azure/PSRule.Rules.Azure/issues/3439)
+  - Event Grid:
+    - Check namespaces use a minimum of TLS 1.2 by @BernieWhite.
+      [#3354](https://github.com/Azure/PSRule.Rules.Azure/issues/3354)
+  - Monitor Alerts:
+    - Check that metric alerts are configured to automatically mitigate by @BernieWhite.
+      [#3457](https://github.com/Azure/PSRule.Rules.Azure/issues/3457)
+    - Check that scheduled query alerts are configured for lower frequency by @BernieWhite.
+      [#3458](https://github.com/Azure/PSRule.Rules.Azure/issues/3458)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.32.5` as the minimum version by @BernieWhite.
+      [#3463](https://github.com/Azure/PSRule.Rules.Azure/issues/3463)
+  - Container Registry:
+    - Deprecated `Azure.ACR.ContentTrust` rule by @BernieWhite.
+      [#3443](https://github.com/Azure/PSRule.Rules.Azure/issues/3443)
+      - The Docker content trust feature will retire in March 2028.
+      - Content trust is replaced by OCI artifact signing, which is supported by Azure Container Registry.
+  - Virtual Network Gateway:
+    - Updated documentation and promoted `Azure.VNG.MaintenanceConfig` to GA by @BernieWhite.
+      [#3379](https://github.com/Azure/PSRule.Rules.Azure/issues/3379)
+      - Bumped rule set to `2025_06`.
+- General improvements:
+  - Native support for exporting policy as rules by @BernieWhite.
+    [#2971](https://github.com/Azure/PSRule.Rules.Azure/issues/2971)
+    [#2970](https://github.com/Azure/PSRule.Rules.Azure/issues/2970)
+    - This removes the dependency on the `Az.Resources` module for policy exports.
+  - Optimize generation of nested allOf/ anyOf condition in policy as rules by @BernieWhite.
+    [#1965](https://github.com/Azure/PSRule.Rules.Azure/issues/1965)
+- Bug fixes:
+  - Fixed wrong verbose log when running `Export-AzPolicyAssignmentData` by @BernieWhite.
+    [#1877](https://github.com/Azure/PSRule.Rules.Azure/issues/1877)
+  - Fixed parent is missing on mocked token when expanding PE AVM module by @BernieWhite.
+    [#3446](https://github.com/Azure/PSRule.Rules.Azure/issues/3446)
+  - Fixed `Azure.AppGw.MinInstance` should allow 0 minimum capacity for v2 with autoscale by @BernieWhite @mbender-ms.
+    [#3452](https://github.com/Azure/PSRule.Rules.Azure/issues/3452)
+  - Fixed secure outputs objects may not be fully mocked by @BernieWhite.
+    [#3434](https://github.com/Azure/PSRule.Rules.Azure/issues/3434)
+  - Fixed incorrect inversion of policy as rules conditions by @BernieWhite.
+    [#3419](https://github.com/Azure/PSRule.Rules.Azure/issues/3419)
+  - Fixed string boolean values not converted during evaluation of policy as rules by @BernieWhite.
+    [#3426](https://github.com/Azure/PSRule.Rules.Azure/issues/3426)
+
+What's changed since pre-release v1.45.0-B0143:
+
+- No additional changes.
+
 ## v1.45.0-B0143 (pre-release)
 
 What's changed since pre-release v1.45.0-B0104:
