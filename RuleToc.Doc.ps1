@@ -4,10 +4,12 @@
 Document 'index' {
     Title 'Reference'
 
-    Metadata @{
-        generated = $True
+    $metadata = [ordered]@{
+        generated = 'true'
         title = 'Reference'
     }
+
+    Metadata $metadata
 
     Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue;
@@ -51,10 +53,12 @@ Document 'index' {
 Document 'module' {
     Title 'Rules by pillar'
 
-    Metadata @{
-        generated = $True
+    $metadata = [ordered]@{
+        generated = 'true'
         description = 'A listing of rules included in PSRule for Azure organized by Azure Well-Architected Framework pillar.'
     }
+
+    Metadata $metadata
 
     Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue |
@@ -90,10 +94,12 @@ Document 'module' {
 Document 'resource' {
     Title 'Rules by resource type'
 
-    Metadata @{
-        generated = $True
+    $metadata = [ordered]@{
+        generated = 'true'
         description = 'A listing of the rules included in PSRule for Azure organized by resource type.'
     }
+
+    Metadata $metadata
 
     Import-Module ./out/modules/PSRule.Rules.Azure
     $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -WarningAction SilentlyContinue |

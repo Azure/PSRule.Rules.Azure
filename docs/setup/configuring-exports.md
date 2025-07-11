@@ -20,6 +20,9 @@ Earlier versions of PSRule for Azure will ignore the configuration option.
 This configuration option suppresses a warning when the minimum version of `Az.Resources` module is not installed.
 Unlike most options, this option can only set by environment variable.
 
+This applies to PSRule for Azure before v1.45.0.
+If you are using a version of PSRule for Azure that is v1.45.0 or later, this warning is no longer displayed.
+
 Syntax:
 
 ```bash

@@ -54,10 +54,10 @@ configuration:
 ### AZURE_AI_SERVICES_NAME_FORMAT
 
 <!-- module:version v1.43.0 -->
-<!-- module:rule Azure.AI.Naming -->
-<!-- module:resource Microsoft.CognitiveServices/accounts -->
+<!-- module:rule Azure.AI.FoundryNaming -->
+<!-- module:resource Microsoft.CognitiveServices/accounts kind=AIServices -->
 
-This configuration option specifies a regular expression that defines the naming format for Azure AI Services.
+This configuration option specifies a regular expression that defines the naming format for Azure AI Foundry accounts.
 When this configuration option is not set, any name is considered valid.
 
 The regular expression used to specify the naming format is case-sensitive by default.
@@ -83,7 +83,7 @@ Example:
 ```yaml title="ps-rule.yaml"
 # YAML: Set the AZURE_AI_SERVICES_NAME_FORMAT configuration option to a specific format
 configuration:
-  AZURE_AI_SERVICES_NAME_FORMAT: '^ais-'
+  AZURE_AI_SERVICES_NAME_FORMAT: '^aif-'
 ```
 
 ### AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST

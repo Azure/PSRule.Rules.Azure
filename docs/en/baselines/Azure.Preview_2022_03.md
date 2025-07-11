@@ -1,5 +1,6 @@
 ---
 obsolete: true
+generated: true
 ---
 
 # Azure.Preview_2022_03
