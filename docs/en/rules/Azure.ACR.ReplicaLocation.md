@@ -1,10 +1,10 @@
 ---
-reviewed: 2025-07-09
+reviewed: 2025-07-12
 severity: Important
 pillar: Security
 category: SE:01 Security baseline
 resource: Container Registry
-resourceType: Microsoft.ContainerRegistry/registries
+resourceType: Microsoft.ContainerRegistry/registries,Microsoft.ContainerRegistry/registries/replications
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ReplicaLocation/
 ---
 
@@ -82,6 +82,8 @@ For example:
 ```
 
 ## NOTES
+
+Geo-replication of a Container Registry requires the Premium SKU.
 
 This rule requires one or more allowed regions to be configured.
 By default, all regions are allowed.

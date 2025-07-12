@@ -206,8 +206,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
             $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J';
+            $ruleResult.Length | Should -Be 7;
             # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn '';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
@@ -216,8 +216,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'registry-B', 'registry-C', 'registry-E', 'registry-K';
+            $ruleResult.Length | Should -Be 4;
         }
 
         It 'Azure.ACR.SoftDelete' {
