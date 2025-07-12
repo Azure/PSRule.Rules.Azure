@@ -1055,6 +1055,7 @@ configuration:
 
 <!-- module:version v1.30.0 -->
 <!-- module:rule Azure.Resource.AllowedRegions -->
+<!-- module:rule Azure.ACR.ReplicaLocation -->
 <!-- module:rule Azure.EntraDS.ReplicaLocation -->
 <!-- module:rule Azure.Log.ReplicaLocation -->
 

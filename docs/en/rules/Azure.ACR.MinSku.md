@@ -1,5 +1,5 @@
 ---
-reviewed: 2021-11-13
+reviewed: 2025-07-12
 severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
@@ -9,11 +9,11 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Mi
 ms-content-id: a70d16d4-3717-4eef-b588-8a0204860d6e
 ---
 
-# Use ACR production SKU
+# Container Registry SKU is not suitable for production workloads
 
 ## SYNOPSIS
 
-ACR should use the Premium or Standard SKU for production deployments.
+The Basic SKU provides limited performance and features for production container registry workloads.
 
 ## DESCRIPTION
 
@@ -38,6 +38,51 @@ Consider using the Premium Container Registry SKU for production deployments.
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy registries that pass this rule:
+
+- Set the `sku.name` property to `Premium` or `Standard`.
+
+For example:
+
+```bicep
+resource registry 'Microsoft.ContainerRegistry/registries@2025-05-01-preview' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Premium'
+  }
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    adminUserEnabled: false
+    anonymousPullEnabled: false
+    publicNetworkAccess: 'Disabled'
+    zoneRedundancy: 'Enabled'
+    policies: {
+      quarantinePolicy: {
+        status: 'enabled'
+      }
+      retentionPolicy: {
+        days: 30
+        status: 'enabled'
+      }
+      softDeletePolicy: {
+        retentionDays: 90
+        status: 'enabled'
+      }
+      exportPolicy: {
+        status: 'disabled'
+      }
+    }
+  }
+}
+```
+
+<!-- external:avm avm/res/container-registry/registry acrSku -->
+
 ### Configure with Azure template
 
 To deploy registries that pass this rule:
@@ -49,8 +94,8 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2023-01-01-preview",
-  "name": "[parameters('registryName')]",
+  "apiVersion": "2025-05-01-preview",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
     "name": "Premium"
@@ -60,13 +105,12 @@ For example:
   },
   "properties": {
     "adminUserEnabled": false,
+    "anonymousPullEnabled": false,
+    "publicNetworkAccess": "Disabled",
+    "zoneRedundancy": "Enabled",
     "policies": {
       "quarantinePolicy": {
         "status": "enabled"
-      },
-      "trustPolicy": {
-        "status": "enabled",
-        "type": "Notary"
       },
       "retentionPolicy": {
         "days": 30,
@@ -75,54 +119,14 @@ For example:
       "softDeletePolicy": {
         "retentionDays": 90,
         "status": "enabled"
+      },
+      "exportPolicy": {
+        "status": "disabled"
       }
     }
   }
 }
 ```
-
-### Configure with Bicep
-
-To deploy registries that pass this rule:
-
-- Set the `sku.name` property to `Premium` or `Standard`.
-
-For example:
-
-```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
-  name: registryName
-  location: location
-  sku: {
-    name: 'Premium'
-  }
-  identity: {
-    type: 'SystemAssigned'
-  }
-  properties: {
-    adminUserEnabled: false
-    policies: {
-      quarantinePolicy: {
-        status: 'enabled'
-      }
-      trustPolicy: {
-        status: 'enabled'
-        type: 'Notary'
-      }
-      retentionPolicy: {
-        days: 30
-        status: 'enabled'
-      }
-      softDeletePolicy: {
-        retentionDays: 90
-        status: 'enabled'
-      }
-    }
-  }
-}
-```
-
-<!-- external:avm avm/res/container-registry/registry:0.5.1 acrSku -->
 
 ## LINKS
 

@@ -37,7 +37,7 @@ Rule 'Azure.ACR.ImageHealth' -Ref 'AZR-000003' -Type 'Microsoft.ContainerRegistr
 }
 
 # Synopsis: Consider geo-replicating container images.
-Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Reliability'; method = 'in-flight'; } {
+Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2025_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications');
     $registryLocation = GetNormalLocation -Location $TargetObject.Location;
     foreach ($replica in $replications) {
@@ -55,6 +55,24 @@ Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry
 Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry/registries' -If { GetACRSoftDeletePreviewLimitations } -Tag @{ release = 'preview'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.status', 'enabled').Reason($LocalizedData.ACRSoftDeletePolicy, $TargetObject.name)
     $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.retentionDays').Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
+}
+
+# Synopsis: Container registry replica locations should be within allowed regions.
+Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000494' -Type 'Microsoft.ContainerRegistry/registries', 'Microsoft.ContainerRegistry/registries/replications' -Tag @{ release = 'GA'; ruleSet = '2025_09'; 'Azure.WAF/pillar' = 'Security'; } {
+    $context = $PSRule.GetService('Azure.Context');
+    $replications = @($TargetObject)
+    if ($PSRule.TargetType -eq 'Microsoft.ContainerRegistry/registries') {
+        $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications', 'replications');
+    }
+
+    if ($replications.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    foreach ($replica in $replications) {
+        $location = $replica.location;
+        $Assert.Create('location', [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
+    }
 }
 
 #endregion Rules

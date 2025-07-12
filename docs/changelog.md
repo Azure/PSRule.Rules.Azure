@@ -30,6 +30,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.45.0:
+
+- New rules:
+  - Container Registry:
+    - Check replica locations are within allowed regions by @BernieWhite
+      [#3442](https://github.com/Azure/PSRule.Rules.Azure/issues/3442)
+- Updated rules:
+  - Container Registry:
+    - Updated `Azure.ACR.GeoReplica` to ensure geo-replication applies to pre-flight and in-flight cases by @BernieWhite.
+      [#3477](https://github.com/Azure/PSRule.Rules.Azure/issues/3477)
+
 ## v1.45.0
 
 What's changed since v1.44.2:
