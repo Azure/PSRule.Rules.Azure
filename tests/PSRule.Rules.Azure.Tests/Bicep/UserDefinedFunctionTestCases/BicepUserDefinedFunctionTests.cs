@@ -46,4 +46,15 @@ public sealed class BicepUserDefinedFunctionTests : TemplateVisitorTestsBase
         var actual = resources.Where(r => r["type"].Value<string>() == "Microsoft.Storage/storageAccounts").FirstOrDefault();
         Assert.Equal("sa5f3e65afb63bb1", actual["name"].Value<string>());
     }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3483
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WhenExportedUserDefinedFunction_ShouldReferenceLocalVariable()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Bicep/UserDefinedFunctionTestCases/Tests.Bicep.3.json"), null, out var templateContext);
+
+        Assert.NotNull(resources);
+    }
 }
