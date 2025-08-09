@@ -276,8 +276,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 13;
             $ruleResult.TargetName | Should -Be 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O';
+            $ruleResult.Length | Should -Be 13;
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The certificate for host name 'api.contoso.com' expires or expired on '2020/01/01'.";
@@ -285,8 +285,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-A', 'apim-P';
+            $ruleResult.Length | Should -Be 3;
         }
 
         It 'Azure.APIM.Name' {
@@ -630,7 +630,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
 
         It 'Azure.APIM.CertificateExpiry - HashTable option' {
             $option = @{
-                'Configuration.AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME' = 356
+                'Configuration.AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME' = 400
             }
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option -Outcome All;
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.CertificateExpiry' -and $_.TargetType -eq 'Microsoft.ApiManagement/service' };
@@ -638,14 +638,14 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
             $ruleResult.Length | Should -Be 14;
-            $ruleResult.TargetName | Should -Be 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-A';
+            $ruleResult.Length | Should -Be 2;
         }
 
         It 'Azure.APIM.AvailabilityZone - YAML file option' {
