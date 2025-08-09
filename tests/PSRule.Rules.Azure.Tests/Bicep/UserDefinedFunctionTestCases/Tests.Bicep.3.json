@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.37.4.10188",
+      "templateHash": "6602988862404810203"
+    }
+  },
+  "functions": [
+    {
+      "namespace": "__bicep",
+      "members": {
+        "getResourceGroupSuffix": {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "location"
+            }
+          ],
+          "output": {
+            "type": "string",
+            "value": "[if(not(contains(variables('_1.regionShorthandMapping'), parameters('location'))), 'we', variables('_1.regionShorthandMapping')[parameters('location')])]"
+          },
+          "metadata": {
+            "__bicep_imported_from!": {
+              "sourceTemplate": "Tests.Bicep.3.import.bicep"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "parameters": {
+    "suffix": {
+      "type": "string",
+      "defaultValue": "[format('some-template-{0}', __bicep.getResourceGroupSuffix(resourceGroup().location))]"
+    }
+  },
+  "variables": {
+    "_1.regionShorthandMapping": {
+      "eastus": "eus"
+    }
+  },
+  "resources": {}
+}

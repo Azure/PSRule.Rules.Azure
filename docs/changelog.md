@@ -30,6 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.45.0:
+
+- Bug fixes:
+  - Fixed imported user defined function is unable to access local variable by @BernieWhite.
+    [#3483](https://github.com/Azure/PSRule.Rules.Azure/issues/3483)
+
 ## v1.45.0
 
 What's changed since v1.44.2:
