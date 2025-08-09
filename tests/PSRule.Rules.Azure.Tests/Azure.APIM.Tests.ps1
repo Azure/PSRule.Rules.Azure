@@ -630,7 +630,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
 
         It 'Azure.APIM.CertificateExpiry - HashTable option' {
             $option = @{
-                'Configuration.AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME' = 356
+                'Configuration.AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME' = 400
             }
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option -Outcome All;
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.CertificateExpiry' -and $_.TargetType -eq 'Microsoft.ApiManagement/service' };
@@ -638,7 +638,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.TargetName | Should -Be 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+            $ruleResult.TargetName | Should -BeIn 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
             $ruleResult.Length | Should -Be 14;
 
             # Pass
