@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.28.1.47646",
-      "templateHash": "17483218613728979013"
+      "version": "0.37.4.10188",
+      "templateHash": "17278833507236496396"
     }
   },
   "parameters": {
@@ -54,7 +54,7 @@
   "resources": [
     {
       "type": "Microsoft.ApiManagement/service",
-      "apiVersion": "2022-08-01",
+      "apiVersion": "2024-05-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {

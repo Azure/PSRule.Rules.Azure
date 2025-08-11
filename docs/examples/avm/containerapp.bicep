@@ -54,15 +54,21 @@ var ipSecurityRestrictions = [
 ]
 
 // An example App Environment configured with a consumption workload profile.
-module containerEnv 'br/public:avm/res/app/managed-environment:0.8.0' = {
+module containerEnv 'br/public:avm/res/app/managed-environment:0.11.2' = {
   params: {
     name: envName
-    logAnalyticsWorkspaceResourceId: workspaceId
+    appLogsConfiguration: {
+      destination: 'log-analytics'
+      logAnalyticsConfiguration: {
+        customerId: workspace.properties.customerId
+        sharedKey: workspace.listKeys().primarySharedKey
+      }
+    }
     managedIdentities: {
       systemAssigned: true
     }
     location: location
-    infrastructureSubnetId: subnetId
+    infrastructureSubnetResourceId: subnetId
     internal: true
     zoneRedundant: true
     workloadProfiles: [
@@ -75,12 +81,24 @@ module containerEnv 'br/public:avm/res/app/managed-environment:0.8.0' = {
 }
 
 // An example Container App using a minimum of 2 replicas.
-module containerApp 'br/public:avm/res/app/container-app:0.11.0' = {
+module containerApp 'br/public:avm/res/app/container-app:0.18.1' = {
   params: {
     name: appName
     environmentResourceId: containerEnv.outputs.resourceId
     containers: containers
     ipSecurityRestrictions: ipSecurityRestrictions
-    scaleMinReplicas: 2
+    scaleSettings: {
+      minReplicas: 2
+      maxReplicas: 5
+      rules: [
+        {
+          name: 'http-rule'
+          type: 'http'
+          metadata: {
+            concurrentRequests: '50'
+          }
+        }
+      ]
+    }
   }
 }
