@@ -27,7 +27,7 @@ type requiredTags = {
 }
 
 // Define a Storage Account with common security settings.
-resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2025-01-01' = {
   name: name
   location: location
   sku: {
@@ -40,15 +40,13 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
     minimumTlsVersion: 'TLS1_2'
     accessTier: 'Hot'
     allowSharedKeyAccess: false
-    networkAcls: {
-      defaultAction: 'Deny'
-    }
+    publicNetworkAccess: 'Disabled'
   }
   tags: tags
 }
 
 // Configure blob services with soft-delete enabled.
-resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2024-01-01' = {
+resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2025-01-01' = {
   parent: storageAccount
   name: 'default'
   properties: {
@@ -64,7 +62,7 @@ resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2024-01-01'
 }
 
 // Create a storage container.
-resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2024-01-01' = {
+resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2025-01-01' = {
   parent: blobService
   name: containerName
   properties: {
@@ -73,7 +71,7 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 }
 
 // Configure file services.
-resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2024-01-01' = {
+resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2025-01-01' = {
   parent: storageAccount
   name: 'default'
   properties: {
@@ -85,7 +83,7 @@ resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2024-01-01
 }
 
 // Create a file share.
-resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2024-01-01' = {
+resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2025-01-01' = {
   parent: fileServices
   name: shareName
   properties: {
@@ -94,7 +92,7 @@ resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2024-01-01
 }
 
 // Override Defender for Storage settings on a Storage Account.
-resource defenderForStorageSettings 'Microsoft.Security/defenderForStorageSettings@2024-10-01-preview' = {
+resource defenderForStorageSettings 'Microsoft.Security/defenderForStorageSettings@2025-01-01' = {
   name: 'current'
   scope: storageAccount
   properties: {

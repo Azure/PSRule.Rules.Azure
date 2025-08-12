@@ -18,13 +18,13 @@ param publisherEmail string = 'noreply@contoso.com'
 param publisherName string = 'Contoso'
 
 @description('A global policy to use with the service.')
-param globalPolicy string = loadTextContent('examples-apim-policy.xml')
+param globalPolicy string = loadTextContent('apim-policy.xml')
 
 var portalUri = 'https://${toLower(name)}.developer.azure-api.net'
 var actualGlobalPolicy = replace(globalPolicy, '__APIM__', portalUri)
 
 @description('An example API Management service.')
-resource service 'Microsoft.ApiManagement/service@2022-08-01' = {
+resource service 'Microsoft.ApiManagement/service@2024-05-01' = {
   name: name
   location: location
   sku: {
