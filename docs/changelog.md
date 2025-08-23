@@ -30,6 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.45.1:
+
+- Bug fixes:
+  - Fixed inconsistent handling of subnets with `Azure.VNET.SubnetNaming` and `Azure.VNET.UseNSGs` by @BernieWhite
+    [#3497](https://github.com/Azure/PSRule.Rules.Azure/issues/3497)
+
 ## v1.45.1
 
 What's changed since v1.45.0:
