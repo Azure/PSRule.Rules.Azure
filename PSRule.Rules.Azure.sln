@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSRule.Rules.Azure.Patterns
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSRule.Rules.Azure.Patterns.Tests", "tests\PSRule.Rules.Azure.Patterns.Tests\PSRule.Rules.Azure.Patterns.Tests.csproj", "{55A14DEF-5D85-4D73-A3D3-271E1EE86201}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{845E6309-3BE1-471C-84A6-61060F51B47E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSRule.Rules.Azure.Tool", "src\PSRule.Rules.Azure.Tool\PSRule.Rules.Azure.Tool.csproj", "{BBCF0FF2-5324-41E7-9656-B6023BC488D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,11 +62,18 @@ Global
 		{55A14DEF-5D85-4D73-A3D3-271E1EE86201}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55A14DEF-5D85-4D73-A3D3-271E1EE86201}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55A14DEF-5D85-4D73-A3D3-271E1EE86201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBCF0FF2-5324-41E7-9656-B6023BC488D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBCF0FF2-5324-41E7-9656-B6023BC488D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBCF0FF2-5324-41E7-9656-B6023BC488D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBCF0FF2-5324-41E7-9656-B6023BC488D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB365C69-CCDD-47D3-8526-97400A01E2EE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BBCF0FF2-5324-41E7-9656-B6023BC488D5} = {845E6309-3BE1-471C-84A6-61060F51B47E}
 	EndGlobalSection
 EndGlobal
