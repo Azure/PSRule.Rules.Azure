@@ -10,22 +10,35 @@
 # Synopsis: Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned.
 Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.MCSB.v1/control' = 'NS-1' } {
     $excludedSubnets = @('GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet', 'RouteServerSubnet');
-    $customExcludedSubnets = $Configuration.GetStringValues('AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG');
-    $subnet = @($TargetObject);
-    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
-        # Get subnets
-        $subnet = @($TargetObject.properties.subnets | Where-Object {
-                [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -notin $excludedSubnets -and [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -notin $customExcludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
-            });
-        if ($subnet.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
-            return $Assert.Pass();
+    foreach ($exclusion in $Configuration.GetStringValues('AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG')) {
+        if ($exclusion) {
+            $excludedSubnets += $exclusion;
         }
     }
-    elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets' -and
-    ([PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($PSRule.TargetName) -in $excludedSubnets -or [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($PSRule.TargetName) -in $customExcludedSubnets -or @($TargetObject.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -gt 0)) {
+
+    function IsHSM($subnetObject) {
+        return @($subnetObject.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -gt 0;
+    }
+
+    function IsExcludedSubnet($subnetName) {
+        return [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($subnetName) -in $excludedSubnets;
+    }
+
+    $subnet = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        $subnet = @(GetVirtualNetworkSubnets | Where-Object { $null -ne $_ });
+    }
+
+    if ($subnet.Length -eq 0) {
         return $Assert.Pass();
     }
+
     foreach ($sn in $subnet) {
+        if ((IsExcludedSubnet($sn.Name)) -or (IsHSM($sn))) {
+            $Assert.Pass();
+            continue;
+        }
+
         $Assert.
         HasFieldValue($sn, 'properties.networkSecurityGroup.id').
         WithReason(($LocalizedData.SubnetNSGNotConfigured -f $sn.Name), $True);
@@ -108,13 +121,13 @@ Rule 'Azure.VNET.SubnetName' -Ref 'AZR-000267' -Type 'Microsoft.Network/virtualN
 
 # Synopsis: VNETs with a GatewaySubnet should have an AzureBastionSubnet to allow for out of band remote access to VMs.
 Rule 'Azure.VNET.BastionSubnet' -Ref 'AZR-000314' -Type 'Microsoft.Network/virtualNetworks' -If { HasGatewaySubnet } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
-    $subnets = @(GetVirtualNetworkSubnets)
+    $subnets = @(GetVirtualNetworkSubnetNames)
     $Assert.In($subnets, '.', @('AzureBastionSubnet')).ReasonFrom('properties.subnets', $LocalizedData.SubnetNotFound, 'AzureBastionSubnet')
 }
 
 # Synopsis: Use Azure Firewall to filter network traffic to and from Azure resources.
 Rule 'Azure.VNET.FirewallSubnet' -Ref 'AZR-000322' -Type 'Microsoft.Network/virtualNetworks' -If { HasGatewaySubnet } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
-    $subnets = @(GetVirtualNetworkSubnets)
+    $subnets = @(GetVirtualNetworkSubnetNames)
     $Assert.In($subnets, '.', @('AzureFirewallSubnet')).ReasonFrom('properties.subnets', $LocalizedData.SubnetNotFound, 'AzureFirewallSubnet')
 }
 
@@ -170,16 +183,18 @@ Rule 'Azure.VNET.Naming' -Ref 'AZR-000474' -Type 'Microsoft.Network/virtualNetwo
 
 # Synopsis: Use standard subnets names.
 Rule 'Azure.VNET.SubnetNaming' -Ref 'AZR-000475' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -If { $Configuration['AZURE_VNET_SUBNET_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $excludedSubnets = @('GatewaySubnet', 'AzureBastionSubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet', 'RouteServerSubnet');
+
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
-        $subnets = @($TargetObject.Properties.subnets);
+        $subnets = @(GetVirtualNetworkSubnets | Where-Object { $null -ne $_ });
 
         if ($subnets.Length -eq 0) {
             $Assert.Pass();
         }
         foreach ($subnet in $subnets) {
-            $name = $subnet.Name;
+            $name = [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($subnet.Name);
 
-            if ($name -in 'GatewaySubnet', 'AzureFirewallSubnet') {
+            if ($name -in $excludedSubnets) {
                 $Assert.Pass();
             }
             else {
@@ -188,9 +203,9 @@ Rule 'Azure.VNET.SubnetNaming' -Ref 'AZR-000475' -Type 'Microsoft.Network/virtua
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets') {
-        $name = $PSRule.TargetName.Split('/')[-1];
+        $name = [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($PSRule.TargetName);
 
-        if ($name -in 'GatewaySubnet', 'AzureFirewallSubnet') {
+        if ($name -in $excludedSubnets) {
             $Assert.Pass();
         }
         else {
@@ -214,13 +229,24 @@ function global:HasGatewaySubnet {
     }
 }
 
-function global:GetVirtualNetworkSubnets {
+function global:GetVirtualNetworkSubnetNames {
     [CmdletBinding()]
     [OutputType([PSObject])]
     param ()
     process {
         $TargetObject.Properties.subnets | ForEach-Object { $_.name }
-        GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' | ForEach-Object { $_.name }
+        GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets', 'subnets' | ForEach-Object { $_.name }
+    }
+}
+
+
+function global:GetVirtualNetworkSubnets {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param ()
+    process {
+        $TargetObject.Properties.subnets
+        GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets', 'subnets'
     }
 }
 
