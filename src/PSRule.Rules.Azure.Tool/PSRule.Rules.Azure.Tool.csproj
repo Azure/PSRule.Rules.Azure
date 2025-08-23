@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\PSRule.Common.props" />
+  <PropertyGroup>
+    <AssemblyName>Microsoft.PSRule.Rules.Azure.Tool</AssemblyName>
+    <PackageId>Microsoft.PSRule.Rules.Azure.Tool</PackageId>
+    <RootNamespace>PSRule.Rules.Azure.Tool</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <ProjectGuid>{bbcf0ff2-5324-41e7-9656-b6023bc488d5}</ProjectGuid>
+    <TargetFramework>net8.0</TargetFramework>
+    <StartupObject>PSRule.Rules.Azure.Tool.Program</StartupObject>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>ps-rule-azure</ToolCommandName>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RuntimeIdentifiers>win-x64;linux-x64;linux-musl-x64;osx-x64</RuntimeIdentifiers>
+
+    <!-- Temporary during early development -->
+    <EnableNuget>false</EnableNuget>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.7" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta6.25358.103" />
+    <PackageReference Include="Azure.Identity" Version="1.14.2" />
+    <PackageReference Include="Azure.Identity.Broker" Version="1.2.1" />
+    <PackageReference Include="Microsoft.PSRule.Types" Version="3.0.0-b0453" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\CmdStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CmdStrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\CmdStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CmdStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
