@@ -42,8 +42,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-G', 'vnet-H/excludedSubnet';
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-G', 'vnet-H/excludedSubnet';
+            $ruleResult.Length | Should -Be 6;
             
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 4;
@@ -69,16 +69,19 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             );
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -HaveCount 1;
-            $ruleResult[3].Reason | Should -Be "The subnet (subnet-ZZ) has no NSG associated.";
+            $ruleResult[3].Reason | Should -Be "The subnet (subnet-B) has no NSG associated.";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[4].Reason | Should -HaveCount 1;
-            $ruleResult[4].Reason | Should -Be "The subnet (vnet-H/excludedSubnet) has no NSG associated.";
+            $ruleResult[4].Reason | Should -Be "The subnet (subnet-ZZ) has no NSG associated.";
+            $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[5].Reason | Should -HaveCount 1;
+            $ruleResult[5].Reason | Should -Be "The subnet (vnet-H/excludedSubnet) has no NSG associated.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
+            $ruleResult.Length | Should -Be 8;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-F', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
 
         It 'Azure.VNET.SingleDNS' {
@@ -159,8 +162,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 14;
             $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-H/excludedSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
+            $ruleResult.Length | Should -Be 14;
         }
 
         It 'Azure.VNET.BastionSubnet' {
@@ -462,7 +465,18 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $templatePath = Join-Path -Path $here -ChildPath 'vnet.tests.json';
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualNetwork.json;
             Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
-            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop -Culture 'en-US';
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_VNET_SUBNET_NAME_FORMAT' = '^snet-' };
+            $invokeParams = @{
+                Module = 'PSRule.Rules.Azure'
+                InputPath = $outputFile
+                Outcome = 'All'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+                Culture = 'en-US'
+                Option = $option
+                Name = @('Azure.VNET.UseNSGs', 'Azure.VNET.SingleDNS', 'Azure.VNET.LocalDNS', 'Azure.VNET.PeerState', 'Azure.VNET.SubnetNaming')
+            }
+            $result = Invoke-PSRule @invokeParams;
         }
 
         It 'Azure.VNET.UseNSGs' {
@@ -471,15 +485,15 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vnet-002/subnet-extra';
+            $ruleResult.TargetName | Should -BeIn 'vnet-002/subnet-extra', 'vnet-embedded-subnet', 'vnet-separate-subnet';
+            $ruleResult.Length | Should -Be 3;
             $ruleResult.Reason | Should -BeLike 'The subnet (*) has no NSG associated.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vnet-001';
+            $ruleResult.TargetName | Should -BeIn 'vnet-001', 'vnet-empty';
+            $ruleResult.Length | Should -Be 2;
         }
 
         It 'Azure.VNET.SingleDNS' {
@@ -492,8 +506,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vnet-001';
+            $ruleResult.TargetName | Should -BeIn 'vnet-001', 'vnet-empty', 'vnet-separate-subnet', 'vnet-embedded-subnet';
+            $ruleResult.Length | Should -Be 4;
         }
 
         It 'Azure.VNET.LocalDNS' {
@@ -522,8 +536,26 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Network/virtualNetworks' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vnet-001';
+            $ruleResult.TargetName | Should -BeIn 'vnet-001', 'vnet-empty', 'vnet-separate-subnet', 'vnet-embedded-subnet';
+            $ruleResult.Length | Should -Be 4;
+        }
+
+        It 'Azure.VNET.SubnetNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.SubnetNaming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.TargetName | Should -BeIn 'vnet-002/subnet-extra', 'vnet-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.TargetName | Should -BeIn 'vnet-empty', 'vnet-separate-subnet', 'vnet-embedded-subnet';
+
+            # # None
+            # $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Network/virtualNetworks' });
+            # $ruleResult | Should -Not -BeNullOrEmpty;
+            # $ruleResult.Length | Should -Be 1;
+            # $ruleResult.TargetName | Should -Be 'vnet-001';
         }
     }
 
@@ -583,8 +615,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E';
+            $ruleResult.Length | Should -Be 4;
             
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 4;
@@ -612,8 +644,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-H/excludedSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-H/excludedSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
     }
 }

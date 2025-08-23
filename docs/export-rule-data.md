@@ -67,7 +67,7 @@ By default, resource data for the current subscription context will be exported.
 To export resource data for specific subscriptions use:
 
 - `-Subscription` - to specify subscriptions by id or name.
-- `-Tenant` - to specify subscriptions within an Azure Active Directory Tenant by id.
+- `-Tenant` - to specify subscriptions within an Entra ID tenant id.
 
 For example:
 
@@ -90,7 +90,7 @@ Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db';
 
 To export resource data for all subscription contexts use:
 
-- `-All` - to export resource data for all subscription contexts.
+- `-All` - to export resource data for all available subscription contexts.
 
 For example:
 
@@ -98,6 +98,12 @@ For example:
 # Export data from all subscription contexts
 Export-AzRuleData -All;
 ```
+
+!!! Note
+    By default, `Connect-AzAccount` loads a maximum of 25 subscriptions contexts.
+    If more than 25 subscriptions are available, specify `-MaxContextPopulation` to increase the limit.
+    See [Connect-AzAccount](https://learn.microsoft.com/powershell/module/az.accounts/connect-azaccount#-maxcontextpopulation)
+    for more information.
 
 To export security alerts from Microsoft Defender for Cloud for the subscription use:
 
