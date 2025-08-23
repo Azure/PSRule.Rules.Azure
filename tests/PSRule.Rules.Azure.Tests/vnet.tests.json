@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.9.1.41621",
-      "templateHash": "16943875226754338724"
+      "version": "0.37.4.10188",
+      "templateHash": "14588740481767783361"
     }
   },
   "parameters": {
@@ -102,7 +102,7 @@
         }
       }
     ],
-    "subscriptionDefautTags": {
+    "subscriptionDefaultTags": {
       "ffffffff-ffff-ffff-ffff-ffffffffffff": {
         "role": "Networking"
       },
@@ -161,17 +161,17 @@
         "addressSpace": "[variables('vnetAddressSpace')]",
         "subnets": "[variables('allSubnets')]"
       },
-      "tags": "[variables('subscriptionDefautTags')[subscription().subscriptionId]]",
+      "tags": "[variables('subscriptionDefaultTags')[subscription().subscriptionId]]",
       "dependsOn": [
         "nsg"
       ]
     },
     {
-      "condition": "[true()]",
       "copy": {
         "name": "nsg",
         "count": "[length(parameters('subnets'))]"
       },
+      "condition": true,
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2019-04-01",
       "name": "[format('nsg-{0}', parameters('subnets')[copyIndex()].name)]",
@@ -186,6 +186,73 @@
       "name": "vnet-002/subnet-extra",
       "properties": {
         "addressPrefix": "10.100.0.0/24"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2024-07-01",
+      "name": "vnet-empty",
+      "location": "[parameters('location')]",
+      "tags": {
+        "module": "networking"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2024-07-01",
+      "name": "vnet-separate-subnet",
+      "location": "[parameters('location')]",
+      "tags": {
+        "module": "networking"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2024-07-01",
+      "name": "[format('{0}/{1}', 'vnet-separate-subnet', 'snet-separate')]",
+      "properties": {
+        "addressPrefix": "10.0.0.0/24"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-separate-subnet')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2024-07-01",
+      "name": "vnet-embedded-subnet",
+      "location": "[parameters('location')]",
+      "tags": {
+        "module": "networking"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "snet-embedded",
+            "properties": {
+              "addressPrefix": "10.0.0.0/24"
+            }
+          }
+        ]
       }
     }
   ]
