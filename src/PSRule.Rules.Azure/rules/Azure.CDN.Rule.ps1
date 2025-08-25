@@ -24,7 +24,7 @@ Rule 'Azure.CDN.EndpointName' -Ref 'AZR-000091' -Type 'Microsoft.Cdn/profiles/en
 }
 
 # Synopsis: Consider configuring the minimum supported TLS version to be 1.2.
-Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoints', 'Microsoft.Cdn/profiles/endpoints/customdomains' -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Security'; 'Azure.MCSB.v1/control' = 'DP-3' } {
+Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoints', 'Microsoft.Cdn/profiles/endpoints/customdomains' -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Security'; 'Azure.WAF/maturity' = 'L1'; 'Azure.MCSB.v1/control' = 'DP-3' } {
     $customDomains = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Cdn/profiles/endpoints') {
         $customDomains = @(GetSubResources -ResourceType 'Microsoft.Cdn/profiles/endpoints/customdomains');

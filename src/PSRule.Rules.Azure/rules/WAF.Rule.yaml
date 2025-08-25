@@ -89,3 +89,22 @@ spec:
     tag:
       release: GA
       Azure.WAF/pillar: Performance Efficiency
+
+---
+# Synopsis: Microsoft Azure Well-Architected Framework - Security pillar Level 1 maturity baseline.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.WAF.Security.L1
+  annotations:
+    taxonomy: Azure.WAF
+    pillar: Security
+    maturity: L1
+    export: true
+    moduleVersion: v1.35.0
+spec:
+  rule:
+    tag:
+      release: GA
+      Azure.WAF/pillar: Security
+      Azure.WAF/maturity: L1
