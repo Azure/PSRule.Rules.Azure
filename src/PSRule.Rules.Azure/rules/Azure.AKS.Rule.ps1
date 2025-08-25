@@ -144,7 +144,7 @@ Rule 'Azure.AKS.AvailabilityZone' -Ref 'AZR-000021' -Type 'Microsoft.ContainerSe
 } -Configure @{ AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: AKS clusters should collect security-based audit logs to assess and monitor the compliance status of workloads.
-Rule 'Azure.AKS.AuditLogs' -Ref 'AZR-000022' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Security'; 'Azure.WAF/maturity' = 'L1' } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4' } {
+Rule 'Azure.AKS.AuditLogs' -Ref 'AZR-000022' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4'; 'Azure.WAF/maturity' = 'L1'; } {
     $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerService/managedClusters/providers/diagnosticSettings');
 
     $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured, $TargetObject.name);

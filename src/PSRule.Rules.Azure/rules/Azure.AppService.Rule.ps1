@@ -11,7 +11,7 @@ Rule 'Azure.AppService.PlanInstanceCount' -Ref 'AZR-000071' -Type 'Microsoft.Web
 }
 
 # Synopsis: App Service should not accept weak or deprecated transport protocols for client-server communication.
-Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.WAF/maturity' = 'L1' } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
+Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3'; 'Azure.WAF/maturity' = 'L1'; } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.Version($TargetObject, 'properties.siteConfig.minTlsVersion', '>=1.2').

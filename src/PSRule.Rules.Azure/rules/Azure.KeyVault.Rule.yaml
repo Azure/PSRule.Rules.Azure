@@ -54,9 +54,9 @@ metadata:
     release: GA
     ruleSet: 2023_06
     Azure.WAF/pillar: Security
-    Azure.WAF/maturity: 'L1'
   labels:
     Azure.MCSB.v1/control: IM-1
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
   - Microsoft.KeyVault/vaults
@@ -76,9 +76,9 @@ metadata:
     release: GA
     ruleSet: 2023_03
     Azure.WAF/pillar: Security
-    Azure.WAF/maturity: 'L1'
   labels:
     Azure.MCSB.v1/control: NS-2
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
   - Microsoft.KeyVault/vaults

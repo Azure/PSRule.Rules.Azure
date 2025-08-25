@@ -78,7 +78,7 @@ Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/s
 }
 
 # Synopsis: Use Azure Active Directory (AAD) authentication with Azure Database for MySQL databases.
-Rule 'Azure.MySQL.AAD' -Ref 'AZR-000392' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/flexibleServers/administrators', 'Microsoft.DBforMySQL/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.WAF/maturity' = 'L1' } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
+Rule 'Azure.MySQL.AAD' -Ref 'AZR-000392' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/flexibleServers/administrators', 'Microsoft.DBforMySQL/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1'; 'Azure.WAF/maturity' = 'L1'; } {
     switch ($PSRule.TargetType) {
         'Microsoft.DBforMySQL/flexibleServers' { MySQLFlexibleServerAAD }
         'Microsoft.DBforMySQL/servers' { MySQLSingleServerAAD }
@@ -88,7 +88,7 @@ Rule 'Azure.MySQL.AAD' -Ref 'AZR-000392' -Type 'Microsoft.DBforMySQL/flexibleSer
 }
 
 # Synopsis: Ensure Azure AD-only authentication is enabled with Azure Database for MySQL databases.
-Rule 'Azure.MySQL.AADOnly' -Ref 'AZR-000394' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/flexibleServers/configurations' -Tag @{ release = 'GA'; ruleSet = '2023_09'; 'Azure.WAF/pillar' = 'Security'; 'Azure.WAF/maturity' = 'L1' } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
+Rule 'Azure.MySQL.AADOnly' -Ref 'AZR-000394' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/flexibleServers/configurations' -Tag @{ release = 'GA'; ruleSet = '2023_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1'; 'Azure.WAF/maturity' = 'L1'; } {
     if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers') {
         $configurations = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/flexibleServers/configurations' -Name "aad_auth_only")
         if ($configurations.Count -eq 0) {

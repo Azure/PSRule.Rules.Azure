@@ -107,4 +107,5 @@ spec:
     tag:
       release: GA
       Azure.WAF/pillar: Security
+    label:
       Azure.WAF/maturity: L1

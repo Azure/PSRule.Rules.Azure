@@ -8,7 +8,7 @@
 #region Application Gateway
 
 # Synopsis: Application Gateways should only expose frontend HTTP endpoints over HTTPS.
-Rule 'Azure.AppGw.UseHTTPS' -Ref 'AZR-000059' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Security'; 'Azure.WAF/maturity' = 'L1' } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3'; 'Azure.WAF/progressive' = 'C' } {
+Rule 'Azure.AppGw.UseHTTPS' -Ref 'AZR-000059' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3'; 'Azure.WAF/progressive' = 'C'; 'Azure.WAF/maturity' = 'L1'; } {
     $listeners = @($TargetObject.properties.httpListeners | Where-Object { $_.properties.protocol -eq 'http' });
     $requestRoutingRules = @($TargetObject.properties.requestRoutingRules);
     if ($listeners.Length -eq 0 -or $requestRoutingRules.Length -eq 0) {

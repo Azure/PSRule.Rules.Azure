@@ -38,9 +38,9 @@ metadata:
     release: 'GA'
     ruleSet: '2020_09'
     Azure.WAF/pillar: 'Security'
-    Azure.WAF/maturity: 'L1'
   labels:
     Azure.MCSB.v1/control: 'DP-3'
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
   - Microsoft.Storage/storageAccounts
@@ -59,9 +59,9 @@ metadata:
     release: GA
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
-    Azure.WAF/maturity: 'L1'
   labels:
     Azure.MCSB.v1/control: DP-3
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
   - Microsoft.Storage/storageAccounts
