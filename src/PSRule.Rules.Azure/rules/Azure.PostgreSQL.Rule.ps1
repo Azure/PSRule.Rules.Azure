@@ -73,7 +73,7 @@ Rule 'Azure.PostgreSQL.DefenderCloud' -Ref 'AZR-000327' -Type 'Microsoft.DBforPo
 }
 
 # Synopsis: Use Azure Active Directory (AAD) authentication with Azure Database for PostgreSQL databases.
-Rule 'Azure.PostgreSQL.AAD' -Ref 'AZR-000389' -Type 'Microsoft.DBforPostgreSQL/flexibleServers', 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/flexibleServers/administrators', 'Microsoft.DBforPostgreSQL/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
+Rule 'Azure.PostgreSQL.AAD' -Ref 'AZR-000389' -Type 'Microsoft.DBforPostgreSQL/flexibleServers', 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/flexibleServers/administrators', 'Microsoft.DBforPostgreSQL/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.WAF/maturity' = 'L1' } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
     switch ($PSRule.TargetType) {
         'Microsoft.DBforPostgreSQL/flexibleServers' { PostgreSQLFlexibleServerAAD }
         'Microsoft.DBforPostgreSQL/servers' { PostgreSQLSingleServerAAD }

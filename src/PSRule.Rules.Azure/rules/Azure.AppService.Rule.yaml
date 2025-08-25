@@ -49,6 +49,7 @@ metadata:
     release: GA
     ruleSet: 2020_12
     Azure.WAF/pillar: Security
+    Azure.WAF/maturity: 'L1'
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-2' ]
 spec:

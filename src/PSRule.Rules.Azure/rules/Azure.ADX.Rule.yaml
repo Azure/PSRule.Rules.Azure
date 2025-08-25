@@ -42,6 +42,7 @@ metadata:
     release: GA
     ruleSet: 2022_03
     Azure.WAF/pillar: 'Security'
+    Azure.WAF/maturity: 'L1'
   labels:
     Azure.MCSB.v1/control: [ 'DP-3', 'DP-4' ]
 spec:
