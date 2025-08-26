@@ -101,7 +101,7 @@ metadata:
     pillar: Security
     maturity: L1
     export: true
-    moduleVersion: v1.35.0
+    moduleVersion: v1.36.0
 spec:
   rule:
     tag:
