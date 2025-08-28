@@ -18,12 +18,6 @@ The following rules are included within the `Azure.Pillar.Security.L1` baseline.
 
 This baseline includes a total of 33 rules.
 
-
-
-[:material-download: Download CSV](Azure.Pillar.Security.L1.csv){ .md-button }
-
-
-
 Name | Synopsis | Severity | Maturity
 ---- | -------- | -------- | --------
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical | L1

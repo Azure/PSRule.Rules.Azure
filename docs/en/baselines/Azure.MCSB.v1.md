@@ -18,12 +18,6 @@ The following rules are included within the `Azure.MCSB.v1` baseline.
 
 This baseline includes a total of 138 rules.
 
-
-
-[:material-download: Download CSV](Azure.MCSB.v1.csv){ .md-button }
-
-
-
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical

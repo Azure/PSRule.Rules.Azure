@@ -16,12 +16,6 @@ The following rules are included within the `Azure.CAF_Compatibility` baseline.
 
 This baseline includes a total of 72 rules.
 
-
-
-[:material-download: Download CSV](Azure.CAF_Compatibility.csv){ .md-button }
-
-
-
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.Name](../rules/Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness

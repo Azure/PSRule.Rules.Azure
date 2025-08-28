@@ -15,12 +15,6 @@ The following rules are included within the `Azure.Preview_2022_09` baseline.
 
 This baseline includes a total of 3 rules.
 
-
-
-[:material-download: Download CSV](Azure.Preview_2022_09.csv){ .md-button }
-
-
-
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.Quarantine](../rules/Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Important

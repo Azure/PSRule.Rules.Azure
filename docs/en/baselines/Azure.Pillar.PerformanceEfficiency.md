@@ -16,12 +16,6 @@ The following rules are included within the `Azure.Pillar.PerformanceEfficiency`
 
 This baseline includes a total of 18 rules.
 
-
-
-[:material-download: Download CSV](Azure.Pillar.PerformanceEfficiency.csv){ .md-button }
-
-
-
 Name | Synopsis | Severity | Maturity
 ---- | -------- | -------- | --------
 [Azure.AKS.AutoScaling](../rules/Azure.AKS.AutoScaling.md) | Use autoscaling to scale clusters based on workload requirements. | Important | -

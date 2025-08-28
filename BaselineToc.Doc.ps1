@@ -37,9 +37,6 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
     Section 'Rules' -If { $ruleCount -gt 0 } {
         "The following rules are included within the ``$baselineName`` baseline.";
         "This baseline includes a total of $ruleCount rules.";
-        "";
-        "[:material-download: Download CSV]($baselineName.csv){ .md-button }";
-        "";
 
         if ($addMaturityColumn) {
             $rules | Table -Property @{ Name = 'Name'; Expression = {
@@ -112,9 +109,6 @@ Document 'Azure.MCSB.Baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v
     Section 'Controls' -If { $ruleCount -gt 0 } {
         "The following rules are included within the ``$baselineName`` baseline.";
         "This baseline includes a total of $ruleCount rules.";
-        "";
-        "[:material-download: Download CSV]($baselineName.csv){ .md-button }";
-        "";
         $rules | Table -Property @{ Name = 'Name'; Expression = {
             "[$($_.Name)](../rules/$($_.Name).md)"
         }}, Synopsis, @{ Name = 'Severity'; Expression = {
