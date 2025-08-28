@@ -16,6 +16,12 @@ The following rules are included within the `Azure.Pillar.CostOptimization` base
 
 This baseline includes a total of 19 rules.
 
+
+
+[:material-download: Download CSV](Azure.Pillar.CostOptimization.csv){ .md-button }
+
+
+
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.Usage](../rules/Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important

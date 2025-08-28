@@ -14,6 +14,12 @@ The following rules are included within the `Azure.GA_2025_06` baseline.
 
 This baseline includes a total of 476 rules.
 
+
+
+[:material-download: Download CSV](Azure.GA_2025_06.csv){ .md-button }
+
+
+
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical

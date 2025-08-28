@@ -16,6 +16,12 @@ The following rules are included within the `Azure.Pillar.Reliability` baseline.
 
 This baseline includes a total of 96 rules.
 
+
+
+[:material-download: Download CSV](Azure.Pillar.Reliability.csv){ .md-button }
+
+
+
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.GeoReplica](../rules/Azure.ACR.GeoReplica.md) | Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start. | Important

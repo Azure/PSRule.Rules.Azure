@@ -16,6 +16,12 @@ The following rules are included within the `Azure.Pillar.OperationalExcellence`
 
 This baseline includes a total of 119 rules.
 
+
+
+[:material-download: Download CSV](Azure.Pillar.OperationalExcellence.csv){ .md-button }
+
+
+
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.Name](../rules/Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness

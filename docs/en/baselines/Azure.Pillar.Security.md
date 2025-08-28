@@ -16,6 +16,12 @@ The following rules are included within the `Azure.Pillar.Security` baseline.
 
 This baseline includes a total of 226 rules.
 
+
+
+[:material-download: Download CSV](Azure.Pillar.Security.csv){ .md-button }
+
+
+
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical

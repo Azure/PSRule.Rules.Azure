@@ -1,0 +1,3 @@
+"Name","Synopsis","Severity"
+"Azure.ACR.Quarantine","Enable container image quarantine, scan, and mark images as verified.","Important"
+"Azure.ACR.Retention","Use a retention policy to cleanup untagged manifests.","Important"
