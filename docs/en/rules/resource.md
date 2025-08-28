@@ -370,11 +370,12 @@ Name | Synopsis | Severity | Level
 [Azure.ACR.Firewall](Azure.ACR.Firewall.md) | Container Registry without restrictions can be accessed from any network location including the Internet. | Important | Error
 [Azure.ACR.GeoReplica](Azure.ACR.GeoReplica.md) | Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start. | Important | Error
 [Azure.ACR.ImageHealth](Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | Critical | Error
-[Azure.ACR.MinSku](Azure.ACR.MinSku.md) | ACR should use the Premium or Standard SKU for production deployments. | Important | Error
+[Azure.ACR.MinSku](Azure.ACR.MinSku.md) | The Basic SKU provides limited performance and features for production container registry workloads. | Important | Error
 [Azure.ACR.Name](Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness | Error
 [Azure.ACR.Quarantine](Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Important | Error
+[Azure.ACR.ReplicaLocation](Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | Important | Error
 [Azure.ACR.Retention](Azure.ACR.Retention.md) | Use a retention policy to cleanup untagged manifests. | Important | Error
-[Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Important | Error
+[Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Container registry artifacts are permanently lost when accidentally deleted without soft delete protection. | Important | Error
 [Azure.ACR.Usage](Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important | Error
 
 ## Content Delivery Network

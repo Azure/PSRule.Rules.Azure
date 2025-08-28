@@ -377,8 +377,8 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.ACR.MinSku](Azure.ACR.MinSku.md) | ACR should use the Premium or Standard SKU for production deployments. | Important | Error
-[Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Important | Error
+[Azure.ACR.MinSku](Azure.ACR.MinSku.md) | The Basic SKU provides limited performance and features for production container registry workloads. | Important | Error
+[Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Container registry artifacts are permanently lost when accidentally deleted without soft delete protection. | Important | Error
 [Azure.ADX.SLA](Azure.ADX.SLA.md) | Use SKUs that include an SLA when configuring Azure Data Explorer (ADX) clusters. | Important | Error
 [Azure.AKS.MaintenanceWindow](Azure.AKS.MaintenanceWindow.md) | Configure customer-controlled maintenance windows for AKS clusters. | Important | Error
 [Azure.AKS.PoolVersion](Azure.AKS.PoolVersion.md) | AKS node pools should match Kubernetes control plane version. | Important | Error
@@ -561,7 +561,7 @@ Name | Synopsis | Severity | Level
 [Azure.APIM.Protocols](Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2 for client and backend communication. | Critical | Error
 [Azure.IoTHub.MinTLS](Azure.IoTHub.MinTLS.md) | IoT Hubs should reject TLS versions older than 1.2. | Critical | Error
 
-### Identity and Access Management
+### Identity and access management
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
@@ -613,6 +613,7 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
+[Azure.ACR.ReplicaLocation](Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | Important | Error
 [Azure.AKS.NodeAutoUpgrade](Azure.AKS.NodeAutoUpgrade.md) | Operating system (OS) security updates should be applied to AKS nodes and rebooted as required to address security vulnerabilities. | Important | Error
 [Azure.EntraDS.ReplicaLocation](Azure.EntraDS.ReplicaLocation.md) | The location of a replica set determines the country or region where the data is stored and processed. | Important | Error
 [Azure.Log.ReplicaLocation](Azure.Log.ReplicaLocation.md) | The replication location determines the country or region where the data is stored and processed. | Important | Error
