@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
   "name": "PSRule for Azure Developer",
-  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-noble",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:8.0-noble",
   "customizations": {
     "vscode": {
       "settings": {
