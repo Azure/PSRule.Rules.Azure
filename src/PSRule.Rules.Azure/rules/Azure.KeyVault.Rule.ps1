@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Limit access to Key Vault data
-Rule 'Azure.KeyVault.AccessPolicy' -Ref 'AZR-000118' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/accessPolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.KeyVault.AccessPolicy' -Ref 'AZR-000118' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/accessPolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L1'; } {
     Reason $LocalizedData.AccessPolicyLeastPrivilege;
     $accessPolicies = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.KeyVault/vaults') {
@@ -24,7 +24,7 @@ Rule 'Azure.KeyVault.AccessPolicy' -Ref 'AZR-000118' -Type 'Microsoft.KeyVault/v
 }
 
 # Synopsis: Ensure audit diagnostics logs are enabled to audit Key Vault access.
-Rule 'Azure.KeyVault.Logs' -Ref 'AZR-000119' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('LT-4') } {
+Rule 'Azure.KeyVault.Logs' -Ref 'AZR-000119' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('LT-4'); 'Azure.WAF/maturity' = 'L1'; } {
     $logCategoryGroups = 'audit', 'allLogs'
     $joinedLogCategoryGroups = $logCategoryGroups -join ', '
     $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.KeyVault/vaults/providers/diagnosticSettings' |

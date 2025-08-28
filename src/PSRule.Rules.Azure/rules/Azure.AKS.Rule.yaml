@@ -20,6 +20,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['IM-1', 'IM-2']
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -122,6 +123,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['IM-1', 'IM-2']
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -167,6 +169,7 @@ metadata:
     Azure.MCSB.v1/control: ['IM-1', 'PA-1']
     Azure.Policy/id: /providers/Microsoft.Authorization/policyDefinitions/993c2fcd-2b29-49d2-9eb0-df2c3a730c32
     Azure.WAF/progressive: C
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
