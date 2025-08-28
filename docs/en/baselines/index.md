@@ -66,6 +66,7 @@ Pillar specific baselines provide a focused set of rules for a specific Azure We
 
 Name | Synopsis | Status
 ---- | -------- | ------
+[Azure.Pillar.Security.L1](Azure.Pillar.Security.L1.md) | Microsoft Azure Well-Architected Framework - Security pillar Level 1 maturity baseline. | Latest
 [Azure.Pillar.Security](Azure.Pillar.Security.md) | Microsoft Azure Well-Architected Framework - Security pillar specific baseline. | Latest
 [Azure.Pillar.Reliability](Azure.Pillar.Reliability.md) | Microsoft Azure Well-Architected Framework - Reliability pillar specific baseline. | Latest
 [Azure.Pillar.PerformanceEfficiency](Azure.Pillar.PerformanceEfficiency.md) | Microsoft Azure Well-Architected Framework - Performance Efficiency pillar specific baseline. | Latest
