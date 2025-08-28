@@ -28,6 +28,9 @@ input:
   - '.markdownlint.json'
   - '.github/dependabot.yml'
 
+  # Sourced from https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.sh
+  - 'dotnet-install.sh'
+
 include:
   path: []
 
