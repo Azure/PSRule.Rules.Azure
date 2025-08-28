@@ -95,7 +95,7 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
-  name: Azure.WAF.Security.L1
+  name: Azure.Pillar.Security.L1
   annotations:
     taxonomy: Azure.WAF
     pillar: Security

@@ -63,6 +63,8 @@ metadata:
     release: GA
     ruleSet: 2025_06
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
     - Microsoft.Insights/components
