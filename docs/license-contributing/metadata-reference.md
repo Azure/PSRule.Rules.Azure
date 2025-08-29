@@ -29,6 +29,11 @@ Indicates the release status of the Azure feature that the rule validates.
 -Tag @{ release = 'GA'; }
 ```
 
+```yaml
+tag:
+  release: GA
+```
+
 #### ruleSet
 
 Indicates the quarterly release when the rule was introduced or last significantly updated. Used by quarterly baselines to provide stable checkpoints.
@@ -43,6 +48,12 @@ Current rule sets include: `2020_06`, `2020_09`, `2020_12`, `2021_03`, `2021_06`
 
 ```powershell
 -Tag @{ release = 'GA'; ruleSet = '2025_06'; }
+```
+
+```yaml
+tag:
+  release: GA
+  ruleSet: '2025_06'
 ```
 
 #### Azure.WAF/pillar
@@ -63,6 +74,13 @@ Aligns the rule with the Microsoft Azure Well-Architected Framework (WAF) pillar
 -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; }
 ```
 
+```yaml
+tag:
+  release: GA
+  ruleSet: '2025_06'
+  Azure.WAF/pillar: Security
+```
+
 #### method
 
 Specifies the evaluation method or timing for the rule.
@@ -75,6 +93,14 @@ Specifies the evaluation method or timing for the rule.
 
 ```powershell
 -Tag @{ release = 'GA'; ruleSet = '2020_12'; method = 'in-flight'; 'Azure.WAF/pillar' = 'Security'; }
+```
+
+```yaml
+tag:
+  release: GA
+  ruleSet: '2020_12'
+  method: in-flight
+  Azure.WAF/pillar: Security
 ```
 
 #### Azure.MCSB.v1/control (in Tags)
@@ -115,6 +141,17 @@ Maps the rule to Microsoft Cloud Security Benchmark (MCSB) version 1 controls.
 -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1') } # Multiple controls
 ```
 
+```yaml
+labels:
+  Azure.MCSB.v1/control: DP-4
+
+# Multiple controls
+labels:
+  Azure.MCSB.v1/control:
+    - DP-2
+    - LT-1
+```
+
 #### Azure.Policy/id
 
 References the corresponding Azure Policy definition ID for rules that align with built-in Azure policies.
@@ -125,6 +162,11 @@ References the corresponding Azure Policy definition ID for rules that align wit
 
 ```powershell
 -Labels @{ 'Azure.Policy/id' = '/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d' }
+```
+
+```yaml
+labels:
+  Azure.Policy/id: /providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d
 ```
 
 #### Azure.CAF
@@ -142,6 +184,11 @@ Maps the rule to Cloud Adoption Framework (CAF) categories.
 -Labels @{ 'Azure.CAF' = 'naming' }
 ```
 
+```yaml
+labels:
+  Azure.CAF: naming
+```
+
 #### Azure.WAF/maturity
 
 Indicates the maturity level for Well-Architected Framework implementation.
@@ -156,6 +203,14 @@ Indicates the maturity level for Well-Architected Framework implementation.
 -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4'; 'Azure.WAF/maturity' = 'L1'; }
 ```
 
+```yaml
+labels:
+  Azure.MCSB.v1/control: LT-4
+  Azure.WAF/maturity: L1
+```
+
+For more information about the WAF security maturity model, see [Security maturity model](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level1).
+
 #### Azure.WAF/progressive
 
 Indicates progressive implementation approach for Well-Architected Framework.
@@ -168,6 +223,13 @@ Indicates progressive implementation approach for Well-Architected Framework.
 
 ```powershell
 -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3'; 'Azure.WAF/progressive' = 'C'; 'Azure.WAF/maturity' = 'L1'; }
+```
+
+```yaml
+labels:
+  Azure.MCSB.v1/control: DP-3
+  Azure.WAF/progressive: C
+  Azure.WAF/maturity: L1
 ```
 
 ## Documentation metadata
@@ -249,19 +311,6 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Use
 
 Baselines use YAML metadata to define their scope, purpose, and characteristics.
 
-### metadata.name
-
-The unique identifier for the baseline.
-
-**Common patterns:**
-
-- `Azure.Default` &mdash; Default baseline with GA rules
-- `Azure.Preview` &mdash; Includes GA and preview rules
-- `Azure.All` &mdash; Includes all rules
-- `Azure.GA_yyyy_mm` &mdash; Quarterly GA baselines
-- `Azure.Preview_yyyy_mm` &mdash; Quarterly preview baselines
-- `Azure.Pillar.<PillarName>` &mdash; WAF pillar-specific baselines
-
 ### metadata.annotations
 
 #### taxonomy
@@ -309,35 +358,6 @@ Marks baselines that are in experimental status.
 Marks baselines that are obsolete and should not be used.
 
 **Values:** `true`, `false`
-
-## Pattern metadata
-
-Patterns use metadata to describe their purpose and characteristics.
-
-### description
-
-Provides a human-readable description of what the pattern does or validates.
-
-**Example:**
-
-```csharp
-[YamlMember(Alias = "description")]
-public string Description { get; set; } = string.Empty;
-```
-
-## Best practices
-
-When working with metadata in PSRule for Azure:
-
-1. **Consistency** &mdash; Use consistent values across similar rules and follow established patterns.
-
-2. **Current rule sets** &mdash; For new rules, use the current or next quarter's ruleSet based on the release schedule.
-
-3. **Multiple controls** &mdash; When a rule maps to multiple MCSB controls, use an array format.
-
-4. **Documentation alignment** &mdash; Ensure rule metadata aligns with the documentation front matter.
-
-5. **Baseline inclusion** &mdash; Consider how metadata will affect baseline rule inclusion when designing new rules.
 
 ## See also
 
