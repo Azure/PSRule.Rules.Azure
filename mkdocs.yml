@@ -111,6 +111,7 @@ nav:
       - 8. Submit a pull request: contribute/rules/pull-request.md
     - Writing documentation: license-contributing/writing-documentation.md
     - Resources:
+      - Metadata reference: license-contributing/metadata-reference.md
       - Expansion internals: license-contributing/expansion-internals.md
       - Get started contributing: license-contributing/get-started-contributing.md
       - Getting started with contributions: license-contributing/getting-started-with-documentation.md
