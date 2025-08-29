@@ -27,7 +27,7 @@ AZR-000002 | [Azure.ACR.ContainerScan](Azure.ACR.ContainerScan.md) | Container i
 AZR-000003 | [Azure.ACR.ImageHealth](Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | GA
 AZR-000004 | [Azure.ACR.GeoReplica](Azure.ACR.GeoReplica.md) | Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start. | GA
 AZR-000005 | [Azure.ACR.AdminUser](Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | GA
-AZR-000006 | [Azure.ACR.MinSku](Azure.ACR.MinSku.md) | ACR should use the Premium or Standard SKU for production deployments. | GA
+AZR-000006 | [Azure.ACR.MinSku](Azure.ACR.MinSku.md) | The Basic SKU provides limited performance and features for production container registry workloads. | GA
 AZR-000007 | [Azure.ACR.Name](Azure.ACR.Name.md) | Container registry names should meet naming requirements. | GA
 AZR-000008 | [Azure.ACR.Quarantine](Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Preview
 AZR-000009 | [Azure.ACR.ContentTrust](Azure.ACR.ContentTrust.md) | Docker content trust allows images to be signed and verified when pulled from a container registry. | deprecated
@@ -330,7 +330,7 @@ AZR-000306 | [Azure.FrontDoorWAF.PreventionMode](Azure.FrontDoorWAF.PreventionMo
 AZR-000307 | [Azure.FrontDoorWAF.Exclusions](Azure.FrontDoorWAF.Exclusions.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. Avoid configuring rule exclusions. | GA
 AZR-000308 | [Azure.FrontDoorWAF.RuleGroups](Azure.FrontDoorWAF.RuleGroups.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. | GA
 AZR-000309 | [Azure.AppGwWAF.Enabled](Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | GA
-AZR-000310 | [Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Preview
+AZR-000310 | [Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Container registry artifacts are permanently lost when accidentally deleted without soft delete protection. | Preview
 AZR-000311 | [Azure.AppConfig.AuditLogs](Azure.AppConfig.AuditLogs.md) | Ensure app configuration store audit diagnostic logs are enabled. | GA
 AZR-000312 | [Azure.AppConfig.GeoReplica](Azure.AppConfig.GeoReplica.md) | Replicate app configuration store across all points of presence for an application. | GA
 AZR-000313 | [Azure.AppConfig.PurgeProtect](Azure.AppConfig.PurgeProtect.md) | Consider purge protection for app configuration store to ensure store cannot be purged in the retention period. | GA
@@ -513,5 +513,6 @@ AZR-000490 | [Azure.AppConfig.SecretLeak](Azure.AppConfig.SecretLeak.md) | Secre
 AZR-000491 | [Azure.Alert.MetricAutoMitigate](Azure.Alert.MetricAutoMitigate.md) | Alerts that require manual intervention for mitigation can lead to increased personnel time and effort. | GA
 AZR-000492 | [Azure.Alert.HighFrequencyQuery](Azure.Alert.HighFrequencyQuery.md) | High frequency scheduled queries are changed as a higher rate than low frequency queries. | GA
 AZR-000493 | [Azure.EventGrid.NamespaceTLS](Azure.EventGrid.NamespaceTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
+AZR-000494 | [Azure.ACR.ReplicaLocation](Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

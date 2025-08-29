@@ -8,6 +8,7 @@ Export-PSDocumentConvention 'NameBaseline' -Process {
 Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
     $baselineName = $PSDocs.TargetObject.Name;
     $obsolete = $PSDocs.TargetObject.metadata.annotations.obsolete -eq $True;
+    $addMaturityColumn = $baselineName -like "Azure.Pillar.*"
 
     Write-Verbose -Message "[Baseline] -- Processing baseline: $baselineName";
     Write-Verbose -Message "[Baseline] -- Baseline is obsolete: $obsolete";
@@ -36,11 +37,23 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
     Section 'Rules' -If { $ruleCount -gt 0 } {
         "The following rules are included within the ``$baselineName`` baseline.";
         "This baseline includes a total of $ruleCount rules.";
-        $rules | Table -Property @{ Name = 'Name'; Expression = {
-            "[$($_.Name)](../rules/$($_.Name).md)"
-        }}, Synopsis, @{ Name = 'Severity'; Expression = {
-            $_.Info.Annotations.severity
-        }}
+
+        if ($addMaturityColumn) {
+            $rules | Table -Property @{ Name = 'Name'; Expression = {
+                "[$($_.Name)](../rules/$($_.Name).md)"
+            }}, Synopsis, @{ Name = 'Severity'; Expression = {
+                $_.Info.Annotations.severity
+            }}, @{ Name = 'Maturity'; Expression = {
+                if ($Null -ne $_.Labels -and $_.Labels.ContainsKey('Azure.WAF/maturity')) { $_.Labels['Azure.WAF/maturity'] } else { '-' }
+            }}
+        }
+        else {
+            $rules | Table -Property @{ Name = 'Name'; Expression = {
+                "[$($_.Name)](../rules/$($_.Name).md)"
+            }}, Synopsis, @{ Name = 'Severity'; Expression = {
+                $_.Info.Annotations.severity
+            }}
+        }
     }
 
     $configurationKV = @()

@@ -482,6 +482,17 @@ task BuildBaselineDocs Build, Dependencies, {
             Synopsis = $_.Synopsis
             Rules    = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline $_.Name -WarningAction SilentlyContinue)
         }
+        
+        # Generate CSV file for this baseline
+        $csvPath = "./docs/en/baselines/$($_.Name).csv"
+        $csvData = $baselineDoc.Rules | Select-Object Name, Synopsis, @{Name='Severity'; Expression={$_.Info.Annotations.severity}}, @{Name='Pillar'; Expression={
+            if ($Null -ne $_.Tags -and $_.Tags.ContainsKey('Azure.WAF/pillar')) { $_.Tags['Azure.WAF/pillar'] } else { '-' }
+        }}, @{Name='Maturity'; Expression={
+            if ($Null -ne $_.Labels -and $_.Labels.ContainsKey('Azure.WAF/maturity')) { $_.Labels['Azure.WAF/maturity'] } else { '-' }
+        }} | Sort-Object -Property Name
+        $csvData | Export-Csv -Path $csvPath -NoTypeInformation -Encoding UTF8
+        Write-Verbose -Message "[Baseline] -- Generated CSV: $csvPath with $($csvData.Count) rules."
+        
         $baselineDoc;
     } | Invoke-PSDocument -OutputPath ./docs/en/baselines/ -Path ./BaselineToc.Doc.ps1 -Convention 'NameBaseline';
 
