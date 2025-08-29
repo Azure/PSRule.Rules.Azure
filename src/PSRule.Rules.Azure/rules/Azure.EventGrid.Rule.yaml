@@ -44,6 +44,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-3' ]
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
   - Microsoft.EventGrid/topics
@@ -74,6 +75,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'IM-1'
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
   - Microsoft.EventGrid/topics
@@ -93,6 +95,8 @@ metadata:
     release: GA
     ruleSet: 2025_03
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
   - Microsoft.EventGrid/topics
@@ -111,6 +115,8 @@ metadata:
     release: GA
     ruleSet: 2025_03
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
   - Microsoft.EventGrid/domains
@@ -129,6 +135,8 @@ metadata:
     release: GA
     ruleSet: 2025_06
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: 'L1'
 spec:
   type:
     - Microsoft.EventGrid/namespaces
