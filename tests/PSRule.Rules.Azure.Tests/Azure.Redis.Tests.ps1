@@ -338,8 +338,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
              $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
         }
 
-        It 'Azure.Redis.DisableLocalAuth' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.DisableLocalAuth' };
+        It 'Azure.Redis.LocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.LocalAuth' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

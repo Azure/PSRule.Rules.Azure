@@ -119,14 +119,15 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.Redis.DisableLocalAuth
+  name: Azure.Redis.LocalAuth
   ref: AZR-000495
   tags:
     release: GA
     ruleSet: 2025_09
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'IM-1'
+    Azure.MCSB.v1/control: IM-1
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.Cache/Redis

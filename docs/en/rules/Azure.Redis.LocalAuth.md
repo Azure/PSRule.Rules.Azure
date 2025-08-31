@@ -1,11 +1,11 @@
 ---
-reviewed: 2025-07-10
+reviewed: 2025-08-21
 severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: Azure Cache for Redis
 resourceType: Microsoft.Cache/Redis
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.DisableLocalAuth/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.LocalAuth/
 ---
 
 # Azure Cache for Redis access keys are enabled
