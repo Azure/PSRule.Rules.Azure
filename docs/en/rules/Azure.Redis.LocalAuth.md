@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-08-21
+reviewed: 2025-08-31
 severity: Important
 pillar: Security
 category: SE:05 Identity and access management
@@ -58,22 +58,29 @@ To deploy caches that pass this rule:
 For example:
 
 ```bicep
-resource cache 'Microsoft.Cache/Redis@2024-04-01-preview' = {
+resource cache 'Microsoft.Cache/redis@2024-11-01' = {
   name: name
   location: location
   properties: {
+    redisVersion: '6'
     sku: {
-      name: 'Standard'
-      family: 'C'
+      name: 'Premium'
+      family: 'P'
       capacity: 1
     }
     redisConfiguration: {
-      'aad-enabled': 'true'
+      'aad-enabled': 'True'
+      'maxmemory-reserved': '615'
     }
     enableNonSslPort: false
-    redisVersion: '6'
+    publicNetworkAccess: 'Disabled'
     disableAccessKeyAuthentication: true
   }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
 }
 ```
 
@@ -87,23 +94,30 @@ For example:
 
 ```json
 {
-  "type": "Microsoft.Cache/Redis",
-  "apiVersion": "2024-04-01-preview",
+  "type": "Microsoft.Cache/redis",
+  "apiVersion": "2024-11-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
+    "redisVersion": "6",
     "sku": {
-      "name": "Standard",
-      "family": "C",
+      "name": "Premium",
+      "family": "P",
       "capacity": 1
     },
     "redisConfiguration": {
-      "aad-enabled": "true"
+      "aad-enabled": "True",
+      "maxmemory-reserved": "615"
     },
     "enableNonSslPort": false,
-    "redisVersion": "6",
+    "publicNetworkAccess": "Disabled",
     "disableAccessKeyAuthentication": true
-  }
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
 }
 ```
 
@@ -115,6 +129,10 @@ To address this issue at runtime use the following policies:
 
 - [Azure Cache for Redis should not use access keys for authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_DisableAccessKeysAuth_Audit.json)
   `/providers/Microsoft.Authorization/policyDefinitions/3827af20-8f80-4b15-8300-6db0873ec901`
+
+## NOTES
+
+See the Azure Cache for Redis documentation for requirements and limitations for configuring this feature.
 
 ## LINKS
 
