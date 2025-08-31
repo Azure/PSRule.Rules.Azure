@@ -82,7 +82,7 @@ metadata:
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-6'
+    Azure.MCSB.v1/control: NS-6
 spec:
   type:
     - Microsoft.Network/frontdoorwebapplicationfirewallpolicies

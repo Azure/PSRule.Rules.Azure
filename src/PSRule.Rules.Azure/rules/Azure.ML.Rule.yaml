@@ -56,7 +56,7 @@ metadata:
     ruleSet: 2023_12
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'NS-1' ]
+    Azure.MCSB.v1/control: NS-1
 spec:
   type:
   - Microsoft.MachineLearningServices/workspaces/computes
@@ -76,7 +76,7 @@ metadata:
     ruleSet: 2023_12
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'NS-2' ]
+    Azure.MCSB.v1/control: NS-2
 spec:
   type:
   - Microsoft.MachineLearningServices/workspaces
@@ -99,7 +99,7 @@ metadata:
     ruleSet: 2023_12
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'IM-3' ]
+    Azure.MCSB.v1/control: IM-3
 spec:
   type:
   - Microsoft.MachineLearningServices/workspaces

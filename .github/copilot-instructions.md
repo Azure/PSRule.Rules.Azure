@@ -2,6 +2,7 @@ Rule Development Context:
 
 - To determine the correct rule reference number (e.g. AZR-XXXXXX) for new rules, find the next available number in the `docs/en/rules/index.md` file.
 - Current rule set version to use (e.g. 2025_06, 2025_09...) based on release schedule use the next quarter based on the current date.
+- Use the documentation in `docs/license-contributing/metadata-reference.md` to determine the correct metadata tags and labels for rules.
 
 File Management Context:
 

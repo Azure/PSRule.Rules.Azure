@@ -19,7 +19,7 @@ metadata:
     ruleSet: 2021_12
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-2'
+    Azure.MCSB.v1/control: NS-2
 spec:
   type:
   - Microsoft.EventGrid/topics
@@ -73,7 +73,7 @@ metadata:
     ruleSet: 2022_09
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'IM-1'
+    Azure.MCSB.v1/control: IM-1
 spec:
   type:
   - Microsoft.EventGrid/topics
