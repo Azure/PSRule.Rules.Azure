@@ -1,5 +1,5 @@
 ---
-generated: True
+generated: true
 title: Baselines
 ---
 
@@ -15,7 +15,8 @@ The following baselines relate to generally available Azure features.
 
 Name | Synopsis | Status
 ---- | -------- | ------
-[Azure.GA_2025_03](Azure.GA_2025_03.md) | Include rules released March 2025 or prior for Azure GA features. | Latest
+[Azure.GA_2025_06](Azure.GA_2025_06.md) | Include rules released June 2025 or prior for Azure GA features. | Latest
+[Azure.GA_2025_03](Azure.GA_2025_03.md) | Include rules released March 2025 or prior for Azure GA features. | Obsolete
 [Azure.GA_2024_12](Azure.GA_2024_12.md) | Include rules released December 2024 or prior for Azure GA features. | Obsolete
 [Azure.GA_2024_09](Azure.GA_2024_09.md) | Include rules released September 2024 or prior for Azure GA features. | Obsolete
 [Azure.GA_2024_06](Azure.GA_2024_06.md) | Include rules released June 2024 or prior for Azure GA features. | Obsolete
@@ -42,7 +43,8 @@ The following baselines relate to preview Azure features.
 
 Name | Synopsis | Status
 ---- | -------- | ------
-[Azure.Preview_2025_03](Azure.Preview_2025_03.md) | Include rules released March 2025 or prior for Azure preview only features. | Latest
+[Azure.Preview_2025_06](Azure.Preview_2025_06.md) | Include rules released June 2025 or prior for Azure preview only features. | Latest
+[Azure.Preview_2025_03](Azure.Preview_2025_03.md) | Include rules released March 2025 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2024_12](Azure.Preview_2024_12.md) | Include rules released December 2024 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2024_09](Azure.Preview_2024_09.md) | Include rules released September 2024 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2024_06](Azure.Preview_2024_06.md) | Include rules released June 2024 or prior for Azure preview only features. | Obsolete
@@ -64,6 +66,7 @@ Pillar specific baselines provide a focused set of rules for a specific Azure We
 
 Name | Synopsis | Status
 ---- | -------- | ------
+[Azure.Pillar.Security.L1](Azure.Pillar.Security.L1.md) | Microsoft Azure Well-Architected Framework - Security pillar Level 1 maturity baseline. | Latest
 [Azure.Pillar.Security](Azure.Pillar.Security.md) | Microsoft Azure Well-Architected Framework - Security pillar specific baseline. | Latest
 [Azure.Pillar.Reliability](Azure.Pillar.Reliability.md) | Microsoft Azure Well-Architected Framework - Reliability pillar specific baseline. | Latest
 [Azure.Pillar.PerformanceEfficiency](Azure.Pillar.PerformanceEfficiency.md) | Microsoft Azure Well-Architected Framework - Performance Efficiency pillar specific baseline. | Latest
@@ -77,4 +80,5 @@ Pillar specific baselines provide a focused set of rules that assist with implem
 Name | Synopsis | Status
 ---- | -------- | ------
 [Azure.CAF_Compatibility](Azure.CAF_Compatibility.md) | A converted baseline migrated from PSRule.Rules.CAF. Use this for compatibility with the previous strict module defaults. | Latest
+[Azure.CAF_2025_06](Azure.CAF_2025_06.md) | Includes rules related to Azure CAF based on a June 2025 snapshot. | Latest
 [Azure.CAF_2025_03](Azure.CAF_2025_03.md) | Includes rules related to Azure CAF based on a March 2025 snapshot. | Latest

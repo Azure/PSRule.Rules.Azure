@@ -212,12 +212,13 @@ Describe 'Azure.AI' -Tag 'Cognitive', 'AI' {
                 ErrorAction   = 'Stop'
             }
 
-            $option = New-PSRuleOption -Configuration @{ 'AZURE_AI_SERVICES_NAME_FORMAT' = '^ais-' };
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_AI_SERVICES_NAME_FORMAT' = '^aif-' };
 
             $names = @(
-                'ais-'
+                'aif-'
+                'aif-123'
+                'AIF-123'
                 'ais-123'
-                'AIS-123'
                 'cognitive-'
             )
 
@@ -229,18 +230,19 @@ Describe 'Azure.AI' -Tag 'Cognitive', 'AI' {
                 }
             })
 
-            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.AI.Naming'
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.AI.FoundryNaming'
         }
 
-        It 'Azure.AI.Naming' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AI.Naming' };
+        It 'Azure.AI.FoundryNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AI.FoundryNaming' };
             $validNames = @(
-                'ais-'
-                'ais-123'
+                'aif-'
+                'aif-123'
             )
 
             $invalidNames = @(
-                'AIS-123'
+                'AIF-123'
+                'ais-123'
                 'cognitive-'
             )
 

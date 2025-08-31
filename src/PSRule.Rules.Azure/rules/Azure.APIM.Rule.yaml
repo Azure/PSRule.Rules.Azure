@@ -20,6 +20,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'PA-7' ]
+    Azure.WAF/maturity: L1
 spec:
   type:
   - Microsoft.ApiManagement/service
@@ -43,7 +44,8 @@ metadata:
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'DP-3', 'DP-4' ] 
+    Azure.MCSB.v1/control: [ 'DP-3', 'DP-4' ]
+    Azure.WAF/maturity: L1 
 spec:
   type:
   - Microsoft.ApiManagement/service
@@ -74,7 +76,8 @@ metadata:
     ruleSet: 2022_03
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'DP-4'
+    Azure.MCSB.v1/control: DP-4
+    Azure.WAF/maturity: L1
 spec:
   type:
   - Microsoft.ApiManagement/service

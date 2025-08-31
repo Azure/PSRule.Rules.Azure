@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-04-25
+reviewed: 2025-08-23
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
@@ -128,7 +128,13 @@ For example:
 
 ## NOTES
 
-This rule does not check if subnets names are unique.
+This rule does not check if subnets names are unique and ignores the following subnets which are predefined by Azure:
+
+- GatewaySubnet
+- AzureBastionSubnet
+- AzureFirewallSubnet
+- AzureFirewallManagementSubnet
+- RouteServerSubnet
 
 <!-- caf:note name-format -->
 

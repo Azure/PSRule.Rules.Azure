@@ -45,10 +45,9 @@ Export-AzRuleData -OutputPath 'out/';
 
 !!! Important
     There are known issues with different versions of the Azure PowerShell modules.
-    The recommended versions of `Az.Accounts` and `Az.Resources` modules are:
+    The recommended versions of `Az.Accounts` module are:
 
     - `Az.Accounts` &mdash; `3.0.x` ... `5.1.x`
-    - `Az.Resources` &mdash; `6.7.x` ... `6.16.x`
 
     If you are using a different version, you may encounter issues with the export process.
     If you have multiple version of the Azure PowerShell modules installed, you can ensure the correct version is used by:
@@ -59,7 +58,6 @@ Export-AzRuleData -OutputPath 'out/';
 
       ```powershell
       Import-Module Az.Accounts -RequiredVersion 5.1.0;
-      Import-Module Az.Resources -RequiredVersion 6.7.0;
       ```
 
 ### Additional options
@@ -69,7 +67,7 @@ By default, resource data for the current subscription context will be exported.
 To export resource data for specific subscriptions use:
 
 - `-Subscription` - to specify subscriptions by id or name.
-- `-Tenant` - to specify subscriptions within an Azure Active Directory Tenant by id.
+- `-Tenant` - to specify subscriptions within an Entra ID tenant id.
 
 For example:
 
@@ -92,7 +90,7 @@ Export-AzRuleData -ResourceGroupName 'rg-app1-web', 'rg-app1-db';
 
 To export resource data for all subscription contexts use:
 
-- `-All` - to export resource data for all subscription contexts.
+- `-All` - to export resource data for all available subscription contexts.
 
 For example:
 
@@ -100,6 +98,12 @@ For example:
 # Export data from all subscription contexts
 Export-AzRuleData -All;
 ```
+
+!!! Note
+    By default, `Connect-AzAccount` loads a maximum of 25 subscriptions contexts.
+    If more than 25 subscriptions are available, specify `-MaxContextPopulation` to increase the limit.
+    See [Connect-AzAccount](https://learn.microsoft.com/powershell/module/az.accounts/connect-azaccount#-maxcontextpopulation)
+    for more information.
 
 To export security alerts from Microsoft Defender for Cloud for the subscription use:
 

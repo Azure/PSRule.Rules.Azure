@@ -7,11 +7,11 @@ resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.SoftDelete/
 ---
 
-# Use ACR soft delete policy
+# Container Registry soft delete policy is not enabled
 
 ## SYNOPSIS
 
-Azure Container Registries should have soft delete policy enabled.
+Container registry artifacts are permanently lost when accidentally deleted without soft delete protection.
 
 ## DESCRIPTION
 
@@ -36,6 +36,51 @@ Azure Container Registries should have soft delete enabled to enable recovery of
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy an Azure Container Registry that pass this rule:
+
+- Set the `properties.policies.softDeletePolicy.status` property to `enabled`.
+
+For example:
+
+```bicep
+resource registry 'Microsoft.ContainerRegistry/registries@2025-05-01-preview' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Premium'
+  }
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    adminUserEnabled: false
+    anonymousPullEnabled: false
+    publicNetworkAccess: 'Disabled'
+    zoneRedundancy: 'Enabled'
+    policies: {
+      quarantinePolicy: {
+        status: 'enabled'
+      }
+      retentionPolicy: {
+        days: 30
+        status: 'enabled'
+      }
+      softDeletePolicy: {
+        retentionDays: 90
+        status: 'enabled'
+      }
+      exportPolicy: {
+        status: 'disabled'
+      }
+    }
+  }
+}
+```
+
+<!-- external:avm avm/res/container-registry/registry softDeletePolicyStatus -->
+
 ### Configure with Azure template
 
 To deploy an Azure Container Registry that pass this rule:
@@ -47,8 +92,8 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2023-01-01-preview",
-  "name": "[parameters('registryName')]",
+  "apiVersion": "2025-05-01-preview",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
     "name": "Premium"
@@ -58,13 +103,12 @@ For example:
   },
   "properties": {
     "adminUserEnabled": false,
+    "anonymousPullEnabled": false,
+    "publicNetworkAccess": "Disabled",
+    "zoneRedundancy": "Enabled",
     "policies": {
       "quarantinePolicy": {
         "status": "enabled"
-      },
-      "trustPolicy": {
-        "status": "enabled",
-        "type": "Notary"
       },
       "retentionPolicy": {
         "days": 30,
@@ -73,54 +117,14 @@ For example:
       "softDeletePolicy": {
         "retentionDays": 90,
         "status": "enabled"
+      },
+      "exportPolicy": {
+        "status": "disabled"
       }
     }
   }
 }
 ```
-
-### Configure with Bicep
-
-To deploy an Azure Container Registry that pass this rule:
-
-- Set the `properties.policies.softDeletePolicy.status` property to `enabled`.
-
-For example:
-
-```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
-  name: registryName
-  location: location
-  sku: {
-    name: 'Premium'
-  }
-  identity: {
-    type: 'SystemAssigned'
-  }
-  properties: {
-    adminUserEnabled: false
-    policies: {
-      quarantinePolicy: {
-        status: 'enabled'
-      }
-      trustPolicy: {
-        status: 'enabled'
-        type: 'Notary'
-      }
-      retentionPolicy: {
-        days: 30
-        status: 'enabled'
-      }
-      softDeletePolicy: {
-        retentionDays: 90
-        status: 'enabled'
-      }
-    }
-  }
-}
-```
-
-<!-- external:avm avm/res/container-registry/registry:0.5.1 softDeletePolicyStatus -->
 
 ### Configure with Azure CLI
 

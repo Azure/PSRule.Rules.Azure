@@ -17,9 +17,10 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_03
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-3' ]
+    Azure.WAF/maturity: L1
 spec:
   type:
   - Microsoft.SignalRService/signalR

@@ -4,10 +4,12 @@
 Document 'index' {
     Title 'Baselines'
 
-    Metadata @{
-        generated = $True
+    $metadata = [ordered]@{
+        generated = 'true'
         title = 'Baselines'
     }
+
+    Metadata $metadata
 
     Import-Module ./out/modules/PSRule.Rules.Azure
     $baselines = Get-PSRuleBaseline -Module PSRule.Rules.Azure -WarningAction SilentlyContinue;

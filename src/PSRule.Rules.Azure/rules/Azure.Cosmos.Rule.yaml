@@ -65,6 +65,8 @@ metadata:
     release: GA
     ruleSet: 2024_06
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.DocumentDb/databaseAccounts
@@ -102,7 +104,7 @@ metadata:
     ruleSet: 2024_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: ['NS-2']
+    Azure.MCSB.v1/control: NS-2
 spec:
   type:
     - Microsoft.DocumentDb/databaseAccounts
