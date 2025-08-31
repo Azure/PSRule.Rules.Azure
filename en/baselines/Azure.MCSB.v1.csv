@@ -88,6 +88,7 @@
 "Azure.FrontDoor.UseWAF","Enable Web Application Firewall (WAF) policies on each Front Door endpoint.","Critical","Security","-"
 "Azure.FrontDoor.WAF.Enabled","Front Door Web Application Firewall (WAF) policy must be enabled to protect back end resources.","Critical","Security","-"
 "Azure.IoTHub.MinTLS","IoT Hubs should reject TLS versions older than 1.2.","Critical","Security","L1"
+"Azure.KeyVault.AutoRotationPolicy","Keys that become compromised may be used to spoof, decrypt, or gain access to sensitive data.","Important","Security","-"
 "Azure.KeyVault.Firewall","Key Vault should only accept explicitly allowed traffic.","Important","Security","L2"
 "Azure.KeyVault.Logs","Ensure audit diagnostics logs are enabled to audit Key Vault access.","Important","Security","L1"
 "Azure.KeyVault.RBAC","Key Vaults should use Azure RBAC as the authorization system for the data plane.","Awareness","Security","L1"
@@ -136,4 +137,5 @@
 "Azure.VM.Updates","Ensure automatic updates are enabled at deployment.","Important","Security","-"
 "Azure.VM.UseManagedDisks","Virtual machines (VMs) should use managed disks.","Important","Security","-"
 "Azure.VMSS.PublicKey","Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities.","Important","Security","-"
+"Azure.VNET.UseNSGs","Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned.","Critical","Security","-"
 "Azure.WebPubSub.ManagedIdentity","Configure Web PubSub Services to use managed identities to access Azure resources securely.","Important","Security","L1"
