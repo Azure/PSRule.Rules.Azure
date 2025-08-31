@@ -23,7 +23,7 @@ Rule 'Azure.Search.IndexSLA' -Ref 'AZR-000174' -Type 'Microsoft.Search/searchSer
 }
 
 # Synopsis: Configure managed identities to access Azure resources.
-Rule 'Azure.Search.ManagedIdentity' -Ref 'AZR-000175' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-3', 'IM-3') } {
+Rule 'Azure.Search.ManagedIdentity' -Ref 'AZR-000175' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-3', 'IM-3'); 'Azure.WAF/maturity' = 'L1' } {
     $Assert.HasFieldValue($TargetObject, 'Identity.Type', 'SystemAssigned');
 }
 

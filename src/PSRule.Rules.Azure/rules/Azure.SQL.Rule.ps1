@@ -129,7 +129,7 @@ Rule 'Azure.SQL.VAScan' -Ref 'AZR-000455' -Type 'Microsoft.Sql/servers', 'Micros
 #region SQL Database
 
 # Synopsis: Enable transparent data encryption
-Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/databases/transparentDataEncryption' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
+Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/databases/transparentDataEncryption' -If { !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3'; 'Azure.WAF/maturity' = 'L1' } {
     $configs = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Sql/servers/databases') {
         $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases/transparentDataEncryption');
