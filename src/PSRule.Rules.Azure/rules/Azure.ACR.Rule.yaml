@@ -23,7 +23,7 @@ metadata:
     Azure.Policy/id:
     - /providers/Microsoft.Authorization/policyDefinitions/dc921057-6b28-4fbe-9b83-f7bec05db6c2
     - /providers/Microsoft.Authorization/policyDefinitions/79fdfe03-ffcb-4e55-b4d0-b925b8241759
-    Azure.WAF/maturity: 'L1'
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.ContainerRegistry/registries
@@ -149,7 +149,7 @@ metadata:
     ruleSet: 2024_12
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'IM-1'
+    Azure.MCSB.v1/control: IM-1
 spec:
   with:
     - Azure.ACR.IsPremiumSKU
@@ -170,7 +170,7 @@ metadata:
     ruleSet: 2023_09
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-2'
+    Azure.MCSB.v1/control: NS-2
 spec:
   with:
     - Azure.ACR.IsPremiumSKU

@@ -21,6 +21,13 @@ Here is how you can get started:
 
 Please read our [contributing guidelines][2] and [code of conduct][3] to learn how to contribute.
 
+## Contributing resources
+
+- [Metadata reference](metadata-reference.md) &mdash; Reference for metadata used throughout PSRule for Azure.
+- [Writing documentation](writing-documentation.md) &mdash; Guidelines for writing and improving documentation.
+- [Getting started with documentation](getting-started-with-documentation.md) &mdash; How to get started contributing to documentation.
+- [Get started contributing](get-started-contributing.md) &mdash; How to get started contributing to the project.
+
   [1]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/LICENSE
   [2]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/CONTRIBUTING.md
   [3]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/CODE_OF_CONDUCT.md
