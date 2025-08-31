@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Ensure app configuration store audit diagnostic logs are enabled.
-Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfiguration/configurationStores' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('LT-4') } { 
+Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfiguration/configurationStores' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('LT-4'); 'Azure.WAF/maturity' = 'L1' } { 
     $logCategoryGroups = 'audit', 'allLogs'
     $joinedLogCategoryGroups = $logCategoryGroups -join ', '
     $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings' | ForEach-Object {

@@ -11,3 +11,8 @@ File Management Context:
 Documentation Standards Context:
 
 - Any links starting with `https://learn.microsoft.com/` should not include locale codes (e.g., `en-us`).
+
+Updating the change log:
+
+- After completing updates, update the change log in `docs/changelog.md` with a high-level one or two-line summary of the changes and the linked issue.
+- Change log entries are added as a new bullet point with the issue number in square brackets, under the Unreleased section.

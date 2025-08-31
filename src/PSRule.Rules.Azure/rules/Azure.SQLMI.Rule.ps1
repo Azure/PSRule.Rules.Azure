@@ -21,14 +21,14 @@ Rule 'Azure.SQLMI.Name' -Ref 'AZR-000194' -Type 'Microsoft.Sql/managedInstances'
 }
 
 # Synopsis: Ensure Azure AD-only authentication is enabled with Azure SQL Managed Instance.
-Rule 'Azure.SQLMI.AADOnly' -Ref 'AZR-000366' -Type 'Microsoft.Sql/managedInstances', 'Microsoft.Sql/managedInstances/azureADOnlyAuthentications' -Tag @{ release = 'GA'; ruleSet = '2023_03'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.SQLMI.AADOnly' -Ref 'AZR-000366' -Type 'Microsoft.Sql/managedInstances', 'Microsoft.Sql/managedInstances/azureADOnlyAuthentications' -Tag @{ release = 'GA'; ruleSet = '2023_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
     $types = 'Microsoft.Sql/managedInstances', 'Microsoft.Sql/managedInstances/azureADOnlyAuthentications'
     $enabledAADOnly = @(GetAzureSQLADOnlyAuthentication -ResourceType $types | Where-Object { $_ })
     $Assert.GreaterOrEqual($enabledAADOnly, '.', 1).Reason($LocalizedData.AzureADOnlyAuthentication)
 }
 
 # Synopsis: Use Azure Active Directory (AAD) authentication with Azure SQL Managed Instances.
-Rule 'Azure.SQLMI.AAD' -Ref 'AZR-000368' -Type 'Microsoft.Sql/managedInstances', 'Microsoft.Sql/managedInstances/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
+Rule 'Azure.SQLMI.AAD' -Ref 'AZR-000368' -Type 'Microsoft.Sql/managedInstances', 'Microsoft.Sql/managedInstances/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1'; 'Azure.WAF/maturity' = 'L1' } {
     # NB: Microsoft.Sql/managedInstances/administrators overrides properties.administrators property.
     if ($PSRule.TargetType -eq 'Microsoft.Sql/managedInstances') {
         $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/managedInstances/administrators' -Name 'ActiveDirectory')

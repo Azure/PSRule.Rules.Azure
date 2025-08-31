@@ -34,7 +34,8 @@ What's changed since v1.45.2:
 
 - New features:
   - **Experimental:** Added Well-Architected Framework - Security pillar Level 1 maturity baseline by @BernieWhite.
-    [#3509](https://github.com/Azure/PSRule.Rules.Azure/pull/3509)
+    [#3107](https://github.com/Azure/PSRule.Rules.Azure/issues/3509)
+    [#3517](https://github.com/Azure/PSRule.Rules.Azure/issues/3517)
     - The `Azure.Pillar.Security.L1` baseline provides an initial set of rules aligned to the first level of maturity.
     - This is an experimental baseline and may change in future releases.
   - Added CSV download of rule list associated with each baseline by @BernieWhite.
