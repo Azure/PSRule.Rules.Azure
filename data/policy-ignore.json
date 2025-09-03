@@ -329,5 +329,12 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.VNET.PrivateSubnet"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/3827af20-8f80-4b15-8300-6db0873ec901"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Redis.LocalAuth"
   }
 ]

@@ -10,7 +10,7 @@ param name string
 param location string = resourceGroup().location
 
 // An example Redis Cache.
-resource cache 'Microsoft.Cache/redis@2024-03-01' = {
+resource cache 'Microsoft.Cache/redis@2024-11-01' = {
   name: name
   location: location
   properties: {
@@ -26,6 +26,7 @@ resource cache 'Microsoft.Cache/redis@2024-03-01' = {
     }
     enableNonSslPort: false
     publicNetworkAccess: 'Disabled'
+    disableAccessKeyAuthentication: true
   }
   zones: [
     '1'

@@ -41,6 +41,9 @@ What's changed since v1.45.2:
   - Added CSV download of rule list associated with each baseline by @BernieWhite.
     [#3511](https://github.com/Azure/PSRule.Rules.Azure/issues/3511)
 - New rules:
+  - Azure Cache for Redis:
+    - Check that Entra ID is required for all authentication of cache instances by @BernieWhite.
+      [#3113](https://github.com/Azure/PSRule.Rules.Azure/issues/3113)
   - Container Registry:
     - Check replica locations are within allowed regions by @BernieWhite
       [#3442](https://github.com/Azure/PSRule.Rules.Azure/issues/3442)

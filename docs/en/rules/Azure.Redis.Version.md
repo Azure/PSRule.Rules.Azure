@@ -26,42 +26,6 @@ Consider upgrading Redis version for Azure Cache for Redis to the latest support
 
 ## EXAMPLES
 
-### Configure with Azure template
-
-To deploy caches that pass this rule:
-
-- Set the `properties.redisVersion` property to `latest` or `6`.
-
-For example:
-
-```json
-{
-  "type": "Microsoft.Cache/redis",
-  "apiVersion": "2024-03-01",
-  "name": "[parameters('name')]",
-  "location": "[parameters('location')]",
-  "properties": {
-    "redisVersion": "6",
-    "sku": {
-      "name": "Premium",
-      "family": "P",
-      "capacity": 1
-    },
-    "redisConfiguration": {
-      "aad-enabled": "True",
-      "maxmemory-reserved": "615"
-    },
-    "enableNonSslPort": false,
-    "publicNetworkAccess": "Disabled"
-  },
-  "zones": [
-    "1",
-    "2",
-    "3"
-  ]
-}
-```
-
 ### Configure with Bicep
 
 To deploy caches that pass this rule:
@@ -71,7 +35,7 @@ To deploy caches that pass this rule:
 For example:
 
 ```bicep
-resource cache 'Microsoft.Cache/redis@2024-03-01' = {
+resource cache 'Microsoft.Cache/redis@2024-11-01' = {
   name: name
   location: location
   properties: {
@@ -87,6 +51,7 @@ resource cache 'Microsoft.Cache/redis@2024-03-01' = {
     }
     enableNonSslPort: false
     publicNetworkAccess: 'Disabled'
+    disableAccessKeyAuthentication: true
   }
   zones: [
     '1'
@@ -97,6 +62,43 @@ resource cache 'Microsoft.Cache/redis@2024-03-01' = {
 ```
 
 <!-- external:avm avm/res/cache/redis redisVersion -->
+
+### Configure with Azure template
+
+To deploy caches that pass this rule:
+
+- Set the `properties.redisVersion` property to `latest` or `6`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Cache/redis",
+  "apiVersion": "2024-11-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "redisVersion": "6",
+    "sku": {
+      "name": "Premium",
+      "family": "P",
+      "capacity": 1
+    },
+    "redisConfiguration": {
+      "aad-enabled": "True",
+      "maxmemory-reserved": "615"
+    },
+    "enableNonSslPort": false,
+    "publicNetworkAccess": "Disabled",
+    "disableAccessKeyAuthentication": true
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
+}
+```
 
 ## NOTES
 
