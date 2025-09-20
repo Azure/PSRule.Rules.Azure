@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "15203537549290183068"
+      "version": "0.37.4.10188",
+      "templateHash": "14950240769402146235"
     }
   },
   "parameters": {
@@ -26,11 +26,11 @@
   "resources": [
     {
       "type": "Microsoft.Cache/redis",
-      "apiVersion": "2024-03-01",
+      "apiVersion": "2024-11-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "properties": {
-        "redisVersion": "latest",
+        "redisVersion": "6",
         "sku": {
           "name": "Premium",
           "family": "P",
@@ -41,7 +41,8 @@
           "maxmemory-reserved": "615"
         },
         "enableNonSslPort": false,
-        "publicNetworkAccess": "Disabled"
+        "publicNetworkAccess": "Disabled",
+        "disableAccessKeyAuthentication": true
       },
       "zones": [
         "1",

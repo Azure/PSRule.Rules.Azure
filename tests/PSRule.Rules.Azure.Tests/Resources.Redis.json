@@ -1061,6 +1061,7 @@
         "maxfragmentationmemory-reserved": "30",
         "maxmemory-delta": "30"
       },
+      "disableAccessKeyAuthentication": false,
       "accessKeys": null,
       "hostName": "redis-Q.redis.cache.windows.net",
       "port": 6379,
@@ -1080,7 +1081,7 @@
     "type": "Microsoft.Cache/Redis",
     "properties": {
       "provisioningState": "Succeeded",
-      "redisVersion": "6.0.14",
+      "redisVersion": "6",
       "enableNonSslPort": false,
       "instances": [
         {
@@ -1103,6 +1104,7 @@
         "maxfragmentationmemory-reserved": "30",
         "maxmemory-delta": "30"
       },
+      "disableAccessKeyAuthentication": true,
       "accessKeys": null,
       "hostName": "redis-R.redis.cache.windows.net",
       "port": 6379,

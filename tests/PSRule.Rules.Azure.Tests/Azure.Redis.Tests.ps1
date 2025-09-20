@@ -337,6 +337,22 @@ Describe 'Azure.Redis' -Tag 'Redis' {
              $ruleResult.Length | Should -Be 7;
              $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
         }
+
+        It 'Azure.Redis.LocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.LocalAuth' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q';
+            $ruleResult.Length | Should -Be 11;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'redis-R';
+            $ruleResult.Length | Should -Be 1;
+        }
     }
 
     Context 'With Configuration Option' -Tag 'Configuration' {

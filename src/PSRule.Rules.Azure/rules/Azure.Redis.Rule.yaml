@@ -116,6 +116,27 @@ spec:
     field: properties.redisConfiguration.aad-enabled
     equals: 'True'
 
+---
+# Synopsis: Authenticate Redis Cache clients with Entra ID identities.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Redis.LocalAuth
+  ref: AZR-000496
+  tags:
+    release: GA
+    ruleSet: 2025_09
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: IM-1
+    Azure.WAF/maturity: L1
+spec:
+  type:
+    - Microsoft.Cache/Redis
+  condition:
+    field: properties.disableAccessKeyAuthentication
+    equals: true
+
 #endregion Rules
 
 #region Selectors
