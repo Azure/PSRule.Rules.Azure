@@ -2,6 +2,7 @@
 "Azure.ACR.AdminUser","The local admin account allows depersonalized access to a container registry using a shared secret.","Critical","Security","L1"
 "Azure.ACR.AnonymousAccess","Anonymous pull access allows unidentified downloading of images and metadata from a container registry.","Important","Security","-"
 "Azure.ACR.ContainerScan","Container images or their base images may have vulnerabilities discovered after they are built.","Critical","Security","-"
+"Azure.ACR.ExportPolicy","Export policy on Azure container registry may allow artifact exfiltration.","Important","Security","-"
 "Azure.ACR.Firewall","Container Registry without restrictions can be accessed from any network location including the Internet.","Important","Security","-"
 "Azure.ACR.GeoReplica","Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start.","Important","Reliability","-"
 "Azure.ACR.ImageHealth","Remove container images with known vulnerabilities.","Critical","Security","L2"
