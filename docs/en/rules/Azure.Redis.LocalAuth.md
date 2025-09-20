@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-08-31
+reviewed: 2025-09-21
 severity: Important
 pillar: Security
 category: SE:05 Identity and access management
@@ -84,6 +84,8 @@ resource cache 'Microsoft.Cache/redis@2024-11-01' = {
 }
 ```
 
+<!-- external:avm avm/res/cache/redis disableAccessKeyAuthentication -->
+
 ### Configure with Azure template
 
 To deploy caches that pass this rule:
@@ -120,8 +122,6 @@ For example:
   ]
 }
 ```
-
-<!-- external:avm avm/res/cache/redis disableAccessKeyAuthentication -->
 
 ### Configure with Azure Policy
 
