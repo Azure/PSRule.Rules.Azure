@@ -36,9 +36,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_THEN = "then";
         private const string PROPERTY_EFFECT = "effect";
         private const string PROPERTY_DETAILS = "details";
-        private const string PROPERTY_EXISTENCECONDITION = "existenceCondition";
+        private const string PROPERTY_EXISTENCE_CONDITION = "existenceCondition";
         private const string PROPERTY_FIELD = "field";
-        private const string PROPERTY_POLICYDEFINITIONID = "policyDefinitionId";
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_NAME = "name";
         private const string PROPERTY_DEFAULTVALUE = "defaultValue";
@@ -47,7 +46,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_EQUALS = "equals";
         private const string PROPERTY_NOTEQUALS = "notEquals";
         private const string PROPERTY_CONTAINS = "contains";
-        private const string PROPERTY_NOTCONTAINS = "notContains";
+        private const string PROPERTY_NOT_CONTAINS = "notContains";
         private const string PROPERTY_GREATER = "greater";
         private const string PROPERTY_GREATEROREQUAL = "greaterOrEqual";
         private const string PROPERTY_GREATEROREQUALS = "greaterOrEquals";
@@ -57,7 +56,6 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_IN = "in";
         private const string PROPERTY_NOTIN = "notIn";
         private const string PROPERTY_EXISTS = "exists";
-        private const string PROPERTY_NOTEXISTS = "notExists";
         private const string PROPERTY_DISPLAYNAME = "displayName";
         private const string PROPERTY_DESCRIPTION = "description";
         private const string PROPERTY_METADATA = "metadata";
@@ -302,7 +300,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         subProperty = $".{PROPERTY_TYPE}";
                         SetDefaultResourceType(fieldType);
                     }
-                    else if (TryPolicyAliasPath(fieldProperty, out var fieldAliasPath))
+                    else if (TryPolicyAliasPath(fieldProperty, out var fieldAliasPath, out _))
                     {
                         subProperty = fieldAliasPath.GetLastSegment(COLLECTION_ALIAS);
                     }
@@ -463,7 +461,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                                 child.Remove();
                             }
 
-                            if (TryPolicyAliasPath(field, out var aliasPath))
+                            if (TryPolicyAliasPath(field, out var aliasPath, out _))
                                 policyRule[child.Name] = aliasPath;
                         }
 
@@ -494,7 +492,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                             {
                                 var countObject = child.Value.ToObject<JObject>();
                                 if (countObject.TryStringProperty(PROPERTY_FIELD, out var outerFieldAlias) &&
-                                    TryPolicyAliasPath(outerFieldAlias, out var outerFieldAliasPath))
+                                    TryPolicyAliasPath(outerFieldAlias, out var outerFieldAliasPath, out _))
                                 {
                                     if (countObject.TryObjectProperty(PROPERTY_WHERE, out var whereExpression))
                                     {
@@ -611,11 +609,24 @@ namespace PSRule.Rules.Azure.Data.Policy
                 );
             }
 
-            internal bool TryPolicyAliasPath(string aliasName, out string aliasPath)
+            internal bool TryPolicyAliasPath(string aliasName, out string aliasPath, out string resourceName)
             {
                 aliasPath = null;
+                resourceName = null;
+                if (WebSiteConfigSpecialCase(aliasName))
+                    resourceName = "web";
+
                 return !string.IsNullOrEmpty(aliasName) &&
                     _PolicyAliasProviderHelper.ResolvePolicyAliasPath(aliasName, out aliasPath);
+            }
+
+            /// <summary>
+            /// Special case for web site config aliases which implicitly have a resource name of "web".
+            /// </summary>
+            private static bool WebSiteConfigSpecialCase(string aliasName)
+            {
+                return aliasName.StartsWith("Microsoft.Web/sites/config/web.", StringComparison.OrdinalIgnoreCase)
+                    || aliasName.StartsWith("Microsoft.Web/sites/slots/config/web.", StringComparison.OrdinalIgnoreCase);
             }
 
             internal void SetSource(string assignmentFile)
@@ -976,8 +987,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             // Handle if condition block
             if (policyRule.TryObjectProperty(PROPERTY_IF, out var condition))
             {
-                VisitCondition(context, policyDefinition, condition);
-                policyDefinition.Where = condition;
+                policyDefinition.Where = VisitCondition(context, policyDefinition, condition);
             }
 
             // Handle conditions in then block
@@ -989,13 +999,13 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// Visit a policy condition node.
         /// </summary>
-        private static void VisitCondition(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition)
+        private static JObject VisitCondition(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition)
         {
             if (condition.TryAllOf(out var all) || condition.TryAnyOf(out all))
             {
                 foreach (var item in all.Values<JObject>().ToArray())
                 {
-                    VisitCondition(context, policyDefinition, item);
+                    _ = VisitCondition(context, policyDefinition, item);
                 }
 
                 // Pull up child condition
@@ -1006,7 +1016,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
             else if (condition.TryObjectProperty(PROPERTY_NOT, out var item))
             {
-                VisitCondition(context, policyDefinition, item);
+                _ = VisitCondition(context, policyDefinition, item);
             }
             else
             {
@@ -1016,8 +1026,16 @@ namespace PSRule.Rules.Azure.Data.Policy
                 }
                 else if (condition.TryStringProperty(PROPERTY_FIELD, out var field))
                 {
-                    if (VisitField(context, policyDefinition, condition, field) == null)
+                    var fieldResult = VisitField(context, policyDefinition, condition, field);
+                    if (fieldResult == null)
+                    {
                         condition.Remove();
+                    }
+                    else if (condition != fieldResult)
+                    {
+                        condition.Replace(fieldResult);
+                        condition = fieldResult;
+                    }
                 }
                 else if (condition.TryObjectProperty(PROPERTY_COUNT, out var count))
                 {
@@ -1026,6 +1044,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 ResolveObject(context, condition);
                 ConvertCondition(context, condition);
             }
+            return condition;
         }
 
         private static void VisitCountExpression(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject parent, JObject count)
@@ -1042,7 +1061,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     parent.Add(PROPERTY_FIELD, field);
                     if (count.TryObjectProperty(PROPERTY_WHERE, out var where))
                     {
-                        VisitCondition(context, policyDefinition, where);
+                        where = VisitCondition(context, policyDefinition, where);
                         if (where.TryArrayProperty(PROPERTY_ALLOF, out var allOf))
                         {
                             parent.Add(PROPERTY_ALLOF, allOf);
@@ -1090,7 +1109,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         private static string ExpandField(PolicyAssignmentContext context, string field)
         {
-            return context.TryPolicyAliasPath(field, out var aliasPath) ? aliasPath : field;
+            return context.TryPolicyAliasPath(field, out var aliasPath, out _) ? aliasPath : field;
         }
 
         private static void ConvertCondition(PolicyAssignmentContext context, JObject condition)
@@ -1160,7 +1179,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             condition.ConvertPropertyToInt(PROPERTY_LESS);
 
             if (!condition.ContainsKeyInsensitive(PROPERTY_ALLOF) &&
-                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF))
+                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF) &&
+                !condition.ContainsKeyInsensitive(PROPERTY_CONVERT))
                 condition.Add(PROPERTY_CONVERT, true);
 
             return true;
@@ -1175,7 +1195,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             condition.ConvertPropertyToInt(PROPERTY_LESSOREQUALS);
 
             if (!condition.ContainsKeyInsensitive(PROPERTY_ALLOF) &&
-                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF))
+                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF) &&
+                !condition.ContainsKeyInsensitive(PROPERTY_CONVERT))
                 condition.Add(PROPERTY_CONVERT, true);
 
             return true;
@@ -1190,7 +1211,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             condition.ConvertPropertyToInt(PROPERTY_GREATER);
 
             if (!condition.ContainsKeyInsensitive(PROPERTY_ALLOF) &&
-                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF))
+                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF) &&
+                !condition.ContainsKeyInsensitive(PROPERTY_CONVERT))
                 condition.Add(PROPERTY_CONVERT, true);
 
             return true;
@@ -1205,7 +1227,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             condition.ConvertPropertyToInt(PROPERTY_GREATEROREQUALS);
 
             if (!condition.ContainsKeyInsensitive(PROPERTY_ALLOF) &&
-                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF))
+                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF) &&
+                !condition.ContainsKeyInsensitive(PROPERTY_CONVERT))
                 condition.Add(PROPERTY_CONVERT, true);
 
             return true;
@@ -1231,7 +1254,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 condition.Add(PROPERTY_TYPE, DOT);
                 AddTypes(context, policyDefinition, condition);
             }
-            else if (context.TryPolicyAliasPath(field, out var aliasPath))
+            else if (context.TryPolicyAliasPath(field, out var aliasPath, out _))
             {
                 condition.ReplaceProperty(PROPERTY_FIELD, TrimFieldName(context, aliasPath));
             }
@@ -1350,7 +1373,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 {
                     condition.RemoveProperty(PROPERTY_VALUE);
 
-                    field = context.TryPolicyAliasPath(field, out var aliasPath) ? TrimFieldName(context, aliasPath) : field;
+                    field = context.TryPolicyAliasPath(field, out var aliasPath, out _) ? TrimFieldName(context, aliasPath) : field;
                     condition.Add(PROPERTY_FIELD, field);
                 }
             }
@@ -1557,7 +1580,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 if (tokens.TryTokenType(ExpressionTokenType.String, out var current))
                 {
                     fieldTarget = current.Content;
-                    if (context.TryPolicyAliasPath(current.Content, out var policyAlias))
+                    if (context.TryPolicyAliasPath(current.Content, out var policyAlias, out _))
                         fieldTarget = TrimFieldName(context, policyAlias);
                 }
                 var o = new JObject
@@ -1608,7 +1631,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 tokens.TryTokenType(ExpressionTokenType.GroupStart, out _) &&
                 tokens.ConsumeString(out var field))
             {
-                field = context.TryPolicyAliasPath(field, out var aliasPath) ? TrimFieldName(context, aliasPath) : field;
+                field = context.TryPolicyAliasPath(field, out var aliasPath, out _) ? TrimFieldName(context, aliasPath) : field;
 
                 var o = new JObject
                 {
@@ -1765,7 +1788,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 condition.ContainsKeyInsensitive(PROPERTY_IN) ||
                 condition.ContainsKeyInsensitive(PROPERTY_NOTIN) ||
                 condition.ContainsKeyInsensitive(PROPERTY_CONTAINS) ||
-                condition.ContainsKeyInsensitive(PROPERTY_NOTCONTAINS);
+                condition.ContainsKeyInsensitive(PROPERTY_NOT_CONTAINS);
         }
 
         private static bool ShouldOptimizeTypeCondition(PolicyDefinition policyDefinition, JObject condition)
@@ -1812,12 +1835,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                 // Clean up condition that applies to child.
                 policyDefinition.Where = null;
 
-                policyDefinition.Condition = AndExistanceExpression(context, details, null, applyToChildren: false);
+                policyDefinition.Condition = AndExistenceExpression(context, details, null, applyToChildren: false);
             }
             // Handle not exist effect.
             else if (IsIfNotExistsEffect(context, then))
             {
-                policyDefinition.Condition = AndExistanceExpression(context, details, DefaultEffectConditions(context, details));
+                policyDefinition.Condition = AndExistenceExpression(context, details, DefaultEffectConditions(context, details));
             }
             else
             {
@@ -1884,7 +1907,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 {
                     positiveCases.Add(item);
                 }
-                else if (item.ContainsKeyInsensitive(PROPERTY_NOTEQUALS) || item.ContainsKeyInsensitive(PROPERTY_NOTIN) || item.ContainsKeyInsensitive(PROPERTY_NOTCONTAINS))
+                else if (item.ContainsKeyInsensitive(PROPERTY_NOTEQUALS) || item.ContainsKeyInsensitive(PROPERTY_NOTIN) || item.ContainsKeyInsensitive(PROPERTY_NOT_CONTAINS))
                 {
                     negativeCases.Add(item);
                 }
@@ -1908,8 +1931,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                 condition.TryRenameProperty(PROPERTY_NOTIN, PROPERTY_IN) ||
                 condition.TryRenameProperty(PROPERTY_EQUALS, PROPERTY_NOTEQUALS) ||
                 condition.TryRenameProperty(PROPERTY_NOTEQUALS, PROPERTY_EQUALS) ||
-                condition.TryRenameProperty(PROPERTY_CONTAINS, PROPERTY_NOTCONTAINS) ||
-                condition.TryRenameProperty(PROPERTY_NOTCONTAINS, PROPERTY_CONTAINS);
+                condition.TryRenameProperty(PROPERTY_CONTAINS, PROPERTY_NOT_CONTAINS) ||
+                condition.TryRenameProperty(PROPERTY_NOT_CONTAINS, PROPERTY_CONTAINS);
 
             if (condition.TryBoolProperty(PROPERTY_EXISTS, out var exists))
                 condition[PROPERTY_EXISTS] = !exists;
@@ -1961,9 +1984,9 @@ namespace PSRule.Rules.Azure.Data.Policy
             };
         }
 
-        private static JObject AndExistanceExpression(PolicyAssignmentContext context, JObject details, JObject subselector, bool applyToChildren = true)
+        private static JObject AndExistenceExpression(PolicyAssignmentContext context, JObject details, JObject subSelector, bool applyToChildren = true)
         {
-            if (details == null || !details.TryObjectProperty(PROPERTY_EXISTENCECONDITION, out var existenceCondition))
+            if (details == null || !details.TryObjectProperty(PROPERTY_EXISTENCE_CONDITION, out var existenceCondition))
             {
                 existenceCondition = new JObject
                 {
@@ -1972,7 +1995,20 @@ namespace PSRule.Rules.Azure.Data.Policy
                 };
             }
 
-            VisitCondition(context, null, existenceCondition);
+            details.TryStringProperty(PROPERTY_TYPE, out var type);
+
+            // Is special case for App Service site config.
+            if (subSelector != null && subSelector.Count > 0 && string.Equals(type, "Microsoft.Web/sites/config", StringComparison.OrdinalIgnoreCase) &&
+                TryAppConfigSubType(context, existenceCondition, out var configSubType))
+            {
+                subSelector = AndCondition(subSelector, new JObject
+                {
+                    { PROPERTY_NAME, DOT },
+                    { PROPERTY_EQUALS, configSubType }
+                });
+            }
+
+            existenceCondition = VisitCondition(context, null, existenceCondition);
 
             if (applyToChildren)
             {
@@ -1986,12 +2022,39 @@ namespace PSRule.Rules.Azure.Data.Policy
                     { PROPERTY_ALLOF, allOf }
                 };
 
-                if (subselector != null && subselector.Count > 0)
-                    existenceExpression[PROPERTY_WHERE] = subselector;
+                if (subSelector != null && subSelector.Count > 0)
+                    existenceExpression[PROPERTY_WHERE] = subSelector;
 
                 existenceCondition = existenceExpression;
             }
             return existenceCondition;
+        }
+
+        /// <summary>
+        /// Navigate field properties to find an App Service alias that match a sub type.
+        /// </summary>
+        private static bool TryAppConfigSubType(PolicyAssignmentContext context, JObject condition, out string configSubType)
+        {
+            configSubType = null;
+
+            if (condition.TryAllOf(out var items) || condition.TryAnyOf(out items))
+            {
+                foreach (var item in items.OfType<JObject>())
+                {
+                    if (TryAppConfigSubType(context, item, out configSubType))
+                    {
+                        return true;
+                    }
+                }
+            }
+            else if (condition.TryStringProperty(PROPERTY_FIELD, out var field) &&
+                context.TryPolicyAliasPath(field, out var aliasPath, out var resourceName) &&
+                resourceName != null)
+            {
+                configSubType = resourceName;
+                return true;
+            }
+            return false;
         }
 
         private static JObject AndNameCondition(PolicyAssignmentContext context, JObject details, JObject condition)

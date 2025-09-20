@@ -10,7 +10,7 @@ namespace PSRule.Rules.Azure.Bicep.AVMTestCases;
 public sealed class BicepAVMTests : TemplateVisitorTestsBase
 {
     /// <summary>
-    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3153
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3153.
     /// </summary>
     [Fact]
     public void ProcessTemplate_WhenMappingOutputResourceId_ShouldReturnStringArray()
@@ -71,7 +71,7 @@ public sealed class BicepAVMTests : TemplateVisitorTestsBase
     }
 
     /// <summary>
-    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3446
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3446.
     /// </summary>
     [Fact]
     public void ProcessTemplate_WhenHandlingMockReplacement_ShouldGetResource()
@@ -80,5 +80,31 @@ public sealed class BicepAVMTests : TemplateVisitorTestsBase
 
         var actual = resources.FirstOrDefault(r => r["name"].Value<string>() == "pe-test");
         Assert.NotNull(actual);
+    }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3521.
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WithSiteConfig_ShouldReflectConfigProperties()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Bicep/AVMTestCases/Tests.Bicep.5.json"), null, out var templateContext);
+
+        var actual = resources.FirstOrDefault(r => r["name"].Value<string>() == "test-app");
+        Assert.NotNull(actual);
+
+        var kind = actual["kind"].Value<string>();
+        Assert.Equal("functionapp", kind);
+
+        var remoteDebuggingEnabled = actual["properties"]["siteConfig"]["remoteDebuggingEnabled"].Value<bool>();
+        Assert.False(remoteDebuggingEnabled);
+
+        // Check for reflected resource.
+        Assert.True(actual.TryGetSubResources("Microsoft.Web/sites/config", out var configs));
+        var webConfig = configs.FirstOrDefault(r => r["name"].Value<string>() == "web");
+        Assert.NotNull(webConfig);
+
+        var webConfigProperty = webConfig["properties"]["remoteDebuggingEnabled"].Value<bool>();
+        Assert.False(webConfigProperty);
     }
 }
