@@ -37,7 +37,7 @@ Rule 'Azure.ACR.ImageHealth' -Ref 'AZR-000003' -Type 'Microsoft.ContainerRegistr
 }
 
 # Synopsis: Consider geo-replicating container images.
-Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2025_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2025_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications');
     $registryLocation = GetNormalLocation -Location $TargetObject.Location;
     foreach ($replica in $replications) {

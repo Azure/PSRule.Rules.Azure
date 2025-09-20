@@ -181,6 +181,29 @@ spec:
       - field: properties.networkRuleSet.defaultAction
         equals: Deny
 
+---
+# Synopsis: Disable export of artifacts from container registries.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.ExportPolicy
+  ref: AZR-000495
+  tags:
+    release: GA
+    ruleSet: 2025_09
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: DP-2
+spec:
+  type:
+    - Microsoft.ContainerRegistry/registries
+  condition:
+    allOf:
+      - field: properties.policies.exportPolicy.status
+        equals: disabled
+      - field: properties.publicNetworkAccess
+        equals: Disabled
+
 #endregion Rules
 
 #region Selectors

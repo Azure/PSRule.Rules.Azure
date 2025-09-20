@@ -53,8 +53,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'registry-B', 'registry-C', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K';
+            $ruleResult.TargetName | Should -BeIn 'registry-B', 'registry-C', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 11;
         }
 
         It 'Azure.ACR.MinSku' {
@@ -70,8 +70,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -BeIn 'registry-B', 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K';
+            $ruleResult.TargetName | Should -BeIn 'registry-B', 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 12;
         }
 
         It 'Azure.ACR.Quarantine' {
@@ -80,9 +80,9 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K';
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K', 'registry-L', 'registry-M';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'Properties.policies.quarantinePolicy.status';
+            $ruleResult.Length | Should -Be 11;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -97,9 +97,9 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.TargetName | Should -BeIn 'registry-D', 'registry-K';
-            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry-D', 'registry-K', 'registry-L', 'registry-M';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.policies.trustPolicy.status';
+            $ruleResult.Length | Should -Be 4;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -120,8 +120,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.TargetName | Should -BeIn 'registry-D', 'registry-J', 'registry-I', 'registry-K';
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'registry-D', 'registry-J', 'registry-I', 'registry-K', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 6;
             $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.policies.retentionPolicy.status';
 
             # Pass
@@ -150,8 +150,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-C', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K';
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-C', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 11;
         }
 
         It 'Azure.ACR.ContainerScan' {
@@ -160,8 +160,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K';
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 10;
             # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'resources';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
@@ -196,8 +196,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K', 'registry-L', 'registry-M';
         }
 
         It 'Azure.ACR.GeoReplica' {
@@ -206,8 +206,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J';
-            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 9;
             # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn '';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
@@ -226,8 +226,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-H';
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-D', 'registry-H', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 5;
 
             $ruleResult[0].Reason | Should -BeExactly "The container registry 'registry-A' should have soft delete policy enabled.", "The container registry 'registry-A' should have retention period value between one to 90 days for the soft delete policy.";
             $ruleResult[1].Reason | Should -BeExactly "The container registry 'registry-D' should have soft delete policy enabled.", "The container registry 'registry-D' should have retention period value between one to 90 days for the soft delete policy.";
@@ -253,8 +253,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             # Pass - registries with replicas in allowed regions or no replicas
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J';
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 12;
         }
 
         It 'Azure.ACR.AnonymousAccess' {
@@ -268,8 +268,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.TargetName | Should -BeIn 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K';
-            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K', 'registry-L', 'registry-M';
+            $ruleResult.Length | Should -Be 11;
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -282,19 +282,36 @@ Describe 'Azure.ACR' -Tag 'ACR' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.TargetName | Should -BeIn 'registry-D', 'registry-E', 'registry-K';
-            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'registry-D', 'registry-E', 'registry-K', 'registry-L';
+            $ruleResult.Length | Should -Be 4;
             $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.publicNetworkAccess', 'properties.networkRuleSet.defaultAction';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.TargetName | Should -BeIn 'registry-I', 'registry-J';
-            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry-I', 'registry-J', 'registry-M';
+            $ruleResult.Length | Should -Be 3;
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-C', 'registry-F', 'registry-G', 'registry-H';
+        }
+
+        It 'Azure.ACR.ExportPolicy' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.ExportPolicy' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J', 'registry-K', 'registry-L';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.policies.exportPolicy.status', 'properties.publicNetworkAccess';
+            $ruleResult.Length | Should -Be 12;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'registry-M';
+            $ruleResult.Length | Should -Be 1;
         }
     }
 
