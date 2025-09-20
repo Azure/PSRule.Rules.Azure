@@ -98,6 +98,27 @@ spec:
     field: properties.allowBlobPublicAccess
     equals: false
 
+---
+# Synopsis: Storage accounts should disable local authentication.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Storage.LocalAuth
+  ref: AZR-000497
+  tags:
+    release: 'GA'
+    ruleSet: '2025_12'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.MCSB.v1/control: IM-1
+    Azure.WAF/maturity: L1
+spec:
+  type:
+  - Microsoft.Storage/storageAccounts
+  condition:
+    field: properties.allowSharedKeyAccess
+    equals: false
+
 #endregion Rules
 
 #region Selectors

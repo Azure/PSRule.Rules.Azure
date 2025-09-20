@@ -465,6 +465,22 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # $ruleResult.TargetName | Should -BeIn 'storage1', 'storage1/default/arm';
         }
 
+        It 'Azure.Storage.LocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.LocalAuth' };
+
+            # Fail - All storage accounts except storage-I should fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 8;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
+
+            # Pass - Only storage-I should pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-I';
+        }
+
         It 'Azure.Storage.Firewall' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Firewall' };
 

@@ -49,6 +49,9 @@ What's changed since v1.45.2:
       [#3442](https://github.com/Azure/PSRule.Rules.Azure/issues/3442)
     - Check that export policy is disabled for registries by @BernieWhite
       [#3444](https://github.com/Azure/PSRule.Rules.Azure/issues/3444)
+  - Storage Account:
+    - Check that local authentication is disabled for storage accounts by @copilot.
+      [#3115](https://github.com/Azure/PSRule.Rules.Azure/issues/3115)
 - Updated rules:
   - Container Registry:
     - Updated `Azure.ACR.GeoReplica` to ensure geo-replication applies to pre-flight and in-flight cases by @BernieWhite.
