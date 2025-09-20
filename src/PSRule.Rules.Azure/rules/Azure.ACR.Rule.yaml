@@ -193,13 +193,16 @@ metadata:
     ruleSet: 2025_09
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'DP-2'
+    Azure.MCSB.v1/control: DP-2
 spec:
   type:
     - Microsoft.ContainerRegistry/registries
   condition:
-    field: properties.policies.exportPolicy.status
-    equals: disabled
+    allOf:
+      - field: properties.policies.exportPolicy.status
+        equals: disabled
+      - field: properties.publicNetworkAccess
+        equals: Disabled
 
 #endregion Rules
 
