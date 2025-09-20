@@ -332,6 +332,7 @@
 "Azure.Redis.EntraID","Use Entra ID authentication with cache instances.","Critical","Security","L1"
 "Azure.Redis.FirewallIPRange","Determine if there is an excessive number of permitted IP addresses for the Redis cache.","Critical","Security","-"
 "Azure.Redis.FirewallRuleCount","Determine if there is an excessive number of firewall rules for the Redis cache.","Awareness","Security","-"
+"Azure.Redis.LocalAuth","Access keys allow depersonalized access to Azure Cache for Redis using a shared secret.","Important","Security","L1"
 "Azure.Redis.MaxMemoryReserved","Configure maxmemory-reserved to reserve memory for non-cache operations.","Important","Performance Efficiency","-"
 "Azure.Redis.MinSKU","Use Azure Cache for Redis instances of at least Standard C1.","Important","Performance Efficiency","-"
 "Azure.Redis.MinTLS","Redis Cache should reject TLS versions older than 1.2.","Critical","Security","L1"
