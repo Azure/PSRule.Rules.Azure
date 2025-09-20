@@ -11,7 +11,7 @@ Rule 'Azure.AppService.PlanInstanceCount' -Ref 'AZR-000071' -Type 'Microsoft.Web
 }
 
 # Synopsis: App Service should not accept weak or deprecated transport protocols for client-server communication.
-Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
+Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3'; 'Azure.WAF/maturity' = 'L1'; } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.Version($TargetObject, 'properties.siteConfig.minTlsVersion', '>=1.2').
@@ -151,7 +151,7 @@ Rule 'Azure.AppService.WebProbePath' -Ref 'AZR-000080' -With 'Azure.AppService.I
 }
 
 # Synopsis: Web apps should disable insecure FTP and configure SFTP when required.
-Rule 'Azure.AppService.WebSecureFtp' -Ref 'AZR-000081' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
+Rule 'Azure.AppService.WebSecureFtp' -Ref 'AZR-000081' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3'; 'Azure.WAF/maturity' = 'L1' } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
             $Assert.HasField($_, 'Properties.ftpsState').Result
         });

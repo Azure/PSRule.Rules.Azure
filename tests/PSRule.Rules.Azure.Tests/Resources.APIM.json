@@ -3061,7 +3061,7 @@
           "certificatePassword": null,
           "negotiateClientCertificate": false,
           "certificate": {
-            "expiry": "2025-09-01T12:00:00+00:00",
+            "expiry": "2026-09-01T12:00:00+00:00",
             "thumbprint": "0000000000000000000000000000000000000000",
             "subject": "CN=api.contoso.com, OU=A, O=O, L=L, S=S, C=C"
           },

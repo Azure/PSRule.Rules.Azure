@@ -19,7 +19,8 @@ metadata:
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.MCSB.v1/control: 'NS-2'
+    Azure.MCSB.v1/control: NS-2
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.DBforPostgreSQL/servers
@@ -39,7 +40,8 @@ metadata:
     ruleSet: '2020_09'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.MCSB.v1/control: 'DP-3'
+    Azure.MCSB.v1/control: DP-3
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.DBforPostgreSQL/servers
@@ -60,6 +62,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: IM-1
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.DBforPostgreSQL/flexibleServers

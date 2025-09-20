@@ -1,9 +1,7 @@
 [
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-A",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-A",
     "Location": "region",
-    "ResourceName": "registry-A",
     "Name": "registry-A",
     "Properties": {
       "loginServer": "registry-A.azurecr.io",
@@ -11,23 +9,15 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
-    "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
       "Name": "Basic",
-      "Tier": "Basic",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Basic"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B",
     "Location": "region",
-    "ResourceName": "registry-B",
     "Name": "registry-B",
     "Properties": {
       "loginServer": "registry-B.azurecr.io",
@@ -53,30 +43,17 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
-    "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
       "Name": "Standard",
-      "Tier": "Standard",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Standard"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/replications/region2",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/replications/region2",
-        "Identity": null,
-        "Kind": null,
         "Location": "region2",
-        "ManagedBy": null,
         "ResourceName": "region2",
         "Name": "region2",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "provisioningState": "Succeeded",
           "status": {
@@ -86,27 +63,13 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries/replications",
-        "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/replications/region",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/replications/region",
-        "Identity": null,
-        "Kind": null,
         "Location": "region",
-        "ManagedBy": null,
         "ResourceName": "region",
         "Name": "region",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "provisioningState": "Succeeded",
           "status": {
@@ -116,14 +79,7 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries/replications",
-        "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
         "name": "Size",
@@ -154,17 +110,9 @@
         "type": "Microsoft.ContainerRegistry/registries/listUsages"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
-        "Identity": null,
-        "Kind": null,
-        "Location": null,
-        "ManagedBy": null,
-        "ResourceName": "00000000-0000-0000-0000-000000000000",
         "Name": "00000000-0000-0000-0000-000000000000",
         "ExtensionResourceName": "00000000-0000-0000-0000-000000000000",
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "resourceDetails": {
             "Source": "Azure",
@@ -180,23 +128,14 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries",
-        "ResourceType": "Microsoft.ContainerRegistry/registries",
         "ExtensionResourceType": "Microsoft.Security/assessments",
-        "Sku": null,
-        "Tags": null,
-        "TagsTable": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C",
     "Location": "region",
-    "ResourceName": "registry-C",
     "Name": "registry-C",
     "Properties": {
       "anonymousPullEnabled": false,
@@ -217,7 +156,6 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
-    "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
       "Name": "Standard",
       "Tier": "Standard",
@@ -230,17 +168,9 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/replications/region2",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/replications/region2",
-        "Identity": null,
-        "Kind": null,
         "Location": "region2",
-        "ManagedBy": null,
-        "ResourceName": "region2",
         "Name": "region2",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "provisioningState": "Succeeded",
           "status": {
@@ -250,27 +180,12 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries/replications",
-        "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/replications/region",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/replications/region",
-        "Identity": null,
-        "Kind": null,
         "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "region",
         "Name": "region",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "provisioningState": "Succeeded",
           "status": {
@@ -280,14 +195,7 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries/replications",
-        "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
         "name": "Size",
@@ -318,17 +226,9 @@
         "type": "Microsoft.ContainerRegistry/registries/listUsages"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
-        "Identity": null,
-        "Kind": null,
-        "Location": null,
-        "ManagedBy": null,
-        "ResourceName": "00000000-0000-0000-0000-000000000000",
         "Name": "00000000-0000-0000-0000-000000000000",
         "ExtensionResourceName": "00000000-0000-0000-0000-000000000000",
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "resourceDetails": {
             "Source": "Azure",
@@ -344,15 +244,8 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries",
-        "ResourceType": "Microsoft.ContainerRegistry/registries",
         "ExtensionResourceType": "Microsoft.Security/assessments",
-        "Sku": null,
-        "Tags": null,
-        "TagsTable": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -417,16 +310,10 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
-    "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
       "Name": "Premium",
-      "Tier": "Premium",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Premium"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
@@ -450,27 +337,12 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries/replications",
-        "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-E/replications/region",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-E/replications/region",
-        "Identity": null,
-        "Kind": null,
         "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "region",
         "Name": "region",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "provisioningState": "Succeeded",
           "status": {
@@ -480,14 +352,7 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.ContainerRegistry/registries/replications",
-        "ResourceType": "Microsoft.ContainerRegistry/registries/replications",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
         "name": "Size",
@@ -639,10 +504,8 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-H",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-H",
     "Location": "region",
-    "ResourceName": "registry-H",
     "Name": "registry-H",
     "Properties": {
       "loginServer": "registry-H.azurecr.io",
@@ -667,23 +530,15 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
-    "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
       "Name": "Standard",
-      "Tier": "Standard",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Standard"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-I",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-I",
     "Location": "region",
-    "ResourceName": "registry-I",
     "Name": "registry-I",
     "Properties": {
       "loginServer": "registry-I.azurecr.io",
@@ -705,23 +560,15 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
-    "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
       "Name": "Premium",
-      "Tier": "Premium",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Premium"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-J",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-J",
     "Location": "region",
-    "ResourceName": "registry-J",
     "Name": "registry-J",
     "Properties": {
       "loginServer": "registry-I.azurecr.io",
@@ -760,23 +607,15 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
-    "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
       "Name": "Premium",
-      "Tier": "Premium",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Premium"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K",
     "Location": "region",
-    "ResourceName": "registry-K",
     "Name": "registry-K",
     "Properties": {
       "loginServer": "registry-K.azurecr.io",
@@ -790,23 +629,32 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
-    "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
       "Name": "Premium",
-      "Tier": "Premium",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Premium"
     },
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-K/replications/region3",
+        "Location": "region3",
+        "Name": "region3",
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "status": {
+            "displayStatus": "Ready"
+          },
+          "regionEndpointEnabled": true
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries/replications",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-L",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-L",
     "Location": "region",
-    "ResourceName": "registry-L",
     "Name": "registry-L",
     "Properties": {
       "loginServer": "registry-L.azurecr.io",
@@ -829,14 +677,11 @@
       "Model": null,
       "Capacity": null
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-M",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-M",
     "Location": "region",
-    "ResourceName": "registry-M",
     "Name": "registry-M",
     "Properties": {
       "loginServer": "registry-M.azurecr.io",
@@ -859,7 +704,6 @@
       "Model": null,
       "Capacity": null
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]

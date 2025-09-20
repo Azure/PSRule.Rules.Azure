@@ -181,7 +181,7 @@ However, the top level `metadata` property is ignored by Azure Resource Manager 
 
 ## Issues with Az.Resources
 
-The PowerShell module `Az.Resources` and `Az.Accounts` is currently used when exporting data from Azure.
+The PowerShell module `Az.Accounts` is currently used when exporting data from Azure.
 These modules are use when:
 
 - Exporting resources for in-flight analysis.
@@ -190,6 +190,8 @@ These modules are use when:
 These modules are not required if you only want to execute rules.
 
 ### Suppression of Az.Resources warning
+
+> Applies to PSRule for Azure before v1.45.0.
 
 If you only intend to execute rules you can suppress the following warning message.
 
@@ -202,6 +204,8 @@ To suppress the warning configure the `PSRULE_AZURE_RESOURCE_MODULE_NOWARN` envi
 For more details see [Configuring exports](setup/configuring-exports.md#psrule_azure_resource_module_nowarn).
 
 ### Installing Az.Resources
+
+> Applies to PSRule for Azure before v1.45.0.
 
 If you plan on exporting data from Azure, you must install the `Az.Resources` module.
 

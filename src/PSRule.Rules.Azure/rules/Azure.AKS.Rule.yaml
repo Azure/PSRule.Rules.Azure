@@ -20,6 +20,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['IM-1', 'IM-2']
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -79,7 +80,7 @@ metadata:
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-1'
+    Azure.MCSB.v1/control: NS-1
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -101,7 +102,7 @@ metadata:
     ruleSet: 2020_12
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'AM-2'
+    Azure.MCSB.v1/control: AM-2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -122,6 +123,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['IM-1', 'IM-2']
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -166,7 +168,7 @@ metadata:
   labels:
     Azure.MCSB.v1/control: ['IM-1', 'PA-1']
     Azure.Policy/id: /providers/Microsoft.Authorization/policyDefinitions/993c2fcd-2b29-49d2-9eb0-df2c3a730c32
-    Azure.WAF/progressive: C
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -249,7 +251,6 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['NS-1', 'DP-4']
-    Azure.WAF/progressive: C
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -367,7 +368,7 @@ metadata:
     ruleSet: 2021_09
     Azure.WAF/pillar: Operational Excellence
   labels:
-    Azure.MCSB.v1/control: 'LT-3'
+    Azure.MCSB.v1/control: LT-3
 spec:
   type:
     - Microsoft.ContainerService/managedClusters

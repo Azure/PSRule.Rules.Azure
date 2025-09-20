@@ -2,6 +2,7 @@
 export: true
 moduleVersion: v1.26.0
 obsolete: true
+generated: true
 ---
 
 # Azure.Preview_2023_03
@@ -20,4 +21,4 @@ Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.Quarantine](../rules/Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Important
 [Azure.ACR.Retention](../rules/Azure.ACR.Retention.md) | Use a retention policy to cleanup untagged manifests. | Important
-[Azure.ACR.SoftDelete](../rules/Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Important
+[Azure.ACR.SoftDelete](../rules/Azure.ACR.SoftDelete.md) | Container registry artifacts are permanently lost when accidentally deleted without soft delete protection. | Important

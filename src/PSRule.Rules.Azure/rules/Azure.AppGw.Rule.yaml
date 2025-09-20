@@ -90,6 +90,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: DP-3
+    Azure.WAF/maturity: L1
 spec:
   type:
   - Microsoft.Network/applicationGateways

@@ -3,6 +3,7 @@ taxonomy: Azure.CAF
 export: true
 moduleVersion: v1.43.0
 experimental: true
+generated: true
 ---
 
 # Azure.CAF_2025_03
@@ -18,7 +19,7 @@ This baseline includes a total of 72 rules.
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.Name](../rules/Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness
-[Azure.AI.Naming](../rules/Azure.AI.Naming.md) | Azure AI services without a standard naming convention may be difficult to identify and manage. | Awareness
+[Azure.AI.FoundryNaming](../rules/Azure.AI.FoundryNaming.md) | Azure AI Foundry accounts without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.AKS.Name](../rules/Azure.AKS.Name.md) | Azure Kubernetes Service (AKS) cluster names should meet naming requirements. | Awareness
 [Azure.APIM.Name](../rules/Azure.APIM.Name.md) | API Management service names should meet naming requirements. | Awareness
 [Azure.AppConfig.Name](../rules/Azure.AppConfig.Name.md) | App Configuration store names should meet naming requirements. | Awareness

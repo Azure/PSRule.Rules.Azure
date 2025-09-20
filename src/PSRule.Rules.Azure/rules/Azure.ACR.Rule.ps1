@@ -29,7 +29,7 @@ Rule 'Azure.ACR.ContainerScan' -Ref 'AZR-000002' -Type 'Microsoft.ContainerRegis
 }
 
 # Synopsis: Consider removing vulnerable container images.
-Rule 'Azure.ACR.ImageHealth' -Ref 'AZR-000003' -Type 'Microsoft.ContainerRegistry/registries' -If { (IsExport) -and (@(GetSubResources -ResourceType 'Microsoft.Security/assessments')).Length -gt 0 } -Tag @{ release = 'GA'; ruleSet = '2020_12'; method = 'in-flight'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DS-6', 'PV-5'); } {
+Rule 'Azure.ACR.ImageHealth' -Ref 'AZR-000003' -Type 'Microsoft.ContainerRegistry/registries' -If { (IsExport) -and (@(GetSubResources -ResourceType 'Microsoft.Security/assessments')).Length -gt 0 } -Tag @{ release = 'GA'; ruleSet = '2020_12'; method = 'in-flight'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DS-6', 'PV-5'); 'Azure.WAF/maturity' = 'L2'; } {
     $assessments = @(GetSubResources -ResourceType 'Microsoft.Security/assessments');
     foreach ($assessment in $assessments) {
         $Assert.In($assessment, 'Properties.status.code', @('Healthy', 'NotApplicable')).Reason($LocalizedData.AssessmentUnhealthy);
@@ -37,7 +37,7 @@ Rule 'Azure.ACR.ImageHealth' -Ref 'AZR-000003' -Type 'Microsoft.ContainerRegistr
 }
 
 # Synopsis: Consider geo-replicating container images.
-Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Reliability'; method = 'in-flight'; } {
+Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2025_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications');
     $registryLocation = GetNormalLocation -Location $TargetObject.Location;
     foreach ($replica in $replications) {
@@ -57,7 +57,23 @@ Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry
     $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.retentionDays').Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
 }
 
+# Synopsis: Container registry replica locations should be within allowed regions.
+Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000494' -Type 'Microsoft.ContainerRegistry/registries', 'Microsoft.ContainerRegistry/registries/replications' -Tag @{ release = 'GA'; ruleSet = '2025_09'; 'Azure.WAF/pillar' = 'Security'; } {
+    $context = $PSRule.GetService('Azure.Context');
+    $replications = @($TargetObject)
+    if ($PSRule.TargetType -eq 'Microsoft.ContainerRegistry/registries') {
+        $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications', 'replications');
+    }
 
+    if ($replications.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    foreach ($replica in $replications) {
+        $location = $replica.location;
+        $Assert.Create('location', [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
+    }
+}
 
 #endregion Rules
 

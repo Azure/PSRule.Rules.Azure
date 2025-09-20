@@ -12,7 +12,7 @@ Rule 'Azure.TrafficManager.Endpoints' -Ref 'AZR-000236' -Type 'Microsoft.Network
 }
 
 # Synopsis: Monitor Traffic Manager endpoints with HTTPS
-Rule 'Azure.TrafficManager.Protocol' -Ref 'AZR-000237' -Type 'Microsoft.Network/trafficManagerProfiles' -If { (IsHttpMonitor) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.TrafficManager.Protocol' -Ref 'AZR-000237' -Type 'Microsoft.Network/trafficManagerProfiles' -If { (IsHttpMonitor) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.monitorConfig.protocol', 'HTTPS');
 }
 

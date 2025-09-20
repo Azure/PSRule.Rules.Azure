@@ -5,8 +5,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.34.44.8038",
-      "templateHash": "10075851903169332670"
+      "version": "0.36.177.2456",
+      "templateHash": "9779075932684116800"
     }
   },
   "definitions": {
@@ -55,7 +55,7 @@
   "resources": {
     "storageAccount": {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2024-01-01",
+      "apiVersion": "2025-01-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -76,7 +76,7 @@
     },
     "blobService": {
       "type": "Microsoft.Storage/storageAccounts/blobServices",
-      "apiVersion": "2024-01-01",
+      "apiVersion": "2025-01-01",
       "name": "[format('{0}/{1}', parameters('name'), 'default')]",
       "properties": {
         "deleteRetentionPolicy": {
@@ -94,7 +94,7 @@
     },
     "container": {
       "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2024-01-01",
+      "apiVersion": "2025-01-01",
       "name": "[format('{0}/{1}/{2}', parameters('name'), 'default', variables('containerName'))]",
       "properties": {
         "publicAccess": "None"
@@ -105,7 +105,7 @@
     },
     "fileServices": {
       "type": "Microsoft.Storage/storageAccounts/fileServices",
-      "apiVersion": "2024-01-01",
+      "apiVersion": "2025-01-01",
       "name": "[format('{0}/{1}', parameters('name'), 'default')]",
       "properties": {
         "shareDeleteRetentionPolicy": {
@@ -119,7 +119,7 @@
     },
     "share": {
       "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
-      "apiVersion": "2024-01-01",
+      "apiVersion": "2025-01-01",
       "name": "[format('{0}/{1}/{2}', parameters('name'), 'default', variables('shareName'))]",
       "properties": {
         "accessTier": "TransactionOptimized"
@@ -130,7 +130,7 @@
     },
     "defenderForStorageSettings": {
       "type": "Microsoft.Security/defenderForStorageSettings",
-      "apiVersion": "2024-10-01-preview",
+      "apiVersion": "2025-01-01",
       "scope": "[format('Microsoft.Storage/storageAccounts/{0}', parameters('name'))]",
       "name": "current",
       "properties": {

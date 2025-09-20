@@ -1,5 +1,5 @@
 ---
-generated: True
+generated: true
 title: Reference
 ---
 
@@ -27,7 +27,7 @@ AZR-000002 | [Azure.ACR.ContainerScan](Azure.ACR.ContainerScan.md) | Container i
 AZR-000003 | [Azure.ACR.ImageHealth](Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | GA
 AZR-000004 | [Azure.ACR.GeoReplica](Azure.ACR.GeoReplica.md) | Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start. | GA
 AZR-000005 | [Azure.ACR.AdminUser](Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | GA
-AZR-000006 | [Azure.ACR.MinSku](Azure.ACR.MinSku.md) | ACR should use the Premium or Standard SKU for production deployments. | GA
+AZR-000006 | [Azure.ACR.MinSku](Azure.ACR.MinSku.md) | The Basic SKU provides limited performance and features for production container registry workloads. | GA
 AZR-000007 | [Azure.ACR.Name](Azure.ACR.Name.md) | Container registry names should meet naming requirements. | GA
 AZR-000008 | [Azure.ACR.Quarantine](Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Preview
 AZR-000009 | [Azure.ACR.ContentTrust](Azure.ACR.ContentTrust.md) | Docker content trust allows images to be signed and verified when pulled from a container registry. | deprecated
@@ -330,7 +330,7 @@ AZR-000306 | [Azure.FrontDoorWAF.PreventionMode](Azure.FrontDoorWAF.PreventionMo
 AZR-000307 | [Azure.FrontDoorWAF.Exclusions](Azure.FrontDoorWAF.Exclusions.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. Avoid configuring rule exclusions. | GA
 AZR-000308 | [Azure.FrontDoorWAF.RuleGroups](Azure.FrontDoorWAF.RuleGroups.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. | GA
 AZR-000309 | [Azure.AppGwWAF.Enabled](Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | GA
-AZR-000310 | [Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Preview
+AZR-000310 | [Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Container registry artifacts are permanently lost when accidentally deleted without soft delete protection. | Preview
 AZR-000311 | [Azure.AppConfig.AuditLogs](Azure.AppConfig.AuditLogs.md) | Ensure app configuration store audit diagnostic logs are enabled. | GA
 AZR-000312 | [Azure.AppConfig.GeoReplica](Azure.AppConfig.GeoReplica.md) | Replicate app configuration store across all points of presence for an application. | GA
 AZR-000313 | [Azure.AppConfig.PurgeProtect](Azure.AppConfig.PurgeProtect.md) | Consider purge protection for app configuration store to ensure store cannot be purged in the retention period. | GA
@@ -450,7 +450,7 @@ AZR-000426 | [Azure.VMSS.AutoInstanceRepairs](Azure.VMSS.AutoInstanceRepairs.md)
 AZR-000427 | [Azure.Redis.EntraID](Azure.Redis.EntraID.md) | Use Entra ID authentication with cache instances. | GA
 AZR-000428 | [Azure.AppService.NodeJsVersion](Azure.AppService.NodeJsVersion.md) | Configure applications to use supported Node.js runtime versions. | GA
 AZR-000429 | [Azure.Firewall.AvailabilityZone](Azure.Firewall.AvailabilityZone.md) | Deploy firewall instances using availability zones in supported regions to ensure high availability and resilience. | GA
-AZR-000430 | [Azure.VNG.MaintenanceConfig](Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | Preview
+AZR-000430 | [Azure.VNG.MaintenanceConfig](Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | GA
 AZR-000431 | [Azure.MySQL.MaintenanceWindow](Azure.MySQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for MySQL servers. | GA
 AZR-000432 | [Azure.MySQL.ZoneRedundantHA](Azure.MySQL.ZoneRedundantHA.md) | Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | GA
 AZR-000433 | [Azure.PostgreSQL.MaintenanceWindow](Azure.PostgreSQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for PostgreSQL servers. | GA
@@ -480,7 +480,7 @@ AZR-000456 | [Azure.DNS.DNSSEC](Azure.DNS.DNSSEC.md) | DNS may be vulnerable to 
 AZR-000457 | [Azure.EventGrid.TopicTLS](Azure.EventGrid.TopicTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
 AZR-000458 | [Azure.EventGrid.DomainTLS](Azure.EventGrid.DomainTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
 AZR-000459 | [Azure.Deployment.SecretLeak](Azure.Deployment.SecretLeak.md) | Sensitive parameters that have been not been marked as secure may leak the secret into deployment history or logs. | GA
-AZR-000460 | [Azure.AI.Naming](Azure.AI.Naming.md) | Azure AI services without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000460 | [Azure.AI.FoundryNaming](Azure.AI.FoundryNaming.md) | Azure AI Foundry accounts without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000461 | [Azure.EventGrid.DomainNaming](Azure.EventGrid.DomainNaming.md) | Event Grid domains without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000462 | [Azure.EventGrid.TopicNaming](Azure.EventGrid.TopicNaming.md) | Event Grid topics without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000463 | [Azure.EventGrid.SystemTopicNaming](Azure.EventGrid.SystemTopicNaming.md) | Event Grid system topics without a standard naming convention may be difficult to identify and manage. | GA
@@ -510,5 +510,9 @@ AZR-000487 | [Azure.Log.Naming](Azure.Log.Naming.md) | Azure Monitor Log workspa
 AZR-000488 | [Azure.ServiceFabric.ProtectionLevel](Azure.ServiceFabric.ProtectionLevel.md) | Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks. | GA
 AZR-000489 | [Azure.DefenderCloud.ActiveAlerts](Azure.DefenderCloud.ActiveAlerts.md) | Alerts that have not received a response may indicate a security issue that requires attention. | GA
 AZR-000490 | [Azure.AppConfig.SecretLeak](Azure.AppConfig.SecretLeak.md) | Secrets stored as key values in an App Configuration Store may be leaked to unauthorized users. | GA
+AZR-000491 | [Azure.Alert.MetricAutoMitigate](Azure.Alert.MetricAutoMitigate.md) | Alerts that require manual intervention for mitigation can lead to increased personnel time and effort. | GA
+AZR-000492 | [Azure.Alert.HighFrequencyQuery](Azure.Alert.HighFrequencyQuery.md) | High frequency scheduled queries are changed as a higher rate than low frequency queries. | GA
+AZR-000493 | [Azure.EventGrid.NamespaceTLS](Azure.EventGrid.NamespaceTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
+AZR-000494 | [Azure.ACR.ReplicaLocation](Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

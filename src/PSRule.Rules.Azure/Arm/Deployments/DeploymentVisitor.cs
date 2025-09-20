@@ -879,8 +879,10 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
 
         foreach (var variable in variables)
         {
-            if (variable.Key.StartsWith("$fxv#"))
+            if (IsFunctionVariableName(variable.Key) || IsExportedVariableName(variable.Key))
+            {
                 Variable(context, variable.Key, variable.Value);
+            }
         }
     }
 
@@ -984,6 +986,23 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
     }
 
     #endregion Outputs
+
+    /// <summary>
+    /// Functions variables are prefixed with $fxv#.
+    /// </summary>
+    private static bool IsFunctionVariableName(string variableName)
+    {
+        return variableName != null && variableName.Length > 5 && variableName.StartsWith("$fxv#", StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    /// Exported variables that have been imported use the format <c>_n.name</c>.
+    /// </summary>
+    private static bool IsExportedVariableName(string variableName)
+    {
+        return variableName != null && variableName.Length > 3 && variableName[0] == '_' &&
+            variableName.Contains('.') && variableName[variableName.Length - 1] != '.';
+    }
 
     private static TypePrimitive GetTypePrimitive(TemplateContext context, JObject value)
     {

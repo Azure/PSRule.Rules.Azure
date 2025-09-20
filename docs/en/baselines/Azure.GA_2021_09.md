@@ -1,5 +1,6 @@
 ---
 obsolete: true
+generated: true
 ---
 
 # Azure.GA_2021_09
@@ -12,15 +13,14 @@ Include rules released September 2021 or prior for Azure GA features.
 
 The following rules are included within the `Azure.GA_2021_09` baseline.
 
-This baseline includes a total of 215 rules.
+This baseline includes a total of 214 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical
 [Azure.ACR.ContainerScan](../rules/Azure.ACR.ContainerScan.md) | Container images or their base images may have vulnerabilities discovered after they are built. | Critical
-[Azure.ACR.GeoReplica](../rules/Azure.ACR.GeoReplica.md) | Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start. | Important
 [Azure.ACR.ImageHealth](../rules/Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | Critical
-[Azure.ACR.MinSku](../rules/Azure.ACR.MinSku.md) | ACR should use the Premium or Standard SKU for production deployments. | Important
+[Azure.ACR.MinSku](../rules/Azure.ACR.MinSku.md) | The Basic SKU provides limited performance and features for production container registry workloads. | Important
 [Azure.ACR.Name](../rules/Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness
 [Azure.ACR.Usage](../rules/Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important
 [Azure.AKS.AuditLogs](../rules/Azure.AKS.AuditLogs.md) | AKS clusters should collect security-based audit logs to assess and monitor the compliance status of workloads. | Important

@@ -48,6 +48,7 @@ metadata:
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-3' ]
     Azure.Policy/id: /providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418
+    Azure.WAF/maturity: L1
 spec:
   type:
   - Microsoft.CognitiveServices/accounts
@@ -81,6 +82,7 @@ metadata:
     Azure.Policy/id:
     - /providers/Microsoft.Authorization/policyDefinitions/71ef260a-8f18-47b7-abcb-62d0673d94dc
     - /providers/Microsoft.Authorization/policyDefinitions/14de9e63-1b31-492e-a5a3-c3f7fd57f555
+    Azure.WAF/maturity: L1
 spec:
   type:
   - Microsoft.CognitiveServices/accounts
