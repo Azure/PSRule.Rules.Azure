@@ -48,6 +48,9 @@ What's changed since v1.45.2:
   - Container Registry:
     - Updated `Azure.ACR.GeoReplica` to ensure geo-replication applies to pre-flight and in-flight cases by @BernieWhite.
       [#3477](https://github.com/Azure/PSRule.Rules.Azure/issues/3477)
+- Bug fixes:
+  - Fixed false negative for App Service `web` configuration cases set with `siteConfig` by @BernieWhite.
+    [#3521](https://github.com/Azure/PSRule.Rules.Azure/issues/3521)
 
 ## v1.45.2
 

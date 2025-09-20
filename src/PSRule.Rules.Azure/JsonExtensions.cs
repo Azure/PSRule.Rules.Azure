@@ -40,8 +40,6 @@ internal static class JsonExtensions
     private const string TARGET_INFO_PATH = "path";
     private const string TARGETINFO_MESSAGE = "message";
 
-    private const string TENANT_SCOPE = "/";
-
     private static readonly string[] JSON_PATH_SEPARATOR = ["."];
 
     internal static IJsonLineInfo TryLineInfo(this JToken token)
@@ -83,23 +81,26 @@ internal static class JsonExtensions
             resources = null;
             return false;
         }
-        resources = jArray.Values<JObject>().ToArray();
+        resources = [.. jArray.Values<JObject>()];
         return true;
     }
 
-    internal static bool TryGetResources(this JObject resource, string type, out JObject[] resources)
+    internal static bool TryGetSubResources(this JObject resource, string type, out JObject[] resources)
     {
         if (!resource.TryGetProperty<JArray>(PROPERTY_RESOURCES, out var jArray) || jArray.Count == 0)
         {
             resources = null;
             return false;
         }
+
+        var childTypeShort = type.SplitLastSegment('/');
+
         var results = new List<JObject>();
         foreach (var item in jArray.Values<JObject>())
-            if (item.PropertyEquals(PROPERTY_TYPE, type))
+            if (item.PropertyEquals(PROPERTY_TYPE, type) || (childTypeShort?.Length > 3 && item.PropertyEquals(PROPERTY_TYPE, childTypeShort)))
                 results.Add(item);
 
-        resources = results.Count > 0 ? results.ToArray() : null;
+        resources = results.Count > 0 ? [.. results] : null;
         return results.Count > 0;
     }
 
