@@ -395,7 +395,7 @@ public sealed class PolicyAssignmentVisitorTests
         var s = actual.Where.ToString(Formatting.None);
         var t = actual.Condition.ToString(Formatting.None);
         Assert.Equal("{\"allOf\":[{\"field\":\"kind\",\"contains\":\"functionapp\"},{\"field\":\"kind\",\"notContains\":\"workflowapp\"}]}", actual.Where.ToString(Formatting.None));
-        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"field\":\"properties.remoteDebuggingEnabled\",\"equals\":\"false\",\"convert\":true}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.Web/sites/config\"}}", actual.Condition.ToString(Formatting.None));
+        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"field\":\"properties.remoteDebuggingEnabled\",\"equals\":\"false\",\"convert\":true}],\"where\":{\"allOf\":[{\"type\":\".\",\"equals\":\"Microsoft.Web/sites/config\"},{\"name\":\".\",\"equals\":\"web\"}]}}", actual.Condition.ToString(Formatting.None));
     }
 
     #region Helper methods

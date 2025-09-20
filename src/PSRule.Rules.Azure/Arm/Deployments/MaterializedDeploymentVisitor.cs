@@ -21,6 +21,7 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
     private const string PROPERTY_ID = "id";
     private const string PROPERTY_NAME = "name";
     private const string PROPERTY_LOCATION = "location";
+    private const string PROPERTY_API_VERSION = "apiVersion";
     private const string PROPERTY_CUSTOM_NETWORK_INTERFACE_NAME = "customNetworkInterfaceName";
     private const string PROPERTY_PROPERTIES = "properties";
     private const string PROPERTY_PROVISIONING_STATE = "provisioningState";
@@ -561,7 +562,7 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
         if (!resource.IsType(TYPE_SQLSERVER))
             return false;
 
-        if (!resource.Value.TryGetResources(TYPE_SQLSERVER_ADMINISTRATOR, out var subResources))
+        if (!resource.Value.TryGetSubResources(TYPE_SQLSERVER_ADMINISTRATOR, out var subResources))
             return true;
 
         for (var i = 0; i < subResources.Length; i++)
@@ -593,19 +594,37 @@ internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
         if (configType == null)
             return false;
 
-        if (!resource.Value.TryGetResources(configType, out var subResources))
-            return true;
+        resource.Value.UseProperty<JObject>(PROPERTY_PROPERTIES, out var properties);
+        properties.UseProperty<JObject>(PROPERTY_SITE_CONFIG, out var siteConfig);
 
-        for (var i = 0; i < subResources.Length; i++)
+        if (resource.Value.TryGetSubResources(configType, out var subResources))
         {
-            if (subResources[i].ResourceNameEquals("web") &&
-                subResources[i].TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var overrideProperties))
+            for (var i = 0; i < subResources.Length; i++)
             {
-                resource.Value.UseProperty<JObject>(PROPERTY_PROPERTIES, out var properties);
-                properties.UseProperty<JObject>(PROPERTY_SITE_CONFIG, out var siteConfig);
-                siteConfig.Merge(overrideProperties, _MergeSettings);
+                if (subResources[i].ResourceNameEquals("web"))
+                {
+                    if (subResources[i].TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var overrideProperties))
+                    {
+                        siteConfig.Merge(overrideProperties, _MergeSettings);
+                    }
+                    subResources[i].Remove();
+                }
             }
         }
+
+        // Reflect the siteConfig property back as a sub-resource for consistency, replacing the existing.
+        var webSubResource = new JObject
+        {
+            [PROPERTY_TYPE] = configType,
+            [PROPERTY_NAME] = "web",
+            [PROPERTY_API_VERSION] = "2022-09-01",
+            [PROPERTY_ID] = string.Concat(resource.Id, "/config/web"),
+            [PROPERTY_PROPERTIES] = siteConfig
+        };
+
+        resource.Value.UseProperty(PROPERTY_RESOURCES, out JArray resources);
+        resources.Add(webSubResource);
+
         return true;
     }
 
