@@ -143,6 +143,8 @@ internal sealed class PolicyAssignmentExpandVisitor
         }
     }
 
+#nullable enable
+
     private static PolicyDefinitionResourceType GetPolicyDefinitionType(string resourceId)
     {
         if (!ResourceHelper.ResourceIdComponents(resourceId, out _, out _, out _, out _, out string[]? resourceType, out _) ||
@@ -157,6 +159,8 @@ internal sealed class PolicyAssignmentExpandVisitor
 
         return PolicyDefinitionResourceType.Unknown;
     }
+
+#nullable restore
 
     private static async Task<JObject[]> GetPolicyDefinitionSet(ResourceContext context, string resourceId)
     {
