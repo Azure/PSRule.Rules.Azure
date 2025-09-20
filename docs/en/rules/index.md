@@ -514,5 +514,6 @@ AZR-000491 | [Azure.Alert.MetricAutoMitigate](Azure.Alert.MetricAutoMitigate.md)
 AZR-000492 | [Azure.Alert.HighFrequencyQuery](Azure.Alert.HighFrequencyQuery.md) | High frequency scheduled queries are changed as a higher rate than low frequency queries. | GA
 AZR-000493 | [Azure.EventGrid.NamespaceTLS](Azure.EventGrid.NamespaceTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
 AZR-000494 | [Azure.ACR.ReplicaLocation](Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | GA
+AZR-000497 | [Azure.Storage.LocalAuth](Azure.Storage.LocalAuth.md) | Storage account access keys are enabled. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

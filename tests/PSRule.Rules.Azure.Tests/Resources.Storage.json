@@ -732,5 +732,30 @@
         }
       }
     ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-I",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-I",
+    "Kind": "StorageV2",
+    "Location": "region",
+    "ResourceName": "storage-I",
+    "Name": "storage-I",
+    "Properties": {
+      "allowSharedKeyAccess": false,
+      "supportsHttpsTrafficOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": false,
+      "networkAcls": {
+        "defaultAction": "Deny"
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Storage/storageAccounts",
+    "ResourceType": "Microsoft.Storage/storageAccounts",
+    "Sku": {
+      "Name": "Standard_GRS",
+      "Tier": "Standard"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]
