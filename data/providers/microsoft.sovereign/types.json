@@ -13,30 +13,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "landingZoneConfigurations",
-    "apiVersions": [
-      "2024-03-31-preview",
-      "2023-09-28-preview"
-    ],
-    "locations": [
-      "global"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "landingZoneRegistrations",
-    "apiVersions": [
-      "2024-03-31-preview",
-      "2023-09-28-preview"
-    ],
-    "locations": [
-      "global"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
       "2025-02-27-preview",

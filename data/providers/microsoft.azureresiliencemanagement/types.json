@@ -1,0 +1,184 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "drills",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "drills/drillResources",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "drills/drillRuns",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "GoalAssignments",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "GoalAssignments/GoalResources",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "GoalTemplates",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/locationOperationStatuses",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/OperationStatuses",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "recoveryPlans",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "recoveryPlans/recoveryJobs",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "recoveryPlans/recoveryJobs/recoveryChildJobs",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "recoveryPlans/recoveryJobs/recoveryJobResources",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "recoveryPlans/recoveryResources",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "unifiedResilienceItems",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "UnifiedResiliencyItem",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]

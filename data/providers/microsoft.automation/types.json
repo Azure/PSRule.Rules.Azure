@@ -25,6 +25,7 @@
     },
     "resourceType": "automationAccounts",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-08-08",
@@ -55,7 +56,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -94,6 +94,7 @@
     "aliases": null,
     "resourceType": "automationAccounts/agentRegistrationInformation",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2021-06-22",
@@ -121,7 +122,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -171,6 +171,7 @@
     },
     "resourceType": "automationAccounts/configurations",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-08-08",
@@ -197,7 +198,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -239,6 +239,7 @@
     },
     "resourceType": "automationAccounts/hybridRunbookWorkerGroups",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-08-08",
@@ -268,7 +269,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -309,6 +309,7 @@
     },
     "resourceType": "automationAccounts/hybridRunbookWorkerGroups/hybridRunbookWorkers",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-08-08",
@@ -329,7 +330,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -373,6 +373,7 @@
     },
     "resourceType": "automationAccounts/jobs",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-08-08",
@@ -399,7 +400,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -438,6 +438,7 @@
     "aliases": null,
     "resourceType": "automationAccounts/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2021-06-22",
@@ -458,7 +459,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -506,6 +506,7 @@
     },
     "resourceType": "automationAccounts/privateEndpointConnections",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2021-06-22",
@@ -526,7 +527,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -565,6 +565,7 @@
     "aliases": null,
     "resourceType": "automationAccounts/privateLinkResources",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2021-06-22",
@@ -585,7 +586,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -650,6 +650,7 @@
     },
     "resourceType": "automationAccounts/runbooks",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-08-08",
@@ -677,7 +678,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -716,6 +716,7 @@
     "aliases": null,
     "resourceType": "automationAccounts/softwareUpdateConfigurationMachineRuns",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-08-08",
@@ -740,7 +741,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -779,6 +779,7 @@
     "aliases": null,
     "resourceType": "automationAccounts/softwareUpdateConfigurationRuns",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-08-08",
@@ -803,7 +804,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -916,6 +916,7 @@
     },
     "resourceType": "automationAccounts/softwareUpdateConfigurations",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2020-01-13-preview",
@@ -939,7 +940,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -987,6 +987,7 @@
     },
     "resourceType": "automationAccounts/webhooks",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2018-06-30",
@@ -1010,7 +1011,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -1049,6 +1049,7 @@
     "aliases": null,
     "resourceType": "deletedAutomationAccounts",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2022-01-31"
@@ -1068,7 +1069,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -1107,6 +1107,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-10-23",
       "2024-08-01-preview"
     ],
     "locations": [
@@ -1124,7 +1125,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -1163,6 +1163,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2024-10-23",
       "2024-08-01-preview"
     ],
     "locations": [
@@ -1180,7 +1181,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -1219,6 +1219,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-10-23",
       "2023-11-01",
       "2023-05-15-preview",
       "2020-01-13-preview",

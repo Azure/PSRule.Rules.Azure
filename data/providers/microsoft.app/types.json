@@ -1,5 +1,17 @@
 [
   {
+    "aliases": null,
+    "resourceType": "agents",
+    "apiVersions": [
+      "2025-05-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "Sweden Central"
+    ],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.App/builders/containerRegistries": "properties.containerRegistries",
       "Microsoft.App/builders/containerRegistries[*]": "properties.containerRegistries[*]",
@@ -29,7 +41,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -80,7 +91,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -129,6 +139,7 @@
     },
     "resourceType": "connectedEnvironments",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -145,6 +156,7 @@
       "2022-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "East Asia",
       "East US",
       "North Central US",
@@ -178,6 +190,7 @@
     },
     "resourceType": "connectedEnvironments/certificates",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -194,6 +207,7 @@
       "2022-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "East Asia",
       "East US",
       "North Central US",
@@ -442,6 +456,7 @@
     },
     "resourceType": "containerApps",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -470,7 +485,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -502,6 +516,7 @@
     "aliases": null,
     "resourceType": "containerApps/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
@@ -520,7 +535,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -571,7 +585,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -620,7 +633,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -652,6 +664,7 @@
     "aliases": null,
     "resourceType": "getCustomDomainVerificationId",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -833,6 +846,7 @@
     },
     "resourceType": "jobs",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -858,7 +872,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -890,6 +903,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -913,6 +927,7 @@
     "aliases": null,
     "resourceType": "locations/availableManagedEnvironmentsWorkloadProfileTypes",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -940,7 +955,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -972,6 +986,7 @@
     "aliases": null,
     "resourceType": "locations/billingMeters",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -999,7 +1014,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1031,6 +1045,7 @@
     "aliases": null,
     "resourceType": "locations/connectedEnvironmentOperationResults",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1047,6 +1062,7 @@
       "2022-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "East Asia",
       "East US",
       "North Central US",
@@ -1062,6 +1078,7 @@
     "aliases": null,
     "resourceType": "locations/connectedEnvironmentOperationStatuses",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1078,6 +1095,7 @@
       "2022-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "East Asia",
       "East US",
       "North Central US",
@@ -1093,10 +1111,12 @@
     "aliases": null,
     "resourceType": "locations/connectedOperationResults",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2024-10-02-preview"
     ],
     "locations": [
+      "Australia East",
       "East Asia",
       "East US",
       "North Central US",
@@ -1112,10 +1132,12 @@
     "aliases": null,
     "resourceType": "locations/connectedOperationStatuses",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2024-10-02-preview"
     ],
     "locations": [
+      "Australia East",
       "East Asia",
       "East US",
       "North Central US",
@@ -1131,6 +1153,7 @@
     "aliases": null,
     "resourceType": "locations/containerappOperationResults",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1159,7 +1182,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1191,6 +1213,7 @@
     "aliases": null,
     "resourceType": "locations/containerappOperationStatuses",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1219,7 +1242,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1251,6 +1273,7 @@
     "aliases": null,
     "resourceType": "locations/containerappsjobOperationResults",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1276,7 +1299,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1308,6 +1330,7 @@
     "aliases": null,
     "resourceType": "locations/containerappsjobOperationStatuses",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1333,7 +1356,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1365,6 +1387,7 @@
     "aliases": null,
     "resourceType": "locations/managedCertificateOperationStatuses",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1390,7 +1413,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1422,6 +1444,7 @@
     "aliases": null,
     "resourceType": "locations/managedEnvironmentOperationResults",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1450,7 +1473,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1482,6 +1504,7 @@
     "aliases": null,
     "resourceType": "locations/managedEnvironmentOperationStatuses",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1510,7 +1533,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1542,6 +1564,7 @@
     "aliases": null,
     "resourceType": "locations/OperationResults",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1562,7 +1585,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1594,6 +1616,7 @@
     "aliases": null,
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1614,7 +1637,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1646,6 +1668,7 @@
     "aliases": null,
     "resourceType": "locations/sourceControlOperationResults",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1674,7 +1697,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1706,6 +1728,7 @@
     "aliases": null,
     "resourceType": "locations/sourceControlOperationStatuses",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1734,7 +1757,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1764,8 +1786,33 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/sreAgentOperationResults",
+    "apiVersions": [
+      "2025-05-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "Sweden Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/sreAgentOperationStatuses",
+    "apiVersions": [
+      "2025-05-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "Sweden Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1788,7 +1835,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1820,12 +1866,14 @@
     "aliases": null,
     "resourceType": "logicApps",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview"
     ],
     "locations": [
+      "Australia East",
       "East Asia",
       "East US",
       "North Central US",
@@ -1949,6 +1997,7 @@
     },
     "resourceType": "managedEnvironments",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -1977,7 +2026,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -2027,6 +2075,7 @@
     },
     "resourceType": "managedEnvironments/certificates",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -2055,7 +2104,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -2113,6 +2161,7 @@
     },
     "resourceType": "managedEnvironments/daprComponents",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -2141,7 +2190,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -2217,7 +2265,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -2278,7 +2325,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -2341,6 +2387,7 @@
     },
     "resourceType": "managedEnvironments/javaComponents",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -2360,7 +2407,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -2398,6 +2444,7 @@
     },
     "resourceType": "managedEnvironments/managedCertificates",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -2423,7 +2470,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -2455,6 +2501,7 @@
     "aliases": null,
     "resourceType": "managedEnvironments/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
@@ -2473,7 +2520,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -2505,6 +2551,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -2585,6 +2632,7 @@
     },
     "resourceType": "sessionPools",
     "apiVersions": [
+      "2025-07-01",
       "2025-02-02-preview",
       "2025-01-01",
       "2024-10-02-preview",
@@ -2596,6 +2644,7 @@
     "locations": [
       "Australia East",
       "Brazil South",
+      "Canada Central",
       "Canada East",
       "East Asia",
       "East US",

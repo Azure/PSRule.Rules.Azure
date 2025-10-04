@@ -149,6 +149,8 @@
     },
     "resourceType": "accounts",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -209,6 +211,8 @@
     "aliases": null,
     "resourceType": "accounts/capabilityhosts",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview"
     ],
     "locations": [
@@ -306,6 +310,8 @@
     },
     "resourceType": "accounts/connections",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview"
     ],
     "locations": [
@@ -364,6 +370,8 @@
     },
     "resourceType": "accounts/encryptionScopes",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -467,6 +475,8 @@
     "aliases": null,
     "resourceType": "accounts/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -537,6 +547,8 @@
     },
     "resourceType": "accounts/privateEndpointConnections",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -596,6 +608,8 @@
     "aliases": null,
     "resourceType": "accounts/privateLinkResources",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -661,6 +675,8 @@
     },
     "resourceType": "accounts/projects",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview"
     ],
     "locations": [
@@ -708,6 +724,8 @@
     "aliases": null,
     "resourceType": "accounts/projects/capabilityhosts",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview"
     ],
     "locations": [
@@ -805,6 +823,8 @@
     },
     "resourceType": "accounts/projects/connections",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview"
     ],
     "locations": [
@@ -854,6 +874,8 @@
     "aliases": null,
     "resourceType": "attestationDefinitions",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -907,6 +929,8 @@
     "aliases": null,
     "resourceType": "attestations",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -960,6 +984,8 @@
     "aliases": null,
     "resourceType": "calculateModelCapacity",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview"
@@ -1009,6 +1035,8 @@
     "aliases": null,
     "resourceType": "checkDomainAvailability",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1069,6 +1097,8 @@
     "aliases": null,
     "resourceType": "commitmentPlans",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1123,6 +1153,8 @@
     "aliases": null,
     "resourceType": "deletedAccounts",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1181,6 +1213,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1241,6 +1275,8 @@
     "aliases": null,
     "resourceType": "locations/checkSkuAvailability",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1301,6 +1337,8 @@
     "aliases": null,
     "resourceType": "locations/commitmentTiers",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1358,6 +1396,8 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1418,6 +1458,8 @@
     "aliases": null,
     "resourceType": "locations/modelCapacities",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1468,6 +1510,8 @@
     "aliases": null,
     "resourceType": "locations/models",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1570,6 +1614,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1630,6 +1676,8 @@
     "aliases": null,
     "resourceType": "locations/raiContentFilters",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1682,6 +1730,8 @@
     "aliases": null,
     "resourceType": "locations/resourceGroups",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1740,6 +1790,8 @@
     "aliases": null,
     "resourceType": "locations/resourceGroups/deletedAccounts",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1798,6 +1850,8 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1851,6 +1905,8 @@
     "aliases": null,
     "resourceType": "modelCapacities",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",
@@ -1901,6 +1957,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2024-10-01",
       "2024-06-01-preview",

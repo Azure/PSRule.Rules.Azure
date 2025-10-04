@@ -38,6 +38,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -71,6 +72,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -133,6 +135,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -153,6 +156,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -199,6 +203,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -498,6 +510,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -518,6 +531,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -564,6 +578,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -920,6 +942,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -966,6 +989,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -1257,6 +1288,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1313,6 +1345,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1372,6 +1405,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1428,6 +1462,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1487,6 +1522,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1570,6 +1606,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1667,6 +1704,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1715,6 +1753,8 @@
   {
     "aliases": {
       "Microsoft.Compute/disks/accountType": "properties.accountType",
+      "Microsoft.Compute/disks/availabilityPolicy": "properties.availabilityPolicy",
+      "Microsoft.Compute/disks/availabilityPolicy.actionOnDiskDelay": "properties.availabilityPolicy.actionOnDiskDelay",
       "Microsoft.Compute/disks/burstingEnabled": "properties.burstingEnabled",
       "Microsoft.Compute/disks/burstingEnabledTime": "properties.burstingEnabledTime",
       "Microsoft.Compute/disks/completionPercent": "properties.completionPercent",
@@ -1731,10 +1771,12 @@
       "Microsoft.Compute/disks/creationData.imageReference.id": "properties.creationData.imageReference.id",
       "Microsoft.Compute/disks/creationData.imageReference.lun": "properties.creationData.imageReference.lun",
       "Microsoft.Compute/disks/creationData.imageReference.sharedGalleryImageId": "properties.creationData.imageReference.sharedGalleryImageId",
+      "Microsoft.Compute/disks/creationData.instantAccessDurationMinutes": "properties.creationData.instantAccessDurationMinutes",
       "Microsoft.Compute/disks/creationData.logicalSectorSize": "properties.creationData.logicalSectorSize",
       "Microsoft.Compute/disks/creationData.performancePlus": "properties.creationData.performancePlus",
       "Microsoft.Compute/disks/creationData.provisionedBandwidthCopySpeed": "properties.creationData.provisionedBandwidthCopySpeed",
       "Microsoft.Compute/disks/creationData.securityDataUri": "properties.creationData.securityDataUri",
+      "Microsoft.Compute/disks/creationData.securityMetadataUri": "properties.creationData.securityMetadataUri",
       "Microsoft.Compute/disks/creationData.sourceResourceId": "properties.creationData.sourceResourceId",
       "Microsoft.Compute/disks/creationData.sourceUniqueId": "properties.creationData.sourceUniqueId",
       "Microsoft.Compute/disks/creationData.sourceUri": "properties.creationData.sourceUri",
@@ -1805,6 +1847,7 @@
       "Microsoft.Compute/disks/supportedCapabilities.acceleratedNetwork": "properties.supportedCapabilities.acceleratedNetwork",
       "Microsoft.Compute/disks/supportedCapabilities.architecture": "properties.supportedCapabilities.architecture",
       "Microsoft.Compute/disks/supportedCapabilities.diskControllerTypes": "properties.supportedCapabilities.diskControllerTypes",
+      "Microsoft.Compute/disks/supportedCapabilities.supportedSecurityOption": "properties.supportedCapabilities.supportedSecurityOption",
       "Microsoft.Compute/disks/supportsHibernation": "properties.supportsHibernation",
       "Microsoft.Compute/disks/tier": "properties.tier",
       "Microsoft.Compute/disks/timeCreated": "properties.timeCreated",
@@ -1846,6 +1889,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1892,6 +1936,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -2253,6 +2305,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -2339,6 +2392,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -2490,6 +2544,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -2593,6 +2648,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -2786,6 +2842,121 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "Chile Central",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "Mexico Central",
+      "New Zealand North",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "galleries/inVMAccessControlProfiles",
+    "apiVersions": [
+      "2025-03-03",
+      "2024-03-03"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Austria East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "Chile Central",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "Mexico Central",
+      "New Zealand North",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "galleries/inVMAccessControlProfiles/versions",
+    "apiVersions": [
+      "2025-03-03",
+      "2024-03-03"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -2845,6 +3016,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -2869,6 +3041,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -2915,6 +3088,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -3214,6 +3395,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -3238,6 +3420,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -3284,6 +3467,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -3601,6 +3792,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -3631,6 +3823,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -3680,6 +3873,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -3752,6 +3946,63 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/autoUpgradableExtensions",
+    "apiVersions": [
+      "2025-04-01",
+      "2024-11-01"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Austria East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "Chile Central",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "Mexico Central",
+      "New Zealand North",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/capsoperations",
     "apiVersions": [
       "2025-03-03",
@@ -3774,6 +4025,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -3832,6 +4084,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -3890,6 +4143,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -3939,6 +4193,7 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2025-04-01",
       "2025-03-03",
       "2024-11-01",
       "2024-07-01",
@@ -3979,6 +4234,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4038,6 +4294,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4087,6 +4344,7 @@
     "aliases": null,
     "resourceType": "locations/diagnosticOperations",
     "apiVersions": [
+      "2025-06-05-preview",
       "2025-02-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -4097,6 +4355,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -4108,7 +4367,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -4153,6 +4411,7 @@
     "aliases": null,
     "resourceType": "locations/diagnostics",
     "apiVersions": [
+      "2025-06-05-preview",
       "2025-02-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -4163,6 +4422,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -4174,7 +4434,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -4246,6 +4505,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4295,6 +4555,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -4317,6 +4578,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -4336,6 +4598,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4385,6 +4648,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/vmimages",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -4404,6 +4668,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4472,6 +4737,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4521,6 +4787,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -4548,6 +4815,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4597,6 +4865,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -4631,6 +4900,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4680,6 +4950,7 @@
     "aliases": null,
     "resourceType": "locations/placementRecommendations",
     "apiVersions": [
+      "2025-06-05-preview",
       "2025-02-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -4690,6 +4961,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -4701,7 +4973,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -4746,6 +5017,8 @@
     "aliases": null,
     "resourceType": "locations/placementScores",
     "apiVersions": [
+      "2025-06-05-preview",
+      "2025-06-05",
       "2025-02-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -4756,6 +5029,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -4767,7 +5041,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -4812,6 +5085,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2025-04-01",
       "2025-03-03",
       "2024-11-01",
       "2024-07-01",
@@ -4852,6 +5126,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4901,6 +5176,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -4917,6 +5193,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -4966,6 +5243,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -4994,6 +5272,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5043,6 +5322,7 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2025-04-01",
       "2025-03-03",
       "2024-11-01",
       "2024-07-01",
@@ -5083,6 +5363,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5132,6 +5413,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -5152,6 +5434,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5201,6 +5484,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -5221,6 +5505,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5270,6 +5555,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -5303,6 +5589,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5352,6 +5639,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -5381,6 +5669,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5430,6 +5719,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -5459,6 +5749,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5508,6 +5799,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizeRecommendations",
     "apiVersions": [
+      "2025-06-05-preview",
       "2025-02-01-preview"
     ],
     "locations": [
@@ -5515,6 +5807,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -5526,7 +5819,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -5571,6 +5863,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -5604,6 +5897,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5653,6 +5947,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -5685,6 +5980,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5788,6 +6084,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -5814,6 +6111,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -5860,6 +6158,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -6303,6 +6609,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -6331,6 +6638,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -6533,6 +6841,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -6561,6 +6870,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -6627,6 +6937,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -6768,10 +7079,12 @@
       "Microsoft.Compute/snapshots/creationData.imageReference.id": "properties.creationData.imageReference.id",
       "Microsoft.Compute/snapshots/creationData.imageReference.lun": "properties.creationData.imageReference.lun",
       "Microsoft.Compute/snapshots/creationData.imageReference.sharedGalleryImageId": "properties.creationData.imageReference.sharedGalleryImageId",
+      "Microsoft.Compute/snapshots/creationData.instantAccessDurationMinutes": "properties.creationData.instantAccessDurationMinutes",
       "Microsoft.Compute/snapshots/creationData.logicalSectorSize": "properties.creationData.logicalSectorSize",
       "Microsoft.Compute/snapshots/creationData.performancePlus": "properties.creationData.performancePlus",
       "Microsoft.Compute/snapshots/creationData.provisionedBandwidthCopySpeed": "properties.creationData.provisionedBandwidthCopySpeed",
       "Microsoft.Compute/snapshots/creationData.securityDataUri": "properties.creationData.securityDataUri",
+      "Microsoft.Compute/snapshots/creationData.securityMetadataUri": "properties.creationData.securityMetadataUri",
       "Microsoft.Compute/snapshots/creationData.sourceResourceId": "properties.creationData.sourceResourceId",
       "Microsoft.Compute/snapshots/creationData.sourceUniqueId": "properties.creationData.sourceUniqueId",
       "Microsoft.Compute/snapshots/creationData.sourceUri": "properties.creationData.sourceUri",
@@ -6828,10 +7141,12 @@
       "Microsoft.Compute/snapshots/sku": "sku",
       "Microsoft.Compute/snapshots/sku.name": "sku.name",
       "Microsoft.Compute/snapshots/sku.tier": "sku.tier",
+      "Microsoft.Compute/snapshots/snapshotAccessState": "properties.snapshotAccessState",
       "Microsoft.Compute/snapshots/supportedCapabilities": "properties.supportedCapabilities",
       "Microsoft.Compute/snapshots/supportedCapabilities.acceleratedNetwork": "properties.supportedCapabilities.acceleratedNetwork",
       "Microsoft.Compute/snapshots/supportedCapabilities.architecture": "properties.supportedCapabilities.architecture",
       "Microsoft.Compute/snapshots/supportedCapabilities.diskControllerTypes": "properties.supportedCapabilities.diskControllerTypes",
+      "Microsoft.Compute/snapshots/supportedCapabilities.supportedSecurityOption": "properties.supportedCapabilities.supportedSecurityOption",
       "Microsoft.Compute/snapshots/supportsHibernation": "properties.supportsHibernation",
       "Microsoft.Compute/snapshots/timeCreated": "properties.timeCreated",
       "Microsoft.Compute/snapshots/uniqueId": "properties.uniqueId"
@@ -6865,6 +7180,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -6916,6 +7232,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -6937,6 +7254,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -7274,6 +7592,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -7307,6 +7626,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -7353,6 +7673,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -7670,6 +7998,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -7703,6 +8032,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -7758,6 +8088,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -7837,6 +8168,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -7858,6 +8190,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -7907,6 +8240,7 @@
     "aliases": null,
     "resourceType": "virtualMachines/VMApplications",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -7923,6 +8257,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -8351,6 +8686,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -8385,6 +8721,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -8431,6 +8768,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Austria East",
         "zones": [
           "1",
           "2",
@@ -8715,6 +9060,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/applications",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -8731,6 +9077,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -8807,6 +9154,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -8875,6 +9223,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -8909,6 +9258,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -8958,6 +9308,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -8994,6 +9345,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -9043,6 +9395,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -9071,6 +9424,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -9417,6 +9771,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -9451,6 +9806,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -9517,6 +9873,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -9551,6 +9908,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -9600,6 +9958,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-07-01",
       "2024-03-01",
@@ -9636,6 +9995,7 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",

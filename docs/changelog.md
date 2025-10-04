@@ -53,9 +53,15 @@ What's changed since v1.45.2:
     - Check that local authentication is disabled for storage accounts by @copilot.
       [#3115](https://github.com/Azure/PSRule.Rules.Azure/issues/3115)
 - Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.32.7` as the minimum version by @BernieWhite.
+      [#3541](https://github.com/Azure/PSRule.Rules.Azure/issues/3541)
   - Container Registry:
     - Updated `Azure.ACR.GeoReplica` to ensure geo-replication applies to pre-flight and in-flight cases by @BernieWhite.
       [#3477](https://github.com/Azure/PSRule.Rules.Azure/issues/3477)
+- General improvements:
+  - Updated provider data by @BernieWhite.
+    [#3538](https://github.com/Azure/PSRule.Rules.Azure/issues/3538)
 - Bug fixes:
   - Fixed false negative for App Service `web` configuration cases set with `siteConfig` by @BernieWhite.
     [#3521](https://github.com/Azure/PSRule.Rules.Azure/issues/3521)

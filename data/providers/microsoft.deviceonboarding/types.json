@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-05-01-preview",
       "2024-12-01-preview",
       "2024-11-01-preview"
     ],

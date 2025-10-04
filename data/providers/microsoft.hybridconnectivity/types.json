@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "endpoints",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-01",
       "2023-03-15",
       "2022-05-01-preview",
@@ -26,16 +27,20 @@
       "Japan East",
       "Japan West",
       "Korea Central",
+      "Korea South",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -51,6 +56,7 @@
     "aliases": null,
     "resourceType": "generateAwsTemplate",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
@@ -62,8 +68,20 @@
   },
   {
     "aliases": null,
+    "resourceType": "generateGcpTemplate",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-15-preview",
       "2024-12-01",
       "2024-08-01-preview",
@@ -105,16 +123,20 @@
       "Japan East",
       "Japan West",
       "Korea Central",
+      "Korea South",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -130,6 +152,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-15-preview",
       "2024-12-01",
       "2024-08-01-preview",
@@ -148,6 +171,7 @@
     "aliases": null,
     "resourceType": "publicCloudConnectors",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-01",
       "2024-08-01-preview"
     ],
@@ -172,6 +196,7 @@
     "aliases": null,
     "resourceType": "solutionConfigurations",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-01",
       "2024-08-01-preview"
     ],
@@ -196,6 +221,7 @@
     "aliases": null,
     "resourceType": "solutionTypes",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-01",
       "2024-08-01-preview"
     ],

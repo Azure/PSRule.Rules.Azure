@@ -108,6 +108,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2025-09-15-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -164,6 +165,7 @@
     },
     "resourceType": "clusters/arcSettings",
     "apiVersions": [
+      "2025-09-15-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -228,6 +230,7 @@
     },
     "resourceType": "clusters/arcSettings/extensions",
     "apiVersions": [
+      "2025-09-15-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -407,6 +410,7 @@
     },
     "resourceType": "clusters/deploymentSettings",
     "apiVersions": [
+      "2025-09-15-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -514,6 +518,7 @@
     },
     "resourceType": "clusters/securitySettings",
     "apiVersions": [
+      "2025-09-15-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -538,6 +543,8 @@
     "aliases": null,
     "resourceType": "clusters/updates",
     "apiVersions": [
+      "2025-09-15-preview",
+      "2025-06-01-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -571,6 +578,8 @@
     "aliases": null,
     "resourceType": "clusters/updates/updateRuns",
     "apiVersions": [
+      "2025-09-15-preview",
+      "2025-06-01-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -604,6 +613,8 @@
     "aliases": null,
     "resourceType": "clusters/updateSummaries",
     "apiVersions": [
+      "2025-09-15-preview",
+      "2025-06-01-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -653,6 +664,7 @@
     },
     "resourceType": "edgeDevices",
     "apiVersions": [
+      "2025-09-15-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -708,6 +720,7 @@
     },
     "resourceType": "galleryImages",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -738,6 +751,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
@@ -783,6 +797,8 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2025-09-01-preview",
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
@@ -833,6 +849,7 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "UK South",
       "West Europe",
       "West US 2"
     ],
@@ -842,6 +859,7 @@
     "aliases": null,
     "resourceType": "locations/validatedSolutionRecipes",
     "apiVersions": [
+      "2025-09-15-preview",
       "2025-02-01-preview"
     ],
     "locations": [
@@ -903,6 +921,7 @@
     },
     "resourceType": "logicalNetworks",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -954,6 +973,7 @@
     },
     "resourceType": "marketplaceGalleryImages",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -1007,6 +1027,7 @@
     },
     "resourceType": "networkInterfaces",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -1051,6 +1072,7 @@
     },
     "resourceType": "networkSecurityGroups",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -1089,6 +1111,7 @@
     },
     "resourceType": "networkSecurityGroups/securityRules",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -1112,6 +1135,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
@@ -1159,6 +1183,8 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2025-09-15-preview",
+      "2025-06-01-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
       "2024-09-01-preview",
@@ -1195,6 +1221,7 @@
     },
     "resourceType": "storageContainers",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -1254,6 +1281,7 @@
     },
     "resourceType": "virtualHardDisks",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -1398,6 +1426,7 @@
     },
     "resourceType": "virtualMachineInstances",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-10-01-preview",
@@ -1422,7 +1451,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "virtualMachines",
+    "resourceType": "virtualmachines",
     "apiVersions": [
       "2022-12-15-preview",
       "2021-09-01-preview",
@@ -1481,7 +1510,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "virtualNetworks",
+    "resourceType": "virtualnetworks",
     "apiVersions": [
       "2023-07-01-preview",
       "2022-12-15-preview",

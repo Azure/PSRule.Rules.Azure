@@ -1,0 +1,62 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "cloudFunctions",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "West Central US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "computeInstances",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "West Central US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locationss",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageBuckets",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "West Central US"
+    ],
+    "zoneMappings": []
+  }
+]

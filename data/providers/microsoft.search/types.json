@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-05-01",
       "2025-02-01-Preview",
       "2024-06-01-Preview",
       "2024-03-01-Preview",
@@ -33,6 +34,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-05-01",
       "2025-02-01-Preview",
       "2024-06-01-Preview",
       "2024-03-01-Preview",
@@ -47,6 +49,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2025-05-01",
       "2025-02-01-Preview",
       "2024-06-01-Preview",
       "2024-03-01-Preview",
@@ -101,6 +104,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-05-01",
       "2025-02-01-Preview",
       "2024-06-01-Preview",
       "2024-03-01-Preview",
@@ -120,6 +124,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-05-01",
       "2025-02-01-Preview",
       "2024-06-01-Preview",
       "2024-03-01-Preview",
@@ -128,11 +133,13 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -186,6 +193,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-05-01",
       "2025-02-01-Preview",
       "2024-06-01-Preview",
       "2024-03-01-Preview",
@@ -207,6 +215,7 @@
     "aliases": null,
     "resourceType": "resourceHealthMetadata",
     "apiVersions": [
+      "2025-05-01",
       "2025-02-01-Preview",
       "2024-06-01-Preview",
       "2024-03-01-Preview",
@@ -223,11 +232,13 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -357,6 +368,7 @@
     },
     "resourceType": "searchServices",
     "apiVersions": [
+      "2025-05-01",
       "2025-02-01-Preview",
       "2024-06-01-Preview",
       "2024-03-01-Preview",
@@ -375,11 +387,13 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",

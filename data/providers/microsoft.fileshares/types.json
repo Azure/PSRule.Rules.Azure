@@ -1,0 +1,275 @@
+[
+  {
+    "aliases": {
+      "Microsoft.FileShares/fileShares/hostName": "properties.hostName",
+      "Microsoft.FileShares/fileShares/includedBurstIOPerSec": "properties.includedBurstIOPerSec",
+      "Microsoft.FileShares/fileShares/maxBurstIOPerSecCredits": "properties.maxBurstIOPerSecCredits",
+      "Microsoft.FileShares/fileShares/mediaTier": "properties.mediaTier",
+      "Microsoft.FileShares/fileShares/mountName": "properties.mountName",
+      "Microsoft.FileShares/fileShares/nfsProtocolProperties": "properties.nfsProtocolProperties",
+      "Microsoft.FileShares/fileShares/nfsProtocolProperties.rootSquash": "properties.nfsProtocolProperties.rootSquash",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].systemData": "properties.privateEndpointConnections[*].systemData",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].systemData.createdAt": "properties.privateEndpointConnections[*].systemData.createdAt",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].systemData.createdBy": "properties.privateEndpointConnections[*].systemData.createdBy",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].systemData.createdByType": "properties.privateEndpointConnections[*].systemData.createdByType",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].systemData.lastModifiedAt": "properties.privateEndpointConnections[*].systemData.lastModifiedAt",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].systemData.lastModifiedBy": "properties.privateEndpointConnections[*].systemData.lastModifiedBy",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
+      "Microsoft.FileShares/fileShares/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.FileShares/fileShares/protocol": "properties.protocol",
+      "Microsoft.FileShares/fileShares/provisionedIOPerSec": "properties.provisionedIOPerSec",
+      "Microsoft.FileShares/fileShares/provisionedIOPerSecNextAllowedDowngrade": "properties.provisionedIOPerSecNextAllowedDowngrade",
+      "Microsoft.FileShares/fileShares/provisionedStorageGiB": "properties.provisionedStorageGiB",
+      "Microsoft.FileShares/fileShares/provisionedStorageNextAllowedDowngrade": "properties.provisionedStorageNextAllowedDowngrade",
+      "Microsoft.FileShares/fileShares/provisionedThroughputMiBPerSec": "properties.provisionedThroughputMiBPerSec",
+      "Microsoft.FileShares/fileShares/provisionedThroughputNextAllowedDowngrade": "properties.provisionedThroughputNextAllowedDowngrade",
+      "Microsoft.FileShares/fileShares/provisioningState": "properties.provisioningState",
+      "Microsoft.FileShares/fileShares/publicAccessProperties": "properties.publicAccessProperties",
+      "Microsoft.FileShares/fileShares/publicAccessProperties.allowedSubnets": "properties.publicAccessProperties.allowedSubnets",
+      "Microsoft.FileShares/fileShares/publicAccessProperties.allowedSubnets[*]": "properties.publicAccessProperties.allowedSubnets[*]",
+      "Microsoft.FileShares/fileShares/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.FileShares/fileShares/redundancy": "properties.redundancy"
+    },
+    "resourceType": "fileShares",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "fileShares/snapshots",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/checkNameAvailability",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/getLimits",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/getProvisioningRecommendation",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/getUsageData",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/partitions",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/partitions/operationResults",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/partitions/operations",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "East Asia",
+      "East US",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Central US EUAP",
+      "East Asia",
+      "East US",
+      "East US 2 EUAP",
+      "Germany North",
+      "Korea South",
+      "North Europe",
+      "South Africa West",
+      "South India",
+      "Southeast Asia",
+      "UAE Central"
+    ],
+    "zoneMappings": []
+  }
+]

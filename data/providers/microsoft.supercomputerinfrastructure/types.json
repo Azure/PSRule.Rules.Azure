@@ -3,8 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2024-02-01-preview",
-      "2023-02-01-preview"
+      "2025-07-01-preview"
     ],
     "locations": [
       "global"
@@ -13,10 +12,21 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2025-07-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "South Central US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2024-02-01-preview",
-      "2023-02-01-preview"
+      "2025-07-01-preview"
     ],
     "locations": [
       "global"

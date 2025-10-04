@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-06-10-preview",
       "2024-09-19-preview",
       "2024-07-09-preview",
       "2023-06-28-preview",
@@ -19,7 +20,9 @@
     "aliases": null,
     "resourceType": "Ledgers",
     "apiVersions": [
+      "2025-06-10-preview",
       "2024-09-19-preview",
+      "2024-07-09-preview",
       "2023-06-28-preview",
       "2023-01-26-preview",
       "2022-09-08-preview",
@@ -33,6 +36,7 @@
       "East US",
       "South Central US",
       "Southeast Asia",
+      "UAE North",
       "West Europe",
       "West US"
     ],
@@ -42,6 +46,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-06-10-preview",
       "2024-09-19-preview",
       "2023-06-28-preview",
       "2023-01-26-preview",
@@ -70,6 +75,7 @@
     "aliases": null,
     "resourceType": "Locations/operationstatuses",
     "apiVersions": [
+      "2025-06-10-preview",
       "2024-09-19-preview",
       "2023-06-28-preview",
       "2023-01-26-preview",
@@ -85,6 +91,7 @@
       "East US 2 EUAP",
       "South Central US",
       "Southeast Asia",
+      "UAE North",
       "West Europe",
       "West US"
     ],
@@ -94,6 +101,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-06-10-preview",
       "2024-09-19-preview",
       "2023-06-28-preview",
       "2023-01-26-preview",

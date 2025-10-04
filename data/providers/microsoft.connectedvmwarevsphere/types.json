@@ -24,8 +24,7 @@
     "resourceType": "clusters",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -35,6 +34,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -70,8 +70,7 @@
     "resourceType": "datastores",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -81,6 +80,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -116,8 +116,7 @@
     "resourceType": "hosts",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -127,6 +126,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -175,6 +175,7 @@
       "East US",
       "East US 2",
       "East US 2 EUAP",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -232,8 +233,7 @@
     "resourceType": "resourcepools",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -243,6 +243,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -282,8 +283,7 @@
     "resourceType": "VCenters",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -293,6 +293,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -349,8 +350,7 @@
     "resourceType": "vcenters/inventoryitems",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -360,6 +360,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -379,8 +380,7 @@
     "resourceType": "virtualmachineinstances",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -390,6 +390,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -721,8 +722,7 @@
     "resourceType": "virtualmachinetemplates",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -732,6 +732,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -767,8 +768,7 @@
     "resourceType": "virtualnetworks",
     "apiVersions": [
       "2023-12-01",
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
@@ -778,6 +778,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",

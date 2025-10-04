@@ -14,9 +14,11 @@
       "France",
       "Germany",
       "India",
+      "Italy",
       "Japan",
       "Korea",
       "Norway",
+      "Poland",
       "Singapore",
       "South Africa",
       "Sweden",
@@ -47,6 +49,7 @@
       "Japan",
       "Korea",
       "Norway",
+      "Poland",
       "Singapore",
       "South Africa",
       "Sweden",
@@ -54,45 +57,6 @@
       "UAE",
       "UK",
       "United States"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations",
-    "apiVersions": [
-      "2020-10-30-preview",
-      "2020-10-30"
-    ],
-    "locations": [
-      "East US",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/deleteVirtualNetworkOrSubnets",
-    "apiVersions": [
-      "2020-10-30-preview",
-      "2020-10-30"
-    ],
-    "locations": [
-      "East US",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/validateDeleteVirtualNetworkOrSubnets",
-    "apiVersions": [
-      "2020-10-30-preview",
-      "2020-10-30"
-    ],
-    "locations": [
-      "East US",
-      "West US"
     ],
     "zoneMappings": []
   },
@@ -110,7 +74,6 @@
       "Brazil",
       "Canada",
       "Central US",
-      "Central US EUAP",
       "East US",
       "East US 2 EUAP",
       "Europe",
@@ -121,6 +84,7 @@
       "Japan",
       "Korea",
       "Norway",
+      "Poland",
       "Singapore",
       "South Africa",
       "Sweden",
