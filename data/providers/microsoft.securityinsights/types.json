@@ -7,7 +7,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -61,6 +60,9 @@
     },
     "resourceType": "alertRules",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -103,7 +105,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -123,6 +124,9 @@
     "aliases": null,
     "resourceType": "alertRuleTemplates",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -165,7 +169,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -234,6 +237,9 @@
     },
     "resourceType": "automationRules",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -274,7 +280,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -294,6 +299,7 @@
     "aliases": null,
     "resourceType": "billingStatistics",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -310,7 +316,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -355,6 +360,9 @@
     },
     "resourceType": "bookmarks",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -396,7 +404,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -416,6 +423,7 @@
     "aliases": null,
     "resourceType": "businessApplicationAgents",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -423,7 +431,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -478,7 +485,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -498,6 +504,7 @@
     "aliases": null,
     "resourceType": "confidentialWatchlists",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -524,7 +531,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -544,6 +550,9 @@
     "aliases": null,
     "resourceType": "contentPackages",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -569,7 +578,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -589,6 +597,9 @@
     "aliases": null,
     "resourceType": "contentProductPackages",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -610,7 +621,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -630,6 +640,9 @@
     "aliases": null,
     "resourceType": "contentProductTemplates",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -651,7 +664,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -671,6 +683,9 @@
     "aliases": null,
     "resourceType": "contentTemplates",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -696,7 +711,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -716,6 +730,7 @@
     "aliases": null,
     "resourceType": "contenttranslators",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -724,7 +739,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -744,6 +758,9 @@
     "aliases": null,
     "resourceType": "dataConnectorDefinitions",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -770,7 +787,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -834,6 +850,9 @@
     },
     "resourceType": "dataConnectors",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -877,7 +896,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -897,6 +915,7 @@
     "aliases": null,
     "resourceType": "dataConnectorsCheckRequirements",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -929,7 +948,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -949,6 +967,7 @@
     "aliases": null,
     "resourceType": "enrichment",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -982,7 +1001,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1002,6 +1020,7 @@
     "aliases": null,
     "resourceType": "enrichmentWidgets",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1009,7 +1028,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1029,6 +1047,9 @@
     "aliases": null,
     "resourceType": "entities",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -1065,7 +1086,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1085,6 +1105,7 @@
     "aliases": null,
     "resourceType": "entityQueries",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1118,7 +1139,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1138,6 +1158,7 @@
     "aliases": null,
     "resourceType": "entityQueryTemplates",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1171,7 +1192,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1191,6 +1211,7 @@
     "aliases": null,
     "resourceType": "exportConnections",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1209,7 +1230,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1229,6 +1249,7 @@
     "aliases": null,
     "resourceType": "fileImports",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1253,7 +1274,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1273,6 +1293,7 @@
     "aliases": null,
     "resourceType": "hunts",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1290,7 +1311,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1310,6 +1330,7 @@
     "aliases": null,
     "resourceType": "huntsessions",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1333,7 +1354,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1388,6 +1408,9 @@
     },
     "resourceType": "incidents",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -1431,7 +1454,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1451,6 +1473,9 @@
     "aliases": null,
     "resourceType": "listrepositories",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -1487,7 +1512,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1507,6 +1531,9 @@
     "aliases": null,
     "resourceType": "metadata",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -1544,7 +1571,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1564,6 +1590,7 @@
     "aliases": null,
     "resourceType": "MitreCoverageRecords",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1593,7 +1620,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1613,6 +1639,7 @@
     "aliases": null,
     "resourceType": "officeConsents",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1645,7 +1672,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1665,6 +1691,9 @@
     "aliases": null,
     "resourceType": "onboardingStates",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -1705,7 +1734,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1725,6 +1753,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -1773,6 +1804,7 @@
     "aliases": null,
     "resourceType": "overview",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1796,7 +1828,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1816,6 +1847,7 @@
     "aliases": null,
     "resourceType": "recommendations",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1837,7 +1869,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1857,6 +1888,9 @@
     "aliases": null,
     "resourceType": "securityMLAnalyticsSettings",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -1890,7 +1924,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1914,6 +1947,7 @@
     },
     "resourceType": "settings",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -1947,7 +1981,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1967,6 +2000,9 @@
     "aliases": null,
     "resourceType": "sourceControls",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -2003,7 +2039,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2023,6 +2058,9 @@
     "aliases": null,
     "resourceType": "threatIntelligence",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -2064,7 +2102,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2084,6 +2121,7 @@
     "aliases": null,
     "resourceType": "triggeredAnalyticsRuleRuns",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -2103,7 +2141,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2152,6 +2189,9 @@
     },
     "resourceType": "watchlists",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-04-01-preview",
       "2025-03-01",
       "2025-01-01-preview",
@@ -2194,7 +2234,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2214,6 +2253,7 @@
     "aliases": null,
     "resourceType": "workspaceManagerAssignments",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -2232,7 +2272,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2252,6 +2291,7 @@
     "aliases": null,
     "resourceType": "workspaceManagerConfigurations",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -2270,7 +2310,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2290,6 +2329,7 @@
     "aliases": null,
     "resourceType": "workspaceManagerGroups",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -2308,7 +2348,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2328,6 +2367,7 @@
     "aliases": null,
     "resourceType": "workspaceManagerMembers",
     "apiVersions": [
+      "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -2346,7 +2386,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",

@@ -16,5 +16,36 @@
     ],
     "locations": [],
     "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "sentinelPlatformServices",
+    "apiVersions": [
+      "2025-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Japan East",
+      "North Central US",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
   }
 ]

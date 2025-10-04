@@ -146,6 +146,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-05-01-preview",
       "2025-04-01-preview",
       "2025-03-01-preview",
@@ -174,6 +175,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-05-01-preview",
       "2025-04-01-preview",
       "2025-03-01-preview",
@@ -236,6 +238,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-05-01-preview",
       "2025-04-01-preview",
       "2025-03-01-preview",
@@ -465,6 +468,7 @@
     "aliases": null,
     "resourceType": "SqlServerEsuLicenses",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-05-01-preview",
       "2025-04-01-preview",
       "2025-03-01-preview",
@@ -545,6 +549,7 @@
     },
     "resourceType": "SqlServerInstances",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-05-01-preview",
       "2025-04-01-preview",
       "2025-03-01-preview",
@@ -665,6 +670,7 @@
     },
     "resourceType": "SqlServerInstances/AvailabilityGroups",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-05-01-preview",
       "2025-04-01-preview",
       "2025-03-01-preview",
@@ -747,6 +753,7 @@
     },
     "resourceType": "SqlServerInstances/Databases",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-05-01-preview",
       "2025-04-01-preview",
       "2025-03-01-preview",
@@ -799,6 +806,7 @@
     "aliases": null,
     "resourceType": "SqlServerLicenses",
     "apiVersions": [
+      "2025-06-01-preview",
       "2025-05-01-preview",
       "2025-04-01-preview",
       "2025-03-01-preview",

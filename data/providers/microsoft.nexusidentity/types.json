@@ -39,7 +39,9 @@
     "apiVersions": [
       "2024-02-15-preview"
     ],
-    "locations": [],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   },
   {
@@ -65,7 +67,9 @@
     "apiVersions": [
       "2024-02-15-preview"
     ],
-    "locations": [],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   }
 ]

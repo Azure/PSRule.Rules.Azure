@@ -1,106 +1,11 @@
 [
   {
     "aliases": null,
-    "resourceType": "agents",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "bookshelves",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "catalogs",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
       "2025-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "datacontainers",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "datacontainers/dataassets",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
     "zoneMappings": []
   },
   {
@@ -119,34 +24,10 @@
       "2025-07-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Central US",
       "East US",
       "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "models",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
+      "Sweden Central",
+      "UK South"
     ],
     "zoneMappings": []
   },
@@ -157,120 +38,6 @@
       "2025-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "storages",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "supercomputers",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "supercomputers/nodepools",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "tools",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "workspaces",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "workspaces/projects",
-    "apiVersions": [
-      "2025-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "South Central US",
-      "UK South",
-      "West Europe",
-      "West US"
-    ],
     "zoneMappings": []
   }
 ]

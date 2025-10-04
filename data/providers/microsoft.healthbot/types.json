@@ -1,6 +1,7 @@
 [
   {
     "aliases": {
+      "Microsoft.HealthBot/healthBots/accessControlMethod": "properties.accessControlMethod",
       "Microsoft.HealthBot/healthBots/botManagementPortalLink": "properties.botManagementPortalLink",
       "Microsoft.HealthBot/healthBots/keyVaultProperties": "properties.keyVaultProperties",
       "Microsoft.HealthBot/healthBots/keyVaultProperties.keyName": "properties.keyVaultProperties.keyName",
@@ -17,6 +18,7 @@
     },
     "resourceType": "healthBots",
     "apiVersions": [
+      "2025-05-25",
       "2024-02-01",
       "2023-05-01",
       "2022-08-08",
@@ -44,6 +46,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-05-25",
       "2024-02-01",
       "2023-05-01",
       "2022-08-08",
@@ -58,6 +61,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-05-25",
       "2024-02-01",
       "2023-05-01",
       "2022-08-08",
@@ -86,6 +90,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-05-25",
       "2024-02-01",
       "2023-05-01",
       "2022-08-08",

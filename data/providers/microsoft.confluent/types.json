@@ -3,19 +3,10 @@
     "aliases": null,
     "resourceType": "agreements",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
       "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview",
       "2023-08-22",
-      "2023-07-11-preview",
-      "2023-02-09-preview",
-      "2022-10-07-preview",
-      "2022-07-21-preview",
-      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -29,23 +20,11 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
       "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview",
       "2023-08-22",
-      "2023-07-11-preview",
-      "2023-02-09-preview",
-      "2022-10-07-preview",
-      "2022-07-21-preview",
-      "2022-04-10-preview",
       "2021-12-01",
-      "2021-09-01-preview",
-      "2021-03-01-preview",
-      "2020-03-01-preview",
       "2020-03-01"
     ],
     "locations": [],
@@ -55,23 +34,11 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
       "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview",
       "2023-08-22",
-      "2023-07-11-preview",
-      "2023-02-09-preview",
-      "2022-10-07-preview",
-      "2022-07-21-preview",
-      "2022-04-10-preview",
       "2021-12-01",
-      "2021-09-01-preview",
-      "2021-03-01-preview",
-      "2020-03-01-preview",
       "2020-03-01"
     ],
     "locations": [],
@@ -81,23 +48,11 @@
     "aliases": null,
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
       "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview",
       "2023-08-22",
-      "2023-07-11-preview",
-      "2023-02-09-preview",
-      "2022-10-07-preview",
-      "2022-07-21-preview",
-      "2022-04-10-preview",
       "2021-12-01",
-      "2021-09-01-preview",
-      "2021-03-01-preview",
-      "2020-03-01-preview",
       "2020-03-01"
     ],
     "locations": [
@@ -139,19 +94,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
       "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview",
       "2023-08-22",
-      "2023-07-11-preview",
-      "2023-02-09-preview",
-      "2022-10-07-preview",
-      "2022-07-21-preview",
-      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -165,19 +111,10 @@
     "aliases": null,
     "resourceType": "organizations",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
       "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview",
       "2023-08-22",
-      "2023-07-11-preview",
-      "2023-02-09-preview",
-      "2022-10-07-preview",
-      "2022-07-21-preview",
-      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview",
@@ -221,13 +158,9 @@
     "aliases": null,
     "resourceType": "organizations/access",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
-      "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview"
+      "2024-02-13"
     ],
     "locations": [
       "Australia East",
@@ -266,13 +199,9 @@
     "aliases": null,
     "resourceType": "organizations/access/deleteRoleBinding",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
-      "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview"
+      "2024-02-13"
     ],
     "locations": [
       "Australia East",
@@ -311,12 +240,9 @@
     "aliases": null,
     "resourceType": "organizations/apiKeys",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
-      "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview"
+      "2024-02-13"
     ],
     "locations": [
       "Australia East",
@@ -355,12 +281,9 @@
     "aliases": null,
     "resourceType": "organizations/environments",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
-      "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview"
+      "2024-02-13"
     ],
     "locations": [
       "Australia East",
@@ -399,12 +322,9 @@
     "aliases": null,
     "resourceType": "organizations/environments/clusters",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
-      "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview"
+      "2024-02-13"
     ],
     "locations": [
       "Australia East",
@@ -443,9 +363,8 @@
     "aliases": null,
     "resourceType": "organizations/environments/clusters/connectors",
     "apiVersions": [
-      "2024-07-01-preview",
-      "2024-07-01",
-      "2024-03-20-preview"
+      "2025-08-18-preview",
+      "2024-07-01"
     ],
     "locations": [
       "Australia East",
@@ -484,12 +403,9 @@
     "aliases": null,
     "resourceType": "organizations/environments/clusters/createAPIKey",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
-      "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview"
+      "2024-02-13"
     ],
     "locations": [
       "Australia East",
@@ -528,9 +444,8 @@
     "aliases": null,
     "resourceType": "organizations/environments/clusters/topics",
     "apiVersions": [
-      "2024-07-01-preview",
-      "2024-07-01",
-      "2024-03-20-preview"
+      "2025-08-18-preview",
+      "2024-07-01"
     ],
     "locations": [
       "Australia East",
@@ -569,12 +484,9 @@
     "aliases": null,
     "resourceType": "organizations/environments/schemaRegistryClusters",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
-      "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview"
+      "2024-02-13"
     ],
     "locations": [
       "Australia East",
@@ -613,12 +525,9 @@
     "aliases": null,
     "resourceType": "organizations/listRegions",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
-      "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview"
+      "2024-02-13"
     ],
     "locations": [
       "Australia East",
@@ -657,19 +566,10 @@
     "aliases": null,
     "resourceType": "validations",
     "apiVersions": [
-      "2024-07-01-preview",
+      "2025-08-18-preview",
       "2024-07-01",
-      "2024-03-20-preview",
       "2024-02-13",
-      "2024-02-05-preview",
-      "2024-01-12-preview",
-      "2023-10-03-preview",
       "2023-08-22",
-      "2023-07-11-preview",
-      "2023-02-09-preview",
-      "2022-10-07-preview",
-      "2022-07-21-preview",
-      "2022-04-10-preview",
       "2021-12-01",
       "2021-09-01-preview",
       "2021-03-01-preview"

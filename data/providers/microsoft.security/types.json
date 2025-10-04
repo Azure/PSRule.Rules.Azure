@@ -30,6 +30,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -293,7 +294,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -385,7 +385,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -493,7 +492,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -594,6 +592,8 @@
     },
     "resourceType": "defenderForStorageSettings",
     "apiVersions": [
+      "2025-07-01-preview",
+      "2025-06-01",
       "2025-02-01-preview",
       "2025-01-01",
       "2024-10-01-preview",
@@ -616,7 +616,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Italy North",
@@ -624,6 +623,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -771,7 +771,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -954,7 +953,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -1004,7 +1002,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -1054,7 +1051,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -1104,7 +1100,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -1153,7 +1148,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -1202,7 +1196,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -1251,7 +1244,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -1300,7 +1292,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -1361,7 +1352,6 @@
       "Central US",
       "East US",
       "France Central",
-      "France South",
       "Germany West Central",
       "North Europe",
       "Switzerland North",
@@ -1489,7 +1479,6 @@
       "Central US",
       "East US",
       "France Central",
-      "France South",
       "Germany West Central",
       "North Europe",
       "Switzerland North",
@@ -1569,6 +1558,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-10-01-preview",
       "2020-01-01",
       "2015-06-01-preview"
     ],
@@ -1670,6 +1660,61 @@
   },
   {
     "aliases": null,
+    "resourceType": "privateLinks",
+    "apiVersions": [
+      "2025-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateLinks/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2025-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateLinks/privateEndpointConnectionProxies/validate",
+    "apiVersions": [
+      "2025-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateLinks/privateEndpointConnections",
+    "apiVersions": [
+      "2025-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateLinks/privateLinkResources",
+    "apiVersions": [
+      "2025-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "query",
     "apiVersions": [
       "2025-02-01-preview",
@@ -1693,7 +1738,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",
@@ -2053,6 +2097,7 @@
     },
     "resourceType": "securityConnectors",
     "apiVersions": [
+      "2025-08-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
       "2024-03-01-preview",
@@ -2074,7 +2119,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -2265,7 +2309,6 @@
     ],
     "locations": [
       "France Central",
-      "France South",
       "Germany West Central",
       "Italy North",
       "North Europe",
@@ -2321,24 +2364,27 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -2407,7 +2453,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Japan East",

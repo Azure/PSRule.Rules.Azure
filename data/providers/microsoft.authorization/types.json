@@ -173,6 +173,7 @@
     "aliases": null,
     "resourceType": "listPolicyDefinitionVersions",
     "apiVersions": [
+      "2025-03-01",
       "2025-01-01",
       "2024-05-01",
       "2023-04-01"
@@ -184,6 +185,7 @@
     "aliases": null,
     "resourceType": "listPolicySetDefinitionVersions",
     "apiVersions": [
+      "2025-03-01",
       "2025-01-01",
       "2024-05-01",
       "2023-04-01"
@@ -314,6 +316,7 @@
     },
     "resourceType": "policyAssignments",
     "apiVersions": [
+      "2025-03-01",
       "2025-01-01",
       "2024-05-01",
       "2024-04-01",
@@ -351,6 +354,7 @@
     },
     "resourceType": "policyDefinitions",
     "apiVersions": [
+      "2025-03-01",
       "2025-01-01",
       "2024-05-01",
       "2023-04-01",
@@ -374,6 +378,7 @@
     "aliases": null,
     "resourceType": "policyDefinitions/versions",
     "apiVersions": [
+      "2025-03-01",
       "2025-01-01",
       "2024-05-01",
       "2023-04-01"
@@ -413,6 +418,7 @@
     },
     "resourceType": "policyExemptions",
     "apiVersions": [
+      "2024-12-01-preview",
       "2022-07-01-preview",
       "2020-07-01-preview"
     ],
@@ -446,6 +452,7 @@
     },
     "resourceType": "policySetDefinitions",
     "apiVersions": [
+      "2025-03-01",
       "2025-01-01",
       "2024-05-01",
       "2023-04-01",
@@ -467,6 +474,7 @@
     "aliases": null,
     "resourceType": "policySetDefinitions/versions",
     "apiVersions": [
+      "2025-03-01",
       "2025-01-01",
       "2024-05-01",
       "2023-04-01"

@@ -1,12 +1,122 @@
 [
   {
     "aliases": null,
+    "resourceType": "codeScanMappings",
+    "apiVersions": [
+      "2025-09-09-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "codeScanSites",
+    "apiVersions": [
+      "2025-09-09-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "codeScanSites/codeScanReports",
+    "apiVersions": [
+      "2025-09-09-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "codeScanSites/codeScanReports/codeScanIssues",
+    "apiVersions": [
+      "2025-09-09-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "connectionHubs",
+    "apiVersions": [
+      "2025-09-09-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "connectionHubs/githubConnections",
+    "apiVersions": [
+      "2025-09-09-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "connectionHubs/githubConnections/githubIssues",
+    "apiVersions": [
+      "2025-09-09-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "discoveryHubs",
     "apiVersions": [
       "2025-02-01-preview"
     ],
     "locations": [
-      "Australia East"
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "Chile Central",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "Mexico Central",
+      "New Zealand North",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -17,7 +127,40 @@
       "2025-02-01-preview"
     ],
     "locations": [
-      "Australia East"
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "Chile Central",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "Mexico Central",
+      "New Zealand North",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -28,7 +171,40 @@
       "2025-02-01-preview"
     ],
     "locations": [
-      "Australia East"
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "Chile Central",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "Mexico Central",
+      "New Zealand North",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -50,8 +226,40 @@
       "2025-02-01-preview"
     ],
     "locations": [
-      "Central US EUAP",
-      "East US 2 EUAP"
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "Chile Central",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "Mexico Central",
+      "New Zealand North",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -63,6 +271,166 @@
     ],
     "locations": [
       "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "PGSQLSites",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "New Zealand North",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South India",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "PGSQLSites/agents",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "New Zealand North",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South India",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "PGSQLSites/PGSQLDatabases",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "New Zealand North",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South India",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "PGSQLSites/PGSQLInstances",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "New Zealand North",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South India",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West US 2"
     ],
     "zoneMappings": []
   }

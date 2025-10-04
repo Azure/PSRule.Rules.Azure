@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "asyncOperationResults",
     "apiVersions": [
+      "2024-10-01",
       "2019-10-01",
       "2018-07-01-preview"
     ],
@@ -57,6 +58,7 @@
     "aliases": null,
     "resourceType": "eventGridFilters",
     "apiVersions": [
+      "2024-10-01",
       "2020-10-01"
     ],
     "locations": [],

@@ -1,11 +1,10 @@
 [
   {
     "aliases": null,
-    "resourceType": "CheckNameAvailability",
+    "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-05-01-preview",
       "2024-12-01-preview",
-      "2024-11-01-preview",
-      "2024-10-01-preview",
       "2024-06-01-preview"
     ],
     "locations": [],
@@ -13,11 +12,10 @@
   },
   {
     "aliases": null,
-    "resourceType": "Locations",
+    "resourceType": "locations",
     "apiVersions": [
+      "2025-05-01-preview",
       "2024-12-01-preview",
-      "2024-11-01-preview",
-      "2024-10-01-preview",
       "2024-06-01-preview"
     ],
     "locations": [
@@ -27,11 +25,10 @@
   },
   {
     "aliases": null,
-    "resourceType": "Locations/OperationStatuses",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-05-01-preview",
       "2024-12-01-preview",
-      "2024-11-01-preview",
-      "2024-10-01-preview",
       "2024-06-01-preview"
     ],
     "locations": [
@@ -51,11 +48,10 @@
   },
   {
     "aliases": null,
-    "resourceType": "Operations",
+    "resourceType": "operations",
     "apiVersions": [
+      "2025-05-01-preview",
       "2024-12-01-preview",
-      "2024-11-01-preview",
-      "2024-10-01-preview",
       "2024-06-01-preview"
     ],
     "locations": [
@@ -67,8 +63,8 @@
     "aliases": null,
     "resourceType": "virtualEnclaves/endpoints",
     "apiVersions": [
-      "2023-08-01-preview",
-      "2023-02-01-preview"
+      "2024-12-01-preview",
+      "2024-06-01-preview"
     ],
     "locations": [
       "Canada Central",

@@ -1,11 +1,104 @@
 [
   {
     "aliases": null,
+    "resourceType": "configTemplates",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configTemplates/configTemplateMetadatas",
+    "apiVersions": [
+      "2025-08-15-preview",
+      "2025-08-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configTemplates/versions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configTemplates/versions/configTemplateSchemas",
+    "apiVersions": [
+      "2025-08-15-preview",
+      "2025-08-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "configurationReferences",
     "apiVersions": [
+      "2025-08-01",
+      "2025-06-01",
       "2024-09-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations/dynamicConfigurations",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations/dynamicConfigurations/versions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
     "zoneMappings": []
   },
   {
@@ -47,6 +140,106 @@
       "West US 2",
       "West US 3"
     ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "contexts",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "contexts/eventGridFilters",
+    "apiVersions": [
+      "2025-01-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "contexts/siteReferences",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "contexts/workflows",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "contexts/workflows/versions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "contexts/workflows/versions/executions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "diagnostics",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "jobs",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -149,11 +342,65 @@
     "aliases": null,
     "resourceType": "schemaReferences",
     "apiVersions": [
+      "2025-08-01",
+      "2025-06-01",
       "2025-01-01-preview",
       "2024-08-01-preview",
       "2024-06-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "schemas",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "schemas/dynamicSchemas",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "schemas/dynamicSchemas/versions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "schemas/versions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
     "zoneMappings": []
   },
   {
@@ -169,6 +416,7 @@
     "aliases": null,
     "resourceType": "Sites",
     "apiVersions": [
+      "2025-06-01",
       "2025-03-01-preview",
       "2025-02-01-preview",
       "2024-12-01-preview",
@@ -177,6 +425,110 @@
       "2023-06-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "solutionTemplates",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "solutionTemplates/versions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "solutionTemplates/versions/solutionSchemas",
+    "apiVersions": [
+      "2025-08-15-preview",
+      "2025-08-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "targets",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "targets/solutions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "targets/solutions/instances",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "targets/solutions/instances/histories",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "targets/solutions/versions",
+    "apiVersions": [
+      "2025-08-01",
+      "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
     "zoneMappings": []
   },
   {
@@ -217,6 +569,42 @@
       "West US",
       "West US 2",
       "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workflows",
+    "apiVersions": [
+      "2025-08-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workflows/versions",
+    "apiVersions": [
+      "2025-08-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workflows/versions/executions",
+    "apiVersions": [
+      "2025-08-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
     ],
     "zoneMappings": []
   }

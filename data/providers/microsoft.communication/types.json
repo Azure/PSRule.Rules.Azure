@@ -23,16 +23,20 @@
   {
     "aliases": {
       "Microsoft.Communication/communicationServices/dataLocation": "properties.dataLocation",
+      "Microsoft.Communication/communicationServices/disableLocalAuth": "properties.disableLocalAuth",
       "Microsoft.Communication/communicationServices/hostName": "properties.hostName",
       "Microsoft.Communication/communicationServices/immutableResourceId": "properties.immutableResourceId",
       "Microsoft.Communication/communicationServices/linkedDomains": "properties.linkedDomains",
       "Microsoft.Communication/communicationServices/linkedDomains[*]": "properties.linkedDomains[*]",
       "Microsoft.Communication/communicationServices/notificationHubId": "properties.notificationHubId",
       "Microsoft.Communication/communicationServices/provisioningState": "properties.provisioningState",
+      "Microsoft.Communication/communicationServices/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.Communication/communicationServices/version": "properties.version"
     },
     "resourceType": "CommunicationServices",
     "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
       "2024-09-01-preview",
@@ -56,6 +60,7 @@
     "aliases": null,
     "resourceType": "CommunicationServices/eventGridFilters",
     "apiVersions": [
+      "2025-06-01-preview",
       "2021-09-09-privatepreview",
       "2020-08-20"
     ],
@@ -65,7 +70,11 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Communication/communicationServices/smtpUsernames/entraApplicationId": "properties.entraApplicationId",
+      "Microsoft.Communication/communicationServices/smtpUsernames/tenantId": "properties.tenantId",
+      "Microsoft.Communication/communicationServices/smtpUsernames/username": "properties.username"
+    },
     "resourceType": "CommunicationServices/SmtpUsernames",
     "apiVersions": [
       "2024-09-01-preview"

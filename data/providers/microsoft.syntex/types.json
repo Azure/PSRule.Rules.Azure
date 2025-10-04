@@ -17,7 +17,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Japan East",
       "Korea Central",
@@ -60,7 +59,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Japan East",
       "Korea Central",
@@ -112,7 +110,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Japan East",
       "Korea Central",
@@ -141,10 +138,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2023-01-04-preview",
-      "2022-09-15-preview",
-      "2022-06-15-preview",
-      "2021-10-20-preview"
+      "2023-01-04-preview"
     ],
     "locations": [],
     "zoneMappings": []

@@ -1,6 +1,16 @@
 [
   {
     "aliases": null,
+    "resourceType": "applicableContributors",
+    "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "applicableCredits",
     "apiVersions": [
       "2023-11-01-preview",
@@ -15,6 +25,16 @@
     "apiVersions": [
       "2024-11-01-preview",
       "2024-11-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "applicableMaccs",
+    "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-beta"
     ],
     "locations": [],
     "zoneMappings": []
@@ -90,6 +110,8 @@
     "aliases": null,
     "resourceType": "listSellerResources",
     "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-beta",
       "2023-11-01-preview",
       "2023-11-01-beta"
     ],
@@ -127,6 +149,7 @@
     "aliases": null,
     "resourceType": "maccs",
     "apiVersions": [
+      "2025-05-01-preview",
       "2023-11-01-preview"
     ],
     "locations": [
@@ -138,6 +161,7 @@
     "aliases": null,
     "resourceType": "maccs/contributors",
     "apiVersions": [
+      "2025-05-01-preview",
       "2023-11-01-preview"
     ],
     "locations": [],
