@@ -514,5 +514,8 @@ AZR-000491 | [Azure.Alert.MetricAutoMitigate](Azure.Alert.MetricAutoMitigate.md)
 AZR-000492 | [Azure.Alert.HighFrequencyQuery](Azure.Alert.HighFrequencyQuery.md) | High frequency scheduled queries are changed as a higher rate than low frequency queries. | GA
 AZR-000493 | [Azure.EventGrid.NamespaceTLS](Azure.EventGrid.NamespaceTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | GA
 AZR-000494 | [Azure.ACR.ReplicaLocation](Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | GA
+AZR-000495 | [Azure.ACR.ExportPolicy](Azure.ACR.ExportPolicy.md) | Export policy on Azure container registry may allow artifact exfiltration. | GA
+AZR-000496 | [Azure.Redis.LocalAuth](Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | GA
+AZR-000497 | [Azure.Storage.LocalAuth](Azure.Storage.LocalAuth.md) | Access keys allow depersonalized access to Storage Accounts using a shared secret. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
