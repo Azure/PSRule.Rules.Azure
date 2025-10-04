@@ -57,7 +57,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2024-10-01' = {
     }
   }
   properties: {
-    kubernetesVersion: '1.32.5'
+    kubernetesVersion: '1.32.7'
     enableRBAC: true
     dnsPrefix: dnsPrefix
     agentPoolProfiles: allPools
@@ -133,7 +133,7 @@ For example:
         }
     },
     "properties": {
-        "kubernetesVersion": "1.32.5",
+        "kubernetesVersion": "1.32.7",
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
         "agentPoolProfiles": "[variables('allPools')]",
