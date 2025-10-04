@@ -11,7 +11,7 @@ namespace PSRule.Rules.Azure.Patterns;
 public sealed class PatternDocumentMetadata
 {
     /// <summary>
-    /// The description of the pattern.
+    /// Gets or sets the description of the pattern document.
     /// </summary>
     [YamlMember(Alias = "description")]
     public string Description { get; set; } = string.Empty;
