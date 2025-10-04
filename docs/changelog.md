@@ -40,6 +40,10 @@ What's changed since v1.45.2:
     - This is an experimental baseline and may change in future releases.
   - Added CSV download of rule list associated with each baseline by @BernieWhite.
     [#3511](https://github.com/Azure/PSRule.Rules.Azure/issues/3511)
+  - Added September 2025 baselines `Azure.GA_2025_09` and `Azure.Preview_2025_09` by @BernieWhite.
+    [#3539](https://github.com/Azure/PSRule.Rules.Azure/issues/3539)
+    - Includes rules released before or during September 2025.
+    - Marked `Azure.GA_2025_06` and `Azure.Preview_2025_06` baselines as obsolete.
 - New rules:
   - Azure Cache for Redis:
     - Check that Entra ID is required for all authentication of cache instances by @BernieWhite.

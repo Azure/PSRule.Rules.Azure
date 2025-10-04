@@ -42,6 +42,14 @@
   {
     "severity": "Important",
     "pillar": "Security",
+    "category": "SE:08 Hardening resources",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "ruleId": "Azure.ACR.ExportPolicy",
+    "displayName": "Container Registry export policy should be disabled"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
     "category": "SE:06 Network controls",
     "resourceType": "Microsoft.ContainerRegistry/registries",
     "ruleId": "Azure.ACR.Firewall",
@@ -69,7 +77,7 @@
     "category": "RE:04 Target metrics",
     "resourceType": "Microsoft.ContainerRegistry/registries",
     "ruleId": "Azure.ACR.MinSku",
-    "displayName": "Use ACR production SKU"
+    "displayName": "Container Registry SKU is not suitable for production workloads"
   },
   {
     "severity": "Awareness",
@@ -89,6 +97,22 @@
   },
   {
     "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:01 Security baseline",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "ruleId": "Azure.ACR.ReplicaLocation",
+    "displayName": "Container Registry replica location is not allowed"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:01 Security baseline",
+    "resourceType": "Microsoft.ContainerRegistry/registries/replications",
+    "ruleId": "Azure.ACR.ReplicaLocation",
+    "displayName": "Container Registry replica location is not allowed"
+  },
+  {
+    "severity": "Important",
     "pillar": "Cost Optimization",
     "category": "CO:10 Data costs",
     "resourceType": "Microsoft.ContainerRegistry/registries",
@@ -101,7 +125,7 @@
     "category": "RE:04 Target metrics",
     "resourceType": "Microsoft.ContainerRegistry/registries",
     "ruleId": "Azure.ACR.SoftDelete",
-    "displayName": "Use ACR soft delete policy"
+    "displayName": "Container Registry soft delete policy is not enabled"
   },
   {
     "severity": "Important",
@@ -3337,6 +3361,14 @@
   },
   {
     "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.Cache/Redis",
+    "ruleId": "Azure.Redis.LocalAuth",
+    "displayName": "Azure Cache for Redis access keys are enabled"
+  },
+  {
+    "severity": "Important",
     "pillar": "Performance Efficiency",
     "category": "PE:05 Scaling and partitioning",
     "resourceType": "Microsoft.Cache/redis",
@@ -3942,6 +3974,14 @@
     "resourceType": "Microsoft.Storage/storageAccounts",
     "ruleId": "Azure.Storage.Firewall",
     "displayName": "Configure Azure Storage firewall"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "ruleId": "Azure.Storage.LocalAuth",
+    "displayName": "Storage account access keys are enabled"
   },
   {
     "severity": "Critical",
