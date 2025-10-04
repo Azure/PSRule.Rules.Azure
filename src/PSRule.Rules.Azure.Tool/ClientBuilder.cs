@@ -62,8 +62,15 @@ internal sealed class ClientBuilder
         cmd.Add(_Global_InGitHubActions);
     }
 
+    /// <summary>
+    /// Gets the configured root command.
+    /// </summary>
     public RootCommand Command { get; }
 
+    /// <summary>
+    /// Creates a new root command for the PSRule Azure client.
+    /// </summary>
+    /// <returns>The configured <see cref="RootCommand"/>.</returns>
     public static RootCommand New()
     {
         var cmd = new RootCommand(string.Concat(Resources.CmdStrings.Cmd_Description, " v", Version))
