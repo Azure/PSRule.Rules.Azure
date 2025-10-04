@@ -1985,6 +1985,10 @@
          <lastmod>2025-10-04</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.LocalAuth/</loc>
+         <lastmod>2025-10-04</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.MinTLS/</loc>
          <lastmod>2025-10-04</lastmod>
     </url>
