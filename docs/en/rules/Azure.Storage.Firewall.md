@@ -33,37 +33,6 @@ Also consider enforcing this setting using Azure Policy.
 
 ## EXAMPLES
 
-### Configure with Azure template
-
-To deploy Storage Accounts that pass this rule:
-
-- Set the `properties.networkAcls.defaultAction` property to `Deny`.
-
-For example:
-
-```json
-{
-  "type": "Microsoft.Storage/storageAccounts",
-  "apiVersion": "2023-01-01",
-  "name": "[parameters('name')]",
-  "location": "[parameters('location')]",
-  "sku": {
-    "name": "Standard_GRS"
-  },
-  "kind": "StorageV2",
-  "properties": {
-    "allowBlobPublicAccess": false,
-    "supportsHttpsTrafficOnly": true,
-    "minimumTlsVersion": "TLS1_2",
-    "accessTier": "Hot",
-    "allowSharedKeyAccess": false,
-    "networkAcls": {
-      "defaultAction": "Deny"
-    }
-  }
-}
-```
-
 ### Configure with Bicep
 
 To deploy Storage Accounts that pass this rule:
@@ -94,6 +63,37 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 ```
 
 <!-- external:avm avm/res/storage/storage-account networkAcls.defaultAction -->
+
+### Configure with Azure template
+
+To deploy Storage Accounts that pass this rule:
+
+- Set the `properties.networkAcls.defaultAction` property to `Deny`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_GRS"
+  },
+  "kind": "StorageV2",
+  "properties": {
+    "allowBlobPublicAccess": false,
+    "supportsHttpsTrafficOnly": true,
+    "minimumTlsVersion": "TLS1_2",
+    "accessTier": "Hot",
+    "allowSharedKeyAccess": false,
+    "networkAcls": {
+      "defaultAction": "Deny"
+    }
+  }
+}
+```
 
 ## NOTES
 

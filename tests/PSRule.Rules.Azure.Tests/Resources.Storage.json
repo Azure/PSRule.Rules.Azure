@@ -1,6 +1,5 @@
 [
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A",
     "Kind": "Storage",
     "Location": "region",
@@ -42,21 +41,12 @@
     "ResourceType": "Microsoft.Storage/storageAccounts",
     "Sku": {
       "Name": "Standard_GRS",
-      "Tier": "Standard",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Standard"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default",
-        "Location": null,
-        "ManagedBy": null,
-        "ResourceName": "default",
         "Name": "default",
         "Properties": {
           "cors": {
@@ -69,24 +59,11 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Storage/storageAccounts/blobServices",
-        "ResourceType": "Microsoft.Storage/storageAccounts/blobServices",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default/containers/container1",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-A/blobServices/default/containers/container1",
-        "Identity": null,
-        "Kind": null,
-        "Location": null,
-        "ManagedBy": null,
-        "ResourceName": "container1",
         "Name": "container1",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "publicAccess": "None",
           "legalHold": {
@@ -98,17 +75,11 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-        "ResourceType": "Microsoft.Storage/storageAccounts/blobServices/containers",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B",
     "Kind": "Storage",
     "Location": "region",
@@ -146,24 +117,15 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Storage/storageAccounts",
-    "ResourceType": "Microsoft.Storage/storageAccounts",
     "Sku": {
       "Name": "Standard_LRS",
-      "Tier": "Standard",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Standard"
     },
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default",
-        "Location": null,
-        "ManagedBy": null,
-        "ResourceName": "default",
         "Name": "default",
         "Properties": {
           "cors": {
@@ -175,24 +137,11 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Storage/storageAccounts/blobServices",
-        "ResourceType": "Microsoft.Storage/storageAccounts/blobServices",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default/containers/container1",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/blobServices/default/containers/container1",
-        "Identity": null,
-        "Kind": null,
-        "Location": null,
-        "ManagedBy": null,
-        "ResourceName": "container1",
         "Name": "container1",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "publicAccess": "Blob",
           "legalHold": {
@@ -204,15 +153,9 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-        "ResourceType": "Microsoft.Storage/storageAccounts/blobServices/containers",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/providers/Microsoft.Security/DefenderForStorageSettings/current",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-B/providers/Microsoft.Security/DefenderForStorageSettings/current",
         "ResourceName": "current",
         "Name": "current",
@@ -231,20 +174,14 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Security/DefenderForStorageSettings",
-        "ResourceType": "Microsoft.Security/DefenderForStorageSettings",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-C",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-C",
     "Kind": "Storage",
     "Location": "region",
-    "ResourceName": "storage-C",
     "Name": "storage-C",
     "Properties": {
       "networkAcls": {
@@ -271,14 +208,9 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Storage/storageAccounts",
-    "ResourceType": "Microsoft.Storage/storageAccounts",
     "Sku": {
       "Name": "Standard_LRS",
-      "Tier": "Standard",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Standard"
     },
     "Tags": {
       "resource-usage": "azure-functions"
@@ -286,31 +218,15 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-C/blobServices/default/containers/container1",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-C/blobServices/default/containers/container1",
-        "Identity": null,
-        "Kind": null,
-        "Location": null,
-        "ManagedBy": null,
-        "ResourceName": "container1",
         "Name": "container1",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {},
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-        "ResourceType": "Microsoft.Storage/storageAccounts/blobServices/containers",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-C/providers/Microsoft.Security/DefenderForStorageSettings/current",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-C/providers/Microsoft.Security/DefenderForStorageSettings/current",
-        "ResourceName": "current",
         "Name": "current",
         "Properties": {
           "isEnabled": true,
@@ -327,16 +243,11 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Security/DefenderForStorageSettings",
-        "ResourceType": "Microsoft.Security/DefenderForStorageSettings",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-D",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-D",
     "Kind": "Storage",
     "Location": "region",
@@ -367,14 +278,9 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Storage/storageAccounts",
-    "ResourceType": "Microsoft.Storage/storageAccounts",
     "Sku": {
       "Name": "Standard_LRS",
-      "Tier": "Standard",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Standard"
     },
     "Tags": {
       "ms-resource-usage": "azure-cloud-shell"
@@ -382,17 +288,11 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-E",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-E",
-    "Identity": null,
     "Kind": "StorageV2",
     "Location": "region",
-    "ManagedBy": null,
     "ResourceName": "storage-E",
     "Name": "storage-E",
-    "ExtensionResourceName": null,
-    "ParentResource": null,
-    "Plan": null,
     "Properties": {
       "privateEndpointConnections": [],
       "minimumTlsVersion": "TLS1_2",
@@ -433,34 +333,16 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Storage/storageAccounts",
-    "ResourceType": "Microsoft.Storage/storageAccounts",
-    "ExtensionResourceType": null,
     "Sku": {
       "Name": "Standard_ZRS",
-      "Tier": "Standard",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Standard"
     },
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "CreatedTime": null,
-    "ChangedTime": null,
-    "ETag": null,
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-E/blobServices/default",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-E/blobServices/default",
-        "Identity": null,
-        "Kind": null,
-        "Location": null,
-        "ManagedBy": null,
-        "ResourceName": "default",
         "Name": "default",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "containerDeleteRetentionPolicy": {
             "enabled": true,
@@ -475,30 +357,16 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Storage/storageAccounts/blobServices",
-        "ResourceType": "Microsoft.Storage/storageAccounts/blobServices",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "TagsTable": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-F",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-F",
-    "Identity": null,
     "Kind": "FileStorage",
     "Location": "region",
-    "ManagedBy": null,
     "ResourceName": "storage-F",
     "Name": "storage-F",
-    "ExtensionResourceName": null,
-    "ParentResource": null,
-    "Plan": null,
     "Properties": {
       "largeFileSharesState": "Enabled",
       "networkAcls": {
@@ -529,22 +397,11 @@
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Storage/storageAccounts",
-    "ResourceType": "Microsoft.Storage/storageAccounts",
-    "ExtensionResourceType": null,
     "Sku": {
       "Name": "Premium_LRS",
-      "Tier": "Premium",
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Tier": "Premium"
     },
-    "Tags": {},
-    "TagsTable": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "CreatedTime": null,
-    "ChangedTime": null,
-    "ETag": null,
     "resources": []
   },
   {
@@ -662,7 +519,6 @@
   {
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H",
     "Name": "storage-H",
-    "ResourceName": "storage-H",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Type": "Microsoft.Storage/storageAccounts",
     "Kind": "FileStorage",
@@ -718,7 +574,6 @@
         "type": "Microsoft.Storage/storageAccounts/fileServices",
         "apiVersion": "2021-04-01",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H/fileServices/default",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-002/providers/Microsoft.Storage/storageAccounts/storage-H/fileServices/default",
         "Name": "default",
         "sku": {
           "name": "Standard_LRS",
@@ -732,5 +587,27 @@
         }
       }
     ]
+  },
+  {
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage-I",
+    "Kind": "StorageV2",
+    "Location": "region",
+    "Name": "storage-I",
+    "Properties": {
+      "allowSharedKeyAccess": false,
+      "supportsHttpsTrafficOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": false,
+      "networkAcls": {
+        "defaultAction": "Deny"
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Storage/storageAccounts",
+    "Sku": {
+      "Name": "Standard_GRS",
+      "Tier": "Standard"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]
