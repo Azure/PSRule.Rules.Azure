@@ -40,7 +40,7 @@ spec:
     AZURE_BICEP_CHECK_TOOL: false
 
     # Configures minimum AKS cluster version.
-    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.32.5'
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.32.7'
 
     # Configures the minimum allowed max pods setting per node pool.
     AZURE_AKS_POOL_MINIMUM_MAXPODS: 50

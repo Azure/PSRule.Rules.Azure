@@ -50,6 +50,9 @@ What's changed since v1.45.2:
     - Check that export policy is disabled for registries by @BernieWhite
       [#3444](https://github.com/Azure/PSRule.Rules.Azure/issues/3444)
 - Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.32.7` as the minimum version by @BernieWhite.
+      [#3541](https://github.com/Azure/PSRule.Rules.Azure/issues/3541)
   - Container Registry:
     - Updated `Azure.ACR.GeoReplica` to ensure geo-replication applies to pre-flight and in-flight cases by @BernieWhite.
       [#3477](https://github.com/Azure/PSRule.Rules.Azure/issues/3477)

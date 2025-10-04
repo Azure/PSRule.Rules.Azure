@@ -96,7 +96,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -BeIn 'cluster-B';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Path Properties.kubernetesVersion: The version '1.13.8' does not match the constraint '>=1.32.5'.";
+            $ruleResult[0].Reason | Should -BeExactly "Path Properties.kubernetesVersion: The version '1.13.8' does not match the constraint '>=1.32.7'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
