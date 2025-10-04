@@ -51,8 +51,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E';
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-I';
+            $ruleResult.Length | Should -Be 3;
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -73,8 +73,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
-            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F', 'storage-G', 'storage-H', 'storage-I';
+            $ruleResult.Length | Should -Be 6;
         }
 
         It 'Azure.Storage.SoftDelete' {
@@ -83,8 +83,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C';
+            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-I';
+            $ruleResult.Length | Should -Be 3;
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'Path properties.deleteRetentionPolicy.enabled: Is set to ''False''.';
@@ -110,8 +110,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-A';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-A', 'storage-I';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             #$ruleResult[0].Reason | Should -BeExactly 'Path properties.containerDeleteRetentionPolicy.enabled: Does not exist.';
@@ -147,8 +147,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'storage-A';
+            $ruleResult.TargetName | Should -Be 'storage-A', 'storage-I';
+            $ruleResult.Length | Should -Be 2;
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -172,8 +172,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-G';
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-G', 'storage-I';
+            $ruleResult.Length | Should -Be 6;
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -203,8 +203,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-G', 'storage-H';
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-G', 'storage-H', 'storage-I';
+            $ruleResult.Length | Should -Be 5;
         }
 
         It 'Azure.Storage.Firewall' {
@@ -219,8 +219,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'storage-F';
+            $ruleResult.TargetName | Should -BeIn 'storage-F', 'storage-I';
+            $ruleResult.Length | Should -Be 2;
 
             # None, skip Azure Cloud Shell storage accounts
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
@@ -247,12 +247,11 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'storage-H';
 
-
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-D', 'storage-E', 'storage-G';
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-D', 'storage-E', 'storage-G', 'storage-I';
+            $ruleResult.Length | Should -Be 7;
         }
 
         It 'Azure.Storage.Defender.MalwareScan' {
@@ -267,8 +266,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H', 'storage-I';
+            $ruleResult.Length | Should -Be 8;
         }
 
         It 'Azure.Storage.Defender.DataScan' {
@@ -283,8 +282,24 @@ Describe 'Azure.Storage' -Tag 'Storage' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H', 'storage-I';
+            $ruleResult.Length | Should -Be 8;
+        }
+
+        It 'Azure.Storage.LocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.LocalAuth' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
+            $ruleResult.Length | Should -Be 8;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'storage-I';
+            $ruleResult.Length | Should -Be 1;
         }
     }
 
@@ -465,22 +480,6 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # $ruleResult.TargetName | Should -BeIn 'storage1', 'storage1/default/arm';
         }
 
-        It 'Azure.Storage.LocalAuth' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.LocalAuth' };
-
-            # Fail - All storage accounts except storage-I should fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
-
-            # Pass - Only storage-I should pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'storage-I';
-        }
-
         It 'Azure.Storage.Firewall' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Firewall' };
 
@@ -515,8 +514,8 @@ Describe 'Azure.Storage' -Tag 'Storage' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H', 'storage-I';
+            $ruleResult.Length | Should -Be 8;
 
             $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/DefenderForStorageSettings' has not been specified.";
             $ruleResult[1].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/DefenderForStorageSettings' has not been specified.";

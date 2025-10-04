@@ -6,7 +6,7 @@ Rule Development Context:
 
 File Management Context:
 
-- Do not update auto-generated files which are typically found in `docs/en/baselines/` or have the `generated: true` tag in their front matter.
+- Do not update auto-generated files which are typically found in `docs/en/baselines/` or other `.md` files that have the `generated: true` tag in their front matter.
 
 Documentation Standards Context:
 

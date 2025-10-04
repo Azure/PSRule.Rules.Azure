@@ -99,16 +99,16 @@ spec:
     equals: false
 
 ---
-# Synopsis: Storage accounts should disable local authentication.
+# Synopsis: Access keys allow depersonalized access to Storage Accounts using a shared secret.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Storage.LocalAuth
   ref: AZR-000497
   tags:
-    release: 'GA'
-    ruleSet: '2025_12'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2025_09
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: IM-1
     Azure.WAF/maturity: L1

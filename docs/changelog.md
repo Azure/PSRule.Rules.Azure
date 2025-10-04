@@ -50,7 +50,7 @@ What's changed since v1.45.2:
     - Check that export policy is disabled for registries by @BernieWhite
       [#3444](https://github.com/Azure/PSRule.Rules.Azure/issues/3444)
   - Storage Account:
-    - Check that local authentication is disabled for storage accounts by @copilot.
+    - Check that local authentication is disabled for storage accounts by @BernieWhite.
       [#3115](https://github.com/Azure/PSRule.Rules.Azure/issues/3115)
 - Updated rules:
   - Azure Kubernetes Service:
