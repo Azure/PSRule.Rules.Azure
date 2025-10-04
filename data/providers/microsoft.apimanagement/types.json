@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkFeedbackRequired",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -35,6 +36,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -64,11 +66,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -81,6 +85,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -121,6 +126,7 @@
     "aliases": null,
     "resourceType": "deletedServices",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -139,11 +145,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -156,6 +164,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -201,6 +210,7 @@
     },
     "resourceType": "gateways",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview"
@@ -209,11 +219,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -226,6 +238,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -256,6 +269,7 @@
     "aliases": null,
     "resourceType": "getDomainOwnershipIdentifier",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -274,11 +288,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -291,6 +307,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -321,6 +338,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -343,6 +361,7 @@
     "aliases": null,
     "resourceType": "locations/deletedServices",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -361,11 +380,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -378,6 +399,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -408,6 +430,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -420,11 +443,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -437,6 +462,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -467,6 +493,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatuses",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -476,11 +503,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -493,6 +522,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -523,6 +553,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -555,6 +586,7 @@
     "aliases": null,
     "resourceType": "reportFeedback",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -721,6 +753,7 @@
     },
     "resourceType": "service",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
@@ -750,11 +783,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -767,6 +802,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -801,6 +837,14 @@
         ]
       },
       {
+        "location": "Austria East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Brazil South",
         "zones": [
           "1",
@@ -826,6 +870,14 @@
       },
       {
         "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Chile Central",
         "zones": [
           "1",
           "2",
@@ -906,10 +958,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -1058,6 +1122,7 @@
     "aliases": null,
     "resourceType": "service/eventGridFilters",
     "apiVersions": [
+      "2024-10-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
@@ -1071,11 +1136,13 @@
       "Australia Central",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1088,6 +1155,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -24,6 +25,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -35,7 +37,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -114,6 +115,7 @@
     },
     "resourceType": "configurationStores",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -135,6 +137,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -146,7 +149,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -190,6 +192,7 @@
     "aliases": null,
     "resourceType": "configurationStores/eventGridFilters",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -211,6 +214,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -222,7 +226,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -263,6 +266,18 @@
     "zoneMappings": []
   },
   {
+    "aliases": null,
+    "resourceType": "configurationStores/experimentation",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "Sweden Central"
+    ],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.AppConfiguration/configurationStores/keyValues/contentType": "properties.contentType",
       "Microsoft.AppConfiguration/configurationStores/keyValues/eTag": "properties.eTag",
@@ -275,6 +290,7 @@
     },
     "resourceType": "configurationStores/keyValues",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -292,6 +308,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -303,7 +320,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -350,6 +366,7 @@
     },
     "resourceType": "configurationStores/replicas",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -363,6 +380,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -374,7 +392,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -433,6 +450,7 @@
     },
     "resourceType": "configurationStores/snapshots",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -444,6 +462,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -455,7 +474,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -499,6 +517,7 @@
     "aliases": null,
     "resourceType": "deletedConfigurationStores",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -514,6 +533,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -525,7 +545,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -569,6 +588,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01-preview",
       "2024-06-01",
@@ -591,6 +611,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -602,7 +623,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -646,6 +666,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -661,6 +682,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -672,7 +694,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -716,6 +737,7 @@
     "aliases": null,
     "resourceType": "locations/deletedConfigurationStores",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -731,6 +753,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -742,7 +765,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -786,8 +808,8 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
-      "2024-07-01-preview",
-      "2023-10-01-preview"
+      "2025-08-01-preview",
+      "2024-07-01-preview"
     ],
     "locations": [
       "Central US EUAP"
@@ -798,6 +820,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01"
     ],
@@ -806,6 +829,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -817,7 +841,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -861,6 +884,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -882,6 +906,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -893,7 +918,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -937,6 +961,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-02-01-preview",
       "2024-06-15-preview",
       "2024-06-01",
       "2024-05-01",
@@ -958,6 +983,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -969,7 +995,6 @@
       "East US",
       "East US 2",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",

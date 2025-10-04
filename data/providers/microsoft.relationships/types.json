@@ -1,7 +1,7 @@
 [
   {
     "aliases": null,
-    "resourceType": "dependencyof",
+    "resourceType": "dependencyOf",
     "apiVersions": [
       "2023-09-01-preview"
     ],

@@ -17,6 +17,7 @@
     },
     "resourceType": "fluidRelayServers",
     "apiVersions": [
+      "2025-06-20-preview",
       "2025-02-07-preview",
       "2022-06-01",
       "2022-05-26",
@@ -47,6 +48,7 @@
       "Korea Central",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -88,41 +90,7 @@
       "Korea Central",
       "North Europe",
       "Norway East",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "West Europe",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "fluidRelayServers/privateEndpointConnectionProxies",
-    "apiVersions": [
-      "2025-03-10-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Norway East",
+      "Poland Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -140,6 +108,8 @@
     "aliases": null,
     "resourceType": "fluidRelayServers/privateEndpointConnections",
     "apiVersions": [
+      "2025-06-20-preview",
+      "2025-05-14-preview",
       "2025-03-10-preview"
     ],
     "locations": [
@@ -158,6 +128,7 @@
       "Korea Central",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -175,6 +146,8 @@
     "aliases": null,
     "resourceType": "fluidRelayServers/privateLinkResources",
     "apiVersions": [
+      "2025-06-20-preview",
+      "2025-05-14-preview",
       "2025-03-10-preview"
     ],
     "locations": [
@@ -193,6 +166,7 @@
       "Korea Central",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -219,6 +193,8 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-06-20-preview",
+      "2025-05-14-preview",
       "2025-03-10-preview"
     ],
     "locations": [

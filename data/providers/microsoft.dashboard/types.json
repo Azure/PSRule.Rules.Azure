@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -17,17 +18,30 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Dashboard/dashboards/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "dashboards",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
       "Central US",
+      "East US 2",
       "France Central",
       "Japan West",
-      "West Central US"
+      "Southeast Asia",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -41,6 +55,8 @@
       "Microsoft.Dashboard/grafana/enterpriseConfigurations.marketplaceAutoRenew": "properties.enterpriseConfigurations.marketplaceAutoRenew",
       "Microsoft.Dashboard/grafana/enterpriseConfigurations.marketplacePlanId": "properties.enterpriseConfigurations.marketplacePlanId",
       "Microsoft.Dashboard/grafana/grafanaConfigurations": "properties.grafanaConfigurations",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.security": "properties.grafanaConfigurations.security",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.security.csrfAlwaysCheck": "properties.grafanaConfigurations.security.csrfAlwaysCheck",
       "Microsoft.Dashboard/grafana/grafanaConfigurations.smtp": "properties.grafanaConfigurations.smtp",
       "Microsoft.Dashboard/grafana/grafanaConfigurations.smtp.enabled": "properties.grafanaConfigurations.smtp.enabled",
       "Microsoft.Dashboard/grafana/grafanaConfigurations.smtp.fromAddress": "properties.grafanaConfigurations.smtp.fromAddress",
@@ -50,6 +66,13 @@
       "Microsoft.Dashboard/grafana/grafanaConfigurations.smtp.skipVerify": "properties.grafanaConfigurations.smtp.skipVerify",
       "Microsoft.Dashboard/grafana/grafanaConfigurations.smtp.startTLSPolicy": "properties.grafanaConfigurations.smtp.startTLSPolicy",
       "Microsoft.Dashboard/grafana/grafanaConfigurations.smtp.user": "properties.grafanaConfigurations.smtp.user",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.snapshots": "properties.grafanaConfigurations.snapshots",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.snapshots.externalEnabled": "properties.grafanaConfigurations.snapshots.externalEnabled",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.unifiedAlertingScreenshots": "properties.grafanaConfigurations.unifiedAlertingScreenshots",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.unifiedAlertingScreenshots.captureEnabled": "properties.grafanaConfigurations.unifiedAlertingScreenshots.captureEnabled",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.users": "properties.grafanaConfigurations.users",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.users.editorsCanAdmin": "properties.grafanaConfigurations.users.editorsCanAdmin",
+      "Microsoft.Dashboard/grafana/grafanaConfigurations.users.viewersCanEdit": "properties.grafanaConfigurations.users.viewersCanEdit",
       "Microsoft.Dashboard/grafana/grafanaIntegrations": "properties.grafanaIntegrations",
       "Microsoft.Dashboard/grafana/grafanaIntegrations.azureMonitorWorkspaceIntegrations": "properties.grafanaIntegrations.azureMonitorWorkspaceIntegrations",
       "Microsoft.Dashboard/grafana/grafanaIntegrations.azureMonitorWorkspaceIntegrations[*]": "properties.grafanaIntegrations.azureMonitorWorkspaceIntegrations[*]",
@@ -72,6 +95,13 @@
       "Microsoft.Dashboard/grafana/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
       "Microsoft.Dashboard/grafana/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
       "Microsoft.Dashboard/grafana/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections[*].systemData": "properties.privateEndpointConnections[*].systemData",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections[*].systemData.createdAt": "properties.privateEndpointConnections[*].systemData.createdAt",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections[*].systemData.createdBy": "properties.privateEndpointConnections[*].systemData.createdBy",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections[*].systemData.createdByType": "properties.privateEndpointConnections[*].systemData.createdByType",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections[*].systemData.lastModifiedAt": "properties.privateEndpointConnections[*].systemData.lastModifiedAt",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections[*].systemData.lastModifiedBy": "properties.privateEndpointConnections[*].systemData.lastModifiedBy",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
       "Microsoft.Dashboard/grafana/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
       "Microsoft.Dashboard/grafana/provisioningState": "properties.provisioningState",
       "Microsoft.Dashboard/grafana/publicNetworkAccess": "properties.publicNetworkAccess",
@@ -81,6 +111,7 @@
     },
     "resourceType": "grafana",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -122,9 +153,16 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Dashboard/grafana/integrationFabrics/dataSourceResourceId": "properties.dataSourceResourceId",
+      "Microsoft.Dashboard/grafana/integrationFabrics/provisioningState": "properties.provisioningState",
+      "Microsoft.Dashboard/grafana/integrationFabrics/scenarios": "properties.scenarios",
+      "Microsoft.Dashboard/grafana/integrationFabrics/scenarios[*]": "properties.scenarios[*]",
+      "Microsoft.Dashboard/grafana/integrationFabrics/targetResourceId": "properties.targetResourceId"
+    },
     "resourceType": "grafana/integrationFabrics",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -176,6 +214,7 @@
     },
     "resourceType": "grafana/managedPrivateEndpoints",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -227,6 +266,7 @@
     },
     "resourceType": "grafana/privateEndpointConnections",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -270,6 +310,7 @@
     "aliases": null,
     "resourceType": "grafana/privateLinkResources",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -313,6 +354,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -330,6 +372,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -347,6 +390,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",
@@ -394,6 +438,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01-preview",
       "2024-11-01-preview",
       "2024-10-01",

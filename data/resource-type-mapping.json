@@ -152,20 +152,20 @@
     "displayName": "Azure AI account access keys are enabled"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.CognitiveServices/accounts",
+    "ruleId": "Azure.AI.FoundryNaming",
+    "displayName": "Azure AI Foundry accounts must use standard naming"
+  },
+  {
     "severity": "Important",
     "pillar": "Security",
     "category": "SE:05 Identity and access management",
     "resourceType": "Microsoft.CognitiveServices/accounts",
     "ruleId": "Azure.AI.ManagedIdentity",
     "displayName": "Use Managed Identity for Azure AI services accounts"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "OE:04 Tools and processes",
-    "resourceType": "Microsoft.CognitiveServices/accounts",
-    "ruleId": "Azure.AI.Naming",
-    "displayName": "Azure AI services must use standard naming"
   },
   {
     "severity": "Important",

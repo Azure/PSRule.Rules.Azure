@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "advisorScore",
     "apiVersions": [
+      "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
       "2023-09-01-preview",
@@ -18,6 +19,7 @@
     "aliases": null,
     "resourceType": "assessments",
     "apiVersions": [
+      "2025-05-01-preview",
       "2024-11-18-preview",
       "2023-09-01-preview"
     ],
@@ -28,6 +30,7 @@
     "aliases": null,
     "resourceType": "assessmentTypes",
     "apiVersions": [
+      "2025-05-01-preview",
       "2024-11-18-preview",
       "2023-09-01-preview"
     ],
@@ -38,6 +41,7 @@
     "aliases": null,
     "resourceType": "configurations",
     "apiVersions": [
+      "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
       "2023-09-01-preview",
@@ -55,6 +59,7 @@
     "aliases": null,
     "resourceType": "generateRecommendations",
     "apiVersions": [
+      "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
       "2023-09-01-preview",
@@ -74,6 +79,8 @@
     "aliases": null,
     "resourceType": "metadata",
     "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-alpha",
       "2025-01-01-alpha",
       "2025-01-01",
       "2024-11-18-preview",
@@ -98,6 +105,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-alpha",
       "2025-01-01-alpha",
       "2025-01-01",
       "2024-11-18-preview",
@@ -125,6 +134,7 @@
     "aliases": null,
     "resourceType": "predict",
     "apiVersions": [
+      "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
       "2023-09-01-preview",
@@ -139,6 +149,8 @@
     "aliases": null,
     "resourceType": "recommendations",
     "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-alpha",
       "2025-01-01",
       "2024-11-18-preview",
       "2023-09-01-preview",
@@ -168,6 +180,7 @@
     "aliases": null,
     "resourceType": "suppressions",
     "apiVersions": [
+      "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
       "2023-09-01-preview",
@@ -206,6 +219,7 @@
     "aliases": null,
     "resourceType": "workloads",
     "apiVersions": [
+      "2025-05-01-preview",
       "2024-11-18-preview",
       "2023-09-01-preview"
     ],

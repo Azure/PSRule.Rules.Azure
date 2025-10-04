@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -32,6 +33,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -53,37 +55,14 @@
       "2019-09-16",
       "2018-08-20-preview"
     ],
-    "locations": [
-      "Australia East",
-      "Canada Central",
-      "Central India",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Germany West Central",
-      "Japan East",
-      "Korea Central",
-      "North Central US",
-      "North Europe",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US 2",
-      "West US 3"
-    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -137,6 +116,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -238,6 +218,7 @@
     },
     "resourceType": "services",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -289,6 +270,7 @@
     "aliases": null,
     "resourceType": "services/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -344,6 +326,7 @@
     },
     "resourceType": "services/privateEndpointConnections",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -391,6 +374,7 @@
     "aliases": null,
     "resourceType": "services/privateLinkResources",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -440,32 +424,7 @@
     "apiVersions": [
       "2022-01-31-preview"
     ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Germany West Central",
-      "Japan East",
-      "Korea Central",
-      "North Central US",
-      "North Europe",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US 2",
-      "West US 3"
-    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -487,6 +446,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -569,6 +529,7 @@
     },
     "resourceType": "workspaces/dicomservices",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -614,6 +575,7 @@
     "aliases": null,
     "resourceType": "workspaces/eventGridFilters",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -726,6 +688,7 @@
     },
     "resourceType": "workspaces/fhirservices",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -873,6 +836,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -926,6 +890,7 @@
     },
     "resourceType": "workspaces/privateEndpointConnections",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",
@@ -971,6 +936,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateLinkResources",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-03-31",
       "2024-03-01",
       "2023-12-01",

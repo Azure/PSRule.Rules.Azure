@@ -48,12 +48,11 @@
       "2025-03-01-preview",
       "2025-01-01",
       "2024-05-01-preview",
-      "2023-11-01",
-      "2023-05-01-preview",
-      "2022-10-01-preview"
+      "2023-11-01"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -72,7 +71,9 @@
       "UAE North",
       "UK South",
       "West Europe",
-      "West US"
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -83,12 +84,11 @@
       "2025-03-01-preview",
       "2025-01-01",
       "2024-05-01-preview",
-      "2023-11-01",
-      "2023-05-01-preview",
-      "2022-10-01-preview"
+      "2023-11-01"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -107,7 +107,9 @@
       "UAE North",
       "UK South",
       "West Europe",
-      "West US"
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -118,12 +120,11 @@
       "2025-03-01-preview",
       "2025-01-01",
       "2024-05-01-preview",
-      "2023-11-01",
-      "2023-05-01-preview",
-      "2022-10-01-preview"
+      "2023-11-01"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -142,7 +143,9 @@
       "UAE North",
       "UK South",
       "West Europe",
-      "West US"
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -153,12 +156,11 @@
       "2025-03-01-preview",
       "2025-01-01",
       "2024-05-01-preview",
-      "2023-11-01",
-      "2023-05-01-preview",
-      "2022-10-01-preview"
+      "2023-11-01"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -177,7 +179,44 @@
       "UAE North",
       "UK South",
       "West Europe",
-      "West US"
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "trafficControllers/securityPolicies",
+    "apiVersions": [
+      "2025-03-01-preview",
+      "2025-01-01",
+      "2024-05-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   }

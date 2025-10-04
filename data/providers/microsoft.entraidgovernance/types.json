@@ -1,6 +1,17 @@
 [
   {
     "aliases": null,
+    "resourceType": "guestgovernanceusage",
+    "apiVersions": [
+      "2025-06-13-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2025-02-01-preview"

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "amlFilesystems",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
@@ -256,7 +257,47 @@
     "aliases": null,
     "resourceType": "amlFilesystems/autoExportJobs",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "amlFilesystems/autoImportJobs",
+    "apiVersions": [
+      "2025-07-01"
     ],
     "locations": [
       "Australia East",
@@ -295,6 +336,7 @@
     "aliases": null,
     "resourceType": "amlFilesystems/importJobs",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01"
     ],
@@ -688,6 +730,7 @@
     "aliases": null,
     "resourceType": "checkAmlFSSubnets",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
@@ -732,6 +775,7 @@
     "aliases": null,
     "resourceType": "getRequiredAmlFSSubnetsSize",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
@@ -776,6 +820,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
@@ -802,6 +847,7 @@
     "aliases": null,
     "resourceType": "locations/ascoperations",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
@@ -859,6 +905,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
@@ -907,6 +954,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
