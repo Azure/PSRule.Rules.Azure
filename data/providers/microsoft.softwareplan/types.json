@@ -29,6 +29,17 @@
   },
   {
     "aliases": null,
+    "resourceType": "softwareLicenses",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "softwareSubscriptions",
     "apiVersions": [
       "2024-06-01-preview"

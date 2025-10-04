@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
       "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
@@ -11,7 +13,11 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.LoadTestService/loadTestMappings/azureLoadTestingResourceId": "properties.azureLoadTestingResourceId",
+      "Microsoft.LoadTestService/loadTestMappings/sourceResourceId": "properties.sourceResourceId",
+      "Microsoft.LoadTestService/loadTestMappings/testId": "properties.testId"
+    },
     "resourceType": "loadTestMappings",
     "apiVersions": [
       "2024-12-01-preview",
@@ -60,7 +66,11 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.LoadTestService/loadTestProfileMappings/azureLoadTestingResourceId": "properties.azureLoadTestingResourceId",
+      "Microsoft.LoadTestService/loadTestProfileMappings/sourceResourceId": "properties.sourceResourceId",
+      "Microsoft.LoadTestService/loadTestProfileMappings/testProfileId": "properties.testProfileId"
+    },
     "resourceType": "loadTestProfileMappings",
     "apiVersions": [
       "2024-12-01-preview",
@@ -136,6 +146,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "South Central US",
@@ -165,6 +176,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "South Central US",
@@ -196,6 +208,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "South Central US",
@@ -212,6 +225,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
       "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
@@ -238,6 +253,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "South Central US",
@@ -246,6 +262,21 @@
       "UK South",
       "West Europe",
       "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/playwrightQuotas",
+    "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "West Europe",
       "West US 3"
     ],
     "zoneMappings": []
@@ -269,6 +300,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "South Central US",
@@ -285,6 +317,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
       "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
@@ -293,9 +327,47 @@
     "zoneMappings": []
   },
   {
+    "aliases": {
+      "Microsoft.LoadTestService/playwrightWorkspaces/dataplaneUri": "properties.dataplaneUri",
+      "Microsoft.LoadTestService/playwrightWorkspaces/localAuth": "properties.localAuth",
+      "Microsoft.LoadTestService/playwrightWorkspaces/provisioningState": "properties.provisioningState",
+      "Microsoft.LoadTestService/playwrightWorkspaces/regionalAffinity": "properties.regionalAffinity",
+      "Microsoft.LoadTestService/playwrightWorkspaces/workspaceId": "properties.workspaceId"
+    },
+    "resourceType": "playwrightWorkspaces",
+    "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "PlaywrightWorkspaces/quotas",
+    "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-01-preview",
       "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"

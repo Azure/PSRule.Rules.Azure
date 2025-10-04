@@ -448,6 +448,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/invoices",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2020-11-01-privatepreview",

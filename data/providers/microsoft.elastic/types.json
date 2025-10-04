@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -31,6 +32,7 @@
     "aliases": null,
     "resourceType": "elasticVersions",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -52,6 +54,7 @@
     "aliases": null,
     "resourceType": "getElasticOrganizationToAzureSubscriptionMapping",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -70,6 +73,7 @@
     "aliases": null,
     "resourceType": "getOrganizationApiKey",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -91,6 +95,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -119,6 +124,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -166,6 +172,7 @@
     "aliases": null,
     "resourceType": "monitors",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -211,6 +218,7 @@
     "aliases": null,
     "resourceType": "monitors/monitoredSubscriptions",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -240,6 +248,7 @@
     "aliases": null,
     "resourceType": "monitors/openAIIntegrations",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -271,6 +280,7 @@
     "aliases": null,
     "resourceType": "monitors/tagRules",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",
@@ -316,6 +326,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-06-01",
       "2025-01-15-preview",
       "2024-10-01-preview",
       "2024-06-15-preview",

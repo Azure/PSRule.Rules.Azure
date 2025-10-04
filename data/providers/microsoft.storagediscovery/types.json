@@ -1,0 +1,89 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2025-09-01",
+      "2025-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2025-09-01",
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2025-09-01",
+      "2025-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageDiscoveryWorkspaces",
+    "apiVersions": [
+      "2025-09-01",
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageDiscoveryWorkspaces/reports",
+    "apiVersions": [
+      "2025-09-01",
+      "2025-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  }
+]

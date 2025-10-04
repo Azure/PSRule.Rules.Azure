@@ -9,6 +9,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Canada East",
       "Central US",
@@ -35,6 +36,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-03-31",
       "2024-06-30-preview",
       "2021-11-30",
       "2018-10-31-preview",
@@ -53,6 +55,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Canada East",
       "Central US",
@@ -79,6 +82,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-03-31",
       "2024-06-30-preview",
       "2022-08-31-preview",
       "2021-11-30",

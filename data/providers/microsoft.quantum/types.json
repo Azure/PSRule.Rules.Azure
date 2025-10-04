@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-08-11-preview",
       "2025-02-15-preview",
       "2025-01-01-preview",
       "2023-11-13-preview",
@@ -16,6 +17,7 @@
     "aliases": null,
     "resourceType": "Locations/CheckNameAvailability",
     "apiVersions": [
+      "2025-08-11-preview",
       "2025-02-15-preview",
       "2025-01-01-preview",
       "2023-11-13-preview",
@@ -29,6 +31,7 @@
     "aliases": null,
     "resourceType": "Locations/Offerings",
     "apiVersions": [
+      "2025-08-11-preview",
       "2025-01-01-preview",
       "2023-11-13-preview",
       "2022-01-10-preview",
@@ -53,6 +56,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-08-11-preview",
       "2025-02-15-preview",
       "2025-01-01-preview",
       "2023-11-13-preview",
@@ -80,6 +84,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-08-11-preview",
       "2025-02-15-preview",
       "2025-01-01-preview",
       "2023-11-13-preview",
@@ -91,8 +96,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "suiteOffers",
+    "apiVersions": [
+      "2025-08-11-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "Workspaces",
     "apiVersions": [
+      "2025-08-11-preview",
       "2025-01-01-preview",
       "2023-11-13-preview",
       "2022-01-10-preview",

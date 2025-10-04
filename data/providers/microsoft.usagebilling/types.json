@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-05-01-preview",
       "2024-01-01-preview",
       "2023-12-01-preview",
@@ -18,6 +19,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia SouthEast",
+      "Austria East",
       "Brazil South",
       "Brazil SouthEast",
       "Canada Central",
@@ -31,7 +33,6 @@
       "East US 2",
       "East US 2 EUAP",
       "France Central",
-      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",

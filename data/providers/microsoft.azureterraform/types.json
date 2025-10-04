@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "exportTerraform",
     "apiVersions": [
+      "2025-06-01-preview",
       "2023-07-01-preview"
     ],
     "locations": [],
@@ -12,6 +13,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-06-01-preview",
       "2023-07-01-preview"
     ],
     "locations": [],
@@ -21,6 +23,7 @@
     "aliases": null,
     "resourceType": "operationStatuses",
     "apiVersions": [
+      "2025-06-01-preview",
       "2023-07-01-preview"
     ],
     "locations": [],

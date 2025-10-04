@@ -212,6 +212,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "transfers",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "validateCancel",
     "apiVersions": [
       "2021-01-01-privatepreview"

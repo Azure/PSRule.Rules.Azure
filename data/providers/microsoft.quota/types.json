@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "groupQuotas",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -15,6 +17,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/groupOperationsStatus",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -27,6 +31,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/groupQuotaLimits",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -39,6 +45,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/groupQuotaOperationsStatus",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -51,6 +59,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/groupQuotaRequests",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -63,6 +73,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/locationSettings",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -75,6 +87,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/locationSettingsOperationsStatus",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -87,6 +101,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/locationUsages",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -99,6 +115,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/quotaAllocationOperationsStatus",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -111,6 +129,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/quotaAllocationRequests",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -123,6 +143,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/quotaAllocations",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -135,6 +157,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/subscriptionRequests",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -147,6 +171,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/subscriptionRequestsOperationsStatus",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -159,6 +185,8 @@
     "aliases": null,
     "resourceType": "groupQuotas/subscriptions",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2024-10-15-preview",
@@ -171,6 +199,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2023-06-01-preview",
@@ -184,6 +214,8 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2023-06-01-preview",
@@ -197,6 +229,8 @@
     "aliases": null,
     "resourceType": "quotaRequests",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2023-06-01-preview",
@@ -210,6 +244,8 @@
     "aliases": null,
     "resourceType": "quotas",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2023-06-01-preview",
@@ -223,6 +259,8 @@
     "aliases": null,
     "resourceType": "usages",
     "apiVersions": [
+      "2025-09-01",
+      "2025-07-15",
       "2025-03-01",
       "2024-12-18-preview",
       "2023-06-01-preview",

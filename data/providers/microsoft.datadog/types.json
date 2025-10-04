@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "agreements",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -20,6 +21,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -37,6 +39,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -80,6 +83,7 @@
     },
     "resourceType": "monitors",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -99,6 +103,7 @@
     "aliases": null,
     "resourceType": "monitors/getDefaultKey",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -119,6 +124,7 @@
     "aliases": null,
     "resourceType": "monitors/listApiKeys",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -139,6 +145,7 @@
     "aliases": null,
     "resourceType": "monitors/listHosts",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -159,6 +166,7 @@
     "aliases": null,
     "resourceType": "monitors/listLinkedResources",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -179,6 +187,7 @@
     "aliases": null,
     "resourceType": "monitors/listMonitoredResources",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -199,6 +208,7 @@
     "aliases": null,
     "resourceType": "monitors/monitoredSubscriptions",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -214,6 +224,7 @@
     "aliases": null,
     "resourceType": "monitors/refreshSetPasswordLink",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -234,6 +245,7 @@
     "aliases": null,
     "resourceType": "monitors/setDefaultKey",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -259,6 +271,7 @@
     },
     "resourceType": "monitors/singleSignOnConfigurations",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -295,6 +308,7 @@
     },
     "resourceType": "monitors/tagRules",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -314,6 +328,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -331,6 +346,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",
@@ -348,6 +364,7 @@
     "aliases": null,
     "resourceType": "subscriptionStatuses",
     "apiVersions": [
+      "2025-06-11",
       "2025-01-07",
       "2024-03-01",
       "2023-10-20",

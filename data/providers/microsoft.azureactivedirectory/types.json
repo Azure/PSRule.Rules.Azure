@@ -7,6 +7,7 @@
     },
     "resourceType": "b2cDirectories",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
@@ -33,6 +34,7 @@
     "aliases": null,
     "resourceType": "b2ctenants",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
@@ -55,6 +57,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
@@ -78,6 +81,7 @@
     "aliases": null,
     "resourceType": "ciamDirectories",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview"
@@ -93,11 +97,21 @@
     "zoneMappings": []
   },
   {
+    "aliases": null,
+    "resourceType": "directories",
+    "apiVersions": [
+      "2025-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.AzureActiveDirectory/guestUsages/tenantId": "properties.tenantId"
     },
     "resourceType": "guestUsages",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
@@ -119,6 +133,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
@@ -145,6 +160,7 @@
     "aliases": null,
     "resourceType": "operationStatuses",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-05-17-preview"
     ],
     "locations": [
