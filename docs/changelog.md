@@ -32,6 +32,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.45.2:
 
+- New rules:
+  - App Configuration:
+    - Check that replica locations are in allowed regions by @copilot.
+      [#3634](https://github.com/Azure/PSRule.Rules.Azure/issues/3634)
 - New features:
   - **Experimental:** Added Well-Architected Framework - Security pillar Level 1 maturity baseline by @BernieWhite.
     [#3107](https://github.com/Azure/PSRule.Rules.Azure/issues/3107)
