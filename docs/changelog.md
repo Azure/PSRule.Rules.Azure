@@ -45,6 +45,9 @@ What's changed since v1.45.2:
     - Includes rules released before or during September 2025.
     - Marked `Azure.GA_2025_06` and `Azure.Preview_2025_06` baselines as obsolete.
 - New rules:
+  - Azure Container Registry:
+    - Check that audit diagnostic logs are enabled for Container Registry by @copilot.
+      [#3536](https://github.com/Azure/PSRule.Rules.Azure/issues/3536)
   - Azure Cache for Redis:
     - Check that Entra ID is required for all authentication of cache instances by @BernieWhite.
       [#3113](https://github.com/Azure/PSRule.Rules.Azure/issues/3113)
