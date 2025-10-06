@@ -59,12 +59,18 @@ spec:
 #region Naming rules
 
 ---
-# Synopsis: Service Fabric clusters without a standard naming convention may be difficult to identify and manage.
+# Synopsis: Service Fabric clusters should use standard naming format.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ServiceFabric.Naming
   ref: AZR-000506
+  annotations:
+    severity: Awareness
+    pillar: Operational Excellence
+    category: OE:04 Tools and processes
+    resource: Service Fabric Cluster
+    online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.Naming/
   tags:
     release: GA
     ruleSet: 2025_12
@@ -81,12 +87,18 @@ spec:
     match: true
 
 ---
-# Synopsis: Service Fabric managed clusters without a standard naming convention may be difficult to identify and manage.
+# Synopsis: Service Fabric managed clusters should use standard naming format.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ServiceFabric.ManagedNaming
   ref: AZR-000507
+  annotations:
+    severity: Awareness
+    pillar: Operational Excellence
+    category: OE:04 Tools and processes
+    resource: Service Fabric Managed Cluster
+    online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.ManagedNaming/
   tags:
     release: GA
     ruleSet: 2025_12
