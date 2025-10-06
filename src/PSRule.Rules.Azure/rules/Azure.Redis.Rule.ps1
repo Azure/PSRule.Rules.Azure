@@ -187,3 +187,17 @@ function global:HasPublicNetworkAccess {
 }
 
 #endregion Helper functions
+
+#region Naming rules
+
+# Synopsis: Azure Cache for Redis instances without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.Redis.Naming' -Ref 'AZR-000515' -Type 'Microsoft.Cache/Redis' -If { $Configuration['AZURE_REDIS_CACHE_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_REDIS_CACHE_NAME_FORMAT, $True);
+}
+
+# Synopsis: Azure Managed Redis instances without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.RedisEnterprise.Naming' -Ref 'AZR-000516' -Type 'Microsoft.Cache/RedisEnterprise' -If { $Configuration['AZURE_REDIS_ENTERPRISE_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_REDIS_ENTERPRISE_NAME_FORMAT, $True);
+}
+
+#endregion Naming rules

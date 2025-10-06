@@ -55,3 +55,51 @@ spec:
     count: 1
 
 #endregion Rules
+
+#region Naming rules
+
+---
+# Synopsis: Service Fabric clusters without a standard naming convention may be difficult to identify and manage.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ServiceFabric.Naming
+  ref: AZR-000506
+  tags:
+    release: GA
+    ruleSet: 2025_12
+    Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
+spec:
+  type:
+    - Microsoft.ServiceFabric/clusters
+  with:
+    - AZURE_SERVICE_FABRIC_CLUSTER_NAME_FORMAT
+  condition:
+    name: '.'
+    match: true
+
+---
+# Synopsis: Service Fabric managed clusters without a standard naming convention may be difficult to identify and manage.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ServiceFabric.ManagedNaming
+  ref: AZR-000507
+  tags:
+    release: GA
+    ruleSet: 2025_12
+    Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
+spec:
+  type:
+    - Microsoft.ServiceFabric/managedClusters
+  with:
+    - AZURE_SERVICE_FABRIC_MANAGED_CLUSTER_NAME_FORMAT
+  condition:
+    name: '.'
+    match: true
+
+#endregion Naming rules
