@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-05
+reviewed: 2025-10-10
 severity: Important
 pillar: Security
 category: SE:01 Security baseline
@@ -44,7 +44,7 @@ To deploy App Configuration Stores that pass this rule:
 For example:
 
 ```bicep
-resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
+resource store 'Microsoft.AppConfiguration/configurationStores@2024-06-01' = {
   name: name
   location: location
   sku: {
@@ -57,14 +57,14 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
   }
 }
 
-resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2023-03-01' = {
+resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2024-06-01' = {
   parent: store
   name: replicaName
   location: replicaLocation
 }
 ```
 
-<!-- external:avm avm/res/app-configuration/configuration-store replicas[*].location -->
+<!-- external:avm avm/res/app-configuration/configuration-store replicaLocations -->
 
 ### Configure with Azure template
 
@@ -79,7 +79,7 @@ For example:
   "resources": [
     {
       "type": "Microsoft.AppConfiguration/configurationStores",
-      "apiVersion": "2023-03-01",
+      "apiVersion": "2024-06-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -93,7 +93,7 @@ For example:
     },
     {
       "type": "Microsoft.AppConfiguration/configurationStores/replicas",
-      "apiVersion": "2023-03-01",
+      "apiVersion": "2024-06-01",
       "name": "[format('{0}/{1}', parameters('name'), parameters('replicaName'))]",
       "location": "[parameters('replicaLocation')]",
       "dependsOn": [

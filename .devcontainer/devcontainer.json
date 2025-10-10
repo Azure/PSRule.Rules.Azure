@@ -17,7 +17,6 @@
         "ms-dotnettools.csdevkit",
         "ms-vscode.powershell",
         "ms-azuretools.vscode-bicep",
-        "msazurermtools.azurerm-vscode-tools",
         "GitHub.vscode-pull-request-github",
         "github.vscode-github-actions",
         "bewhite.psrule-vscode-preview",
