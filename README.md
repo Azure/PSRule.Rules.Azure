@@ -10,7 +10,7 @@ Features of PSRule for Azure include:
 
 - [Learn by example][6] - Fix issues quickly, and learn how to improve your Infrastructure as Code..
 - [Framework aligned][7] - Apply principals of Azure Well-Architected Framework to your workloads.
-- [Start day one][2] - Leverage over 450 pre-built rules to test Azure resources.
+- [Start day one][2] - Leverage over 490 pre-built rules to test Azure resources.
 - [DevOps integrated][3] - Test Azure infrastructure as code such as Bicep or Azure Resource Manager templates.
 - [Cross-platform][4] - Run locally or in the cloud on MacOS, Linux, and Windows.
 - [Open community][8] - Open source rules for the Azure community.

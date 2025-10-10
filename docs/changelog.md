@@ -30,6 +30,54 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.46.0
+
+What's changed since v1.45.2:
+
+- New features:
+  - **Experimental:** Added Well-Architected Framework - Security pillar Level 1 maturity baseline by @BernieWhite.
+    [#3107](https://github.com/Azure/PSRule.Rules.Azure/issues/3107)
+    [#3517](https://github.com/Azure/PSRule.Rules.Azure/issues/3517)
+    - The `Azure.Pillar.Security.L1` baseline provides an initial set of rules aligned to the first level of maturity.
+    - This is an experimental baseline and may change in future releases.
+  - Added CSV download of rule list associated with each baseline by @BernieWhite.
+    [#3511](https://github.com/Azure/PSRule.Rules.Azure/issues/3511)
+  - Added September 2025 baselines `Azure.GA_2025_09` and `Azure.Preview_2025_09` by @BernieWhite.
+    [#3539](https://github.com/Azure/PSRule.Rules.Azure/issues/3539)
+    - Includes rules released before or during September 2025.
+    - Marked `Azure.GA_2025_06` and `Azure.Preview_2025_06` baselines as obsolete.
+- New rules:
+  - Azure Cache for Redis:
+    - Check that Entra ID is required for all authentication of cache instances by @BernieWhite.
+      [#3113](https://github.com/Azure/PSRule.Rules.Azure/issues/3113)
+  - Container Registry:
+    - Check replica locations are within allowed regions by @BernieWhite
+      [#3442](https://github.com/Azure/PSRule.Rules.Azure/issues/3442)
+    - Check that export policy is disabled for registries by @BernieWhite
+      [#3444](https://github.com/Azure/PSRule.Rules.Azure/issues/3444)
+  - Storage Account:
+    - Check that local authentication is disabled for storage accounts by @BernieWhite.
+      [#3115](https://github.com/Azure/PSRule.Rules.Azure/issues/3115)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.32.7` as the minimum version by @BernieWhite.
+      [#3541](https://github.com/Azure/PSRule.Rules.Azure/issues/3541)
+  - Container Registry:
+    - Updated `Azure.ACR.GeoReplica` to ensure geo-replication applies to pre-flight and in-flight cases by @BernieWhite.
+      [#3477](https://github.com/Azure/PSRule.Rules.Azure/issues/3477)
+- General improvements:
+  - Updated provider data by @BernieWhite.
+    [#3538](https://github.com/Azure/PSRule.Rules.Azure/issues/3538)
+- Bug fixes:
+  - Fixed false negative for App Service `web` configuration cases set with `siteConfig` by @BernieWhite.
+    [#3521](https://github.com/Azure/PSRule.Rules.Azure/issues/3521)
+
+What's changed since pre-release v1.46.0-B0050:
+
+- No additional changes.
+
+## v1.46.0-B0050 (pre-release)
+
 What's changed since v1.45.2:
 
 - New rules:
