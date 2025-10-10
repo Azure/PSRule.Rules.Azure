@@ -168,24 +168,24 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
                 ErrorAction = 'Stop'
                 Outcome = 'All'
                 Option = @{
-                    'Configuration.AZURE_RESOURCE_ALLOWED_LOCATIONS' = @('region', 'region2')
+                    'Configuration.AZURE_RESOURCE_ALLOWED_LOCATIONS' = @('region', 'westeurope')
                 }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.ReplicaLocation' };
 
-            # Fail - replicas in northeurope and westeurope which are not in allowed list
+            # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'app-config-B', 'app-config-C', 'app-config-E', 'app-config-H', 'app-config-I';
+            $ruleResult.TargetName | Should -BeIn 'app-config-B', 'app-config-I';
+            $ruleResult.Length | Should -Be 2;
 
-            # Pass - stores with no replicas
+            # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-D', 'app-config-F', 'app-config-G';
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-C', 'app-config-D', 'app-config-E', 'app-config-F', 'app-config-G', 'app-config-H';
+            $ruleResult.Length | Should -Be 7;
         }
     }
 
