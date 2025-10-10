@@ -255,3 +255,32 @@ function global:IsMasterDatabase {
 }
 
 #endregion Helper functions
+
+#region Naming rules
+
+# Synopsis: Azure SQL Database servers without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.ServerNaming' -Ref 'AZR-000517' -Type 'Microsoft.Sql/servers' -If { $Configuration['AZURE_SQL_SERVER_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_SERVER_NAME_FORMAT, $True);
+}
+
+# Synopsis: Azure SQL databases without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.DatabaseNaming' -Ref 'AZR-000518' -Type 'Microsoft.Sql/servers/databases' -If { $Configuration['AZURE_SQL_DATABASE_NAME_FORMAT'] -ne '' -and !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_DATABASE_NAME_FORMAT, $True);
+}
+
+# Synopsis: Azure SQL Elastic Job agents without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.JobAgentNaming' -Ref 'AZR-000519' -Type 'Microsoft.Sql/servers/jobAgents' -If { $Configuration['AZURE_SQL_JOB_AGENT_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_JOB_AGENT_NAME_FORMAT, $True);
+}
+
+# Synopsis: Azure SQL Elastic Pools without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.ElasticPoolNaming' -Ref 'AZR-000520' -Type 'Microsoft.Sql/servers/elasticPools' -If { $Configuration['AZURE_SQL_ELASTIC_POOL_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_ELASTIC_POOL_NAME_FORMAT, $True);
+}
+
+# Synopsis: SQL Server Stretch Databases without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.StretchDBNaming' -Ref 'AZR-000524' -Type 'Microsoft.Sql/servers/databases' -If { $Configuration['AZURE_SQL_STRETCH_DB_NAME_FORMAT'] -ne '' -and $TargetObject.properties.requestedServiceObjectiveName -eq 'DataWarehouse' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_STRETCH_DB_NAME_FORMAT, $True);
+}
+
+#endregion Naming rules

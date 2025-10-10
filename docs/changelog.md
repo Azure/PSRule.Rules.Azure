@@ -30,6 +30,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Added naming format rules for AKS, Container Apps, Service Fabric, Cosmos DB, Redis, and SQL resources.
+    [#3638](https://github.com/Azure/PSRule.Rules.Azure/issues/3638)
+
 ## v1.46.0-B0050 (pre-release)
 
 What's changed since v1.45.2:

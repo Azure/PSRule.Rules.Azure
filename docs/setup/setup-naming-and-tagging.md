@@ -225,21 +225,48 @@ To configure the rule for a resource type, set the corresponding configuration v
 
 Rule                                | Resource type                               | Configuration value
 ----                                | -------------                               | -------------------
+`Azure.ACR.Naming`                  | `Microsoft.ContainerRegistry/registries`    | `AZURE_CONTAINER_REGISTRY_NAME_FORMAT`
 `Azure.Search.Naming`               | `Microsoft.Search/searchServices`           | `AZURE_AI_SEARCH_NAME_FORMAT`
 `Azure.AI.FoundryNaming`            | `Microsoft.CognitiveServices/accounts` with `kind` = `AIServices`      | `AZURE_AI_SERVICES_NAME_FORMAT`
+`Azure.AKS.Naming`                  | `Microsoft.ContainerService/managedClusters` | `AZURE_AKS_CLUSTER_NAME_FORMAT`
+`Azure.AKS.SystemPoolNaming`        | `Microsoft.ContainerService/managedClusters/agentPools` with `mode` = `System` | `AZURE_AKS_SYSTEM_POOL_NAME_FORMAT`
+`Azure.AKS.UserPoolNaming`          | `Microsoft.ContainerService/managedClusters/agentPools` with `mode` = `User` | `AZURE_AKS_USER_POOL_NAME_FORMAT`
 `Azure.AppInsights.Naming`          | `Microsoft.Insights/components`             | `AZURE_APP_INSIGHTS_NAME_FORMAT`
+`Azure.CI.Naming`                   | `Microsoft.ContainerInstance/containerGroups` | `AZURE_CONTAINER_INSTANCE_NAME_FORMAT`
+`Azure.ContainerApp.Naming`         | `Microsoft.App/containerApps`               | `AZURE_CONTAINER_APP_NAME_FORMAT`
+`Azure.ContainerApp.EnvironmentNaming` | `Microsoft.App/managedEnvironments`      | `AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT`
+`Azure.ContainerApp.JobNaming`      | `Microsoft.App/jobs`                        | `AZURE_CONTAINER_APP_JOB_NAME_FORMAT`
+`Azure.Cosmos.CassandraNaming`      | `Microsoft.DocumentDb/databaseAccounts` with Cassandra API | `AZURE_COSMOS_CASSANDRA_NAME_FORMAT`
+`Azure.Cosmos.DatabaseNaming`       | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases` | `AZURE_COSMOS_DATABASE_NAME_FORMAT`
+`Azure.Cosmos.GremlinNaming`        | `Microsoft.DocumentDb/databaseAccounts` with Gremlin API | `AZURE_COSMOS_GREMLIN_NAME_FORMAT`
+`Azure.Cosmos.MongoNaming`          | `Microsoft.DocumentDb/databaseAccounts` with MongoDB API | `AZURE_COSMOS_MONGO_NAME_FORMAT`
+`Azure.Cosmos.NoSQLNaming`          | `Microsoft.DocumentDb/databaseAccounts` with NoSQL API | `AZURE_COSMOS_NOSQL_NAME_FORMAT`
+`Azure.Cosmos.PostgreSQLNaming`     | `Microsoft.DBforPostgreSQL/serverGroupsv2`  | `AZURE_COSMOS_POSTGRESQL_NAME_FORMAT`
+`Azure.Cosmos.TableNaming`          | `Microsoft.DocumentDb/databaseAccounts` with Table API | `AZURE_COSMOS_TABLE_NAME_FORMAT`
 `Azure.EventGrid.DomainNaming`      | `Microsoft.EventGrid/domains`               | `AZURE_EVENTGRID_DOMAIN_NAME_FORMAT`
 `Azure.EventGrid.TopicNaming`       | `Microsoft.EventGrid/topics`, `Microsoft.EventGrid/domains/topics` | `AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT`
 `Azure.EventGrid.SystemTopicNaming` | `Microsoft.EventGrid/systemTopics`          | `AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT`
 `Azure.VNG.ConnectionNaming`        | `Microsoft.Network/connections`             | `AZURE_GATEWAY_CONNECTION_NAME_FORMAT`
 `Azure.LB.Naming`                   | `Microsoft.Network/loadBalancers`           | `AZURE_LOAD_BALANCER_NAME_FORMAT`
 `Azure.Log.Naming`                  | `Microsoft.OperationalInsights/workspaces`  | `AZURE_LOG_WORKSPACE_NAME_FORMAT`
+`Azure.MySQL.Naming`                | `Microsoft.DBforMySQL/servers`, `Microsoft.DBforMySQL/flexibleServers` | `AZURE_MYSQL_SERVER_NAME_FORMAT`
 `Azure.NSG.Naming`                  | `Microsoft.Network/networkSecurityGroups`   | `AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT`
+`Azure.PostgreSQL.Naming`           | `Microsoft.DBforPostgreSQL/servers`, `Microsoft.DBforPostgreSQL/flexibleServers` | `AZURE_POSTGRESQL_SERVER_NAME_FORMAT`
 `Azure.PublicIP.Naming`             | `Microsoft.Network/publicIPAddresses`       | `AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT`
+`Azure.Redis.Naming`                | `Microsoft.Cache/Redis`                     | `AZURE_REDIS_CACHE_NAME_FORMAT`
+`Azure.RedisEnterprise.Naming`      | `Microsoft.Cache/RedisEnterprise`           | `AZURE_REDIS_ENTERPRISE_NAME_FORMAT`
 `Azure.Group.Naming`                | `Microsoft.Resources/resourceGroups`        | `AZURE_RESOURCE_GROUP_NAME_FORMAT`
 `Azure.Group.RequiredTags`          | `Microsoft.Resources/resourceGroups`        | `AZURE_RESOURCE_GROUP_REQUIRED_TAGS`
 `Azure.Resource.RequiredTags`       | Applies to all types that support tags except subscription and resource groups. | `AZURE_RESOURCE_REQUIRED_TAGS`
 `Azure.Route.Naming`                | `Microsoft.Network/routeTables`             | `AZURE_ROUTE_TABLE_NAME_FORMAT`
+`Azure.ServiceFabric.Naming`        | `Microsoft.ServiceFabric/clusters`          | `AZURE_SERVICE_FABRIC_CLUSTER_NAME_FORMAT`
+`Azure.ServiceFabric.ManagedNaming` | `Microsoft.ServiceFabric/managedClusters`   | `AZURE_SERVICE_FABRIC_MANAGED_CLUSTER_NAME_FORMAT`
+`Azure.SQL.ServerNaming`            | `Microsoft.Sql/servers`                     | `AZURE_SQL_SERVER_NAME_FORMAT`
+`Azure.SQL.DatabaseNaming`          | `Microsoft.Sql/servers/databases`           | `AZURE_SQL_DATABASE_NAME_FORMAT`
+`Azure.SQL.JobAgentNaming`          | `Microsoft.Sql/servers/jobAgents`           | `AZURE_SQL_JOB_AGENT_NAME_FORMAT`
+`Azure.SQL.ElasticPoolNaming`       | `Microsoft.Sql/servers/elasticPools`        | `AZURE_SQL_ELASTIC_POOL_NAME_FORMAT`
+`Azure.SQL.StretchDBNaming`         | `Microsoft.Sql/servers/databases` with Data Warehouse service objective | `AZURE_SQL_STRETCH_DB_NAME_FORMAT`
+`Azure.SQLMI.Naming`                | `Microsoft.Sql/managedInstances`            | `AZURE_SQL_MI_NAME_FORMAT`
 `Azure.Storage.Naming`              | `Microsoft.Storage/storageAccounts`         | `AZURE_STORAGE_ACCOUNT_NAME_FORMAT`
 `Azure.Subscription.RequiredTags`   | `Microsoft.Subscription/aliases`            | `AZURE_SUBSCRIPTION_REQUIRED_TAGS`
 `Azure.VM.Naming`                   | `Microsoft.Compute/virtualMachines`         | `AZURE_VIRTUAL_MACHINE_NAME_FORMAT`
