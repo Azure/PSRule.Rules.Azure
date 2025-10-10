@@ -60,11 +60,11 @@ nav:
       - Using templates: using-templates.md
       - Using Bicep source: using-bicep.md
       - Creating your pipeline: creating-your-pipeline.md
-      - Working with baselines: working-with-baselines.md
     - Testing deployed resources:
       - Exporting rule data: export-rule-data.md
       - Analyzing resources: analyzing-resources.md
     - Concepts:
+      - Working with baselines: working-with-baselines.md
       - Suppression: concepts/suppression.md
       - Policy as rules: concepts/policy-as-rules.md
     - Customization:
