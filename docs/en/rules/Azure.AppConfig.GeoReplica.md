@@ -1,5 +1,5 @@
 ---
-reviewed: 2023-12-11
+reviewed: 2025-10-10
 severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
@@ -39,6 +39,39 @@ When considering where to place replicas, consider the following; where does the
 Consider replicating app configuration stores to improve resiliency to region outages.
 
 ## EXAMPLES
+
+### Configure with Bicep
+
+To deploy App Configuration Stores that pass this rule:
+
+- Set `sku.name` to `Standard` (required for geo-replication).
+- Deploy a replica sub-resource (child resource).
+- Set `location` on replica sub-resource to a different location than the app configuration store.
+
+For example:
+
+```bicep
+resource store 'Microsoft.AppConfiguration/configurationStores@2024-06-01' = {
+  name: name
+  location: location
+  sku: {
+    name: 'standard'
+  }
+  properties: {
+    disableLocalAuth: true
+    enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
+  }
+}
+
+resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2024-06-01' = {
+  parent: store
+  name: replicaName
+  location: replicaLocation
+}
+```
+
+<!-- external:avm avm/res/app-configuration/configuration-store replicaLocations -->
 
 ### Configure with Azure template
 
@@ -80,70 +113,10 @@ For example:
 }
 ```
 
-### Configure with Bicep
-
-To deploy App Configuration Stores that pass this rule:
-
-- Set `sku.name` to `Standard` (required for geo-replication).
-- Deploy a replica sub-resource (child resource).
-- Set `location` on replica sub-resource to a different location than the app configuration store.
-
-For example:
-
-```bicep
-resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
-  name: name
-  location: location
-  sku: {
-    name: 'standard'
-  }
-  properties: {
-    disableLocalAuth: true
-    enablePurgeProtection: true
-    publicNetworkAccess: 'Disabled'
-  }
-}
-
-resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2023-03-01' = {
-  parent: store
-  name: replicaName
-  location: replicaLocation
-}
-```
-
-### Configure with Bicep Public Registry
-
-To deploy App Configuration Stores that pass this rule:
-
-- Set `params.skuName` to `Standard` (required for geo-replication).
-- Configure one or more replicas by setting `params.replicas` to an array of objects.
-- Set `location` on each replica to a different location than the app configuration store.
-
-For example:
-
-```bicep
-module br_public_store 'br/public:app/app-configuration:1.1.2' = {
-  name: 'store'
-  params: {
-    skuName: 'Standard'
-    disableLocalAuth: true
-    enablePurgeProtection: true
-    publicNetworkAccess: 'Disabled'
-    replicas: [
-      {
-        name: 'eastus'
-        location: 'eastus'
-      }
-    ]
-  }
-}
-```
-
 ## LINKS
 
 - [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
 - [Resiliency and diaster recovery](https://learn.microsoft.com/azure/azure-app-configuration/concept-disaster-recovery)
 - [Geo-replication overview](https://learn.microsoft.com/azure/azure-app-configuration/concept-geo-replication)
 - [Enable geo-replication](https://learn.microsoft.com/azure/azure-app-configuration/howto-geo-replication)
-- [Bicep public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores/replicas)

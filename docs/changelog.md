@@ -30,6 +30,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - App Configuration:
+    - Check that replica locations are in allowed regions by @BernieWhite.
+      [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
+
 ## v1.46.0
 
 What's changed since v1.45.2:

@@ -13,10 +13,10 @@ param replicaName string = 'replica01'
 param appConfigLocation string = resourceGroup().location
 
 @description('The location where the replica will be deployed.')
-param replicaLocation string = 'northeurope' 
+param replicaLocation string = 'northeurope'
 
 // An example App Configuration Store
-resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
+resource store 'Microsoft.AppConfiguration/configurationStores@2024-06-01' = {
   name: appConfigName
   location: appConfigLocation
   sku: {
@@ -28,7 +28,7 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
   }
 }
 
-resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2022-03-01-preview' = {
+resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2024-06-01' = {
   name: replicaName
   location: replicaLocation
   parent: store

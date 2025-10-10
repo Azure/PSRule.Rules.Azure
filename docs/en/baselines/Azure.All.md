@@ -10,7 +10,7 @@ Includes all Azure rules.
 
 The following rules are included within the `Azure.All` baseline.
 
-This baseline includes a total of 495 rules.
+This baseline includes a total of 496 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -99,6 +99,7 @@ Name | Synopsis | Severity
 [Azure.AppConfig.GeoReplica](../rules/Azure.AppConfig.GeoReplica.md) | Replicate app configuration store across all points of presence for an application. | Important
 [Azure.AppConfig.Name](../rules/Azure.AppConfig.Name.md) | App Configuration store names should meet naming requirements. | Awareness
 [Azure.AppConfig.PurgeProtect](../rules/Azure.AppConfig.PurgeProtect.md) | Consider purge protection for app configuration store to ensure store cannot be purged in the retention period. | Important
+[Azure.AppConfig.ReplicaLocation](../rules/Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | Important
 [Azure.AppConfig.SecretLeak](../rules/Azure.AppConfig.SecretLeak.md) | Secrets stored as key values in an App Configuration Store may be leaked to unauthorized users. | Critical
 [Azure.AppConfig.SKU](../rules/Azure.AppConfig.SKU.md) | App Configuration should use a minimum size of Standard. | Important
 [Azure.AppGw.AvailabilityZone](../rules/Azure.AppGw.AvailabilityZone.md) | Application Gateway (App Gateway) should use availability zones in supported regions for improved resiliency. | Important

@@ -61,6 +61,24 @@ Rule 'Azure.AppConfig.SecretLeak' -Ref 'AZR-000490' -Type 'Microsoft.AppConfigur
     }
 }
 
+# Synopsis: App Configuration Store replica locations should be within allowed regions.
+Rule 'Azure.AppConfig.ReplicaLocation' -Ref 'AZR-000498' -Type 'Microsoft.AppConfiguration/configurationStores', 'Microsoft.AppConfiguration/configurationStores/replicas' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L1'; } {
+    $context = $PSRule.GetService('Azure.Context');
+    $replicas = @($TargetObject)
+    if ($PSRule.TargetType -eq 'Microsoft.AppConfiguration/configurationStores') {
+        $replicas = @(GetSubResources -ResourceType 'Microsoft.AppConfiguration/configurationStores/replicas', 'replicas');
+    }
+
+    if ($replicas.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    foreach ($replica in $replicas) {
+        $location = $replica.location;
+        $Assert.Create('location', [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
+    }
+}
+
 #endregion Rules
 
 #region Helper functions

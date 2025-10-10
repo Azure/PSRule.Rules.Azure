@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.10.61.36676",
-      "templateHash": "16621422579239964777"
+      "version": "0.38.33.27573",
+      "templateHash": "1158439961613226553"
     }
   },
   "parameters": {
@@ -41,7 +41,7 @@
   "resources": [
     {
       "type": "Microsoft.AppConfiguration/configurationStores",
-      "apiVersion": "2022-05-01",
+      "apiVersion": "2024-06-01",
       "name": "[parameters('appConfigName')]",
       "location": "[parameters('appConfigLocation')]",
       "sku": {
@@ -54,7 +54,7 @@
     },
     {
       "type": "Microsoft.AppConfiguration/configurationStores/replicas",
-      "apiVersion": "2022-03-01-preview",
+      "apiVersion": "2024-06-01",
       "name": "[format('{0}/{1}', parameters('appConfigName'), parameters('replicaName'))]",
       "location": "[parameters('replicaLocation')]",
       "dependsOn": [

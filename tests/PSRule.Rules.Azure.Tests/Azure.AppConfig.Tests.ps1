@@ -159,6 +159,34 @@ Describe 'Azure.AppConfig' -Tag 'AppConfig' {
             $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-B', 'app-config-D', 'app-config-E', 'app-config-F', 'app-config-G', 'app-config-H', 'app-config-I', 'app-config-B/value-b', 'app-config-y/value-y';
             $ruleResult.Length | Should -Be 10;
         }
+
+        It 'Azure.AppConfig.ReplicaLocation' {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+                Outcome = 'All'
+                Option = @{
+                    'Configuration.AZURE_RESOURCE_ALLOWED_LOCATIONS' = @('region', 'westeurope')
+                }
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppConfig.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppConfig.ReplicaLocation' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'app-config-B', 'app-config-I';
+            $ruleResult.Length | Should -Be 2;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'app-config-A', 'app-config-C', 'app-config-D', 'app-config-E', 'app-config-F', 'app-config-G', 'app-config-H';
+            $ruleResult.Length | Should -Be 7;
+        }
     }
 
     Context 'Resource name' {
