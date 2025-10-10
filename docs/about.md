@@ -20,7 +20,7 @@ PSRule for Azure uses the principles of the Azure Well-Architected Framework (WA
   Examples are provided in Azure Bicep and ARM templates syntax.
 
 If you want to write your own tests, you can do that too in your choice of YAML, JSON, or PowerShell.
-However with over 450 tests already built, you can identify and fix issues day one.
+However with over 490 tests already built, you can identify and fix issues day one.
 
 !!! Learn "Get started with a sample repository"
     To get started with a sample repository, see [PSRule for Azure Quick Start][1] on GitHub.

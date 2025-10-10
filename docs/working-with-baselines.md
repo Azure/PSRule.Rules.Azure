@@ -1,18 +1,21 @@
 ---
-description: This topic covers how to use the baselines shipped with PSRule for Azure.
+reviewed: 2025-10-10
+description: |
+  A baseline is a standard PSRule artifact that combines rules and configuration.
+  PSRule for Azure provides several built-in baselines that can be referenced when running PSRule.
 ---
 
 # Working with baselines
 
 A baseline is a standard PSRule artifact that combines rules and configuration.
-PSRule for Azure provides several baselines that can be referenced when running PSRule.
+PSRule for Azure provides several built-in baselines that can be referenced when running PSRule.
+It is also possible to create your own custom baselines.
 
-!!! Abstract
-    This topic covers how to use standard baselines shipped with PSRule for Azure or custom baselines you define.
+This topic covers how to use built-in baselines shipped with PSRule for Azure or custom baselines you define.
 
 ## Quarterly baselines
 
-PSRule for Azure ships new rules on a monthly cadence.
+PSRule for Azure ships new rules typically on a monthly cadence.
 As new rules are added, existing pipelines that previously passed may fail based on additional requirements.
 It is generally expected that files committed to an integration branch such as `main` continue to pass.
 
@@ -70,11 +73,19 @@ These baselines are best used for ad-hoc scans.
 
 The following baselines are available:
 
-- `Azure.Pillar.CostOptimization` &mdash; A baseline that only includes cost optimization rules.
-- `Azure.Pillar.OperationalExcellence` &mdash; A baseline that only includes operational excellence rules.
-- `Azure.Pillar.PerformanceEfficiency` &mdash; A baseline that only includes performance efficiency rules.
-- `Azure.Pillar.Reliability` &mdash; A baseline that only includes reliability rules.
-- `Azure.Pillar.Security` &mdash; A baseline that only includes security rules.
+- [Azure.Pillar.CostOptimization][4] &mdash; A baseline that only includes cost optimization rules.
+- [Azure.Pillar.OperationalExcellence][5] &mdash; A baseline that only includes operational excellence rules.
+- [Azure.Pillar.PerformanceEfficiency][6] &mdash; A baseline that only includes performance efficiency rules.
+- [Azure.Pillar.Reliability][7] &mdash; A baseline that only includes reliability rules.
+- [Azure.Pillar.Security][8] &mdash; A baseline that only includes security rules.
+- [Azure.Pillar.Security.L1][9] &mdash; A baseline that only includes security rules at with maturity level 1.
+
+  [4]: en/baselines/Azure.Pillar.CostOptimization.md
+  [5]: en/baselines/Azure.Pillar.OperationalExcellence.md
+  [6]: en/baselines/Azure.Pillar.PerformanceEfficiency.md
+  [7]: en/baselines/Azure.Pillar.Reliability.md
+  [8]: en/baselines/Azure.Pillar.Security.md
+  [9]: en/baselines/Azure.Pillar.Security.L1.md
 
 ## Additional standard baselines
 
