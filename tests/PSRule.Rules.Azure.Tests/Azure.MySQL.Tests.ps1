@@ -309,4 +309,45 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
+
+    Context 'Resource naming format' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_MYSQL_SERVER_NAME_FORMAT' = '^mysql-'
+            };
+
+            $names = @('myserver-001', 'mysql-001', 'MYSQL-001')
+            $items = @($names | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.DBforMySQL/servers'
+                    }
+                });
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option
+        }
+
+        It 'Azure.MySQL.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.Naming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'myserver-001', 'MYSQL-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'mysql-001';
+        }
+    }
 }

@@ -350,13 +350,25 @@ Rule 'Azure.AKS.Naming' -Ref 'AZR-000498' -Type 'Microsoft.ContainerService/mana
 }
 
 # Synopsis: AKS system node pools without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.AKS.SystemPoolNaming' -Ref 'AZR-000499' -Type 'Microsoft.ContainerService/managedClusters/agentPools' -If { $Configuration['AZURE_AKS_SYSTEM_POOL_NAME_FORMAT'] -ne '' -and $TargetObject.properties.mode -eq 'System' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
-    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_AKS_SYSTEM_POOL_NAME_FORMAT, $True);
+Rule 'Azure.AKS.SystemPoolNaming' -Ref 'AZR-000499' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -If { $Configuration['AZURE_AKS_SYSTEM_POOL_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $agentPools = @(GetAgentPoolProfiles | Where-Object { $_.mode -eq 'System' });
+    if ($agentPools.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($agentPool in $agentPools) {
+        $Assert.Match($agentPool, 'name', $Configuration.AZURE_AKS_SYSTEM_POOL_NAME_FORMAT, $True);
+    }
 }
 
 # Synopsis: AKS user node pools without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.AKS.UserPoolNaming' -Ref 'AZR-000500' -Type 'Microsoft.ContainerService/managedClusters/agentPools' -If { $Configuration['AZURE_AKS_USER_POOL_NAME_FORMAT'] -ne '' -and $TargetObject.properties.mode -eq 'User' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
-    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_AKS_USER_POOL_NAME_FORMAT, $True);
+Rule 'Azure.AKS.UserPoolNaming' -Ref 'AZR-000500' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -If { $Configuration['AZURE_AKS_USER_POOL_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $agentPools = @(GetAgentPoolProfiles | Where-Object { $_.mode -eq 'User' });
+    if ($agentPools.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($agentPool in $agentPools) {
+        $Assert.Match($agentPool, 'name', $Configuration.AZURE_AKS_USER_POOL_NAME_FORMAT, $True);
+    }
 }
 
 #region Helper functions

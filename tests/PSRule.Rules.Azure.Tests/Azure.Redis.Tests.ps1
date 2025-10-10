@@ -522,4 +522,71 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
         }
     }
+
+    Context 'Resource naming' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_REDIS_CACHE_NAME_FORMAT'      = '^redis-'
+                'AZURE_REDIS_ENTERPRISE_NAME_FORMAT' = '^amr-'
+            };
+
+            $cacheNames = @('cache-001', 'redis-001', 'REDIS-001')
+            $enterpriseNames = @('enterprise-001', 'amr-001', 'AMR-001')
+
+            $cacheItems = @($cacheNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.Cache/Redis'
+                    }
+                });
+
+            $enterpriseItems = @($enterpriseNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.Cache/RedisEnterprise'
+                    }
+                });
+
+            $result = @($cacheItems + $enterpriseItems) | Invoke-PSRule @invokeParams -Option $option
+        }
+
+        It 'Azure.Redis.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.Naming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cache-001', 'REDIS-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'redis-001';
+        }
+
+        It 'Azure.RedisEnterprise.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.Naming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'enterprise-001', 'AMR-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'amr-001';
+        }
+    }
 }
