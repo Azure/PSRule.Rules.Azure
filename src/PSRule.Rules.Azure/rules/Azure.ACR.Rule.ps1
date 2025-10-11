@@ -76,7 +76,7 @@ Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000494' -Type 'Microsoft.ContainerReg
 }
 
 # Synopsis: Container registries without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.ACR.Naming' -Ref 'AZR-000504' -Type 'Microsoft.ContainerRegistry/registries' -If { $Configuration['AZURE_CONTAINER_REGISTRY_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+Rule 'Azure.ACR.Naming' -Ref 'AZR-000504' -Type 'Microsoft.ContainerRegistry/registries' -If { $Configuration['AZURE_CONTAINER_REGISTRY_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_CONTAINER_REGISTRY_NAME_FORMAT, $True);
 }
 

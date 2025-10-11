@@ -207,7 +207,7 @@ function global:MySQLSingleServerAAD {
 #region Naming rules
 
 # Synopsis: MySQL databases without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.MySQL.Naming' -Ref 'AZR-000521' -Type 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/flexibleServers' -If { $Configuration['AZURE_MYSQL_SERVER_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+Rule 'Azure.MySQL.Naming' -Ref 'AZR-000521' -Type 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/flexibleServers' -If { $Configuration['AZURE_MYSQL_SERVER_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_MYSQL_SERVER_NAME_FORMAT, $True);
 }
 

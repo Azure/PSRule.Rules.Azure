@@ -170,7 +170,7 @@ function global:PostgreSQLSingleServerAAD {
 #region Naming rules
 
 # Synopsis: PostgreSQL databases without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.PostgreSQL.Naming' -Ref 'AZR-000522' -Type 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/flexibleServers' -If { $Configuration['AZURE_POSTGRESQL_SERVER_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+Rule 'Azure.PostgreSQL.Naming' -Ref 'AZR-000522' -Type 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/flexibleServers' -If { $Configuration['AZURE_POSTGRESQL_SERVER_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_POSTGRESQL_SERVER_NAME_FORMAT, $True);
 }
 
