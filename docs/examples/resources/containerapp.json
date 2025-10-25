@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "7132667371133705541"
+      "version": "0.38.33.27573",
+      "templateHash": "14874746802953279604"
     }
   },
   "parameters": {
@@ -104,7 +104,7 @@
     },
     {
       "type": "Microsoft.App/containerApps",
-      "apiVersion": "2024-03-01",
+      "apiVersion": "2025-01-01",
       "name": "[parameters('appName')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -136,7 +136,7 @@
     },
     {
       "type": "Microsoft.App/containerApps",
-      "apiVersion": "2024-03-01",
+      "apiVersion": "2025-01-01",
       "name": "[parameters('appName')]",
       "location": "[parameters('location')]",
       "identity": {

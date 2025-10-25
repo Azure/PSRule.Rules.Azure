@@ -126,13 +126,13 @@ var userPools = [
 // Define resources
 
 // Cluster managed identity
-resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
+resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2024-11-30' = {
   name: identityName
   location: location
 }
 
 // An example AKS cluster
-resource cluster 'Microsoft.ContainerService/managedClusters@2024-10-01' = {
+resource cluster 'Microsoft.ContainerService/managedClusters@2025-07-01' = {
   location: location
   name: name
   identity: {
@@ -219,7 +219,7 @@ resource auditLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = 
 }
 
 // An example AKS cluster with pools defined.
-resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
+resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2025-07-01' = {
   location: location
   name: name
   identity: {
@@ -306,7 +306,7 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2024-02-01
 }
 
 // An example private AKS cluster with pools defined.
-resource privateCluster 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
+resource privateCluster 'Microsoft.ContainerService/managedClusters@2025-07-01' = {
   location: location
   name: name
   identity: {

@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.31.92.45157",
-      "templateHash": "6019742219031876579"
+      "version": "0.38.33.27573",
+      "templateHash": "16939269083538591353"
     }
   },
   "parameters": {
@@ -172,13 +172,13 @@
   "resources": [
     {
       "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-      "apiVersion": "2023-01-31",
+      "apiVersion": "2024-11-30",
       "name": "[parameters('identityName')]",
       "location": "[parameters('location')]"
     },
     {
       "type": "Microsoft.ContainerService/managedClusters",
-      "apiVersion": "2024-02-01",
+      "apiVersion": "2025-07-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -272,7 +272,7 @@
     },
     {
       "type": "Microsoft.ContainerService/managedClusters",
-      "apiVersion": "2024-02-01",
+      "apiVersion": "2025-07-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -362,7 +362,7 @@
     },
     {
       "type": "Microsoft.ContainerService/managedClusters",
-      "apiVersion": "2024-02-01",
+      "apiVersion": "2025-07-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {

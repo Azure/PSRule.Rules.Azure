@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-10-25
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy Container Apps that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -56,21 +56,137 @@ For example:
 ```bicep
 @minLength(2)
 @maxLength(32)
-@description('The name of the resource.')
-param name string
+@description('The name of the container app.')
+param appName string
 
-@description('The location resources will be deployed.')
-param location string = resourceGroup().location
-
-// Example resource deployment
+resource containerApp 'Microsoft.App/containerApps@2025-01-01' = {
+  name: appName
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    environmentId: containerEnv.id
+    template: {
+      revisionSuffix: revision
+      containers: containers
+      scale: {
+        minReplicas: 2
+      }
+    }
+    configuration: {
+      ingress: {
+        allowInsecure: false
+        external: false
+        stickySessions: {
+          affinity: 'none'
+        }
+      }
+    }
+  }
+}
 ```
+
+<!-- external:avm avm/res/app/container-app name -->
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy Container Apps that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "envName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the app environment."
+      }
+    },
+    "appName": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 32,
+      "metadata": {
+        "description": "The name of the container app."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+    "workspaceId": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of a Log Analytics workspace"
+      }
+    },
+    "subnetId": {
+      "type": "string",
+      "metadata": {
+        "description": "The resource ID of a VNET subnet."
+      }
+    },
+    "revision": {
+      "type": "string",
+      "metadata": {
+        "description": "The revision of the container app."
+      }
+    }
+  },
+  "variables": {
+    "containers": [
+      {
+        "name": "simple-hello-world-container",
+        "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+        "resources": {
+          "cpu": "[json('0.25')]",
+          "memory": ".5Gi"
+        }
+      }
+    ]
+  },
+  "resources": [
+    {
+      "type": "Microsoft.App/containerApps",
+      "apiVersion": "2025-01-01",
+      "name": "[parameters('appName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+        "template": {
+          "revisionSuffix": "[parameters('revision')]",
+          "containers": "[variables('containers')]",
+          "scale": {
+            "minReplicas": 2
+          }
+        },
+        "configuration": {
+          "ingress": {
+            "allowInsecure": false,
+            "external": false,
+            "stickySessions": {
+              "affinity": "none"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +215,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps)

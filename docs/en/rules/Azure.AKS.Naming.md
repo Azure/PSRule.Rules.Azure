@@ -1,9 +1,9 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-10-25
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: AKS cluster
+resource: Azure Kubernetes Service
 resourceType: Microsoft.ContainerService/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.Naming/
 ---
@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy clusters that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -62,15 +62,158 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource cluster 'Microsoft.ContainerService/managedClusters@2025-07-01' = {
+  location: location
+  name: name
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identity.id}': {}
+    }
+  }
+  properties: {
+    kubernetesVersion: kubernetesVersion
+    disableLocalAccounts: true
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: allPools
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: 'azure'
+      networkPolicy: 'azure'
+      loadBalancerSku: 'standard'
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+    }
+    apiServerAccessProfile: {
+      authorizedIPRanges: [
+        '0.0.0.0/32'
+      ]
+    }
+    autoUpgradeProfile: {
+      upgradeChannel: 'stable'
+    }
+    oidcIssuerProfile: {
+      enabled: true
+    }
+    addonProfiles: {
+      azurepolicy: {
+        enabled: true
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: 'true'
+        }
+      }
+    }
+  }
+}
 ```
+
+<!-- external:avm avm/res/container-service/managed-cluster name -->
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy clusters that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the AKS cluster."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Optional. The Azure region to deploy to."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ContainerService/managedClusters",
+      "apiVersion": "2025-07-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
+        }
+      },
+      "properties": {
+        "kubernetesVersion": "[parameters('kubernetesVersion')]",
+        "disableLocalAccounts": true,
+        "enableRBAC": true,
+        "dnsPrefix": "[parameters('dnsPrefix')]",
+        "agentPoolProfiles": "[variables('allPools')]",
+        "aadProfile": {
+          "managed": true,
+          "enableAzureRBAC": true,
+          "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
+          "tenantID": "[subscription().tenantId]"
+        },
+        "networkProfile": {
+          "networkPlugin": "azure",
+          "networkPolicy": "azure",
+          "loadBalancerSku": "standard",
+          "serviceCidr": "[variables('serviceCidr')]",
+          "dnsServiceIP": "[variables('dnsServiceIP')]"
+        },
+        "apiServerAccessProfile": {
+          "authorizedIPRanges": [
+            "0.0.0.0/32"
+          ]
+        },
+        "autoUpgradeProfile": {
+          "upgradeChannel": "stable"
+        },
+        "oidcIssuerProfile": {
+          "enabled": true
+        },
+        "addonProfiles": {
+          "azurepolicy": {
+            "enabled": true
+          },
+          "omsagent": {
+            "enabled": true,
+            "config": {
+              "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+            }
+          },
+          "azureKeyvaultSecretsProvider": {
+            "enabled": true,
+            "config": {
+              "enableSecretRotation": "true"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +242,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

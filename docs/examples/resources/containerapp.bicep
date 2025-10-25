@@ -80,7 +80,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2024-03-01' = {
 }
 
 // An example Container App using a minimum of 2 replicas.
-resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
+resource containerApp 'Microsoft.App/containerApps@2025-01-01' = {
   name: appName
   location: location
   identity: {
@@ -109,7 +109,7 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
 }
 
 // An example Container App with IP security restrictions.
-resource containerAppWithSecurity 'Microsoft.App/containerApps@2024-03-01' = {
+resource containerAppWithSecurity 'Microsoft.App/containerApps@2025-01-01' = {
   name: appName
   location: location
   identity: {

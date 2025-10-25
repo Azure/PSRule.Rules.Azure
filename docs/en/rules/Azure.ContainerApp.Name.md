@@ -1,4 +1,5 @@
 ---
+reviewed: 2025-10-25
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
@@ -29,12 +30,57 @@ Additionally consider naming resources with a standard naming convention.
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy Container Apps that pass this rule:
+
+- Set the `name` property to a string that matches the naming requirements.
+- Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```bicep
+@minLength(2)
+@maxLength(32)
+@description('The name of the container app.')
+param appName string
+
+resource containerApp 'Microsoft.App/containerApps@2025-01-01' = {
+  name: appName
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    environmentId: containerEnv.id
+    template: {
+      revisionSuffix: revision
+      containers: containers
+      scale: {
+        minReplicas: 2
+      }
+    }
+    configuration: {
+      ingress: {
+        allowInsecure: false
+        external: false
+        stickySessions: {
+          affinity: 'none'
+        }
+      }
+    }
+  }
+}
+```
+
+<!-- external:avm avm/res/app/container-app name -->
+
 ### Configure with Azure template
 
 To deploy Container Apps that pass this rule:
 
-- Configuring a `minLength` and `maxLength` constraint for the resource name parameter.
-- Optionally, you could also use a `uniqueString()` function to generate a unique name.
+- Set the `name` property to a string that matches the naming requirements.
+- Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
 
 For example:
 
@@ -98,7 +144,7 @@ For example:
   "resources": [
     {
       "type": "Microsoft.App/containerApps",
-      "apiVersion": "2023-05-01",
+      "apiVersion": "2025-01-01",
       "name": "[parameters('appName')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -116,6 +162,7 @@ For example:
         "configuration": {
           "ingress": {
             "allowInsecure": false,
+            "external": false,
             "stickySessions": {
               "affinity": "none"
             }
@@ -127,50 +174,6 @@ For example:
 }
 ```
 
-### Configure with Bicep
-
-To deploy Container Apps that pass this rule:
-
-- Configuring a `minLength` and `maxLength` constraint for the resource name parameter.
-- Optionally, you could also use a `uniqueString()` function to generate a unique name.
-
-For example:
-
-```bicep
-@minLength(2)
-@maxLength(32)
-@description('The name of the container app.')
-param appName string
-
-resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
-  name: appName
-  location: location
-  identity: {
-    type: 'SystemAssigned'
-  }
-  properties: {
-    environmentId: containerEnv.id
-    template: {
-      revisionSuffix: revision
-      containers: containers
-      scale: {
-        minReplicas: 2
-      }
-    }
-    configuration: {
-      ingress: {
-        allowInsecure: false
-        stickySessions: {
-          affinity: 'none'
-        }
-      }
-    }
-  }
-}
-```
-
-<!-- external:avm avm/res/app/container-app:0.11.0 name -->
-
 ## NOTES
 
 This rule does not check if container app names are unique.
@@ -178,5 +181,8 @@ This rule does not check if container app names are unique.
 ## LINKS
 
 - [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
+- [Operational Excellence maturity model](https://learn.microsoft.com/azure/well-architected/operational-excellence/maturity-model?tabs=level2)
 - [Naming rules and restrictions for container app resource](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftapp)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps)
