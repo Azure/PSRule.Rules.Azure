@@ -3,6 +3,8 @@
 
 // Bicep documentation examples
 
+@minLength(1)
+@maxLength(128)
 @description('The name of the resource.')
 param name string
 
@@ -23,7 +25,7 @@ resource server 'Microsoft.Sql/servers@2024-05-01-preview' = {
   }
   properties: {
     publicNetworkAccess: 'Disabled'
-    minimalTlsVersion: '1.2'
+    minimalTlsVersion: '1.3'
     administrators: {
       azureADOnlyAuthentication: true
       administratorType: 'ActiveDirectory'

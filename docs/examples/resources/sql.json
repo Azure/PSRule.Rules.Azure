@@ -4,13 +4,15 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.34.1.11899",
-      "templateHash": "13668357951305686306"
+      "version": "0.38.33.27573",
+      "templateHash": "7050584599187305805"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
       "metadata": {
         "description": "The name of the resource."
       }
@@ -43,7 +45,7 @@
       },
       "properties": {
         "publicNetworkAccess": "Disabled",
-        "minimalTlsVersion": "1.2",
+        "minimalTlsVersion": "1.3",
         "administrators": {
           "azureADOnlyAuthentication": true,
           "administratorType": "ActiveDirectory",

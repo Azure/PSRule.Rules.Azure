@@ -225,6 +225,7 @@ To configure the rule for a resource type, set the corresponding configuration v
 
 Rule                                | Resource type                               | Configuration value
 ----                                | -------------                               | -------------------
+`Azure.ACI.Naming`                  | `Microsoft.ContainerInstance/containerGroups` | `AZURE_CONTAINER_INSTANCE_NAME_FORMAT`
 `Azure.ACR.Naming`                  | `Microsoft.ContainerRegistry/registries`    | `AZURE_CONTAINER_REGISTRY_NAME_FORMAT`
 `Azure.Search.Naming`               | `Microsoft.Search/searchServices`           | `AZURE_AI_SEARCH_NAME_FORMAT`
 `Azure.AI.FoundryNaming`            | `Microsoft.CognitiveServices/accounts` with `kind` = `AIServices`      | `AZURE_AI_SERVICES_NAME_FORMAT`
@@ -232,9 +233,8 @@ Rule                                | Resource type                             
 `Azure.AKS.SystemPoolNaming`        | `Microsoft.ContainerService/managedClusters/agentPools` with `mode` = `System` | `AZURE_AKS_SYSTEM_POOL_NAME_FORMAT`
 `Azure.AKS.UserPoolNaming`          | `Microsoft.ContainerService/managedClusters/agentPools` with `mode` = `User` | `AZURE_AKS_USER_POOL_NAME_FORMAT`
 `Azure.AppInsights.Naming`          | `Microsoft.Insights/components`             | `AZURE_APP_INSIGHTS_NAME_FORMAT`
-`Azure.CI.Naming`                   | `Microsoft.ContainerInstance/containerGroups` | `AZURE_CONTAINER_INSTANCE_NAME_FORMAT`
 `Azure.ContainerApp.Naming`         | `Microsoft.App/containerApps`               | `AZURE_CONTAINER_APP_NAME_FORMAT`
-`Azure.ContainerApp.EnvironmentNaming` | `Microsoft.App/managedEnvironments`      | `AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT`
+`Azure.ContainerApp.EnvNaming`      | `Microsoft.App/managedEnvironments`      | `AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT`
 `Azure.ContainerApp.JobNaming`      | `Microsoft.App/jobs`                        | `AZURE_CONTAINER_APP_JOB_NAME_FORMAT`
 `Azure.Cosmos.CassandraNaming`      | `Microsoft.DocumentDb/databaseAccounts` with Cassandra API | `AZURE_COSMOS_CASSANDRA_NAME_FORMAT`
 `Azure.Cosmos.DatabaseNaming`       | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases` | `AZURE_COSMOS_DATABASE_NAME_FORMAT`
@@ -262,7 +262,7 @@ Rule                                | Resource type                             
 `Azure.ServiceFabric.Naming`        | `Microsoft.ServiceFabric/clusters`          | `AZURE_SERVICE_FABRIC_CLUSTER_NAME_FORMAT`
 `Azure.ServiceFabric.ManagedNaming` | `Microsoft.ServiceFabric/managedClusters`   | `AZURE_SERVICE_FABRIC_MANAGED_CLUSTER_NAME_FORMAT`
 `Azure.SQL.ServerNaming`            | `Microsoft.Sql/servers`                     | `AZURE_SQL_SERVER_NAME_FORMAT`
-`Azure.SQL.DatabaseNaming`          | `Microsoft.Sql/servers/databases`           | `AZURE_SQL_DATABASE_NAME_FORMAT`
+`Azure.SQL.DBNaming`                | `Microsoft.Sql/servers/databases`           | `AZURE_SQL_DATABASE_NAME_FORMAT`
 `Azure.SQL.JobAgentNaming`          | `Microsoft.Sql/servers/jobAgents`           | `AZURE_SQL_JOB_AGENT_NAME_FORMAT`
 `Azure.SQL.ElasticPoolNaming`       | `Microsoft.Sql/servers/elasticPools`        | `AZURE_SQL_ELASTIC_POOL_NAME_FORMAT`
 `Azure.SQL.StretchDBNaming`         | `Microsoft.Sql/servers/databases` with Data Warehouse service objective | `AZURE_SQL_STRETCH_DB_NAME_FORMAT`

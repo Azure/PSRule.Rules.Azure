@@ -19,7 +19,7 @@ Rule 'Azure.Cosmos.DisableLocalAuth' -Ref 'AZR-000420' -Type 'Microsoft.Document
 }
 
 # Synopsis: Azure Cosmos DB for Apache Cassandra accounts without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.Cosmos.CassandraNaming' -Ref 'AZR-000508' -Type 'Microsoft.DocumentDb/databaseAccounts' -If { $Configuration['AZURE_COSMOS_CASSANDRA_NAME_FORMAT'] -ne '' -and $TargetObject.kind -eq 'GlobalDocumentDB' -and ($TargetObject.properties.capabilities | Where-Object { $_.name -eq 'EnableCassandra' }) } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+Rule 'Azure.Cosmos.CassandraNaming' -Ref 'AZR-000508' -Type 'Microsoft.DocumentDb/databaseAccounts' -With 'Azure.Cosmos.IsCassandra' -If { $Configuration['AZURE_COSMOS_CASSANDRA_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_COSMOS_CASSANDRA_NAME_FORMAT, $True);
 }
 
@@ -34,12 +34,12 @@ Rule 'Azure.Cosmos.NoSQLNaming' -Ref 'AZR-000510' -Type 'Microsoft.DocumentDb/da
 }
 
 # Synopsis: Azure Cosmos DB for Table accounts without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.Cosmos.TableNaming' -Ref 'AZR-000511' -Type 'Microsoft.DocumentDb/databaseAccounts' -If { $Configuration['AZURE_COSMOS_TABLE_NAME_FORMAT'] -ne '' -and $TargetObject.kind -eq 'GlobalDocumentDB' -and ($TargetObject.properties.capabilities | Where-Object { $_.name -eq 'EnableTable' }) } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+Rule 'Azure.Cosmos.TableNaming' -Ref 'AZR-000511' -Type 'Microsoft.DocumentDb/databaseAccounts' -With 'Azure.Cosmos.IsTable' -If { $Configuration['AZURE_COSMOS_TABLE_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_COSMOS_TABLE_NAME_FORMAT, $True);
 }
 
 # Synopsis: Azure Cosmos DB for Apache Gremlin accounts without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.Cosmos.GremlinNaming' -Ref 'AZR-000512' -Type 'Microsoft.DocumentDb/databaseAccounts' -If { $Configuration['AZURE_COSMOS_GREMLIN_NAME_FORMAT'] -ne '' -and $TargetObject.kind -eq 'GlobalDocumentDB' -and ($TargetObject.properties.capabilities | Where-Object { $_.name -eq 'EnableGremlin' }) } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+Rule 'Azure.Cosmos.GremlinNaming' -Ref 'AZR-000512' -Type 'Microsoft.DocumentDb/databaseAccounts' -With 'Azure.Cosmos.IsGremlin' -If { $Configuration['AZURE_COSMOS_GREMLIN_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_COSMOS_GREMLIN_NAME_FORMAT, $True);
 }
 
