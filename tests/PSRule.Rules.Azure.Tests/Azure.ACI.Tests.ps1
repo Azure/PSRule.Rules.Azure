@@ -23,7 +23,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.CI' -Tag 'CI' {
+Describe 'Azure.ACI' -Tag 'ACI' {
     Context 'Resource naming' {
         BeforeAll {
             $invokeParams = @{
@@ -48,8 +48,8 @@ Describe 'Azure.CI' -Tag 'CI' {
             $result = $items | Invoke-PSRule @invokeParams -Option $option
         }
 
-        It 'Azure.CI.Naming' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.CI.Naming' };
+        It 'Azure.ACI.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACI.Naming' };
             
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

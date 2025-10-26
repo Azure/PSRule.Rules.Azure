@@ -1,11 +1,11 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-10-26
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: Container Instance
 resourceType: Microsoft.ContainerInstance/containerGroups
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CI.Naming/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACI.Naming/
 ---
 
 # Container Instance resources must use standard naming
@@ -34,8 +34,9 @@ For Container Instance, the Cloud Adoption Framework (CAF) recommends using the 
 Requirements for Container Instance resource names:
 
 - Between 1 and 63 characters long.
-- Can include alphanumeric characters, hyphens, underscores, and periods (restrictions vary by resource type).
-- Resource names must be unique within their scope.
+- Lowercase letters, numbers, and hyphens.
+- Start with letter and end with alphanumeric.
+- Can not contain consecutive hyphens.
 
 ## RECOMMENDATION
 
@@ -62,7 +63,30 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource containerGroup 'Microsoft.ContainerInstance/containerGroups@2025-09-01' = {
+  name: name
+  location: location
+  properties: {
+    containers: containers
+    osType: 'Linux'
+    sku: 'Standard'
+    restartPolicy: 'Always'
+    ipAddress: {
+      ports: [
+        {
+          port: 80
+          protocol: 'TCP'
+        }
+      ]
+      type: 'Private'
+    }
+    subnetIds: [
+      {
+        id: subnetId
+      }
+    ]
+  }
+}
 ```
 
 ### Configure with Azure template
@@ -71,6 +95,60 @@ To deploy resources that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 63,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2025-09-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "containers": "[variables('containers')]",
+        "osType": "Linux",
+        "sku": "Standard",
+        "restartPolicy": "Always",
+        "ipAddress": {
+          "ports": [
+            {
+              "port": 80,
+              "protocol": "TCP"
+            }
+          ],
+          "type": "Private"
+        },
+        "subnetIds": [
+          {
+            "id": "[parameters('subnetId')]"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +177,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerinstance/containergroups)
