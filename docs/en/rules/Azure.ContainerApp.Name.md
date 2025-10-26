@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-25
+reviewed: 2025-10-26
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
@@ -22,6 +22,7 @@ The requirements for container app names are:
 - Between 2 and 32 characters long.
 - Lowercase letters, numbers, and hyphens.
 - Start with letter and end with alphanumeric.
+- Can not contain consecutive hyphens.
 
 ## RECOMMENDATION
 

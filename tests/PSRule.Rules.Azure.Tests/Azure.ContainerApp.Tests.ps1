@@ -329,8 +329,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.TargetName | Should -Be 'ca-001';
         }
 
-        It 'Azure.ContainerApp.EnvironmentNaming' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.EnvironmentNaming' };
+        It 'Azure.ContainerApp.EnvNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.EnvNaming' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

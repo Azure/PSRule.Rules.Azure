@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-10-26
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
@@ -34,8 +34,9 @@ For Azure Cache for Redis, the Cloud Adoption Framework (CAF) recommends using t
 Requirements for Azure Cache for Redis resource names:
 
 - Between 1 and 63 characters long.
-- Can include alphanumeric characters, hyphens, underscores, and periods (restrictions vary by resource type).
-- Resource names must be unique within their scope.
+- Can include alphanumeric, and hyphen characters.
+- Can only start and end with a letter or number.
+- Cache names must be globally unique.
 
 ## RECOMMENDATION
 
@@ -46,7 +47,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy caches that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -62,15 +63,101 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource cache 'Microsoft.Cache/redis@2024-11-01' = {
+  name: name
+  location: location
+  properties: {
+    redisVersion: '6'
+    sku: {
+      name: 'Premium'
+      family: 'P'
+      capacity: 1
+    }
+    redisConfiguration: {
+      'aad-enabled': 'True'
+      'maxmemory-reserved': '615'
+    }
+    enableNonSslPort: false
+    publicNetworkAccess: 'Disabled'
+    disableAccessKeyAuthentication: true
+  }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
+}
 ```
+
+<!-- external:avm avm/res/cache/redis name -->
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy caches that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.34.44.8038",
+      "templateHash": "1334073252436312734"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Cache/redis",
+      "apiVersion": "2024-11-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "redisVersion": "6",
+        "sku": {
+          "name": "Premium",
+          "family": "P",
+          "capacity": 1
+        },
+        "redisConfiguration": {
+          "aad-enabled": "True",
+          "maxmemory-reserved": "615"
+        },
+        "enableNonSslPort": false,
+        "publicNetworkAccess": "Disabled",
+        "disableAccessKeyAuthentication": true
+      },
+      "zones": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +186,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)

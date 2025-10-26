@@ -1,11 +1,11 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-10-26
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: Container App Environment
 resourceType: Microsoft.App/managedEnvironments
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.EnvironmentNaming/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.EnvNaming/
 ---
 
 # Container App Environment resources must use standard naming
@@ -33,9 +33,8 @@ For Container App Environment, the Cloud Adoption Framework (CAF) recommends usi
 
 Requirements for Container App Environment resource names:
 
-- Between 2 and 64 characters long.
-- Can include alphanumeric characters, hyphens, underscores, and periods (restrictions vary by resource type).
-- Resource names must be unique within their scope.
+- Between 2 and 60 characters long.
+- Lowercase letters, numbers, and hyphens.
 
 ## RECOMMENDATION
 
@@ -55,15 +54,40 @@ For example:
 
 ```bicep
 @minLength(2)
-@maxLength(64)
+@maxLength(60)
 @description('The name of the resource.')
 param name string
 
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource containerEnv 'Microsoft.App/managedEnvironments@2025-01-01' = {
+  name: name
+  location: location
+  properties: {
+    appLogsConfiguration: {
+      destination: 'log-analytics'
+      logAnalyticsConfiguration: {
+        customerId: workspace.properties.customerId
+        sharedKey: workspace.listKeys().primarySharedKey
+      }
+    }
+    zoneRedundant: true
+    workloadProfiles: [
+      {
+        name: 'Consumption'
+        workloadProfileType: 'Consumption'
+      }
+    ]
+    vnetConfiguration: {
+      infrastructureSubnetId: subnetId
+      internal: true
+    }
+  }
+}
 ```
+
+<!-- external:avm avm/res/app/managed-environment name -->
 
 ### Configure with Azure template
 
@@ -71,6 +95,60 @@ To deploy resources that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 60,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.App/managedEnvironments",
+      "apiVersion": "2025-01-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "appLogsConfiguration": {
+          "destination": "log-analytics",
+          "logAnalyticsConfiguration": {
+            "customerId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', split(parameters('workspaceId'), '/')[8]), '2022-10-01').customerId]",
+            "sharedKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', split(parameters('workspaceId'), '/')[8]), '2022-10-01').primarySharedKey]"
+          }
+        },
+        "zoneRedundant": true,
+        "workloadProfiles": [
+          {
+            "name": "Consumption",
+            "workloadProfileType": "Consumption"
+          }
+        ],
+        "vnetConfiguration": {
+          "infrastructureSubnetId": "[parameters('subnetId')]",
+          "internal": true
+        }
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +177,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/managedenvironments)

@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-25
+reviewed: 2025-10-26
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
@@ -34,8 +34,9 @@ For Container App, the Cloud Adoption Framework (CAF) recommends using the `ca-`
 Requirements for Container App resource names:
 
 - Between 2 and 32 characters long.
-- Can include alphanumeric characters, hyphens, underscores, and periods (restrictions vary by resource type).
-- Resource names must be unique within their scope.
+- Lowercase letters, numbers, and hyphens.
+- Start with letter and end with alphanumeric.
+- Can not contain consecutive hyphens.
 
 ## RECOMMENDATION
 
