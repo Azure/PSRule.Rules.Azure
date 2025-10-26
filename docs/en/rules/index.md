@@ -518,5 +518,32 @@ AZR-000495 | [Azure.ACR.ExportPolicy](Azure.ACR.ExportPolicy.md) | Export policy
 AZR-000496 | [Azure.Redis.LocalAuth](Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | GA
 AZR-000497 | [Azure.Storage.LocalAuth](Azure.Storage.LocalAuth.md) | Access keys allow depersonalized access to Storage Accounts using a shared secret. | GA
 AZR-000498 | [Azure.AppConfig.ReplicaLocation](Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | GA
+AZR-000499 | [Azure.AKS.Naming](Azure.AKS.Naming.md) | AKS cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000500 | [Azure.AKS.UserPoolNaming](Azure.AKS.UserPoolNaming.md) | AKS user node pool resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000501 | [Azure.ContainerApp.Naming](Azure.ContainerApp.Naming.md) | Container App resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000502 | [Azure.ContainerApp.EnvNaming](Azure.ContainerApp.EnvNaming.md) | Container App Environment resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000503 | [Azure.ContainerApp.JobNaming](Azure.ContainerApp.JobNaming.md) | Container App Job resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000504 | [Azure.ACR.Naming](Azure.ACR.Naming.md) | Container Registry resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000505 | [Azure.ACI.Naming](Azure.ACI.Naming.md) | Container Instance resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000506 | [Azure.ServiceFabric.Naming](Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000507 | [Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000508 | [Azure.Cosmos.CassandraNaming](Azure.Cosmos.CassandraNaming.md) | Cosmos DB for Apache Cassandra account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000509 | [Azure.Cosmos.MongoNaming](Azure.Cosmos.MongoNaming.md) | Cosmos DB for MongoDB account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000510 | [Azure.Cosmos.NoSQLNaming](Azure.Cosmos.NoSQLNaming.md) | Cosmos DB for NoSQL account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000511 | [Azure.Cosmos.TableNaming](Azure.Cosmos.TableNaming.md) | Cosmos DB for Table account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000512 | [Azure.Cosmos.GremlinNaming](Azure.Cosmos.GremlinNaming.md) | Cosmos DB for Apache Gremlin account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000513 | [Azure.Cosmos.PostgreSQLNaming](Azure.Cosmos.PostgreSQLNaming.md) | Cosmos DB PostgreSQL cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000514 | [Azure.Cosmos.DatabaseNaming](Azure.Cosmos.DatabaseNaming.md) | Cosmos DB database resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000515 | [Azure.Redis.Naming](Azure.Redis.Naming.md) | Azure Cache for Redis resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000516 | [Azure.RedisEnterprise.Naming](Azure.RedisEnterprise.Naming.md) | Azure Managed Redis resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000517 | [Azure.SQL.ServerNaming](Azure.SQL.ServerNaming.md) | Azure SQL Database server resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000518 | [Azure.SQL.DatabaseNaming](Azure.SQL.DatabaseNaming.md) | Azure SQL database resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000519 | [Azure.SQL.JobAgentNaming](Azure.SQL.JobAgentNaming.md) | Azure SQL Elastic Job agent resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000520 | [Azure.SQL.ElasticPoolNaming](Azure.SQL.ElasticPoolNaming.md) | Azure SQL Elastic Pool resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000521 | [Azure.MySQL.Naming](Azure.MySQL.Naming.md) | MySQL database server resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000522 | [Azure.PostgreSQL.Naming](Azure.PostgreSQL.Naming.md) | PostgreSQL database server resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000523 | [Azure.SQLMI.Naming](Azure.SQLMI.Naming.md) | SQL Managed Instance resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000524 | [Azure.SQL.StretchDBNaming](Azure.SQL.StretchDBNaming.md) | SQL Server Stretch Database resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000525 | [Azure.AKS.SystemPoolNaming](Azure.AKS.SystemPoolNaming.md) | AKS system node pool resources without a standard naming convention may be difficult to identify and manage. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

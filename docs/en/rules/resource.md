@@ -193,6 +193,7 @@ Name | Synopsis | Severity | Level
 [Azure.Redis.MaxMemoryReserved](Azure.Redis.MaxMemoryReserved.md) | Configure maxmemory-reserved to reserve memory for non-cache operations. | Important | Error
 [Azure.Redis.MinSKU](Azure.Redis.MinSKU.md) | Use Azure Cache for Redis instances of at least Standard C1. | Important | Error
 [Azure.Redis.MinTLS](Azure.Redis.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | Critical | Error
+[Azure.Redis.Naming](Azure.Redis.Naming.md) | Azure Cache for Redis resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Redis.NonSslPort](Azure.Redis.NonSslPort.md) | Azure Cache for Redis should only accept secure connections. | Critical | Error
 [Azure.Redis.PublicNetworkAccess](Azure.Redis.PublicNetworkAccess.md) | Redis cache should disable public network access. | Critical | Error
 [Azure.Redis.Version](Azure.Redis.Version.md) | Azure Cache for Redis should use the latest supported version of Redis. | Important | Error
@@ -292,6 +293,7 @@ Name | Synopsis | Severity | Level
 [Azure.AKS.MinNodeCount](Azure.AKS.MinNodeCount.md) | AKS clusters should have minimum number of system nodes for failover and updates. | Important | Error
 [Azure.AKS.MinUserPoolNodes](Azure.AKS.MinUserPoolNodes.md) | User node pools in an AKS cluster should have a minimum number of nodes for failover and updates. | Important | Error
 [Azure.AKS.Name](Azure.AKS.Name.md) | Azure Kubernetes Service (AKS) cluster names should meet naming requirements. | Awareness | Error
+[Azure.AKS.Naming](Azure.AKS.Naming.md) | AKS cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.AKS.NetworkPolicy](Azure.AKS.NetworkPolicy.md) | AKS clusters without inter-pod network restrictions may be permit unauthorized lateral movement. | Important | Error
 [Azure.AKS.NodeAutoUpgrade](Azure.AKS.NodeAutoUpgrade.md) | Operating system (OS) security updates should be applied to AKS nodes and rebooted as required to address security vulnerabilities. | Important | Error
 [Azure.AKS.NodeMinPods](Azure.AKS.NodeMinPods.md) | Azure Kubernetes Cluster (AKS) nodes should use a minimum number of pods. | Important | Error
@@ -301,8 +303,10 @@ Name | Synopsis | Severity | Level
 [Azure.AKS.SecretStore](Azure.AKS.SecretStore.md) | Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vault. | Important | Error
 [Azure.AKS.SecretStoreRotation](Azure.AKS.SecretStoreRotation.md) | Enable autorotation of Secrets Store CSI Driver secrets for AKS clusters. | Important | Error
 [Azure.AKS.StandardLB](Azure.AKS.StandardLB.md) | Azure Kubernetes Clusters (AKS) should use a Standard load balancer SKU. | Important | Error
+[Azure.AKS.SystemPoolNaming](Azure.AKS.SystemPoolNaming.md) | AKS system node pool resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.AKS.UptimeSLA](Azure.AKS.UptimeSLA.md) | AKS clusters should have Uptime SLA enabled for a financially backed SLA. | Important | Error
 [Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | Deploy AKS cluster with role-based access control (RBAC) enabled. | Important | Error
+[Azure.AKS.UserPoolNaming](Azure.AKS.UserPoolNaming.md) | AKS user node pool resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.AKS.Version](Azure.AKS.Version.md) | Older versions of Kubernetes may have known bugs or security vulnerabilities, and may have limited support. | Important | Error
 
 ## Azure Managed Grafana
@@ -310,6 +314,12 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Grafana.Version](Azure.Grafana.Version.md) | Grafana workspaces should be on Grafana version 10. | Important | Error
+
+## Azure Managed Redis
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.RedisEnterprise.Naming](Azure.RedisEnterprise.Naming.md) | Azure Managed Redis resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Azure Monitor Alerts
 
@@ -326,6 +336,30 @@ Name | Synopsis | Severity | Level
 [Azure.Log.Naming](Azure.Log.Naming.md) | Azure Monitor Log workspaces without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Log.ReplicaLocation](Azure.Log.ReplicaLocation.md) | The replication location determines the country or region where the data is stored and processed. | Important | Error
 [Azure.Log.Replication](Azure.Log.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | Important | Error
+
+## Azure SQL database
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.SQL.DatabaseNaming](Azure.SQL.DatabaseNaming.md) | Azure SQL database resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Azure SQL Database server
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.SQL.ServerNaming](Azure.SQL.ServerNaming.md) | Azure SQL Database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Azure SQL Elastic Job agent
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.SQL.JobAgentNaming](Azure.SQL.JobAgentNaming.md) | Azure SQL Elastic Job agent resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Azure SQL Elastic Pool
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.SQL.ElasticPoolNaming](Azure.SQL.ElasticPoolNaming.md) | Azure SQL Elastic Pool resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Azure Virtual Desktop
 
@@ -357,9 +391,28 @@ Name | Synopsis | Severity | Level
 [Azure.ContainerApp.ManagedIdentity](Azure.ContainerApp.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important | Error
 [Azure.ContainerApp.MinReplicas](Azure.ContainerApp.MinReplicas.md) | Use multiple replicas to remove a single point of failure. | Important | Error
 [Azure.ContainerApp.Name](Azure.ContainerApp.Name.md) | Container Apps should meet naming requirements. | Awareness | Error
+[Azure.ContainerApp.Naming](Azure.ContainerApp.Naming.md) | Container App resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.ContainerApp.PublicAccess](Azure.ContainerApp.PublicAccess.md) | Ensure public network access for Container Apps environment is disabled. | Important | Error
 [Azure.ContainerApp.RestrictIngress](Azure.ContainerApp.RestrictIngress.md) | IP ingress restrictions mode should be set to allow action for all rules defined. | Important | Error
 [Azure.ContainerApp.Storage](Azure.ContainerApp.Storage.md) | Use of Azure Files volume mounts to persistent storage container data. | Awareness | Error
+
+## Container App Environment
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.ContainerApp.EnvNaming](Azure.ContainerApp.EnvNaming.md) | Container App Environment resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Container App Job
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.ContainerApp.JobNaming](Azure.ContainerApp.JobNaming.md) | Container App Job resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Container Instance
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.ACI.Naming](Azure.ACI.Naming.md) | Container Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Container Registry
 
@@ -375,6 +428,7 @@ Name | Synopsis | Severity | Level
 [Azure.ACR.ImageHealth](Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | Critical | Error
 [Azure.ACR.MinSku](Azure.ACR.MinSku.md) | The Basic SKU provides limited performance and features for production container registry workloads. | Important | Error
 [Azure.ACR.Name](Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness | Error
+[Azure.ACR.Naming](Azure.ACR.Naming.md) | Container Registry resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.ACR.Quarantine](Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Important | Error
 [Azure.ACR.ReplicaLocation](Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | Important | Error
 [Azure.ACR.Retention](Azure.ACR.Retention.md) | Use a retention policy to cleanup untagged manifests. | Important | Error
@@ -401,6 +455,48 @@ Name | Synopsis | Severity | Level
 [Azure.Cosmos.MinTLS](Azure.Cosmos.MinTLS.md) | Cosmos DB accounts should reject TLS versions older than 1.2. | Critical | Error
 [Azure.Cosmos.PublicAccess](Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | Critical | Error
 [Azure.Cosmos.SLA](Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | Important | Error
+
+## Cosmos DB database
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Cosmos.DatabaseNaming](Azure.Cosmos.DatabaseNaming.md) | Cosmos DB database resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Cosmos DB for Apache Cassandra account
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Cosmos.CassandraNaming](Azure.Cosmos.CassandraNaming.md) | Cosmos DB for Apache Cassandra account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Cosmos DB for Apache Gremlin account
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Cosmos.GremlinNaming](Azure.Cosmos.GremlinNaming.md) | Cosmos DB for Apache Gremlin account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Cosmos DB for MongoDB account
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Cosmos.MongoNaming](Azure.Cosmos.MongoNaming.md) | Cosmos DB for MongoDB account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Cosmos DB for NoSQL account
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Cosmos.NoSQLNaming](Azure.Cosmos.NoSQLNaming.md) | Cosmos DB for NoSQL account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Cosmos DB for Table account
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Cosmos.TableNaming](Azure.Cosmos.TableNaming.md) | Cosmos DB for Table account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Cosmos DB PostgreSQL cluster
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Cosmos.PostgreSQLNaming](Azure.Cosmos.PostgreSQLNaming.md) | Cosmos DB PostgreSQL cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Data Explorer
 
@@ -601,6 +697,12 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Monitor.ServiceHealth](Azure.Monitor.ServiceHealth.md) | Configure Service Health alerts to notify administrators. | Important | Error
 
+## MySQL database server
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.MySQL.Naming](Azure.MySQL.Naming.md) | MySQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
 ## Network Interface
 
 Name | Synopsis | Severity | Level
@@ -630,6 +732,12 @@ Name | Synopsis | Severity | Level
 [Azure.Policy.Descriptors](Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name, description, and category. | Awareness | Error
 [Azure.Policy.ExemptionDescriptors](Azure.Policy.ExemptionDescriptors.md) | Policy exemptions should use a display name and description. | Awareness | Error
 [Azure.Policy.WaiverExpiry](Azure.Policy.WaiverExpiry.md) | Configure policy waiver exemptions to expire. | Awareness | Error
+
+## PostgreSQL database server
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.PostgreSQL.Naming](Azure.PostgreSQL.Naming.md) | PostgreSQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Private Endpoint
 
@@ -690,6 +798,18 @@ Name | Synopsis | Severity | Level
 [Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Entra ID client authentication for Service Fabric clusters. | Critical | Error
 [Azure.ServiceFabric.ProtectionLevel](Azure.ServiceFabric.ProtectionLevel.md) | Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks. | Important | Error
 
+## Service Fabric cluster
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.ServiceFabric.Naming](Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## Service Fabric managed cluster
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
 ## SignalR Service
 
 Name | Synopsis | Severity | Level
@@ -725,6 +845,13 @@ Name | Synopsis | Severity | Level
 [Azure.SQLMI.MaintenanceWindow](Azure.SQLMI.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure SQL Managed Instances. | Important | Error
 [Azure.SQLMI.ManagedIdentity](Azure.SQLMI.ManagedIdentity.md) | Ensure managed identity is used to allow support for Azure AD authentication. | Important | Error
 [Azure.SQLMI.Name](Azure.SQLMI.Name.md) | SQL Managed Instance names should meet naming requirements. | Awareness | Error
+[Azure.SQLMI.Naming](Azure.SQLMI.Naming.md) | SQL Managed Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+
+## SQL Server Stretch Database
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.SQL.StretchDBNaming](Azure.SQL.StretchDBNaming.md) | SQL Server Stretch Database resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Storage Account
 

@@ -1,10 +1,10 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-10-26
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: AKS system node pool
-resourceType: Microsoft.ContainerService/managedClusters/agentPools
+resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters,Microsoft.ContainerService/managedClusters/agentPools
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.SystemPoolNaming/
 ---
 
@@ -34,8 +34,8 @@ For AKS system node pool, the Cloud Adoption Framework (CAF) recommends using th
 Requirements for AKS system node pool resource names:
 
 - Between 1 and 12 characters long.
-- Can include alphanumeric characters, hyphens, underscores, and periods (restrictions vary by resource type).
-- Resource names must be unique within their scope.
+- Lowercase letters and numbers
+- Can't start with a number.
 
 ## RECOMMENDATION
 
@@ -62,7 +62,24 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource system 'Microsoft.ContainerService/managedClusters/agentPools@2025-07-01' = {
+  parent: cluster
+  name: name
+  properties: {
+    osDiskSizeGB: osDiskSizeGB
+    minCount: 3
+    maxCount: 7
+    enableAutoScaling: true
+    maxPods: systemPoolMaxPods
+    vmSize: 'Standard_D16ds_v6'
+    osType: 'Linux'
+    type: 'VirtualMachineScaleSets'
+    vnetSubnetID: clusterSubnetId
+    mode: 'System'
+    osDiskType: 'Ephemeral'
+    scaleSetPriority: 'Regular'
+  }
+}
 ```
 
 ### Configure with Azure template
@@ -71,6 +88,51 @@ To deploy resources that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ContainerService/managedClusters/agentPools",
+      "apiVersion": "2025-07-01",
+      "name": "[format('{0}/{1}', parameters('name'), 'system')]",
+      "properties": {
+        "osDiskSizeGB": "[parameters('osDiskSizeGB')]",
+        "minCount": 3,
+        "maxCount": 7,
+        "enableAutoScaling": true,
+        "maxPods": "[parameters('systemPoolMaxPods')]",
+        "vmSize": "Standard_D16ds_v6",
+        "osType": "Linux",
+        "type": "VirtualMachineScaleSets",
+        "vnetSubnetID": "[parameters('clusterSubnetId')]",
+        "mode": "System",
+        "osDiskType": "Ephemeral",
+        "scaleSetPriority": "Regular"
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +161,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools)
