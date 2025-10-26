@@ -22,7 +22,7 @@ The requirements for SQL Database names are:
 - Between 1 and 128 characters long.
 - Letters, numbers, and special characters except: `<>*%&:\/?`
 - Can't end with period or a space.
-- Azure SQL Database names must be unique for each logical server.
+- Must be unique for each logical server.
 
 The following reserved database names can not be used:
 

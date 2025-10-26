@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.38.33.27573",
-      "templateHash": "7050584599187305805"
+      "templateHash": "5973132553936234562"
     }
   },
   "parameters": {
@@ -28,6 +28,9 @@
       "type": "string"
     },
     "adminPrincipalId": {
+      "type": "string"
+    },
+    "maintenanceConfigurationId": {
       "type": "string"
     }
   },
@@ -134,6 +137,38 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Sql/servers/databases', parameters('name'), parameters('name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/jobAgents",
+      "apiVersion": "2024-05-01-preview",
+      "name": "[format('{0}/{1}', parameters('name'), parameters('name'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "databaseId": "[resourceId('Microsoft.Sql/servers/databases', parameters('name'), parameters('name'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('name'), parameters('name'))]",
+        "[resourceId('Microsoft.Sql/servers', parameters('name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/elasticPools",
+      "apiVersion": "2024-05-01-preview",
+      "name": "[format('{0}/{1}', parameters('name'), parameters('name'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "perDatabaseSettings": {
+          "minCapacity": 0,
+          "maxCapacity": 2
+        },
+        "maxSizeBytes": 34359738368,
+        "zoneRedundant": true,
+        "licenseType": "BasePrice",
+        "maintenanceConfigurationId": "[parameters('maintenanceConfigurationId')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('name'))]"
       ]
     }
   ]

@@ -34,8 +34,9 @@ For Azure SQL database, the Cloud Adoption Framework (CAF) recommends using the 
 Requirements for Azure SQL database resource names:
 
 - Between 1 and 128 characters long.
-- Can include alphanumeric characters, hyphens, underscores, and periods (restrictions vary by resource type).
-- Resource names must be unique within their scope.
+- Letters, numbers, and special characters except: `<>*%&:\/?`
+- Can't end with period or a space.
+- Must be unique for each logical server.
 
 ## RECOMMENDATION
 

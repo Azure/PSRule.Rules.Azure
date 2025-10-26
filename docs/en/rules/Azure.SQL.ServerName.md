@@ -70,6 +70,8 @@ resource server 'Microsoft.Sql/servers@2024-05-01-preview' = {
 }
 ```
 
+<!-- external:avm avm/res/sql/server name -->
+
 ### Configure with Azure template
 
 To deploy servers that pass this rule:

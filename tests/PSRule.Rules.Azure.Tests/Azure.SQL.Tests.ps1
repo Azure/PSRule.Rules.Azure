@@ -526,9 +526,9 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             $ruleResult.TargetName | Should -Be 'sql-001';
         }
 
-        It 'Azure.SQL.DatabaseNaming' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.DatabaseNaming' };
-            
+        It 'Azure.SQL.DBNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.DBNaming' };
+
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;

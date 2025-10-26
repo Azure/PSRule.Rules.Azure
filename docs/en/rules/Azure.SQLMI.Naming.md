@@ -65,6 +65,8 @@ param location string = resourceGroup().location
 // Example resource deployment
 ```
 
+<!-- external:avm avm/res/sql/managed-instance name -->
+
 ### Configure with Azure template
 
 To deploy resources that pass this rule:

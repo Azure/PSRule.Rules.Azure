@@ -278,9 +278,4 @@ Rule 'Azure.SQL.ElasticPoolNaming' -Ref 'AZR-000520' -Type 'Microsoft.Sql/server
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_ELASTIC_POOL_NAME_FORMAT, $True);
 }
 
-# Synopsis: SQL Server Stretch Databases without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.SQL.StretchDBNaming' -Ref 'AZR-000524' -Type 'Microsoft.Sql/servers/databases' -If { $Configuration['AZURE_SQL_STRETCH_DB_NAME_FORMAT'] -ne '' -and $TargetObject.properties.requestedServiceObjectiveName -eq 'DataWarehouse' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
-    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_STRETCH_DB_NAME_FORMAT, $True);
-}
-
 #endregion Naming rules
