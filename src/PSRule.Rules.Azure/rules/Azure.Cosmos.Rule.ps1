@@ -29,7 +29,7 @@ Rule 'Azure.Cosmos.MongoNaming' -Ref 'AZR-000509' -Type 'Microsoft.DocumentDb/da
 }
 
 # Synopsis: Azure Cosmos DB for NoSQL accounts without a standard naming convention may be difficult to identify and manage.
-Rule 'Azure.Cosmos.NoSQLNaming' -Ref 'AZR-000510' -Type 'Microsoft.DocumentDb/databaseAccounts' -If { $Configuration['AZURE_COSMOS_NOSQL_NAME_FORMAT'] -ne '' -and Test-IsNoSQL } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+Rule 'Azure.Cosmos.NoSQLNaming' -Ref 'AZR-000510' -Type 'Microsoft.DocumentDb/databaseAccounts' -If { $Configuration['AZURE_COSMOS_NOSQL_NAME_FORMAT'] -ne '' -and (Test-IsNoSQL) } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_COSMOS_NOSQL_NAME_FORMAT, $True);
 }
 
