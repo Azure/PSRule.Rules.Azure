@@ -45,7 +45,7 @@ Describe 'Azure.ACI' -Tag 'ACI' {
                     }
                 });
 
-            $result = $items | Invoke-PSRule @invokeParams -Option $option
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.ACI.Naming'
         }
 
         It 'Azure.ACI.Naming' {

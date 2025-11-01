@@ -480,34 +480,39 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             $poolNames = @('pool-001', 'sqlep-001', 'SQLEP-001')
 
             $serverItems = @($serverNames | ForEach-Object {
-                    [PSCustomObject]@{
-                        Name = $_
-                        Type = 'Microsoft.Sql/servers'
-                    }
-                });
+                [PSCustomObject]@{
+                    Name = $_
+                    Type = 'Microsoft.Sql/servers'
+                }
+            });
 
             $dbItems = @($dbNames | ForEach-Object {
-                    [PSCustomObject]@{
-                        Name = $_
-                        Type = 'Microsoft.Sql/servers/databases'
-                    }
-                });
+                [PSCustomObject]@{
+                    Name = $_
+                    Type = 'Microsoft.Sql/servers/databases'
+                }
+            });
 
             $jobAgentItems = @($jobAgentNames | ForEach-Object {
-                    [PSCustomObject]@{
-                        Name = $_
-                        Type = 'Microsoft.Sql/servers/jobAgents'
-                    }
-                });
+                [PSCustomObject]@{
+                    Name = $_
+                    Type = 'Microsoft.Sql/servers/jobAgents'
+                }
+            });
 
             $poolItems = @($poolNames | ForEach-Object {
-                    [PSCustomObject]@{
-                        Name = $_
-                        Type = 'Microsoft.Sql/servers/elasticPools'
-                    }
-                });
+                [PSCustomObject]@{
+                    Name = $_
+                    Type = 'Microsoft.Sql/servers/elasticPools'
+                }
+            });
 
-            $result = @($serverItems + $dbItems + $jobAgentItems + $poolItems) | Invoke-PSRule @invokeParams -Option $option
+            $result = @($serverItems + $dbItems + $jobAgentItems + $poolItems) | Invoke-PSRule @invokeParams -Option $option -Name @(
+                'Azure.SQL.ServerNaming'
+                'Azure.SQL.DBNaming'
+                'Azure.SQL.JobAgentNaming'
+                'Azure.SQL.ElasticPoolNaming'
+            )
         }
 
         It 'Azure.SQL.ServerNaming' {

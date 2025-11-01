@@ -93,13 +93,6 @@ For example:
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "metadata": {
-    "_generator": {
-      "name": "bicep",
-      "version": "0.34.44.8038",
-      "templateHash": "15799925094518670850"
-    }
-  },
   "parameters": {
     "name": {
       "type": "string",
@@ -114,18 +107,6 @@ For example:
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "The location resources will be deployed."
-      }
-    },
-    "subnetId": {
-      "type": "string",
-      "metadata": {
-        "description": "The resource ID of the virtual network subnet."
-      }
-    },
-    "pipId": {
-      "type": "string",
-      "metadata": {
-        "description": "The resource ID of the public IP address."
       }
     }
   },
@@ -169,7 +150,7 @@ This rule does not check if Load Balancer names are unique.
 ## LINKS
 
 - [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
-- [Operational Excellence maturity model](https://learn.microsoft.com/azure/well-architected/operational-excellence/maturity-model?tabs=level2)
+- [Operational Excellence: Level 2](https://learn.microsoft.com/azure/well-architected/operational-excellence/maturity-model?tabs=level2)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
