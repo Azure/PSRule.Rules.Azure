@@ -5,7 +5,7 @@ pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: Azure Database for PostgreSQL
 resourceType: Microsoft.DBforPostgreSQL/flexibleServers,Microsoft.DBforPostgreSQL/servers
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.Naming/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.ServerNaming/
 ---
 
 # PostgreSQL database server resources must use standard naming

@@ -5,7 +5,7 @@ pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: Azure Database for MySQL
 resourceType: Microsoft.DBforMySQL/flexibleServers,Microsoft.DBforMySQL/servers
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.Naming/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.ServerNaming/
 ---
 
 # MySQL database server resources must use standard naming

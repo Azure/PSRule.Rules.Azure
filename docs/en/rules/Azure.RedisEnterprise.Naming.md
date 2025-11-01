@@ -4,7 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: Azure Managed Redis
-resourceType: Microsoft.Cache/RedisEnterprise
+resourceType: Microsoft.Cache/redisEnterprise
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.Naming/
 ---
 
@@ -99,3 +99,4 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redisenterprise)

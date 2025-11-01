@@ -10,7 +10,7 @@ param name string
 param location string = resourceGroup().location
 
 // An example Redis Enterprise cache.
-resource cache 'Microsoft.Cache/redisEnterprise@2024-02-01' = {
+resource cache 'Microsoft.Cache/redisEnterprise@2025-04-01' = {
   name: name
   location: location
   sku: {
