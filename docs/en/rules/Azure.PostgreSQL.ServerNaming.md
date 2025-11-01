@@ -1,10 +1,10 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-01
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: PostgreSQL database server
-resourceType: Microsoft.DBforPostgreSQL/servers
+resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/flexibleServers,Microsoft.DBforPostgreSQL/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.Naming/
 ---
 
@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy servers that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -62,15 +62,98 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource flexible 'Microsoft.DBforPostgreSQL/flexibleServers@2024-08-01' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Standard_D2ds_v4'
+    tier: 'GeneralPurpose'
+  }
+  properties: {
+    createMode: 'Default'
+    authConfig: {
+      activeDirectoryAuth: 'Enabled'
+      passwordAuth: 'Disabled'
+      tenantId: tenant().tenantId
+    }
+    version: '14'
+    storage: {
+      storageSizeGB: 32
+    }
+    backup: {
+      backupRetentionDays: 7
+      geoRedundantBackup: 'Enabled'
+    }
+    highAvailability: {
+      mode: 'ZoneRedundant'
+    }
+  }
+}
 ```
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy servers that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 63,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "apiVersion": "2024-08-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_D2ds_v4",
+        "tier": "GeneralPurpose"
+      },
+      "properties": {
+        "createMode": "Default",
+        "authConfig": {
+          "activeDirectoryAuth": "Enabled",
+          "passwordAuth": "Disabled",
+          "tenantId": "[tenant().tenantId]"
+        },
+        "version": "14",
+        "storage": {
+          "storageSizeGB": 32
+        },
+        "backup": {
+          "backupRetentionDays": 7,
+          "geoRedundantBackup": "Enabled"
+        },
+        "highAvailability": {
+          "mode": "ZoneRedundant"
+        }
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +182,4 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/flexibleservers)

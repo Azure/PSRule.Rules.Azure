@@ -331,12 +331,12 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
                     }
                 });
 
-            $result = $items | Invoke-PSRule @invokeParams -Option $option
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.MySQL.ServerNaming'
         }
 
-        It 'Azure.MySQL.Naming' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.Naming' };
-            
+        It 'Azure.MySQL.ServerNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.ServerNaming' };
+
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;

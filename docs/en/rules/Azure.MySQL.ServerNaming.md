@@ -1,10 +1,10 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-01
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: MySQL database server
-resourceType: Microsoft.DBforMySQL/servers
+resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/flexibleServers,Microsoft.DBforMySQL/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.Naming/
 ---
 
@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy servers that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -62,15 +62,90 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource flexible 'Microsoft.DBforMySQL/flexibleServers@2024-12-30' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Standard_D16as'
+    tier: 'GeneralPurpose'
+  }
+  properties: {
+    createMode: 'Default'
+    version: '8.0.21'
+    administratorLogin: administratorLogin
+    administratorLoginPassword: administratorLoginPassword
+    highAvailability: {
+      mode: 'ZoneRedundant'
+    }
+    maintenanceWindow: {
+      customWindow: 'Enabled'
+      dayOfWeek: 0
+      startHour: 1
+      startMinute: 0
+    }
+  }
+}
 ```
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy servers that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 63,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforMySQL/flexibleServers",
+      "apiVersion": "2024-12-30",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_D16as",
+        "tier": "GeneralPurpose"
+      },
+      "properties": {
+        "createMode": "Default",
+        "version": "8.0.21",
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+        "highAvailability": {
+          "mode": "ZoneRedundant"
+        },
+        "maintenanceWindow": {
+          "customWindow": "Enabled",
+          "dayOfWeek": 0,
+          "startHour": 1,
+          "startMinute": 0
+        }
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +174,4 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers)

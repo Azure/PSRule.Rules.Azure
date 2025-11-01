@@ -307,12 +307,12 @@ Describe 'Azure.PostgreSQL' -Tag 'PostgreSQL' {
                     }
                 });
 
-            $result = $items | Invoke-PSRule @invokeParams -Option $option
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.PostgreSQL.ServerNaming'
         }
 
-        It 'Azure.PostgreSQL.Naming' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.Naming' };
-            
+        It 'Azure.PostgreSQL.ServerNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.ServerNaming' };
+
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
