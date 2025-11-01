@@ -82,21 +82,28 @@ metadata:
     release: GA
     ruleSet: 2025_12
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
   - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
   condition:
     allOf:
     # WAF policy has at least two rule groups. Microsoft_DefaultRuleSet 2.1 is the minimum. Microsoft_BotManagerRuleSet 1.0 is the minimum.
-    - field: Properties.managedRules.managedRuleSets
+    - field: properties.managedRules.managedRuleSets
       greaterOrEquals: 2
-    - field: Properties.managedRules.managedRuleSets[0].ruleSetType
-      equals: Microsoft_DefaultRuleSet 
-    - field: Properties.managedRules.managedRuleSets[0].ruleSetVersion
-      version: '>=2.1'
-    - field: Properties.managedRules.managedRuleSets[1].ruleSetType
-      equals: Microsoft_BotManagerRuleSet
-    - field: Properties.managedRules.managedRuleSets[1].ruleSetVersion
-      version: '>=1.0'
+    - field: properties.managedRules.managedRuleSets
+      anyOf:
+        - allOf:
+            - field: ruleSetType
+              equals: Microsoft_DefaultRuleSet
+            - field: ruleSetVersion
+              version: '>=2.1'
+        - allOf:
+            - field: ruleSetType
+              equals: Microsoft_BotManagerRuleSet
+            - field: ruleSetVersion
+              version: '>=1.0'
+      count: 2
 
 #endregion Rules

@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.36.1.42791",
-      "templateHash": "17115327554579347923"
+      "version": "0.38.33.27573",
+      "templateHash": "4094220895201731400"
     }
   },
   "parameters": {
@@ -63,19 +63,19 @@
     },
     {
       "type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
-      "apiVersion": "2024-01-01",
+      "apiVersion": "2024-10-01",
       "name": "agwwaf",
       "location": "[parameters('location')]",
       "properties": {
         "managedRules": {
           "managedRuleSets": [
             {
-              "ruleSetType": "OWASP",
-              "ruleSetVersion": "3.2"
+              "ruleSetType": "Microsoft_DefaultRuleSet",
+              "ruleSetVersion": "2.1"
             },
             {
               "ruleSetType": "Microsoft_BotManagerRuleSet",
-              "ruleSetVersion": "0.1"
+              "ruleSetVersion": "1.1"
             }
           ]
         },
