@@ -138,6 +138,26 @@ spec:
     - field: properties.backupPolicy.continuousModeProperties.tier
       hasValue: true
 
+---
+# Synopsis: Cosmos DB accounts should use Entra ID authentication.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.EntraID
+  ref: AZR-000499
+  tags:
+    release: GA
+    ruleSet: 2025_12
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: ['IM-1', 'IM-3']
+spec:
+  type:
+    - Microsoft.DocumentDB/mongoClusters
+  condition:
+    field: properties.authConfig.allowedModes[*]
+    contains: MicrosoftEntraID
+
 #endregion Rules
 
 #region Selectors
@@ -216,4 +236,14 @@ spec:
           - EnableGremlin
     count: 0
 
-#endregion Selectors
+
+---
+# Synopsis: MongoDB vCore clusters that are not serverless.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Cosmos.IsMongoProvisioned
+spec:
+  if:
+    field: properties.compute.tier
+    hasValue: true
