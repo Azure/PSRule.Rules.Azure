@@ -236,14 +236,4 @@ spec:
           - EnableGremlin
     count: 0
 
-
----
-# Synopsis: MongoDB vCore clusters that are not serverless.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Selector
-metadata:
-  name: Azure.Cosmos.IsMongoProvisioned
-spec:
-  if:
-    field: properties.compute.tier
-    hasValue: true
+#endregion Selectors
