@@ -37,6 +37,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Cosmos DB:
     - Check that MongoDB vCore clusters use Microsoft Entra ID authentication by @BenjaminEngeset.
       [#3369](https://github.com/Azure/PSRule.Rules.Azure/issues/3369)
+- Updated rules:
+  - Application Gateway Policy:
+    - Updated `Azure.AppGwWAF.RuleGroups` to use Microsoft Default Rule Set instead of legacy OWASP rule set by @BenjaminEngeset.
+      [#3553](https://github.com/Azure/PSRule.Rules.Azure/issues/3553)
 
 ## v1.46.0
 
