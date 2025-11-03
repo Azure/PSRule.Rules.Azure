@@ -143,7 +143,7 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.Cosmos.EntraID
+  name: Azure.Cosmos.MongoEntraID
   ref: AZR-000499
   tags:
     release: GA
@@ -151,6 +151,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['IM-1', 'IM-3']
+    Azure.WAF/maturity: L1
 spec:
   type:
     - Microsoft.DocumentDB/mongoClusters

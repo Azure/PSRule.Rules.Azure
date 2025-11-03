@@ -1,10 +1,11 @@
 ---
+reviewed: 2025-11-03
 severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
 resource: Cosmos DB
 resourceType: Microsoft.DocumentDB/mongoClusters
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.EntraID/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.MongoEntraID/
 ---
 
 # MongoDB vCore clusters should use Microsoft Entra ID authentication
@@ -110,6 +111,7 @@ After deployment is complete and Entra ID users are configured, you can optional
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication)
+- [Security: Level 1](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level1)
 - [Microsoft Entra ID authentication with Azure Cosmos DB for MongoDB vCore](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/entra-authentication)
 - [Configure Microsoft Entra ID authentication for an Azure Cosmos DB for MongoDB vCore cluster](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/how-to-configure-entra-authentication?tabs=portal%2Cazure-portal)
 - [Azure security baseline for Azure Cosmos DB](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline)

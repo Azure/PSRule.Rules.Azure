@@ -123,8 +123,8 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B', 'nosql-C';
         }
 
-        It 'Azure.Cosmos.EntraID' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.EntraID' };
+        It 'Azure.Cosmos.MongoEntraID' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MongoEntraID' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
