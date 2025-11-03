@@ -149,7 +149,7 @@ metadata:
     - Azure.Cosmos.DisableLocalAuth
   tags:
     release: GA
-    ruleSet: 2025_12
+    ruleSet: 2024_06
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: IM-1
