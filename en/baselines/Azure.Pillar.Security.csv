@@ -79,6 +79,7 @@
 "Azure.Cosmos.DisableLocalAuth","Access keys allow depersonalized access to Cosmos DB accounts using a shared secret.","Critical","Security","L1"
 "Azure.Cosmos.DisableMetadataWrite","Use Entra ID identities for management place operations in Azure Cosmos DB.","Important","Security","-"
 "Azure.Cosmos.MinTLS","Cosmos DB accounts should reject TLS versions older than 1.2.","Critical","Security","L1"
+"Azure.Cosmos.MongoEntraID","MongoDB vCore clusters should have Microsoft Entra ID authentication enabled.","Critical","Security","L1"
 "Azure.Cosmos.PublicAccess","Azure Cosmos DB should have public network access disabled.","Critical","Security","-"
 "Azure.Databricks.PublicAccess","Azure Databricks workspaces should disable public network access.","Critical","Security","-"
 "Azure.Databricks.SecureConnectivity","Use Databricks workspaces configured for secure cluster connectivity.","Critical","Security","-"
