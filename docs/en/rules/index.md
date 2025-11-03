@@ -518,7 +518,6 @@ AZR-000495 | [Azure.ACR.ExportPolicy](Azure.ACR.ExportPolicy.md) | Export policy
 AZR-000496 | [Azure.Redis.LocalAuth](Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | GA
 AZR-000497 | [Azure.Storage.LocalAuth](Azure.Storage.LocalAuth.md) | Access keys allow depersonalized access to Storage Accounts using a shared secret. | GA
 AZR-000498 | [Azure.AppConfig.ReplicaLocation](Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | GA
-AZR-000499 | [Azure.Cosmos.MongoEntraID](Azure.Cosmos.MongoEntraID.md) | Check that MongoDB vCore clusters use Microsoft Entra ID authentication. | GA
 AZR-000500 | [Azure.ADX.PublicAccess](Azure.ADX.PublicAccess.md) | Azure Data Explorer (ADX) clusters should have public network access disabled. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

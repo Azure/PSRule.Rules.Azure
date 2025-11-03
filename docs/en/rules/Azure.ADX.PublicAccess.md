@@ -15,8 +15,8 @@ Azure Data Explorer (ADX) clusters should have public network access disabled.
 
 ## DESCRIPTION
 
-Disabling public network access improves security by ensuring that the resource isn't exposed on the public internet.
-You can control exposure of your resources by creating private endpoints instead.
+Disabling public network access improves security by ensuring that the cluster isn't exposed on the public internet.
+You can control exposure of your clusters by creating private endpoints instead.
 
 ## RECOMMENDATION
 
@@ -35,7 +35,7 @@ For example:
 ```json
 {
   "type": "Microsoft.Kusto/clusters",
-  "apiVersion": "2023-08-15",
+  "apiVersion": "2024-04-13",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -61,7 +61,7 @@ To deploy Data Explorer clusters that pass this rule:
 For example:
 
 ```bicep
-resource adx 'Microsoft.Kusto/clusters@2023-08-15' = {
+resource adx 'Microsoft.Kusto/clusters@2024-04-13' = {
   name: name
   location: location
   sku: {
