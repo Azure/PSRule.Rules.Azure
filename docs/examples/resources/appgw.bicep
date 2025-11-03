@@ -42,19 +42,19 @@ resource appgw 'Microsoft.Network/applicationGateways@2024-07-01' = {
 }
 
 // An example of an Web Application Firewall policy configure with OWASP and Microsoft_BotManagerRuleSet rule sets.
-resource waf 'Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies@2024-01-01' = {
-  name: 'agwwaf'
+resource waf 'Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies@2024-10-01' = {
+  name: name
   location: location
   properties: {
     managedRules: {
       managedRuleSets: [
         {
-          ruleSetType: 'OWASP'
-          ruleSetVersion: '3.2'
+          ruleSetType: 'Microsoft_DefaultRuleSet'
+          ruleSetVersion: '2.1'
         }
         {
           ruleSetType: 'Microsoft_BotManagerRuleSet'
-          ruleSetVersion: '0.1'
+          ruleSetVersion: '1.1'
         }
       ]
     }

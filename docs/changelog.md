@@ -36,6 +36,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
   - Added naming format rules for AKS, Container Apps, Service Fabric, Cosmos DB, Redis, and SQL resources.
     [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+- Updated rules:
+  - Application Gateway Policy:
+    - Updated `Azure.AppGwWAF.RuleGroups` to use Microsoft Default Rule Set instead of legacy OWASP rule set by @BenjaminEngeset.
+      [#3553](https://github.com/Azure/PSRule.Rules.Azure/issues/3553)
 
 ## v1.46.0
 

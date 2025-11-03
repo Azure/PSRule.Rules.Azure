@@ -17,8 +17,8 @@
       "managedRules": {
         "managedRuleSets": [
           {
-            "ruleSetType": "OWASP",
-            "ruleSetVersion": "3.2",
+            "ruleSetType": "Microsoft_DefaultRuleSet",
+            "ruleSetVersion": "2.1",
             "ruleGroupOverrides": []
           },
           {
@@ -54,8 +54,8 @@
       "managedRules": {
         "managedRuleSets": [
           {
-            "ruleSetType": "OWASP",
-            "ruleSetVersion": "3.1",
+            "ruleSetType": "Microsoft_DefaultRuleSet",
+            "ruleSetVersion": "2.0",
             "ruleGroupOverrides": []
           },
           {
@@ -90,13 +90,13 @@
       "managedRules": {
         "managedRuleSets": [
           {
-            "ruleSetType": "OWASP",
-            "ruleSetVersion": "3.2",
+            "ruleSetType": "Microsoft_DefaultRuleSet",
+            "ruleSetVersion": "2.1",
             "ruleGroupOverrides": []
           },
           {
             "ruleSetType": "Microsoft_BotManagerRuleSet",
-            "ruleSetVersion": "1.0",
+            "ruleSetVersion": "1.1",
             "ruleGroupOverrides": []
           }
         ],
