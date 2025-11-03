@@ -223,5 +223,69 @@
         "CreatedTime": null,
         "ChangedTime": null,
         "resources": []
+    },
+    {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-D",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kusto/Clusters/cluster-D",
+        "Identity": {
+            "PrincipalId": "00000000-0000-0000-0000-000000000000",
+            "TenantId": "00000000-0000-0000-0000-000000000000",
+            "Type": "SystemAssigned",
+            "UserAssignedIdentities": null
+        },
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "cluster-D",
+        "Name": "cluster-D",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+            "state": "Running",
+            "stateReason": null,
+            "uri": "https://cluster-D.region.kusto.windows.net",
+            "dataIngestionUri": "https://ingest-cluster-D.region.kusto.windows.net",
+            "trustedExternalTenants": [
+                {
+                    "value": "*"
+                }
+            ],
+            "virtualNetworkConfiguration": null,
+            "optimizedAutoscale": null,
+            "enableDiskEncryption": true,
+            "enableStreamingIngest": true,
+            "keyVaultProperties": null,
+            "languageExtensions": {
+                "value": []
+            },
+            "enablePurge": null,
+            "enableDoubleEncryption": false,
+            "engineType": "V3",
+            "acceptedAudiences": [],
+            "restrictOutboundNetworkAccess": "Disabled",
+            "allowedFqdnList": [],
+            "publicNetworkAccess": "Disabled",
+            "allowedIpRangeList": [],
+            "enableAutoStop": false,
+            "provisioningState": "Succeeded"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Kusto/Clusters",
+        "ResourceType": "Microsoft.Kusto/Clusters",
+        "ExtensionResourceType": null,
+        "Sku": {
+            "Name": "Standard_D11_v2",
+            "Tier": "Standard",
+            "Size": null,
+            "Family": null,
+            "Model": null,
+            "Capacity": 2
+        },
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "resources": []
     }
 ]

@@ -71,6 +71,26 @@ spec:
     field: sku.tier
     notEquals: Basic
 
+---
+# Synopsis: Azure Data Explorer (ADX) clusters should have public network access disabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ADX.PublicAccess
+  ref: AZR-000500
+  tags:
+    release: GA
+    ruleSet: 2025_12
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.MCSB.v1/control: NS-2
+spec:
+  type:
+  - Microsoft.Kusto/clusters
+  condition:
+    field: properties.publicNetworkAccess
+    equals: Disabled
+
 #endregion Rules
 
 #region Selectors
