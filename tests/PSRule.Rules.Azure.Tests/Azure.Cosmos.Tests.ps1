@@ -78,8 +78,25 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.TargetName | Should -BeIn 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C';
         }
 
-        It 'Azure.Cosmos.DisableLocalAuth' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.DisableLocalAuth' };
+        It 'Azure.Cosmos.NoSQLLocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.NoSQLLocalAuth' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B';
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'nosql-C';
+        }
+
+        It 'Azure.Cosmos.DisableLocalAuth (alias)' {
+            # Test that the rule can be invoked by its alias
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Cosmos.json';
+            $aliasResult = Invoke-PSRule @invokeParams -Name 'Azure.Cosmos.DisableLocalAuth' -InputPath $dataPath;
+            $filteredResult = $aliasResult | Where-Object { $_.RuleName -eq 'Azure.Cosmos.NoSQLLocalAuth' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
