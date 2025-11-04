@@ -50,8 +50,8 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-C', 'cluster-D';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-C';
         }
 
         It 'Azure.ADX.DiskEncryption' {
@@ -67,8 +67,8 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'cluster-C', 'cluster-D';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-C';
         }
 
         It 'Azure.ADX.SLA' {
@@ -84,8 +84,8 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-C', 'cluster-D';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-B', 'cluster-C';
         }
 
         It 'Azure.ADX.Usage' {
@@ -94,8 +94,8 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'cluster-C', 'cluster-D';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'cluster-C';
             # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn '';
 
             # Pass
@@ -117,15 +117,15 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B', 'cluster-C';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.publicNetworkAccess';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'cluster-D';
+            $ruleResult.TargetName | Should -BeIn 'cluster-C';
         }
     }
 }
