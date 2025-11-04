@@ -119,6 +119,7 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B';
+            
             $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.publicNetworkAccess';
 
             # Pass
