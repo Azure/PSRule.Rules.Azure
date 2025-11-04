@@ -1,4 +1,5 @@
 ---
+reviewed: 2025-11-04
 severity: Critical
 pillar: Security
 category: SE:06 Network controls
@@ -81,6 +82,8 @@ resource adx 'Microsoft.Kusto/clusters@2024-04-13' = {
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 1](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level1)
 - [Restrict public access to your Azure Data Explorer cluster](https://learn.microsoft.com/azure/data-explorer/security-network-restrict-public-access)
-- [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/mcsb-network-security#ns-2-secure-cloud-services-with-network-controls)
+- [Azure security baseline for Azure Data Explorer](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-data-explorer-security-baseline)
+- [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-data-explorer-security-baseline#ns-2-secure-cloud-services-with-network-controls)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.kusto/clusters)
