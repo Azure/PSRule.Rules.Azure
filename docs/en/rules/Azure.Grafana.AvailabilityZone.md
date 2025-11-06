@@ -8,11 +8,11 @@ resourceType: Microsoft.Dashboard/grafana
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Grafana.AvailabilityZone/
 ---
 
-# Use zone redundant Managed Grafana instances
+# Use zone redundant Managed Grafana workspaces
 
 ## SYNOPSIS
 
-Use zone redundant Grafana instances in supported regions to improve reliability.
+Use zone redundant Grafana workspaces in supported regions to improve reliability.
 
 ## DESCRIPTION
 
@@ -40,7 +40,7 @@ For example:
 ```json
 {
   "type": "Microsoft.Dashboard/grafana",
-  "apiVersion": "2023-09-01",
+  "apiVersion": "2024-10-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -64,7 +64,7 @@ To deploy Managed Grafana workspaces that pass this rule:
 For example:
 
 ```bicep
-resource grafana 'Microsoft.Dashboard/grafana@2023-09-01' = {
+resource grafana 'Microsoft.Dashboard/grafana@2024-10-01' = {
   name: name
   location: location
   sku: {
