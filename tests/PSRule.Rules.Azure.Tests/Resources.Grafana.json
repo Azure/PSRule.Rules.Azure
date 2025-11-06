@@ -41,7 +41,7 @@
           }
         ]
       },
-      "grafanaMajorVersion": "10",
+      "grafanaMajorVersion": "11",
       "grafanaPlugins": {
         "{customized property}": {}
       },
