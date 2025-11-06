@@ -49,8 +49,8 @@ Describe 'Azure.Grafana' -Tag 'Grafana' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn @('grafana-b', 'grafana-c', 'grafana-d');
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn @('grafana-b', 'grafana-c', 'grafana-d', 'grafana-e');
         }
 
         It 'Azure.Grafana.AvailabilityZone' {
@@ -60,13 +60,13 @@ Describe 'Azure.Grafana' -Tag 'Grafana' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn @('grafana-a', 'grafana-c');
+            $ruleResult.TargetName | Should -BeIn @('grafana-a', 'grafana-b');
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn @('grafana-b', 'grafana-d');
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn @('grafana-c', 'grafana-d', 'grafana-e');
         }
     }
 }
