@@ -1,7 +1,7 @@
 [
   {
     "type": "Microsoft.Dashboard/grafana",
-    "apiVersion": "2023-09-01",
+    "apiVersion": "2024-10-01",
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Dashboard/grafana/grafana-a",
     "name": "grafana-a",
     "location": "westus2",
@@ -51,7 +51,7 @@
   },
   {
     "type": "Microsoft.Dashboard/grafana",
-    "apiVersion": "2023-09-01",
+    "apiVersion": "2024-10-01",
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Dashboard/grafana/grafana-b",
     "name": "grafana-b",
     "location": "westeurope",
@@ -100,7 +100,7 @@
   },
   {
     "type": "Microsoft.Dashboard/grafana",
-    "apiVersion": "2023-09-01",
+    "apiVersion": "2024-10-01",
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Dashboard/grafana/grafana-c",
     "name": "grafana-c",
     "location": "westeurope",
@@ -150,7 +150,7 @@
   },
   {
     "type": "Microsoft.Dashboard/grafana",
-    "apiVersion": "2023-09-01",
+    "apiVersion": "2024-10-01",
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Dashboard/grafana/grafana-d",
     "name": "grafana-d",
     "location": "australiacentral",
@@ -200,7 +200,7 @@
   },
   {
     "type": "Microsoft.Dashboard/grafana",
-    "apiVersion": "2023-09-01",
+    "apiVersion": "2024-10-01",
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Dashboard/grafana/grafana-e",
     "name": "grafana-e",
     "location": "australiacentral",
