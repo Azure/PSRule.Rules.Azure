@@ -539,5 +539,39 @@
     "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-E",
+    "Location": "East US",
+    "ResourceName": "nosql-E",
+    "Name": "nosql-E",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session"
+      },
+      "locations": [
+        {
+          "failoverPriority": 0,
+          "isZoneRedundant": false,
+          "locationName": "East US"
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableFreeTier": false,
+      "minimalTlsVersion": "Tls12",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]
