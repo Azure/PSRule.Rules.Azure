@@ -505,5 +505,39 @@
     "ResourceType": "Microsoft.DocumentDB/mongoClusters",
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-D",
+    "Location": "East US",
+    "ResourceName": "nosql-D",
+    "Name": "nosql-D",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session"
+      },
+      "locations": [
+        {
+          "failoverPriority": 0,
+          "isZoneRedundant": true,
+          "locationName": "East US"
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableFreeTier": false,
+      "minimalTlsVersion": "Tls12",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]

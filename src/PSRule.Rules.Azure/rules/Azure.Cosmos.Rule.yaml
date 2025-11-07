@@ -159,6 +159,26 @@ spec:
     field: properties.authConfig.allowedModes[*]
     contains: MicrosoftEntraID
 
+---
+# Synopsis: Cosmos DB accounts should have availability zones enabled for supported regions.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.AvailabilityZone
+  ref: AZR-000500
+  tags:
+    release: GA
+    ruleSet: 2025_12
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+    - Microsoft.DocumentDB/databaseAccounts
+  condition:
+    field: properties.locations[*]
+    allOf:
+      - field: isZoneRedundant
+        equals: true
+
 #endregion Rules
 
 #region Selectors
