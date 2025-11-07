@@ -23,15 +23,15 @@ Rule 'Azure.Cosmos.AvailabilityZone' -Ref 'AZR-000500' -Type 'Microsoft.Document
     # Check for availability zones based on Compute, because it is not exposed through the provider for Cosmos DB.
     $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
     
-    $Assert.HasFieldValue($TargetObject, 'Properties.locations').Result;
+    $Assert.HasFieldValue($TargetObject, 'properties.locations').Result;
     
-    foreach ($location in $TargetObject.Properties.locations) {
+    foreach ($location in $TargetObject.properties.locations) {
         $availabilityZones = GetAvailabilityZone -Location $location.locationName -Zone $provider.ZoneMappings;
         
         # If the location supports availability zones, ensure zone redundancy is enabled
         if ($availabilityZones) {
             $Assert.HasFieldValue($location, 'isZoneRedundant', $true).
-                ReasonFrom('Properties.locations', $LocalizedData.CosmosDBAvailabilityZone, $location.locationName);
+                ReasonFrom('properties.locations', $LocalizedData.CosmosDBAvailabilityZone, $location.locationName);
         }
     }
 }
