@@ -201,7 +201,7 @@
             "acceptedAudiences": [],
             "restrictOutboundNetworkAccess": "Disabled",
             "allowedFqdnList": [],
-            "publicNetworkAccess": "Enabled",
+            "publicNetworkAccess": "Disabled",
             "allowedIpRangeList": [],
             "enableAutoStop": false,
             "provisioningState": "Succeeded"
