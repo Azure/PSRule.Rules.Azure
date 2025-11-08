@@ -25,16 +25,14 @@ This physical separation ensures that if one zone experiences an outage, your Co
 
 With zone redundancy enabled, Azure Cosmos DB provides:
 
-- Automatic failover between zones with no data loss
-- Continuous availability during zone failures
-- Enhanced durability by maintaining multiple copies across separate physical locations
-- Protection against datacenter-level disasters while maintaining low-latency access
+- Automatic failover between zones with no data loss.
+- Continuous availability during zone failures.
+- Enhanced durability by maintaining multiple copies across separate physical locations.
+- Protection against datacenter-level disasters while maintaining low-latency access.
 
 Zone redundancy must be configured when you create a Cosmos DB account by setting `isZoneRedundant` to `true` for each location.
 This setting cannot be changed after the account is created.
 Zone redundancy is only available in regions that support availability zones.
-
-For regions that don't support availability zones, consider using geo-replication to ensure business continuity and disaster recovery.
 
 ## EXAMPLES
 
