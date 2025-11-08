@@ -18,9 +18,9 @@ Rule 'Azure.Cosmos.DisableLocalAuth' -Ref 'AZR-000420' -Type 'Microsoft.Document
     $Assert.HasFieldValue($TargetObject, 'properties.DisableLocalAuth', $true)
 }
 
-# Synopsis: Cosmos DB accounts should have availability zones enabled for supported regions.
-Rule 'Azure.Cosmos.AvailabilityZone' -Ref 'AZR-000500' -Type 'Microsoft.DocumentDb/databaseAccounts' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
-    # Check for availability zones based on Compute, because it is not exposed through the provider for Cosmos DB.
+# Synopsis: Use zone redundant Cosmos DB accounts in supported regions to improve reliability.
+Rule 'Azure.Cosmos.AvailabilityZone' -Ref 'AZR-000502' -Type 'Microsoft.DocumentDb/databaseAccounts' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
+    # Check for availability zones based on virtual machine scale sets, because it is not exposed through the provider for Cosmos DB.
     $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
     
     $Assert.HasFieldValue($TargetObject, 'properties.locations').Result;

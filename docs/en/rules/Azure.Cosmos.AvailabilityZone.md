@@ -12,19 +12,22 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos
 
 ## SYNOPSIS
 
-Cosmos DB accounts should have availability zones enabled in supported regions.
+Use zone redundant Cosmos DB accounts in supported regions to improve reliability.
 
 ## DESCRIPTION
 
-Cosmos DB accounts can be configured to use availability zones to provide high availability and resiliency.
-When enabled, Azure Cosmos DB automatically replicates data across availability zones in the same region.
-This ensures that your data remains available even if an entire availability zone becomes unavailable.
+Azure Cosmos DB supports zone redundancy to provide high availability and protect your data from datacenter failures.
+When zone redundancy is enabled for a location, Azure Cosmos DB automatically distributes replicas across multiple availability zones within that region.
 
-Zone redundancy is configured per location in the `locations` array of the database account.
-Each location can have availability zones enabled by setting the `isZoneRedundant` property to `true`.
+Availability zones are physically separate datacenters within an Azure region.
+Each zone has independent power, cooling, and networking infrastructure.
+By distributing data across zones, your Cosmos DB account can tolerate zone failures while maintaining availability for read and write operations.
 
-Availability zones are supported in many Azure regions.
-If a region doesn't support availability zones, you should configure geo-replication to another region for resiliency.
+Zone redundancy must be configured when you create a Cosmos DB account by setting `isZoneRedundant` to `true` for each location.
+This setting cannot be changed after the account is created.
+Note that zone redundancy is only available in regions that support availability zones and may incur additional costs.
+
+For regions that don't support availability zones, consider using geo-replication to ensure business continuity and disaster recovery.
 
 ## RECOMMENDATION
 
