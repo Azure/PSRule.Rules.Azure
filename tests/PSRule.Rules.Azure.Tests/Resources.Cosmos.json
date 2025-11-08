@@ -1,5 +1,127 @@
 [
   {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-A",
+    "Location": "East US",
+    "ResourceName": "cosmos-A",
+    "Name": "cosmos-A",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session"
+      },
+      "locations": [
+        {
+          "locationName": "East US",
+          "failoverPriority": 0,
+          "isZoneRedundant": true
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableFreeTier": false,
+      "minimalTlsVersion": "Tls12",
+      "disableKeyBasedMetadataWriteAccess": true,
+      "publicNetworkAccess": "Disabled",
+      "disableLocalAuth": true,
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-A/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-A/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
+        "ResourceName": "Current",
+        "Name": "Current",
+        "Properties": {
+          "isEnabled": true
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Security/advancedThreatProtectionSettings",
+        "ResourceType": "Microsoft.Security/advancedThreatProtectionSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-B",
+    "Location": "East US",
+    "ResourceName": "cosmos-B",
+    "Name": "cosmos-B",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session"
+      },
+      "locations": [
+        {
+          "locationName": "East US",
+          "failoverPriority": 0,
+          "isZoneRedundant": false
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableFreeTier": false,
+      "minimalTlsVersion": "Tls12",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": []
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-C",
+    "Location": "West US",
+    "ResourceName": "cosmos-C",
+    "Name": "cosmos-C",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session"
+      },
+      "locations": [
+        {
+          "locationName": "West US",
+          "failoverPriority": 0,
+          "isZoneRedundant": false
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableFreeTier": false,
+      "minimalTlsVersion": "Tls",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": []
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-A",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-A",
     "Identity": {
@@ -234,155 +356,6 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-A",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-A",
-    "Location": "region",
-    "ResourceName": "nosql-A",
-    "Name": "nosql-A",
-    "Kind": "GlobalDocumentDB",
-    "Properties": {
-      "consistencyPolicy": "Session",
-      "locations": [
-        {
-          "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "primaryRegion"
-        },
-        {
-          "failoverPriority": 1,
-          "isZoneRedundant": false,
-          "locationName": " secondaryRegion"
-        }
-      ],
-      "databaseAccountOfferType": "Standard",
-      "enableAutomaticFailover": true,
-      "minimalTlsVersion": "Tls",
-      "backupPolicy": {
-        "type": "Continuous",
-        "continuousModeProperties": {
-          "tier": "Continuous7Days"
-        }
-      }
-    },
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DocumentDB/databaseAccounts",
-    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "resources": []
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B",
-    "Location": "region",
-    "ResourceName": "nosql-B",
-    "Name": "nosql-B",
-    "Kind": "GlobalDocumentDB",
-    "Properties": {
-      "consistencyPolicy": "Session",
-      "locations": [
-        {
-          "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "primaryRegion"
-        },
-        {
-          "failoverPriority": 1,
-          "isZoneRedundant": false,
-          "locationName": " secondaryRegion"
-        }
-      ],
-      "databaseAccountOfferType": "Standard",
-      "enableAutomaticFailover": true,
-      "disableLocalAuth": false,
-      "publicNetworkAccess": "Enabled",
-      "backupPolicy": {
-        "type": "Continuous",
-        "continuousModeProperties": {
-          "tier": "Continuous30Days"
-        }
-      }
-    },
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DocumentDB/databaseAccounts",
-    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "resources": [
-      {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
-        "ResourceName": "Current",
-        "Name": "Current",
-        "Properties": {
-          "isEnabled": false
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Security/advancedThreatProtectionSettings",
-        "ResourceType": "Microsoft.Security/advancedThreatProtectionSettings",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-      }
-    ]
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C",
-    "Location": "region",
-    "ResourceName": "nosql-C",
-    "Name": "nosql-C",
-    "Kind": "GlobalDocumentDB",
-    "Properties": {
-      "consistencyPolicy": "Session",
-      "locations": [
-        {
-          "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "primaryRegion"
-        },
-        {
-          "failoverPriority": 1,
-          "isZoneRedundant": false,
-          "locationName": " secondaryRegion"
-        }
-      ],
-      "databaseAccountOfferType": "Standard",
-      "enableAutomaticFailover": true,
-      "disableLocalAuth": true,
-      "capabilities": [
-        {
-          "name": "EnableServerless"
-        }
-      ],
-      "publicNetworkAccess": "Disabled",
-      "backupPolicy": {
-        "type": "Continuous",
-        "continuousModeProperties": {
-          "tier": "Continuous30Days"
-        }
-      }
-    },
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DocumentDB/databaseAccounts",
-    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "resources": [
-      {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
-        "ResourceName": "Current",
-        "Name": "Current",
-        "Properties": {
-          "isEnabled": true
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Security/advancedThreatProtectionSettings",
-        "ResourceType": "Microsoft.Security/advancedThreatProtectionSettings",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-      }
-    ]
-  },
-  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-a",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-a",
     "Location": "East US",
@@ -503,74 +476,6 @@
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.DocumentDB/mongoClusters",
     "ResourceType": "Microsoft.DocumentDB/mongoClusters",
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-D",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-D",
-    "Location": "East US",
-    "ResourceName": "nosql-D",
-    "Name": "nosql-D",
-    "Kind": "GlobalDocumentDB",
-    "Properties": {
-      "consistencyPolicy": {
-        "defaultConsistencyLevel": "Session"
-      },
-      "locations": [
-        {
-          "failoverPriority": 0,
-          "isZoneRedundant": true,
-          "locationName": "East US"
-        }
-      ],
-      "databaseAccountOfferType": "Standard",
-      "enableFreeTier": false,
-      "minimalTlsVersion": "Tls12",
-      "backupPolicy": {
-        "type": "Continuous",
-        "continuousModeProperties": {
-          "tier": "Continuous30Days"
-        }
-      }
-    },
-    "ResourceGroupName": "rg-test",
-    "Type": "Microsoft.DocumentDB/databaseAccounts",
-    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
-    "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-E",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-E",
-    "Location": "East US",
-    "ResourceName": "nosql-E",
-    "Name": "nosql-E",
-    "Kind": "GlobalDocumentDB",
-    "Properties": {
-      "consistencyPolicy": {
-        "defaultConsistencyLevel": "Session"
-      },
-      "locations": [
-        {
-          "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "East US"
-        }
-      ],
-      "databaseAccountOfferType": "Standard",
-      "enableFreeTier": false,
-      "minimalTlsVersion": "Tls12",
-      "backupPolicy": {
-        "type": "Continuous",
-        "continuousModeProperties": {
-          "tier": "Continuous30Days"
-        }
-      }
-    },
-    "ResourceGroupName": "rg-test",
-    "Type": "Microsoft.DocumentDB/databaseAccounts",
-    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
