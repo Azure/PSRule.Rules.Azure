@@ -143,12 +143,12 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.AvailabilityZone' };
 
             # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object TargetName);
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B';
 
-            $ruleResult[0].Reason | Should -Be "Path properties.locations: The Cosmos DB account location (East US) should have zone redundancy enabled.";
-            $ruleResult[1].Reason | Should -Be "Path properties.locations: The Cosmos DB account location (East US) should have zone redundancy enabled.";
+            $ruleResult[0].Reason | Should -Be "Path properties.locations: The Cosmos DB account (nosql-A) location (East US) should have zone redundancy enabled.";
+            $ruleResult[1].Reason | Should -Be "Path properties.locations: The Cosmos DB account (nosql-B) location (East US) should have zone redundancy enabled.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

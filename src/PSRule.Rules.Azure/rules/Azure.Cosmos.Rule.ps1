@@ -31,7 +31,7 @@ Rule 'Azure.Cosmos.AvailabilityZone' -Ref 'AZR-000502' -Type 'Microsoft.Document
         # If the location supports availability zones, ensure zone redundancy is enabled
         if ($availabilityZones) {
             $Assert.HasFieldValue($location, 'isZoneRedundant', $true).
-                ReasonFrom('properties.locations', $LocalizedData.CosmosDBAvailabilityZone, $location.locationName);
+                ReasonFrom('properties.locations', $LocalizedData.CosmosDBAvailabilityZone, $TargetObject.Name, $location.locationName);
         }
     }
 }
