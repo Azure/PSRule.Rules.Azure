@@ -16,22 +16,25 @@ Use zone redundant Cosmos DB accounts in supported regions to improve reliabilit
 
 ## DESCRIPTION
 
-Azure Cosmos DB supports zone redundancy to provide high availability and protect your data from datacenter failures.
-When zone redundancy is enabled for a location, Azure Cosmos DB automatically distributes replicas across multiple availability zones within that region.
+Azure Cosmos DB supports zone redundancy to provide high availability and protect your data from datacenter-level failures within a region.
+When zone redundancy is enabled, Azure Cosmos DB automatically distributes replicas of your data across multiple availability zones.
 
-Availability zones are physically separate datacenters within an Azure region.
-Each zone has independent power, cooling, and networking infrastructure.
-By distributing data across zones, your Cosmos DB account can tolerate zone failures while maintaining availability for read and write operations.
+Availability zones are unique physical locations within an Azure region.
+Each zone is made up of one or more datacenters equipped with independent power, cooling, and networking infrastructure.
+This physical separation ensures that if one zone experiences an outage, your Cosmos DB account continues to serve read and write requests from replicas in other zones without downtime.
+
+With zone redundancy enabled, Azure Cosmos DB provides:
+
+- Automatic failover between zones with no data loss
+- Continuous availability during zone failures
+- Enhanced durability by maintaining multiple copies across separate physical locations
+- Protection against datacenter-level disasters while maintaining low-latency access
 
 Zone redundancy must be configured when you create a Cosmos DB account by setting `isZoneRedundant` to `true` for each location.
 This setting cannot be changed after the account is created.
-Note that zone redundancy is only available in regions that support availability zones and may incur additional costs.
+Zone redundancy is only available in regions that support availability zones.
 
 For regions that don't support availability zones, consider using geo-replication to ensure business continuity and disaster recovery.
-
-## RECOMMENDATION
-
-Consider using availability zones for Cosmos DB accounts to improve reliability and ensure high availability of your data.
 
 ## EXAMPLES
 
