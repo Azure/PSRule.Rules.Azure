@@ -140,16 +140,6 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
         }
 
         It 'Azure.Cosmos.AvailabilityZone' {
-            # Test scenarios covered:
-            # FAIL scenarios (tested first):
-            #   - nosql-A: Single region (East US), supports AZ but disabled
-            #   - nosql-B: Multi-region (East US + West US), AZ-supported region has AZ disabled
-            # PASS scenarios:
-            #   - graph-A, graph-B: Single region (East US), supports AZ and enabled
-            #   - nosql-C: Single region (West US), does not support AZ (no requirement)
-            #   - nosql-D: Single region (East US), supports AZ and enabled
-            #   - nosql-E: Single region (West US), does not support AZ (no requirement)
-
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.AvailabilityZone' };
 
             # Fail
@@ -157,44 +147,13 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B';
 
-            # nosql-A: Single region (East US) supports AZ but disabled - FAIL
-            $nosqlA = $ruleResult | Where-Object { $_.TargetName -eq 'nosql-A' };
-            $nosqlA | Should -Not -BeNullOrEmpty;
-            $nosqlA.Outcome | Should -Be 'Fail';
-
-            # nosql-B: Multi-region (East US + West US), primary region supports AZ but disabled - FAIL
-            $nosqlB = $ruleResult | Where-Object { $_.TargetName -eq 'nosql-B' };
-            $nosqlB | Should -Not -BeNullOrEmpty;
-            $nosqlB.Outcome | Should -Be 'Fail';
+            $ruleResult[0].Reason | Should -Be "Path properties.locations: The Cosmos DB account location (East US) should have zone redundancy enabled.";
+            $ruleResult[1].Reason | Should -Be "Path properties.locations: The Cosmos DB account location (East US) should have zone redundancy enabled.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'nosql-C', 'nosql-D', 'nosql-E';
-
-            # graph-A, graph-B: Single region (East US) supports AZ and enabled - PASS
-            $graphA = $ruleResult | Where-Object { $_.TargetName -eq 'graph-A' };
-            $graphA | Should -Not -BeNullOrEmpty;
-            $graphA.Outcome | Should -Be 'Pass';
-
-            $graphB = $ruleResult | Where-Object { $_.TargetName -eq 'graph-B' };
-            $graphB | Should -Not -BeNullOrEmpty;
-            $graphB.Outcome | Should -Be 'Pass';
-
-            # nosql-C: Single region (West US) does not support AZ - PASS (no requirement)
-            $nosqlC = $ruleResult | Where-Object { $_.TargetName -eq 'nosql-C' };
-            $nosqlC | Should -Not -BeNullOrEmpty;
-            $nosqlC.Outcome | Should -Be 'Pass';
-
-            # nosql-D: Single region (East US) supports AZ and enabled - PASS
-            $nosqlD = $ruleResult | Where-Object { $_.TargetName -eq 'nosql-D' };
-            $nosqlD | Should -Not -BeNullOrEmpty;
-            $nosqlD.Outcome | Should -Be 'Pass';
-
-            # nosql-E: Single region (West US) does not support AZ - PASS (no requirement)
-            $nosqlE = $ruleResult | Where-Object { $_.TargetName -eq 'nosql-E' };
-            $nosqlE | Should -Not -BeNullOrEmpty;
-            $nosqlE.Outcome | Should -Be 'Pass';
         }
     }
 
