@@ -102,10 +102,8 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2024-11-15' = {
 
 ## LINKS
 
-- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
 - [Architecture strategies for using availability zones and regions](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Azure regions with availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support)
 - [High availability with Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/high-availability)
-- [Enable zone redundancy for Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)
