@@ -247,11 +247,6 @@
           "locationName": "East US",
           "failoverPriority": 0,
           "isZoneRedundant": false
-        },
-        {
-          "locationName": "West US",
-          "failoverPriority": 1,
-          "isZoneRedundant": false
         }
       ],
       "databaseAccountOfferType": "Standard",
@@ -274,7 +269,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B",
-    "Location": "West US",
+    "Location": "East US",
     "ResourceName": "nosql-B",
     "Name": "nosql-B",
     "Kind": "GlobalDocumentDB",
@@ -282,9 +277,14 @@
       "consistencyPolicy": "Session",
       "locations": [
         {
+          "locationName": "East US",
           "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "West US"
+          "isZoneRedundant": false
+        },
+        {
+          "locationName": "West US",
+          "failoverPriority": 1,
+          "isZoneRedundant": false
         }
       ],
       "databaseAccountOfferType": "Standard",
@@ -330,9 +330,9 @@
       "consistencyPolicy": "Session",
       "locations": [
         {
+          "locationName": "West US",
           "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "West US"
+          "isZoneRedundant": false
         }
       ],
       "databaseAccountOfferType": "Standard",
@@ -509,9 +509,9 @@
       },
       "locations": [
         {
+          "locationName": "East US",
           "failoverPriority": 0,
-          "isZoneRedundant": true,
-          "locationName": "East US"
+          "isZoneRedundant": true
         }
       ],
       "databaseAccountOfferType": "Standard",
@@ -533,7 +533,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-E",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-E",
-    "Location": "East US",
+    "Location": "West US",
     "ResourceName": "nosql-E",
     "Name": "nosql-E",
     "Kind": "GlobalDocumentDB",
@@ -543,9 +543,9 @@
       },
       "locations": [
         {
+          "locationName": "West US",
           "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "East US"
+          "isZoneRedundant": false
         }
       ],
       "databaseAccountOfferType": "Standard",
