@@ -236,7 +236,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-A",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-A",
-    "Location": "West US",
+    "Location": "East US",
     "ResourceName": "nosql-A",
     "Name": "nosql-A",
     "Kind": "GlobalDocumentDB",
@@ -244,9 +244,14 @@
       "consistencyPolicy": "Session",
       "locations": [
         {
+          "locationName": "East US",
           "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "West US"
+          "isZoneRedundant": false
+        },
+        {
+          "locationName": "West US",
+          "failoverPriority": 1,
+          "isZoneRedundant": false
         }
       ],
       "databaseAccountOfferType": "Standard",
