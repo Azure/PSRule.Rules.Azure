@@ -17,15 +17,23 @@ Use zone redundant Grafana workspaces in supported regions to improve reliabilit
 ## DESCRIPTION
 
 Azure Managed Grafana supports zone redundancy to provide enhanced resiliency and high availability.
-When zone redundancy is enabled, Azure Managed Grafana automatically distributes the service across multiple availability zones within a region.
-This configuration ensures that the service remains available even if an entire availability zone experiences an outage.
+When zone redundancy is enabled, Azure Managed Grafana automatically distributes the
+service across multiple availability zones within a region.
+
+Managed Grafana implements this redundancy using active-passive replicas.
+One active replica serves traffic while passive replicas remain on standby in other
+zones and take over if the active replica becomes unavailable.
+
+This configuration ensures that the service remains available even if an entire
+availability zone experiences an outage.
 
 Zone redundancy can only be configured during the initial workspace creation and cannot be modified afterwards.
 Additionally, zone redundancy is only available in regions that support availability zones.
 
 ## RECOMMENDATION
 
-Consider enabling zone redundancy for Azure Managed Grafana workspaces deployed in regions that support availability zones to improve service reliability and resilience.
+Consider enabling zone redundancy for Azure Managed Grafana workspaces deployed in regions that support
+availability zones to improve service reliability and resilience.
 
 ## EXAMPLES
 
@@ -86,7 +94,8 @@ It is not possible to modify an existing Managed Grafana workspace to enable zon
 
 ## LINKS
 
-- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [Architecture strategies for using availability zones and regions](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Enable zone redundancy in Azure Managed Grafana](https://learn.microsoft.com/azure/managed-grafana/how-to-enable-zone-redundancy)
 - [Azure regions with availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dashboard/grafana)
