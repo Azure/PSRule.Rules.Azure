@@ -41,13 +41,13 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'graph-A', 'cosmos-B', 'cosmos-C';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -Be 'graph-A', 'nosql-A', 'nosql-B', 'nosql-C', 'nosql-D', 'nosql-E';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'graph-B', 'cosmos-A';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'graph-B';
         }
 
         It 'Azure.Cosmos.MinTLS' {
@@ -55,13 +55,13 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'graph-B', 'cosmos-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'graph-A', 'cosmos-A', 'cosmos-B';
+            $ruleResult.TargetName | Should -BeIn 'graph-A', 'nosql-D', 'nosql-E';
         }
 
         It 'Azure.Cosmos.SLA' {
@@ -74,8 +74,8 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'graph-B', 'cosmos-A', 'cosmos-B', 'cosmos-C';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C', 'nosql-D', 'nosql-E';
         }
 
         It 'Azure.Cosmos.DisableLocalAuth' {
@@ -83,13 +83,13 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'cosmos-B', 'cosmos-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B', 'nosql-D', 'nosql-E';
             
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'cosmos-A';
+            $ruleResult.TargetName | Should -BeIn 'nosql-C';
         }
 
         It 'Azure.Cosmos.PublicAccess' {
@@ -97,13 +97,13 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'cosmos-B', 'cosmos-C';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'nosql-A', 'nosql-B', 'nosql-D', 'nosql-E';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'cosmos-A';
+            $ruleResult.TargetName | Should -BeIn 'nosql-C';
         }
 
         It 'Azure.Cosmos.ContinuousBackup' {
@@ -119,8 +119,8 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'cosmos-A', 'cosmos-B', 'cosmos-C';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B', 'nosql-C', 'nosql-D', 'nosql-E';
         }
 
         It 'Azure.Cosmos.MongoEntraID' {
@@ -142,15 +142,15 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
         It 'Azure.Cosmos.AvailabilityZone' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.AvailabilityZone' };
 
-            # Fail - cosmos-B has East US location with zone redundancy disabled
+            # Fail - nosql-E has East US location with zone redundancy disabled
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'cosmos-B';
+            $ruleResult.TargetName | Should -BeIn 'nosql-E';
 
-            # Pass - cosmos-A and graph-A/B have zone redundancy enabled, cosmos-C uses West Europe which doesn't have AZ in provider data
+            # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'cosmos-A', 'cosmos-C';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C', 'nosql-D';
         }
     }
 
@@ -247,13 +247,13 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'cosmos-B', 'cosmos-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B', 'nosql-D', 'nosql-E';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'cosmos-A';
+            $ruleResult.TargetName | Should -BeIn 'nosql-C';
         }
     }
 }
