@@ -48,8 +48,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Updated `Azure.AppGwWAF.RuleGroups` to use Microsoft Default Rule Set instead of legacy OWASP rule set by @BenjaminEngeset.
       [#3553](https://github.com/Azure/PSRule.Rules.Azure/issues/3553)
   - Cosmos DB:
-    - Renamed `Azure.Cosmos.DisableLocalAuth` to `Azure.Cosmos.NoSQLLocalAuth` to reflect it applies only to NoSQL API by @copilot.
-      [#3571](https://github.com/Azure/PSRule.Rules.Azure/issues/3571)
+    - Renamed `Azure.Cosmos.DisableLocalAuth` to `Azure.Cosmos.NoSQLLocalAuth` to reflect it applies only to NoSQL API by @BernieWhite.
+      [#3576](https://github.com/Azure/PSRule.Rules.Azure/issues/3576)
 
 ## v1.46.0
 
