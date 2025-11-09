@@ -110,5 +110,23 @@ Describe 'Azure.ADX' -Tag 'ADX' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'cluster-B';
         }
+
+        It 'Azure.ADX.PublicAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ADX.PublicAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B';
+            
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.publicNetworkAccess';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-C';
+        }
     }
 }

@@ -34,6 +34,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - App Configuration:
     - Check that replica locations are in allowed regions by @BernieWhite.
       [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
+  - Cosmos DB:
+    - Check that MongoDB vCore clusters use Microsoft Entra ID authentication by @BenjaminEngeset.
+      [#3369](https://github.com/Azure/PSRule.Rules.Azure/issues/3369)
+  - Data Explorer:
+    - Check that public network access is disabled by @BenjaminEngeset.
+      [#3114](https://github.com/Azure/PSRule.Rules.Azure/issues/3114)
+  - Managed Grafana:
+    - Check that zone redundancy is enabled for Grafana workspaces in supported regions by @BenjaminEngeset.
+      [#3294](https://github.com/Azure/PSRule.Rules.Azure/issues/3294)
 - Updated rules:
   - Application Gateway Policy:
     - Updated `Azure.AppGwWAF.RuleGroups` to use Microsoft Default Rule Set instead of legacy OWASP rule set by @BenjaminEngeset.

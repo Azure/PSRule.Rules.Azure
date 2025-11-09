@@ -381,5 +381,129 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-a",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-a",
+    "Location": "East US",
+    "ResourceName": "mongodb-a",
+    "Name": "mongodb-a",
+    "Properties": {
+      "administrator": {
+        "userName": "mongoAdmin"
+      },
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "NativeAuth"
+        ]
+      },
+      "compute": {
+        "tier": "M30"
+      },
+      "storage": {
+        "sizeGb": 128,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 1
+      },
+      "highAvailability": {
+        "targetMode": "Disabled"
+      },
+      "backup": {},
+      "publicNetworkAccess": "Enabled",
+      "dataApi": {
+        "mode": "Disabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-b",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-b",
+    "Location": "East US",
+    "ResourceName": "mongodb-b",
+    "Name": "mongodb-b",
+    "Properties": {
+      "administrator": {
+        "userName": "mongoAdmin"
+      },
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "NativeAuth",
+          "MicrosoftEntraID"
+        ]
+      },
+      "compute": {
+        "tier": "M40"
+      },
+      "storage": {
+        "sizeGb": 256,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 2
+      },
+      "highAvailability": {
+        "targetMode": "SameZone"
+      },
+      "backup": {},
+      "publicNetworkAccess": "Disabled",
+      "dataApi": {
+        "mode": "Enabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-c",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-c",
+    "Location": "East US",
+    "ResourceName": "mongodb-c",
+    "Name": "mongodb-c",
+    "Properties": {
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "MicrosoftEntraID"
+        ]
+      },
+      "compute": {
+        "tier": "M50"
+      },
+      "storage": {
+        "sizeGb": 512,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 3
+      },
+      "highAvailability": {
+        "targetMode": "ZoneRedundantPreferred"
+      },
+      "backup": {},
+      "publicNetworkAccess": "Disabled",
+      "dataApi": {
+        "mode": "Disabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]

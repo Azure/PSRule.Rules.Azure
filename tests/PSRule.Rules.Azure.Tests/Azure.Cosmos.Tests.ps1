@@ -139,6 +139,22 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B', 'nosql-C';
         }
+
+        It 'Azure.Cosmos.MongoEntraID' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MongoEntraID' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-a';
+
+            $ruleResult[0].Reason | Should -Be "Path properties.authConfig.allowedModes[*]: The value 'System.String[]' does not contain any of 'System.String[]'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-b', 'mongodb-c';
+        }
     }
 
     Context 'Resource name - Azure.Cosmos.AccountName' {
