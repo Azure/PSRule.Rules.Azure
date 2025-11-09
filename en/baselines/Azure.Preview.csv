@@ -232,6 +232,7 @@
 "Azure.FrontDoorWAF.Exclusions","Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. Avoid configuring rule exclusions.","Critical","Security","-"
 "Azure.FrontDoorWAF.PreventionMode","Use protection mode in Front Door Web Application Firewall (WAF) policies to protect back end resources.","Critical","Security","-"
 "Azure.FrontDoorWAF.RuleGroups","Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources.","Critical","Security","-"
+"Azure.Grafana.AvailabilityZone","Use zone redundant Grafana workspaces in supported regions to improve reliability.","Important","Reliability","L1"
 "Azure.Grafana.Version","Grafana workspaces should be on Grafana version 10.","Important","Reliability","-"
 "Azure.Group.Name","Azure Resource Manager (ARM) has requirements for Resource Groups names.","Awareness","Operational Excellence","-"
 "Azure.Group.Naming","Resource Groups without a standard naming convention may be difficult to identify and manage.","Awareness","Operational Excellence","-"
