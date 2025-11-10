@@ -139,23 +139,6 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.TargetName | Should -BeIn 'mongodb-b', 'mongodb-c';
         }
 
-        It 'Azure.Cosmos.MongoAvailabilityZone' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MongoAvailabilityZone' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'mongodb-a', 'mongodb-b';
-
-            $ruleResult[0].Reason | Should -BeLike "Path properties.highAvailability.targetMode: The Cosmos DB account (mongodb-a) location (*) should have zone redundancy enabled.";
-            $ruleResult[1].Reason | Should -BeLike "Path properties.highAvailability.targetMode: The Cosmos DB account (mongodb-b) location (*) should have zone redundancy enabled.";
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'mongodb-c';
-        }
-
         It 'Azure.Cosmos.AvailabilityZone' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.AvailabilityZone' };
 
@@ -171,6 +154,23 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'nosql-C', 'nosql-D', 'nosql-E';
+        }
+
+        It 'Azure.Cosmos.MongoAvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MongoAvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object TargetName);
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-a', 'mongodb-b';
+
+            $ruleResult[0].Reason | Should -Be "Path properties.highAvailability.targetMode: The Cosmos DB account (mongodb-a) location (East US) should have zone redundancy enabled.";
+            $ruleResult[1].Reason | Should -Be "Path properties.highAvailability.targetMode: The Cosmos DB account (mongodb-b) location (East US) should have zone redundancy enabled.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-c';
         }
     }
 
