@@ -5,14 +5,14 @@ pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: Cosmos DB
 resourceType: Microsoft.DocumentDB/mongoClusters
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.MongoDBvCoreAvailabilityZone/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.MongoAvailabilityZone/
 ---
 
 # Use zone-redundant high availability for MongoDB vCore clusters
 
 ## SYNOPSIS
 
-Azure Cosmos DB for MongoDB vCore clusters should use zone-redundant high availability.
+Azure Cosmos DB for MongoDB vCore clusters should use zone-redundant high availability in supported regions.
 
 ## DESCRIPTION
 
@@ -28,12 +28,13 @@ MongoDB vCore clusters support the following high availability modes:
 - **SameZone** - High availability within a single zone.
 - **ZoneRedundantPreferred** - Zone-redundant high availability across multiple availability zones.
 
+This rule checks that MongoDB vCore clusters deployed to regions that support availability zones have zone-redundant high availability enabled.
 Using `ZoneRedundantPreferred` mode ensures that your MongoDB vCore cluster is resilient to zone-level failures,
 providing better availability and durability for your data.
 
 ## RECOMMENDATION
 
-Consider configuring Azure Cosmos DB for MongoDB vCore clusters to use zone-redundant high availability by setting the high availability mode to `ZoneRedundantPreferred`.
+Consider configuring Azure Cosmos DB for MongoDB vCore clusters deployed to supported regions to use zone-redundant high availability by setting the high availability mode to `ZoneRedundantPreferred`.
 
 ## EXAMPLES
 

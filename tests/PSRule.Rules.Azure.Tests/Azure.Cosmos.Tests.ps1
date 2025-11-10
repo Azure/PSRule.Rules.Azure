@@ -139,16 +139,16 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.TargetName | Should -BeIn 'mongodb-b', 'mongodb-c';
         }
 
-        It 'Azure.Cosmos.MongoDBvCoreAvailabilityZone' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MongoDBvCoreAvailabilityZone' };
+        It 'Azure.Cosmos.MongoAvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MongoAvailabilityZone' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'mongodb-a', 'mongodb-b';
 
-            $ruleResult[0].Reason | Should -Be "Path properties.highAvailability.targetMode: Is set to 'Disabled'.";
-            $ruleResult[1].Reason | Should -Be "Path properties.highAvailability.targetMode: Is set to 'SameZone'.";
+            $ruleResult[0].Reason | Should -BeLike "Path properties.highAvailability.targetMode: The Cosmos DB account (mongodb-a) location (*) should have zone redundancy enabled.";
+            $ruleResult[1].Reason | Should -BeLike "Path properties.highAvailability.targetMode: The Cosmos DB account (mongodb-b) location (*) should have zone redundancy enabled.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

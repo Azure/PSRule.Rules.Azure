@@ -159,26 +159,6 @@ spec:
     field: properties.authConfig.allowedModes[*]
     contains: MicrosoftEntraID
 
----
-# Synopsis: Use zone-redundant high availability for Azure Cosmos DB for MongoDB vCore clusters.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Rule
-metadata:
-  name: Azure.Cosmos.MongoDBvCoreAvailabilityZone
-  ref: AZR-000503
-  tags:
-    release: GA
-    ruleSet: 2025_12
-    Azure.WAF/pillar: Reliability
-  labels:
-    Azure.WAF/maturity: L1
-spec:
-  type:
-    - Microsoft.DocumentDB/mongoClusters
-  condition:
-    field: properties.highAvailability.targetMode
-    equals: ZoneRedundantPreferred
-
 #endregion Rules
 
 #region Selectors
