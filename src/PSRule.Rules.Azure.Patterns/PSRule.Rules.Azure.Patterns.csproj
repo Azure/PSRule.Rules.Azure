@@ -28,7 +28,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Azure.Containers.ContainerRegistry" Version="1.2.0" />
-    <PackageReference Include="Azure.Core" Version="1.49.0" />
+    <PackageReference Include="Azure.Core" Version="1.50.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
     <PackageReference Include="System.Collections.Immutable" Version="9.0.8" />
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
