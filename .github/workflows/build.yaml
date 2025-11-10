@@ -129,7 +129,7 @@ jobs:
       run: ./scripts/pipeline-deps.ps1
 
     - name: Download module
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v6
       with:
         name: Module
         path: ./out/modules/PSRule.Rules.Azure
