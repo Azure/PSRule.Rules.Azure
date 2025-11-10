@@ -35,6 +35,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that replica locations are in allowed regions by @BernieWhite.
       [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
   - Cosmos DB:
+    - Check that Cosmos DB accounts have availability zones enabled by @BenjaminEngeset.
+      [#3055](https://github.com/Azure/PSRule.Rules.Azure/issues/3055)
     - Check that MongoDB vCore clusters use Microsoft Entra ID authentication by @BenjaminEngeset.
       [#3369](https://github.com/Azure/PSRule.Rules.Azure/issues/3369)
   - Data Explorer:
