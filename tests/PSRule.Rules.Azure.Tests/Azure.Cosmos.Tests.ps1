@@ -139,6 +139,23 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.TargetName | Should -BeIn 'mongodb-b', 'mongodb-c';
         }
 
+        It 'Azure.Cosmos.MongoDBvCoreAvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MongoDBvCoreAvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-a', 'mongodb-b';
+
+            $ruleResult[0].Reason | Should -Be "Path properties.highAvailability.targetMode: Is set to 'Disabled'.";
+            $ruleResult[1].Reason | Should -Be "Path properties.highAvailability.targetMode: Is set to 'SameZone'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-c';
+        }
+
         It 'Azure.Cosmos.AvailabilityZone' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.AvailabilityZone' };
 
