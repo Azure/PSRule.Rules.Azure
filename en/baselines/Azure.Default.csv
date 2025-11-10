@@ -147,6 +147,7 @@
 "Azure.ContainerApp.RestrictIngress","IP ingress restrictions mode should be set to allow action for all rules defined.","Important","Security","-"
 "Azure.ContainerApp.Storage","Use of Azure Files volume mounts to persistent storage container data.","Awareness","Reliability","-"
 "Azure.Cosmos.AccountName","Cosmos DB account names should meet naming requirements.","Awareness","Operational Excellence","-"
+"Azure.Cosmos.AvailabilityZone","Use zone redundant Cosmos DB accounts in supported regions to improve reliability.","Important","Reliability","L1"
 "Azure.Cosmos.ContinuousBackup","Enable continuous backup on Cosmos DB accounts.","Important","Reliability","-"
 "Azure.Cosmos.DefenderCloud","Enable Microsoft Defender for Azure Cosmos DB.","Critical","Security","-"
 "Azure.Cosmos.DisableLocalAuth","Access keys allow depersonalized access to Cosmos DB accounts using a shared secret.","Critical","Security","L1"
