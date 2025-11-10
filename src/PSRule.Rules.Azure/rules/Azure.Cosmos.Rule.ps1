@@ -20,12 +20,12 @@ Rule 'Azure.Cosmos.DisableLocalAuth' -Ref 'AZR-000420' -Type 'Microsoft.Document
 
 # Synopsis: Use zone redundant Cosmos DB accounts in supported regions to improve reliability.
 Rule 'Azure.Cosmos.AvailabilityZone' -Ref 'AZR-000502' -Type 'Microsoft.DocumentDb/databaseAccounts' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
-    Test-CosmosAvailabilityZone -ResourceType 'Microsoft.DocumentDb/databaseAccounts'
+    Test-CosmosAvailabilityZone
 }
 
 # Synopsis: Use zone redundant Cosmos DB accounts in supported regions to improve reliability.
 Rule 'Azure.Cosmos.MongoAvailabilityZone' -Ref 'AZR-000503' -Type 'Microsoft.DocumentDB/mongoClusters' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
-    Test-CosmosAvailabilityZone -ResourceType 'Microsoft.DocumentDB/mongoClusters'
+    Test-CosmosAvailabilityZone
 }
 #endregion Rules
 
@@ -46,15 +46,12 @@ function global:Test-IsNoSQL {
 
 function global:Test-CosmosAvailabilityZone {
     [CmdletBinding()]
-    param (
-        [Parameter(Mandatory = $true)]
-        [string]$ResourceType
-    )
+    param ()
 
     # Check for availability zones based on virtual machine scale sets, because it is not exposed through the provider for Cosmos DB.
     $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
 
-    if ($ResourceType -eq 'Microsoft.DocumentDb/databaseAccounts') {
+    if ($PSRule.TargetType -eq 'Microsoft.DocumentDb/databaseAccounts') {
         # For Cosmos DB accounts, check locations
         $Assert.GreaterOrEqual($TargetObject, 'properties.locations', 1);
 
@@ -70,7 +67,7 @@ function global:Test-CosmosAvailabilityZone {
             }
         }
     }
-    elseif ($ResourceType -eq 'Microsoft.DocumentDB/mongoClusters') {
+    elseif ($PSRule.TargetType -eq 'Microsoft.DocumentDB/mongoClusters') {
         # For MongoDB vCore clusters, check highAvailability.targetMode
         $location = $TargetObject.Location;
         $availabilityZones = GetAvailabilityZone -Location $location -Zone $provider.ZoneMappings;
