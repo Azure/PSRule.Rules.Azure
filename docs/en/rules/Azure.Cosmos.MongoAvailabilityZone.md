@@ -109,6 +109,10 @@ resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2024-07-01' = {
 }
 ```
 
+## NOTES
+
+This rule applies to Cosmos DB for MongoDB clusters deployed with the vCore deployment model.
+
 ## LINKS
 
 - [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
