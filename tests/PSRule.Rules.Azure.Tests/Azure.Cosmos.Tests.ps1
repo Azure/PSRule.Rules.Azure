@@ -162,16 +162,16 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object TargetName);
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'mongodb-a', 'mongodb-b', 'mongodb-d';
+            $ruleResult.TargetName | Should -BeIn 'mongodb-a', 'mongodb-b', 'mongodb-c';
 
             $ruleResult[0].Reason | Should -Be "Path properties.highAvailability.targetMode: The Cosmos DB cluster (mongodb-a) location (East US) should have zone redundancy enabled.";
             $ruleResult[1].Reason | Should -Be "Path properties.highAvailability.targetMode: The Cosmos DB cluster (mongodb-b) location (East US) should have zone redundancy enabled.";
-            $ruleResult[2].Reason | Should -Be "Path properties.highAvailability.targetMode: The Cosmos DB cluster (mongodb-d) location (East US) should have zone redundancy enabled.";
+            $ruleResult[2].Reason | Should -Be "Path properties.highAvailability.targetMode: The Cosmos DB cluster (mongodb-c) location (East US) should have zone redundancy enabled.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'mongodb-c';
+            $ruleResult.TargetName | Should -BeIn 'mongodb-d';
         }
     }
 

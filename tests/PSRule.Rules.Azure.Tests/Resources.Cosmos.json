@@ -480,9 +480,6 @@
       "sharding": {
         "shardCount": 3
       },
-      "highAvailability": {
-        "targetMode": "ZoneRedundantPreferred"
-      },
       "backup": {},
       "publicNetworkAccess": "Disabled",
       "dataApi": {
@@ -518,6 +515,9 @@
       },
       "sharding": {
         "shardCount": 1
+      },
+      "highAvailability": {
+        "targetMode": "ZoneRedundantPreferred"
       },
       "backup": {},
       "publicNetworkAccess": "Disabled",
