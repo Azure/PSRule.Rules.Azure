@@ -497,6 +497,42 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-d",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-d",
+    "Location": "East US",
+    "ResourceName": "mongodb-d",
+    "Name": "mongodb-d",
+    "Properties": {
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "MicrosoftEntraID"
+        ]
+      },
+      "compute": {
+        "tier": "M30"
+      },
+      "storage": {
+        "sizeGb": 128,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 1
+      },
+      "backup": {},
+      "publicNetworkAccess": "Disabled",
+      "dataApi": {
+        "mode": "Disabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-D",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-D",
     "Location": "East US",

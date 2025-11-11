@@ -23,7 +23,7 @@ Rule 'Azure.Cosmos.AvailabilityZone' -Ref 'AZR-000502' -Type 'Microsoft.Document
     Test-CosmosAvailabilityZone
 }
 
-# Synopsis: Use zone redundant Cosmos DB accounts in supported regions to improve reliability.
+# Synopsis: Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability.
 Rule 'Azure.Cosmos.MongoAvailabilityZone' -Ref 'AZR-000503' -Type 'Microsoft.DocumentDB/mongoClusters' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
     Test-CosmosAvailabilityZone
 }

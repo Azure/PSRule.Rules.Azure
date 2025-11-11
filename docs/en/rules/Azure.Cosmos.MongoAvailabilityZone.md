@@ -2,17 +2,17 @@
 reviewed: 2025-11-10
 severity: Important
 pillar: Reliability
-category: RE:05 Regions and availability zones
+category: RE:05 Redundancy
 resource: Cosmos DB
 resourceType: Microsoft.DocumentDB/mongoClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.MongoAvailabilityZone/
 ---
 
-# Use zone-redundant high availability for MongoDB vCore clusters
+# Use zone redundant Cosmos DB MongoDB vCore clusters
 
 ## SYNOPSIS
 
-Azure Cosmos DB for MongoDB vCore clusters should use zone-redundant high availability in supported regions.
+Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability.
 
 ## DESCRIPTION
 
@@ -49,14 +49,13 @@ For example:
 ```json
 {
   "type": "Microsoft.DocumentDB/mongoClusters",
-  "apiVersion": "2025-04-01-preview",
+  "apiVersion": "2024-07-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
     "serverVersion": "8.0",
     "authConfig": {
       "allowedModes": [
-        "NativeAuth",
         "MicrosoftEntraID"
       ]
     },
@@ -83,14 +82,13 @@ To deploy MongoDB vCore clusters that pass this rule:
 For example:
 
 ```bicep
-resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2025-04-01-preview' = {
+resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2024-07-01' = {
   name: name
   location: location
   properties: {
     serverVersion: '8.0'
     authConfig: {
       allowedModes: [
-        'NativeAuth'
         'MicrosoftEntraID'
       ]
     }
@@ -110,7 +108,9 @@ resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2025-04-01-preview' = 
 
 ## LINKS
 
-- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [Azure regions with availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support)
+- [Architecture strategies for using availability zones and regions](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Reliability: Level 1](https://learn.microsoft.com/azure/well-architected/reliability/maturity-model?tabs=level1)
 - [High availability in Azure Cosmos DB for MongoDB vCore](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/high-availability)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/mongoclusters)
