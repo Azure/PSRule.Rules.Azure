@@ -17,13 +17,12 @@ Use zone redundant Cosmos DB vCore clusters in supported regions to improve reli
 ## DESCRIPTION
 
 Azure Cosmos DB for MongoDB vCore clusters support zone redundancy.
-
 When zone redundancy is enabled, your data is replicated across multiple zones within an Azure region.
 
 Availability zones are unique physical locations within an Azure region.
 Each zone is made up of one or more datacenters equipped with independent power, cooling, and networking infrastructure.
 This physical separation ensures that if one zone experiences an outage,
-your Cosmos DB account continues to serve read and write requests from replicas in other zones without downtime.
+your Cosmos DB cluster continues to serve read and write requests from replicas in other zones without downtime.
 
 With zone redundancy enabled, Azure Cosmos DB provides:
 
@@ -113,8 +112,8 @@ resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2024-07-01' = {
 ## LINKS
 
 - [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [Reliability: Level 1](https://learn.microsoft.com/azure/well-architected/reliability/maturity-model?tabs=level1)
 - [Azure regions with availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support)
 - [Architecture strategies for using availability zones and regions](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
-- [Reliability: Level 1](https://learn.microsoft.com/azure/well-architected/reliability/maturity-model?tabs=level1)
 - [High availability in Azure Cosmos DB for MongoDB vCore](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/high-availability)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/mongoclusters)
