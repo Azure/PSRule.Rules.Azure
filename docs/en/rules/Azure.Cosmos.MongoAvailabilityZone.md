@@ -16,25 +16,29 @@ Use zone redundant Cosmos DB vCore clusters in supported regions to improve reli
 
 ## DESCRIPTION
 
-Azure Cosmos DB for MongoDB vCore clusters support high availability configuration with availability zones to provide resilience and business continuity.
+Azure Cosmos DB for MongoDB vCore clusters support zone redundancy.
 
-Availability zones are physically separate locations within an Azure region.
-Each zone is composed of one or more datacenters equipped with independent power, cooling, and networking.
-Using availability zones helps protect your MongoDB vCore cluster from datacenter-level failures.
+When zone redundancy is enabled, your data is replicated across multiple zones within an Azure region.
 
-MongoDB vCore clusters support the following high availability modes:
+Availability zones are unique physical locations within an Azure region.
+Each zone is made up of one or more datacenters equipped with independent power, cooling, and networking infrastructure.
+This physical separation ensures that if one zone experiences an outage,
+your Cosmos DB account continues to serve read and write requests from replicas in other zones without downtime.
 
-- **Disabled** - No high availability is configured.
-- **SameZone** - High availability within a single zone.
-- **ZoneRedundantPreferred** - Zone-redundant high availability across multiple availability zones.
+With zone redundancy enabled, Azure Cosmos DB provides:
 
-This rule checks that MongoDB vCore clusters deployed to regions that support availability zones have zone-redundant high availability enabled.
-Using `ZoneRedundantPreferred` mode ensures that your MongoDB vCore cluster is resilient to zone-level failures,
-providing better availability and durability for your data.
+- Automatic failover between zones.
+- Continuous availability during zonal failures.
+- Enhanced durability by maintaining multiple copies across separate physical locations.
+- Protection against datacenter-level disasters while maintaining low-latency access.
+
+Zone redundancy must be configured when you create a Cosmos DB cluster by setting `highAvailability.targetMode` to `ZoneRedundantPreferred`.
+This setting cannot be changed after the account is created.
+Zone redundancy is only available in regions that support availability zones.
 
 ## RECOMMENDATION
 
-Consider configuring Azure Cosmos DB for MongoDB vCore clusters deployed to supported regions to use zone-redundant high availability by setting the high availability mode to `ZoneRedundantPreferred`.
+Consider using locations configured with zone redundancy to improve workload resiliency of Cosmos DB clusters.
 
 ## EXAMPLES
 
