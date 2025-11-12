@@ -4,10 +4,10 @@ pillar: Reliability
 category: RE:05 Redundancy
 resource: Azure Managed Instance for Apache Cassandra
 resourceType: Microsoft.DocumentDB/cassandraClusters
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cassandra.AvailabilityZone/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MICassandra.AvailabilityZone/
 ---
 
-# Cassandra data centers should use Availability zones in supported regions
+# Managed Instance for Apache Cassandra data centers should use Availability zones in supported regions
 
 ## SYNOPSIS
 

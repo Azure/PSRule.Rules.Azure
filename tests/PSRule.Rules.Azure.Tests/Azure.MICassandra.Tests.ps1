@@ -23,7 +23,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.Cassandra' -Tag 'Cassandra', 'ManagedCassandra' {
+Describe 'Azure.MICassandra' -Tag 'MICassandra', 'ManagedCassandra' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -32,12 +32,12 @@ Describe 'Azure.Cassandra' -Tag 'Cassandra', 'ManagedCassandra' {
                 WarningAction = 'Ignore'
                 ErrorAction   = 'Stop'
             }
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Cassandra.json';
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.MICassandra.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
 
-        It 'Azure.Cassandra.AvailabilityZone' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cassandra.AvailabilityZone' };
+        It 'Azure.MICassandra.AvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MICassandra.AvailabilityZone' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
