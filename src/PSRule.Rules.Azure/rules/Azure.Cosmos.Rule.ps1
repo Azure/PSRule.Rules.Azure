@@ -77,6 +77,10 @@ function global:Test-CosmosAvailabilityZone {
             $Assert.HasFieldValue($TargetObject, 'properties.highAvailability.targetMode', 'ZoneRedundantPreferred').
                 ReasonFrom('properties.highAvailability.targetMode', $LocalizedData.CosmosDBClusterAvailabilityZone, $TargetObject.Name, $location);
         }
+        else {
+            # Pass if the region does not support availability zones
+            $Assert.Pass();
+        }
     }
 }
 
