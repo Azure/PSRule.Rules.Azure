@@ -1,0 +1,107 @@
+[
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters",
+    "apiVersion": "2023-04-15",
+    "name": "cassandra-cluster-with-az",
+    "location": "eastus",
+    "tags": {},
+    "properties": {
+      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "cassandraVersion": "4.0",
+      "clusterNameOverride": "cassandra-cluster-with-az",
+      "authenticationMethod": "Cassandra",
+      "initialCassandraAdminPassword": "Password123!",
+      "provisioningState": "Succeeded"
+    }
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+    "apiVersion": "2023-04-15",
+    "name": "cassandra-cluster-with-az/dc1",
+    "location": "eastus",
+    "properties": {
+      "dataCenterLocation": "eastus",
+      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "nodeCount": 3,
+      "sku": "Standard_E8s_v5",
+      "diskCapacity": 4,
+      "availabilityZone": true,
+      "provisioningState": "Succeeded"
+    }
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters",
+    "apiVersion": "2023-04-15",
+    "name": "cassandra-cluster-no-az",
+    "location": "eastus",
+    "tags": {},
+    "properties": {
+      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "cassandraVersion": "4.0",
+      "clusterNameOverride": "cassandra-cluster-no-az",
+      "authenticationMethod": "Cassandra",
+      "initialCassandraAdminPassword": "Password123!",
+      "provisioningState": "Succeeded"
+    }
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+    "apiVersion": "2023-04-15",
+    "name": "cassandra-cluster-no-az/dc1",
+    "location": "eastus",
+    "properties": {
+      "dataCenterLocation": "eastus",
+      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "nodeCount": 3,
+      "sku": "Standard_E8s_v5",
+      "diskCapacity": 4,
+      "availabilityZone": false,
+      "provisioningState": "Succeeded"
+    }
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+    "apiVersion": "2023-04-15",
+    "name": "dc-with-az",
+    "location": "westus2",
+    "properties": {
+      "dataCenterLocation": "westus2",
+      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test2/subnets/subnet-test",
+      "nodeCount": 3,
+      "sku": "Standard_E8s_v5",
+      "diskCapacity": 4,
+      "availabilityZone": true,
+      "provisioningState": "Succeeded"
+    }
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+    "apiVersion": "2023-04-15",
+    "name": "dc-no-az",
+    "location": "westus2",
+    "properties": {
+      "dataCenterLocation": "westus2",
+      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test2/subnets/subnet-test",
+      "nodeCount": 3,
+      "sku": "Standard_E8s_v5",
+      "diskCapacity": 4,
+      "availabilityZone": false,
+      "provisioningState": "Succeeded"
+    }
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+    "apiVersion": "2023-04-15",
+    "name": "dc-unsupported-region",
+    "location": "westindia",
+    "properties": {
+      "dataCenterLocation": "westindia",
+      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test3/subnets/subnet-test",
+      "nodeCount": 3,
+      "sku": "Standard_E8s_v5",
+      "diskCapacity": 4,
+      "availabilityZone": false,
+      "provisioningState": "Succeeded"
+    }
+  }
+]
