@@ -518,8 +518,5 @@ AZR-000495 | [Azure.ACR.ExportPolicy](Azure.ACR.ExportPolicy.md) | Export policy
 AZR-000496 | [Azure.Redis.LocalAuth](Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | GA
 AZR-000497 | [Azure.Storage.LocalAuth](Azure.Storage.LocalAuth.md) | Access keys allow depersonalized access to Storage Accounts using a shared secret. | GA
 AZR-000498 | [Azure.AppConfig.ReplicaLocation](Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | GA
-AZR-000499 | [Azure.Cosmos.MongoEntraID](Azure.Cosmos.MongoEntraID.md) | Cosmos DB accounts should use Entra ID authentication. | GA
-AZR-000502 | [Azure.Cosmos.AvailabilityZone](Azure.Cosmos.AvailabilityZone.md) | Use zone redundant Cosmos DB accounts in supported regions to improve reliability. | GA
-AZR-000503 | [Azure.Cassandra.AvailabilityZone](Azure.Cassandra.AvailabilityZone.md) | Deploy Azure Managed Instance for Apache Cassandra data centers using availability zones in supported regions to ensure high availability and resilience. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
