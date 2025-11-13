@@ -39,15 +39,15 @@ Describe 'Azure.MICassandra' -Tag 'MICassandra', 'ManagedCassandra' {
         It 'Azure.MICassandra.AvailabilityZone' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MICassandra.AvailabilityZone' };
 
-            # Fail
+            # Fail - datacenters without availability zones in supported regions
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'dc-no-az', 'cassandra-cluster-no-az/dc1';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'dc-with-az', 'cassandra-cluster-with-az/dc1', 'dc-unsupported-region';
+            $ruleResult.TargetName | Should -BeIn 'dc-no-az', 'cassandra-cluster-no-az/dc1', 'dc-unsupported-region';
+
+            # Pass - clusters with datacenters having availability zones, and datacenters with availability zones
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'dc-with-az', 'cassandra-cluster-with-az', 'cassandra-cluster-with-az/dc1', 'cassandra-cluster-no-az';
         }
     }
 }
