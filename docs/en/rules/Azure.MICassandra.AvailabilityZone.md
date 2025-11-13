@@ -1,35 +1,51 @@
 ---
+reviewed: 2025-11-13
 severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Azure Managed Instance for Apache Cassandra
-resourceType: Microsoft.DocumentDB/cassandraClusters
+resourceType: Microsoft.DocumentDB/cassandraClusters, Microsoft.DocumentDB/cassandraClusters/dataCenters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MICassandra.AvailabilityZone/
 ---
 
-# Managed Instance for Apache Cassandra data centers should use Availability zones in supported regions
+# Use zone redundant Azure Managed Instance for Apache Cassandra clusters
 
 ## SYNOPSIS
 
-Deploy Azure Managed Instance for Apache Cassandra data centers using availability zones in supported regions to ensure high availability and resilience.
+Use zone redundant Azure Managed Instance for Apache Cassandra clusters in supported regions to improve reliability.
 
 ## DESCRIPTION
 
-Azure Managed Instance for Apache Cassandra data centers using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region.
-When availability zones are enabled, nodes are physically separated across multiple zones within a region.
-By distributing nodes across availability zones, data centers can continue running even if one zone experiences an outage.
+Azure Managed Instance for Apache Cassandra supports zone redundancy through availability zones.
+When availability zones are enabled, nodes are physically separated across multiple zones within an Azure region.
 
-For a replication factor of 3, availability zone support ensures that each replica is placed in a different availability zone, preventing a zonal outage from affecting your database or application.
+Availability zones are unique physical locations within an Azure region.
+Each zone is made up of one or more datacenters equipped with independent power, cooling, and networking infrastructure.
+This physical separation ensures that if one zone experiences an outage,
+your Cassandra cluster continues to serve read and write requests from nodes in other zones without downtime.
+
+With availability zones enabled, Azure Managed Instance for Apache Cassandra provides:
+
+- Automatic distribution of nodes across zones.
+- Continuous availability during zonal failures.
+- Enhanced durability by maintaining multiple replicas across separate physical locations.
+- Protection against datacenter-level disasters while maintaining low-latency access.
+
+For a replication factor of 3, availability zone support ensures that each replica is placed in a different availability zone,
+preventing a zonal outage from affecting your database or application.
+
+Availability zones must be configured when you create a data center by setting `availabilityZone` to `true`.
+Availability zones are only available in regions that support them.
 
 ## RECOMMENDATION
 
-Consider enabling availability zones for Azure Managed Instance for Apache Cassandra data centers deployed in supported regions.
+Consider using locations configured with zone redundancy to improve workload resiliency of Azure Managed Instance for Apache Cassandra clusters.
 
 ## EXAMPLES
 
 ### Configure with Azure template
 
-To enable availability zones for a Cassandra data center:
+To deploy clusters that pass this rule:
 
 - Set `properties.availabilityZone` to `true`.
 
@@ -54,7 +70,7 @@ For example:
 
 ### Configure with Bicep
 
-To enable availability zones for a Cassandra data center:
+To deploy clusters that pass this rule:
 
 - Set `properties.availabilityZone` to `true`.
 
@@ -73,23 +89,6 @@ resource dataCenter 'Microsoft.DocumentDB/cassandraClusters/dataCenters@2023-11-
     availabilityZone: true
   }
 }
-```
-
-### Configure with Azure CLI
-
-To enable availability zones for a Cassandra data center:
-
-```bash
-az managed-cassandra datacenter create \
-  --resource-group $resourceGroupName \
-  --cluster-name $clusterName \
-  --data-center-name $dataCenterName \
-  --data-center-location $location \
-  --delegated-subnet-id $delegatedSubnetId \
-  --node-count 3 \
-  --sku Standard_E8s_v5 \
-  --disk-capacity 4 \
-  --availability-zone true
 ```
 
 ## NOTES
