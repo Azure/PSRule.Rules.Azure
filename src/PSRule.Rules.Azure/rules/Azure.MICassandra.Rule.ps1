@@ -26,7 +26,7 @@ Rule 'Azure.MICassandra.AvailabilityZone' -Ref 'AZR-000504' -Type 'Microsoft.Doc
                 'properties.availabilityZone',
                 $LocalizedData.MICassandraAvailabilityZone,
                 $dataCenter.name,
-                $dataCenter.dataCenterLocation
+                $dataCenter.properties.dataCenterLocation
             )
         }
         # Don't flag if the region does not support availability zones.
