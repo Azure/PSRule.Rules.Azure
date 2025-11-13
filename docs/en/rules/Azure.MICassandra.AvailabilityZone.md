@@ -92,36 +92,13 @@ az managed-cassandra datacenter create \
   --availability-zone true
 ```
 
-### Configure with Azure PowerShell
-
-To enable availability zones for a Cassandra data center:
-
-```powershell
-New-AzManagedCassandraDatacenter `
-  -ResourceGroupName $resourceGroupName `
-  -ClusterName $clusterName `
-  -DataCenterName $dataCenterName `
-  -Location $location `
-  -DelegatedSubnetId $delegatedSubnetId `
-  -NodeCount 3 `
-  -Sku Standard_E8s_v5 `
-  -DiskCapacity 4 `
-  -UseAvailabilityZone $true
-```
-
 ## NOTES
 
-This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
-
-This rule fails when `properties.availabilityZone` is `false` or not set when there are availability zones available for the given region.
-
-Availability zones are not supported in all Azure regions.
-Deployments will fail if you select a region where availability zones are not supported.
+This rule only applies to Azure Managed Instance for Apache Cassandra deployment model.
 
 ## LINKS
 
-- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
-- [Best practices for high availability and disaster recovery](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/resilient-applications)
-- [Create an Azure Managed Instance for Apache Cassandra cluster](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/create-cluster-cli)
-- [Azure regions with availability zones](https://learn.microsoft.com/azure/reliability/availability-zones-region-support)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/cassandraclusters/datacenters)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [Azure regions with availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support)
+- [Reliability: Level 1](https://learn.microsoft.com/azure/well-architected/reliability/maturity-model?tabs=level1)
+- [Architecture strategies for using availability zones and regions](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
