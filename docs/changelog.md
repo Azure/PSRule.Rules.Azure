@@ -35,7 +35,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that replica locations are in allowed regions by @BernieWhite.
       [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
   - Managed Instance for Apache Cassandra:
-    - Check that Managed Instance for Apache Cassandra data centers use availability zones by @BenjaminEngeset.
+    - Check that Managed Instance for Apache Cassandra clusters have availability zones enabled by @BenjaminEngeset.
       [#3592](https://github.com/Azure/PSRule.Rules.Azure/issues/3592)
   - Cosmos DB:
     - Check that Cosmos DB accounts have availability zones enabled by @BenjaminEngeset.
