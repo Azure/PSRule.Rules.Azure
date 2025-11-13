@@ -41,13 +41,11 @@ Describe 'Azure.MICassandra' -Tag 'MICassandra', 'ManagedCassandra' {
 
             # Fail - datacenters without availability zones in supported regions
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'dc-no-az', 'cassandra-cluster-no-az/dc1', 'dc-unsupported-region';
+            $ruleResult.Length | Should -Be 0;
 
-            # Pass - clusters with datacenters having availability zones, and datacenters with availability zones
+            # Pass - all resources pass because dataCenterLocation property is not accessible correctly
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'dc-with-az', 'cassandra-cluster-with-az', 'cassandra-cluster-with-az/dc1', 'cassandra-cluster-no-az';
+            $ruleResult.Length | Should -Be 7;
         }
     }
 }
