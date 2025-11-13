@@ -60,9 +60,167 @@
     }
   },
   {
+    "type": "Microsoft.DocumentDB/cassandraClusters",
+    "apiVersion": "2023-04-15",
+    "name": "cassandra-cluster-nested-with-az",
+    "location": "westus2",
+    "tags": {},
+    "properties": {
+      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "cassandraVersion": "4.0",
+      "clusterNameOverride": "cassandra-cluster-nested-with-az",
+      "authenticationMethod": "Cassandra",
+      "initialCassandraAdminPassword": "Password123!",
+      "provisioningState": "Succeeded"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "apiVersion": "2023-04-15",
+        "name": "dc1",
+        "location": "westus2",
+        "properties": {
+          "dataCenterLocation": "westus2",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": true,
+          "provisioningState": "Succeeded"
+        }
+      },
+      {
+        "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "apiVersion": "2023-04-15",
+        "name": "dc2",
+        "location": "eastus",
+        "properties": {
+          "dataCenterLocation": "eastus",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": true,
+          "provisioningState": "Succeeded"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters",
+    "apiVersion": "2023-04-15",
+    "name": "cassandra-cluster-nested-no-az",
+    "location": "westus2",
+    "tags": {},
+    "properties": {
+      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "cassandraVersion": "4.0",
+      "clusterNameOverride": "cassandra-cluster-nested-no-az",
+      "authenticationMethod": "Cassandra",
+      "initialCassandraAdminPassword": "Password123!",
+      "provisioningState": "Succeeded"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "apiVersion": "2023-04-15",
+        "name": "dc1",
+        "location": "westus2",
+        "properties": {
+          "dataCenterLocation": "westus2",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": false,
+          "provisioningState": "Succeeded"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters",
+    "apiVersion": "2023-04-15",
+    "name": "cassandra-cluster-nested-mixed",
+    "location": "eastus",
+    "tags": {},
+    "properties": {
+      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "cassandraVersion": "4.0",
+      "clusterNameOverride": "cassandra-cluster-nested-mixed",
+      "authenticationMethod": "Cassandra",
+      "initialCassandraAdminPassword": "Password123!",
+      "provisioningState": "Succeeded"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "apiVersion": "2023-04-15",
+        "name": "dc-with-az",
+        "location": "eastus",
+        "properties": {
+          "dataCenterLocation": "eastus",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": true,
+          "provisioningState": "Succeeded"
+        }
+      },
+      {
+        "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "apiVersion": "2023-04-15",
+        "name": "dc-no-az",
+        "location": "eastus",
+        "properties": {
+          "dataCenterLocation": "eastus",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": false,
+          "provisioningState": "Succeeded"
+        }
+      }
+    ]
+  },
+  {
+    "type": "Microsoft.DocumentDB/cassandraClusters",
+    "apiVersion": "2023-04-15",
+    "name": "cassandra-cluster-nested-unsupported",
+    "location": "westindia",
+    "tags": {},
+    "properties": {
+      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "cassandraVersion": "4.0",
+      "clusterNameOverride": "cassandra-cluster-nested-unsupported",
+      "authenticationMethod": "Cassandra",
+      "initialCassandraAdminPassword": "Password123!",
+      "provisioningState": "Succeeded"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "apiVersion": "2023-04-15",
+        "name": "dc1",
+        "location": "westindia",
+        "properties": {
+          "dataCenterLocation": "westindia",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": false,
+          "provisioningState": "Succeeded"
+        }
+      }
+    ]
+  },
+  {
     "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
     "apiVersion": "2023-04-15",
-    "name": "dc-with-az",
+    "name": "dc-standalone-with-az",
     "location": "westus2",
     "properties": {
       "dataCenterLocation": "westus2",
@@ -77,7 +235,7 @@
   {
     "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
     "apiVersion": "2023-04-15",
-    "name": "dc-no-az",
+    "name": "dc-standalone-no-az",
     "location": "westus2",
     "properties": {
       "dataCenterLocation": "westus2",
@@ -92,7 +250,7 @@
   {
     "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
     "apiVersion": "2023-04-15",
-    "name": "dc-unsupported-region",
+    "name": "dc-standalone-unsupported-region",
     "location": "westindia",
     "properties": {
       "dataCenterLocation": "westindia",
