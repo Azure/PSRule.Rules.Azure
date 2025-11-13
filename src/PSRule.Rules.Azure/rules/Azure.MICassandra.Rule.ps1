@@ -18,7 +18,7 @@ Rule 'Azure.MICassandra.AvailabilityZone' -Ref 'AZR-000504' -Type 'Microsoft.Doc
     }
 
     foreach ($dataCenter in $dataCenters) {
-        $availabilityZones = GetAvailabilityZone -Location $dataCenter.dataCenterLocation -Zone $provider.ZoneMappings
+        $availabilityZones = GetAvailabilityZone -Location $dataCenter.properties.dataCenterLocation -Zone $provider.ZoneMappings
 
         if ($availabilityZones) {
             $Assert.HasFieldValue($dataCenter, 'properties.availabilityZone', $true).
