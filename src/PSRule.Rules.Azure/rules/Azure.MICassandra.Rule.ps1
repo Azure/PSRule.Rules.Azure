@@ -7,30 +7,35 @@
 
 #region Rules
 
-# Synopsis: Deploy Azure Managed Instance for Apache Cassandra data centers using availability zones in supported regions to ensure high availability and resilience.
+# Synopsis: Use zone redundant Azure Managed Instance for Apache Cassandra clusters in supported regions to improve reliability.
 Rule 'Azure.MICassandra.AvailabilityZone' -Ref 'AZR-000504' -Type 'Microsoft.DocumentDB/cassandraClusters', 'Microsoft.DocumentDB/cassandraClusters/dataCenters' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
     # Check for availability zones based on virtual machine scale sets, because it is not exposed through the provider for Managed Instance for Apache Cassandra.
-    $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
+    $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets')
 
-    $dataCenters = @(GetCassandraDataCenter);
-    if ($dataCenters.Length -eq 0) {
-        return $Assert.Pass();
+    $dataCenters = @(GetCassandraDataCenter)
+    if ($dataCenters.Count -eq 0) {
+        return $Assert.Pass()
     }
 
     foreach ($dataCenter in $dataCenters) {
-        $availabilityZones = GetAvailabilityZone -Location $dataCenter.Location -Zone $provider.ZoneMappings;
+        $availabilityZones = GetAvailabilityZone -Location $dataCenter.dataCenterLocation -Zone $provider.ZoneMappings
 
-        # Don't flag if the region does not support availability zones
         if ($availabilityZones) {
-            $Assert.HasFieldValue($dataCenter, 'properties.availabilityZone', $true).Reason(
+            $Assert.HasFieldValue($dataCenter, 'properties.availabilityZone', $true).
+            ReasonFrom(
+                'properties.availabilityZone',
                 $LocalizedData.MICassandraAvailabilityZone,
                 $dataCenter.name,
-                $dataCenter.location,
-                ($availabilityZones -join ', ')
-            );
+                $dataCenter.dataCenterLocation
+            )
+        }
+        # Don't flag if the region does not support availability zones.
+        else {
+            $Assert.Pass()
         }
     }
 }
+
 #endregion Rules
 
 #region Helper functions
