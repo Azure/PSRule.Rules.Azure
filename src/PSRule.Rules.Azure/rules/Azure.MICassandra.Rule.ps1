@@ -42,7 +42,6 @@ Rule 'Azure.MICassandra.AvailabilityZone' -Ref 'AZR-000504' -Type 'Microsoft.Doc
 
 function global:GetCassandraDataCenter {
     [CmdletBinding()]
-    [OutputType([PSObject])]
     param ()
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DocumentDB/cassandraClusters') {
