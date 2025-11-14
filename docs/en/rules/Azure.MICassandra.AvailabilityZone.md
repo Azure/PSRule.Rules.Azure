@@ -24,15 +24,16 @@ Each zone is made up of one or more datacenters equipped with independent power,
 This physical separation ensures that if one zone experiences an outage,
 your Cassandra cluster continues to serve read and write requests from nodes in other zones without downtime.
 
-With availability zones enabled, Azure Managed Instance for Apache Cassandra provides:
+With zone redundancy enabled, Azure Managed Instance for Apache Cassandra provides:
 
 - Automatic distribution of nodes across zones.
 - Continuous availability during zonal failures.
 - Enhanced durability by maintaining multiple replicas across separate physical locations.
 - Protection against datacenter-level disasters while maintaining low-latency access.
 
-Availability zones must be configured when you create a data center by setting `availabilityZone` to `true`.
-Availability zones are only available in regions that support them.
+Zone redundancy must be configured when you create a data center by setting `availabilityZone` to `true`.
+This setting cannot be changed after the datacenter is created.
+Zone redundancy is only available in regions that support availability zones.
 
 ## RECOMMENDATION
 
