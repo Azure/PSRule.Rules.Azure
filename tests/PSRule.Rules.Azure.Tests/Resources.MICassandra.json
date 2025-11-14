@@ -265,7 +265,7 @@
     "Location": "westus2",
     "Properties": {
       "dataCenterLocation": "westus2",
-      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test2/subnets/subnet-test",
+      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
       "nodeCount": 3,
       "sku": "Standard_E8s_v5",
       "diskCapacity": 4,
@@ -284,7 +284,7 @@
     "Location": "westindia",
     "Properties": {
       "dataCenterLocation": "westindia",
-      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test3/subnets/subnet-test",
+      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
       "nodeCount": 3,
       "sku": "Standard_E8s_v5",
       "diskCapacity": 4,
