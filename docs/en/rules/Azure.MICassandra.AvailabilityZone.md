@@ -51,7 +51,7 @@ For example:
 ```json
 {
   "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
-  "apiVersion": "2025-10-15",
+  "apiVersion": "2024-11-15",
   "name": "[format('{0}/{1}', parameters('clusterName'), parameters('dataCenterName'))]",
   "location": "[parameters('location')]",
   "properties": {
@@ -74,7 +74,7 @@ To deploy clusters that pass this rule:
 For example:
 
 ```bicep
-resource dataCenter 'Microsoft.DocumentDB/cassandraClusters/dataCenters@2025-10-15' = {
+resource dataCenter 'Microsoft.DocumentDB/cassandraClusters/dataCenters@2024-11-15' = {
   parent: cluster
   name: datacenterName
   location: location
