@@ -1,10 +1,10 @@
 ---
-reviewed: 2025-11-13
+reviewed: 2025-11-14
 severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Azure Managed Instance for Apache Cassandra
-resourceType: Microsoft.DocumentDB/cassandraClusters, Microsoft.DocumentDB/cassandraClusters/dataCenters
+resourceType: Microsoft.DocumentDB/cassandraClusters/dataCenters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MICassandra.AvailabilityZone/
 ---
 
@@ -31,9 +31,6 @@ With availability zones enabled, Azure Managed Instance for Apache Cassandra pro
 - Enhanced durability by maintaining multiple replicas across separate physical locations.
 - Protection against datacenter-level disasters while maintaining low-latency access.
 
-For a replication factor of 3, availability zone support ensures that each replica is placed in a different availability zone,
-preventing a zonal outage from affecting your database or application.
-
 Availability zones must be configured when you create a data center by setting `availabilityZone` to `true`.
 Availability zones are only available in regions that support them.
 
@@ -54,7 +51,7 @@ For example:
 ```json
 {
   "type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
-  "apiVersion": "2023-11-15",
+  "apiVersion": "2025-10-15",
   "name": "[format('{0}/{1}', parameters('clusterName'), parameters('dataCenterName'))]",
   "location": "[parameters('location')]",
   "properties": {
@@ -77,8 +74,9 @@ To deploy clusters that pass this rule:
 For example:
 
 ```bicep
-resource dataCenter 'Microsoft.DocumentDB/cassandraClusters/dataCenters@2023-11-15' = {
-  name: '${clusterName}/${dataCenterName}'
+resource dataCenter 'Microsoft.DocumentDB/cassandraClusters/dataCenters@2025-10-15' = {
+  parent: cluster
+  name: datacenterName
   location: location
   properties: {
     dataCenterLocation: location
@@ -101,3 +99,5 @@ This rule only applies to Azure Managed Instance for Apache Cassandra deployment
 - [Azure regions with availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support)
 - [Reliability: Level 1](https://learn.microsoft.com/azure/well-architected/reliability/maturity-model?tabs=level1)
 - [Architecture strategies for using availability zones and regions](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
+- [Best practices for high availability and disaster recovery](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/resilient-applications)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/cassandraclusters/datacenters)
