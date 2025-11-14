@@ -7,7 +7,7 @@
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/cassandraClusters",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Location": "eastus",
+    "Location": "westus2",
     "Tags": {},
     "Properties": {
       "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
@@ -16,89 +16,13 @@
       "authenticationMethod": "Cassandra",
       "initialCassandraAdminPassword": "Password123!",
       "provisioningState": "Succeeded"
-    }
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-a/dataCenters/datacenter-a",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-a/dataCenters/datacenter-a",
-    "ResourceName": "micassandra-a/datacenter-a",
-    "Name": "micassandra-a/datacenter-a",
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Location": "eastus",
-    "Properties": {
-      "dataCenterLocation": "eastus",
-      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
-      "nodeCount": 3,
-      "sku": "Standard_E8s_v5",
-      "diskCapacity": 4,
-      "availabilityZone": true,
-      "provisioningState": "Succeeded"
-    }
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-b",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-b",
-    "ResourceName": "micassandra-b",
-    "Name": "micassandra-b",
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DocumentDB/cassandraClusters",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Location": "eastus",
-    "Tags": {},
-    "Properties": {
-      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
-      "cassandraVersion": "4.0",
-      "clusterNameOverride": "micassandra-b",
-      "authenticationMethod": "Cassandra",
-      "initialCassandraAdminPassword": "Password123!",
-      "provisioningState": "Succeeded"
-    }
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-b/dataCenters/datacenter-b",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-b/dataCenters/datacenter-b",
-    "ResourceName": "micassandra-b/datacenter-b",
-    "Name": "micassandra-b/datacenter-b",
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Location": "eastus",
-    "Properties": {
-      "dataCenterLocation": "eastus",
-      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
-      "nodeCount": 3,
-      "sku": "Standard_E8s_v5",
-      "diskCapacity": 4,
-      "availabilityZone": false,
-      "provisioningState": "Succeeded"
-    }
-  },
-  {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c",
-    "ResourceName": "micassandra-c",
-    "Name": "micassandra-c",
-    "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.DocumentDB/cassandraClusters",
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Location": "westus2",
-    "Tags": {},
-    "Properties": {
-      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
-      "cassandraVersion": "4.0",
-      "clusterNameOverride": "micassandra-c",
-      "authenticationMethod": "Cassandra",
-      "initialCassandraAdminPassword": "Password123!",
-      "provisioningState": "Succeeded"
     },
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c/dataCenters/datacenter-c",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c/dataCenters/datacenter-c",
-        "ResourceName": "datacenter-c",
-        "Name": "datacenter-c",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-a/dataCenters/datacenter-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-a/dataCenters/datacenter-a",
+        "ResourceName": "datacenter-a",
+        "Name": "datacenter-a",
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
@@ -114,10 +38,10 @@
         }
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c/dataCenters/datacenter-d",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c/dataCenters/datacenter-d",
-        "ResourceName": "datacenter-d",
-        "Name": "datacenter-d",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-a/dataCenters/datacenter-b",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-a/dataCenters/datacenter-b",
+        "ResourceName": "datacenter-b",
+        "Name": "datacenter-b",
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
@@ -135,6 +59,105 @@
     ]
   },
   {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-b",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-b",
+    "ResourceName": "micassandra-b",
+    "Name": "micassandra-b",
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DocumentDB/cassandraClusters",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Location": "westus2",
+    "Tags": {},
+    "Properties": {
+      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "cassandraVersion": "4.0",
+      "clusterNameOverride": "micassandra-b",
+      "authenticationMethod": "Cassandra",
+      "initialCassandraAdminPassword": "Password123!",
+      "provisioningState": "Succeeded"
+    },
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-b/dataCenters/datacenter-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-b/dataCenters/datacenter-a",
+        "ResourceName": "datacenter-a",
+        "Name": "datacenter-a",
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Location": "westus2",
+        "Properties": {
+          "dataCenterLocation": "westus2",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": false,
+          "provisioningState": "Succeeded"
+        }
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c",
+    "ResourceName": "micassandra-c",
+    "Name": "micassandra-c",
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DocumentDB/cassandraClusters",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Location": "eastus",
+    "Tags": {},
+    "Properties": {
+      "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+      "cassandraVersion": "4.0",
+      "clusterNameOverride": "micassandra-c",
+      "authenticationMethod": "Cassandra",
+      "initialCassandraAdminPassword": "Password123!",
+      "provisioningState": "Succeeded"
+    },
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c/dataCenters/datacenter-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c/dataCenters/datacenter-a",
+        "ResourceName": "datacenter-a",
+        "Name": "datacenter-a",
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Location": "eastus",
+        "Properties": {
+          "dataCenterLocation": "eastus",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": true,
+          "provisioningState": "Succeeded"
+        }
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c/dataCenters/datacenter-b",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-c/dataCenters/datacenter-b",
+        "ResourceName": "datacenter-b",
+        "Name": "datacenter-b",
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Location": "eastus",
+        "Properties": {
+          "dataCenterLocation": "eastus",
+          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
+          "nodeCount": 3,
+          "sku": "Standard_E8s_v5",
+          "diskCapacity": 4,
+          "availabilityZone": false,
+          "provisioningState": "Succeeded"
+        }
+      }
+    ]
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-d",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-d",
     "ResourceName": "micassandra-d",
@@ -142,7 +165,7 @@
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/cassandraClusters",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Location": "westus2",
+    "Location": "westindia",
     "Tags": {},
     "Properties": {
       "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
@@ -154,16 +177,16 @@
     },
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-d/dataCenters/datacenter-e",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-d/dataCenters/datacenter-e",
-        "ResourceName": "datacenter-e",
-        "Name": "datacenter-e",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-d/dataCenters/datacenter-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-d/dataCenters/datacenter-a",
+        "ResourceName": "datacenter-a",
+        "Name": "datacenter-a",
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Location": "westus2",
+        "Location": "westindia",
         "Properties": {
-          "dataCenterLocation": "westus2",
+          "dataCenterLocation": "westindia",
           "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
           "nodeCount": 3,
           "sku": "Standard_E8s_v5",
@@ -191,47 +214,7 @@
       "authenticationMethod": "Cassandra",
       "initialCassandraAdminPassword": "Password123!",
       "provisioningState": "Succeeded"
-    },
-    "resources": [
-      {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-e/dataCenters/datacenter-f",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-e/dataCenters/datacenter-f",
-        "ResourceName": "datacenter-f",
-        "Name": "datacenter-f",
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Location": "eastus",
-        "Properties": {
-          "dataCenterLocation": "eastus",
-          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
-          "nodeCount": 3,
-          "sku": "Standard_E8s_v5",
-          "diskCapacity": 4,
-          "availabilityZone": true,
-          "provisioningState": "Succeeded"
-        }
-      },
-      {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-e/dataCenters/datacenter-g",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-e/dataCenters/datacenter-g",
-        "ResourceName": "datacenter-g",
-        "Name": "datacenter-g",
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Location": "eastus",
-        "Properties": {
-          "dataCenterLocation": "eastus",
-          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
-          "nodeCount": 3,
-          "sku": "Standard_E8s_v5",
-          "diskCapacity": 4,
-          "availabilityZone": false,
-          "provisioningState": "Succeeded"
-        }
-      }
-    ]
+    }
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-f",
@@ -241,7 +224,7 @@
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/cassandraClusters",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Location": "westindia",
+    "Location": "westus2",
     "Tags": {},
     "Properties": {
       "delegatedManagementSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
@@ -250,41 +233,20 @@
       "authenticationMethod": "Cassandra",
       "initialCassandraAdminPassword": "Password123!",
       "provisioningState": "Succeeded"
-    },
-    "resources": [
-      {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-f/dataCenters/datacenter-h",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-f/dataCenters/datacenter-h",
-        "ResourceName": "datacenter-h",
-        "Name": "datacenter-h",
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Location": "westindia",
-        "Properties": {
-          "dataCenterLocation": "westindia",
-          "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
-          "nodeCount": 3,
-          "sku": "Standard_E8s_v5",
-          "diskCapacity": 4,
-          "availabilityZone": false,
-          "provisioningState": "Succeeded"
-        }
-      }
-    ]
+    }
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-g/dataCenters/datacenter-i",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-g/dataCenters/datacenter-i",
-    "ResourceName": "micassandra-g/datacenter-i",
-    "Name": "micassandra-g/datacenter-i",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-e/dataCenters/datacenter-a",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-e/dataCenters/datacenter-a",
+    "ResourceName": "micassandra-e/datacenter-a",
+    "Name": "micassandra-e/datacenter-a",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "Location": "westus2",
+    "Location": "eastus",
     "Properties": {
-      "dataCenterLocation": "westus2",
-      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test2/subnets/subnet-test",
+      "dataCenterLocation": "eastus",
+      "delegatedSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test",
       "nodeCount": 3,
       "sku": "Standard_E8s_v5",
       "diskCapacity": 4,
@@ -293,10 +255,10 @@
     }
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-h/dataCenters/datacenter-j",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-h/dataCenters/datacenter-j",
-    "ResourceName": "micassandra-h/datacenter-j",
-    "Name": "micassandra-h/datacenter-j",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-f/dataCenters/datacenter-a",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-f/dataCenters/datacenter-a",
+    "ResourceName": "micassandra-f/datacenter-a",
+    "Name": "micassandra-f/datacenter-a",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
@@ -312,10 +274,10 @@
     }
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-i/dataCenters/datacenter-k",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-i/dataCenters/datacenter-k",
-    "ResourceName": "micassandra-i/datacenter-k",
-    "Name": "micassandra-i/datacenter-k",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-g/dataCenters/datacenter-a",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDB/cassandraClusters/micassandra-g/dataCenters/datacenter-a",
+    "ResourceName": "micassandra-g/datacenter-a",
+    "Name": "micassandra-g/datacenter-a",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",

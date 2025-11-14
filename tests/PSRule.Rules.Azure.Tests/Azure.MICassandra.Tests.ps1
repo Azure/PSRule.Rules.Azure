@@ -40,14 +40,18 @@ Describe 'Azure.MICassandra' -Tag 'MICassandra', 'ManagedCassandra' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MICassandra.AvailabilityZone' };
 
             # Fail - datacenters without availability zones in supported regions
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'micassandra-b/datacenter-b', 'micassandra-d', 'micassandra-e', 'micassandra-h/datacenter-j';
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object TargetName);
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'micassandra-b', 'micassandra-c', 'micassandra-f/datacenter-a';
+
+            $ruleResult[0].Reason | Should -Be "Path properties.availabilityZone: The Managed Instance for Apache Cassandra data center (datacenter-a) deployed to region (westus2) should should have zone redundancy enabled.";
+            $ruleResult[1].Reason | Should -Be "Path properties.availabilityZone: The Managed Instance for Apache Cassandra data center (datacenter-b) deployed to region (eastus) should should have zone redundancy enabled.";
+            $ruleResult[2].Reason | Should -Be "Path properties.availabilityZone: The Managed Instance for Apache Cassandra data center (micassandra-f/datacenter-a) deployed to region (westus2) should should have zone redundancy enabled.";
 
             # Pass - clusters and datacenters with availability zones, and those in unsupported regions
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'micassandra-a', 'micassandra-a/datacenter-a', 'micassandra-b', 'micassandra-c', 'micassandra-f', 'micassandra-g/datacenter-i', 'micassandra-i/datacenter-k';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'micassandra-a', 'micassandra-d', 'micassandra-e', 'micassandra-f', 'micassandra-e/datacenter-a', 'micassandra-g/datacenter-a';
         }
     }
 }
