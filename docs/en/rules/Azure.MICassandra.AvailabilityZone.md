@@ -3,20 +3,20 @@ reviewed: 2025-11-14
 severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
-resource: Azure Managed Instance for Apache Cassandra
-resourceType: Microsoft.DocumentDB/cassandraClusters/dataCenters
+resource: Managed Instance for Apache Cassandra
+resourceType: Microsoft.DocumentDB/cassandraClusters,Microsoft.DocumentDB/cassandraClusters/dataCenters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MICassandra.AvailabilityZone/
 ---
 
-# Use zone redundant Azure Managed Instance for Apache Cassandra clusters
+# Use zone redundant Managed Instance for Apache Cassandra clusters
 
 ## SYNOPSIS
 
-Use zone redundant Azure Managed Instance for Apache Cassandra clusters in supported regions to improve reliability.
+Use zone redundant Managed Instance for Apache Cassandra clusters in supported regions to improve reliability.
 
 ## DESCRIPTION
 
-Azure Managed Instance for Apache Cassandra supports zone redundancy through availability zones.
+Managed Instance for Apache Cassandra supports zone redundancy through availability zones.
 When availability zones are enabled, nodes are physically separated across multiple zones within an Azure region.
 
 Availability zones are unique physical locations within an Azure region.
@@ -24,7 +24,7 @@ Each zone is made up of one or more datacenters equipped with independent power,
 This physical separation ensures that if one zone experiences an outage,
 your Cassandra cluster continues to serve read and write requests from nodes in other zones without downtime.
 
-With zone redundancy enabled, Azure Managed Instance for Apache Cassandra provides:
+With zone redundancy enabled, Managed Instance for Apache Cassandra provides:
 
 - Automatic distribution of nodes across zones.
 - Continuous availability during zonal failures.
@@ -37,7 +37,7 @@ Zone redundancy is only available in regions that support availability zones.
 
 ## RECOMMENDATION
 
-Consider using locations configured with zone redundancy to improve workload resiliency of Azure Managed Instance for Apache Cassandra clusters.
+Consider enabling availability zones for data center clusters that support them to improve workload resiliency.
 
 ## EXAMPLES
 
@@ -92,7 +92,7 @@ resource dataCenter 'Microsoft.DocumentDB/cassandraClusters/dataCenters@2024-11-
 
 ## NOTES
 
-This rule only applies to Azure Managed Instance for Apache Cassandra deployment model.
+This rule only applies to Managed Instance for Apache Cassandra deployment model.
 
 ## LINKS
 
