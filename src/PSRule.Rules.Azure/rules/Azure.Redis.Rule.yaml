@@ -163,14 +163,16 @@ spec:
 
 ---
 # Synopsis: Azure Cache for Redis with Enterprise SKU.
-apiVersion: github.com/microsoft/PSRule/2025-01-01
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
   name: Azure.Redis.IsEnterprise
+  annotations:
+    export: false
 spec:
   if:
     allOf:
-      - type: .
+      - type: '.'
         equals: Microsoft.Cache/redisEnterprise
       - field: sku.name
         startsWith:
@@ -179,14 +181,16 @@ spec:
 
 ---
 # Synopsis: Azure Managed Redis.
-apiVersion: github.com/microsoft/PSRule/2025-01-01
+apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
   name: Azure.Redis.IsManaged
+  annotations:
+    export: false
 spec:
   if:
     allOf:
-      - type: .
+      - type: '.'
         equals: Microsoft.Cache/redisEnterprise
       - field: sku.name
         notStartsWith:

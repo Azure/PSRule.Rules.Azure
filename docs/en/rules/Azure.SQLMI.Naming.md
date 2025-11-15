@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-16
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
@@ -34,8 +34,9 @@ For SQL Managed Instance, the Cloud Adoption Framework (CAF) recommends using th
 Requirements for SQL Managed Instance resource names:
 
 - Between 1 and 63 characters long.
-- Can include alphanumeric characters, hyphens, underscores, and periods (restrictions vary by resource type).
-- Resource names must be unique within their scope.
+- Lowercase letters, numbers, and hyphens.
+- Can't start or end with a hyphen.
+- SQL Managed Instance names must be globally unique.
 
 ## RECOMMENDATION
 
@@ -62,7 +63,27 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource managedInstance 'Microsoft.Sql/managedInstances@2023-08-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  sku: {
+    name: 'GP_Gen5'
+  }
+  properties: {
+    administrators: {
+      administratorType: 'ActiveDirectory'
+      azureADOnlyAuthentication: true
+      login: login
+      sid: sid
+      principalType: 'Group'
+      tenantId: tenant().tenantId
+    }
+    maintenanceConfigurationId: maintenanceWindow.id
+  }
+}
 ```
 
 <!-- external:avm avm/res/sql/managed-instance name -->
@@ -73,6 +94,55 @@ To deploy resources that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 63,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/managedInstances",
+      "apiVersion": "2023-08-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "GP_Gen5"
+      },
+      "properties": {
+        "administrators": {
+          "administratorType": "ActiveDirectory",
+          "azureADOnlyAuthentication": true,
+          "login": "[parameters('login')]",
+          "sid": "[parameters('sid')]",
+          "principalType": "Group",
+          "tenantId": "[tenant().tenantId]"
+        },
+        "maintenanceConfigurationId": "[subscriptionResourceId('Microsoft.Maintenance/publicMaintenanceConfigurations', 'SQL_WestEurope_MI_1')]"
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 

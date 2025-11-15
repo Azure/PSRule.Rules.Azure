@@ -29,7 +29,7 @@ Some of the benefits of using standardized tagging and naming conventions are:
 For example, if you come upon a security incident, it's critical to quickly identify affected systems,
 the functions that those systems support, and the potential business impact.
 
-For Azure Cache for Redis Enterprise, the Cloud Adoption Framework (CAF) recommends using the `amr-` prefix.
+For Azure Cache for Redis Enterprise, the Cloud Adoption Framework (CAF) recommends using the `redis-` prefix.
 
 Requirements for Azure Cache for Redis Enterprise resource names:
 

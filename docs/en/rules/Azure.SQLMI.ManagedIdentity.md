@@ -27,6 +27,39 @@ Consider configure a managed identity to allow support for Azure AD authenticati
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy SQL Managed Instances that pass this rule:
+
+- Set `identity.type` to `SystemAssigned` or `UserAssigned` or `SystemAssigned,UserAssigned`.
+- If `identity.type` is `UserAssigned` or `SystemAssigned,UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
+
+For example:
+
+```bicep
+resource managedInstance 'Microsoft.Sql/managedInstances@2023-08-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  sku: {
+    name: 'GP_Gen5'
+  }
+  properties: {
+    administrators: {
+      administratorType: 'ActiveDirectory'
+      azureADOnlyAuthentication: true
+      login: login
+      sid: sid
+      principalType: 'Group'
+      tenantId: tenant().tenantId
+    }
+    maintenanceConfigurationId: maintenanceWindow.id
+  }
+}
+```
+
 ### Configure with Azure template
 
 To deploy SQL Managed Instances that pass this rule:
@@ -39,37 +72,26 @@ For example:
 ```json
 {
   "type": "Microsoft.Sql/managedInstances",
-  "apiVersion": "2022-05-01-preview",
-    "name": "[parameters('managedInstanceName')]",
+  "apiVersion": "2023-08-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "identity": {
-    "type": "SystemAssigned",
-    "userAssignedIdentities": {}
+    "type": "SystemAssigned"
   },
-  "properties": {}
-}
-```
- 
-### Configure with Bicep
-
-To deploy SQL Managed Instances that pass this rule:
-
-- Set `identity.type` to `SystemAssigned` or `UserAssigned` or `SystemAssigned,UserAssigned`.
-- If `identity.type` is `UserAssigned` or `SystemAssigned,UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
-
-For example:
-
-```bicep
-resource managedInstance 'Microsoft.Sql/managedInstances@2022-05-01-preview' = {
-  name: appName
-  location: location
-  name: managedInstanceName
-  location: location
-  identity: {
-    type: 'SystemAssigned'
-    userAssignedIdentities: {}
+  "sku": {
+    "name": "GP_Gen5"
+  },
+  "properties": {
+    "administrators": {
+      "administratorType": "ActiveDirectory",
+      "azureADOnlyAuthentication": true,
+      "login": "[parameters('login')]",
+      "sid": "[parameters('sid')]",
+      "principalType": "Group",
+      "tenantId": "[tenant().tenantId]"
+    },
+    "maintenanceConfigurationId": "[subscriptionResourceId('Microsoft.Maintenance/publicMaintenanceConfigurations', 'SQL_WestEurope_MI_1')]"
   }
-  properties: {}
 }
 ```
 

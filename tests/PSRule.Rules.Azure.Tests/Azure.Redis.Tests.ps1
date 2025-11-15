@@ -538,16 +538,13 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             };
 
             $cacheNames = @('cache-001', 'redis-001', 'REDIS-001')
-            $enterpriseNames = @('enterprise-001', 'redis-001', 'REDIS-001')
 
             $cacheItems = @($cacheNames | ForEach-Object {
                     [PSCustomObject]@{
                         Name = $_
                         Type = 'Microsoft.Cache/Redis'
                     }
-                });
 
-            $enterpriseItems = @($enterpriseNames | ForEach-Object {
                     [PSCustomObject]@{
                         Name = $_
                         Type = 'Microsoft.Cache/RedisEnterprise'
@@ -557,7 +554,7 @@ Describe 'Azure.Redis' -Tag 'Redis' {
                     }
                 });
 
-            $result = @($cacheItems + $enterpriseItems) | Invoke-PSRule @invokeParams -Option $option
+            $result = $cacheItems | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.Redis.Naming', 'Azure.RedisEnterprise.Naming'
         }
 
         It 'Azure.Redis.Naming' {
