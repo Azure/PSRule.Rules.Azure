@@ -37,34 +37,6 @@ Consider disabling local authentication on Cosmos DB NoSQL API accounts and usin
 
 ## EXAMPLES
 
-### Configure with Azure template
-
-To deploy database accounts that pass this rule:
-
-- Set the `properties.disableLocalAuth` property to `true`.
-
-For example:
-
-```json
-{
-  "type": "Microsoft.DocumentDB/databaseAccounts",
-  "apiVersion": "2023-11-15",
-  "name": "[parameters('name')]",
-  "location": "[parameters('location')]",
-  "kind": "GlobalDocumentDB",
-  "properties": {
-    "disableLocalAuth": true,
-    "locations": [
-      {
-        "locationName": "[parameters('location')]",
-        "failoverPriority": 0,
-        "isZoneRedundant": true
-      }
-    ]
-  }
-}
-```
-
 ### Configure with Bicep
 
 To deploy database accounts that pass this rule:
@@ -74,7 +46,7 @@ To deploy database accounts that pass this rule:
 For example:
 
 ```bicep
-resource account 'Microsoft.DocumentDB/databaseAccounts@2023-11-15' = {
+resource account 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' = {
   name: name
   location: location
   kind: 'GlobalDocumentDB'
@@ -91,6 +63,36 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2023-11-15' = {
 }
 ```
 
+<!-- external:avm avm/res/document-db/database-account disableLocalAuthentication -->
+
+### Configure with Azure template
+
+To deploy database accounts that pass this rule:
+
+- Set the `properties.disableLocalAuth` property to `true`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "apiVersion": "2025-04-15",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "disableLocalAuth": true,
+    "locations": [
+      {
+        "locationName": "[parameters('location')]",
+        "failoverPriority": 0,
+        "isZoneRedundant": true
+      }
+    ]
+  }
+}
+```
+
 ## NOTES
 
 This rule has been renamed from `Azure.Cosmos.DisableLocalAuth`.
@@ -99,9 +101,7 @@ The alias `Azure.Cosmos.DisableLocalAuth` is deprecated and will be removed in a
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication)
-- [Enforcing role-based access control as the only authentication method](https://learn.microsoft.com/azure/cosmos-db/how-to-setup-rbac#disable-local-auth)
-- [Configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account management plane](https://learn.microsoft.com/azure/cosmos-db/role-based-access-control)
-- [Configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account data plane](https://learn.microsoft.com/azure/cosmos-db/how-to-setup-rbac)
+- [Connect to Azure Cosmos DB for NoSQL using role-based access control and Microsoft Entra ID](https://learn.microsoft.com/azure/cosmos-db/nosql/how-to-connect-role-based-access-control)
 - [Azure security baseline for Azure Cosmos DB](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline)
 - [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#im-1-use-centralized-identity-and-authentication-system)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)
