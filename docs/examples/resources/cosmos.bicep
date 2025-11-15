@@ -10,7 +10,7 @@ param name string
 param location string = resourceGroup().location
 
 @description('A Cosmos DB account using the NoSQL API.')
-resource account 'Microsoft.DocumentDB/databaseAccounts@2023-11-15' = {
+resource account 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' = {
   name: name
   location: location
   properties: {
@@ -32,7 +32,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2023-11-15' = {
 }
 
 @description('A No SQL API database in a Cosmos DB account.')
-resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2023-11-15' = {
+resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2025-04-15' = {
   name: 'sql-001'
   parent: account
   properties: {
