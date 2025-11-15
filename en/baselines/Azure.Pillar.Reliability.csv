@@ -32,6 +32,7 @@
 "Azure.ContainerApp.Storage","Use of Azure Files volume mounts to persistent storage container data.","Awareness","Reliability","-"
 "Azure.Cosmos.AvailabilityZone","Use zone redundant Cosmos DB accounts in supported regions to improve reliability.","Important","Reliability","L1"
 "Azure.Cosmos.ContinuousBackup","Enable continuous backup on Cosmos DB accounts.","Important","Reliability","-"
+"Azure.Cosmos.MongoAvailabilityZone","Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability.","Important","Reliability","L1"
 "Azure.Cosmos.SLA","Use a paid tier to qualify for a Service Level Agreement (SLA).","Important","Reliability","-"
 "Azure.DataFactory.Version","Consider migrating to DataFactory v2.","Awareness","Reliability","-"
 "Azure.EntraDS.MinReplicas","Applications or infrastructure relying on a managed domain may fail if the domain is not available.","Important","Reliability","-"

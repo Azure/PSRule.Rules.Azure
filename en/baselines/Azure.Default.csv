@@ -153,6 +153,7 @@
 "Azure.Cosmos.DisableLocalAuth","Access keys allow depersonalized access to Cosmos DB accounts using a shared secret.","Critical","Security","L1"
 "Azure.Cosmos.DisableMetadataWrite","Use Entra ID identities for management place operations in Azure Cosmos DB.","Important","Security","-"
 "Azure.Cosmos.MinTLS","Cosmos DB accounts should reject TLS versions older than 1.2.","Critical","Security","L1"
+"Azure.Cosmos.MongoAvailabilityZone","Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability.","Important","Reliability","L1"
 "Azure.Cosmos.MongoEntraID","MongoDB vCore clusters should have Microsoft Entra ID authentication enabled.","Critical","Security","L1"
 "Azure.Cosmos.PublicAccess","Azure Cosmos DB should have public network access disabled.","Critical","Security","-"
 "Azure.Cosmos.SLA","Use a paid tier to qualify for a Service Level Agreement (SLA).","Important","Reliability","-"
