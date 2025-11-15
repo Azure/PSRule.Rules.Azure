@@ -534,11 +534,11 @@ Describe 'Azure.Redis' -Tag 'Redis' {
 
             $option = New-PSRuleOption -Configuration @{
                 'AZURE_REDIS_CACHE_NAME_FORMAT'      = '^redis-'
-                'AZURE_REDIS_ENTERPRISE_NAME_FORMAT' = '^amr-'
+                'AZURE_REDIS_ENTERPRISE_NAME_FORMAT' = '^redis-'
             };
 
             $cacheNames = @('cache-001', 'redis-001', 'REDIS-001')
-            $enterpriseNames = @('enterprise-001', 'amr-001', 'AMR-001')
+            $enterpriseNames = @('enterprise-001', 'redis-001', 'REDIS-001')
 
             $cacheItems = @($cacheNames | ForEach-Object {
                     [PSCustomObject]@{
@@ -551,6 +551,9 @@ Describe 'Azure.Redis' -Tag 'Redis' {
                     [PSCustomObject]@{
                         Name = $_
                         Type = 'Microsoft.Cache/RedisEnterprise'
+                        SKU = [PSCustomObject]@{
+                            Name = "Enterprise_E10"
+                        }
                     }
                 });
 
@@ -580,13 +583,13 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'enterprise-001', 'AMR-001';
+            $ruleResult.TargetName | Should -BeIn 'enterprise-001', 'REDIS-001';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'amr-001';
+            $ruleResult.TargetName | Should -Be 'redis-001';
         }
     }
 }
