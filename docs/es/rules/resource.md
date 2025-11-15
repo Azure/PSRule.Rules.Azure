@@ -147,7 +147,7 @@ Name | Synopsis | Severity | Level
 [Azure.AppGwWAF.Enabled](Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical | Error
 [Azure.AppGwWAF.Exclusions](Azure.AppGwWAF.Exclusions.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Critical | Error
 [Azure.AppGwWAF.PreventionMode](Azure.AppGwWAF.PreventionMode.md) | Use protection mode in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical | Error
-[Azure.AppGwWAF.RuleGroups](Azure.AppGwWAF.RuleGroups.md) | Use recommended rule groups in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical | Error
+[Azure.AppGwWAF.RuleGroups](Azure.AppGwWAF.RuleGroups.md) | Application Gateway WAF policies should include both Microsoft Default Rule Set and Bot Manager Rule Set to provide comprehensive protection against web application threats and malicious bot traffic. | Critical | Error
 
 ## Application Insights
 
@@ -203,6 +203,7 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.RedisEnterprise.MinTLS](Azure.RedisEnterprise.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | Critical | Error
+[Azure.RedisEnterprise.Naming](Azure.RedisEnterprise.Naming.md) | Azure Cache for Redis Enterprise resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.RedisEnterprise.Zones](Azure.RedisEnterprise.Zones.md) | Enterprise Redis cache should be zone-redundant for high availability. | Important | Error
 
 ## Azure Database
@@ -241,6 +242,7 @@ Name | Synopsis | Severity | Level
 [Azure.MySQL.MaintenanceWindow](Azure.MySQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for MySQL servers. | Important | Error
 [Azure.MySQL.MinTLS](Azure.MySQL.MinTLS.md) | MySQL DB servers should reject TLS versions older than 1.2. | Critical | Error
 [Azure.MySQL.ServerName](Azure.MySQL.ServerName.md) | Azure MySQL DB server names should meet naming requirements. | Awareness | Error
+[Azure.MySQL.ServerNaming](Azure.MySQL.ServerNaming.md) | MySQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.MySQL.UseFlexible](Azure.MySQL.UseFlexible.md) | Use Azure Database for MySQL Flexible Server deployment model. | Important | Warning
 [Azure.MySQL.UseSSL](Azure.MySQL.UseSSL.md) | Enforce encrypted MySQL connections. | Critical | Error
 [Azure.MySQL.ZoneRedundantHA](Azure.MySQL.ZoneRedundantHA.md) | Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | Important | Error
@@ -259,6 +261,7 @@ Name | Synopsis | Severity | Level
 [Azure.PostgreSQL.MaintenanceWindow](Azure.PostgreSQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for PostgreSQL servers. | Important | Error
 [Azure.PostgreSQL.MinTLS](Azure.PostgreSQL.MinTLS.md) | PostgreSQL DB servers should reject TLS versions older than 1.2. | Critical | Error
 [Azure.PostgreSQL.ServerName](Azure.PostgreSQL.ServerName.md) | Azure PostgreSQL DB server names should meet naming requirements. | Awareness | Error
+[Azure.PostgreSQL.ServerNaming](Azure.PostgreSQL.ServerNaming.md) | PostgreSQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.PostgreSQL.UseSSL](Azure.PostgreSQL.UseSSL.md) | Enforce encrypted PostgreSQL connections. | Critical | Error
 [Azure.PostgreSQL.ZoneRedundantHA](Azure.PostgreSQL.ZoneRedundantHA.md) | Deploy Azure Database for PostgreSQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | Important | Error
 
@@ -315,12 +318,6 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Grafana.Version](Azure.Grafana.Version.md) | Grafana workspaces should be on Grafana version 10. | Important | Error
 
-## Azure Managed Redis
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.RedisEnterprise.Naming](Azure.RedisEnterprise.Naming.md) | Azure Managed Redis resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
-
 ## Azure Monitor Alerts
 
 Name | Synopsis | Severity | Level
@@ -341,7 +338,7 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.SQL.DatabaseNaming](Azure.SQL.DatabaseNaming.md) | Azure SQL database resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.SQL.DBNaming](Azure.SQL.DBNaming.md) | Azure SQL database resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Azure SQL Database server
 
@@ -448,11 +445,14 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Cosmos.AccountName](Azure.Cosmos.AccountName.md) | Cosmos DB account names should meet naming requirements. | Awareness | Error
+[Azure.Cosmos.AvailabilityZone](Azure.Cosmos.AvailabilityZone.md) | Use zone redundant Cosmos DB accounts in supported regions to improve reliability. | Important | Error
 [Azure.Cosmos.ContinuousBackup](Azure.Cosmos.ContinuousBackup.md) | Enable continuous backup on Cosmos DB accounts. | Important | Error
 [Azure.Cosmos.DefenderCloud](Azure.Cosmos.DefenderCloud.md) | Enable Microsoft Defender for Azure Cosmos DB. | Critical | Error
 [Azure.Cosmos.DisableLocalAuth](Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | Critical | Error
 [Azure.Cosmos.DisableMetadataWrite](Azure.Cosmos.DisableMetadataWrite.md) | Use Entra ID identities for management place operations in Azure Cosmos DB. | Important | Error
 [Azure.Cosmos.MinTLS](Azure.Cosmos.MinTLS.md) | Cosmos DB accounts should reject TLS versions older than 1.2. | Critical | Error
+[Azure.Cosmos.MongoAvailabilityZone](Azure.Cosmos.MongoAvailabilityZone.md) | Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability. | Important | Error
+[Azure.Cosmos.MongoEntraID](Azure.Cosmos.MongoEntraID.md) | MongoDB vCore clusters should have Microsoft Entra ID authentication enabled. | Critical | Error
 [Azure.Cosmos.PublicAccess](Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | Critical | Error
 [Azure.Cosmos.SLA](Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | Important | Error
 
@@ -504,6 +504,7 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ADX.DiskEncryption](Azure.ADX.DiskEncryption.md) | Use disk encryption for Azure Data Explorer (ADX) clusters. | Important | Error
 [Azure.ADX.ManagedIdentity](Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | Important | Error
+[Azure.ADX.PublicAccess](Azure.ADX.PublicAccess.md) | Azure Data Explorer (ADX) clusters should have public network access disabled. | Critical | Error
 [Azure.ADX.SLA](Azure.ADX.SLA.md) | Use SKUs that include an SLA when configuring Azure Data Explorer (ADX) clusters. | Important | Error
 [Azure.ADX.Usage](Azure.ADX.Usage.md) | Regularly remove unused resources to reduce costs. | Important | Error
 
@@ -668,6 +669,18 @@ Name | Synopsis | Severity | Level
 [Azure.ML.PublicAccess](Azure.ML.PublicAccess.md) | Disable public network access from a Azure Machine Learning workspace. | Critical | Error
 [Azure.ML.UserManagedIdentity](Azure.ML.UserManagedIdentity.md) | ML workspaces should use user-assigned managed identity, rather than the default system-assigned managed identity. | Important | Error
 
+## Managed Grafana
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Grafana.AvailabilityZone](Azure.Grafana.AvailabilityZone.md) | Use zone redundant Grafana workspaces in supported regions to improve reliability. | Important | Error
+
+## Managed Instance for Apache Cassandra
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.MICassandra.AvailabilityZone](Azure.MICassandra.AvailabilityZone.md) | Use zone redundant Managed Instance for Apache Cassandra clusters in supported regions to improve reliability. | Important | Error
+
 ## Microsoft Defender for Cloud
 
 Name | Synopsis | Severity | Level
@@ -696,12 +709,6 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Monitor.ServiceHealth](Azure.Monitor.ServiceHealth.md) | Configure Service Health alerts to notify administrators. | Important | Error
-
-## MySQL database server
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.MySQL.Naming](Azure.MySQL.Naming.md) | MySQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Network Interface
 
@@ -732,12 +739,6 @@ Name | Synopsis | Severity | Level
 [Azure.Policy.Descriptors](Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name, description, and category. | Awareness | Error
 [Azure.Policy.ExemptionDescriptors](Azure.Policy.ExemptionDescriptors.md) | Policy exemptions should use a display name and description. | Awareness | Error
 [Azure.Policy.WaiverExpiry](Azure.Policy.WaiverExpiry.md) | Configure policy waiver exemptions to expire. | Awareness | Error
-
-## PostgreSQL database server
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.PostgreSQL.Naming](Azure.PostgreSQL.Naming.md) | PostgreSQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Private Endpoint
 
@@ -796,19 +797,9 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Entra ID client authentication for Service Fabric clusters. | Critical | Error
-[Azure.ServiceFabric.ProtectionLevel](Azure.ServiceFabric.ProtectionLevel.md) | Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks. | Important | Error
-
-## Service Fabric cluster
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.ServiceFabric.Naming](Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
-
-## Service Fabric managed cluster
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
 [Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.ServiceFabric.Naming](Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.ServiceFabric.ProtectionLevel](Azure.ServiceFabric.ProtectionLevel.md) | Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks. | Important | Error
 
 ## SignalR Service
 
@@ -846,12 +837,6 @@ Name | Synopsis | Severity | Level
 [Azure.SQLMI.ManagedIdentity](Azure.SQLMI.ManagedIdentity.md) | Ensure managed identity is used to allow support for Azure AD authentication. | Important | Error
 [Azure.SQLMI.Name](Azure.SQLMI.Name.md) | SQL Managed Instance names should meet naming requirements. | Awareness | Error
 [Azure.SQLMI.Naming](Azure.SQLMI.Naming.md) | SQL Managed Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
-
-## SQL Server Stretch Database
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.SQL.StretchDBNaming](Azure.SQL.StretchDBNaming.md) | SQL Server Stretch Database resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Storage Account
 
