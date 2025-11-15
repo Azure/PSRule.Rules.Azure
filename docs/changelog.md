@@ -31,6 +31,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Added naming format rules for AKS, Container Apps, Service Fabric, Cosmos DB, Redis, and SQL resources.
+    [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
   - App Configuration:
     - Check that replica locations are in allowed regions by @BernieWhite.
       [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)

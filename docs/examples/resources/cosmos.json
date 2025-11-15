@@ -5,14 +5,16 @@
     "_generator": {
       "name": "bicep",
       "version": "0.38.33.27573",
-      "templateHash": "15884156970722779622"
+      "templateHash": "2704156339140852790"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 3,
+      "maxLength": 44,
       "metadata": {
-        "description": "The name of the Cosmos database account."
+        "description": "The name of the resource."
       }
     },
     "location": {
@@ -44,9 +46,6 @@
         ],
         "disableKeyBasedMetadataWriteAccess": true,
         "minimalTlsVersion": "Tls12"
-      },
-      "metadata": {
-        "description": "A Cosmos DB account using the NoSQL API."
       }
     },
     {
@@ -60,10 +59,7 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('name'))]"
-      ],
-      "metadata": {
-        "description": "A No SQL API database in a Cosmos DB account."
-      }
+      ]
     }
   ]
 }

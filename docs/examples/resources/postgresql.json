@@ -4,13 +4,15 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.25.53.49325",
-      "templateHash": "1186622257126358354"
+      "version": "0.38.33.27573",
+      "templateHash": "7375294002453194062"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 3,
+      "maxLength": 63,
       "metadata": {
         "description": "The name of the resource."
       }
@@ -73,7 +75,7 @@
     },
     {
       "type": "Microsoft.DBforPostgreSQL/flexibleServers",
-      "apiVersion": "2022-12-01",
+      "apiVersion": "2024-08-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -102,7 +104,7 @@
     },
     {
       "type": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
-      "apiVersion": "2022-12-01",
+      "apiVersion": "2024-08-01",
       "name": "[format('{0}/{1}', parameters('name'), parameters('loginObjectId'))]",
       "properties": {
         "principalType": "ServicePrincipal",

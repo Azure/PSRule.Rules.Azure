@@ -457,4 +457,126 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             $ruleResult.TargetName | Should -BeIn 'sql-sql-01/sqldb-sql-01';
         }
     }
+
+    Context 'Resource naming' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_SQL_SERVER_NAME_FORMAT'       = '^sql-'
+                'AZURE_SQL_DATABASE_NAME_FORMAT'     = '^sqldb-'
+                'AZURE_SQL_JOB_AGENT_NAME_FORMAT'    = '^sqlja-'
+                'AZURE_SQL_ELASTIC_POOL_NAME_FORMAT' = '^sqlep-'
+            };
+
+            $serverNames = @('server-001', 'sql-001', 'SQL-001')
+            $dbNames = @('database-001', 'sqldb-001', 'SQLDB-001')
+            $jobAgentNames = @('agent-001', 'sqlja-001', 'SQLJA-001')
+            $poolNames = @('pool-001', 'sqlep-001', 'SQLEP-001')
+
+            $serverItems = @($serverNames | ForEach-Object {
+                [PSCustomObject]@{
+                    Name = $_
+                    Type = 'Microsoft.Sql/servers'
+                }
+            });
+
+            $dbItems = @($dbNames | ForEach-Object {
+                [PSCustomObject]@{
+                    Name = $_
+                    Type = 'Microsoft.Sql/servers/databases'
+                }
+            });
+
+            $jobAgentItems = @($jobAgentNames | ForEach-Object {
+                [PSCustomObject]@{
+                    Name = $_
+                    Type = 'Microsoft.Sql/servers/jobAgents'
+                }
+            });
+
+            $poolItems = @($poolNames | ForEach-Object {
+                [PSCustomObject]@{
+                    Name = $_
+                    Type = 'Microsoft.Sql/servers/elasticPools'
+                }
+            });
+
+            $result = @($serverItems + $dbItems + $jobAgentItems + $poolItems) | Invoke-PSRule @invokeParams -Option $option -Name @(
+                'Azure.SQL.ServerNaming'
+                'Azure.SQL.DBNaming'
+                'Azure.SQL.JobAgentNaming'
+                'Azure.SQL.ElasticPoolNaming'
+            )
+        }
+
+        It 'Azure.SQL.ServerNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.ServerNaming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-001', 'SQL-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'sql-001';
+        }
+
+        It 'Azure.SQL.DBNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.DBNaming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'database-001', 'SQLDB-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'sqldb-001';
+        }
+
+        It 'Azure.SQL.JobAgentNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.JobAgentNaming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'agent-001', 'SQLJA-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'sqlja-001';
+        }
+
+        It 'Azure.SQL.ElasticPoolNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.ElasticPoolNaming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'pool-001', 'SQLEP-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'sqlep-001';
+        }
+    }
 }

@@ -79,7 +79,7 @@ Rule 'Azure.SQL.AAD' -Ref 'AZR-000188' -Type 'Microsoft.Sql/servers', 'Microsoft
 }
 
 # Synopsis: Azure SQL logical server names should meet naming requirements.
-Rule 'Azure.SQL.ServerName' -Ref 'AZR-000190' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
+Rule 'Azure.SQL.ServerName' -Ref 'AZR-000190' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2'; } {
     # https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 
     # Between 1 and 63 characters long
@@ -151,7 +151,7 @@ Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases', 
 }
 
 # Synopsis: Azure SQL Database names should meet naming requirements.
-Rule 'Azure.SQL.DBName' -Ref 'AZR-000192' -Type 'Microsoft.Sql/servers/databases' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
+Rule 'Azure.SQL.DBName' -Ref 'AZR-000192' -Type 'Microsoft.Sql/servers/databases' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2'; } {
     # https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 
     $name = $PSRule.TargetName.Split('/', 2, [System.StringSplitOptions]::RemoveEmptyEntries)[-1];
@@ -255,3 +255,27 @@ function global:IsMasterDatabase {
 }
 
 #endregion Helper functions
+
+#region Naming rules
+
+# Synopsis: Azure SQL Database servers without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.ServerNaming' -Ref 'AZR-000525' -Type 'Microsoft.Sql/servers' -If { $Configuration['AZURE_SQL_SERVER_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_SERVER_NAME_FORMAT, $True);
+}
+
+# Synopsis: Azure SQL databases without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.DBNaming' -Ref 'AZR-000526' -Type 'Microsoft.Sql/servers/databases' -If { $Configuration['AZURE_SQL_DATABASE_NAME_FORMAT'] -ne '' -and !(IsMasterDatabase) } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_DATABASE_NAME_FORMAT, $True);
+}
+
+# Synopsis: Azure SQL Elastic Job agents without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.JobAgentNaming' -Ref 'AZR-000527' -Type 'Microsoft.Sql/servers/jobAgents' -If { $Configuration['AZURE_SQL_JOB_AGENT_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_JOB_AGENT_NAME_FORMAT, $True);
+}
+
+# Synopsis: Azure SQL Elastic Pools without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQL.ElasticPoolNaming' -Ref 'AZR-000528' -Type 'Microsoft.Sql/servers/elasticPools' -If { $Configuration['AZURE_SQL_ELASTIC_POOL_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_ELASTIC_POOL_NAME_FORMAT, $True);
+}
+
+#endregion Naming rules

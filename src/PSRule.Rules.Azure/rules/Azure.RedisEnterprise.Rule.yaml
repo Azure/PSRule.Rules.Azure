@@ -23,7 +23,9 @@ metadata:
     Azure.WAF/maturity: L1
 spec:
   type:
-  - Microsoft.Cache/redisEnterprise
+    - Microsoft.Cache/redisEnterprise
+  with:
+    - Azure.Redis.IsEnterprise
   condition:
     field: properties.minimumTlsVersion
     hasDefault: '1.2'

@@ -402,6 +402,7 @@ task BuildRuleMetadataCache {
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
             Control = $_.Labels.'Azure.MCSB.v1/control'
+            Maturity = $_.Labels.'Azure.WAF/maturity'
             Source = "https://github.com/Azure/PSRule.Rules.Azure/blob/main/src/PSRule.Rules.Azure/rules/$(($_.Source.Path -split '[/\\]')[-1])"
         }
     }
@@ -430,6 +431,7 @@ task BuildRuleMetadataCache {
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
             Control = $_.Labels.'Azure.MCSB.v1/control'
+            Maturity = $_.Labels.'Azure.WAF/maturity'
             Source = "https://github.com/Azure/PSRule.Rules.Azure/blob/main/src/PSRule.Rules.Azure/rules/$(($_.Source.Path -split '[/\\]')[-1])"
         }
     }

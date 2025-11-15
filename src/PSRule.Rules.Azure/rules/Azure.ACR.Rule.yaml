@@ -62,6 +62,7 @@ metadata:
     Azure.WAF/pillar: Operational Excellence
   labels:
     Azure.CAF: naming
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerRegistry/registries

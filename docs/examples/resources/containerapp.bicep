@@ -3,13 +3,10 @@
 
 // Bicep documentation examples
 
-@description('The name of the app environment.')
-param envName string
-
 @minLength(2)
 @maxLength(32)
-@description('The name of the container app.')
-param appName string
+@description('The name of the resource.')
+param name string
 
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
@@ -22,6 +19,9 @@ param subnetId string
 
 @description('The revision of the container app.')
 param revision string
+
+@description('The name of the workload profile to use for the job.')
+param workloadProfileName string
 
 resource workspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' existing = {
   name: split(workspaceId, '/')[8]
@@ -54,8 +54,8 @@ var ipSecurityRestrictions = [
 ]
 
 // An example App Environment configured with a consumption workload profile.
-resource containerEnv 'Microsoft.App/managedEnvironments@2024-03-01' = {
-  name: envName
+resource containerEnv 'Microsoft.App/managedEnvironments@2025-01-01' = {
+  name: name
   location: location
   properties: {
     appLogsConfiguration: {
@@ -80,8 +80,8 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2024-03-01' = {
 }
 
 // An example Container App using a minimum of 2 replicas.
-resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
-  name: appName
+resource containerApp 'Microsoft.App/containerApps@2025-01-01' = {
+  name: name
   location: location
   identity: {
     type: 'SystemAssigned'
@@ -109,8 +109,8 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
 }
 
 // An example Container App with IP security restrictions.
-resource containerAppWithSecurity 'Microsoft.App/containerApps@2024-03-01' = {
-  name: appName
+resource containerAppWithSecurity 'Microsoft.App/containerApps@2025-01-01' = {
+  name: name
   location: location
   identity: {
     type: 'SystemAssigned'
@@ -145,6 +145,27 @@ resource containerAppWithSecurity 'Microsoft.App/containerApps@2024-03-01' = {
           affinity: 'none'
         }
       }
+    }
+  }
+}
+
+// An example Container App Job using a workload profile.
+resource job 'Microsoft.App/jobs@2025-01-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    environmentId: containerEnv.id
+    template: {
+      containers: containers
+    }
+    workloadProfileName: workloadProfileName
+    configuration: {
+      replicaTimeout: 300
+      triggerType: 'Manual'
+      manualTriggerConfig: {}
     }
   }
 }

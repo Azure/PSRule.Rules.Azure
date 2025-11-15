@@ -4,23 +4,17 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "7132667371133705541"
+      "version": "0.38.33.27573",
+      "templateHash": "2167050194923568795"
     }
   },
   "parameters": {
-    "envName": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of the app environment."
-      }
-    },
-    "appName": {
+    "name": {
       "type": "string",
       "minLength": 2,
       "maxLength": 32,
       "metadata": {
-        "description": "The name of the container app."
+        "description": "The name of the resource."
       }
     },
     "location": {
@@ -46,6 +40,12 @@
       "type": "string",
       "metadata": {
         "description": "The revision of the container app."
+      }
+    },
+    "workloadProfileName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the workload profile to use for the job."
       }
     }
   },
@@ -78,8 +78,8 @@
   "resources": [
     {
       "type": "Microsoft.App/managedEnvironments",
-      "apiVersion": "2024-03-01",
-      "name": "[parameters('envName')]",
+      "apiVersion": "2025-01-01",
+      "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "properties": {
         "appLogsConfiguration": {
@@ -104,14 +104,14 @@
     },
     {
       "type": "Microsoft.App/containerApps",
-      "apiVersion": "2024-03-01",
-      "name": "[parameters('appName')]",
+      "apiVersion": "2025-01-01",
+      "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
         "type": "SystemAssigned"
       },
       "properties": {
-        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('name'))]",
         "template": {
           "revisionSuffix": "[parameters('revision')]",
           "containers": "[variables('containers')]",
@@ -131,19 +131,19 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]"
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('name'))]"
       ]
     },
     {
       "type": "Microsoft.App/containerApps",
-      "apiVersion": "2024-03-01",
-      "name": "[parameters('appName')]",
+      "apiVersion": "2025-01-01",
+      "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
         "type": "SystemAssigned"
       },
       "properties": {
-        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('name'))]",
         "template": {
           "revisionSuffix": "[parameters('revision')]",
           "containers": "[variables('containers')]",
@@ -175,7 +175,31 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]"
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.App/jobs",
+      "apiVersion": "2025-01-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('name'))]",
+        "template": {
+          "containers": "[variables('containers')]"
+        },
+        "workloadProfileName": "[parameters('workloadProfileName')]",
+        "configuration": {
+          "replicaTimeout": 300,
+          "triggerType": "Manual",
+          "manualTriggerConfig": {}
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.App/managedEnvironments', parameters('name'))]"
       ]
     }
   ]

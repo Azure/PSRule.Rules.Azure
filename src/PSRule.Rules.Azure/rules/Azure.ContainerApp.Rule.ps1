@@ -33,6 +33,21 @@ Rule 'Azure.ContainerApp.AvailabilityZone' -Ref 'AZR-000414' -Type 'Microsoft.Ap
     $Assert.HasFieldValue($TargetObject, 'properties.vnetConfiguration.infrastructureSubnetId');
 }
 
+# Synopsis: Container apps without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.ContainerApp.Naming' -Ref 'AZR-000510' -Type 'Microsoft.App/containerApps' -If { $Configuration['AZURE_CONTAINER_APP_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_CONTAINER_APP_NAME_FORMAT, $True);
+}
+
+# Synopsis: Container apps environments without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.ContainerApp.EnvNaming' -Ref 'AZR-000511' -Type 'Microsoft.App/managedEnvironments' -If { $Configuration['AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT, $True);
+}
+
+# Synopsis: Container apps jobs without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.ContainerApp.JobNaming' -Ref 'AZR-000512' -Type 'Microsoft.App/jobs' -If { $Configuration['AZURE_CONTAINER_APP_JOB_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_CONTAINER_APP_JOB_NAME_FORMAT, $True);
+}
+
 #endregion Rules
 
 #region Helper functions

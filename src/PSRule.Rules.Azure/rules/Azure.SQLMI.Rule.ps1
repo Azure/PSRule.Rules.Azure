@@ -62,4 +62,9 @@ Rule 'Azure.SQLMI.MaintenanceWindow' -Ref 'AZR-000441' -Type 'Microsoft.Sql/mana
     )
 }
 
+# Synopsis: SQL Managed Instances without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.SQLMI.Naming' -Ref 'AZR-000529' -Type 'Microsoft.Sql/managedInstances' -If { $Configuration['AZURE_SQL_MI_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_SQL_MI_NAME_FORMAT, $True);
+}
+
 #endregion SQL Managed Instance
