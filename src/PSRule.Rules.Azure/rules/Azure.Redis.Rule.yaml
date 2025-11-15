@@ -161,4 +161,36 @@ spec:
       - field: properties.sku.name
         exists: true
 
+---
+# Synopsis: Azure Cache for Redis with Enterprise SKU.
+apiVersion: github.com/microsoft/PSRule/2025-01-01
+kind: Selector
+metadata:
+  name: Azure.Redis.IsEnterprise
+spec:
+  if:
+    allOf:
+      - type: .
+        equals: Microsoft.Cache/redisEnterprise
+      - field: sku.name
+        startsWith:
+         - 'Enterprise_'
+         - 'EnterpriseFlash_'
+
+---
+# Synopsis: Azure Managed Redis.
+apiVersion: github.com/microsoft/PSRule/2025-01-01
+kind: Selector
+metadata:
+  name: Azure.Redis.IsManaged
+spec:
+  if:
+    allOf:
+      - type: .
+        equals: Microsoft.Cache/redisEnterprise
+      - field: sku.name
+        notStartsWith:
+         - 'Enterprise_'
+         - 'EnterpriseFlash_'
+
 #endregion Selectors

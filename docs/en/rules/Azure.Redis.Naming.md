@@ -104,18 +104,11 @@ For example:
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "metadata": {
-    "_generator": {
-      "name": "bicep",
-      "version": "0.34.44.8038",
-      "templateHash": "1334073252436312734"
-    }
-  },
   "parameters": {
     "name": {
       "type": "string",
-      "minLength": 2,
-      "maxLength": 64,
+      "minLength": 1,
+      "maxLength": 63,
       "metadata": {
         "description": "The name of the resource."
       }

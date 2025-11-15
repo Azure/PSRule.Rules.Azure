@@ -3,6 +3,8 @@
 
 // Bicep documentation examples
 
+@minLength(1)
+@maxLength(63)
 @description('The name of the resource.')
 param name string
 

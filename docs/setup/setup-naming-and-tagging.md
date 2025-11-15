@@ -254,7 +254,7 @@ Rule                                | Resource type                             
 `Azure.PostgreSQL.Naming`           | `Microsoft.DBforPostgreSQL/servers`, `Microsoft.DBforPostgreSQL/flexibleServers` | `AZURE_POSTGRESQL_SERVER_NAME_FORMAT`
 `Azure.PublicIP.Naming`             | `Microsoft.Network/publicIPAddresses`       | `AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT`
 `Azure.Redis.Naming`                | `Microsoft.Cache/Redis`                     | `AZURE_REDIS_CACHE_NAME_FORMAT`
-`Azure.RedisEnterprise.Naming`      | `Microsoft.Cache/RedisEnterprise`           | `AZURE_REDIS_ENTERPRISE_NAME_FORMAT`
+`Azure.RedisEnterprise.Naming`      | `Microsoft.Cache/RedisEnterprise` with Enterprise or Enterprise Flash | `AZURE_REDIS_ENTERPRISE_NAME_FORMAT`
 `Azure.Group.Naming`                | `Microsoft.Resources/resourceGroups`        | `AZURE_RESOURCE_GROUP_NAME_FORMAT`
 `Azure.Group.RequiredTags`          | `Microsoft.Resources/resourceGroups`        | `AZURE_RESOURCE_GROUP_REQUIRED_TAGS`
 `Azure.Resource.RequiredTags`       | Applies to all types that support tags except subscription and resource groups. | `AZURE_RESOURCE_REQUIRED_TAGS`

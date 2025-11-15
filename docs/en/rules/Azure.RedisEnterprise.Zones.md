@@ -138,6 +138,8 @@ resource testrediscache_default 'Microsoft.Cache/redisEnterprise/databases@2021-
 }
 ```
 
+<!-- external:avm avm/res/cache/redis-enterprise availabilityZones -->
+
 ## NOTES
 
 This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.

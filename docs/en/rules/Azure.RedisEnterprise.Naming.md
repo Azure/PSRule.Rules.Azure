@@ -1,18 +1,18 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-16
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: Azure Managed Redis
+resource: Azure Cache for Redis Enterprise
 resourceType: Microsoft.Cache/redisEnterprise
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.Naming/
 ---
 
-# Azure Managed Redis resources must use standard naming
+# Azure Cache for Redis Enterprise resources must use standard naming
 
 ## SYNOPSIS
 
-Azure Managed Redis resources without a standard naming convention may be difficult to identify and manage.
+Azure Cache for Redis Enterprise resources without a standard naming convention may be difficult to identify and manage.
 
 ## DESCRIPTION
 
@@ -29,24 +29,25 @@ Some of the benefits of using standardized tagging and naming conventions are:
 For example, if you come upon a security incident, it's critical to quickly identify affected systems,
 the functions that those systems support, and the potential business impact.
 
-For Azure Managed Redis, the Cloud Adoption Framework (CAF) recommends using the `amr-` prefix.
+For Azure Cache for Redis Enterprise, the Cloud Adoption Framework (CAF) recommends using the `amr-` prefix.
 
-Requirements for Azure Managed Redis resource names:
+Requirements for Azure Cache for Redis Enterprise resource names:
 
-- Between 1 and 80 characters long.
-- Can include alphanumeric characters, hyphens, underscores, and periods (restrictions vary by resource type).
-- Resource names must be unique within their scope.
+- Between 1 and 63 characters long.
+- Can include alphanumeric, and hyphen characters.
+- Can only start and end with a letter or number.
+- Cache names must be globally unique.
 
 ## RECOMMENDATION
 
-Consider creating Azure Managed Redis resources with a standard name.
+Consider creating Azure Cache for Redis Enterprise resources with a standard name.
 Additionally consider using Azure Policy to only permit creation using a standard naming convention.
 
 ## EXAMPLES
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy enterprise caches that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -55,26 +56,89 @@ For example:
 
 ```bicep
 @minLength(1)
-@maxLength(80)
+@maxLength(63)
 @description('The name of the resource.')
 param name string
 
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource cache 'Microsoft.Cache/redisEnterprise@2025-04-01' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Enterprise_E10'
+  }
+  properties: {
+    minimumTlsVersion: '1.2'
+  }
+}
 ```
+
+<!-- external:avm avm/res/cache/redis-enterprise name -->
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy enterprise caches that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
 
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Cache/redis",
+      "apiVersion": "2024-11-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "redisVersion": "6",
+        "sku": {
+          "name": "Premium",
+          "family": "P",
+          "capacity": 1
+        },
+        "redisConfiguration": {
+          "aad-enabled": "True",
+          "maxmemory-reserved": "615"
+        },
+        "enableNonSslPort": false,
+        "publicNetworkAccess": "Disabled",
+        "disableAccessKeyAuthentication": true
+      },
+      "zones": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  ]
+}
+```
+
 ## NOTES
 
-This rule does not check if Azure Managed Redis resource names are unique.
+This rule does not check if Azure Cache for Redis resource names are unique.
 
 <!-- caf:note name-format -->
 
@@ -89,7 +153,7 @@ For example:
 
 ```yaml
 configuration:
-  AZURE_REDIS_ENTERPRISE_NAME_FORMAT: '^amr-'
+  AZURE_REDIS_ENTERPRISE_NAME_FORMAT: '^redis-'
 ```
 
 ## LINKS
