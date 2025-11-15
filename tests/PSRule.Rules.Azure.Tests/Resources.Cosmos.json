@@ -236,7 +236,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-A",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-A",
-    "Location": "region",
+    "Location": "East US",
     "ResourceName": "nosql-A",
     "Name": "nosql-A",
     "Kind": "GlobalDocumentDB",
@@ -244,14 +244,9 @@
       "consistencyPolicy": "Session",
       "locations": [
         {
+          "locationName": "East US",
           "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "primaryRegion"
-        },
-        {
-          "failoverPriority": 1,
-          "isZoneRedundant": false,
-          "locationName": " secondaryRegion"
+          "isZoneRedundant": false
         }
       ],
       "databaseAccountOfferType": "Standard",
@@ -274,7 +269,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B",
-    "Location": "region",
+    "Location": "East US",
     "ResourceName": "nosql-B",
     "Name": "nosql-B",
     "Kind": "GlobalDocumentDB",
@@ -282,14 +277,14 @@
       "consistencyPolicy": "Session",
       "locations": [
         {
+          "locationName": "East US",
           "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "primaryRegion"
+          "isZoneRedundant": false
         },
         {
+          "locationName": "West US",
           "failoverPriority": 1,
-          "isZoneRedundant": false,
-          "locationName": " secondaryRegion"
+          "isZoneRedundant": false
         }
       ],
       "databaseAccountOfferType": "Standard",
@@ -327,7 +322,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C",
-    "Location": "region",
+    "Location": "West US",
     "ResourceName": "nosql-C",
     "Name": "nosql-C",
     "Kind": "GlobalDocumentDB",
@@ -335,14 +330,9 @@
       "consistencyPolicy": "Session",
       "locations": [
         {
+          "locationName": "West US",
           "failoverPriority": 0,
-          "isZoneRedundant": false,
-          "locationName": "primaryRegion"
-        },
-        {
-          "failoverPriority": 1,
-          "isZoneRedundant": false,
-          "locationName": " secondaryRegion"
+          "isZoneRedundant": false
         }
       ],
       "databaseAccountOfferType": "Standard",
@@ -381,5 +371,272 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-a",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-a",
+    "Location": "East US",
+    "ResourceName": "mongodb-a",
+    "Name": "mongodb-a",
+    "Properties": {
+      "administrator": {
+        "userName": "mongoAdmin"
+      },
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "NativeAuth"
+        ]
+      },
+      "compute": {
+        "tier": "M30"
+      },
+      "storage": {
+        "sizeGb": 128,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 1
+      },
+      "highAvailability": {
+        "targetMode": "Disabled"
+      },
+      "backup": {},
+      "publicNetworkAccess": "Enabled",
+      "dataApi": {
+        "mode": "Disabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-b",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-b",
+    "Location": "East US",
+    "ResourceName": "mongodb-b",
+    "Name": "mongodb-b",
+    "Properties": {
+      "administrator": {
+        "userName": "mongoAdmin"
+      },
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "NativeAuth",
+          "MicrosoftEntraID"
+        ]
+      },
+      "compute": {
+        "tier": "M40"
+      },
+      "storage": {
+        "sizeGb": 256,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 2
+      },
+      "highAvailability": {
+        "targetMode": "SameZone"
+      },
+      "backup": {},
+      "publicNetworkAccess": "Disabled",
+      "dataApi": {
+        "mode": "Enabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-c",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-c",
+    "Location": "East US",
+    "ResourceName": "mongodb-c",
+    "Name": "mongodb-c",
+    "Properties": {
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "MicrosoftEntraID"
+        ]
+      },
+      "compute": {
+        "tier": "M50"
+      },
+      "storage": {
+        "sizeGb": 512,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 3
+      },
+      "backup": {},
+      "publicNetworkAccess": "Disabled",
+      "dataApi": {
+        "mode": "Disabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-d",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-d",
+    "Location": "East US",
+    "ResourceName": "mongodb-d",
+    "Name": "mongodb-d",
+    "Properties": {
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "MicrosoftEntraID"
+        ]
+      },
+      "compute": {
+        "tier": "M30"
+      },
+      "storage": {
+        "sizeGb": 128,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 1
+      },
+      "highAvailability": {
+        "targetMode": "ZoneRedundantPreferred"
+      },
+      "backup": {},
+      "publicNetworkAccess": "Disabled",
+      "dataApi": {
+        "mode": "Disabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-e",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/mongoClusters/mongodb-e",
+    "Location": "West US",
+    "ResourceName": "mongodb-e",
+    "Name": "mongodb-e",
+    "Properties": {
+      "serverVersion": "8.0",
+      "authConfig": {
+        "allowedModes": [
+          "MicrosoftEntraID"
+        ]
+      },
+      "compute": {
+        "tier": "M30"
+      },
+      "storage": {
+        "sizeGb": 128,
+        "type": "PremiumSSD"
+      },
+      "sharding": {
+        "shardCount": 1
+      },
+      "highAvailability": {
+        "targetMode": "Disabled"
+      },
+      "backup": {},
+      "publicNetworkAccess": "Disabled",
+      "dataApi": {
+        "mode": "Disabled"
+      },
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/mongoClusters",
+    "ResourceType": "Microsoft.DocumentDB/mongoClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-D",
+    "Location": "East US",
+    "ResourceName": "nosql-D",
+    "Name": "nosql-D",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session"
+      },
+      "locations": [
+        {
+          "locationName": "East US",
+          "failoverPriority": 0,
+          "isZoneRedundant": true
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableFreeTier": false,
+      "minimalTlsVersion": "Tls12",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-E",
+    "Location": "West US",
+    "ResourceName": "nosql-E",
+    "Name": "nosql-E",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session"
+      },
+      "locations": [
+        {
+          "locationName": "West US",
+          "failoverPriority": 0,
+          "isZoneRedundant": false
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableFreeTier": false,
+      "minimalTlsVersion": "Tls12",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]

@@ -48,8 +48,25 @@ Describe 'Azure.Grafana' -Tag 'Grafana' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.TargetName | Should -Be 'grafana-b';
-            $ruleResult.Length | Should -Be 1;
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn @('grafana-b', 'grafana-c', 'grafana-d', 'grafana-e');
+        }
+
+        It 'Azure.Grafana.AvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Grafana.AvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn @('grafana-a', 'grafana-b');
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn @('grafana-c', 'grafana-d', 'grafana-e');
         }
     }
 }

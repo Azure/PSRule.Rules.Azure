@@ -31,11 +31,24 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Added naming format rules for AKS, Container Apps, Service Fabric, Cosmos DB, Redis, and SQL resources.
+    [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
   - App Configuration:
     - Check that replica locations are in allowed regions by @BernieWhite.
       [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
-  - Added naming format rules for AKS, Container Apps, Service Fabric, Cosmos DB, Redis, and SQL resources.
-    [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+  - Cosmos DB:
+    - Check that Cosmos DB accounts have availability zones enabled by @BenjaminEngeset.
+      [#3055](https://github.com/Azure/PSRule.Rules.Azure/issues/3055)
+    - Check that MongoDB vCore clusters use Microsoft Entra ID authentication by @BenjaminEngeset.
+      [#3369](https://github.com/Azure/PSRule.Rules.Azure/issues/3369)
+    - Check that MongoDB vCore clusters have availability zones enabled by @BenjaminEngeset.
+      [#3586](https://github.com/Azure/PSRule.Rules.Azure/issues/3586)
+  - Data Explorer:
+    - Check that public network access is disabled by @BenjaminEngeset.
+      [#3114](https://github.com/Azure/PSRule.Rules.Azure/issues/3114)
+  - Managed Grafana:
+    - Check that zone redundancy is enabled for Grafana workspaces in supported regions by @BenjaminEngeset.
+      [#3294](https://github.com/Azure/PSRule.Rules.Azure/issues/3294)
 - Updated rules:
   - Application Gateway Policy:
     - Updated `Azure.AppGwWAF.RuleGroups` to use Microsoft Default Rule Set instead of legacy OWASP rule set by @BenjaminEngeset.
