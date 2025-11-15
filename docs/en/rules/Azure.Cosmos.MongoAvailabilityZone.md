@@ -37,7 +37,7 @@ Zone redundancy is only available in regions that support availability zones.
 
 ## RECOMMENDATION
 
-Consider using locations configured with zone redundancy to improve workload resiliency of Cosmos DB clusters.
+Consider configuring zone redundant high availability in locations that support availability zones to improve reliability. 
 
 ## EXAMPLES
 
