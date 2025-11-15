@@ -1473,6 +1473,10 @@
          <lastmod>2025-11-15</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MICassandra.AvailabilityZone/</loc>
+         <lastmod>2025-11-15</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.ComputeIdleShutdown/</loc>
          <lastmod>2025-11-15</lastmod>
     </url>

@@ -50,6 +50,7 @@
 "Azure.LB.StandardSKU","Load balancers should be deployed with Standard SKU for production workloads.","Important","Reliability","-"
 "Azure.Log.Replication","Log Analytics workspaces should have workspace replication enabled to improve service availability.","Important","Reliability","-"
 "Azure.MariaDB.GeoRedundantBackup","Azure Database for MariaDB should store backups in a geo-redundant storage.","Important","Reliability","-"
+"Azure.MICassandra.AvailabilityZone","Use zone redundant Managed Instance for Apache Cassandra clusters in supported regions to improve reliability.","Important","Reliability","L1"
 "Azure.Monitor.ServiceHealth","Configure Service Health alerts to notify administrators.","Important","Reliability","-"
 "Azure.MySQL.GeoRedundantBackup","Azure Database for MySQL should store backups in a geo-redundant storage.","Important","Reliability","-"
 "Azure.MySQL.MaintenanceWindow","Configure a customer-controlled maintenance window for Azure Database for MySQL servers.","Important","Reliability","-"

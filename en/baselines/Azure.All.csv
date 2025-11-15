@@ -276,6 +276,7 @@
 "Azure.MariaDB.ServerName","Azure Database for MariaDB servers should meet naming requirements.","Awareness","Operational Excellence","-"
 "Azure.MariaDB.UseSSL","Azure Database for MariaDB servers should only accept encrypted connections.","Critical","Security","L1"
 "Azure.MariaDB.VNETRuleName","Azure Database for MariaDB VNET rules should meet naming requirements.","Awareness","Operational Excellence","-"
+"Azure.MICassandra.AvailabilityZone","Use zone redundant Managed Instance for Apache Cassandra clusters in supported regions to improve reliability.","Important","Reliability","L1"
 "Azure.ML.ComputeIdleShutdown","Configure an idle shutdown timeout for Machine Learning compute instances.","Critical","Cost Optimization","-"
 "Azure.ML.ComputeVnet","Azure Machine Learning Computes should be hosted in a virtual network (VNet).","Critical","Security","-"
 "Azure.ML.DisableLocalAuth","Azure Machine Learning compute resources should have local authentication methods disabled.","Critical","Security","L1"
