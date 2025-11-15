@@ -13,11 +13,6 @@ Rule 'Azure.Cosmos.DefenderCloud' -Ref 'AZR-000382' -Type 'Microsoft.DocumentDb/
     $Assert.GreaterOrEqual($defender, '.', 1).Reason($LocalizedData.SubResourceNotFound, 'Microsoft.Security/advancedThreatProtectionSettings')
 } -Configure @{ AZURE_COSMOS_DEFENDER_PER_ACCOUNT = $False }
 
-# Synopsis: Cosmos DB has local authentication disabled.
-Rule 'Azure.Cosmos.DisableLocalAuth' -Ref 'AZR-000420' -Type 'Microsoft.DocumentDb/databaseAccounts' -If { Test-IsNoSQL } -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1'; 'Azure.WAF/maturity' = 'L1' } {
-    $Assert.HasFieldValue($TargetObject, 'properties.DisableLocalAuth', $true)
-}
-
 # Synopsis: Use zone redundant Cosmos DB accounts in supported regions to improve reliability.
 Rule 'Azure.Cosmos.AvailabilityZone' -Ref 'AZR-000502' -Type 'Microsoft.DocumentDb/databaseAccounts' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
     # Check for availability zones based on virtual machine scale sets, because it is not exposed through the provider for Cosmos DB.
