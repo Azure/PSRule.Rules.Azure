@@ -4,13 +4,15 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.35.1.17967",
-      "templateHash": "16820822623191152552"
+      "version": "0.38.33.27573",
+      "templateHash": "6378535014997672625"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 4,
+      "maxLength": 23,
       "metadata": {
         "description": "The name of the resource."
       }
@@ -32,6 +34,9 @@
       "type": "string"
     },
     "clientApplication": {
+      "type": "string"
+    },
+    "adminUsername": {
       "type": "string"
     },
     "certificateThumbprint": {
@@ -80,6 +85,40 @@
         "reliabilityLevel": "Silver",
         "upgradeMode": "Automatic",
         "vmImage": "Windows"
+      }
+    },
+    {
+      "type": "Microsoft.ServiceFabric/managedClusters",
+      "apiVersion": "2024-04-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "azureActiveDirectory": {
+          "clientApplication": "[parameters('clientApplication')]",
+          "clusterApplication": "[parameters('clusterApplication')]",
+          "tenantId": "[parameters('tenantId')]"
+        },
+        "dnsName": "[toLower(parameters('name'))]",
+        "adminUserName": "[parameters('adminUsername')]",
+        "clientConnectionPort": 19000,
+        "httpGatewayConnectionPort": 19080,
+        "clients": [
+          {
+            "isAdmin": true,
+            "thumbprint": "[parameters('certificateThumbprint')]"
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "frontendPort": 8080,
+            "backendPort": 8080,
+            "protocol": "tcp",
+            "probeProtocol": "https"
+          }
+        ]
       }
     }
   ]

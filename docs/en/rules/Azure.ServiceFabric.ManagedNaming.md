@@ -1,9 +1,9 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-16
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: Service Fabric managed cluster
+resource: Service Fabric
 resourceType: Microsoft.ServiceFabric/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.ManagedNaming/
 ---
@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy managed clusters that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -62,15 +62,107 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource managed 'Microsoft.ServiceFabric/managedClusters@2024-04-01' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Standard'
+  }
+  properties: {
+    azureActiveDirectory: {
+      clientApplication: clientApplication
+      clusterApplication: clusterApplication
+      tenantId: tenantId
+    }
+    dnsName: toLower(name)
+    adminUserName: adminUsername
+    clientConnectionPort: 19000
+    httpGatewayConnectionPort: 19080
+    clients: [
+      {
+        isAdmin: true
+        thumbprint: certificateThumbprint
+      }
+    ]
+    loadBalancingRules: [
+      {
+        frontendPort: 8080
+        backendPort: 8080
+        protocol: 'tcp'
+        probeProtocol: 'https'
+      }
+    ]
+  }
+}
+
 ```
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy managed clusters that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 23,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ServiceFabric/managedClusters",
+      "apiVersion": "2024-04-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "azureActiveDirectory": {
+          "clientApplication": "[parameters('clientApplication')]",
+          "clusterApplication": "[parameters('clusterApplication')]",
+          "tenantId": "[parameters('tenantId')]"
+        },
+        "dnsName": "[toLower(parameters('name'))]",
+        "adminUserName": "[parameters('adminUsername')]",
+        "clientConnectionPort": 19000,
+        "httpGatewayConnectionPort": 19080,
+        "clients": [
+          {
+            "isAdmin": true,
+            "thumbprint": "[parameters('certificateThumbprint')]"
+          }
+        ],
+        "loadBalancingRules": [
+          {
+            "frontendPort": 8080,
+            "backendPort": 8080,
+            "protocol": "tcp",
+            "probeProtocol": "https"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +191,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.servicefabric/managedclusters)

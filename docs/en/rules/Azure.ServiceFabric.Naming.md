@@ -1,9 +1,9 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-16
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: Service Fabric cluster
+resource: Service Fabric
 resourceType: Microsoft.ServiceFabric/clusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.Naming/
 ---
@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy clusters that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -62,15 +62,120 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource cluster 'Microsoft.ServiceFabric/clusters@2023-11-01-preview' = {
+  name: name
+  location: location
+  properties: {
+    azureActiveDirectory: {
+      clientApplication: clientApplication
+      clusterApplication: clusterApplication
+      tenantId: tenantId
+    }
+    certificate: {
+      thumbprint: certificateThumbprint
+      x509StoreName: 'My'
+    }
+    diagnosticsStorageAccountConfig: {
+      blobEndpoint: storageAccount.properties.primaryEndpoints.blob
+      protectedAccountKeyName: 'StorageAccountKey1'
+      queueEndpoint: storageAccount.properties.primaryEndpoints.queue
+      storageAccountName: storageAccount.name
+      tableEndpoint: storageAccount.properties.primaryEndpoints.table
+    }
+    fabricSettings: [
+      {
+        parameters: [
+          {
+            name: 'ClusterProtectionLevel'
+            value: 'EncryptAndSign'
+          }
+        ]
+        name: 'Security'
+      }
+    ]
+    managementEndpoint: endpointUri
+    nodeTypes: []
+    reliabilityLevel: 'Silver'
+    upgradeMode: 'Automatic'
+    vmImage: 'Windows'
+  }
+}
 ```
+
+<!-- external:avm avm/res/service-fabric/cluster name -->
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy clusters that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 23,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ServiceFabric/clusters",
+      "apiVersion": "2023-11-01-preview",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "azureActiveDirectory": {
+          "clientApplication": "[parameters('clientApplication')]",
+          "clusterApplication": "[parameters('clusterApplication')]",
+          "tenantId": "[parameters('tenantId')]"
+        },
+        "certificate": {
+          "thumbprint": "[parameters('certificateThumbprint')]",
+          "x509StoreName": "My"
+        },
+        "diagnosticsStorageAccountConfig": {
+          "blobEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.blob]",
+          "protectedAccountKeyName": "StorageAccountKey1",
+          "queueEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.queue]",
+          "storageAccountName": "storage1",
+          "tableEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.table]"
+        },
+        "fabricSettings": [
+          {
+            "parameters": [
+              {
+                "name": "ClusterProtectionLevel",
+                "value": "EncryptAndSign"
+              }
+            ],
+            "name": "Security"
+          }
+        ],
+        "managementEndpoint": "[parameters('endpointUri')]",
+        "nodeTypes": [],
+        "reliabilityLevel": "Silver",
+        "upgradeMode": "Automatic",
+        "vmImage": "Windows"
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +204,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.servicefabric/clusters)
