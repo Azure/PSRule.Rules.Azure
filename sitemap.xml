@@ -1041,10 +1041,6 @@
          <lastmod>2025-11-15</lastmod>
     </url>
     <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.DisableLocalAuth/</loc>
-         <lastmod>2025-11-15</lastmod>
-    </url>
-    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.DisableMetadataWrite/</loc>
          <lastmod>2025-11-15</lastmod>
     </url>
@@ -1058,6 +1054,10 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.MongoEntraID/</loc>
+         <lastmod>2025-11-15</lastmod>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.NoSQLLocalAuth/</loc>
          <lastmod>2025-11-15</lastmod>
     </url>
     <url>
