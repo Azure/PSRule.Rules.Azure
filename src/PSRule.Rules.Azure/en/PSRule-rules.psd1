@@ -66,6 +66,7 @@
     PremiumRedisCacheAvailabilityZone = "The premium redis cache ({0}) deployed to region ({1}) should use a minimum of two availability zones from the following [{2}]."
     EnterpriseRedisCacheAvailabilityZone = "The enterprise redis cache ({0}) deployed to region ({1}) should be zone-redundant."
     CosmosDBAvailabilityZone = "The Cosmos DB account ({0}) location ({1}) should have zone redundancy enabled."
+    MongoDBvCoreAvailabilityZone = "The MongoDB vCore cluster ({0}) location ({1}) should have zone redundancy enabled."
     AKSMinimumVersionReplace = "The configuration option 'Azure_AKSMinimumVersion' has been replaced with 'AZURE_AKS_CLUSTER_MINIMUM_VERSION'. The option 'Azure_AKSMinimumVersion' is deprecated and will no longer work in the next major version. Please update your configuration to the new name. See https://aka.ms/ps-rule-azure/upgrade."
     AKSNodeMinimumMaxPodsReplace = "The configuration option 'Azure_AKSNodeMinimumMaxPods' has been replaced with 'AZURE_AKS_POOL_MINIMUM_MAXPODS'. The option 'Azure_AKSNodeMinimumMaxPods' is deprecated and will no longer work in the next major version. Please update your configuration to the new name. See https://aka.ms/ps-rule-azure/upgrade."
     AzureAllowedRegionsReplace = "The configuration option 'Azure_AllowedRegions' has been replaced with 'AZURE_RESOURCE_ALLOWED_LOCATIONS'. The option 'Azure_AllowedRegions' is deprecated and will no longer work in the next major version. Please update your configuration to the new name. See https://aka.ms/ps-rule-azure/upgrade."
