@@ -36,6 +36,20 @@ Rule 'Azure.EventHub.Firewall' -Ref 'AZR-000422' -Type 'Microsoft.EventHub/names
     }
 }
 
+# Synopsis: Use zone redundant Event Hub namespaces in supported regions to improve reliability.
+Rule 'Azure.EventHub.AvailabilityZone' -Ref 'AZR-000503' -Type 'Microsoft.EventHub/namespaces' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
+    # Check for availability zones based on virtual machine scale sets, because it is not exposed through the provider for Event Hub.
+    $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
+    $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $provider.ZoneMappings;
+
+    # Don't flag if the region does not support AZ.
+    if (-not $availabilityZones) {
+        return $Assert.Pass();
+    }
+
+    $Assert.HasFieldValue($TargetObject, 'properties.zoneRedundant', $true);
+}
+
 #endregion Rules
 
 #region Helper functions

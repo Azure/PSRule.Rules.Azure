@@ -42,8 +42,8 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F', 'hubns-G';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -58,8 +58,8 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F', 'hubns-G';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -82,8 +82,8 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F', 'hubns-G';
         }
 
         It 'Azure.EventHub.Firewall' {
@@ -91,18 +91,35 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'default-A';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'hubns-G', 'default-A';
 
             $ruleResult[0].Reason | Should -BeExactly "Path properties.publicNetworkAccess: Does not exist."
             $ruleResult[1].Reason | Should -BeExactly "Path properties.publicNetworkAccess: Is set to 'Enabled'."
             $ruleResult[2].Reason | Should -BeIn "Path properties.publicNetworkAccess: Is set to 'Enabled'.", "Path properties.defaultAction: Is set to 'Allow'."
             $ruleResult[3].Reason | Should -BeIn "Path properties.publicNetworkAccess: Is set to 'Enabled'.", "Path properties.defaultAction: Is set to 'Allow'."
+            $ruleResult[4].Reason | Should -BeIn "Path properties.publicNetworkAccess: Does not exist.", "Path properties.publicNetworkAccess: Is set to 'Enabled'.", "Path properties.defaultAction: Is set to 'Allow'."
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'hubns-E', 'hubns-F', 'default-B', 'default-C', 'default-D';
+        }
+
+        It 'Azure.EventHub.AvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventHub.AvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'hubns-A', 'hubns-G';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F';
         }
     }
 

@@ -518,5 +518,6 @@ AZR-000495 | [Azure.ACR.ExportPolicy](Azure.ACR.ExportPolicy.md) | Export policy
 AZR-000496 | [Azure.Redis.LocalAuth](Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | GA
 AZR-000497 | [Azure.Storage.LocalAuth](Azure.Storage.LocalAuth.md) | Access keys allow depersonalized access to Storage Accounts using a shared secret. | GA
 AZR-000498 | [Azure.AppConfig.ReplicaLocation](Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | GA
+AZR-000503 | [Azure.EventHub.AvailabilityZone](Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
