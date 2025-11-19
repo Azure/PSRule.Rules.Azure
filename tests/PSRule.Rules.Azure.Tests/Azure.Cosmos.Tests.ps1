@@ -78,14 +78,14 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.TargetName | Should -BeIn 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C', 'nosql-D', 'nosql-E';
         }
 
-        It 'Azure.Cosmos.DisableLocalAuth' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.DisableLocalAuth' };
+        It 'Azure.Cosmos.NoSQLLocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.NoSQLLocalAuth' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B', 'nosql-D', 'nosql-E';
-            
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
@@ -135,8 +135,8 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'mongodb-b', 'mongodb-c';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-b', 'mongodb-c', 'mongodb-d', 'mongodb-e';
         }
 
         It 'Azure.Cosmos.AvailabilityZone' {
@@ -154,6 +154,24 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'nosql-C', 'nosql-D', 'nosql-E';
+        }
+
+        It 'Azure.Cosmos.MongoAvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MongoAvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object TargetName);
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-a', 'mongodb-b', 'mongodb-c';
+
+            $ruleResult[0].Reason | Should -Be "Path properties.highAvailability.targetMode: The MongoDB vCore cluster (mongodb-a) location (East US) should have zone redundancy enabled.";
+            $ruleResult[1].Reason | Should -Be "Path properties.highAvailability.targetMode: The MongoDB vCore cluster (mongodb-b) location (East US) should have zone redundancy enabled.";
+            $ruleResult[2].Reason | Should -Be "Path properties.highAvailability.targetMode: The MongoDB vCore cluster (mongodb-c) location (East US) should have zone redundancy enabled.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'mongodb-d', 'mongodb-e';
         }
     }
 
