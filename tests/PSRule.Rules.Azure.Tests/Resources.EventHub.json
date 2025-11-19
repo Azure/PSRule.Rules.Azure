@@ -178,7 +178,33 @@
     },
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "resources": []
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-D/networkrulesets/default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-D/networkrulesets/default",
+        "Identity": null,
+        "Kind": null,
+        "Location": "East US",
+        "ManagedBy": null,
+        "ResourceName": "default",
+        "Name": "default",
+        "ExtensionResourceName": null,
+        "Properties": {
+          "publicNetworkAccess": "Enabled",
+          "defaultAction": "Allow",
+          "virtualNetworkRules": [],
+          "ipRules": [],
+          "trustedServiceAccessEnabled": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.EventHub/namespaces/networkRuleSets",
+        "ResourceType": "Microsoft.EventHub/namespaces/networkRuleSets",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-E",
