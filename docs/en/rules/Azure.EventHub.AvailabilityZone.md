@@ -27,15 +27,9 @@ ensuring continuous availability even if an entire availability zone experiences
 
 With zone redundancy enabled, Azure Event Hubs provides:
 
-- Automatic replication of metadata and events across zones.
+- Synchronous replication of metadata and events across zones.
 - Continuous availability during zonal failures.
-- Enhanced durability by maintaining multiple copies across separate physical locations.
 - Protection against datacenter-level disasters while maintaining low-latency access.
-
-When using the Azure portal, zone redundancy is automatically enabled.
-However, some Infrastructure as Code (IaC) tools may default this to false.
-To ensure replication of metadata and events across data centers in an availability zone,
-always verify that zone redundancy is enabled.
 
 Zone redundancy must be configured when you create an Event Hub namespace by setting `zoneRedundant` to `true`.
 This setting cannot be changed after the namespace is created.
@@ -99,8 +93,7 @@ resource eventHubNamespace 'Microsoft.EventHub/namespaces@2024-01-01' = {
 
 ## NOTES
 
-Zone redundancy must be configured during the initial deployment.
-It is not possible to modify an existing Event Hub namespace to enable zone redundancy after it has been deployed.
+For the Dedicated tier, availability zones require a minimum of three capacity units (CUs).
 
 ## LINKS
 
