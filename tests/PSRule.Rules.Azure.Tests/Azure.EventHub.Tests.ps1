@@ -108,6 +108,7 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'hubns-A', 'hubns-B';
+
             $ruleResult[0].Reason | Should -BeExactly "Path properties.zoneRedundant: Does not exist.";
             $ruleResult[1].Reason | Should -BeExactly "Path properties.zoneRedundant: Is set to 'False'.";
 
