@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-11-16
+reviewed: 2025-11-19
 severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
