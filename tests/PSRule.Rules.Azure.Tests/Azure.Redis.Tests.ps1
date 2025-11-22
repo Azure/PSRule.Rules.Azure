@@ -364,7 +364,7 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
 
             # Verify the reason message
-            $ruleResult[0].Reason | Should -BeExactly "Azure Cache for Redis is on the retirement path. Migrate to Azure Managed Redis.";
+            $ruleResult[0].Reason | Should -BeExactly "Azure Cache for Redis is being retired. Migrate to Azure Managed Redis.";
         }
     }
 
