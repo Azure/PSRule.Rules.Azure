@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Infrastructure provisioning
 resource: Azure Cache for Redis
-resourceType: Microsoft.Cache/Redis
+resourceType: Microsoft.Cache/redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.Retirement/
 ---
 
