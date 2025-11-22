@@ -123,6 +123,11 @@ Rule 'Azure.Redis.Version' -Ref 'AZR-000347' -Type 'Microsoft.Cache/redis' -Tag 
     ).Reason($LocalizedData.AzureCacheRedisVersion)
 }
 
+# Synopsis: Azure Cache for Redis is on the retirement path. Migrate to Azure Managed Redis.
+Rule 'Azure.Redis.Retirement' -Ref 'AZR-000505' -Type 'Microsoft.Cache/redis' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+    $Assert.Fail($LocalizedData.AzureCacheRedisRetirement)
+}
+
 #region Helper functions
 
 function global:GetCacheMemory {

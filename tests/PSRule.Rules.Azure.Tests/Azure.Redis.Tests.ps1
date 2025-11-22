@@ -353,6 +353,19 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.TargetName | Should -BeIn 'redis-R';
             $ruleResult.Length | Should -Be 1;
         }
+
+        It 'Azure.Redis.Retirement' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.Retirement' };
+
+            # Fail - All Azure Cache for Redis instances should fail this rule
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+
+            # Verify the reason message
+            $ruleResult[0].Reason | Should -BeExactly "Azure Cache for Redis is on the retirement path. Migrate to Azure Managed Redis.";
+        }
     }
 
     Context 'With Configuration Option' -Tag 'Configuration' {
