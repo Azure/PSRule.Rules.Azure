@@ -354,8 +354,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.Length | Should -Be 1;
         }
 
-        It 'Azure.Redis.Retirement' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.Retirement' };
+        It 'Azure.Redis.MigrateAMR' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.MigrateAMR' };
 
             # Fail - All Azure Cache for Redis instances should fail this rule
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
