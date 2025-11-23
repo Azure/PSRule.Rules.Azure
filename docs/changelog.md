@@ -47,6 +47,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Data Explorer:
     - Check that public network access is disabled by @BenjaminEngeset.
       [#3114](https://github.com/Azure/PSRule.Rules.Azure/issues/3114)
+  - Event Hub:
+    - Check that zone redundancy is enabled for Event Hub namespaces in supported regions by @BenjaminEngeset.
+      [#3029](https://github.com/Azure/PSRule.Rules.Azure/issues/3029)
   - Managed Grafana:
     - Check that zone redundancy is enabled for Grafana workspaces in supported regions by @BenjaminEngeset.
       [#3294](https://github.com/Azure/PSRule.Rules.Azure/issues/3294)
