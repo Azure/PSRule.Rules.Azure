@@ -19,12 +19,12 @@ Azure Cache for Redis is being retired. Migrate to Azure Managed Redis.
 Microsoft has announced the retirement timeline for Azure Cache for Redis across all SKUs.
 The recommended replacement going forward is Azure Managed Redis.
 
-Azure Cache for Redis (Basic, Standard, Premium):
+Azure Cache for Redis (Basic, Standard, Premium) will be retired according to the following timeline:
 
-- Creation blocked for new customers: April 1, 2026
-- Creation blocked for existing customers: October 1, 2026
-- Retirement Date: September 30, 2028
-- Instances will be disabled starting October 1, 2028
+- Creation blocked for new customers: April 1, 2026.
+- Creation blocked for existing customers: October 1, 2026.
+- Retirement Date: September 30, 2028.
+- Instances will be disabled starting October 1, 2028.
 
 To avoid service disruption, migrate your workloads to Azure Managed Redis.
 

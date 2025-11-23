@@ -35,7 +35,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that replica locations are in allowed regions by @BernieWhite.
       [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
   - Azure Cache for Redis:
-    - Check that Azure Cache for Redis is migrated to Azure Managed Redis by @BenjaminEngeset.
+    - Check that legacy Azure Cache for Redis instances are migrated to Azure Managed Redis by @BenjaminEngeset.
       [#3605](https://github.com/Azure/PSRule.Rules.Azure/issues/3605)
   - Managed Instance for Apache Cassandra:
     - Check that Managed Instance for Apache Cassandra clusters have availability zones enabled by @BenjaminEngeset.
