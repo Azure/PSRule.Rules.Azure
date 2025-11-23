@@ -579,14 +579,14 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'cache-001', 'REDIS-001';
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'enterprise-001', 'REDIS-001';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'redis-001';
+            $ruleResult.Length | Should -Be 1;
         }
     }
 }
