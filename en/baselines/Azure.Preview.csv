@@ -208,6 +208,7 @@
 "Azure.EventGrid.TopicNaming","Event Grid topics without a standard naming convention may be difficult to identify and manage.","Awareness","Operational Excellence","-"
 "Azure.EventGrid.TopicPublicAccess","Use Private Endpoints to access Event Grid topics and domains.","Important","Security","-"
 "Azure.EventGrid.TopicTLS","Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities.","Critical","Security","L1"
+"Azure.EventHub.AvailabilityZone","Use zone redundant Event Hub namespaces in supported regions to improve reliability.","Important","Reliability","L1"
 "Azure.EventHub.DisableLocalAuth","Authenticate Event Hub publishers and consumers with Entra ID identities.","Important","Security","L1"
 "Azure.EventHub.Firewall","Access to the namespace endpoints should be restricted to only allowed sources.","Critical","Security","-"
 "Azure.EventHub.MinTLS","Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities.","Critical","Security","L1"
