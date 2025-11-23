@@ -1476,7 +1476,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $systemPoolNames = @(
                 'agentpool'
                 'npsystem001'
-                'npsystem'
+                'NPSYSTEM001'
             )
 
             $userPoolNames = @(
@@ -1538,13 +1538,13 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'agentpool';
+            $ruleResult.TargetName | Should -Be 'agentpool', 'NPSYSTEM001';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'npsystem001', 'npsystem';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'npsystem001';
         }
 
         It 'Azure.AKS.UserPoolNaming' {
@@ -1559,7 +1559,7 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
+            $ruleResult.Length | Should -Be 7;
             $ruleResult.TargetName | Should -Be 'np001';
         }
     }
