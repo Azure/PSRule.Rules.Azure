@@ -37,7 +37,7 @@ Zone redundancy is only available in regions that support availability zones.
 
 ## RECOMMENDATION
 
-Consider using Event Hub namespaces configured with zone redundancy to improve workload resiliency.
+Consider using using a minimum of Standard Event Hub namespaces configured with zone redundancy to improve workload resiliency.
 
 ## EXAMPLES
 
@@ -91,7 +91,11 @@ resource eventHubNamespace 'Microsoft.EventHub/namespaces@2024-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/event-hub/namespace zoneRedundant -->
+
 ## NOTES
+
+Availability zones is supported on Standard, Premium, and Dedicated tiers.
 
 For the Dedicated tier, availability zones require a minimum of three capacity units (CUs).
 

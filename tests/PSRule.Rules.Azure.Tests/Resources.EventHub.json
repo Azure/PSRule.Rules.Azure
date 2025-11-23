@@ -114,6 +114,7 @@
     "Name": "hubns-C",
     "ExtensionResourceName": null,
     "Properties": {
+      "publicNetworkAccess": "Enabled",
       "disableLocalAuth": false,
       "isAutoInflateEnabled": true,
       "maximumThroughputUnits": 2,
@@ -138,8 +139,7 @@
       "Capacity": 1
     },
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "resources": []
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-D",
@@ -201,7 +201,6 @@
         "ResourceType": "Microsoft.EventHub/namespaces/networkRuleSets",
         "ExtensionResourceType": null,
         "Sku": null,
-        "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
@@ -345,7 +344,7 @@
     "Name": "hubns-G",
     "ExtensionResourceName": null,
     "Properties": {
-      "publicNetworkAccess": "Enabled",
+      "publicNetworkAccess": "Disabled",
       "disableLocalAuth": false,
       "zoneRedundant": true,
       "isAutoInflateEnabled": true,
@@ -384,6 +383,7 @@
     "Name": "hubns-H",
     "ExtensionResourceName": null,
     "Properties": {
+      "publicNetworkAccess": "Disabled",
       "disableLocalAuth": false,
       "zoneRedundant": true,
       "isAutoInflateEnabled": true,
@@ -413,14 +413,14 @@
     "resources": []
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-G/networkrulesets/default-A",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-G/networkrulesets/default-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-X/networkrulesets/default-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-X/networkrulesets/default-A",
     "Identity": null,
     "Kind": null,
     "Location": "East US",
     "ManagedBy": null,
-    "ResourceName": "default-A",
-    "Name": "default-A",
+    "ResourceName": "hubns-X/default-A",
+    "Name": "hubns-X/default-A",
     "ExtensionResourceName": null,
     "Properties": {
       "publicNetworkAccess": "Enabled",
@@ -438,14 +438,14 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-H/networkrulesets/default-B",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-H/networkrulesets/default-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-Y/networkrulesets/default-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-Y/networkrulesets/default-B",
     "Identity": null,
     "Kind": null,
     "Location": "East US",
     "ManagedBy": null,
-    "ResourceName": "default-B",
-    "Name": "default-B",
+    "ResourceName": "hubns-Y/default-B",
+    "Name": "hubns-Y/default-B",
     "ExtensionResourceName": null,
     "Properties": {
       "publicNetworkAccess": "Disabled",
