@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-24
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy accounts that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -62,15 +62,104 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+@description('The location of a secondary replica.')
+param secondaryLocation string = location
+
+resource nosql 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' = {
+  name: name
+  location: location
+  properties: {
+    enableFreeTier: false
+    consistencyPolicy: {
+      defaultConsistencyLevel: 'Session'
+    }
+    databaseAccountOfferType: 'Standard'
+    locations: [
+      {
+        locationName: location
+        failoverPriority: 0
+        isZoneRedundant: true
+      }
+      {
+        locationName: secondaryLocation
+        failoverPriority: 1
+        isZoneRedundant: false
+      }
+    ]
+    disableKeyBasedMetadataWriteAccess: true
+    minimalTlsVersion: 'Tls12'
+  }
+}
 ```
+
+<!-- external:avm avm/res/document-db/database-account name -->
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy accounts that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 44,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+    "secondaryLocation": {
+      "type": "string",
+      "defaultValue": "[parameters('location')]",
+      "metadata": {
+        "description": "The location of a secondary replica."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2025-04-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "enableFreeTier": false,
+        "consistencyPolicy": {
+          "defaultConsistencyLevel": "Session"
+        },
+        "databaseAccountOfferType": "Standard",
+        "locations": [
+          {
+            "locationName": "[parameters('location')]",
+            "failoverPriority": 0,
+            "isZoneRedundant": true
+          },
+          {
+            "locationName": "[parameters('secondaryLocation')]",
+            "failoverPriority": 1,
+            "isZoneRedundant": false
+          }
+        ],
+        "disableKeyBasedMetadataWriteAccess": true,
+        "minimalTlsVersion": "Tls12"
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
@@ -99,3 +188,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)

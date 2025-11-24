@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.38.33.27573",
-      "templateHash": "2704156339140852790"
+      "version": "0.39.26.7824",
+      "templateHash": "6873378420832907775"
     }
   },
   "parameters": {
@@ -22,6 +22,13 @@
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "The location resources will be deployed."
+      }
+    },
+    "secondaryLocation": {
+      "type": "string",
+      "defaultValue": "[parameters('location')]",
+      "metadata": {
+        "description": "The location of a secondary replica."
       }
     }
   },
@@ -42,6 +49,11 @@
             "locationName": "[parameters('location')]",
             "failoverPriority": 0,
             "isZoneRedundant": true
+          },
+          {
+            "locationName": "[parameters('secondaryLocation')]",
+            "failoverPriority": 1,
+            "isZoneRedundant": false
           }
         ],
         "disableKeyBasedMetadataWriteAccess": true,
@@ -60,6 +72,40 @@
       "dependsOn": [
         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('name'))]"
       ]
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2025-04-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "capabilities": [
+          {
+            "name": "EnableGremlin"
+          }
+        ],
+        "locations": [
+          {
+            "locationName": "[parameters('location')]",
+            "failoverPriority": 0,
+            "isZoneRedundant": true
+          }
+        ],
+        "databaseAccountOfferType": "Standard",
+        "minimalTlsVersion": "Tls12",
+        "backupPolicy": {
+          "type": "Periodic",
+          "periodicModeProperties": {
+            "backupIntervalInMinutes": 240,
+            "backupRetentionIntervalInHours": 8,
+            "backupStorageRedundancy": "Geo"
+          }
+        }
+      },
+      "tags": {
+        "defaultExperience": "Gremlin (graph)"
+      }
     }
   ]
 }
