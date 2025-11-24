@@ -62,6 +62,7 @@
 "Azure.PublicIP.MigrateStandard","Use the Standard SKU for Public IP addresses as the Basic SKU will be retired.","Important","Operational Excellence","-"
 "Azure.PublicIP.Name","Azure Resource Manager (ARM) has requirements for Public IP address names.","Awareness","Operational Excellence","-"
 "Azure.PublicIP.Naming","Public IP addresses without a standard naming convention may be difficult to identify and manage.","Awareness","Operational Excellence","-"
+"Azure.Redis.MigrateAMR","Azure Cache for Redis is being retired. Migrate to Azure Managed Redis.","Important","Operational Excellence","-"
 "Azure.Resource.RequiredTags","Resources without a standard tagging convention may be difficult to identify and manage.","Awareness","Operational Excellence","-"
 "Azure.Route.Name","Azure Resource Manager (ARM) has requirements for Route table names.","Awareness","Operational Excellence","-"
 "Azure.Route.Naming","Route tables without a standard naming convention may be difficult to identify and manage.","Awareness","Operational Excellence","-"
