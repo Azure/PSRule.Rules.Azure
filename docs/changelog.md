@@ -37,6 +37,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Cache for Redis:
     - Check for legacy Azure Cache for Redis instances by @BenjaminEngeset.
       [#3605](https://github.com/Azure/PSRule.Rules.Azure/issues/3605)
+    - Check for deprecated Redis Enterprise and Enterprise Flash SKUs by @BenjaminEngeset.
+      [#3606](https://github.com/Azure/PSRule.Rules.Azure/issues/3606)
   - Managed Instance for Apache Cassandra:
     - Check that Managed Instance for Apache Cassandra clusters have availability zones enabled by @BenjaminEngeset.
       [#3592](https://github.com/Azure/PSRule.Rules.Azure/issues/3592)

@@ -132,4 +132,5 @@
     ActiveSecurityAlerts = "There are {0} active security alerts of high or medium severity."
     KeyValueShouldNotContainSecrets = "The key value '{0}' property should not contain secrets."
     CacheRedisMigrateAMR = "Azure Cache for Redis is being retired. Migrate to Azure Managed Redis."
+    RedisEnterpriseMigrateAMR = "Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis."
 }

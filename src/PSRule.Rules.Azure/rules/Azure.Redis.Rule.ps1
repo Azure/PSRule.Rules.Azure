@@ -128,6 +128,11 @@ Rule 'Azure.Redis.MigrateAMR' -Ref 'AZR-000533' -Type 'Microsoft.Cache/redis' -T
     $Assert.Fail($LocalizedData.CacheRedisMigrateAMR)
 }
 
+# Synopsis: Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis.
+Rule 'Azure.RedisEnterprise.MigrateAMR' -Ref 'AZR-000534' -Type 'Microsoft.Cache/redisEnterprise' -If { IsEnterpriseCache } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+    $Assert.Fail($LocalizedData.RedisEnterpriseMigrateAMR)
+}
+
 #region Helper functions
 
 function global:GetCacheMemory {
