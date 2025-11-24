@@ -32,9 +32,69 @@ To avoid service disruption, migrate your workloads to Azure Managed Redis.
 
 Plan and execute migration from Azure Cache for Redis to Azure Managed Redis before the retirement dates to avoid service disruption.
 
+## EXAMPLES
+
+### Configure with Bicep
+
+To deploy resource that pass this rule:
+
+- Create resources of type `Microsoft.Cache/redisEnterprise` and an Azure Managed Redis SKU, such as:
+  - `Balanced_*`
+  - `MemoryOptimized_*`
+  - `ComputeOptimized_*`
+
+For example:
+
+```bicep
+resource primary 'Microsoft.Cache/redisEnterprise@2025-07-01' = {
+  name: name
+  location: location
+  properties: {
+    highAvailability: 'Enabled'
+    publicNetworkAccess: 'Disabled'
+  }
+  sku: {
+    name: 'Balanced_B10'
+  }
+}
+```
+
+### Configure with Azure template
+
+To deploy resource that pass this rule:
+
+- Create resources of type `Microsoft.Cache/redisEnterprise` and an Azure Managed Redis SKU, such as:
+  - `Balanced_*`
+  - `MemoryOptimized_*`
+  - `ComputeOptimized_*`
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Cache/redisEnterprise",
+  "apiVersion": "2025-07-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "highAvailability": "Enabled",
+    "publicNetworkAccess": "Disabled"
+  },
+  "sku": {
+    "name": "Balanced_B10"
+  }
+}
+```
+
+## NOTES
+
+Redis Enterprise and Enterprise Flash used the `Microsoft.Cache/redisEnterprise` resource type.
+Redis Enterprise and Enterprise Flash SKUs `Enterprise_*` and `EnterpriseFlash_*` are also deprecated.
+
 ## LINKS
 
 - [OE:05 Infrastructure as code](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Azure Cache for Redis retirement: What to know and how to prepare](https://techcommunity.microsoft.com/blog/azure-managed-redis/azure-cache-for-redis-retirement-what-to-know-and-how-to-prepare/4458721)
 - [Azure Cache for Redis retirement FAQ](https://learn.microsoft.com/azure/azure-cache-for-redis/retirement-faq)
 - [Azure Managed Redis documentation](https://learn.microsoft.com/azure/azure-cache-for-redis/managed-redis/managed-redis-overview)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redisenterprise)
