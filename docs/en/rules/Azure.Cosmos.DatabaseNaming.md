@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy databases that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -56,21 +56,79 @@ For example:
 ```bicep
 @minLength(1)
 @maxLength(255)
-@description('The name of the resource.')
-param name string
+@description('The name of the Cosmos DB account.')
+param accountName string
+
+@minLength(1)
+@maxLength(255)
+@description('The name of the database.')
+param databaseName string
 
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+resource account 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' existing = {
+  name: accountName
+}
+
+resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2025-04-15' = {
+  parent: account
+  name: databaseName
+  properties: {
+    resource: {
+      id: databaseName
+    }
+  }
+}
 ```
+
+<!-- external:avm avm/res/document-db/database-account name -->
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy databases that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "accountName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "metadata": {
+        "description": "The name of the Cosmos DB account."
+      }
+    },
+    "databaseName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "metadata": {
+        "description": "The name of the database."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "apiVersion": "2025-04-15",
+      "name": "[format('{0}/{1}', parameters('accountName'), parameters('databaseName'))]",
+      "properties": {
+        "resource": {
+          "id": "[parameters('databaseName')]"
+        }
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 

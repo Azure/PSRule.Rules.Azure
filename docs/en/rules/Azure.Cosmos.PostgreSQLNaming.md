@@ -46,7 +46,7 @@ Additionally consider using Azure Policy to only permit creation using a standar
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To deploy clusters that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -62,15 +62,87 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// Example resource deployment
+@description('The administrator login name.')
+param administratorLogin string
+
+@secure()
+@description('The administrator login password.')
+param administratorLoginPassword string
+
+resource postgresCluster 'Microsoft.DBforPostgreSQL/serverGroupsv2@2022-11-08' = {
+  name: name
+  location: location
+  properties: {
+    administratorLogin: administratorLogin
+    administratorLoginPassword: administratorLoginPassword
+    serverCount: 1
+    coordinatorVCores: 4
+    coordinatorStorageQuotaInMb: 524288
+  }
+}
 ```
+
+<!-- external:avm avm/res/db-for-postgre-sql/flexible-server name -->
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To deploy clusters that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 63,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+    "administratorLogin": {
+      "type": "string",
+      "metadata": {
+        "description": "The administrator login name."
+      }
+    },
+    "administratorLoginPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The administrator login password."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/serverGroupsv2",
+      "apiVersion": "2022-11-08",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+        "serverCount": 1,
+        "coordinatorVCores": 4,
+        "coordinatorStorageQuotaInMb": 524288
+      }
+    }
+  ]
+}
+```
 
 ## NOTES
 
