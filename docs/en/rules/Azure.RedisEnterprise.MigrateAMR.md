@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-11-23
+reviewed: 2025-11-24
 severity: Important
 pillar: Operational Excellence
 category: OE:05 Infrastructure as code
@@ -12,25 +12,24 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisE
 
 ## SYNOPSIS
 
-Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis.
+Azure Cache for Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis.
 
 ## DESCRIPTION
 
-Microsoft has announced the retirement timeline for Redis Enterprise and Enterprise Flash SKUs.
+Microsoft has announced the retirement timeline for Azure Cache for Redis Enterprise and Enterprise Flash SKUs.
 The recommended replacement going forward is Azure Managed Redis.
 
-Redis Enterprise (`Enterprise_*`) and Enterprise Flash (`EnterpriseFlash_*`) SKUs will be retired according to the following timeline:
+Azure Cache for Redis Enterprise (`Enterprise_*`) and Enterprise Flash (`EnterpriseFlash_*`) SKUs will be retired according to the following timeline:
 
-- Creation blocked for new customers: April 1, 2026.
-- Creation blocked for existing customers: October 1, 2026.
-- Retirement Date: September 30, 2028.
-- Instances will be disabled starting October 1, 2028.
+- Creation blocked for all customers: April 1, 2026.
+- Retirement Date: March 31, 2027.
+- Instances will be migrated to Azure Managed Redis starting April 1, 2027.
 
 To avoid service disruption, migrate your workloads to Azure Managed Redis.
 
 ## RECOMMENDATION
 
-Plan and execute migration from Redis Enterprise / Enterprise Flash to Azure Managed Redis before the retirement dates to avoid service disruption.
+Plan and execute migration from Azure Cache for Redis Enterprise / Enterprise Flash to Azure Managed Redis before the retirement dates to avoid service disruption.
 
 ## EXAMPLES
 

@@ -518,6 +518,5 @@ AZR-000495 | [Azure.ACR.ExportPolicy](Azure.ACR.ExportPolicy.md) | Export policy
 AZR-000496 | [Azure.Redis.LocalAuth](Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | GA
 AZR-000497 | [Azure.Storage.LocalAuth](Azure.Storage.LocalAuth.md) | Access keys allow depersonalized access to Storage Accounts using a shared secret. | GA
 AZR-000498 | [Azure.AppConfig.ReplicaLocation](Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | GA
-AZR-000534 | [Azure.RedisEnterprise.MigrateAMR](Azure.RedisEnterprise.MigrateAMR.md) | Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
