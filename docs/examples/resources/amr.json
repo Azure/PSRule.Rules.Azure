@@ -1,0 +1,97 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.39.26.7824",
+      "templateHash": "6517319720095351040"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 63,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+    "secondaryLocation": {
+      "type": "string",
+      "defaultValue": "[parameters('location')]",
+      "metadata": {
+        "description": "The location of a secondary replica."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Cache/redisEnterprise",
+      "apiVersion": "2025-07-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "highAvailability": "Enabled",
+        "publicNetworkAccess": "Disabled"
+      },
+      "sku": {
+        "name": "Balanced_B10"
+      }
+    },
+    {
+      "type": "Microsoft.Cache/redisEnterprise",
+      "apiVersion": "2025-07-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('secondaryLocation')]",
+      "properties": {
+        "highAvailability": "Enabled",
+        "publicNetworkAccess": "Disabled"
+      },
+      "sku": {
+        "name": "Balanced_B10"
+      }
+    },
+    {
+      "type": "Microsoft.Cache/redisEnterprise/databases",
+      "apiVersion": "2025-07-01",
+      "name": "[format('{0}/{1}', parameters('name'), 'default')]",
+      "properties": {
+        "clientProtocol": "Encrypted",
+        "evictionPolicy": "VolatileLRU",
+        "clusteringPolicy": "OSSCluster",
+        "deferUpgrade": "NotDeferred",
+        "modules": [
+          {
+            "name": "RedisJSON"
+          }
+        ],
+        "persistence": {
+          "aofEnabled": false,
+          "rdbEnabled": true,
+          "rdbFrequency": "12h"
+        },
+        "accessKeysAuthentication": "Disabled",
+        "geoReplication": {
+          "groupNickname": "group",
+          "linkedDatabases": [
+            {
+              "id": "[resourceId('Microsoft.Cache/redisEnterprise/databases', parameters('name'), 'default')]"
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Cache/redisEnterprise', parameters('name'))]",
+        "[resourceId('Microsoft.Cache/redisEnterprise', parameters('name'))]"
+      ]
+    }
+  ]
+}

@@ -34,6 +34,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - App Configuration:
     - Check that replica locations are in allowed regions by @BernieWhite.
       [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
+  - Azure Cache for Redis:
+    - Check for legacy Azure Cache for Redis instances by @BenjaminEngeset.
+      [#3605](https://github.com/Azure/PSRule.Rules.Azure/issues/3605)
   - Managed Instance for Apache Cassandra:
     - Check that Managed Instance for Apache Cassandra clusters have availability zones enabled by @BenjaminEngeset.
       [#3592](https://github.com/Azure/PSRule.Rules.Azure/issues/3592)
