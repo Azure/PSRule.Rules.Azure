@@ -138,6 +138,8 @@ resource testrediscache_default 'Microsoft.Cache/redisEnterprise/databases@2021-
 }
 ```
 
+<!-- external:avm avm/res/cache/redis-enterprise availabilityZones -->
+
 ## NOTES
 
 This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.
@@ -155,4 +157,4 @@ configuration:
 - [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Enable zone redundancy for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
 - [High availability for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redisenterprise?tabs=json)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redisenterprise)

@@ -3,20 +3,22 @@
 
 // Bicep documentation examples
 
-@sys.description('The name of the resource.')
+@minLength(3)
+@maxLength(63)
+@description('The name of the resource.')
 param name string
 
-@sys.description('The location resources will be deployed.')
+@description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-@sys.description('The login for an administrator.')
+@description('The login for an administrator.')
 param administratorLogin string
 
 @secure()
 @description('A default administrator password.')
 param administratorLoginPassword string
 
-@sys.description('The object GUID for an administrator account.')
+@description('The object GUID for an administrator account.')
 param loginObjectId string
 
 // An example Azure Database for MySQL using the single server deployment model.
@@ -57,7 +59,7 @@ resource entraForSingleServer 'Microsoft.DBforMySQL/servers/administrators@2017-
   }
 }
 
-resource flexibleServer 'Microsoft.DBforMySQL/flexibleServers@2023-12-30' = {
+resource flexible 'Microsoft.DBforMySQL/flexibleServers@2024-12-30' = {
   name: name
   location: location
   sku: {

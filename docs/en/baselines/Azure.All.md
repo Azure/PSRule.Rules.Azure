@@ -10,10 +10,11 @@ Includes all Azure rules.
 
 The following rules are included within the `Azure.All` baseline.
 
-This baseline includes a total of 496 rules.
+This baseline includes a total of 530 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
+[Azure.ACI.Naming](../rules/Azure.ACI.Naming.md) | Container Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical
 [Azure.ACR.AnonymousAccess](../rules/Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | Important
 [Azure.ACR.ContainerScan](../rules/Azure.ACR.ContainerScan.md) | Container images or their base images may have vulnerabilities discovered after they are built. | Critical
@@ -24,6 +25,7 @@ Name | Synopsis | Severity
 [Azure.ACR.ImageHealth](../rules/Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | Critical
 [Azure.ACR.MinSku](../rules/Azure.ACR.MinSku.md) | The Basic SKU provides limited performance and features for production container registry workloads. | Important
 [Azure.ACR.Name](../rules/Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness
+[Azure.ACR.Naming](../rules/Azure.ACR.Naming.md) | Container Registry resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ACR.Quarantine](../rules/Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Important
 [Azure.ACR.ReplicaLocation](../rules/Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | Important
 [Azure.ACR.Retention](../rules/Azure.ACR.Retention.md) | Use a retention policy to cleanup untagged manifests. | Important
@@ -31,6 +33,7 @@ Name | Synopsis | Severity
 [Azure.ACR.Usage](../rules/Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important
 [Azure.ADX.DiskEncryption](../rules/Azure.ADX.DiskEncryption.md) | Use disk encryption for Azure Data Explorer (ADX) clusters. | Important
 [Azure.ADX.ManagedIdentity](../rules/Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | Important
+[Azure.ADX.PublicAccess](../rules/Azure.ADX.PublicAccess.md) | Azure Data Explorer (ADX) clusters should have public network access disabled. | Critical
 [Azure.ADX.SLA](../rules/Azure.ADX.SLA.md) | Use SKUs that include an SLA when configuring Azure Data Explorer (ADX) clusters. | Important
 [Azure.ADX.Usage](../rules/Azure.ADX.Usage.md) | Regularly remove unused resources to reduce costs. | Important
 [Azure.AI.DisableLocalAuth](../rules/Azure.AI.DisableLocalAuth.md) | Access keys allow depersonalized access to Azure AI using a shared secret. | Important
@@ -59,6 +62,7 @@ Name | Synopsis | Severity
 [Azure.AKS.MinNodeCount](../rules/Azure.AKS.MinNodeCount.md) | AKS clusters should have minimum number of system nodes for failover and updates. | Important
 [Azure.AKS.MinUserPoolNodes](../rules/Azure.AKS.MinUserPoolNodes.md) | User node pools in an AKS cluster should have a minimum number of nodes for failover and updates. | Important
 [Azure.AKS.Name](../rules/Azure.AKS.Name.md) | Azure Kubernetes Service (AKS) cluster names should meet naming requirements. | Awareness
+[Azure.AKS.Naming](../rules/Azure.AKS.Naming.md) | AKS cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.AKS.NetworkPolicy](../rules/Azure.AKS.NetworkPolicy.md) | AKS clusters without inter-pod network restrictions may be permit unauthorized lateral movement. | Important
 [Azure.AKS.NodeAutoUpgrade](../rules/Azure.AKS.NodeAutoUpgrade.md) | Operating system (OS) security updates should be applied to AKS nodes and rebooted as required to address security vulnerabilities. | Important
 [Azure.AKS.NodeMinPods](../rules/Azure.AKS.NodeMinPods.md) | Azure Kubernetes Cluster (AKS) nodes should use a minimum number of pods. | Important
@@ -68,8 +72,10 @@ Name | Synopsis | Severity
 [Azure.AKS.SecretStore](../rules/Azure.AKS.SecretStore.md) | Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vault. | Important
 [Azure.AKS.SecretStoreRotation](../rules/Azure.AKS.SecretStoreRotation.md) | Enable autorotation of Secrets Store CSI Driver secrets for AKS clusters. | Important
 [Azure.AKS.StandardLB](../rules/Azure.AKS.StandardLB.md) | Azure Kubernetes Clusters (AKS) should use a Standard load balancer SKU. | Important
+[Azure.AKS.SystemPoolNaming](../rules/Azure.AKS.SystemPoolNaming.md) | AKS system node pool resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.AKS.UptimeSLA](../rules/Azure.AKS.UptimeSLA.md) | AKS clusters should have Uptime SLA enabled for a financially backed SLA. | Important
 [Azure.AKS.UseRBAC](../rules/Azure.AKS.UseRBAC.md) | Deploy AKS cluster with role-based access control (RBAC) enabled. | Important
+[Azure.AKS.UserPoolNaming](../rules/Azure.AKS.UserPoolNaming.md) | AKS user node pool resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.AKS.Version](../rules/Azure.AKS.Version.md) | Older versions of Kubernetes may have known bugs or security vulnerabilities, and may have limited support. | Important
 [Azure.Alert.HighFrequencyQuery](../rules/Azure.Alert.HighFrequencyQuery.md) | High frequency scheduled queries are changed as a higher rate than low frequency queries. | Important
 [Azure.Alert.MetricAutoMitigate](../rules/Azure.Alert.MetricAutoMitigate.md) | Alerts that require manual intervention for mitigation can lead to increased personnel time and effort. | Important
@@ -118,7 +124,7 @@ Name | Synopsis | Severity
 [Azure.AppGwWAF.Enabled](../rules/Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical
 [Azure.AppGwWAF.Exclusions](../rules/Azure.AppGwWAF.Exclusions.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Critical
 [Azure.AppGwWAF.PreventionMode](../rules/Azure.AppGwWAF.PreventionMode.md) | Use protection mode in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical
-[Azure.AppGwWAF.RuleGroups](../rules/Azure.AppGwWAF.RuleGroups.md) | Use recommended rule groups in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical
+[Azure.AppGwWAF.RuleGroups](../rules/Azure.AppGwWAF.RuleGroups.md) | Application Gateway WAF policies should include both Microsoft Default Rule Set and Bot Manager Rule Set to provide comprehensive protection against web application threats and malicious bot traffic. | Critical
 [Azure.AppInsights.LocalAuth](../rules/Azure.AppInsights.LocalAuth.md) | Local authentication allows depersonalized access to store telemetry in Application Insights using a shared identifier. | Critical
 [Azure.AppInsights.Name](../rules/Azure.AppInsights.Name.md) | Azure Resource Manager (ARM) has requirements for Application Insights resource names. | Awareness
 [Azure.AppInsights.Naming](../rules/Azure.AppInsights.Naming.md) | Application Insights resources without a standard naming convention may be difficult to identify and manage. | Awareness
@@ -159,22 +165,35 @@ Name | Synopsis | Severity
 [Azure.ContainerApp.APIVersion](../rules/Azure.ContainerApp.APIVersion.md) | Migrate from retired API version to a supported version. | Important
 [Azure.ContainerApp.AvailabilityZone](../rules/Azure.ContainerApp.AvailabilityZone.md) | Use Container Apps environments that are zone redundant to improve reliability. | Important
 [Azure.ContainerApp.DisableAffinity](../rules/Azure.ContainerApp.DisableAffinity.md) | Disable session affinity to prevent unbalanced distribution. | Awareness
+[Azure.ContainerApp.EnvNaming](../rules/Azure.ContainerApp.EnvNaming.md) | Container App Environment resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ContainerApp.ExternalIngress](../rules/Azure.ContainerApp.ExternalIngress.md) | Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment. | Important
 [Azure.ContainerApp.Insecure](../rules/Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important
+[Azure.ContainerApp.JobNaming](../rules/Azure.ContainerApp.JobNaming.md) | Container App Job resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ContainerApp.ManagedIdentity](../rules/Azure.ContainerApp.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important
 [Azure.ContainerApp.MinReplicas](../rules/Azure.ContainerApp.MinReplicas.md) | Use multiple replicas to remove a single point of failure. | Important
 [Azure.ContainerApp.Name](../rules/Azure.ContainerApp.Name.md) | Container Apps should meet naming requirements. | Awareness
+[Azure.ContainerApp.Naming](../rules/Azure.ContainerApp.Naming.md) | Container App resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ContainerApp.PublicAccess](../rules/Azure.ContainerApp.PublicAccess.md) | Ensure public network access for Container Apps environment is disabled. | Important
 [Azure.ContainerApp.RestrictIngress](../rules/Azure.ContainerApp.RestrictIngress.md) | IP ingress restrictions mode should be set to allow action for all rules defined. | Important
 [Azure.ContainerApp.Storage](../rules/Azure.ContainerApp.Storage.md) | Use of Azure Files volume mounts to persistent storage container data. | Awareness
 [Azure.Cosmos.AccountName](../rules/Azure.Cosmos.AccountName.md) | Cosmos DB account names should meet naming requirements. | Awareness
+[Azure.Cosmos.AvailabilityZone](../rules/Azure.Cosmos.AvailabilityZone.md) | Use zone redundant Cosmos DB accounts in supported regions to improve reliability. | Important
+[Azure.Cosmos.CassandraNaming](../rules/Azure.Cosmos.CassandraNaming.md) | Cosmos DB for Apache Cassandra account resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Cosmos.ContinuousBackup](../rules/Azure.Cosmos.ContinuousBackup.md) | Enable continuous backup on Cosmos DB accounts. | Important
+[Azure.Cosmos.DatabaseNaming](../rules/Azure.Cosmos.DatabaseNaming.md) | Cosmos DB database resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Cosmos.DefenderCloud](../rules/Azure.Cosmos.DefenderCloud.md) | Enable Microsoft Defender for Azure Cosmos DB. | Critical
-[Azure.Cosmos.DisableLocalAuth](../rules/Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | Critical
 [Azure.Cosmos.DisableMetadataWrite](../rules/Azure.Cosmos.DisableMetadataWrite.md) | Use Entra ID identities for management place operations in Azure Cosmos DB. | Important
+[Azure.Cosmos.GremlinNaming](../rules/Azure.Cosmos.GremlinNaming.md) | Cosmos DB for Apache Gremlin account resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Cosmos.MinTLS](../rules/Azure.Cosmos.MinTLS.md) | Cosmos DB accounts should reject TLS versions older than 1.2. | Critical
+[Azure.Cosmos.MongoAvailabilityZone](../rules/Azure.Cosmos.MongoAvailabilityZone.md) | Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability. | Important
+[Azure.Cosmos.MongoEntraID](../rules/Azure.Cosmos.MongoEntraID.md) | MongoDB vCore clusters should have Microsoft Entra ID authentication enabled. | Critical
+[Azure.Cosmos.MongoNaming](../rules/Azure.Cosmos.MongoNaming.md) | Cosmos DB for MongoDB account resources without a standard naming convention may be difficult to identify and manage. | Awareness
+[Azure.Cosmos.NoSQLLocalAuth](../rules/Azure.Cosmos.NoSQLLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB NoSQL API accounts using a shared secret. | Critical
+[Azure.Cosmos.NoSQLNaming](../rules/Azure.Cosmos.NoSQLNaming.md) | Cosmos DB for NoSQL account resources without a standard naming convention may be difficult to identify and manage. | Awareness
+[Azure.Cosmos.PostgreSQLNaming](../rules/Azure.Cosmos.PostgreSQLNaming.md) | Cosmos DB PostgreSQL cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Cosmos.PublicAccess](../rules/Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | Critical
 [Azure.Cosmos.SLA](../rules/Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | Important
+[Azure.Cosmos.TableNaming](../rules/Azure.Cosmos.TableNaming.md) | Cosmos DB for Table account resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Databricks.PublicAccess](../rules/Azure.Databricks.PublicAccess.md) | Azure Databricks workspaces should disable public network access. | Critical
 [Azure.Databricks.SecureConnectivity](../rules/Azure.Databricks.SecureConnectivity.md) | Use Databricks workspaces configured for secure cluster connectivity. | Critical
 [Azure.Databricks.SKU](../rules/Azure.Databricks.SKU.md) | Ensure Databricks workspaces are non-trial SKUs for production workloads. | Critical
@@ -221,6 +240,7 @@ Name | Synopsis | Severity
 [Azure.EventGrid.TopicNaming](../rules/Azure.EventGrid.TopicNaming.md) | Event Grid topics without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.EventGrid.TopicPublicAccess](../rules/Azure.EventGrid.TopicPublicAccess.md) | Use Private Endpoints to access Event Grid topics and domains. | Important
 [Azure.EventGrid.TopicTLS](../rules/Azure.EventGrid.TopicTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | Critical
+[Azure.EventHub.AvailabilityZone](../rules/Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | Important
 [Azure.EventHub.DisableLocalAuth](../rules/Azure.EventHub.DisableLocalAuth.md) | Authenticate Event Hub publishers and consumers with Entra ID identities. | Important
 [Azure.EventHub.Firewall](../rules/Azure.EventHub.Firewall.md) | Access to the namespace endpoints should be restricted to only allowed sources. | Critical
 [Azure.EventHub.MinTLS](../rules/Azure.EventHub.MinTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | Critical
@@ -247,6 +267,7 @@ Name | Synopsis | Severity
 [Azure.FrontDoorWAF.Exclusions](../rules/Azure.FrontDoorWAF.Exclusions.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. Avoid configuring rule exclusions. | Critical
 [Azure.FrontDoorWAF.PreventionMode](../rules/Azure.FrontDoorWAF.PreventionMode.md) | Use protection mode in Front Door Web Application Firewall (WAF) policies to protect back end resources. | Critical
 [Azure.FrontDoorWAF.RuleGroups](../rules/Azure.FrontDoorWAF.RuleGroups.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. | Critical
+[Azure.Grafana.AvailabilityZone](../rules/Azure.Grafana.AvailabilityZone.md) | Use zone redundant Grafana workspaces in supported regions to improve reliability. | Important
 [Azure.Grafana.Version](../rules/Azure.Grafana.Version.md) | Grafana workspaces should be on Grafana version 10. | Important
 [Azure.Group.Name](../rules/Azure.Group.Name.md) | Azure Resource Manager (ARM) has requirements for Resource Groups names. | Awareness
 [Azure.Group.Naming](../rules/Azure.Group.Naming.md) | Resource Groups without a standard naming convention may be difficult to identify and manage. | Awareness
@@ -286,6 +307,7 @@ Name | Synopsis | Severity
 [Azure.MariaDB.ServerName](../rules/Azure.MariaDB.ServerName.md) | Azure Database for MariaDB servers should meet naming requirements. | Awareness
 [Azure.MariaDB.UseSSL](../rules/Azure.MariaDB.UseSSL.md) | Azure Database for MariaDB servers should only accept encrypted connections. | Critical
 [Azure.MariaDB.VNETRuleName](../rules/Azure.MariaDB.VNETRuleName.md) | Azure Database for MariaDB VNET rules should meet naming requirements. | Awareness
+[Azure.MICassandra.AvailabilityZone](../rules/Azure.MICassandra.AvailabilityZone.md) | Use zone redundant Managed Instance for Apache Cassandra clusters in supported regions to improve reliability. | Important
 [Azure.ML.ComputeIdleShutdown](../rules/Azure.ML.ComputeIdleShutdown.md) | Configure an idle shutdown timeout for Machine Learning compute instances. | Critical
 [Azure.ML.ComputeVnet](../rules/Azure.ML.ComputeVnet.md) | Azure Machine Learning Computes should be hosted in a virtual network (VNet). | Critical
 [Azure.ML.DisableLocalAuth](../rules/Azure.ML.DisableLocalAuth.md) | Azure Machine Learning compute resources should have local authentication methods disabled. | Critical
@@ -302,6 +324,7 @@ Name | Synopsis | Severity
 [Azure.MySQL.MaintenanceWindow](../rules/Azure.MySQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for MySQL servers. | Important
 [Azure.MySQL.MinTLS](../rules/Azure.MySQL.MinTLS.md) | MySQL DB servers should reject TLS versions older than 1.2. | Critical
 [Azure.MySQL.ServerName](../rules/Azure.MySQL.ServerName.md) | Azure MySQL DB server names should meet naming requirements. | Awareness
+[Azure.MySQL.ServerNaming](../rules/Azure.MySQL.ServerNaming.md) | MySQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.MySQL.UseFlexible](../rules/Azure.MySQL.UseFlexible.md) | Use Azure Database for MySQL Flexible Server deployment model. | Important
 [Azure.MySQL.UseSSL](../rules/Azure.MySQL.UseSSL.md) | Enforce encrypted MySQL connections. | Critical
 [Azure.MySQL.ZoneRedundantHA](../rules/Azure.MySQL.ZoneRedundantHA.md) | Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | Important
@@ -330,6 +353,7 @@ Name | Synopsis | Severity
 [Azure.PostgreSQL.MaintenanceWindow](../rules/Azure.PostgreSQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for PostgreSQL servers. | Important
 [Azure.PostgreSQL.MinTLS](../rules/Azure.PostgreSQL.MinTLS.md) | PostgreSQL DB servers should reject TLS versions older than 1.2. | Critical
 [Azure.PostgreSQL.ServerName](../rules/Azure.PostgreSQL.ServerName.md) | Azure PostgreSQL DB server names should meet naming requirements. | Awareness
+[Azure.PostgreSQL.ServerNaming](../rules/Azure.PostgreSQL.ServerNaming.md) | PostgreSQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.PostgreSQL.UseSSL](../rules/Azure.PostgreSQL.UseSSL.md) | Enforce encrypted PostgreSQL connections. | Critical
 [Azure.PostgreSQL.ZoneRedundantHA](../rules/Azure.PostgreSQL.ZoneRedundantHA.md) | Deploy Azure Database for PostgreSQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | Important
 [Azure.PrivateEndpoint.Name](../rules/Azure.PrivateEndpoint.Name.md) | Private Endpoint names should meet naming requirements. | Awareness
@@ -352,12 +376,15 @@ Name | Synopsis | Severity
 [Azure.Redis.FirewallRuleCount](../rules/Azure.Redis.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules for the Redis cache. | Awareness
 [Azure.Redis.LocalAuth](../rules/Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | Important
 [Azure.Redis.MaxMemoryReserved](../rules/Azure.Redis.MaxMemoryReserved.md) | Configure maxmemory-reserved to reserve memory for non-cache operations. | Important
+[Azure.Redis.MigrateAMR](../rules/Azure.Redis.MigrateAMR.md) | Azure Cache for Redis is being retired. Migrate to Azure Managed Redis. | Important
 [Azure.Redis.MinSKU](../rules/Azure.Redis.MinSKU.md) | Use Azure Cache for Redis instances of at least Standard C1. | Important
 [Azure.Redis.MinTLS](../rules/Azure.Redis.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | Critical
+[Azure.Redis.Naming](../rules/Azure.Redis.Naming.md) | Azure Cache for Redis resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Redis.NonSslPort](../rules/Azure.Redis.NonSslPort.md) | Azure Cache for Redis should only accept secure connections. | Critical
 [Azure.Redis.PublicNetworkAccess](../rules/Azure.Redis.PublicNetworkAccess.md) | Redis cache should disable public network access. | Critical
 [Azure.Redis.Version](../rules/Azure.Redis.Version.md) | Azure Cache for Redis should use the latest supported version of Redis. | Important
 [Azure.RedisEnterprise.MinTLS](../rules/Azure.RedisEnterprise.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | Critical
+[Azure.RedisEnterprise.Naming](../rules/Azure.RedisEnterprise.Naming.md) | Azure Cache for Redis Enterprise resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.RedisEnterprise.Zones](../rules/Azure.RedisEnterprise.Zones.md) | Enterprise Redis cache should be zone-redundant for high availability. | Important
 [Azure.Resource.AllowedRegions](../rules/Azure.Resource.AllowedRegions.md) | The deployment location of a resource determines the country or region where metadata and data is stored and processed. | Important
 [Azure.Resource.RequiredTags](../rules/Azure.Resource.RequiredTags.md) | Resources without a standard tagging convention may be difficult to identify and manage. | Awareness
@@ -380,6 +407,8 @@ Name | Synopsis | Severity
 [Azure.ServiceBus.MinTLS](../rules/Azure.ServiceBus.MinTLS.md) | Service Bus namespaces should reject TLS versions older than 1.2. | Important
 [Azure.ServiceBus.Usage](../rules/Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | Important
 [Azure.ServiceFabric.AAD](../rules/Azure.ServiceFabric.AAD.md) | Use Entra ID client authentication for Service Fabric clusters. | Critical
+[Azure.ServiceFabric.ManagedNaming](../rules/Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness
+[Azure.ServiceFabric.Naming](../rules/Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ServiceFabric.ProtectionLevel](../rules/Azure.ServiceFabric.ProtectionLevel.md) | Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks. | Important
 [Azure.SignalR.ManagedIdentity](../rules/Azure.SignalR.ManagedIdentity.md) | Configure SignalR Services to use managed identities to access Azure resources securely. | Important
 [Azure.SignalR.Name](../rules/Azure.SignalR.Name.md) | SignalR service instance names should meet naming requirements. | Awareness
@@ -389,13 +418,17 @@ Name | Synopsis | Severity
 [Azure.SQL.AllowAzureAccess](../rules/Azure.SQL.AllowAzureAccess.md) | Determine if access from Azure services is required. | Important
 [Azure.SQL.Auditing](../rules/Azure.SQL.Auditing.md) | Enable auditing for Azure SQL logical server. | Important
 [Azure.SQL.DBName](../rules/Azure.SQL.DBName.md) | Azure SQL Database names should meet naming requirements. | Awareness
+[Azure.SQL.DBNaming](../rules/Azure.SQL.DBNaming.md) | Azure SQL database resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.SQL.DefenderCloud](../rules/Azure.SQL.DefenderCloud.md) | Enable Microsoft Defender for Azure SQL logical server. | Important
+[Azure.SQL.ElasticPoolNaming](../rules/Azure.SQL.ElasticPoolNaming.md) | Azure SQL Elastic Pool resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.SQL.FGName](../rules/Azure.SQL.FGName.md) | Azure SQL failover group names should meet naming requirements. | Awareness
 [Azure.SQL.FirewallIPRange](../rules/Azure.SQL.FirewallIPRange.md) | Each IP address in the permitted IP list is allowed network access to any databases hosted on the same logical server. | Important
 [Azure.SQL.FirewallRuleCount](../rules/Azure.SQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | Awareness
+[Azure.SQL.JobAgentNaming](../rules/Azure.SQL.JobAgentNaming.md) | Azure SQL Elastic Job agent resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.SQL.MaintenanceWindow](../rules/Azure.SQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure SQL databases. | Important
 [Azure.SQL.MinTLS](../rules/Azure.SQL.MinTLS.md) | Azure SQL Database servers should reject TLS versions older than 1.2. | Critical
 [Azure.SQL.ServerName](../rules/Azure.SQL.ServerName.md) | Azure SQL logical server names should meet naming requirements. | Awareness
+[Azure.SQL.ServerNaming](../rules/Azure.SQL.ServerNaming.md) | Azure SQL Database server resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.SQL.TDE](../rules/Azure.SQL.TDE.md) | Use Transparent Data Encryption (TDE) with Azure SQL Database. | Critical
 [Azure.SQL.VAScan](../rules/Azure.SQL.VAScan.md) | SQL Databases may have configuration vulnerabilities discovered after they are deployed. | Important
 [Azure.SQLMI.AAD](../rules/Azure.SQLMI.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure SQL Managed Instance. | Critical
@@ -403,6 +436,7 @@ Name | Synopsis | Severity
 [Azure.SQLMI.MaintenanceWindow](../rules/Azure.SQLMI.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure SQL Managed Instances. | Important
 [Azure.SQLMI.ManagedIdentity](../rules/Azure.SQLMI.ManagedIdentity.md) | Ensure managed identity is used to allow support for Azure AD authentication. | Important
 [Azure.SQLMI.Name](../rules/Azure.SQLMI.Name.md) | SQL Managed Instance names should meet naming requirements. | Awareness
+[Azure.SQLMI.Naming](../rules/Azure.SQLMI.Naming.md) | SQL Managed Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Storage.BlobAccessType](../rules/Azure.Storage.BlobAccessType.md) | Use containers configured with a private access type that requires authorization. | Important
 [Azure.Storage.BlobPublicAccess](../rules/Azure.Storage.BlobPublicAccess.md) | Storage Accounts should only accept authorized requests. | Important
 [Azure.Storage.ContainerSoftDelete](../rules/Azure.Storage.ContainerSoftDelete.md) | Enable container soft delete on Storage Accounts. | Important

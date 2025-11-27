@@ -156,4 +156,45 @@ Describe 'Azure.SQLMI' -Tag 'SQLMI' {
             $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
+
+    Context 'Resource naming format' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_SQL_MI_NAME_FORMAT' = '^sqlmi-'
+            };
+
+            $names = @('mi-001', 'sqlmi-001', 'SQLMI-001')
+            $items = @($names | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.Sql/managedInstances'
+                    }
+                });
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.SQLMI.Naming';
+        }
+
+        It 'Azure.SQLMI.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQLMI.Naming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'mi-001', 'SQLMI-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'sqlmi-001';
+        }
+    }
 }

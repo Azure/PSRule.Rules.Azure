@@ -88,4 +88,74 @@ Describe 'Azure.ServiceFabric' -Tag 'ServiceFabric' {
             $ruleResult.TargetName | Should -BeIn 'cluster-001';
         }
     }
+
+    Context 'Resource naming' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_SERVICE_FABRIC_CLUSTER_NAME_FORMAT'         = '^sf-'
+                'AZURE_SERVICE_FABRIC_MANAGED_CLUSTER_NAME_FORMAT' = '^sfmc-'
+            };
+
+            $clusterNames = @('cluster-001', 'sf-001', 'SF-001')
+            $managedClusterNames = @('managed-001', 'sfmc-001', 'SFMC-001')
+
+            $clusterItems = @($clusterNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.ServiceFabric/clusters'
+                    }
+                });
+
+            $managedClusterItems = @($managedClusterNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.ServiceFabric/managedClusters'
+                    }
+                });
+
+            $result = @($clusterItems + $managedClusterItems) | Invoke-PSRule @invokeParams -Option $option -Name @(
+                'Azure.ServiceFabric.Naming'
+                'Azure.ServiceFabric.ManagedNaming'
+            )
+        }
+
+        It 'Azure.ServiceFabric.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ServiceFabric.Naming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-001', 'SF-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'sf-001';
+        }
+
+        It 'Azure.ServiceFabric.ManagedNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ServiceFabric.ManagedNaming' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'managed-001', 'SFMC-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'sfmc-001';
+        }
+    }
 }
