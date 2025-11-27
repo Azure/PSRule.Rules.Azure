@@ -39,9 +39,46 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Cache for Redis:
     - Check for legacy Azure Cache for Redis instances by @BenjaminEngeset.
       [#3605](https://github.com/Azure/PSRule.Rules.Azure/issues/3605)
-  - Managed Instance for Apache Cassandra:
-    - Check that Managed Instance for Apache Cassandra clusters have availability zones enabled by @BenjaminEngeset.
-      [#3592](https://github.com/Azure/PSRule.Rules.Azure/issues/3592)
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_REDIS_CACHE_NAME_FORMAT`
+        - `AZURE_REDIS_ENTERPRISE_NAME_FORMAT`
+    - Added configured name format by @BernieWhite.
+  - Azure Database for MySQL:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_MYSQL_SERVER_NAME_FORMAT`
+  - Azure Database for PostgreSQL:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_POSTGRESQL_SERVER_NAME_FORMAT`
+  - Azure Kubernetes Service:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_AKS_CLUSTER_NAME_FORMAT`
+        - `AZURE_AKS_SYSTEM_POOL_NAME_FORMAT`
+        - `AZURE_AKS_USER_POOL_NAME_FORMAT`
+  - Container Apps:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_CONTAINER_APP_NAME_FORMAT`
+        - `AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT`
+        - `AZURE_CONTAINER_APP_JOB_NAME_FORMAT`
+  - Container Instance:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_CONTAINER_INSTANCE_NAME_FORMAT`
+  - Container Registry:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_CONTAINER_REGISTRY_NAME_FORMAT`
   - Cosmos DB:
     - Check that Cosmos DB accounts have availability zones enabled by @BenjaminEngeset.
       [#3055](https://github.com/Azure/PSRule.Rules.Azure/issues/3055)
@@ -49,15 +86,47 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#3369](https://github.com/Azure/PSRule.Rules.Azure/issues/3369)
     - Check that MongoDB vCore clusters have availability zones enabled by @BenjaminEngeset.
       [#3586](https://github.com/Azure/PSRule.Rules.Azure/issues/3586)
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_COSMOS_CASSANDRA_NAME_FORMAT`
+        - `AZURE_COSMOS_DATABASE_NAME_FORMAT`
+        - `AZURE_COSMOS_GREMLIN_NAME_FORMAT`
+        - `AZURE_COSMOS_MONGO_NAME_FORMAT`
+        - `AZURE_COSMOS_NOSQL_NAME_FORMAT`
+        - `AZURE_COSMOS_POSTGRESQL_NAME_FORMAT`
+        - `AZURE_COSMOS_TABLE_NAME_FORMAT`
   - Data Explorer:
     - Check that public network access is disabled by @BenjaminEngeset.
       [#3114](https://github.com/Azure/PSRule.Rules.Azure/issues/3114)
   - Event Hub:
     - Check that zone redundancy is enabled for Event Hub namespaces in supported regions by @BenjaminEngeset.
       [#3029](https://github.com/Azure/PSRule.Rules.Azure/issues/3029)
+  - Managed Instance for Apache Cassandra:
+    - Check that Managed Instance for Apache Cassandra clusters have availability zones enabled by @BenjaminEngeset.
+      [#3592](https://github.com/Azure/PSRule.Rules.Azure/issues/3592)
   - Managed Grafana:
     - Check that zone redundancy is enabled for Grafana workspaces in supported regions by @BenjaminEngeset.
       [#3294](https://github.com/Azure/PSRule.Rules.Azure/issues/3294)
+  - Service Fabric:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_SERVICE_FABRIC_CLUSTER_NAME_FORMAT`
+        - `AZURE_SERVICE_FABRIC_MANAGED_CLUSTER_NAME_FORMAT`
+  - SQL Database:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_SQL_DATABASE_NAME_FORMAT`
+        - `AZURE_SQL_SERVER_NAME_FORMAT`
+        - `AZURE_SQL_ELASTIC_POOL_NAME_FORMAT`
+        - `AZURE_SQL_JOB_AGENT_NAME_FORMAT`
+  - SQL Managed Instance:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_SQL_MI_NAME_FORMAT`
 - Updated rules:
   - Application Gateway Policy:
     - Updated `Azure.AppGwWAF.RuleGroups` to use Microsoft Default Rule Set instead of legacy OWASP rule set by @BenjaminEngeset.

@@ -10,7 +10,7 @@ Includes the latest rules for Azure GA and preview features that is updated each
 
 The following rules are included within the `Azure.Preview` baseline.
 
-This baseline includes a total of 522 rules.
+This baseline includes a total of 524 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -180,13 +180,13 @@ Name | Synopsis | Severity
 [Azure.Cosmos.ContinuousBackup](../rules/Azure.Cosmos.ContinuousBackup.md) | Enable continuous backup on Cosmos DB accounts. | Important
 [Azure.Cosmos.DatabaseNaming](../rules/Azure.Cosmos.DatabaseNaming.md) | Cosmos DB database resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Cosmos.DefenderCloud](../rules/Azure.Cosmos.DefenderCloud.md) | Enable Microsoft Defender for Azure Cosmos DB. | Critical
-[Azure.Cosmos.DisableLocalAuth](../rules/Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | Critical
 [Azure.Cosmos.DisableMetadataWrite](../rules/Azure.Cosmos.DisableMetadataWrite.md) | Use Entra ID identities for management place operations in Azure Cosmos DB. | Important
 [Azure.Cosmos.GremlinNaming](../rules/Azure.Cosmos.GremlinNaming.md) | Cosmos DB for Apache Gremlin account resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Cosmos.MinTLS](../rules/Azure.Cosmos.MinTLS.md) | Cosmos DB accounts should reject TLS versions older than 1.2. | Critical
 [Azure.Cosmos.MongoAvailabilityZone](../rules/Azure.Cosmos.MongoAvailabilityZone.md) | Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability. | Important
 [Azure.Cosmos.MongoEntraID](../rules/Azure.Cosmos.MongoEntraID.md) | MongoDB vCore clusters should have Microsoft Entra ID authentication enabled. | Critical
 [Azure.Cosmos.MongoNaming](../rules/Azure.Cosmos.MongoNaming.md) | Cosmos DB for MongoDB account resources without a standard naming convention may be difficult to identify and manage. | Awareness
+[Azure.Cosmos.NoSQLLocalAuth](../rules/Azure.Cosmos.NoSQLLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB NoSQL API accounts using a shared secret. | Critical
 [Azure.Cosmos.NoSQLNaming](../rules/Azure.Cosmos.NoSQLNaming.md) | Cosmos DB for NoSQL account resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Cosmos.PostgreSQLNaming](../rules/Azure.Cosmos.PostgreSQLNaming.md) | Cosmos DB PostgreSQL cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.Cosmos.PublicAccess](../rules/Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | Critical
@@ -238,6 +238,7 @@ Name | Synopsis | Severity
 [Azure.EventGrid.TopicNaming](../rules/Azure.EventGrid.TopicNaming.md) | Event Grid topics without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.EventGrid.TopicPublicAccess](../rules/Azure.EventGrid.TopicPublicAccess.md) | Use Private Endpoints to access Event Grid topics and domains. | Important
 [Azure.EventGrid.TopicTLS](../rules/Azure.EventGrid.TopicTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | Critical
+[Azure.EventHub.AvailabilityZone](../rules/Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | Important
 [Azure.EventHub.DisableLocalAuth](../rules/Azure.EventHub.DisableLocalAuth.md) | Authenticate Event Hub publishers and consumers with Entra ID identities. | Important
 [Azure.EventHub.Firewall](../rules/Azure.EventHub.Firewall.md) | Access to the namespace endpoints should be restricted to only allowed sources. | Critical
 [Azure.EventHub.MinTLS](../rules/Azure.EventHub.MinTLS.md) | Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities. | Critical
@@ -373,6 +374,7 @@ Name | Synopsis | Severity
 [Azure.Redis.FirewallRuleCount](../rules/Azure.Redis.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules for the Redis cache. | Awareness
 [Azure.Redis.LocalAuth](../rules/Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | Important
 [Azure.Redis.MaxMemoryReserved](../rules/Azure.Redis.MaxMemoryReserved.md) | Configure maxmemory-reserved to reserve memory for non-cache operations. | Important
+[Azure.Redis.MigrateAMR](../rules/Azure.Redis.MigrateAMR.md) | Azure Cache for Redis is being retired. Migrate to Azure Managed Redis. | Important
 [Azure.Redis.MinSKU](../rules/Azure.Redis.MinSKU.md) | Use Azure Cache for Redis instances of at least Standard C1. | Important
 [Azure.Redis.MinTLS](../rules/Azure.Redis.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | Critical
 [Azure.Redis.Naming](../rules/Azure.Redis.Naming.md) | Azure Cache for Redis resources without a standard naming convention may be difficult to identify and manage. | Awareness

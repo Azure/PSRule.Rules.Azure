@@ -253,8 +253,8 @@ Rule                                | Resource type                             
 `Azure.NSG.Naming`                  | `Microsoft.Network/networkSecurityGroups`   | `AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT`
 `Azure.PostgreSQL.Naming`           | `Microsoft.DBforPostgreSQL/servers`, `Microsoft.DBforPostgreSQL/flexibleServers` | `AZURE_POSTGRESQL_SERVER_NAME_FORMAT`
 `Azure.PublicIP.Naming`             | `Microsoft.Network/publicIPAddresses`       | `AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT`
-`Azure.Redis.Naming`                | `Microsoft.Cache/Redis`                     | `AZURE_REDIS_CACHE_NAME_FORMAT`
-`Azure.RedisEnterprise.Naming`      | `Microsoft.Cache/RedisEnterprise` with Enterprise or Enterprise Flash | `AZURE_REDIS_ENTERPRISE_NAME_FORMAT`
+`Azure.Redis.Naming`                | `Microsoft.Cache/redis`                     | `AZURE_REDIS_CACHE_NAME_FORMAT`
+`Azure.RedisEnterprise.Naming`      | `Microsoft.Cache/redisEnterprise` with Enterprise or Enterprise Flash | `AZURE_REDIS_ENTERPRISE_NAME_FORMAT`
 `Azure.Group.Naming`                | `Microsoft.Resources/resourceGroups`        | `AZURE_RESOURCE_GROUP_NAME_FORMAT`
 `Azure.Group.RequiredTags`          | `Microsoft.Resources/resourceGroups`        | `AZURE_RESOURCE_GROUP_REQUIRED_TAGS`
 `Azure.Resource.RequiredTags`       | Applies to all types that support tags except subscription and resource groups. | `AZURE_RESOURCE_REQUIRED_TAGS`
@@ -265,7 +265,6 @@ Rule                                | Resource type                             
 `Azure.SQL.DBNaming`                | `Microsoft.Sql/servers/databases`           | `AZURE_SQL_DATABASE_NAME_FORMAT`
 `Azure.SQL.JobAgentNaming`          | `Microsoft.Sql/servers/jobAgents`           | `AZURE_SQL_JOB_AGENT_NAME_FORMAT`
 `Azure.SQL.ElasticPoolNaming`       | `Microsoft.Sql/servers/elasticPools`        | `AZURE_SQL_ELASTIC_POOL_NAME_FORMAT`
-`Azure.SQL.StretchDBNaming`         | `Microsoft.Sql/servers/databases` with Data Warehouse service objective | `AZURE_SQL_STRETCH_DB_NAME_FORMAT`
 `Azure.SQLMI.Naming`                | `Microsoft.Sql/managedInstances`            | `AZURE_SQL_MI_NAME_FORMAT`
 `Azure.Storage.Naming`              | `Microsoft.Storage/storageAccounts`         | `AZURE_STORAGE_ACCOUNT_NAME_FORMAT`
 `Azure.Subscription.RequiredTags`   | `Microsoft.Subscription/aliases`            | `AZURE_SUBSCRIPTION_REQUIRED_TAGS`

@@ -550,5 +550,7 @@ AZR-000528 | [Azure.SQL.ElasticPoolNaming](Azure.SQL.ElasticPoolNaming.md) | Azu
 AZR-000529 | [Azure.SQLMI.Naming](Azure.SQLMI.Naming.md) | SQL Managed Instance resources without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000530 | [Azure.ServiceFabric.Naming](Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000531 | [Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000532 | [Azure.EventHub.AvailabilityZone](Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | GA
+AZR-000533 | [Azure.Redis.MigrateAMR](Azure.Redis.MigrateAMR.md) | Azure Cache for Redis is being retired. Migrate to Azure Managed Redis. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

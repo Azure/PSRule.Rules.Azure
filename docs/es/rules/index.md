@@ -440,7 +440,7 @@ AZR-000416 | [Azure.EntraDS.NTLM](Azure.EntraDS.NTLM.md) | Disable NTLM v1 for M
 AZR-000417 | [Azure.EntraDS.TLS](Azure.EntraDS.TLS.md) | Disable TLS v1 for Microsoft Entra Domain Services. | GA
 AZR-000418 | [Azure.EntraDS.RC4](Azure.EntraDS.RC4.md) | Disable RC4 encryption for Microsoft Entra Domain Services. | GA
 AZR-000419 | [Azure.Cosmos.SLA](Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | GA
-AZR-000420 | [Azure.Cosmos.DisableLocalAuth](Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | GA
+AZR-000420 | [Azure.Cosmos.NoSQLLocalAuth](Azure.Cosmos.NoSQLLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB NoSQL API accounts using a shared secret. | GA
 AZR-000421 | [Azure.Cosmos.PublicAccess](Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | GA
 AZR-000422 | [Azure.EventHub.Firewall](Azure.EventHub.Firewall.md) | Access to the namespace endpoints should be restricted to only allowed sources. | GA
 AZR-000423 | [Azure.AppGw.MigrateWAFPolicy](Azure.AppGw.MigrateWAFPolicy.md) | Migrate to Application Gateway WAF policy. | GA
@@ -550,5 +550,7 @@ AZR-000528 | [Azure.SQL.ElasticPoolNaming](Azure.SQL.ElasticPoolNaming.md) | Azu
 AZR-000529 | [Azure.SQLMI.Naming](Azure.SQLMI.Naming.md) | SQL Managed Instance resources without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000530 | [Azure.ServiceFabric.Naming](Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000531 | [Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000532 | [Azure.EventHub.AvailabilityZone](Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | GA
+AZR-000533 | [Azure.Redis.MigrateAMR](Azure.Redis.MigrateAMR.md) | Azure Cache for Redis is being retired. Migrate to Azure Managed Redis. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
