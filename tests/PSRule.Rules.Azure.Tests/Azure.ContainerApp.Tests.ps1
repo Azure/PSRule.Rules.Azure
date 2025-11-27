@@ -310,7 +310,11 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
                     }
                 });
 
-            $result = @($appItems + $envItems + $jobItems) | Invoke-PSRule @invokeParams -Option $option
+            $result = @($appItems + $envItems + $jobItems) | Invoke-PSRule @invokeParams -Option $option -Name @(
+                'Azure.ContainerApp.Naming'
+                'Azure.ContainerApp.EnvNaming'
+                'Azure.ContainerApp.JobNaming'
+            )
         }
 
         It 'Azure.ContainerApp.Naming' {

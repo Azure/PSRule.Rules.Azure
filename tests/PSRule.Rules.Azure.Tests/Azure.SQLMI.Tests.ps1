@@ -178,7 +178,7 @@ Describe 'Azure.SQLMI' -Tag 'SQLMI' {
                     }
                 });
 
-            $result = $items | Invoke-PSRule @invokeParams -Option $option
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.SQLMI.Naming';
         }
 
         It 'Azure.SQLMI.Naming' {

@@ -372,7 +372,15 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
                     }
                 });
 
-            $result = @($nosqlItems + $mongoItems + $cassandraItems + $tableItems + $gremlinItems + $dbItems + $postgresItems) | Invoke-PSRule @invokeParams -Option $option
+            $result = @($nosqlItems + $mongoItems + $cassandraItems + $tableItems + $gremlinItems + $dbItems + $postgresItems) | Invoke-PSRule @invokeParams -Option $option -Name @(
+                'Azure.Cosmos.NoSQLNaming'
+                'Azure.Cosmos.MongoNaming'
+                'Azure.Cosmos.CassandraNaming'
+                'Azure.Cosmos.TableNaming'
+                'Azure.Cosmos.GremlinNaming'
+                'Azure.Cosmos.DatabaseNaming'
+                'Azure.Cosmos.PostgreSQLNaming'
+            )
         }
 
         It 'Azure.Cosmos.NoSQLNaming' {

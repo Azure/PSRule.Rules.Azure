@@ -389,7 +389,7 @@ Describe 'Azure.ACR' -Tag 'ACR' {
                     }
                 });
 
-            $result = $items | Invoke-PSRule @invokeParams -Option $option
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.ACR.Naming'
         }
 
         It 'Azure.ACR.Naming' {

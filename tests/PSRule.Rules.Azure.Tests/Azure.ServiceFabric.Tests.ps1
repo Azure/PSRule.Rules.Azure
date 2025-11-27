@@ -120,7 +120,10 @@ Describe 'Azure.ServiceFabric' -Tag 'ServiceFabric' {
                     }
                 });
 
-            $result = @($clusterItems + $managedClusterItems) | Invoke-PSRule @invokeParams -Option $option
+            $result = @($clusterItems + $managedClusterItems) | Invoke-PSRule @invokeParams -Option $option -Name @(
+                'Azure.ServiceFabric.Naming'
+                'Azure.ServiceFabric.ManagedNaming'
+            )
         }
 
         It 'Azure.ServiceFabric.Naming' {
