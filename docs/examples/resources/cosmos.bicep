@@ -85,3 +85,91 @@ resource gremlin 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' = {
     defaultExperience: 'Gremlin (graph)'
   }
 }
+
+// An example Cosmos DB account using the Cassandra API.
+resource cassandra 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' = {
+  name: name
+  location: location
+  kind: 'GlobalDocumentDB'
+  properties: {
+    capabilities: [
+      {
+        name: 'EnableCassandra'
+      }
+    ]
+    locations: [
+      {
+        locationName: location
+        failoverPriority: 0
+        isZoneRedundant: true
+      }
+    ]
+    databaseAccountOfferType: 'Standard'
+    minimalTlsVersion: 'Tls12'
+    backupPolicy: {
+      type: 'Periodic'
+      periodicModeProperties: {
+        backupIntervalInMinutes: 240
+        backupRetentionIntervalInHours: 8
+        backupStorageRedundancy: 'Geo'
+      }
+    }
+  }
+}
+
+// An example Cosmos DB account using the MongoDB API.
+resource mongo 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' = {
+  name: name
+  location: location
+  kind: 'MongoDB'
+  properties: {
+    locations: [
+      {
+        locationName: location
+        failoverPriority: 0
+        isZoneRedundant: true
+      }
+    ]
+    databaseAccountOfferType: 'Standard'
+    minimalTlsVersion: 'Tls12'
+    backupPolicy: {
+      type: 'Periodic'
+      periodicModeProperties: {
+        backupIntervalInMinutes: 240
+        backupRetentionIntervalInHours: 8
+        backupStorageRedundancy: 'Geo'
+      }
+    }
+  }
+}
+
+// An example Cosmos DB account using the Table API.
+resource table 'Microsoft.DocumentDB/databaseAccounts@2025-04-15' = {
+  name: name
+  location: location
+  kind: 'GlobalDocumentDB'
+  properties: {
+    capabilities: [
+      {
+        name: 'EnableTable'
+      }
+    ]
+    locations: [
+      {
+        locationName: location
+        failoverPriority: 0
+        isZoneRedundant: true
+      }
+    ]
+    databaseAccountOfferType: 'Standard'
+    minimalTlsVersion: 'Tls12'
+    backupPolicy: {
+      type: 'Periodic'
+      periodicModeProperties: {
+        backupIntervalInMinutes: 240
+        backupRetentionIntervalInHours: 8
+        backupStorageRedundancy: 'Geo'
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-27
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
@@ -54,8 +54,8 @@ To deploy databases that pass this rule:
 For example:
 
 ```bicep
-@minLength(1)
-@maxLength(255)
+@minLength(3)
+@maxLength(44)
 @description('The name of the Cosmos DB account.')
 param accountName string
 
@@ -82,7 +82,7 @@ resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2025-04-15
 }
 ```
 
-<!-- external:avm avm/res/document-db/database-account name -->
+<!-- external:avm avm/res/document-db/database-account/sql-database name -->
 
 ### Configure with Azure template
 
@@ -100,8 +100,8 @@ For example:
   "parameters": {
     "accountName": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 255,
+      "minLength": 3,
+      "maxLength": 44,
       "metadata": {
         "description": "The name of the Cosmos DB account."
       }
@@ -157,3 +157,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)

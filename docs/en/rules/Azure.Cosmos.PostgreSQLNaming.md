@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-10-10
+reviewed: 2025-11-28
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
@@ -81,8 +81,6 @@ resource postgresCluster 'Microsoft.DBforPostgreSQL/serverGroupsv2@2022-11-08' =
   }
 }
 ```
-
-<!-- external:avm avm/res/db-for-postgre-sql/flexible-server name -->
 
 ### Configure with Azure template
 
@@ -171,3 +169,6 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/servergroupsv2)
