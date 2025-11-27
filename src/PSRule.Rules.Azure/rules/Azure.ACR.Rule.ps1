@@ -75,6 +75,24 @@ Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000494' -Type 'Microsoft.ContainerReg
     }
 }
 
+# Synopsis: Ensure container registry audit diagnostic logs are enabled.
+Rule 'Azure.ACR.Logs' -Ref 'AZR-000498' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4'; 'Azure.WAF/maturity' = 'L1'; } {
+    $logCategoryGroups = 'audit', 'allLogs'
+    $joinedLogCategoryGroups = $logCategoryGroups -join ', '
+    $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerRegistry/registries/providers/diagnosticSettings' |
+        ForEach-Object { $_.properties.logs |
+            Where-Object { 
+                ($_.category -in 'ContainerRegistryLoginEvents', 'ContainerRegistryRepositoryEvents' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled 
+            }
+        })
+    
+    $Assert.Greater($diagnostics, '.', 0).Reason(
+        $LocalizedData.ContainerRegistryAuditDiagnosticSetting,
+        'ContainerRegistryLoginEvents, ContainerRegistryRepositoryEvents',
+        $joinedLogCategoryGroups
+    ).PathPrefix('resources')
+}
+
 #endregion Rules
 
 #region Helper functions
