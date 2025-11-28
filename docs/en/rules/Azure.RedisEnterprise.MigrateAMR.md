@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-11-24
+reviewed: 2025-11-28
 severity: Important
 pillar: Operational Excellence
 category: OE:05 Infrastructure as code
@@ -92,6 +92,7 @@ Azure Cache for Redis (Basic, Standard, Premium) using the `Microsoft.Cache/redi
 ## LINKS
 
 - [OE:05 Infrastructure as code](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [Operational Excellence: Level 4](https://learn.microsoft.com/azure/well-architected/operational-excellence/maturity-model?tabs=level4)
 - [Azure Cache for Redis retirement: What to know and how to prepare](https://techcommunity.microsoft.com/blog/azure-managed-redis/azure-cache-for-redis-retirement-what-to-know-and-how-to-prepare/4458721)
 - [Azure Cache for Redis retirement FAQ](https://learn.microsoft.com/azure/azure-cache-for-redis/retirement-faq)
 - [Azure Managed Redis documentation](https://learn.microsoft.com/azure/azure-cache-for-redis/managed-redis/managed-redis-overview)
