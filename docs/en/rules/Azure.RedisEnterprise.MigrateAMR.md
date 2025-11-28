@@ -3,7 +3,7 @@ reviewed: 2025-11-28
 severity: Important
 pillar: Operational Excellence
 category: OE:05 Infrastructure as code
-resource: Redis Enterprise
+resource: Azure Cache for Redis Enterprise
 resourceType: Microsoft.Cache/redisEnterprise
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.MigrateAMR/
 ---
