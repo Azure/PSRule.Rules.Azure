@@ -3,20 +3,22 @@
 
 // Bicep documentation examples
 
-@sys.description('The name of the resource.')
+@minLength(3)
+@maxLength(63)
+@description('The name of the resource.')
 param name string
 
-@sys.description('The location resources will be deployed.')
+@description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-@sys.description('The login for an administrator.')
+@description('The login for an administrator.')
 param localAdministrator string
 
 @secure()
 @description('A default administrator password.')
 param localAdministratorPassword string
 
-@sys.description('The object GUID for an administrator account.')
+@description('The object GUID for an administrator account.')
 param loginObjectId string
 
 // An example PostgreSQL server.
@@ -47,7 +49,7 @@ resource single_admin 'Microsoft.DBforPostgreSQL/servers/administrators@2017-12-
 }
 
 // An example PostgreSQL using the flexible server model.
-resource flexible 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
+resource flexible 'Microsoft.DBforPostgreSQL/flexibleServers@2024-08-01' = {
   name: name
   location: location
   sku: {
@@ -76,7 +78,7 @@ resource flexible 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
 }
 
 // Configure administrators for a flexible server.
-resource flexible_admin 'Microsoft.DBforPostgreSQL/flexibleServers/administrators@2022-12-01' = {
+resource flexible_admin 'Microsoft.DBforPostgreSQL/flexibleServers/administrators@2024-08-01' = {
   parent: flexible
   name: loginObjectId
   properties: {

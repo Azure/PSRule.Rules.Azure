@@ -285,4 +285,45 @@ Describe 'Azure.PostgreSQL' -Tag 'PostgreSQL' {
             $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
+
+    Context 'Resource naming format' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_POSTGRESQL_SERVER_NAME_FORMAT' = '^psql-'
+            };
+
+            $names = @('pgserver-001', 'psql-001', 'PSQL-001')
+            $items = @($names | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.DBforPostgreSQL/servers'
+                    }
+                });
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.PostgreSQL.ServerNaming'
+        }
+
+        It 'Azure.PostgreSQL.ServerNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.ServerNaming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'pgserver-001', 'PSQL-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'psql-001';
+        }
+    }
 }

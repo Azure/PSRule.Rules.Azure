@@ -362,4 +362,50 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult.Detail.Reason.Path | Should -BeIn 'name';
         }
     }
+
+    Context 'Resource naming format' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_CONTAINER_REGISTRY_NAME_FORMAT' = '^cr'
+            };
+
+            $names = @(
+                'registry001'
+                'cr001'
+                'CR001'
+            )
+
+            $items = @($names | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.ContainerRegistry/registries'
+                    }
+                });
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.ACR.Naming'
+        }
+
+        It 'Azure.ACR.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.Naming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry001', 'CR001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'cr001';
+        }
+    }
 }

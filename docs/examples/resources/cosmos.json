@@ -4,15 +4,17 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.38.33.27573",
-      "templateHash": "15884156970722779622"
+      "version": "0.39.26.7824",
+      "templateHash": "13054416509978409621"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 3,
+      "maxLength": 44,
       "metadata": {
-        "description": "The name of the Cosmos database account."
+        "description": "The name of the resource."
       }
     },
     "location": {
@@ -20,6 +22,13 @@
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "The location resources will be deployed."
+      }
+    },
+    "secondaryLocation": {
+      "type": "string",
+      "defaultValue": "[parameters('location')]",
+      "metadata": {
+        "description": "The location of a secondary replica."
       }
     }
   },
@@ -40,13 +49,15 @@
             "locationName": "[parameters('location')]",
             "failoverPriority": 0,
             "isZoneRedundant": true
+          },
+          {
+            "locationName": "[parameters('secondaryLocation')]",
+            "failoverPriority": 1,
+            "isZoneRedundant": false
           }
         ],
         "disableKeyBasedMetadataWriteAccess": true,
         "minimalTlsVersion": "Tls12"
-      },
-      "metadata": {
-        "description": "A Cosmos DB account using the NoSQL API."
       }
     },
     {
@@ -60,9 +71,128 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('name'))]"
-      ],
-      "metadata": {
-        "description": "A No SQL API database in a Cosmos DB account."
+      ]
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2025-04-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "capabilities": [
+          {
+            "name": "EnableGremlin"
+          }
+        ],
+        "locations": [
+          {
+            "locationName": "[parameters('location')]",
+            "failoverPriority": 0,
+            "isZoneRedundant": true
+          }
+        ],
+        "databaseAccountOfferType": "Standard",
+        "minimalTlsVersion": "Tls12",
+        "backupPolicy": {
+          "type": "Periodic",
+          "periodicModeProperties": {
+            "backupIntervalInMinutes": 240,
+            "backupRetentionIntervalInHours": 8,
+            "backupStorageRedundancy": "Geo"
+          }
+        }
+      },
+      "tags": {
+        "defaultExperience": "Gremlin (graph)"
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2025-04-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "capabilities": [
+          {
+            "name": "EnableCassandra"
+          }
+        ],
+        "locations": [
+          {
+            "locationName": "[parameters('location')]",
+            "failoverPriority": 0,
+            "isZoneRedundant": true
+          }
+        ],
+        "databaseAccountOfferType": "Standard",
+        "minimalTlsVersion": "Tls12",
+        "backupPolicy": {
+          "type": "Periodic",
+          "periodicModeProperties": {
+            "backupIntervalInMinutes": 240,
+            "backupRetentionIntervalInHours": 8,
+            "backupStorageRedundancy": "Geo"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2025-04-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "kind": "MongoDB",
+      "properties": {
+        "locations": [
+          {
+            "locationName": "[parameters('location')]",
+            "failoverPriority": 0,
+            "isZoneRedundant": true
+          }
+        ],
+        "databaseAccountOfferType": "Standard",
+        "minimalTlsVersion": "Tls12",
+        "backupPolicy": {
+          "type": "Periodic",
+          "periodicModeProperties": {
+            "backupIntervalInMinutes": 240,
+            "backupRetentionIntervalInHours": 8,
+            "backupStorageRedundancy": "Geo"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2025-04-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "capabilities": [
+          {
+            "name": "EnableTable"
+          }
+        ],
+        "locations": [
+          {
+            "locationName": "[parameters('location')]",
+            "failoverPriority": 0,
+            "isZoneRedundant": true
+          }
+        ],
+        "databaseAccountOfferType": "Standard",
+        "minimalTlsVersion": "Tls12",
+        "backupPolicy": {
+          "type": "Periodic",
+          "periodicModeProperties": {
+            "backupIntervalInMinutes": 240,
+            "backupRetentionIntervalInHours": 8,
+            "backupStorageRedundancy": "Geo"
+          }
+        }
       }
     }
   ]

@@ -4,13 +4,15 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "18144616178175150817"
+      "version": "0.38.33.27573",
+      "templateHash": "17489438504009269923"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 1,
+      "maxLength": 63,
       "metadata": {
         "description": "The name of the resource."
       }
@@ -26,7 +28,7 @@
   "resources": [
     {
       "type": "Microsoft.Cache/redisEnterprise",
-      "apiVersion": "2024-02-01",
+      "apiVersion": "2025-04-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {

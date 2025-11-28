@@ -1,0 +1,84 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.38.33.27573",
+      "templateHash": "14594933783337124860"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 63,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+    "subnetId": {
+      "type": "string",
+      "metadata": {
+        "description": "The resource subnet ID."
+      }
+    }
+  },
+  "variables": {
+    "containers": [
+      {
+        "name": "mycontainer",
+        "properties": {
+          "image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+          "ports": [
+            {
+              "port": 80,
+              "protocol": "TCP"
+            }
+          ],
+          "resources": {
+            "requests": {
+              "cpu": 1,
+              "memoryInGB": 2
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2025-09-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "containers": "[variables('containers')]",
+        "osType": "Linux",
+        "sku": "Standard",
+        "restartPolicy": "Always",
+        "ipAddress": {
+          "ports": [
+            {
+              "port": 80,
+              "protocol": "TCP"
+            }
+          ],
+          "type": "Private"
+        },
+        "subnetIds": [
+          {
+            "id": "[parameters('subnetId')]"
+          }
+        ]
+      }
+    }
+  ]
+}

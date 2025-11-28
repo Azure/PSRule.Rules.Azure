@@ -324,7 +324,7 @@ AZR-000300 | [Azure.Redis.FirewallIPRange](Azure.Redis.FirewallIPRange.md) | Det
 AZR-000301 | [Azure.RedisEnterprise.MinTLS](Azure.RedisEnterprise.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | GA
 AZR-000302 | [Azure.AppGwWAF.PreventionMode](Azure.AppGwWAF.PreventionMode.md) | Use protection mode in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | GA
 AZR-000303 | [Azure.AppGwWAF.Exclusions](Azure.AppGwWAF.Exclusions.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | GA
-AZR-000304 | [Azure.AppGwWAF.RuleGroups](Azure.AppGwWAF.RuleGroups.md) | Use recommended rule groups in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | GA
+AZR-000304 | [Azure.AppGwWAF.RuleGroups](Azure.AppGwWAF.RuleGroups.md) | Application Gateway WAF policies should include both Microsoft Default Rule Set and Bot Manager Rule Set to provide comprehensive protection against web application threats and malicious bot traffic. | GA
 AZR-000305 | [Azure.FrontDoorWAF.Enabled](Azure.FrontDoorWAF.Enabled.md) | Front Door Web Application Firewall (WAF) policy must be enabled to protect back end resources. | GA
 AZR-000306 | [Azure.FrontDoorWAF.PreventionMode](Azure.FrontDoorWAF.PreventionMode.md) | Use protection mode in Front Door Web Application Firewall (WAF) policies to protect back end resources. | GA
 AZR-000307 | [Azure.FrontDoorWAF.Exclusions](Azure.FrontDoorWAF.Exclusions.md) | Use recommended rule groups in Front Door Web Application Firewall (WAF) policies to protect back end resources. Avoid configuring rule exclusions. | GA
@@ -440,7 +440,7 @@ AZR-000416 | [Azure.EntraDS.NTLM](Azure.EntraDS.NTLM.md) | Disable NTLM v1 for M
 AZR-000417 | [Azure.EntraDS.TLS](Azure.EntraDS.TLS.md) | Disable TLS v1 for Microsoft Entra Domain Services. | GA
 AZR-000418 | [Azure.EntraDS.RC4](Azure.EntraDS.RC4.md) | Disable RC4 encryption for Microsoft Entra Domain Services. | GA
 AZR-000419 | [Azure.Cosmos.SLA](Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | GA
-AZR-000420 | [Azure.Cosmos.DisableLocalAuth](Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | GA
+AZR-000420 | [Azure.Cosmos.NoSQLLocalAuth](Azure.Cosmos.NoSQLLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB NoSQL API accounts using a shared secret. | GA
 AZR-000421 | [Azure.Cosmos.PublicAccess](Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | GA
 AZR-000422 | [Azure.EventHub.Firewall](Azure.EventHub.Firewall.md) | Access to the namespace endpoints should be restricted to only allowed sources. | GA
 AZR-000423 | [Azure.AppGw.MigrateWAFPolicy](Azure.AppGw.MigrateWAFPolicy.md) | Migrate to Application Gateway WAF policy. | GA
@@ -518,5 +518,39 @@ AZR-000495 | [Azure.ACR.ExportPolicy](Azure.ACR.ExportPolicy.md) | Export policy
 AZR-000496 | [Azure.Redis.LocalAuth](Azure.Redis.LocalAuth.md) | Access keys allow depersonalized access to Azure Cache for Redis using a shared secret. | GA
 AZR-000497 | [Azure.Storage.LocalAuth](Azure.Storage.LocalAuth.md) | Access keys allow depersonalized access to Storage Accounts using a shared secret. | GA
 AZR-000498 | [Azure.AppConfig.ReplicaLocation](Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | GA
+AZR-000499 | [Azure.Cosmos.MongoEntraID](Azure.Cosmos.MongoEntraID.md) | MongoDB vCore clusters should have Microsoft Entra ID authentication enabled. | GA
+AZR-000500 | [Azure.ADX.PublicAccess](Azure.ADX.PublicAccess.md) | Azure Data Explorer (ADX) clusters should have public network access disabled. | GA
+AZR-000501 | [Azure.Grafana.AvailabilityZone](Azure.Grafana.AvailabilityZone.md) | Use zone redundant Grafana workspaces in supported regions to improve reliability. | GA
+AZR-000502 | [Azure.Cosmos.AvailabilityZone](Azure.Cosmos.AvailabilityZone.md) | Use zone redundant Cosmos DB accounts in supported regions to improve reliability. | GA
+AZR-000503 | [Azure.Cosmos.MongoAvailabilityZone](Azure.Cosmos.MongoAvailabilityZone.md) | Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability. | GA
+AZR-000504 | [Azure.MICassandra.AvailabilityZone](Azure.MICassandra.AvailabilityZone.md) | Use zone redundant Managed Instance for Apache Cassandra clusters in supported regions to improve reliability. | GA
+AZR-000505 | [Azure.ACI.Naming](Azure.ACI.Naming.md) | Container Instance resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000506 | [Azure.ACR.Naming](Azure.ACR.Naming.md) | Container Registry resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000507 | [Azure.AKS.Naming](Azure.AKS.Naming.md) | AKS cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000508 | [Azure.AKS.SystemPoolNaming](Azure.AKS.SystemPoolNaming.md) | AKS system node pool resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000509 | [Azure.AKS.UserPoolNaming](Azure.AKS.UserPoolNaming.md) | AKS user node pool resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000510 | [Azure.ContainerApp.Naming](Azure.ContainerApp.Naming.md) | Container App resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000511 | [Azure.ContainerApp.EnvNaming](Azure.ContainerApp.EnvNaming.md) | Container App Environment resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000512 | [Azure.ContainerApp.JobNaming](Azure.ContainerApp.JobNaming.md) | Container App Job resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000513 | [Azure.Cosmos.CassandraNaming](Azure.Cosmos.CassandraNaming.md) | Cosmos DB for Apache Cassandra account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000514 | [Azure.Cosmos.MongoNaming](Azure.Cosmos.MongoNaming.md) | Cosmos DB for MongoDB account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000515 | [Azure.Cosmos.NoSQLNaming](Azure.Cosmos.NoSQLNaming.md) | Cosmos DB for NoSQL account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000516 | [Azure.Cosmos.TableNaming](Azure.Cosmos.TableNaming.md) | Cosmos DB for Table account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000517 | [Azure.Cosmos.GremlinNaming](Azure.Cosmos.GremlinNaming.md) | Cosmos DB for Apache Gremlin account resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000518 | [Azure.Cosmos.PostgreSQLNaming](Azure.Cosmos.PostgreSQLNaming.md) | Cosmos DB PostgreSQL cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000519 | [Azure.Cosmos.DatabaseNaming](Azure.Cosmos.DatabaseNaming.md) | Cosmos DB database resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000521 | [Azure.MySQL.ServerNaming](Azure.MySQL.ServerNaming.md) | MySQL database server resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000522 | [Azure.PostgreSQL.ServerNaming](Azure.PostgreSQL.ServerNaming.md) | PostgreSQL database server resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000523 | [Azure.Redis.Naming](Azure.Redis.Naming.md) | Azure Cache for Redis resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000524 | [Azure.RedisEnterprise.Naming](Azure.RedisEnterprise.Naming.md) | Azure Cache for Redis Enterprise resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000525 | [Azure.SQL.ServerNaming](Azure.SQL.ServerNaming.md) | Azure SQL Database server resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000526 | [Azure.SQL.DBNaming](Azure.SQL.DBNaming.md) | Azure SQL database resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000527 | [Azure.SQL.JobAgentNaming](Azure.SQL.JobAgentNaming.md) | Azure SQL Elastic Job agent resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000528 | [Azure.SQL.ElasticPoolNaming](Azure.SQL.ElasticPoolNaming.md) | Azure SQL Elastic Pool resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000529 | [Azure.SQLMI.Naming](Azure.SQLMI.Naming.md) | SQL Managed Instance resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000530 | [Azure.ServiceFabric.Naming](Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000531 | [Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000532 | [Azure.EventHub.AvailabilityZone](Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | GA
+AZR-000533 | [Azure.Redis.MigrateAMR](Azure.Redis.MigrateAMR.md) | Azure Cache for Redis is being retired. Migrate to Azure Managed Redis. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

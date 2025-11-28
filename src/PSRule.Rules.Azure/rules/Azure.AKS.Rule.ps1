@@ -344,6 +344,33 @@ Rule 'Azure.AKS.MaintenanceWindow' -Ref 'AZR-000446' -Type 'Microsoft.ContainerS
       }
 }
 
+# Synopsis: AKS clusters without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.AKS.Naming' -Ref 'AZR-000507' -Type 'Microsoft.ContainerService/managedClusters' -If { $Configuration['AZURE_AKS_CLUSTER_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_AKS_CLUSTER_NAME_FORMAT, $True);
+}
+
+# Synopsis: AKS system node pools without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.AKS.SystemPoolNaming' -Ref 'AZR-000508' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -If { $Configuration['AZURE_AKS_SYSTEM_POOL_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $agentPools = @(GetAgentPoolProfiles | Where-Object { $_.mode -eq 'System' });
+    if ($agentPools.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($agentPool in $agentPools) {
+        $Assert.Match($agentPool, 'name', $Configuration.AZURE_AKS_SYSTEM_POOL_NAME_FORMAT, $True);
+    }
+}
+
+# Synopsis: AKS user node pools without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.AKS.UserPoolNaming' -Ref 'AZR-000509' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -If { $Configuration['AZURE_AKS_USER_POOL_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $agentPools = @(GetAgentPoolProfiles | Where-Object { $_.mode -eq 'User' });
+    if ($agentPools.Length -eq 0) {
+        return $Assert.Pass();
+    }
+    foreach ($agentPool in $agentPools) {
+        $Assert.Match($agentPool, 'name', $Configuration.AZURE_AKS_USER_POOL_NAME_FORMAT, $True);
+    }
+}
+
 #region Helper functions
 
 function global:GetAgentPoolProfiles {
