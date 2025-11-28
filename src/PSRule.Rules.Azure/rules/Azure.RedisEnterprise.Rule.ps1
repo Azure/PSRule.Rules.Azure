@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 #
-# Validation rules for Azure Cache for Redis Enterprise and Enterprise Flash
+# Validation rules for Azure Managed Redis (Redis Enterprise)
 #
 
 #region Naming rules
