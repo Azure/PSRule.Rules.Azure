@@ -1129,5 +1129,74 @@
       "capacity": 15
     },
     "zones": []
+  },
+  {
+    "Name": "redis-T",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-T",
+    "ResourceName": "redis-T",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-T.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "Balanced_B10",
+      "capacity": 2
+    },
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "Name": "redis-U",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-U",
+    "ResourceName": "redis-U",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-U.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "MemoryOptimized_M10",
+      "capacity": 2
+    },
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "Name": "redis-V",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-V",
+    "ResourceName": "redis-V",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-V.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "ComputeOptimized_X10",
+      "capacity": 2
+    },
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ]
   }
 ]

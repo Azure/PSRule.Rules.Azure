@@ -87,8 +87,6 @@ For example:
 
 ## NOTES
 
-Azure Cache for Redis Enterprise and Enterprise Flash SKUs `Enterprise_*` and `EnterpriseFlash_*` are deprecated.
-
 Azure Cache for Redis (Basic, Standard, Premium) using the `Microsoft.Cache/redis` resource type is also deprecated and covered by a separate rule.
 
 ## LINKS
