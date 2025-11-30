@@ -45,6 +45,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
         - `AZURE_REDIS_CACHE_NAME_FORMAT`
         - `AZURE_REDIS_ENTERPRISE_NAME_FORMAT`
     - Added configured name format by @BernieWhite.
+  - Azure Cache for Redis Enterprise and Enterprise Flash:
+    - Check for deprecated Redis Enterprise and Enterprise Flash SKUs by @BenjaminEngeset.
+      [#3606](https://github.com/Azure/PSRule.Rules.Azure/issues/3606)
   - Azure Database for MySQL:
     - Check resources naming matches configured name format by @BernieWhite.
       [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)

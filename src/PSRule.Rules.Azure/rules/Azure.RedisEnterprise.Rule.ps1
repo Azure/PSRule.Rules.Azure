@@ -13,3 +13,8 @@ Rule 'Azure.RedisEnterprise.Naming' -Ref 'AZR-000524' -Type 'Microsoft.Cache/Red
 }
 
 #endregion Naming rules
+
+# Synopsis: Azure Cache for Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis.
+Rule 'Azure.RedisEnterprise.MigrateAMR' -Ref 'AZR-000534' -Type 'Microsoft.Cache/redisEnterprise' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+    $Assert.NotLike($TargetObject, 'sku.name', @('Enterprise_*', 'EnterpriseFlash_*')).Reason($LocalizedData.RedisEnterpriseMigrateAMR)
+}

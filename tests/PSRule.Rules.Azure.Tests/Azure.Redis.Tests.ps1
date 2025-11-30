@@ -118,8 +118,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
              # None
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
              $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 8;
-             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-R', 'redis-S';
+             $ruleResult.Length | Should -Be 11;
+             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-R', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.Redis.AvailabilityZone' {
@@ -146,8 +146,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 13;
-            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S';
+            $ruleResult.Length | Should -Be 16;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.RedisEnterprise.Zones' {
@@ -173,8 +173,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 12;
-            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.Redis.PublicNetworkAccess' {
@@ -214,8 +214,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.Redis.FirewallRuleCount' {
@@ -253,8 +253,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None 
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-F', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-F', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.Redis.FirewallIPRange' {
@@ -290,8 +290,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None 
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-F', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-F', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.Redis.Version' {
@@ -334,8 +334,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
 
              # None
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-             $ruleResult.Length | Should -Be 7;
-             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
+             $ruleResult.Length | Should -Be 10;
+             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.Redis.LocalAuth' {
@@ -364,6 +364,24 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
 
             $ruleResult[0].Reason | Should -BeExactly "Azure Cache for Redis is being retired. Migrate to Azure Managed Redis.";
+        }
+
+        It 'Azure.RedisEnterprise.MigrateAMR' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RedisEnterprise.MigrateAMR' };
+
+            # Fail - Enterprise and EnterpriseFlash SKUs should fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
+
+            $ruleResult[0].Reason | Should -BeExactly "Azure Cache for Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis.";
+
+            # Pass - Azure Managed Redis SKUs should pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'redis-T', 'redis-U', 'redis-V';
         }
     }
 
@@ -421,8 +439,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 13;
-            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S';
+            $ruleResult.Length | Should -Be 16;
+            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.Redis.AvailabilityZone - YAML file option' {
@@ -455,8 +473,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 13;
-            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S';
+            $ruleResult.Length | Should -Be 16;
+            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-Q', 'redis-R', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.RedisEnterprise.Zones - HashTable option' {
@@ -498,8 +516,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 12;
-            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R', 'redis-T', 'redis-U', 'redis-V';
         }
 
         It 'Azure.RedisEnterprise.Zones - YAML file option' {
@@ -530,8 +548,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 12;
-            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -Be 'redis-A', 'redis-B', 'redis-C', 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R', 'redis-T', 'redis-U', 'redis-V';
         }
     }
 
