@@ -80,8 +80,8 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -BeIn 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S', 'redis-T', 'redis-U', 'redis-V';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
         }
 
         It 'Azure.Redis.MinSKU' {
