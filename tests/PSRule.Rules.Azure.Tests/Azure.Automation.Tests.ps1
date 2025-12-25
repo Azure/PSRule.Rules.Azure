@@ -56,6 +56,10 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
+
+            # NOTE: It is expected that `automation-b/webhook-a` no longer fails late in December each
+            # year due to the expiry time being less then a year away.
+            # When this happens, tests will fail and this needs to be bumped a year.
             $ruleResult.TargetName | Should -Be 'automation-a', 'automation-b';
             # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'resources[1].properties.expiryTime';
 
