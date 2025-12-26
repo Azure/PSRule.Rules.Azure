@@ -71,12 +71,12 @@
       },
       "System.Collections.Immutable": {
         "type": "Direct",
-        "requested": "[9.0.8, )",
-        "resolved": "9.0.8",
-        "contentHash": "Eje6exD7AGKPg5SIkmjyWTBq0KK6SpfTBfdFUmpGG07mNbYimFJ+jyVnILcs0ikFOXoYTBpBOxKYgAk2hhjYOw==",
+        "requested": "[10.0.1, )",
+        "resolved": "10.0.1",
+        "contentHash": "kdTe61B8P7i2M1pODC3MLbZ/CfFGjpC6c6jzxjQoB5DHZNewayCRqgFUmx3JKB6vLQtozpMQEiw+R5fO32Jv4g==",
         "dependencies": {
-          "System.Memory": "4.5.5",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+          "System.Memory": "4.6.3",
+          "System.Runtime.CompilerServices.Unsafe": "6.1.2"
         }
       },
       "YamlDotNet": {
