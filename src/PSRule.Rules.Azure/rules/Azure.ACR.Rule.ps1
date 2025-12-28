@@ -75,8 +75,13 @@ Rule 'Azure.ACR.ReplicaLocation' -Ref 'AZR-000494' -Type 'Microsoft.ContainerReg
     }
 }
 
+# Synopsis: Container registries without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.ACR.Naming' -Ref 'AZR-000506' -Type 'Microsoft.ContainerRegistry/registries' -If { $Configuration['AZURE_CONTAINER_REGISTRY_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_CONTAINER_REGISTRY_NAME_FORMAT, $True);
+}
+
 # Synopsis: Ensure container registry audit diagnostic logs are enabled.
-Rule 'Azure.ACR.Logs' -Ref 'AZR-000498' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4'; 'Azure.WAF/maturity' = 'L1'; } {
+Rule 'Azure.ACR.Logs' -Ref 'AZR-000535' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4'; 'Azure.WAF/maturity' = 'L1'; } {
     $logCategoryGroups = 'audit', 'allLogs'
     $joinedLogCategoryGroups = $logCategoryGroups -join ', '
     $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerRegistry/registries/providers/diagnosticSettings' |

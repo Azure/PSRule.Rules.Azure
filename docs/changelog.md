@@ -30,6 +30,162 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Added naming format rules for AKS, Container Apps, Service Fabric, Cosmos DB, Redis, and SQL resources.
+    [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+  - App Configuration:
+    - Check that replica locations are in allowed regions by @BernieWhite.
+      [#3441](https://github.com/Azure/PSRule.Rules.Azure/issues/3441)
+  - Azure Cache for Redis:
+    - Check for legacy Azure Cache for Redis instances by @BenjaminEngeset.
+      [#3605](https://github.com/Azure/PSRule.Rules.Azure/issues/3605)
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_REDIS_CACHE_NAME_FORMAT`
+        - `AZURE_REDIS_ENTERPRISE_NAME_FORMAT`
+    - Added configured name format by @BernieWhite.
+  - Azure Cache for Redis Enterprise and Enterprise Flash:
+    - Check for deprecated Redis Enterprise and Enterprise Flash SKUs by @BenjaminEngeset.
+      [#3606](https://github.com/Azure/PSRule.Rules.Azure/issues/3606)
+  - Azure Database for MySQL:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_MYSQL_SERVER_NAME_FORMAT`
+  - Azure Database for PostgreSQL:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_POSTGRESQL_SERVER_NAME_FORMAT`
+  - Azure Kubernetes Service:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_AKS_CLUSTER_NAME_FORMAT`
+        - `AZURE_AKS_SYSTEM_POOL_NAME_FORMAT`
+        - `AZURE_AKS_USER_POOL_NAME_FORMAT`
+  - Container Apps:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_CONTAINER_APP_NAME_FORMAT`
+        - `AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT`
+        - `AZURE_CONTAINER_APP_JOB_NAME_FORMAT`
+  - Container Instance:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_CONTAINER_INSTANCE_NAME_FORMAT`
+  - Container Registry:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_CONTAINER_REGISTRY_NAME_FORMAT`
+  - Cosmos DB:
+    - Check that Cosmos DB accounts have availability zones enabled by @BenjaminEngeset.
+      [#3055](https://github.com/Azure/PSRule.Rules.Azure/issues/3055)
+    - Check that MongoDB vCore clusters use Microsoft Entra ID authentication by @BenjaminEngeset.
+      [#3369](https://github.com/Azure/PSRule.Rules.Azure/issues/3369)
+    - Check that MongoDB vCore clusters have availability zones enabled by @BenjaminEngeset.
+      [#3586](https://github.com/Azure/PSRule.Rules.Azure/issues/3586)
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration options:
+        - `AZURE_COSMOS_CASSANDRA_NAME_FORMAT`
+        - `AZURE_COSMOS_DATABASE_NAME_FORMAT`
+        - `AZURE_COSMOS_GREMLIN_NAME_FORMAT`
+        - `AZURE_COSMOS_MONGO_NAME_FORMAT`
+        - `AZURE_COSMOS_NOSQL_NAME_FORMAT`
+        - `AZURE_COSMOS_POSTGRESQL_NAME_FORMAT`
+        - `AZURE_COSMOS_TABLE_NAME_FORMAT`
+  - Data Explorer:
+    - Check that public network access is disabled by @BenjaminEngeset.
+      [#3114](https://github.com/Azure/PSRule.Rules.Azure/issues/3114)
+  - Event Hub:
+    - Check that zone redundancy is enabled for Event Hub namespaces in supported regions by @BenjaminEngeset.
+      [#3029](https://github.com/Azure/PSRule.Rules.Azure/issues/3029)
+  - Managed Instance for Apache Cassandra:
+    - Check that Managed Instance for Apache Cassandra clusters have availability zones enabled by @BenjaminEngeset.
+      [#3592](https://github.com/Azure/PSRule.Rules.Azure/issues/3592)
+  - Managed Grafana:
+    - Check that zone redundancy is enabled for Grafana workspaces in supported regions by @BenjaminEngeset.
+      [#3294](https://github.com/Azure/PSRule.Rules.Azure/issues/3294)
+  - Service Fabric:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_SERVICE_FABRIC_CLUSTER_NAME_FORMAT`
+        - `AZURE_SERVICE_FABRIC_MANAGED_CLUSTER_NAME_FORMAT`
+  - SQL Database:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_SQL_DATABASE_NAME_FORMAT`
+        - `AZURE_SQL_SERVER_NAME_FORMAT`
+        - `AZURE_SQL_ELASTIC_POOL_NAME_FORMAT`
+        - `AZURE_SQL_JOB_AGENT_NAME_FORMAT`
+  - SQL Managed Instance:
+    - Check resources naming matches configured name format by @BernieWhite.
+      [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)
+      - The name format can be configured by the following configuration option:
+        - `AZURE_SQL_MI_NAME_FORMAT`
+- Updated rules:
+  - Application Gateway Policy:
+    - Updated `Azure.AppGwWAF.RuleGroups` to use Microsoft Default Rule Set instead of legacy OWASP rule set by @BenjaminEngeset.
+      [#3553](https://github.com/Azure/PSRule.Rules.Azure/issues/3553)
+  - Cosmos DB:
+    - Renamed `Azure.Cosmos.DisableLocalAuth` to `Azure.Cosmos.NoSQLLocalAuth` to reflect it applies only to NoSQL API by @BernieWhite.
+      [#3576](https://github.com/Azure/PSRule.Rules.Azure/issues/3576)
+
+## v1.46.0
+
+What's changed since v1.45.2:
+
+- New features:
+  - **Experimental:** Added Well-Architected Framework - Security pillar Level 1 maturity baseline by @BernieWhite.
+    [#3107](https://github.com/Azure/PSRule.Rules.Azure/issues/3107)
+    [#3517](https://github.com/Azure/PSRule.Rules.Azure/issues/3517)
+    - The `Azure.Pillar.Security.L1` baseline provides an initial set of rules aligned to the first level of maturity.
+    - This is an experimental baseline and may change in future releases.
+  - Added CSV download of rule list associated with each baseline by @BernieWhite.
+    [#3511](https://github.com/Azure/PSRule.Rules.Azure/issues/3511)
+  - Added September 2025 baselines `Azure.GA_2025_09` and `Azure.Preview_2025_09` by @BernieWhite.
+    [#3539](https://github.com/Azure/PSRule.Rules.Azure/issues/3539)
+    - Includes rules released before or during September 2025.
+    - Marked `Azure.GA_2025_06` and `Azure.Preview_2025_06` baselines as obsolete.
+- New rules:
+  - Azure Cache for Redis:
+    - Check that Entra ID is required for all authentication of cache instances by @BernieWhite.
+      [#3113](https://github.com/Azure/PSRule.Rules.Azure/issues/3113)
+  - Container Registry:
+    - Check replica locations are within allowed regions by @BernieWhite
+      [#3442](https://github.com/Azure/PSRule.Rules.Azure/issues/3442)
+    - Check that export policy is disabled for registries by @BernieWhite
+      [#3444](https://github.com/Azure/PSRule.Rules.Azure/issues/3444)
+  - Storage Account:
+    - Check that local authentication is disabled for storage accounts by @BernieWhite.
+      [#3115](https://github.com/Azure/PSRule.Rules.Azure/issues/3115)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.32.7` as the minimum version by @BernieWhite.
+      [#3541](https://github.com/Azure/PSRule.Rules.Azure/issues/3541)
+  - Container Registry:
+    - Updated `Azure.ACR.GeoReplica` to ensure geo-replication applies to pre-flight and in-flight cases by @BernieWhite.
+      [#3477](https://github.com/Azure/PSRule.Rules.Azure/issues/3477)
+- General improvements:
+  - Updated provider data by @BernieWhite.
+    [#3538](https://github.com/Azure/PSRule.Rules.Azure/issues/3538)
+- Bug fixes:
+  - Fixed false negative for App Service `web` configuration cases set with `siteConfig` by @BernieWhite.
+    [#3521](https://github.com/Azure/PSRule.Rules.Azure/issues/3521)
+
+What's changed since pre-release v1.46.0-B0050:
+
+- No additional changes.
+
+## v1.46.0-B0050 (pre-release)
+
 What's changed since v1.45.2:
 
 - New features:

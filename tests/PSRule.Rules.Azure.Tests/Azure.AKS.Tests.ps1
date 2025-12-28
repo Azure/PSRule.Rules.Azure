@@ -1451,4 +1451,116 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -BeIn 'cluster-D', 'cluster-J';
         }
     }
+
+    Context 'Resource name' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_AKS_CLUSTER_NAME_FORMAT'     = '^aks-'
+                'AZURE_AKS_SYSTEM_POOL_NAME_FORMAT' = '^npsystem'
+                'AZURE_AKS_USER_POOL_NAME_FORMAT'   = '^np'
+            };
+
+            $clusterNames = @(
+                'cluster-001'
+                'aks-001'
+                'AKS-001'
+            )
+
+            $systemPoolNames = @(
+                'agentpool'
+                'npsystem001'
+                'NPSYSTEM001'
+            )
+
+            $userPoolNames = @(
+                'userpool'
+                'np001'
+                'NP001'
+            )
+
+            $clusterItems = @($clusterNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.ContainerService/managedClusters'
+                    }
+                });
+
+            $systemPoolItems = @($systemPoolNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name       = $_
+                        Type       = 'Microsoft.ContainerService/managedClusters/agentPools'
+                        Properties = @{
+                            mode = 'System'
+                        }
+                    }
+                });
+
+            $userPoolItems = @($userPoolNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name       = $_
+                        Type       = 'Microsoft.ContainerService/managedClusters/agentPools'
+                        Properties = @{
+                            mode = 'User'
+                        }
+                    }
+                });
+
+            $result = @($clusterItems + $systemPoolItems + $userPoolItems) | Invoke-PSRule @invokeParams -Option $option
+        }
+
+        It 'Azure.AKS.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.Naming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-001', 'AKS-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'aks-001';
+        }
+
+        It 'Azure.AKS.SystemPoolNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.SystemPoolNaming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -Be 'agentpool', 'NPSYSTEM001';
+            $ruleResult.Length | Should -Be 2;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn @('cluster-001', 'aks-001', 'AKS-001', 'npsystem001', 'userpool', 'NP001', 'np001');
+            $ruleResult.Length | Should -Be 7;
+        }
+
+        It 'Azure.AKS.UserPoolNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.UserPoolNaming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'userpool', 'NP001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn @('cluster-001', 'aks-001', 'AKS-001', 'agentpool', 'npsystem001', 'NPSYSTEM001', 'np001');
+            $ruleResult.Length | Should -Be 7;
+        }
+    }
 }

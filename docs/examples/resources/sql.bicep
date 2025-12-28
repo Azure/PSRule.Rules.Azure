@@ -3,6 +3,8 @@
 
 // Bicep documentation examples
 
+@minLength(1)
+@maxLength(128)
 @description('The name of the resource.')
 param name string
 
@@ -11,6 +13,7 @@ param location string = resourceGroup().location
 
 param adminLogin string
 param adminPrincipalId string
+param maintenanceConfigurationId string
 
 var maxSize = 32 * 1048576
 
@@ -23,7 +26,7 @@ resource server 'Microsoft.Sql/servers@2024-05-01-preview' = {
   }
   properties: {
     publicNetworkAccess: 'Disabled'
-    minimalTlsVersion: '1.2'
+    minimalTlsVersion: '1.3'
     administrators: {
       azureADOnlyAuthentication: true
       administratorType: 'ActiveDirectory'
@@ -100,5 +103,32 @@ resource tde 'Microsoft.Sql/servers/databases/transparentDataEncryption@2024-05-
   name: 'current'
   properties: {
     state: 'Enabled'
+  }
+}
+
+// An example Azure SQL Job Agent.
+resource agent 'Microsoft.Sql/servers/jobAgents@2024-05-01-preview' = {
+  parent: server
+  name: name
+  location: location
+  properties: {
+    databaseId: database.id
+  }
+}
+
+// An example Azure SQL Elastic Pool.
+resource pool 'Microsoft.Sql/servers/elasticPools@2024-05-01-preview' = {
+  parent: server
+  name: name
+  location: location
+  properties: {
+    perDatabaseSettings: {
+      minCapacity: 0
+      maxCapacity: 2
+    }
+    maxSizeBytes: 34359738368
+    zoneRedundant: true
+    licenseType: 'BasePrice'
+    maintenanceConfigurationId: maintenanceConfigurationId
   }
 }

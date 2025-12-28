@@ -14,7 +14,7 @@ Microsoft Azure Well-Architected Framework - Security pillar specific baseline.
 
 The following rules are included within the `Azure.Pillar.Security` baseline.
 
-This baseline includes a total of 229 rules.
+This baseline includes a total of 232 rules.
 
 Name | Synopsis | Severity | Maturity
 ---- | -------- | -------- | --------
@@ -27,6 +27,7 @@ Name | Synopsis | Severity | Maturity
 [Azure.ACR.ReplicaLocation](../rules/Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | Important | -
 [Azure.ADX.DiskEncryption](../rules/Azure.ADX.DiskEncryption.md) | Use disk encryption for Azure Data Explorer (ADX) clusters. | Important | L1
 [Azure.ADX.ManagedIdentity](../rules/Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | Important | L1
+[Azure.ADX.PublicAccess](../rules/Azure.ADX.PublicAccess.md) | Azure Data Explorer (ADX) clusters should have public network access disabled. | Critical | L4
 [Azure.AI.DisableLocalAuth](../rules/Azure.AI.DisableLocalAuth.md) | Access keys allow depersonalized access to Azure AI using a shared secret. | Important | L1
 [Azure.AI.ManagedIdentity](../rules/Azure.AI.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | L1
 [Azure.AI.PrivateEndpoints](../rules/Azure.AI.PrivateEndpoints.md) | Use Private Endpoints to access Azure AI services accounts. | Important | -
@@ -60,6 +61,7 @@ Name | Synopsis | Severity | Maturity
 [Azure.APIM.SampleProducts](../rules/Azure.APIM.SampleProducts.md) | API Management Services with default products configured may expose more APIs than intended. | Awareness | -
 [Azure.AppConfig.AuditLogs](../rules/Azure.AppConfig.AuditLogs.md) | Ensure app configuration store audit diagnostic logs are enabled. | Important | L1
 [Azure.AppConfig.DisableLocalAuth](../rules/Azure.AppConfig.DisableLocalAuth.md) | Access keys allow depersonalized access to App Configuration using a shared secret. | Important | L1
+[Azure.AppConfig.ReplicaLocation](../rules/Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | Important | L1
 [Azure.AppConfig.SecretLeak](../rules/Azure.AppConfig.SecretLeak.md) | Secrets stored as key values in an App Configuration Store may be leaked to unauthorized users. | Critical | -
 [Azure.AppGw.OWASP](../rules/Azure.AppGw.OWASP.md) | Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules. | Important | -
 [Azure.AppGw.Prevention](../rules/Azure.AppGw.Prevention.md) | Internet exposed Application Gateways should use prevention mode to protect backend resources. | Critical | -
@@ -71,7 +73,7 @@ Name | Synopsis | Severity | Maturity
 [Azure.AppGwWAF.Enabled](../rules/Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical | -
 [Azure.AppGwWAF.Exclusions](../rules/Azure.AppGwWAF.Exclusions.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Critical | -
 [Azure.AppGwWAF.PreventionMode](../rules/Azure.AppGwWAF.PreventionMode.md) | Use protection mode in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical | -
-[Azure.AppGwWAF.RuleGroups](../rules/Azure.AppGwWAF.RuleGroups.md) | Use recommended rule groups in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical | -
+[Azure.AppGwWAF.RuleGroups](../rules/Azure.AppGwWAF.RuleGroups.md) | Application Gateway WAF policies should include both Microsoft Default Rule Set and Bot Manager Rule Set to provide comprehensive protection against web application threats and malicious bot traffic. | Critical | L2
 [Azure.AppInsights.LocalAuth](../rules/Azure.AppInsights.LocalAuth.md) | Local authentication allows depersonalized access to store telemetry in Application Insights using a shared identifier. | Critical | L1
 [Azure.AppService.ManagedIdentity](../rules/Azure.AppService.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | L1
 [Azure.AppService.MinTLS](../rules/Azure.AppService.MinTLS.md) | App Service should not accept weak or deprecated transport protocols for client-server communication. | Critical | L1
@@ -94,9 +96,10 @@ Name | Synopsis | Severity | Maturity
 [Azure.ContainerApp.PublicAccess](../rules/Azure.ContainerApp.PublicAccess.md) | Ensure public network access for Container Apps environment is disabled. | Important | -
 [Azure.ContainerApp.RestrictIngress](../rules/Azure.ContainerApp.RestrictIngress.md) | IP ingress restrictions mode should be set to allow action for all rules defined. | Important | -
 [Azure.Cosmos.DefenderCloud](../rules/Azure.Cosmos.DefenderCloud.md) | Enable Microsoft Defender for Azure Cosmos DB. | Critical | -
-[Azure.Cosmos.DisableLocalAuth](../rules/Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | Critical | L1
 [Azure.Cosmos.DisableMetadataWrite](../rules/Azure.Cosmos.DisableMetadataWrite.md) | Use Entra ID identities for management place operations in Azure Cosmos DB. | Important | -
 [Azure.Cosmos.MinTLS](../rules/Azure.Cosmos.MinTLS.md) | Cosmos DB accounts should reject TLS versions older than 1.2. | Critical | L1
+[Azure.Cosmos.MongoEntraID](../rules/Azure.Cosmos.MongoEntraID.md) | MongoDB vCore clusters should have Microsoft Entra ID authentication enabled. | Critical | L1
+[Azure.Cosmos.NoSQLLocalAuth](../rules/Azure.Cosmos.NoSQLLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB NoSQL API accounts using a shared secret. | Critical | L1
 [Azure.Cosmos.PublicAccess](../rules/Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | Critical | -
 [Azure.Databricks.PublicAccess](../rules/Azure.Databricks.PublicAccess.md) | Azure Databricks workspaces should disable public network access. | Critical | -
 [Azure.Databricks.SecureConnectivity](../rules/Azure.Databricks.SecureConnectivity.md) | Use Databricks workspaces configured for secure cluster connectivity. | Critical | -

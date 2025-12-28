@@ -15,7 +15,7 @@ Include rules released December 2024 or prior for Azure GA features.
 
 The following rules are included within the `Azure.GA_2024_12` baseline.
 
-This baseline includes a total of 431 rules.
+This baseline includes a total of 430 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -110,7 +110,6 @@ Name | Synopsis | Severity
 [Azure.AppGwWAF.Enabled](../rules/Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical
 [Azure.AppGwWAF.Exclusions](../rules/Azure.AppGwWAF.Exclusions.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Critical
 [Azure.AppGwWAF.PreventionMode](../rules/Azure.AppGwWAF.PreventionMode.md) | Use protection mode in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical
-[Azure.AppGwWAF.RuleGroups](../rules/Azure.AppGwWAF.RuleGroups.md) | Use recommended rule groups in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical
 [Azure.AppInsights.Name](../rules/Azure.AppInsights.Name.md) | Azure Resource Manager (ARM) has requirements for Application Insights resource names. | Awareness
 [Azure.AppInsights.Workspace](../rules/Azure.AppInsights.Workspace.md) | Configure Application Insights resources to store data in a workspace. | Important
 [Azure.AppService.AlwaysOn](../rules/Azure.AppService.AlwaysOn.md) | Configure Always On for App Service apps. | Important
@@ -158,9 +157,9 @@ Name | Synopsis | Severity
 [Azure.Cosmos.AccountName](../rules/Azure.Cosmos.AccountName.md) | Cosmos DB account names should meet naming requirements. | Awareness
 [Azure.Cosmos.ContinuousBackup](../rules/Azure.Cosmos.ContinuousBackup.md) | Enable continuous backup on Cosmos DB accounts. | Important
 [Azure.Cosmos.DefenderCloud](../rules/Azure.Cosmos.DefenderCloud.md) | Enable Microsoft Defender for Azure Cosmos DB. | Critical
-[Azure.Cosmos.DisableLocalAuth](../rules/Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | Critical
 [Azure.Cosmos.DisableMetadataWrite](../rules/Azure.Cosmos.DisableMetadataWrite.md) | Use Entra ID identities for management place operations in Azure Cosmos DB. | Important
 [Azure.Cosmos.MinTLS](../rules/Azure.Cosmos.MinTLS.md) | Cosmos DB accounts should reject TLS versions older than 1.2. | Critical
+[Azure.Cosmos.NoSQLLocalAuth](../rules/Azure.Cosmos.NoSQLLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB NoSQL API accounts using a shared secret. | Critical
 [Azure.Cosmos.PublicAccess](../rules/Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | Critical
 [Azure.Cosmos.SLA](../rules/Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | Important
 [Azure.Databricks.PublicAccess](../rules/Azure.Databricks.PublicAccess.md) | Azure Databricks workspaces should disable public network access. | Critical

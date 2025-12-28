@@ -14,7 +14,7 @@ Microsoft Azure Well-Architected Framework - Reliability pillar specific baselin
 
 The following rules are included within the `Azure.Pillar.Reliability` baseline.
 
-This baseline includes a total of 96 rules.
+This baseline includes a total of 101 rules.
 
 Name | Synopsis | Severity | Maturity
 ---- | -------- | -------- | --------
@@ -49,15 +49,19 @@ Name | Synopsis | Severity | Maturity
 [Azure.ContainerApp.AvailabilityZone](../rules/Azure.ContainerApp.AvailabilityZone.md) | Use Container Apps environments that are zone redundant to improve reliability. | Important | -
 [Azure.ContainerApp.MinReplicas](../rules/Azure.ContainerApp.MinReplicas.md) | Use multiple replicas to remove a single point of failure. | Important | -
 [Azure.ContainerApp.Storage](../rules/Azure.ContainerApp.Storage.md) | Use of Azure Files volume mounts to persistent storage container data. | Awareness | -
+[Azure.Cosmos.AvailabilityZone](../rules/Azure.Cosmos.AvailabilityZone.md) | Use zone redundant Cosmos DB accounts in supported regions to improve reliability. | Important | L1
 [Azure.Cosmos.ContinuousBackup](../rules/Azure.Cosmos.ContinuousBackup.md) | Enable continuous backup on Cosmos DB accounts. | Important | -
+[Azure.Cosmos.MongoAvailabilityZone](../rules/Azure.Cosmos.MongoAvailabilityZone.md) | Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability. | Important | L1
 [Azure.Cosmos.SLA](../rules/Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | Important | -
 [Azure.DataFactory.Version](../rules/Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2. | Awareness | -
 [Azure.EntraDS.MinReplicas](../rules/Azure.EntraDS.MinReplicas.md) | Applications or infrastructure relying on a managed domain may fail if the domain is not available. | Important | -
 [Azure.EntraDS.SKU](../rules/Azure.EntraDS.SKU.md) | The default SKU for Microsoft Entra Domain Services supports resiliency in a single region. | Important | -
+[Azure.EventHub.AvailabilityZone](../rules/Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | Important | L1
 [Azure.Firewall.AvailabilityZone](../rules/Azure.Firewall.AvailabilityZone.md) | Deploy firewall instances using availability zones in supported regions to ensure high availability and resilience. | Important | -
 [Azure.FrontDoor.Probe](../rules/Azure.FrontDoor.Probe.md) | Use health probes to check the health of each backend. | Important | -
 [Azure.FrontDoor.ProbeMethod](../rules/Azure.FrontDoor.ProbeMethod.md) | Configure health probes to use HEAD requests to reduce performance overhead. | Important | -
 [Azure.FrontDoor.ProbePath](../rules/Azure.FrontDoor.ProbePath.md) | Configure a dedicated path for health probe requests. | Important | -
+[Azure.Grafana.AvailabilityZone](../rules/Azure.Grafana.AvailabilityZone.md) | Use zone redundant Grafana workspaces in supported regions to improve reliability. | Important | L1
 [Azure.Grafana.Version](../rules/Azure.Grafana.Version.md) | Grafana workspaces should be on Grafana version 10. | Important | -
 [Azure.KeyVault.PurgeProtect](../rules/Azure.KeyVault.PurgeProtect.md) | Enable Purge Protection on Key Vaults to prevent early purge of vaults and vault items. | Important | -
 [Azure.KeyVault.SoftDelete](../rules/Azure.KeyVault.SoftDelete.md) | Enable Soft Delete on Key Vaults to protect vaults and vault items from accidental deletion. | Important | -
@@ -66,6 +70,7 @@ Name | Synopsis | Severity | Maturity
 [Azure.LB.StandardSKU](../rules/Azure.LB.StandardSKU.md) | Load balancers should be deployed with Standard SKU for production workloads. | Important | -
 [Azure.Log.Replication](../rules/Azure.Log.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | Important | -
 [Azure.MariaDB.GeoRedundantBackup](../rules/Azure.MariaDB.GeoRedundantBackup.md) | Azure Database for MariaDB should store backups in a geo-redundant storage. | Important | -
+[Azure.MICassandra.AvailabilityZone](../rules/Azure.MICassandra.AvailabilityZone.md) | Use zone redundant Managed Instance for Apache Cassandra clusters in supported regions to improve reliability. | Important | L1
 [Azure.Monitor.ServiceHealth](../rules/Azure.Monitor.ServiceHealth.md) | Configure Service Health alerts to notify administrators. | Important | -
 [Azure.MySQL.GeoRedundantBackup](../rules/Azure.MySQL.GeoRedundantBackup.md) | Azure Database for MySQL should store backups in a geo-redundant storage. | Important | -
 [Azure.MySQL.MaintenanceWindow](../rules/Azure.MySQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for MySQL servers. | Important | -

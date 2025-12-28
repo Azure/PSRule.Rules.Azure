@@ -40,6 +40,7 @@ metadata:
     Azure.WAF/pillar: Operational Excellence
   labels:
     Azure.CAF: naming
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.DocumentDb/databaseAccounts
@@ -137,6 +138,52 @@ spec:
       equals: Continuous
     - field: properties.backupPolicy.continuousModeProperties.tier
       hasValue: true
+
+---
+# Synopsis: Cosmos DB NoSQL API accounts should have local authentication disabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.NoSQLLocalAuth
+  ref: AZR-000420
+  alias:
+    - Azure.Cosmos.DisableLocalAuth
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: IM-1
+    Azure.WAF/maturity: L1
+spec:
+  type:
+    - Microsoft.DocumentDb/databaseAccounts
+  with:
+    - Azure.Cosmos.IsNoSQL
+  condition:
+    field: properties.DisableLocalAuth
+    equals: true
+
+---
+# Synopsis: Cosmos DB accounts should use Entra ID authentication.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.MongoEntraID
+  ref: AZR-000499
+  tags:
+    release: GA
+    ruleSet: 2025_12
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: ['IM-1', 'IM-3']
+    Azure.WAF/maturity: L1
+spec:
+  type:
+    - Microsoft.DocumentDB/mongoClusters
+  condition:
+    field: properties.authConfig.allowedModes[*]
+    contains: MicrosoftEntraID
 
 #endregion Rules
 

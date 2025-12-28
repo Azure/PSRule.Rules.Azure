@@ -255,4 +255,114 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Outcome | Should -Be 'Fail';
         }
     }
+
+    Context 'Resource naming format' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_CONTAINER_APP_NAME_FORMAT'             = '^ca-'
+                'AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT' = '^cae-'
+                'AZURE_CONTAINER_APP_JOB_NAME_FORMAT'         = '^caj-'
+            };
+
+            $appNames = @(
+                'app-001'
+                'ca-001'
+                'CA-001'
+            )
+
+            $envNames = @(
+                'env-001'
+                'cae-001'
+                'CAE-001'
+            )
+
+            $jobNames = @(
+                'job-001'
+                'caj-001'
+                'CAJ-001'
+            )
+
+            $appItems = @($appNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.App/containerApps'
+                    }
+                });
+
+            $envItems = @($envNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.App/managedEnvironments'
+                    }
+                });
+
+            $jobItems = @($jobNames | ForEach-Object {
+                    [PSCustomObject]@{
+                        Name = $_
+                        Type = 'Microsoft.App/jobs'
+                    }
+                });
+
+            $result = @($appItems + $envItems + $jobItems) | Invoke-PSRule @invokeParams -Option $option -Name @(
+                'Azure.ContainerApp.Naming'
+                'Azure.ContainerApp.EnvNaming'
+                'Azure.ContainerApp.JobNaming'
+            )
+        }
+
+        It 'Azure.ContainerApp.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.Naming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'app-001', 'CA-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'ca-001';
+        }
+
+        It 'Azure.ContainerApp.EnvNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.EnvNaming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'env-001', 'CAE-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'cae-001';
+        }
+
+        It 'Azure.ContainerApp.JobNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.JobNaming' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'job-001', 'CAJ-001';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'caj-001';
+        }
+    }
 }

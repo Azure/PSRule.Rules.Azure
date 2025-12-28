@@ -16,7 +16,7 @@ Microsoft Azure Well-Architected Framework - Security pillar Level 1 maturity ba
 
 The following rules are included within the `Azure.Pillar.Security.L1` baseline.
 
-This baseline includes a total of 83 rules.
+This baseline includes a total of 85 rules.
 
 Name | Synopsis | Severity | Maturity
 ---- | -------- | -------- | --------
@@ -36,6 +36,7 @@ Name | Synopsis | Severity | Maturity
 [Azure.APIM.Protocols](../rules/Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2 for client and backend communication. | Critical | L1
 [Azure.AppConfig.AuditLogs](../rules/Azure.AppConfig.AuditLogs.md) | Ensure app configuration store audit diagnostic logs are enabled. | Important | L1
 [Azure.AppConfig.DisableLocalAuth](../rules/Azure.AppConfig.DisableLocalAuth.md) | Access keys allow depersonalized access to App Configuration using a shared secret. | Important | L1
+[Azure.AppConfig.ReplicaLocation](../rules/Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | Important | L1
 [Azure.AppGw.SSLPolicy](../rules/Azure.AppGw.SSLPolicy.md) | Application Gateway should only accept a minimum of TLS 1.2. | Critical | L1
 [Azure.AppGw.UseHTTPS](../rules/Azure.AppGw.UseHTTPS.md) | Application Gateways should only expose frontend HTTP endpoints over HTTPS. | Critical | L1
 [Azure.AppInsights.LocalAuth](../rules/Azure.AppInsights.LocalAuth.md) | Local authentication allows depersonalized access to store telemetry in Application Insights using a shared identifier. | Critical | L1
@@ -48,8 +49,9 @@ Name | Synopsis | Severity | Maturity
 [Azure.CDN.MinTLS](../rules/Azure.CDN.MinTLS.md) | Azure CDN endpoints should reject TLS versions older than 1.2. | Important | L1
 [Azure.ContainerApp.Insecure](../rules/Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important | L1
 [Azure.ContainerApp.ManagedIdentity](../rules/Azure.ContainerApp.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important | L1
-[Azure.Cosmos.DisableLocalAuth](../rules/Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | Critical | L1
 [Azure.Cosmos.MinTLS](../rules/Azure.Cosmos.MinTLS.md) | Cosmos DB accounts should reject TLS versions older than 1.2. | Critical | L1
+[Azure.Cosmos.MongoEntraID](../rules/Azure.Cosmos.MongoEntraID.md) | MongoDB vCore clusters should have Microsoft Entra ID authentication enabled. | Critical | L1
+[Azure.Cosmos.NoSQLLocalAuth](../rules/Azure.Cosmos.NoSQLLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB NoSQL API accounts using a shared secret. | Critical | L1
 [Azure.EntraDS.NTLM](../rules/Azure.EntraDS.NTLM.md) | Disable NTLM v1 for Microsoft Entra Domain Services. | Critical | L1
 [Azure.EntraDS.RC4](../rules/Azure.EntraDS.RC4.md) | Disable RC4 encryption for Microsoft Entra Domain Services. | Critical | L1
 [Azure.EntraDS.TLS](../rules/Azure.EntraDS.TLS.md) | Disable TLS v1 for Microsoft Entra Domain Services. | Critical | L1

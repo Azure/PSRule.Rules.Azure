@@ -113,17 +113,22 @@ Name | Synopsis | Severity | Level
 [Azure.AppGw.Name](Azure.AppGw.Name.md) | Application Gateways should meet naming requirements. | Awareness | Error
 [Azure.AppInsights.Name](Azure.AppInsights.Name.md) | Azure Resource Manager (ARM) has requirements for Application Insights resource names. | Awareness | Error
 [Azure.ContainerApp.Name](Azure.ContainerApp.Name.md) | Container Apps should meet naming requirements. | Awareness | Error
+[Azure.Cosmos.AccountName](Azure.Cosmos.AccountName.md) | Cosmos DB account names should meet naming requirements. | Awareness | Error
 [Azure.Group.Name](Azure.Group.Name.md) | Azure Resource Manager (ARM) has requirements for Resource Groups names. | Awareness | Error
 [Azure.KeyVault.KeyName](Azure.KeyVault.KeyName.md) | Key Vault Key names should meet naming requirements. | Awareness | Error
 [Azure.KeyVault.SecretName](Azure.KeyVault.SecretName.md) | Key Vault Secret names should meet naming requirements. | Awareness | Error
 [Azure.LB.Name](Azure.LB.Name.md) | Load Balancer names should meet naming requirements. | Awareness | Error
 [Azure.Log.Name](Azure.Log.Name.md) | Azure Resource Manager (ARM) has requirements for Azure Monitor Log workspace names. | Awareness | Error
 [Azure.MariaDB.DatabaseName](Azure.MariaDB.DatabaseName.md) | Azure Database for MariaDB databases should meet naming requirements. | Awareness | Error
+[Azure.MySQL.ServerName](Azure.MySQL.ServerName.md) | Azure MySQL DB server names should meet naming requirements. | Awareness | Error
 [Azure.NIC.Name](Azure.NIC.Name.md) | Network Interface (NIC) names should meet naming requirements. | Awareness | Error
 [Azure.NSG.Name](Azure.NSG.Name.md) | Azure Resource Manager (ARM) has requirements for Network Security Group (NSG) names. | Awareness | Error
+[Azure.PostgreSQL.ServerName](Azure.PostgreSQL.ServerName.md) | Azure PostgreSQL DB server names should meet naming requirements. | Awareness | Error
 [Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Azure Resource Manager (ARM) has requirements for Public IP address names. | Awareness | Error
 [Azure.Route.Name](Azure.Route.Name.md) | Azure Resource Manager (ARM) has requirements for Route table names. | Awareness | Error
 [Azure.Search.Name](Azure.Search.Name.md) | Azure Resource Manager (ARM) has requirements for AI Search service names. | Awareness | Error
+[Azure.SQL.DBName](Azure.SQL.DBName.md) | Azure SQL Database names should meet naming requirements. | Awareness | Error
+[Azure.SQL.ServerName](Azure.SQL.ServerName.md) | Azure SQL logical server names should meet naming requirements. | Awareness | Error
 [Azure.Storage.Name](Azure.Storage.Name.md) | Azure Resource Manager (ARM) has requirements for Storage Account names. | Awareness | Error
 [Azure.VM.ComputerName](Azure.VM.ComputerName.md) | Virtual Machine (VM) computer name should meet naming requirements. | Awareness | Error
 [Azure.VM.Name](Azure.VM.Name.md) | Virtual Machine (VM) names should meet naming requirements. | Awareness | Error
@@ -137,11 +142,26 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
+[Azure.ACI.Naming](Azure.ACI.Naming.md) | Container Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.ACR.Naming](Azure.ACR.Naming.md) | Container Registry resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.AI.FoundryNaming](Azure.AI.FoundryNaming.md) | Azure AI Foundry accounts without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.AKS.Naming](Azure.AKS.Naming.md) | AKS cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.AKS.SystemPoolNaming](Azure.AKS.SystemPoolNaming.md) | AKS system node pool resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.AKS.UserPoolNaming](Azure.AKS.UserPoolNaming.md) | AKS user node pool resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.APIM.APIDescriptors](Azure.APIM.APIDescriptors.md) | APIs should have a display name and description. | Awareness | Warning
 [Azure.APIM.ProductDescriptors](Azure.APIM.ProductDescriptors.md) | API Management products should have a display name and description. | Awareness | Warning
 [Azure.AppInsights.Naming](Azure.AppInsights.Naming.md) | Application Insights resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.ContainerApp.APIVersion](Azure.ContainerApp.APIVersion.md) | Migrate from retired API version to a supported version. | Important | Error
+[Azure.ContainerApp.EnvNaming](Azure.ContainerApp.EnvNaming.md) | Container App Environment resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.ContainerApp.JobNaming](Azure.ContainerApp.JobNaming.md) | Container App Job resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.ContainerApp.Naming](Azure.ContainerApp.Naming.md) | Container App resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Cosmos.CassandraNaming](Azure.Cosmos.CassandraNaming.md) | Cosmos DB for Apache Cassandra account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Cosmos.DatabaseNaming](Azure.Cosmos.DatabaseNaming.md) | Cosmos DB database resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Cosmos.GremlinNaming](Azure.Cosmos.GremlinNaming.md) | Cosmos DB for Apache Gremlin account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Cosmos.MongoNaming](Azure.Cosmos.MongoNaming.md) | Cosmos DB for MongoDB account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Cosmos.NoSQLNaming](Azure.Cosmos.NoSQLNaming.md) | Cosmos DB for NoSQL account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Cosmos.PostgreSQLNaming](Azure.Cosmos.PostgreSQLNaming.md) | Cosmos DB PostgreSQL cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Cosmos.TableNaming](Azure.Cosmos.TableNaming.md) | Cosmos DB for Table account resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.EventGrid.DomainNaming](Azure.EventGrid.DomainNaming.md) | Event Grid domains without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.EventGrid.SystemTopicNaming](Azure.EventGrid.SystemTopicNaming.md) | Event Grid system topics without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.EventGrid.TopicNaming](Azure.EventGrid.TopicNaming.md) | Event Grid topics without a standard naming convention may be difficult to identify and manage. | Awareness | Error
@@ -149,14 +169,25 @@ Name | Synopsis | Severity | Level
 [Azure.Group.RequiredTags](Azure.Group.RequiredTags.md) | Resource groups without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
 [Azure.LB.Naming](Azure.LB.Naming.md) | Load balancer names should use a standard prefix. | Awareness | Error
 [Azure.Log.Naming](Azure.Log.Naming.md) | Azure Monitor Log workspaces without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.MySQL.ServerNaming](Azure.MySQL.ServerNaming.md) | MySQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.NSG.Naming](Azure.NSG.Naming.md) | Network security group (NSG) without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Policy.AssignmentDescriptors](Azure.Policy.AssignmentDescriptors.md) | Policy assignments should use a display name and description. | Awareness | Error
 [Azure.Policy.Descriptors](Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name, description, and category. | Awareness | Error
 [Azure.Policy.ExemptionDescriptors](Azure.Policy.ExemptionDescriptors.md) | Policy exemptions should use a display name and description. | Awareness | Error
+[Azure.PostgreSQL.ServerNaming](Azure.PostgreSQL.ServerNaming.md) | PostgreSQL database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.PublicIP.Naming](Azure.PublicIP.Naming.md) | Public IP addresses without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Redis.Naming](Azure.Redis.Naming.md) | Azure Cache for Redis resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.RedisEnterprise.Naming](Azure.RedisEnterprise.Naming.md) | Azure Cache for Redis Enterprise resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Resource.RequiredTags](Azure.Resource.RequiredTags.md) | Resources without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Route.Naming](Azure.Route.Naming.md) | Route tables without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Search.Naming](Azure.Search.Naming.md) | Azure AI Search services without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.ServiceFabric.Naming](Azure.ServiceFabric.Naming.md) | Service Fabric cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.SQL.DBNaming](Azure.SQL.DBNaming.md) | Azure SQL database resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.SQL.ElasticPoolNaming](Azure.SQL.ElasticPoolNaming.md) | Azure SQL Elastic Pool resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.SQL.JobAgentNaming](Azure.SQL.JobAgentNaming.md) | Azure SQL Elastic Job agent resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.SQL.ServerNaming](Azure.SQL.ServerNaming.md) | Azure SQL Database server resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.SQLMI.Naming](Azure.SQLMI.Naming.md) | SQL Managed Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Storage.Naming](Azure.Storage.Naming.md) | Storage Accounts without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Subscription.RequiredTags](Azure.Subscription.RequiredTags.md) | Subscriptions without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
 [Azure.VM.Naming](Azure.VM.Naming.md) | Virtual machines without a standard naming convention may be difficult to identify and manage. | Awareness | Error
@@ -170,6 +201,7 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
+[Azure.Redis.MigrateAMR](Azure.Redis.MigrateAMR.md) | Azure Cache for Redis is being retired. Migrate to Azure Managed Redis. | Important | Error
 [Azure.Template.ResourceLocation](Azure.Template.ResourceLocation.md) | Resource locations should be an expression or global. | Awareness | Error
 [Azure.Template.TemplateFile](Azure.Template.TemplateFile.md) | Use ARM template files that are valid. | Important | Error
 [Azure.Template.ValidSecretRef](Azure.Template.ValidSecretRef.md) | Use a valid secret reference within parameter files. | Awareness | Error
@@ -219,7 +251,6 @@ Name | Synopsis | Severity | Level
 [Azure.ASG.Name](Azure.ASG.Name.md) | Application Security Group (ASG) names should meet naming requirements. | Awareness | Error
 [Azure.Bastion.Name](Azure.Bastion.Name.md) | Bastion hosts should meet naming requirements. | Awareness | Error
 [Azure.CDN.EndpointName](Azure.CDN.EndpointName.md) | Azure CDN Endpoint names should meet naming requirements. | Awareness | Error
-[Azure.Cosmos.AccountName](Azure.Cosmos.AccountName.md) | Cosmos DB account names should meet naming requirements. | Awareness | Error
 [Azure.Deployment.Name](Azure.Deployment.Name.md) | Nested deployments should meet naming requirements of deployments. | Awareness | Error
 [Azure.Firewall.Name](Azure.Firewall.Name.md) | Firewall names should meet naming requirements. | Awareness | Error
 [Azure.Firewall.PolicyName](Azure.Firewall.PolicyName.md) | Firewall policy names should meet naming requirements. | Awareness | Error
@@ -230,18 +261,14 @@ Name | Synopsis | Severity | Level
 [Azure.MariaDB.FirewallRuleName](Azure.MariaDB.FirewallRuleName.md) | Azure Database for MariaDB firewall rules should meet naming requirements. | Awareness | Error
 [Azure.MariaDB.ServerName](Azure.MariaDB.ServerName.md) | Azure Database for MariaDB servers should meet naming requirements. | Awareness | Error
 [Azure.MariaDB.VNETRuleName](Azure.MariaDB.VNETRuleName.md) | Azure Database for MariaDB VNET rules should meet naming requirements. | Awareness | Error
-[Azure.MySQL.ServerName](Azure.MySQL.ServerName.md) | Azure MySQL DB server names should meet naming requirements. | Awareness | Error
 [Azure.NSG.AKSRules](Azure.NSG.AKSRules.md) | AKS Network Security Group (NSG) should not have custom rules. | Awareness | Error
 [Azure.Policy.AssignmentAssignedBy](Azure.Policy.AssignmentAssignedBy.md) | Policy assignments should use assignedBy metadata. | Awareness | Error
-[Azure.PostgreSQL.ServerName](Azure.PostgreSQL.ServerName.md) | Azure PostgreSQL DB server names should meet naming requirements. | Awareness | Error
 [Azure.PrivateEndpoint.Name](Azure.PrivateEndpoint.Name.md) | Private Endpoint names should meet naming requirements. | Awareness | Error
 [Azure.PublicIP.DNSLabel](Azure.PublicIP.DNSLabel.md) | Public IP domain name labels should meet naming requirements. | Awareness | Error
 [Azure.PublicIP.MigrateStandard](Azure.PublicIP.MigrateStandard.md) | Use the Standard SKU for Public IP addresses as the Basic SKU will be retired. | Important | Error
 [Azure.RSV.Name](Azure.RSV.Name.md) | Recovery Services vaults should meet naming requirements. | Awareness | Error
 [Azure.SignalR.Name](Azure.SignalR.Name.md) | SignalR service instance names should meet naming requirements. | Awareness | Error
-[Azure.SQL.DBName](Azure.SQL.DBName.md) | Azure SQL Database names should meet naming requirements. | Awareness | Error
 [Azure.SQL.FGName](Azure.SQL.FGName.md) | Azure SQL failover group names should meet naming requirements. | Awareness | Error
-[Azure.SQL.ServerName](Azure.SQL.ServerName.md) | Azure SQL logical server names should meet naming requirements. | Awareness | Error
 [Azure.SQLMI.Name](Azure.SQLMI.Name.md) | SQL Managed Instance names should meet naming requirements. | Awareness | Error
 [Azure.Template.ExpressionLength](Azure.Template.ExpressionLength.md) | Template expressions should not exceed the maximum length. | Awareness | Error
 [Azure.Template.ParameterFile](Azure.Template.ParameterFile.md) | Use ARM template parameter files that are valid. | Important | Error
@@ -431,7 +458,11 @@ Name | Synopsis | Severity | Level
 [Azure.AppConfig.GeoReplica](Azure.AppConfig.GeoReplica.md) | Replicate app configuration store across all points of presence for an application. | Important | Error
 [Azure.ContainerApp.MinReplicas](Azure.ContainerApp.MinReplicas.md) | Use multiple replicas to remove a single point of failure. | Important | Error
 [Azure.ContainerApp.Storage](Azure.ContainerApp.Storage.md) | Use of Azure Files volume mounts to persistent storage container data. | Awareness | Error
+[Azure.Cosmos.AvailabilityZone](Azure.Cosmos.AvailabilityZone.md) | Use zone redundant Cosmos DB accounts in supported regions to improve reliability. | Important | Error
+[Azure.Cosmos.MongoAvailabilityZone](Azure.Cosmos.MongoAvailabilityZone.md) | Use zone redundant Cosmos DB vCore clusters in supported regions to improve reliability. | Important | Error
+[Azure.EventHub.AvailabilityZone](Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | Important | Error
 [Azure.LB.Probe](Azure.LB.Probe.md) | Use a specific probe for web protocols. | Important | Error
+[Azure.MICassandra.AvailabilityZone](Azure.MICassandra.AvailabilityZone.md) | Use zone redundant Managed Instance for Apache Cassandra clusters in supported regions to improve reliability. | Important | Error
 [Azure.MySQL.UseFlexible](Azure.MySQL.UseFlexible.md) | Use Azure Database for MySQL Flexible Server deployment model. | Important | Warning
 [Azure.ServiceBus.GeoReplica](Azure.ServiceBus.GeoReplica.md) | Enhance resilience to regional outages by replicating namespaces. | Important | Error
 [Azure.TrafficManager.Endpoints](Azure.TrafficManager.Endpoints.md) | Traffic Manager should use at lest two enabled endpoints. | Important | Error
@@ -453,6 +484,7 @@ Name | Synopsis | Severity | Level
 [Azure.ASE.AvailabilityZone](Azure.ASE.AvailabilityZone.md) | Deploy app service environments using availability zones in supported regions to ensure high availability and resilience. | Important | Error
 [Azure.ContainerApp.AvailabilityZone](Azure.ContainerApp.AvailabilityZone.md) | Use Container Apps environments that are zone redundant to improve reliability. | Important | Error
 [Azure.Firewall.AvailabilityZone](Azure.Firewall.AvailabilityZone.md) | Deploy firewall instances using availability zones in supported regions to ensure high availability and resilience. | Important | Error
+[Azure.Grafana.AvailabilityZone](Azure.Grafana.AvailabilityZone.md) | Use zone redundant Grafana workspaces in supported regions to improve reliability. | Important | Error
 [Azure.LB.AvailabilityZone](Azure.LB.AvailabilityZone.md) | Load balancers deployed with Standard SKU should be zone-redundant for high availability. | Important | Error
 [Azure.Log.Replication](Azure.Log.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | Important | Error
 [Azure.MySQL.ZoneRedundantHA](Azure.MySQL.ZoneRedundantHA.md) | Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | Important | Error
@@ -600,7 +632,6 @@ Name | Synopsis | Severity | Level
 [Azure.AppGwWAF.Enabled](Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical | Error
 [Azure.AppGwWAF.Exclusions](Azure.AppGwWAF.Exclusions.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | Critical | Error
 [Azure.AppGwWAF.PreventionMode](Azure.AppGwWAF.PreventionMode.md) | Use protection mode in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical | Error
-[Azure.AppGwWAF.RuleGroups](Azure.AppGwWAF.RuleGroups.md) | Use recommended rule groups in Application Gateway Web Application Firewall (WAF) policies to protect back end resources. | Critical | Error
 [Azure.MariaDB.AllowAzureAccess](Azure.MariaDB.AllowAzureAccess.md) | Determine if access from Azure services is required. | Important | Error
 
 ### Network segmentation
@@ -615,6 +646,7 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ACR.ReplicaLocation](Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | Important | Error
 [Azure.AKS.NodeAutoUpgrade](Azure.AKS.NodeAutoUpgrade.md) | Operating system (OS) security updates should be applied to AKS nodes and rebooted as required to address security vulnerabilities. | Important | Error
+[Azure.AppConfig.ReplicaLocation](Azure.AppConfig.ReplicaLocation.md) | The replication location determines the country or region where configuration data is stored and processed. | Important | Error
 [Azure.EntraDS.ReplicaLocation](Azure.EntraDS.ReplicaLocation.md) | The location of a replica set determines the country or region where the data is stored and processed. | Important | Error
 [Azure.Log.ReplicaLocation](Azure.Log.ReplicaLocation.md) | The replication location determines the country or region where the data is stored and processed. | Important | Error
 [Azure.Policy.WaiverExpiry](Azure.Policy.WaiverExpiry.md) | Configure policy waiver exemptions to expire. | Awareness | Error
@@ -667,8 +699,9 @@ Name | Synopsis | Severity | Level
 [Azure.AppInsights.LocalAuth](Azure.AppInsights.LocalAuth.md) | Local authentication allows depersonalized access to store telemetry in Application Insights using a shared identifier. | Critical | Error
 [Azure.AppService.ManagedIdentity](Azure.AppService.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
 [Azure.ContainerApp.ManagedIdentity](Azure.ContainerApp.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important | Error
-[Azure.Cosmos.DisableLocalAuth](Azure.Cosmos.DisableLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB accounts using a shared secret. | Critical | Error
 [Azure.Cosmos.DisableMetadataWrite](Azure.Cosmos.DisableMetadataWrite.md) | Use Entra ID identities for management place operations in Azure Cosmos DB. | Important | Error
+[Azure.Cosmos.MongoEntraID](Azure.Cosmos.MongoEntraID.md) | MongoDB vCore clusters should have Microsoft Entra ID authentication enabled. | Critical | Error
+[Azure.Cosmos.NoSQLLocalAuth](Azure.Cosmos.NoSQLLocalAuth.md) | Access keys allow depersonalized access to Cosmos DB NoSQL API accounts using a shared secret. | Critical | Error
 [Azure.EventGrid.DisableLocalAuth](Azure.EventGrid.DisableLocalAuth.md) | Authenticate publishing clients with Azure AD identities. | Important | Error
 [Azure.EventGrid.ManagedIdentity](Azure.EventGrid.ManagedIdentity.md) | Use managed identities to deliver Event Grid Topic events. | Important | Error
 [Azure.EventHub.DisableLocalAuth](Azure.EventHub.DisableLocalAuth.md) | Authenticate Event Hub publishers and consumers with Entra ID identities. | Important | Error
@@ -694,12 +727,14 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ACR.Firewall](Azure.ACR.Firewall.md) | Container Registry without restrictions can be accessed from any network location including the Internet. | Important | Error
+[Azure.ADX.PublicAccess](Azure.ADX.PublicAccess.md) | Azure Data Explorer (ADX) clusters should have public network access disabled. | Critical | Error
 [Azure.AI.PrivateEndpoints](Azure.AI.PrivateEndpoints.md) | Use Private Endpoints to access Azure AI services accounts. | Important | Error
 [Azure.AI.PublicAccess](Azure.AI.PublicAccess.md) | Restrict access of Azure AI services to authorized virtual networks. | Important | Error
 [Azure.AKS.AuthorizedIPs](Azure.AKS.AuthorizedIPs.md) | Restrict access to API server endpoints to authorized IP addresses. | Important | Error
 [Azure.AKS.HttpAppRouting](Azure.AKS.HttpAppRouting.md) | Disable HTTP application routing add-on in AKS clusters. | Important | Error
 [Azure.AppGw.UseWAF](Azure.AppGw.UseWAF.md) | Internet accessible Application Gateways should use protect endpoints with WAF. | Critical | Error
 [Azure.AppGw.WAFEnabled](Azure.AppGw.WAFEnabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | Critical | Error
+[Azure.AppGwWAF.RuleGroups](Azure.AppGwWAF.RuleGroups.md) | Application Gateway WAF policies should include both Microsoft Default Rule Set and Bot Manager Rule Set to provide comprehensive protection against web application threats and malicious bot traffic. | Critical | Error
 [Azure.ContainerApp.ExternalIngress](Azure.ContainerApp.ExternalIngress.md) | Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment. | Important | Error
 [Azure.ContainerApp.PublicAccess](Azure.ContainerApp.PublicAccess.md) | Ensure public network access for Container Apps environment is disabled. | Important | Error
 [Azure.ContainerApp.RestrictIngress](Azure.ContainerApp.RestrictIngress.md) | IP ingress restrictions mode should be set to allow action for all rules defined. | Important | Error

@@ -123,6 +123,11 @@ Rule 'Azure.Redis.Version' -Ref 'AZR-000347' -Type 'Microsoft.Cache/redis' -Tag 
     ).Reason($LocalizedData.AzureCacheRedisVersion)
 }
 
+# Synopsis: Azure Cache for Redis is being retired. Migrate to Azure Managed Redis.
+Rule 'Azure.Redis.MigrateAMR' -Ref 'AZR-000533' -Type 'Microsoft.Cache/redis' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+    $Assert.Fail($LocalizedData.CacheRedisMigrateAMR)
+}
+
 #region Helper functions
 
 function global:GetCacheMemory {
@@ -187,3 +192,12 @@ function global:HasPublicNetworkAccess {
 }
 
 #endregion Helper functions
+
+#region Naming rules
+
+# Synopsis: Azure Cache for Redis instances without a standard naming convention may be difficult to identify and manage.
+Rule 'Azure.Redis.Naming' -Ref 'AZR-000523' -Type 'Microsoft.Cache/Redis' -If { $Configuration['AZURE_REDIS_CACHE_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_REDIS_CACHE_NAME_FORMAT, $True);
+}
+
+#endregion Naming rules

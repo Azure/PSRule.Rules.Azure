@@ -396,17 +396,9 @@
     ]
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-E",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-E",
-    "Identity": null,
-    "Kind": null,
     "Location": "region",
-    "ManagedBy": null,
-    "ResourceName": "app-config-E",
     "Name": "app-config-E",
-    "ExtensionResourceName": null,
-    "ParentResource": null,
-    "Plan": null,
     "Properties": {
       "provisioningState": "Succeeded",
       "endpoint": "https://app-config-E.azconfig.io",
@@ -418,17 +410,9 @@
     },
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.AppConfiguration/configurationStores",
-    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
-    "ExtensionResourceType": null,
     "Sku": {
-      "Name": "standard",
-      "Tier": null,
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Name": "standard"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
@@ -475,17 +459,9 @@
         "ETag": null
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-E/replicas/region",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-E/replicas/region",
-        "Identity": null,
-        "Kind": null,
         "Location": "westeurope",
-        "ManagedBy": null,
-        "ResourceName": "region",
         "Name": "region",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "provisioningState": "Succeeded",
           "status": {
@@ -494,14 +470,7 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.AppConfiguration/configurationStores/replicas",
-        "ResourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -666,17 +635,9 @@
     ]
   },
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-H",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AppConfiguration/configurationStores/app-config-H",
-    "Identity": null,
-    "Kind": null,
     "Location": "westeurope",
-    "ManagedBy": null,
-    "ResourceName": "app-config-H",
     "Name": "app-config-H",
-    "ExtensionResourceName": null,
-    "ParentResource": null,
-    "Plan": null,
     "Properties": {
       "provisioningState": "Succeeded",
       "endpoint": "https://app-config-H.azconfig.io",
@@ -687,31 +648,15 @@
     },
     "ResourceGroupName": "rg-test",
     "Type": "Microsoft.AppConfiguration/configurationStores",
-    "ResourceType": "Microsoft.AppConfiguration/configurationStores",
-    "ExtensionResourceType": null,
     "Sku": {
-      "Name": "Standard",
-      "Tier": null,
-      "Size": null,
-      "Family": null,
-      "Model": null,
-      "Capacity": null
+      "Name": "Standard"
     },
-    "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-H/replicas/region",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-H/replicas/region",
-        "Identity": null,
-        "Kind": null,
         "Location": "westeurope",
-        "ManagedBy": null,
-        "ResourceName": "region",
         "Name": "region",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
         "Properties": {
           "provisioningState": "Succeeded",
           "status": {
@@ -720,14 +665,7 @@
         },
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.AppConfiguration/configurationStores/replicas",
-        "ResourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -853,14 +791,14 @@
         "ETag": null
       },
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/replicas/region2",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/replicas/region2",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/replicas/northeurope",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AppConfiguration/configurationStores/app-config-I/replicas/northeurope",
         "Identity": null,
         "Kind": null,
         "Location": "northeurope",
         "ManagedBy": null,
-        "ResourceName": "region2",
-        "Name": "region2",
+        "ResourceName": "northeurope",
+        "Name": "northeurope",
         "ExtensionResourceName": null,
         "ParentResource": null,
         "Plan": null,
