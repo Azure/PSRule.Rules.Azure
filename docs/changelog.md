@@ -30,6 +30,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.47.0-B0060 (pre-release)
+
+What's changed since v1.46.0:
+
 - New features:
   - Added December 2025 baselines `Azure.GA_2025_12`, `Azure.Preview_2025_12`, and `Azure.CAF_2025_12` by @BernieWhite.
     [#3642](https://github.com/Azure/PSRule.Rules.Azure/issues/3642)
