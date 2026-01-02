@@ -137,6 +137,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Cosmos DB:
     - Renamed `Azure.Cosmos.DisableLocalAuth` to `Azure.Cosmos.NoSQLLocalAuth` to reflect it applies only to NoSQL API by @BernieWhite.
       [#3576](https://github.com/Azure/PSRule.Rules.Azure/issues/3576)
+- Engineering:
+  - Bump Microsoft.Extensions.Logging.Console from 8.0.0 to 10.0.1
+    [#3627](https://github.com/Azure/PSRule.Rules.Azure/issues/3627)
+  - Bump Microsoft.Extensions.Hosting from 9.0.10 to 10.0.1
+    [#3626](https://github.com/Azure/PSRule.Rules.Azure/issues/3626)
 
 ## v1.46.0
 
