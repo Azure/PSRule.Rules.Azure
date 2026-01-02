@@ -82,8 +82,6 @@ resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2025-04-15
 }
 ```
 
-<!-- external:avm avm/res/document-db/database-account/sql-database name -->
-
 ### Configure with Azure template
 
 To deploy databases that pass this rule:

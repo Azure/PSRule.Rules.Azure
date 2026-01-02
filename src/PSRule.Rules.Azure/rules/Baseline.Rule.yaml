@@ -1126,6 +1126,7 @@ metadata:
   annotations:
     export: true
     moduleVersion: v1.46.0
+    obsolete: true
 spec:
   configuration:
     # Configure minimum AKS cluster version
@@ -1166,6 +1167,7 @@ metadata:
   annotations:
     export: true
     moduleVersion: v1.46.0
+    obsolete: true
 spec:
   configuration:
     # Configure minimum AKS cluster version
@@ -1196,3 +1198,85 @@ spec:
       - '2025_03'
       - '2025_06'
       - '2025_09'
+
+---
+# Synopsis: Include rules released December 2025 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.GA_2025_12
+  annotations:
+    export: true
+    moduleVersion: v1.47.0
+spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.32.7'
+  rule:
+    tag:
+      release: GA
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'
+      - '2022_03'
+      - '2022_06'
+      - '2022_09'
+      - '2022_12'
+      - '2023_03'
+      - '2023_06'
+      - '2023_09'
+      - '2023_12'
+      - '2024_03'
+      - '2024_06'
+      - '2024_09'
+      - '2024_12'
+      - '2025_03'
+      - '2025_06'
+      - '2025_09'
+      - '2025_12'
+
+---
+# Synopsis: Include rules released December 2025 or prior for Azure preview only features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Preview_2025_12
+  annotations:
+    export: true
+    moduleVersion: v1.47.0
+spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.32.7'
+  rule:
+    tag:
+      release: preview
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'
+      - '2022_03'
+      - '2022_06'
+      - '2022_09'
+      - '2022_12'
+      - '2023_03'
+      - '2023_06'
+      - '2023_09'
+      - '2023_12'
+      - '2024_03'
+      - '2024_06'
+      - '2024_09'
+      - '2024_12'
+      - '2025_03'
+      - '2025_06'
+      - '2025_09'
+      - '2025_12'

@@ -1,5 +1,13 @@
 [
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ContainerInstance/containerGroups",
+    "ruleId": "Azure.ACI.Naming",
+    "displayName": "Container Instance resources must use standard naming"
+  },
+  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:05 Identity and access management",
@@ -88,6 +96,14 @@
     "displayName": "Use valid registry names"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "ruleId": "Azure.ACR.Naming",
+    "displayName": "Container Registry resources must use standard naming"
+  },
+  {
     "severity": "Important",
     "pillar": "Security",
     "category": "Azure resources",
@@ -150,6 +166,14 @@
     "resourceType": "Microsoft.Kusto/clusters",
     "ruleId": "Azure.ADX.ManagedIdentity",
     "displayName": "Use managed identities for Data Explorer clusters"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:06 Network controls",
+    "resourceType": "Microsoft.Kusto/clusters",
+    "ruleId": "Azure.ADX.PublicAccess",
+    "displayName": "Disable public network access on Data Explorer clusters"
   },
   {
     "severity": "Important",
@@ -424,6 +448,14 @@
     "displayName": "Use valid AKS cluster names"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "ruleId": "Azure.AKS.Naming",
+    "displayName": "AKS cluster resources must use standard naming"
+  },
+  {
     "severity": "Important",
     "pillar": "Security",
     "category": "SE:04 Segmentation",
@@ -520,6 +552,22 @@
     "displayName": "Use the Standard load balancer SKU"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "ruleId": "Azure.AKS.SystemPoolNaming",
+    "displayName": "AKS system node pool resources must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "ruleId": "Azure.AKS.SystemPoolNaming",
+    "displayName": "AKS system node pool resources must use standard naming"
+  },
+  {
     "severity": "Important",
     "pillar": "Reliability",
     "category": "RE:04 Target metrics",
@@ -534,6 +582,22 @@
     "resourceType": "Microsoft.ContainerService/managedClusters",
     "ruleId": "Azure.AKS.UseRBAC",
     "displayName": "AKS clusters use RBAC"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "ruleId": "Azure.AKS.UserPoolNaming",
+    "displayName": "AKS user node pool resources must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "ruleId": "Azure.AKS.UserPoolNaming",
+    "displayName": "AKS user node pool resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -928,6 +992,22 @@
     "displayName": "Purge Protect App Configuration Stores"
   },
   {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:01 Security baseline",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ruleId": "Azure.AppConfig.ReplicaLocation",
+    "displayName": "App Configuration Store replica location is not allowed"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:01 Security baseline",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
+    "ruleId": "Azure.AppConfig.ReplicaLocation",
+    "displayName": "App Configuration Store replica location is not allowed"
+  },
+  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:09 Application secrets",
@@ -1082,7 +1162,7 @@
   {
     "severity": "Critical",
     "pillar": "Security",
-    "category": "Network security and containment",
+    "category": "SE:06 Network controls",
     "resourceType": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
     "ruleId": "Azure.AppGwWAF.RuleGroups",
     "displayName": "Use Recommended Application Gateway WAF policy rule groups"
@@ -1568,6 +1648,14 @@
     "displayName": "Disable session affinity"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.App/managedEnvironments",
+    "ruleId": "Azure.ContainerApp.EnvNaming",
+    "displayName": "Container App Environment resources must use standard naming"
+  },
+  {
     "severity": "Important",
     "pillar": "Security",
     "category": "SE:06 Network controls",
@@ -1582,6 +1670,14 @@
     "resourceType": "Microsoft.App/containerApps",
     "ruleId": "Azure.ContainerApp.Insecure",
     "displayName": "Disable insecure container app ingress"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.App/jobs",
+    "ruleId": "Azure.ContainerApp.JobNaming",
+    "displayName": "Container App Job resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -1606,6 +1702,14 @@
     "resourceType": "Microsoft.App/containerApps",
     "ruleId": "Azure.ContainerApp.Name",
     "displayName": "Use valid container app names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.App/containerApps",
+    "ruleId": "Azure.ContainerApp.Naming",
+    "displayName": "Container App resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -1634,10 +1738,26 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.DocumentDB/databaseAccounts",
     "ruleId": "Azure.Cosmos.AccountName",
     "displayName": "Use valid Cosmos DB account names"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Redundancy",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "ruleId": "Azure.Cosmos.AvailabilityZone",
+    "displayName": "Use zone redundant Cosmos DB accounts"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DocumentDb/databaseAccounts",
+    "ruleId": "Azure.Cosmos.CassandraNaming",
+    "displayName": "Cosmos DB for Apache Cassandra account resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -1648,12 +1768,12 @@
     "displayName": "Enable continuous backup policy"
   },
   {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "SE:05 Identity and access management",
-    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
-    "ruleId": "Azure.Cosmos.DisableLocalAuth",
-    "displayName": "Cosmos DB account access keys are enabled"
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+    "ruleId": "Azure.Cosmos.DatabaseNaming",
+    "displayName": "Cosmos DB database resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -1664,12 +1784,68 @@
     "displayName": "Restrict user access to data operations in Azure Cosmos DB"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DocumentDb/databaseAccounts",
+    "ruleId": "Azure.Cosmos.GremlinNaming",
+    "displayName": "Cosmos DB for Apache Gremlin account resources must use standard naming"
+  },
+  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:07 Encryption",
     "resourceType": "Microsoft.DocumentDB/databaseAccounts",
     "ruleId": "Azure.Cosmos.MinTLS",
     "displayName": "Cosmos DB account minimum TLS version"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Redundancy",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.Cosmos.MongoAvailabilityZone",
+    "displayName": "Use zone redundant Cosmos DB MongoDB vCore clusters"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.Cosmos.MongoEntraID",
+    "displayName": "MongoDB vCore clusters should use Microsoft Entra ID authentication"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DocumentDb/databaseAccounts",
+    "ruleId": "Azure.Cosmos.MongoNaming",
+    "displayName": "Cosmos DB for MongoDB account resources must use standard naming"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "ruleId": "Azure.Cosmos.NoSQLLocalAuth",
+    "displayName": "Cosmos DB NoSQL API account access keys are enabled"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DocumentDb/databaseAccounts",
+    "ruleId": "Azure.Cosmos.NoSQLNaming",
+    "displayName": "Cosmos DB for NoSQL account resources must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DBforPostgreSQL/serverGroupsv2",
+    "ruleId": "Azure.Cosmos.PostgreSQLNaming",
+    "displayName": "Cosmos DB PostgreSQL cluster resources must use standard naming"
   },
   {
     "severity": "Critical",
@@ -1686,6 +1862,14 @@
     "resourceType": "Microsoft.DocumentDB/databaseAccounts",
     "ruleId": "Azure.Cosmos.SLA",
     "displayName": "Use paid tier for production workloads"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DocumentDb/databaseAccounts",
+    "ruleId": "Azure.Cosmos.TableNaming",
+    "displayName": "Cosmos DB for Table account resources must use standard naming"
   },
   {
     "severity": "Critical",
@@ -2073,6 +2257,14 @@
   },
   {
     "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Redundancy",
+    "resourceType": "Microsoft.EventHub/namespaces",
+    "ruleId": "Azure.EventHub.AvailabilityZone",
+    "displayName": "Use zone redundant Event Hub namespaces"
+  },
+  {
+    "severity": "Important",
     "pillar": "Security",
     "category": "SE:05 Identity and access management",
     "resourceType": "Microsoft.EventHub/namespaces",
@@ -2342,6 +2534,14 @@
     "resourceType": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
     "ruleId": "Azure.FrontDoorWAF.RuleGroups",
     "displayName": "Use Recommended Front Door WAF policy rule groups"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Regions and availability zones",
+    "resourceType": "Microsoft.Dashboard/grafana",
+    "ruleId": "Azure.Grafana.AvailabilityZone",
+    "displayName": "Use zone redundant Managed Grafana workspaces"
   },
   {
     "severity": "Important",
@@ -2752,6 +2952,22 @@
     "displayName": "Use valid VNET rule names"
   },
   {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Redundancy",
+    "resourceType": "Microsoft.DocumentDB/cassandraClusters",
+    "ruleId": "Azure.MICassandra.AvailabilityZone",
+    "displayName": "Use zone redundant Managed Instance for Apache Cassandra clusters"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Redundancy",
+    "resourceType": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+    "ruleId": "Azure.MICassandra.AvailabilityZone",
+    "displayName": "Use zone redundant Managed Instance for Apache Cassandra clusters"
+  },
+  {
     "severity": "Critical",
     "pillar": "Cost Optimization",
     "category": "CO:06 Usage and billing increments",
@@ -2922,10 +3138,26 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.DBforMySQL/servers",
     "ruleId": "Azure.MySQL.ServerName",
     "displayName": "Use valid MySQL DB server names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "ruleId": "Azure.MySQL.ServerNaming",
+    "displayName": "MySQL database server resources must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "ruleId": "Azure.MySQL.ServerNaming",
+    "displayName": "MySQL database server resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -3226,10 +3458,26 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.DBforPostgreSQL/servers",
     "ruleId": "Azure.PostgreSQL.ServerName",
     "displayName": "Use valid PostgreSQL DB server names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+    "ruleId": "Azure.PostgreSQL.ServerNaming",
+    "displayName": "PostgreSQL database server resources must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "ruleId": "Azure.PostgreSQL.ServerNaming",
+    "displayName": "PostgreSQL database server resources must use standard naming"
   },
   {
     "severity": "Critical",
@@ -3377,6 +3625,14 @@
   },
   {
     "severity": "Important",
+    "pillar": "Operational Excellence",
+    "category": "OE:05 Infrastructure as code",
+    "resourceType": "Microsoft.Cache/redis",
+    "ruleId": "Azure.Redis.MigrateAMR",
+    "displayName": "Migrate to Azure Managed Redis"
+  },
+  {
+    "severity": "Important",
     "pillar": "Performance Efficiency",
     "category": "PE:03 Selecting services",
     "resourceType": "Microsoft.Cache/redis",
@@ -3390,6 +3646,14 @@
     "resourceType": "Microsoft.Cache/redis",
     "ruleId": "Azure.Redis.MinTLS",
     "displayName": "Redis Cache minimum TLS version"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Cache/Redis",
+    "ruleId": "Azure.Redis.Naming",
+    "displayName": "Azure Cache for Redis resources must use standard naming"
   },
   {
     "severity": "Critical",
@@ -3416,12 +3680,28 @@
     "displayName": "Redis version for Azure Cache for Redis"
   },
   {
+    "severity": "Important",
+    "pillar": "Operational Excellence",
+    "category": "OE:05 Infrastructure as code",
+    "resourceType": "Microsoft.Cache/redisEnterprise",
+    "ruleId": "Azure.RedisEnterprise.MigrateAMR",
+    "displayName": "Migrate to Azure Managed Redis"
+  },
+  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:07 Encryption",
     "resourceType": "Microsoft.Cache/redisEnterprise",
     "ruleId": "Azure.RedisEnterprise.MinTLS",
     "displayName": "Redis Cache minimum TLS version"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Cache/redisEnterprise",
+    "ruleId": "Azure.RedisEnterprise.Naming",
+    "displayName": "Azure Cache for Redis Enterprise resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -3592,6 +3872,22 @@
     "displayName": "Use Entra ID authentication with Service Fabric clusters"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ServiceFabric/managedClusters",
+    "ruleId": "Azure.ServiceFabric.ManagedNaming",
+    "displayName": "Service Fabric managed cluster resources must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ServiceFabric/clusters",
+    "ruleId": "Azure.ServiceFabric.Naming",
+    "displayName": "Service Fabric cluster resources must use standard naming"
+  },
+  {
     "severity": "Important",
     "pillar": "Security",
     "category": "SE:07 Encryption",
@@ -3690,10 +3986,18 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Sql/servers/databases",
     "ruleId": "Azure.SQL.DBName",
     "displayName": "Use valid SQL Database names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Sql/servers/databases",
+    "ruleId": "Azure.SQL.DBNaming",
+    "displayName": "Azure SQL database resources must use standard naming"
   },
   {
     "severity": "Important",
@@ -3710,6 +4014,14 @@
     "resourceType": "Microsoft.Sql/servers/securityAlertPolicies",
     "ruleId": "Azure.SQL.DefenderCloud",
     "displayName": "Use Advanced Threat Protection"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Sql/servers/elasticPools",
+    "ruleId": "Azure.SQL.ElasticPoolNaming",
+    "displayName": "Azure SQL Elastic Pool resources must use standard naming"
   },
   {
     "severity": "Awareness",
@@ -3752,10 +4064,18 @@
     "displayName": "Cleanup SQL logical server firewall rules"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Sql/servers/jobAgents",
+    "ruleId": "Azure.SQL.JobAgentNaming",
+    "displayName": "Azure SQL Elastic Job agent resources must use standard naming"
+  },
+  {
     "severity": "Important",
     "pillar": "Reliability",
     "category": "RE:04 Target metrics",
-    "resourceType": "Microsoft.Sql/servers'",
+    "resourceType": "Microsoft.Sql/servers",
     "ruleId": "Azure.SQL.MaintenanceWindow",
     "displayName": "Customer-controlled maintenance window configuration"
   },
@@ -3786,10 +4106,18 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Sql/servers",
     "ruleId": "Azure.SQL.ServerName",
     "displayName": "Use valid SQL logical server names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Sql/servers",
+    "ruleId": "Azure.SQL.ServerNaming",
+    "displayName": "Azure SQL Database server resources must use standard naming"
   },
   {
     "severity": "Critical",
@@ -3862,6 +4190,14 @@
     "resourceType": "Microsoft.Sql/managedInstances",
     "ruleId": "Azure.SQLMI.Name",
     "displayName": "Use valid SQL Managed Instance names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Sql/managedInstances",
+    "ruleId": "Azure.SQLMI.Naming",
+    "displayName": "SQL Managed Instance resources must use standard naming"
   },
   {
     "severity": "Important",
