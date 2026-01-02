@@ -30,6 +30,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New features:
+  - Added December 2025 baselines `Azure.GA_2025_12`, `Azure.Preview_2025_12`, and `Azure.CAF_2025_12` by @BernieWhite.
+    [#3642](https://github.com/Azure/PSRule.Rules.Azure/issues/3642)
+    - Includes rules released before or during December 2025.
+    - Marked `Azure.GA_2025_09` and `Azure.Preview_2025_09` baselines as obsolete.
 - New rules:
   - Added naming format rules for AKS, Container Apps, Service Fabric, Cosmos DB, Redis, and SQL resources.
     [#3548](https://github.com/Azure/PSRule.Rules.Azure/issues/3548)

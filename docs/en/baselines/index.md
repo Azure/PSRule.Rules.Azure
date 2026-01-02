@@ -15,7 +15,8 @@ The following baselines relate to generally available Azure features.
 
 Name | Synopsis | Status
 ---- | -------- | ------
-[Azure.GA_2025_09](Azure.GA_2025_09.md) | Include rules released September 2025 or prior for Azure GA features. | Latest
+[Azure.GA_2025_12](Azure.GA_2025_12.md) | Include rules released December 2025 or prior for Azure GA features. | Latest
+[Azure.GA_2025_09](Azure.GA_2025_09.md) | Include rules released September 2025 or prior for Azure GA features. | Obsolete
 [Azure.GA_2025_06](Azure.GA_2025_06.md) | Include rules released June 2025 or prior for Azure GA features. | Obsolete
 [Azure.GA_2025_03](Azure.GA_2025_03.md) | Include rules released March 2025 or prior for Azure GA features. | Obsolete
 [Azure.GA_2024_12](Azure.GA_2024_12.md) | Include rules released December 2024 or prior for Azure GA features. | Obsolete
@@ -44,7 +45,8 @@ The following baselines relate to preview Azure features.
 
 Name | Synopsis | Status
 ---- | -------- | ------
-[Azure.Preview_2025_09](Azure.Preview_2025_09.md) | Include rules released September 2025 or prior for Azure preview only features. | Latest
+[Azure.Preview_2025_12](Azure.Preview_2025_12.md) | Include rules released December 2025 or prior for Azure preview only features. | Latest
+[Azure.Preview_2025_09](Azure.Preview_2025_09.md) | Include rules released September 2025 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2025_06](Azure.Preview_2025_06.md) | Include rules released June 2025 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2025_03](Azure.Preview_2025_03.md) | Include rules released March 2025 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2024_12](Azure.Preview_2024_12.md) | Include rules released December 2024 or prior for Azure preview only features. | Obsolete
@@ -81,6 +83,7 @@ Pillar specific baselines provide a focused set of rules that assist with implem
 
 Name | Synopsis | Status
 ---- | -------- | ------
-[Azure.CAF_Compatibility](Azure.CAF_Compatibility.md) | A converted baseline migrated from PSRule.Rules.CAF. Use this for compatibility with the previous strict module defaults. | Latest
-[Azure.CAF_2025_06](Azure.CAF_2025_06.md) | Includes rules related to Azure CAF based on a June 2025 snapshot. | Latest
-[Azure.CAF_2025_03](Azure.CAF_2025_03.md) | Includes rules related to Azure CAF based on a March 2025 snapshot. | Latest
+[Azure.CAF_2025_12](Azure.CAF_2025_12.md) | Includes rules related to Azure CAF based on a December 2025 snapshot. | Latest
+[Azure.CAF_2025_06](Azure.CAF_2025_06.md) | Includes rules related to Azure CAF based on a June 2025 snapshot. | Previous
+[Azure.CAF_2025_03](Azure.CAF_2025_03.md) | Includes rules related to Azure CAF based on a March 2025 snapshot. | Previous
+[Azure.CAF_Compatibility](Azure.CAF_Compatibility.md) | A converted baseline migrated from PSRule.Rules.CAF. Use this for compatibility with the previous strict module defaults. | Previous

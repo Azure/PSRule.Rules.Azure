@@ -10,7 +10,7 @@ Includes the latest rules for Azure GA and preview features that is updated each
 
 The following rules are included within the `Azure.Preview` baseline.
 
-This baseline includes a total of 524 rules.
+This baseline includes a total of 525 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -381,6 +381,7 @@ Name | Synopsis | Severity
 [Azure.Redis.NonSslPort](../rules/Azure.Redis.NonSslPort.md) | Azure Cache for Redis should only accept secure connections. | Critical
 [Azure.Redis.PublicNetworkAccess](../rules/Azure.Redis.PublicNetworkAccess.md) | Redis cache should disable public network access. | Critical
 [Azure.Redis.Version](../rules/Azure.Redis.Version.md) | Azure Cache for Redis should use the latest supported version of Redis. | Important
+[Azure.RedisEnterprise.MigrateAMR](../rules/Azure.RedisEnterprise.MigrateAMR.md) | Azure Cache for Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis. | Important
 [Azure.RedisEnterprise.MinTLS](../rules/Azure.RedisEnterprise.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | Critical
 [Azure.RedisEnterprise.Naming](../rules/Azure.RedisEnterprise.Naming.md) | Azure Cache for Redis Enterprise resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.RedisEnterprise.Zones](../rules/Azure.RedisEnterprise.Zones.md) | Enterprise Redis cache should be zone-redundant for high availability. | Important
