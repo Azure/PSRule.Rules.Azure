@@ -41,7 +41,7 @@ This allows you to explore and learn the context of each WAF principle.
 
 ## Start day one
 
-PSRule for Azure includes over 490 rules for validating resources against configuration recommendations.
+PSRule for Azure includes over 500 rules for validating resources against configuration recommendations.
 Rules automatically detect and analyze resources from Azure IaC artifacts.
 This allows you to quickly light up unit testing of Azure resources from templates and Bicep deployments.
 
