@@ -80,6 +80,24 @@ Rule 'Azure.ACR.Naming' -Ref 'AZR-000506' -Type 'Microsoft.ContainerRegistry/reg
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_CONTAINER_REGISTRY_NAME_FORMAT, $True);
 }
 
+# Synopsis: Ensure container registry audit diagnostic logs are enabled.
+Rule 'Azure.ACR.Logs' -Ref 'AZR-000535' -Type 'Microsoft.ContainerRegistry/registries' -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4'; 'Azure.WAF/maturity' = 'L1'; } {
+    $logCategoryGroups = 'audit', 'allLogs'
+    $joinedLogCategoryGroups = $logCategoryGroups -join ', '
+    $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerRegistry/registries/providers/diagnosticSettings' |
+        ForEach-Object { $_.properties.logs |
+            Where-Object { 
+                ($_.category -in 'ContainerRegistryLoginEvents', 'ContainerRegistryRepositoryEvents' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled 
+            }
+        })
+    
+    $Assert.Greater($diagnostics, '.', 0).Reason(
+        $LocalizedData.ContainerRegistryAuditDiagnosticSetting,
+        'ContainerRegistryLoginEvents, ContainerRegistryRepositoryEvents',
+        $joinedLogCategoryGroups
+    ).PathPrefix('resources')
+}
+
 #endregion Rules
 
 #region Helper functions

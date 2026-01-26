@@ -705,5 +705,214 @@
       "Capacity": null
     },
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-N",
+    "Location": "region",
+    "Name": "registry-N",
+    "Properties": {
+      "loginServer": "registry-N.azurecr.io",
+      "adminUserEnabled": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-N/providers/microsoft.insights/diagnosticSettings/logs",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-N/providers/microsoft.insights/diagnosticSettings/logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "properties": {
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "logs": [
+            {
+              "category": "ContainerRegistryLoginEvents",
+              "enabled": true
+            },
+            {
+              "category": "ContainerRegistryRepositoryEvents",
+              "enabled": true
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-O",
+    "Location": "region",
+    "Name": "registry-O",
+    "Properties": {
+      "loginServer": "registry-O.azurecr.io",
+      "adminUserEnabled": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-O/providers/microsoft.insights/diagnosticSettings/logs",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-O/providers/microsoft.insights/diagnosticSettings/logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "properties": {
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "logs": [
+            {
+              "category": "ContainerRegistryLoginEvents",
+              "enabled": false
+            },
+            {
+              "category": "ContainerRegistryRepositoryEvents",
+              "enabled": false
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-P",
+    "Location": "region",
+    "Name": "registry-P",
+    "Properties": {
+      "loginServer": "registry-P.azurecr.io",
+      "adminUserEnabled": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-P/providers/microsoft.insights/diagnosticSettings/logs",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-P/providers/microsoft.insights/diagnosticSettings/logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "properties": {
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "logs": [
+            {
+              "categoryGroup": "audit",
+              "enabled": true
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-Q",
+    "Location": "region",
+    "Name": "registry-Q",
+    "Properties": {
+      "loginServer": "registry-Q.azurecr.io",
+      "adminUserEnabled": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-Q/providers/microsoft.insights/diagnosticSettings/logs",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-Q/providers/microsoft.insights/diagnosticSettings/logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "properties": {
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "logs": [
+            {
+              "categoryGroup": "allLogs",
+              "enabled": true
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-R",
+    "Location": "region",
+    "Name": "registry-R",
+    "Properties": {
+      "loginServer": "registry-R.azurecr.io",
+      "adminUserEnabled": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-S",
+    "Location": "region",
+    "Name": "registry-S",
+    "Properties": {
+      "loginServer": "registry-S.azurecr.io",
+      "adminUserEnabled": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium"
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-S/providers/microsoft.insights/diagnosticSettings/logs",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-S/providers/microsoft.insights/diagnosticSettings/logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "properties": {
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "logs": [
+            {
+              "category": "ContainerRegistryLoginEvents",
+              "enabled": true
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.ContainerRegistry/registries",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   }
 ]
