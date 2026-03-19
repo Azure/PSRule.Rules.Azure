@@ -70,9 +70,9 @@
       },
       "System.Collections.Immutable": {
         "type": "Direct",
-        "requested": "[10.0.2, )",
-        "resolved": "10.0.2",
-        "contentHash": "ty6kCaqyoh/M/jKV5yojgta+nf7T8zkkjpRI1beLQkrTC+9R6LS1eCEc+3ED2YUlRyA0g0PXExESnxnW3HcVVQ==",
+        "requested": "[10.0.5, )",
+        "resolved": "10.0.5",
+        "contentHash": "nozrOKfEgfrvvswkCfxaumY68RA/x1F3ZYwtwRvva8ul91NCnUzb6MKpl5/P7u9v/nIagVL4OXXj8d007tucxw==",
         "dependencies": {
           "System.Memory": "4.6.3",
           "System.Runtime.CompilerServices.Unsafe": "6.1.2"
