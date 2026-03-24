@@ -30,6 +30,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
+      [#3708](https://github.com/Azure/PSRule.Rules.Azure/issues/3708)
+
 ## v1.47.0
 
 What's changed since v1.46.0:

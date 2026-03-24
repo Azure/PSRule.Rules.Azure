@@ -16,3 +16,9 @@ Updating the change log:
 
 - After completing updates, update the change log in `docs/changelog.md` with a high-level one or two-line summary of the changes and the linked issue.
 - Change log entries are added as a new bullet point with the issue number in square brackets, under the Unreleased section.
+
+Common maintenance tasks:
+
+Periodically we need to run maintenance tasks to keep the repository up to date and ensure that all rules are compliant with the latest standards and practices. This includes:
+
+- Updating the minimum Kubernetes version for AKS clusters, see instructions in `.github/prompts/aks-minimum-version-update.prompt.md`.
