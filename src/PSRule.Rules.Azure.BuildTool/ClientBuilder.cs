@@ -2,30 +2,54 @@
 // Licensed under the MIT License.
 
 using System.CommandLine;
-using System.CommandLine.Builder;
-using System.CommandLine.Invocation;
 using PSRule.Rules.Azure.BuildTool.Resources;
 
 namespace PSRule.Rules.Azure.BuildTool;
 
-internal sealed class ClientBuilder : CommandBuilder
+internal sealed class ClientBuilder
 {
-    private ClientBuilder(RootCommand cmd) : base(cmd) { }
+    private readonly Option<string> _Global_OutputPath;
 
-    public static ClientBuilder New()
+    private ClientBuilder(RootCommand cmd)
+    {
+        Command = cmd;
+
+        _Global_OutputPath = new Option<string>("--output-path");
+    }
+
+    /// <summary>
+    /// Gets the configured root command.
+    /// </summary>
+    public RootCommand Command { get; }
+
+    public static Command New()
     {
         var cmd = new RootCommand();
-        return new ClientBuilder(cmd);
+        var builder = new ClientBuilder(cmd)
+            .AddProviderResource();
+
+        return builder.Command;
     }
 
     public ClientBuilder AddProviderResource()
     {
-        var cmd = new Command("provider", CmdStrings.Provider_Description);
-        cmd.AddOption(new Option<string>(
-            ["--output-path"]
-        ));
-        cmd.Handler = CommandHandler.Create<ProviderResourceOption, InvocationContext>(ProviderResource.Build);
-        Command.AddCommand(cmd);
+        var cmd = new Command("provider", CmdStrings.Provider_Description)
+        {
+            _Global_OutputPath
+        };
+
+        cmd.SetAction(async (parse, cancellationToken) =>
+        {
+            var options = new ProviderResourceOption
+            {
+                OutputPath = parse.GetValue(_Global_OutputPath),
+            };
+
+            ProviderResource.Build(options);
+
+        });
+
+        Command.Add(cmd);
         return this;
     }
 }
