@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,7 +24,7 @@ internal sealed class ProviderResource
         public string Type { get; set; }
     }
 
-    public static void Build(ProviderResourceOption options, InvocationContext invocation)
+    public static void Build(ProviderResourceOption options)
     {
         BuildIndex(options);
         MinifyTypes(options);
