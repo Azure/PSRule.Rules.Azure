@@ -17,13 +17,13 @@ Container app ingress that uses HTTP should have HTTP health probes configured f
 ## DESCRIPTION
 
 Azure Container Apps supports health probes to determine the health and readiness of your containers.
-Health probes can be configured as HTTP, TCP, or gRPC checks, and support liveness, readiness, and startup probe types.
+Health probes can be configured as HTTP or TCP checks and support liveness, readiness, and startup probe types.
 
 When a container app uses HTTP-based ingress (transport is `http` or `http2`, or the target port is `80`, `8080`, or `443`),
 health probes should use HTTP checks (`httpGet`) for liveness and readiness probes.
 HTTP health probes provide granular feedback by checking the HTTP response status code,
-which gives more accurate information about whether a replica is available and ready to receive traffic
-compared to a TCP port check which only determines if a port is open or closed.
+which gives more accurate information about whether a replica is available and ready to receive traffic compared to
+a TCP port check which only determines if a port is open or closed.
 
 The default health probes use TCP port checks when no probes are explicitly configured.
 Configuring HTTP health probes instead allows the platform to better detect and respond to application-level failures.
@@ -50,7 +50,7 @@ For example:
 ```json
 {
   "type": "Microsoft.App/containerApps",
-  "apiVersion": "2024-03-01",
+  "apiVersion": "2025-07-01",
   "name": "[parameters('appName')]",
   "location": "[parameters('location')]",
   "identity": {
@@ -114,7 +114,7 @@ To deploy Container Apps that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
+resource containerApp 'Microsoft.App/containerApps@2025-07-01' = {
   name: appName
   location: location
   identity: {
@@ -163,6 +163,8 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
   }
 }
 ```
+
+<!-- external:avm avm/res/app/container-app containers[*].probes -->
 
 ## NOTES
 
