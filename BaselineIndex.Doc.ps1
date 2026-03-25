@@ -67,14 +67,28 @@ Document 'index' {
     Section 'Cloud Adoption Framework baselines' {
         'Pillar specific baselines provide a focused set of rules that assist with implementing naming and tagging conventions recommended by the Azure Cloud Adoption Framework (CAF).'
 
-        $baselines | Where-Object { $_.Name -like 'Azure.CAF_*' } | Sort-Object -Property Name -Descending | Table -Property @{ Name = 'Name'; Expression = {
+        
+
+        $sorted = $baselines | Where-Object { $_.Name -like 'Azure.CAF_*' } | ForEach-Object {
+            [PSCustomObject]@{
+                Name = $_.Name
+                Synopsis = $_.Synopsis
+                Flags = $_.Flags
+                Version = $_.Metadata.Annotations.moduleVersion
+                Priority = if ($_.Name -like '*_Compatibility') { 0 } else { 1 }
+            }
+        } | Sort-Object -Property Version,Priority -Descending;
+
+        $top = $sorted | Select-Object -First 1;
+
+        $sorted | Table -Property @{ Name = 'Name'; Expression = {
             "[$($_.Name)]($($_.Name).md)"
         }}, Synopsis, @{ Name = 'Status'; Expression = {
-            if ($_.Flags -eq 'None') {
+            if ($_ -eq $top) {
                 'Latest'
             }
             else {
-                $_.Flags.ToString()
+                'Previous'
             }
         }}
     }

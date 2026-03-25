@@ -1,14 +1,16 @@
 ---
+export: true
+moduleVersion: v1.47.0
 generated: true
 ---
 
-# Azure.Default
+# Azure.GA_2025_12
 
-Default baseline for that includes the latest rules for Azure GA features that is updated each release.
+Include rules released December 2025 or prior for Azure GA features.
 
 ## Rules
 
-The following rules are included within the `Azure.Default` baseline.
+The following rules are included within the `Azure.GA_2025_12` baseline.
 
 This baseline includes a total of 517 rules.
 

@@ -175,64 +175,88 @@ spec:
     AZURE_VNET_NAME_FORMAT: '^vnet-'
     AZURE_VNET_SUBNET_NAME_FORMAT: '^snet-'
 
-# ---
-# # Synopsis: Includes rules related to Azure CAF based on a December 2025 snapshot.
-# apiVersion: github.com/microsoft/PSRule/v1
-# kind: Baseline
-# metadata:
-#   name: Azure.CAF_2025_12
-#   annotations:
-#     taxonomy: Azure.CAF
-#     export: true
-#     moduleVersion: v1.48.0
-#     experimental: true
-# spec:
-#   rule:
-#     tag:
-#       release: GA
-#     labels:
-#       Azure.CAF: '*'
+---
+# Synopsis: Includes rules related to Azure CAF based on a December 2025 snapshot.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.CAF_2025_12
+  annotations:
+    taxonomy: Azure.CAF
+    export: true
+    moduleVersion: v1.47.0
+    experimental: true
+spec:
+  rule:
+    tag:
+      release: GA
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'
+      - '2022_03'
+      - '2022_06'
+      - '2022_09'
+      - '2022_12'
+      - '2023_03'
+      - '2023_06'
+      - '2023_09'
+      - '2023_12'
+      - '2024_03'
+      - '2024_06'
+      - '2024_09'
+      - '2024_12'
+      - '2025_03'
+      - '2025_06'
+      - '2025_09'
+      - '2025_12'
+    labels:
+      Azure.CAF: '*'
 
-#   configuration:
-#     AZURE_AI_SEARCH_NAME_FORMAT: '^srch-'
-#     AZURE_AI_SERVICES_NAME_FORMAT: '^aif-'
-#     AZURE_AKS_CLUSTER_NAME_FORMAT: '^aks-'
-#     AZURE_AKS_SYSTEM_POOL_NAME_FORMAT: '^npsystem'
-#     AZURE_AKS_USER_POOL_NAME_FORMAT: '^np'
-#     AZURE_CONTAINER_APP_NAME_FORMAT: '^ca-'
-#     AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT: '^cae-'
-#     AZURE_CONTAINER_APP_JOB_NAME_FORMAT: '^caj-'
-#     AZURE_CONTAINER_REGISTRY_NAME_FORMAT: '^cr'
-#     AZURE_CONTAINER_INSTANCE_NAME_FORMAT: '^ci-'
-#     AZURE_COSMOS_CASSANDRA_NAME_FORMAT: '^coscas-'
-#     AZURE_COSMOS_MONGO_NAME_FORMAT: '^cosmon-'
-#     AZURE_COSMOS_NOSQL_NAME_FORMAT: '^cosno-'
-#     AZURE_COSMOS_TABLE_NAME_FORMAT: '^costab-'
-#     AZURE_COSMOS_GREMLIN_NAME_FORMAT: '^cosgrm-'
-#     AZURE_COSMOS_POSTGRESQL_NAME_FORMAT: '^cospos-'
-#     AZURE_COSMOS_DATABASE_NAME_FORMAT: '^cosmos-'
-#     AZURE_EVENTGRID_DOMAIN_NAME_FORMAT: '^evgd-'
-#     AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT: '^evgt-'
-#     AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT: '^egst-'
-#     AZURE_GATEWAY_CONNECTION_NAME_FORMAT: '^con-'
-#     AZURE_LOAD_BALANCER_NAME_FORMAT: '^(lbi|lbe)-'
-#     AZURE_MYSQL_SERVER_NAME_FORMAT: '^mysql-'
-#     AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT: '^nsg-'
-#     AZURE_POSTGRESQL_SERVER_NAME_FORMAT: '^psql-'
-#     AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT: '^pip-'
-#     AZURE_REDIS_CACHE_NAME_FORMAT: '^redis-'
-#     AZURE_REDIS_ENTERPRISE_NAME_FORMAT: '^redis-'
-#     AZURE_RESOURCE_GROUP_NAME_FORMAT: '^rg-'
-#     AZURE_ROUTE_TABLE_NAME_FORMAT: '^rt-'
-#     AZURE_SERVICE_FABRIC_CLUSTER_NAME_FORMAT: '^sf-'
-#     AZURE_SERVICE_FABRIC_MANAGED_CLUSTER_NAME_FORMAT: '^sfmc-'
-#     AZURE_SQL_SERVER_NAME_FORMAT: '^sql-'
-#     AZURE_SQL_DATABASE_NAME_FORMAT: '^sqldb-'
-#     AZURE_SQL_JOB_AGENT_NAME_FORMAT: '^sqlja-'
-#     AZURE_SQL_ELASTIC_POOL_NAME_FORMAT: '^sqlep-'
-#     AZURE_SQL_MI_NAME_FORMAT: '^sqlmi-'
-#     AZURE_STORAGE_ACCOUNT_NAME_FORMAT: '^(st|stvm)'
-#     AZURE_VIRTUAL_MACHINE_NAME_FORMAT: '^vm'
-#     AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: 'vgw-'
-#     AZURE_VNET_NAME_FORMAT: '^vnet-'
-#     AZURE_VNET_SUBNET_NAME_FORMAT: '^snet-'
+  configuration:
+    AZURE_AI_SEARCH_NAME_FORMAT: '^srch-'
+    AZURE_AI_SERVICES_NAME_FORMAT: '^aif-'
+    AZURE_AKS_CLUSTER_NAME_FORMAT: '^aks-'
+    AZURE_AKS_SYSTEM_POOL_NAME_FORMAT: '^npsystem'
+    AZURE_AKS_USER_POOL_NAME_FORMAT: '^np'
+    AZURE_CONTAINER_APP_NAME_FORMAT: '^ca-'
+    AZURE_CONTAINER_APP_ENVIRONMENT_NAME_FORMAT: '^cae-'
+    AZURE_CONTAINER_APP_JOB_NAME_FORMAT: '^caj-'
+    AZURE_CONTAINER_REGISTRY_NAME_FORMAT: '^cr'
+    AZURE_CONTAINER_INSTANCE_NAME_FORMAT: '^ci-'
+    AZURE_COSMOS_CASSANDRA_NAME_FORMAT: '^coscas-'
+    AZURE_COSMOS_MONGO_NAME_FORMAT: '^cosmon-'
+    AZURE_COSMOS_NOSQL_NAME_FORMAT: '^cosno-'
+    AZURE_COSMOS_TABLE_NAME_FORMAT: '^costab-'
+    AZURE_COSMOS_GREMLIN_NAME_FORMAT: '^cosgrm-'
+    AZURE_COSMOS_POSTGRESQL_NAME_FORMAT: '^cospos-'
+    AZURE_COSMOS_DATABASE_NAME_FORMAT: '^cosmos-'
+    AZURE_EVENTGRID_DOMAIN_NAME_FORMAT: '^evgd-'
+    AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT: '^evgt-'
+    AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT: '^egst-'
+    AZURE_GATEWAY_CONNECTION_NAME_FORMAT: '^con-'
+    AZURE_LOAD_BALANCER_NAME_FORMAT: '^(lbi|lbe)-'
+    AZURE_MYSQL_SERVER_NAME_FORMAT: '^mysql-'
+    AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT: '^nsg-'
+    AZURE_POSTGRESQL_SERVER_NAME_FORMAT: '^psql-'
+    AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT: '^pip-'
+    AZURE_REDIS_CACHE_NAME_FORMAT: '^redis-'
+    AZURE_REDIS_ENTERPRISE_NAME_FORMAT: '^redis-'
+    AZURE_RESOURCE_GROUP_NAME_FORMAT: '^rg-'
+    AZURE_ROUTE_TABLE_NAME_FORMAT: '^rt-'
+    AZURE_SERVICE_FABRIC_CLUSTER_NAME_FORMAT: '^sf-'
+    AZURE_SERVICE_FABRIC_MANAGED_CLUSTER_NAME_FORMAT: '^sfmc-'
+    AZURE_SQL_SERVER_NAME_FORMAT: '^sql-'
+    AZURE_SQL_DATABASE_NAME_FORMAT: '^sqldb-'
+    AZURE_SQL_JOB_AGENT_NAME_FORMAT: '^sqlja-'
+    AZURE_SQL_ELASTIC_POOL_NAME_FORMAT: '^sqlep-'
+    AZURE_SQL_MI_NAME_FORMAT: '^sqlmi-'
+    AZURE_STORAGE_ACCOUNT_NAME_FORMAT: '^(st|stvm)'
+    AZURE_VIRTUAL_MACHINE_NAME_FORMAT: '^vm'
+    AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: 'vgw-'
+    AZURE_VNET_NAME_FORMAT: '^vnet-'
+    AZURE_VNET_SUBNET_NAME_FORMAT: '^snet-'
