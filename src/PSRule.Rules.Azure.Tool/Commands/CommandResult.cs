@@ -9,6 +9,11 @@ namespace PSRule.Rules.Azure.Tool.Commands;
 public sealed class CommandResult(int exitCode)
 {
     /// <summary>
+    /// A successful command result with no additional output.
+    /// </summary>
+    public static readonly CommandResult Success = new(0);
+
+    /// <summary>
     /// The numeric exit code of the command.
     /// </summary>
     public int ExitCode { get; } = exitCode;
