@@ -787,6 +787,7 @@ Name | Synopsis | Severity | Level
 [Azure.ServiceBus.DisableLocalAuth](Azure.ServiceBus.DisableLocalAuth.md) | Authenticate Service Bus publishers and consumers with Entra ID identities. | Important | Error
 [Azure.ServiceBus.GeoReplica](Azure.ServiceBus.GeoReplica.md) | Enhance resilience to regional outages by replicating namespaces. | Important | Error
 [Azure.ServiceBus.MinTLS](Azure.ServiceBus.MinTLS.md) | Service Bus namespaces should reject TLS versions older than 1.2. | Important | Error
+[Azure.ServiceBus.ReplicaLocation](Azure.ServiceBus.ReplicaLocation.md) | Service Bus namespace replica locations should be within allowed regions. | Important | Error
 [Azure.ServiceBus.Usage](Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | Important | Error
 
 ## Service Fabric

@@ -13,6 +13,21 @@ Rule 'Azure.ServiceBus.Usage' -Ref 'AZR-000177' -Type 'Microsoft.ServiceBus/name
     $Assert.GreaterOrEqual($items, '.', 1);
 }
 
+# Synopsis: Service Bus namespace replica locations should be within allowed regions.
+Rule 'Azure.ServiceBus.ReplicaLocation' -Ref 'AZR-000535' -Type 'Microsoft.ServiceBus/namespaces' -If { $Assert.HasField($TargetObject, 'properties.geoDataReplication.locations') } -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } {
+    $context = $PSRule.GetService('Azure.Context');
+    $locations = $PSRule.GetPath($TargetObject, 'properties.geoDataReplication.locations[*].locationName');
+    if ($locations -eq $Null -or $locations.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    for ($i = 0; $i -lt $locations.Length; $i++) {
+        $path = "properties.geoDataReplication.locations[$i].locationName";
+        [string]$location = $locations[$i];
+        $Assert.Create($path, [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
+    }
+}
+
 # Synopsis: Ensure namespaces audit diagnostic logs are enabled.
 Rule 'Azure.ServiceBus.AuditLogs' -Ref 'AZR-000358' -Type 'Microsoft.ServiceBus/namespaces' -With 'Azure.ServiceBus.IsPremium' -Tag @{ release = 'GA'; ruleSet = '2023_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L1' } {
     $logCategoryGroups = 'audit', 'allLogs'

@@ -30,6 +30,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Service Bus:
+    - Added `Azure.ServiceBus.ReplicaLocation` to check that geo-replication replica locations are within allowed regions.
+      [#3381](https://github.com/Azure/PSRule.Rules.Azure/issues/3381)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
