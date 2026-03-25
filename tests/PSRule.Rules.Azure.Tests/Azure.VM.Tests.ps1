@@ -172,8 +172,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             }
         }
 
-        It 'Azure.VM.DiskCaching' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.DiskCaching' };
+        It 'Azure.VM.OSDiskCache' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.OSDiskCache' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -1126,8 +1126,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             }
         }
 
-        It 'Azure.VM.DiskCaching' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.DiskCaching' };
+        It 'Azure.VM.OSDiskCache' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.OSDiskCache' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

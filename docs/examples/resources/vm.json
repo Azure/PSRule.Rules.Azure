@@ -4,13 +4,15 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.34.44.8038",
-      "templateHash": "18140604143517495412"
+      "version": "0.41.2.15936",
+      "templateHash": "12918842436261158023"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 1,
+      "maxLength": 15,
       "metadata": {
         "description": "The name of the resource."
       }
@@ -64,7 +66,7 @@
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2024-11-01",
+      "apiVersion": "2025-04-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -133,7 +135,7 @@
     },
     {
       "type": "Microsoft.Compute/disks",
-      "apiVersion": "2023-10-02",
+      "apiVersion": "2025-01-02",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -148,7 +150,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "apiVersion": "2024-03-01",
+      "apiVersion": "2025-04-01",
       "name": "[format('{0}/{1}', parameters('name'), 'AzureMonitorWindowsAgent')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -188,7 +190,7 @@
     {
       "type": "Microsoft.Maintenance/configurationAssignments",
       "apiVersion": "2023-04-01",
-      "scope": "[format('Microsoft.Compute/virtualMachines/{0}', parameters('name'))]",
+      "scope": "[resourceId('Microsoft.Compute/virtualMachines', parameters('name'))]",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -201,7 +203,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2024-07-01",
+      "apiVersion": "2025-04-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "zones": [
@@ -247,7 +249,7 @@
     },
     {
       "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2023-06-01",
+      "apiVersion": "2025-05-01",
       "name": "[parameters('nicName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -266,7 +268,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2024-03-01",
+      "apiVersion": "2025-04-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -274,7 +276,7 @@
       },
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_D8d_v5"
+          "vmSize": "Standard_D8ds_v6"
         },
         "osProfile": {
           "computerName": "[parameters('name')]",
@@ -287,8 +289,8 @@
         "storageProfile": {
           "imageReference": {
             "publisher": "MicrosoftCblMariner",
-            "offer": "Cbl-Mariner",
-            "sku": "cbl-mariner-2-gen2",
+            "offer": "azure-linux-3",
+            "sku": "azure-linux-3-gen2",
             "version": "latest"
           },
           "osDisk": {

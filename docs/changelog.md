@@ -34,6 +34,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
       [#3708](https://github.com/Azure/PSRule.Rules.Azure/issues/3708)
+  - Virtual Machine:
+    - Updated `Azure.VM.DiskCaching` to check for `ReadWrite` caching on OS disks instead only by @BernieWhite.
+      [#3673](https://github.com/Azure/PSRule.Rules.Azure/issues/3673)
+      - Renamed the rule from `Azure.VM.DiskCaching` to `Azure.VM.OSDiskCache` to reflect updated scope.
+      - Updates to provide more complete documentation.
 
 ## v1.47.0
 
