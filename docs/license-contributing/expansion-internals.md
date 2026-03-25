@@ -75,15 +75,14 @@ flowchart TD
 
 The key source code components involved in the expansion process are:
 
-!!! Implementation
-    | Component | Source file | Description |
-    |-----------|-------------|-------------|
-    | `BicepHelper` | `src/PSRule.Rules.Azure/Data/Bicep/BicepHelper.cs` | Invokes the Bicep CLI and coordinates expansion of Bicep and ARM files. |
-    | `DeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/DeploymentVisitor.cs` | The core visitor that walks the ARM deployment structure. |
-    | `MaterializedDeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/MaterializedDeploymentVisitor.cs` | Extends `DeploymentVisitor` to handle post-processing of emitted resources. |
-    | `ResourceDependencyGraph` | `src/PSRule.Rules.Azure/Arm/Deployments/ResourceDependencyGraph.cs` | Builds and resolves the dependency graph for resources in a deployment. |
-    | `ExpressionBuilder` | `src/PSRule.Rules.Azure/Arm/Expressions/ExpressionBuilder.cs` | Parses and evaluates ARM template expressions. |
-    | `Functions` | `src/PSRule.Rules.Azure/Arm/Expressions/Functions.cs` | Implementations of ARM template built-in functions used during expression evaluation. |
+ Component | Source file | Description
+---------- | ----------- | -----------
+`BicepHelper` | `src/PSRule.Rules.Azure/Data/Bicep/BicepHelper.cs` | Invokes the Bicep CLI and coordinates expansion of Bicep and ARM files.
+`DeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/DeploymentVisitor.cs` | The core visitor that walks the ARM deployment structure.
+`MaterializedDeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/MaterializedDeploymentVisitor.cs` | Extends `DeploymentVisitor` to handle post-processing of emitted resources.
+`ResourceDependencyGraph` | `src/PSRule.Rules.Azure/Arm/Deployments/ResourceDependencyGraph.cs` | Builds and resolves the dependency graph for resources in a deployment.
+`ExpressionBuilder` | `src/PSRule.Rules.Azure/Arm/Expressions/ExpressionBuilder.cs` | Parses and evaluates ARM template expressions.
+`Functions` | `src/PSRule.Rules.Azure/Arm/Expressions/Functions.cs` | Implementations of ARM template built-in functions used during expression evaluation.
 
 ## Building Bicep
 
