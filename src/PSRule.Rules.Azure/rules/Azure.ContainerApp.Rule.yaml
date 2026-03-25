@@ -215,7 +215,7 @@ metadata:
   ref: AZR-000535
   tags:
     release: GA
-    ruleSet: 2025_12
+    ruleSet: 2026_03
     Azure.WAF/pillar: Reliability
 spec:
   with:
