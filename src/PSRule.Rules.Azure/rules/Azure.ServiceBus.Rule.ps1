@@ -14,7 +14,7 @@ Rule 'Azure.ServiceBus.Usage' -Ref 'AZR-000177' -Type 'Microsoft.ServiceBus/name
 }
 
 # Synopsis: Service Bus namespace replica locations should be within allowed regions.
-Rule 'Azure.ServiceBus.ReplicaLocation' -Ref 'AZR-000535' -Type 'Microsoft.ServiceBus/namespaces' -If { $Assert.HasField($TargetObject, 'properties.geoDataReplication.locations') } -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.ServiceBus.ReplicaLocation' -Ref 'AZR-000536' -Type 'Microsoft.ServiceBus/namespaces' -If { $Assert.HasField($TargetObject, 'properties.geoDataReplication.locations') } -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $context = $PSRule.GetService('Azure.Context');
     $locations = $PSRule.GetPath($TargetObject, 'properties.geoDataReplication.locations[*].locationName');
     if ($locations -eq $Null -or $locations.Length -eq 0) {
