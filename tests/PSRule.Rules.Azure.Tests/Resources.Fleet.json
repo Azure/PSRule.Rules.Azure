@@ -1,0 +1,325 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-001",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-001",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "fleet-001",
+    "Name": "fleet-001",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "computeProfile": {
+        "baseVirtualMachineProfile": {
+          "osProfile": {
+            "computerNamePrefix": "fleet",
+            "adminUsername": "azureuser",
+            "linuxConfiguration": {
+              "disablePasswordAuthentication": true,
+              "ssh": {
+                "publicKeys": [
+                  {
+                    "path": "/home/azureuser/.ssh/authorized_keys",
+                    "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC"
+                  }
+                ]
+              },
+              "provisionVMAgent": true
+            }
+          },
+          "storageProfile": {
+            "osDisk": {
+              "createOption": "FromImage",
+              "caching": "ReadWrite",
+              "managedDisk": {
+                "storageAccountType": "Premium_LRS"
+              }
+            },
+            "imageReference": {
+              "publisher": "MicrosoftCblMariner",
+              "offer": "Cbl-Mariner",
+              "sku": "cbl-mariner-2-gen2",
+              "version": "latest"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "netconfig",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "ipconfig",
+                      "properties": {
+                        "primary": true,
+                        "subnet": {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "vmSizesProfile": [
+        {
+          "name": "Standard_D8ds_v6",
+          "rank": 0
+        }
+      ],
+      "regularPriorityProfile": {
+        "minCapacity": 1,
+        "capacity": 5,
+        "allocationStrategy": "Prioritized"
+      }
+    },
+    "ResourceType": "Microsoft.AzureFleet/fleets",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.AzureFleet/fleets",
+    "Tags": {}
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-002",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-002",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "fleet-002",
+    "Name": "fleet-002",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "computeProfile": {
+        "baseVirtualMachineProfile": {
+          "osProfile": {
+            "computerNamePrefix": "fleet",
+            "adminUsername": "azureuser",
+            "linuxConfiguration": {
+              "disablePasswordAuthentication": false,
+              "provisionVMAgent": true
+            }
+          },
+          "storageProfile": {
+            "osDisk": {
+              "createOption": "FromImage",
+              "caching": "ReadWrite",
+              "managedDisk": {
+                "storageAccountType": "Premium_LRS"
+              }
+            },
+            "imageReference": {
+              "publisher": "MicrosoftCblMariner",
+              "offer": "Cbl-Mariner",
+              "sku": "cbl-mariner-2-gen2",
+              "version": "latest"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "netconfig",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "ipconfig",
+                      "properties": {
+                        "primary": true,
+                        "subnet": {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "vmSizesProfile": [
+        {
+          "name": "Standard_D8ds_v6",
+          "rank": 0
+        }
+      ],
+      "regularPriorityProfile": {
+        "minCapacity": 1,
+        "capacity": 5,
+        "allocationStrategy": "Prioritized"
+      }
+    },
+    "ResourceType": "Microsoft.AzureFleet/fleets",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.AzureFleet/fleets",
+    "Tags": {}
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-003",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-003",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "fleet-003",
+    "Name": "fleet-003",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "computeProfile": {
+        "baseVirtualMachineProfile": {
+          "osProfile": {
+            "computerNamePrefix": "fleet",
+            "adminUsername": "azureuser",
+            "linuxConfiguration": {}
+          },
+          "storageProfile": {
+            "osDisk": {
+              "createOption": "FromImage",
+              "caching": "ReadWrite",
+              "managedDisk": {
+                "storageAccountType": "Premium_LRS"
+              }
+            },
+            "imageReference": {
+              "publisher": "MicrosoftCblMariner",
+              "offer": "Cbl-Mariner",
+              "sku": "cbl-mariner-2-gen2",
+              "version": "latest"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "netconfig",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "ipconfig",
+                      "properties": {
+                        "primary": true,
+                        "subnet": {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "vmSizesProfile": [
+        {
+          "name": "Standard_D8ds_v6",
+          "rank": 0
+        }
+      ],
+      "regularPriorityProfile": {
+        "minCapacity": 1,
+        "capacity": 5,
+        "allocationStrategy": "Prioritized"
+      }
+    },
+    "ResourceType": "Microsoft.AzureFleet/fleets",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.AzureFleet/fleets",
+    "Tags": {}
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-004",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-004",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "fleet-004",
+    "Name": "fleet-004",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "computeProfile": {
+        "baseVirtualMachineProfile": {
+          "securityProfile": {
+            "securityType": "TrustedLaunch",
+            "encryptionAtHost": true,
+            "uefiSettings": {
+              "secureBootEnabled": true,
+              "vTpmEnabled": true
+            }
+          },
+          "osProfile": {
+            "computerNamePrefix": "fleet",
+            "adminUsername": "azureuser",
+            "adminPassword": "P@ssword123!"
+          },
+          "storageProfile": {
+            "osDisk": {
+              "createOption": "FromImage",
+              "caching": "ReadWrite",
+              "managedDisk": {
+                "storageAccountType": "Premium_LRS"
+              },
+              "osType": "Windows"
+            },
+            "imageReference": {
+              "publisher": "MicrosoftWindowsServer",
+              "offer": "WindowsServer",
+              "sku": "2022-datacenter-g2",
+              "version": "latest"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "netconfig",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "ipconfig",
+                      "properties": {
+                        "primary": true,
+                        "subnet": {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "vmSizesProfile": [
+        {
+          "name": "Standard_D8ds_v6",
+          "rank": 0
+        }
+      ],
+      "regularPriorityProfile": {
+        "minCapacity": 1,
+        "capacity": 5,
+        "allocationStrategy": "Prioritized"
+      }
+    },
+    "ResourceType": "Microsoft.AzureFleet/fleets",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.AzureFleet/fleets",
+    "Tags": {}
+  }
+]

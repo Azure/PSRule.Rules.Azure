@@ -77,6 +77,7 @@
     ReplicaNotFound = "A replica was not found."
     ReplicaInSecondaryNotFound = "A replica in a secondary region was not found."
     VMSSPublicKey = "The virtual machine scale set '{0}' should have password authentication disabled."
+    FleetPublicKey = "The Azure Fleet '{0}' should have password authentication disabled."
     ACRSoftDeletePolicy = "The container registry '{0}' should have soft delete policy enabled."
     ACRSoftDeletePolicyRetention = "The container registry '{0}' should have retention period value between one to 90 days for the soft delete policy."
 

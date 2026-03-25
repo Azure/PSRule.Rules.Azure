@@ -30,6 +30,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Fleet:
+    - Check for public key usage on Linux fleet VM profiles by @copilot.
+      [#3343](https://github.com/Azure/PSRule.Rules.Azure/issues/3343)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
