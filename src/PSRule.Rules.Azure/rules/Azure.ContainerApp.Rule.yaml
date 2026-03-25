@@ -212,10 +212,10 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ContainerApp.HealthProbe
-  ref: AZR-000535
+  ref: AZR-000537
   tags:
     release: GA
-    ruleSet: 2026_03
+    ruleSet: 2026_06
     Azure.WAF/pillar: Reliability
 spec:
   with:
