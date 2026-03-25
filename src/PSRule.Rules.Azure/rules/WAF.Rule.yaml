@@ -44,6 +44,27 @@ spec:
       Azure.WAF/maturity: L1
 
 ---
+# Synopsis: Microsoft Azure Well-Architected Framework - Security pillar Level 2 maturity baseline.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Pillar.Security.L2
+  annotations:
+    taxonomy: Azure.WAF
+    pillar: Security
+    maturity: L2
+    export: true
+    moduleVersion: v1.40.0
+    experimental: true
+spec:
+  rule:
+    tag:
+      release: GA
+      Azure.WAF/pillar: Security
+    labels:
+      Azure.WAF/maturity: L2
+
+---
 # Synopsis: Microsoft Azure Well-Architected Framework - Operational Excellence pillar specific baseline.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline

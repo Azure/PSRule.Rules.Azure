@@ -16,6 +16,8 @@ metadata:
     release: GA
     ruleSet: 2025_03
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.VirtualMachineImages/imageTemplates
@@ -53,6 +55,8 @@ metadata:
     release: GA
     ruleSet: 2025_03
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.VirtualMachineImages/imageTemplates

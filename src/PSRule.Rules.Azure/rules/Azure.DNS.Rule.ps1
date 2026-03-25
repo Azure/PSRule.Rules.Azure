@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Ensure public DNS zones are configured with DNSSEC.
-Rule 'Azure.DNS.DNSSEC' -Ref 'AZR-000456' -Type 'Microsoft.Network/dnsZones' -Tag @{ release = 'GA'; ruleSet = '2025_03'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.DNS.DNSSEC' -Ref 'AZR-000456' -Type 'Microsoft.Network/dnsZones' -Tag @{ release = 'GA'; ruleSet = '2025_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $configs = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/dnsZones') {
         $configs = @(GetSubResources -ResourceType 'Microsoft.Network/dnsZones/dnssecConfigs');

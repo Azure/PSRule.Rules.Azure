@@ -23,7 +23,7 @@ Rule 'Azure.ACR.Usage' -Ref 'AZR-000001' -Type 'Microsoft.ContainerRegistry/regi
 }
 
 # Synopsis: Consider enabling vulnerability scanning for container images.
-Rule 'Azure.ACR.ContainerScan' -Ref 'AZR-000002' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; method = 'in-flight'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DS-6', 'PV-5') } {
+Rule 'Azure.ACR.ContainerScan' -Ref 'AZR-000002' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; method = 'in-flight'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DS-6', 'PV-5'); 'Azure.WAF/maturity' = 'L2' } {
     $assessments = @(GetSubResources -ResourceType 'Microsoft.Security/assessments');
     $Assert.GreaterOrEqual($assessments, '.', 1).Reason($LocalizedData.AssessmentNotFound);
 }

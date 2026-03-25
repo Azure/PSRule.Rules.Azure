@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Determine if there is an excessive number of firewall rules
-Rule 'Azure.PostgreSQL.FirewallRuleCount' -Ref 'AZR-000149' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.PostgreSQL.FirewallRuleCount' -Ref 'AZR-000149' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/firewallRules');
     $Assert.
     LessOrEqual($firewallRules, '.', 10).
@@ -14,7 +14,7 @@ Rule 'Azure.PostgreSQL.FirewallRuleCount' -Ref 'AZR-000149' -Type 'Microsoft.DBf
 }
 
 # Synopsis: Determine if access from Azure services is required
-Rule 'Azure.PostgreSQL.AllowAzureAccess' -Ref 'AZR-000150' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.PostgreSQL.AllowAzureAccess' -Ref 'AZR-000150' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/firewallRules' | Where-Object {
             $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0')
@@ -23,7 +23,7 @@ Rule 'Azure.PostgreSQL.AllowAzureAccess' -Ref 'AZR-000150' -Type 'Microsoft.DBfo
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
-Rule 'Azure.PostgreSQL.FirewallIPRange' -Ref 'AZR-000151' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.PostgreSQL.FirewallIPRange' -Ref 'AZR-000151' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $summary = GetIPAddressSummary
     $Assert.
     LessOrEqual($summary, 'Public', 10).
@@ -56,7 +56,7 @@ Rule 'Azure.PostgreSQL.GeoRedundantBackup' -Ref 'AZR-000326' -Type 'Microsoft.DB
 }
 
 # Synopsis: Enable Microsoft Defender for Cloud for Azure Database for PostgreSQL.
-Rule 'Azure.PostgreSQL.DefenderCloud' -Ref 'AZR-000327' -Type 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.PostgreSQL.DefenderCloud' -Ref 'AZR-000327' -Type 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers') {
         $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies')
         if ($defenderConfigs.Length -eq 0) {

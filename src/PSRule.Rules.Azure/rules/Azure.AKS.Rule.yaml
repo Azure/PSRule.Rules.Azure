@@ -41,6 +41,8 @@ metadata:
     release: GA  # Replace ruleSet with suitable date.
     ruleSet: 2024_06
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -81,6 +83,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: NS-1
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -103,6 +106,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: AM-2
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -144,6 +148,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: NS-1
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -189,6 +194,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['IM-1', 'PA-7']
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -209,6 +215,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: IM-8
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -229,6 +236,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: DP-7
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -251,6 +259,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['NS-1', 'DP-4']
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -274,6 +283,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: PV-7
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -297,6 +307,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: ['IM-1', 'PA-7']
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters
@@ -388,6 +399,8 @@ metadata:
     release: GA
     ruleSet: 2023_03
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.ContainerService/managedClusters

@@ -30,6 +30,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New features:
+  - Added `Azure.Pillar.Security.L2` WAF baseline for the Security pillar Level 2 maturity baseline by @Copilot.
+- Updated rules:
+  - Added `Azure.WAF/maturity: L2` labels to Security pillar rules covering network ingress, authentication, hardening, deployment practices, and maintenance by @Copilot.
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.

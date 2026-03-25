@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Network security groups should avoid any inbound rules
-Rule 'Azure.NSG.AnyInboundSource' -Ref 'AZR-000137' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.NSG.AnyInboundSource' -Ref 'AZR-000137' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
     $rules = $inboundRules | Where-Object {
         $_.properties.access -eq 'Allow' -and
@@ -29,7 +29,7 @@ Rule 'Azure.NSG.DenyAllInbound' -Ref 'AZR-000138' -Type 'Microsoft.Network/netwo
 }
 
 # Synopsis: Lateral traversal from application servers should be blocked
-Rule 'Azure.NSG.LateralTraversal' -Ref 'AZR-000139' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.NSG.LateralTraversal' -Ref 'AZR-000139' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $nsg = [PSRule.Rules.Azure.Runtime.Helper]::GetNetworkSecurityGroup(@(GetOrderedNSGRules -Direction Outbound));
 
     $rdp = $nsg.Outbound('VirtualNetwork', 3389);

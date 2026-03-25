@@ -19,7 +19,7 @@ Rule 'Azure.FrontDoor.MinTLS' -Ref 'AZR-000106' -Type 'Microsoft.Network/frontDo
 }
 
 # Synopsis: Audit and monitor access through Azure Front Door profiles.
-Rule 'Azure.FrontDoor.Logs' -Ref 'AZR-000107' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Cdn/profiles' -With 'Azure.FrontDoor.IsStandardOrPremium', 'Azure.FrontDoor.IsClassic' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4' } {
+Rule 'Azure.FrontDoor.Logs' -Ref 'AZR-000107' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Cdn/profiles' -With 'Azure.FrontDoor.IsStandardOrPremium', 'Azure.FrontDoor.IsClassic' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4'; 'Azure.WAF/maturity' = 'L2' } {
     $logCategoryGroups = 'audit', 'allLogs'
     $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings', 'Microsoft.Cdn/profiles/providers/diagnosticSettings' | ForEach-Object {
         $_.Properties.logs | Where-Object {
@@ -68,7 +68,7 @@ Rule 'Azure.FrontDoor.ProbePath' -Ref 'AZR-000110' -Type 'Microsoft.Network/fron
 }
 
 # Synopsis: Enable Web Application Firewall (WAF) policies on each Front Door endpoint.
-Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'NS-6' } {
+Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'NS-6'; 'Azure.WAF/maturity' = 'L2' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);

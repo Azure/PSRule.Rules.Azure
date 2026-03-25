@@ -68,6 +68,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: NS-6
+    Azure.WAF/maturity: L2
 spec:
   with:
   - Azure.IsAppGwPublic
@@ -117,6 +118,8 @@ metadata:
     release: GA
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   with:
   - Azure.AppGw.WithClassicWAF
@@ -137,6 +140,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: NS-6
+    Azure.WAF/maturity: L2
 spec:
   with:
   - Azure.IsAppGwPublic
@@ -158,6 +162,8 @@ metadata:
     release: GA
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   with:
   - Azure.AppGw.WithClassicWAF
@@ -179,6 +185,8 @@ metadata:
     release: GA
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   with:
   - Azure.AppGw.WithClassicWAF

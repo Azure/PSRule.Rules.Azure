@@ -8,7 +8,7 @@
 #region Virtual machine
 
 # Synopsis: Virtual machines should use managed disks
-Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-4'; 'Azure.Policy/id' = '/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d' } {
+Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-4'; 'Azure.Policy/id' = '/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d'; 'Azure.WAF/maturity' = 'L2' } {
     # Check OS disk
     $Assert.
     NullOrEmpty($TargetObject, 'properties.storageProfile.osDisk.vhd.uri').
@@ -60,7 +60,7 @@ Rule 'Azure.VM.AcceleratedNetworking' -Ref 'AZR-000244' -If { SupportsAccelerate
 }
 
 # Synopsis: Linux VMs should use public key pair
-Rule 'Azure.VM.PublicKey' -Ref 'AZR-000245' -If { VMHasLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.VM.PublicKey' -Ref 'AZR-000245' -If { VMHasLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.osProfile.linuxConfiguration.disablePasswordAuthentication', $True)
 }
 
@@ -71,7 +71,7 @@ Rule 'Azure.VM.Agent' -Ref 'AZR-000246' -Type 'Microsoft.Compute/virtualMachines
 }
 
 # Synopsis: Ensure automatic updates are enabled at deployment
-Rule 'Azure.VM.Updates' -Ref 'AZR-000247' -Type 'Microsoft.Compute/virtualMachines' -If { IsWindowsOS } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'ES-3' } {
+Rule 'Azure.VM.Updates' -Ref 'AZR-000247' -Type 'Microsoft.Compute/virtualMachines' -If { IsWindowsOS } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'ES-3'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.HasDefaultValue($TargetObject, 'Properties.osProfile.windowsConfiguration.enableAutomaticUpdates', $True)
 }
 
@@ -218,7 +218,7 @@ Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlac
 #endregion Proximity Placement Groups
 
 # Synopsis: Protect Custom Script Extensions commands
-Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000332' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.VM.ScriptExtensions' -Ref 'AZR-000332' -Type 'Microsoft.Compute/virtualMachines', 'Microsoft.Compute/virtualMachines/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $vmConfig = @($TargetObject);
 
     if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachines') {
@@ -294,7 +294,7 @@ Rule 'Azure.VM.MaintenanceConfig' -Ref 'AZR-000375' -Type 'Microsoft.Compute/vir
 #region Public IP
 
 # Synopsis: Avoid attaching public IPs directly to virtual machines.
-Rule 'Azure.VM.PublicIPAttached' -Ref 'AZR-000449' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.VM.PublicIPAttached' -Ref 'AZR-000449' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $configurations = @($TargetObject.properties.ipConfigurations)
 
     if ($configurations.Count -eq 0) {

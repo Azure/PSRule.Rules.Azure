@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Determine if there is an excessive number of firewall rules
-Rule 'Azure.MySQL.FirewallRuleCount' -Ref 'AZR-000133' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MySQL.FirewallRuleCount' -Ref 'AZR-000133' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules');
     $Assert.
     LessOrEqual($firewallRules, '.', 10).
@@ -14,7 +14,7 @@ Rule 'Azure.MySQL.FirewallRuleCount' -Ref 'AZR-000133' -Type 'Microsoft.DBforMyS
 }
 
 # Synopsis: Determine if access from Azure services is required
-Rule 'Azure.MySQL.AllowAzureAccess' -Ref 'AZR-000134' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MySQL.AllowAzureAccess' -Ref 'AZR-000134' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/firewallRules' | Where-Object {
             $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0')
@@ -23,7 +23,7 @@ Rule 'Azure.MySQL.AllowAzureAccess' -Ref 'AZR-000134' -Type 'Microsoft.DBforMySQ
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
-Rule 'Azure.MySQL.FirewallIPRange' -Ref 'AZR-000135' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MySQL.FirewallIPRange' -Ref 'AZR-000135' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $summary = GetIPAddressSummary
     $Assert.
     LessOrEqual($summary, 'Public', 10).
@@ -61,7 +61,7 @@ Rule 'Azure.MySQL.UseFlexible' -Ref 'AZR-000325' -Type 'Microsoft.DBforMySQL/fle
 }
 
 # Synopsis: Enable Microsoft Defender for Cloud for Azure Database for MySQL.
-Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
         $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/securityAlertPolicies')
         if ($defenderConfigs.Length -eq 0) {

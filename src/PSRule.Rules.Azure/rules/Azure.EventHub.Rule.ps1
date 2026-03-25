@@ -14,7 +14,7 @@ Rule 'Azure.EventHub.Usage' -Ref 'AZR-000101' -Type 'Microsoft.EventHub/namespac
 }
 
 # Synopsis: Access to the namespace endpoints should be restricted to only allowed sources.
-Rule 'Azure.EventHub.Firewall' -Ref 'AZR-000422' -Type 'Microsoft.EventHub/namespaces', 'Microsoft.EventHub/namespaces/networkRuleSets' -If { Test-IsNoBasicTier } -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'NS-1', 'NS-2' } {
+Rule 'Azure.EventHub.Firewall' -Ref 'AZR-000422' -Type 'Microsoft.EventHub/namespaces', 'Microsoft.EventHub/namespaces/networkRuleSets' -If { Test-IsNoBasicTier } -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'NS-1', 'NS-2'; 'Azure.WAF/maturity' = 'L2' } {
     # NB: Microsoft.EventHub/namespaces/networkRuleSets overrides properties.publicNetworkAccess and properties.defaultAction property.
 
     $firewalls = @($TargetObject)

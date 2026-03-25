@@ -82,7 +82,7 @@ Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/s
 }
 
 # Synopsis: Encrypt all API Management named values with Key Vault secrets.
-Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-8', 'DP-7') } {
+Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-8', 'DP-7'); 'Azure.WAF/maturity' = 'L2' } {
     $namedValues = @($TargetObject)
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $namedValues = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/namedValues')
@@ -97,7 +97,7 @@ Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement
 }
 
 # Synopsis: Require subscription for products
-Rule 'Azure.APIM.ProductSubscription' -Ref 'AZR-000046' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.APIM.ProductSubscription' -Ref 'AZR-000046' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
@@ -113,7 +113,7 @@ Rule 'Azure.APIM.ProductSubscription' -Ref 'AZR-000046' -Type 'Microsoft.ApiMana
 }
 
 # Synopsis: Require approval for products
-Rule 'Azure.APIM.ProductApproval' -Ref 'AZR-000047' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.APIM.ProductApproval' -Ref 'AZR-000047' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
@@ -129,7 +129,7 @@ Rule 'Azure.APIM.ProductApproval' -Ref 'AZR-000047' -Type 'Microsoft.ApiManageme
 }
 
 # Synopsis: Remove sample products
-Rule 'Azure.APIM.SampleProducts' -Ref 'AZR-000048' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.APIM.SampleProducts' -Ref 'AZR-000048' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/products' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $products = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $products = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/products');
@@ -363,7 +363,7 @@ Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/se
 }
 
 # Synopsis: APIs published in Azure API Management should be onboarded to Microsoft Defender for APIs.
-Rule 'Azure.APIM.DefenderCloud' -Ref 'AZR-000387' -Type 'Microsoft.ApiManagement/service' -If { HasRestApi } -Tag @{ release = 'GA'; ruleSet = '2023_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-1' } {
+Rule 'Azure.APIM.DefenderCloud' -Ref 'AZR-000387' -Type 'Microsoft.ApiManagement/service' -If { HasRestApi } -Tag @{ release = 'GA'; ruleSet = '2023_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-1'; 'Azure.WAF/maturity' = 'L2' } {
     $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis' |
     Where-Object { $Assert.HasDefaultValue($_, 'properties.apiType', 'http').Result })
     $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.Security/apiCollections')
