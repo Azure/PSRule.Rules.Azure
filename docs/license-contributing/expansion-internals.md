@@ -75,14 +75,15 @@ flowchart TD
 
 The key source code components involved in the expansion process are:
 
-| Component | Source file | Description |
-|-----------|-------------|-------------|
-| `BicepHelper` | `src/PSRule.Rules.Azure/Data/Bicep/BicepHelper.cs` | Invokes the Bicep CLI and coordinates expansion of Bicep and ARM files. |
-| `DeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/DeploymentVisitor.cs` | The core visitor that walks the ARM deployment structure. |
-| `MaterializedDeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/MaterializedDeploymentVisitor.cs` | Extends `DeploymentVisitor` to handle post-processing of emitted resources. |
-| `ResourceDependencyGraph` | `src/PSRule.Rules.Azure/Arm/Deployments/ResourceDependencyGraph.cs` | Builds and resolves the dependency graph for resources in a deployment. |
-| `ExpressionBuilder` | `src/PSRule.Rules.Azure/Arm/Expressions/ExpressionBuilder.cs` | Parses and evaluates ARM template expressions. |
-| `Functions` | `src/PSRule.Rules.Azure/Arm/Expressions/Functions.cs` | Implementations of ARM template built-in functions used during expression evaluation. |
+!!! Implementation
+    | Component | Source file | Description |
+    |-----------|-------------|-------------|
+    | `BicepHelper` | `src/PSRule.Rules.Azure/Data/Bicep/BicepHelper.cs` | Invokes the Bicep CLI and coordinates expansion of Bicep and ARM files. |
+    | `DeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/DeploymentVisitor.cs` | The core visitor that walks the ARM deployment structure. |
+    | `MaterializedDeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/MaterializedDeploymentVisitor.cs` | Extends `DeploymentVisitor` to handle post-processing of emitted resources. |
+    | `ResourceDependencyGraph` | `src/PSRule.Rules.Azure/Arm/Deployments/ResourceDependencyGraph.cs` | Builds and resolves the dependency graph for resources in a deployment. |
+    | `ExpressionBuilder` | `src/PSRule.Rules.Azure/Arm/Expressions/ExpressionBuilder.cs` | Parses and evaluates ARM template expressions. |
+    | `Functions` | `src/PSRule.Rules.Azure/Arm/Expressions/Functions.cs` | Implementations of ARM template built-in functions used during expression evaluation. |
 
 ## Building Bicep
 
@@ -95,12 +96,13 @@ As a result, the Bicep CLI must be installed and available prior to running the 
 
 To build a Bicep file, the Bicep CLI is invoked with `bicep build` or `bicep build-params` command.
 
-The `BicepHelper` class (`src/PSRule.Rules.Azure/Data/Bicep/BicepHelper.cs`) is responsible for:
+!!! Implementation
+    The `BicepHelper` class (`src/PSRule.Rules.Azure/Data/Bicep/BicepHelper.cs`) is responsible for:
 
-- Discovering the Bicep CLI.
-- Spawning the Bicep CLI process.
-- Calling `ProcessFile` for a `.bicep` file or `ProcessParamFile` for a `.bicepparam` file.
-- Passing the resulting ARM template JSON to the deployment visitor for expansion.
+    - Discovering the Bicep CLI.
+    - Spawning the Bicep CLI process.
+    - Calling `ProcessFile` for a `.bicep` file or `ProcessParamFile` for a `.bicepparam` file.
+    - Passing the resulting ARM template JSON to the deployment visitor for expansion.
 
 ### CLI discovery
 
@@ -140,8 +142,10 @@ Secrets are a good example of this, as they should not be specified in the param
 
 Definitions are the building blocks of the ARM deployment and may be reference by resources or other definitions.
 For most cases, definitions are lazy loaded into the context of the deployment during expansion.
-The `LazyParameter`, `LazyVariable`, and `LazyOutput` classes (in `src/PSRule.Rules.Azure/Arm/Deployments/`) implement this lazy loading pattern,
-deferring evaluation of each definition until it is first referenced.
+
+!!! Implementation
+    The `LazyParameter`, `LazyVariable`, and `LazyOutput` classes (in `src/PSRule.Rules.Azure/Arm/Deployments/`) implement this lazy loading pattern,
+    deferring evaluation of each definition until it is first referenced.
 
 Exceptions to this are when copy loops are used to define variables and parameters.
 Otherwise the definitions are not resolved until they are referenced by a resource.
@@ -156,8 +160,9 @@ Similarly, a deployment may return outputs that are used in the parent deploymen
 As a result, each resource must be visited based on a dependency graph so that dependencies are resolved
 before dependant resources.
 
-The `ResourceDependencyGraph` class (`src/PSRule.Rules.Azure/Arm/Deployments/ResourceDependencyGraph.cs`) builds this graph
-from the `dependsOn` properties declared in the template, and performs a topological sort to produce the correct visit order.
+!!! Implementation
+    The `ResourceDependencyGraph` class (`src/PSRule.Rules.Azure/Arm/Deployments/ResourceDependencyGraph.cs`) builds this graph
+    from the `dependsOn` properties declared in the template, and performs a topological sort to produce the correct visit order.
 
 ## Visiting each resource
 
@@ -198,14 +203,15 @@ For each function to be understood by the expansion process, it must be implemen
 
 When an expression is called, context about the deployment is passed into the root function of the expression.
 
-The key classes for expression evaluation are:
+!!! Implementation
+    The key classes for expression evaluation are:
 
-- `ExpressionParser` (`src/PSRule.Rules.Azure/Arm/Expressions/ExpressionParser.cs`) &mdash;
-  Tokenizes and parses ARM expression strings into an `ExpressionStream`.
-- `ExpressionBuilder` (`src/PSRule.Rules.Azure/Arm/Expressions/ExpressionBuilder.cs`) &mdash;
-  Builds a callable expression tree from the parsed tokens.
-- `Functions` (`src/PSRule.Rules.Azure/Arm/Expressions/Functions.cs`) &mdash;
-  Contains implementations of all supported ARM template built-in functions.
+    - `ExpressionParser` (`src/PSRule.Rules.Azure/Arm/Expressions/ExpressionParser.cs`) &mdash;
+      Tokenizes and parses ARM expression strings into an `ExpressionStream`.
+    - `ExpressionBuilder` (`src/PSRule.Rules.Azure/Arm/Expressions/ExpressionBuilder.cs`) &mdash;
+      Builds a callable expression tree from the parsed tokens.
+    - `Functions` (`src/PSRule.Rules.Azure/Arm/Expressions/Functions.cs`) &mdash;
+      Contains implementations of all supported ARM template built-in functions.
 
 ### Context properties
 
