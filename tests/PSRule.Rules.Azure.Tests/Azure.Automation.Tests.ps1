@@ -134,6 +134,35 @@ Describe 'Azure.Automation' -Tag Automation {
         }
     }
 
+    Context 'Runbook conditions' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Automation.Runbook.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+        }
+
+        It 'Azure.Automation.RunbookPinned' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Automation.RunbookPinned' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'runbook-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'runbook-A', 'runbook-B', 'runbook-D';
+        }
+    }
+
     Context 'With Configuration Option' {
         BeforeAll {
             $invokeParams = @{

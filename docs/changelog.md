@@ -30,6 +30,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Automation Account:
+    - Added `Azure.Automation.RunbookPinned` to check runbook external scripts use pinned commit hash URLs to prevent supply chain attacks.
+      [#3710](https://github.com/Azure/PSRule.Rules.Azure/issues/3710)
+  - Deployment Script:
+    - Added `Azure.DeploymentScript.Pinned` to check deployment script external script URIs use pinned commit hash URLs to prevent supply chain attacks.
+      [#3710](https://github.com/Azure/PSRule.Rules.Azure/issues/3710)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
