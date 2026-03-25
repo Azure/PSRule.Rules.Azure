@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Enable Microsoft Defender for Cloud for Azure Database for MariaDB.
-Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
         $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/securityAlertPolicies')
         if ($defenderConfigs.Length -eq 0) {
@@ -101,7 +101,7 @@ Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaD
 }
 
 # Synopsis: Determine if access from Azure services is required.
-Rule 'Azure.MariaDB.AllowAzureAccess' -Ref 'AZR-000342' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MariaDB.AllowAzureAccess' -Ref 'AZR-000342' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $firewallAllowAzureServices = @(GetMariaDBFirewallRule |
         Where-Object { $_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0' })
 
@@ -109,7 +109,7 @@ Rule 'Azure.MariaDB.AllowAzureAccess' -Ref 'AZR-000342' -Type 'Microsoft.DBforMa
 }
 
 # Synopsis: Determine if there is an excessive number of firewall rules.
-Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules')
 
     $Assert.LessOrEqual($firewallRules, '.', 10).
@@ -117,7 +117,7 @@ Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMa
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses.
-Rule 'Azure.MariaDB.FirewallIPRange' -Ref 'AZR-000344' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MariaDB.FirewallIPRange' -Ref 'AZR-000344' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $summary = GetIPAddressSummary
 
     [int]$public = [int]$summary.Public

@@ -79,6 +79,7 @@ The following baselines are available:
 - [Azure.Pillar.Reliability][7] &mdash; A baseline that only includes reliability rules.
 - [Azure.Pillar.Security][8] &mdash; A baseline that only includes security rules.
 - [Azure.Pillar.Security.L1][9] &mdash; A baseline that only includes security rules at with maturity level 1.
+- [Azure.Pillar.Security.L2][10] &mdash; A baseline that only includes security rules with maturity level 2.
 
   [4]: en/baselines/Azure.Pillar.CostOptimization.md
   [5]: en/baselines/Azure.Pillar.OperationalExcellence.md
@@ -86,6 +87,7 @@ The following baselines are available:
   [7]: en/baselines/Azure.Pillar.Reliability.md
   [8]: en/baselines/Azure.Pillar.Security.md
   [9]: en/baselines/Azure.Pillar.Security.L1.md
+  [10]: en/baselines/Azure.Pillar.Security.L2.md
 
 ## Additional standard baselines
 

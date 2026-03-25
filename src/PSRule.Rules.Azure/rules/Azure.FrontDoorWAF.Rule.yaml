@@ -17,6 +17,8 @@ metadata:
     release: GA
     ruleSet: 2022_09
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
@@ -37,6 +39,8 @@ metadata:
     release: GA
     ruleSet: 2022_09
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
@@ -57,6 +61,8 @@ metadata:
     release: GA
     ruleSet: 2022_09
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
@@ -83,6 +89,8 @@ metadata:
     release: GA
     ruleSet: 2022_09
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies

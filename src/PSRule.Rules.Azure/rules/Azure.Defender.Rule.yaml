@@ -20,6 +20,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -44,6 +45,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -71,6 +73,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'DP-2', 'LT-1' ]
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -95,6 +98,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -119,6 +123,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'DP-2', 'LT-1' ]
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -146,6 +151,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -170,6 +176,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -194,6 +201,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -218,6 +226,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -242,6 +251,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -266,6 +276,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -293,6 +304,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'DP-2', 'LT-1' ]
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:
@@ -317,6 +329,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
+    Azure.WAF/maturity: L2
 spec:
   level: Error
   where:

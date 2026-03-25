@@ -8,7 +8,7 @@
 #region SQL Logical Server
 
 # Synopsis: Determine if there is an excessive number of firewall rules
-Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules');
     $Assert.
     LessOrEqual($firewallRules, '.', 10).
@@ -16,7 +16,7 @@ Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/server
 }
 
 # Synopsis: Determine if access from Azure services is required
-Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules' | Where-Object {
             $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.StartIpAddress -eq '0.0.0.0' -and $_.properties.EndIpAddress -eq '0.0.0.0')
@@ -25,7 +25,7 @@ Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
-Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $summary = GetIPAddressSummary
     $Assert.
     LessOrEqual($summary, 'Public', 10).
@@ -33,7 +33,7 @@ Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers'
 }
 
 # Synopsis: Enable Microsoft Defender for Cloud for Azure SQL logical server
-Rule 'Azure.SQL.DefenderCloud' -Alias 'Azure.SQL.ThreatDetection' -Ref 'AZR-000186' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
+Rule 'Azure.SQL.DefenderCloud' -Alias 'Azure.SQL.ThreatDetection' -Ref 'AZR-000186' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3'; 'Azure.WAF/maturity' = 'L2' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/securityAlertPolicies');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/securityAlertPolicies');
@@ -44,7 +44,7 @@ Rule 'Azure.SQL.DefenderCloud' -Alias 'Azure.SQL.ThreatDetection' -Ref 'AZR-0001
 }
 
 # Synopsis: Enable auditing for Azure SQL logical server.
-Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-3' } {
+Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-3'; 'Azure.WAF/maturity' = 'L2' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/auditingSettings');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/auditingSettings');
@@ -99,7 +99,7 @@ Rule 'Azure.SQL.AADOnly' -Ref 'AZR-000369' -Type 'Microsoft.Sql/servers', 'Micro
 }
 
 # Synopsis: Ensure SQL logical server has a vulnerability assessment scan enabled.
-Rule 'Azure.SQL.VAScan' -Ref 'AZR-000455' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/sqlVulnerabilityAssessments' -Tag @{ release = 'GA'; ruleSet = '2025_03'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.SQL.VAScan' -Ref 'AZR-000455' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/sqlVulnerabilityAssessments' -Tag @{ release = 'GA'; ruleSet = '2025_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $configs = @($TargetObject);
     $classicConfigs = @();
     if ($PSRule.TargetType -eq 'Microsoft.Sql/servers') {

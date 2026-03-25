@@ -25,7 +25,7 @@ Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'M
 }
 
 # Synopsis: Disable remote debugging on App Service apps when not in use.
-Rule 'Azure.AppService.RemoteDebug' -Ref 'AZR-000074' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PV-2' } {
+Rule 'Azure.AppService.RemoteDebug' -Ref 'AZR-000074' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PV-2'; 'Azure.WAF/maturity' = 'L2' } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.HasDefaultValue($TargetObject, 'properties.siteConfig.remoteDebuggingEnabled', $False);
@@ -37,7 +37,7 @@ Rule 'Azure.AppService.RemoteDebug' -Ref 'AZR-000074' -Type 'Microsoft.Web/sites
 }
 
 # Synopsis: Configure applications to use newer .NET Framework versions.
-Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $siteConfigs = @(GetWebSiteConfig)
     if ($siteConfigs.Length -eq 0) {
         if ($Assert.HasFieldValue($TargetObject, 'properties.siteConfig.linuxFxVersion').Result -and $TargetObject.properties.siteConfig.linuxFxVersion -like 'DOTNETCORE|*') {
@@ -69,7 +69,7 @@ Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites'
 }
 
 # Synopsis: Configure applications to use newer PHP runtime versions.
-Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $siteConfigs = @(GetWebSiteConfig)
     if ($siteConfigs.Length -eq 0) {
         if ($Assert.HasFieldValue($TargetObject, 'properties.siteConfig.linuxFxVersion').Result -and $TargetObject.properties.siteConfig.linuxFxVersion -like 'PHP|*') {
@@ -170,7 +170,7 @@ Rule 'Azure.AppService.WebSecureFtp' -Ref 'AZR-000081' -With 'Azure.AppService.I
 }
 
 # Synopsis: Configure applications to use supported Node.js runtime versions.
-Rule 'Azure.AppService.NodeJsVersion' -Ref 'AZR-000428' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots', 'Microsoft.Web/sites/slots/config' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.AppService.NodeJsVersion' -Ref 'AZR-000428' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots', 'Microsoft.Web/sites/slots/config' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $versions = Get-NodeVersions
 
     $pass = $true

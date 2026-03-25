@@ -8,27 +8,27 @@
 #region Rules
 
 # Synopsis: Avoid outputting sensitive deployment values.
-Rule 'Azure.Deployment.OutputSecretValue' -Ref 'AZR-000279' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Deployment.OutputSecretValue' -Ref 'AZR-000279' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.OutputSecretValue'));
 }
 
 # Synopsis: Ensure all properties named used for setting a username within a deployment are expressions (e.g. an ARM function not a string)
-Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     RecurseDeploymentSensitive -Deployment $TargetObject
 }
 
 # Synopsis: Use secure parameters for any parameter that contains sensitive information.
-Rule 'Azure.Deployment.SecureParameter' -Ref 'AZR-000408' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2023_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Deployment.SecureParameter' -Ref 'AZR-000408' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2023_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     GetSecureParameter -Deployment $TargetObject
 }
 
 # Synopsis: Use secure parameters for setting properties of resources that contain sensitive information.
-Rule 'Azure.Deployment.SecureValue' -Ref 'AZR-000316' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2024_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Deployment.SecureValue' -Ref 'AZR-000316' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2024_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     RecurseSecureValue -Deployment $TargetObject
 }
 
 # Synopsis: Ensure Outer scope deployments aren't using SecureString or SecureObject Parameters
-Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000331' -Type 'Microsoft.Resources/deployments' -If { IsParentDeployment } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000331' -Type 'Microsoft.Resources/deployments' -If { IsParentDeployment } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $template = @($TargetObject.properties.template);
     if ($template.resources.Length -eq 0) {
         return $Assert.Pass();
@@ -53,7 +53,7 @@ Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000331' -Type 'Microsoft.Resources
 }
 
 # Synopsis: The deployment parameter leaks sensitive information.
-Rule 'Azure.Deployment.SecretLeak' -Ref 'AZR-000459' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Deployment.SecretLeak' -Ref 'AZR-000459' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ParameterSecureAssignment'));
 }
 

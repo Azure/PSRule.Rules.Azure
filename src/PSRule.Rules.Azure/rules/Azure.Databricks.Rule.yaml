@@ -16,6 +16,8 @@ metadata:
     release: GA
     ruleSet: 2023_09
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
   - Microsoft.Databricks/workspaces
@@ -55,6 +57,8 @@ metadata:
     release: GA
     ruleSet: 2024_03
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   type:
   - Microsoft.Databricks/workspaces

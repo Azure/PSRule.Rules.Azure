@@ -34,7 +34,7 @@ Rule 'Azure.Storage.SoftDelete' -Ref 'AZR-000197' -Type 'Microsoft.Storage/stora
 }
 
 # Synopsis: Use containers configured with a private access type that requires authorization.
-Rule 'Azure.Storage.BlobAccessType' -Ref 'AZR-000199' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -If { !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Storage.BlobAccessType' -Ref 'AZR-000199' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -If { !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $containers = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $containers = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers');
@@ -93,21 +93,21 @@ Rule 'Azure.Storage.ContainerSoftDelete' -Ref 'AZR-000289' -Type 'Microsoft.Stor
 }
 
 # Synopsis: Enable Malware Scanning in Microsoft Defender for Storage.
-Rule 'Azure.Storage.Defender.MalwareScan' -Alias 'Azure.Storage.DefenderCloud.MalwareScan' -Ref 'AZR-000384' -Type 'Microsoft.Storage/storageAccounts' -If { IsPublicNetworkAccessEnabled } -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1') } {
+Rule 'Azure.Storage.Defender.MalwareScan' -Alias 'Azure.Storage.DefenderCloud.MalwareScan' -Ref 'AZR-000384' -Type 'Microsoft.Storage/storageAccounts' -If { IsPublicNetworkAccessEnabled } -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1'); 'Azure.WAF/maturity' = 'L2' } {
     $malwareDisabled = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
         Where-Object { $_.properties.malwareScanning.onUpload.isEnabled -eq $False })
     $Assert.Count($malwareDisabled, '.', 0).Reason($LocalizedData.ResStorageMalwareScanning, $PSRule.TargetName)
 }
 
 # Synopsis: Enable sensitive data threat detection in Microsoft Defender for Storage.
-Rule 'Azure.Storage.Defender.DataScan' -Alias 'Azure.Storage.DefenderCloud.SensitiveData' -Ref 'AZR-000391' -Type 'Microsoft.Storage/storageAccounts' -If { IsPublicNetworkAccessEnabled } -Tag @{ release = 'preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1') } {
+Rule 'Azure.Storage.Defender.DataScan' -Alias 'Azure.Storage.DefenderCloud.SensitiveData' -Ref 'AZR-000391' -Type 'Microsoft.Storage/storageAccounts' -If { IsPublicNetworkAccessEnabled } -Tag @{ release = 'preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1'); 'Azure.WAF/maturity' = 'L2' } {
     $sensitiveDisabled = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
         Where-Object { $_.properties.sensitiveDataDiscovery.isEnabled -eq $False })
     $Assert.Count($sensitiveDisabled, '.', 0).Reason($LocalizedData.ResStorageSensitiveDataThreatDetection, $PSRule.TargetName)
 }
 
 # Synopsis: Enable Microsoft Defender for Storage for storage accounts.
-Rule 'Azure.Storage.DefenderCloud' -Ref 'AZR-000386' -Type 'Microsoft.Storage/storageAccounts' -If { $Configuration.AZURE_STORAGE_DEFENDER_PER_ACCOUNT -eq $True } -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1') } {
+Rule 'Azure.Storage.DefenderCloud' -Ref 'AZR-000386' -Type 'Microsoft.Storage/storageAccounts' -If { $Configuration.AZURE_STORAGE_DEFENDER_PER_ACCOUNT -eq $True } -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1'); 'Azure.WAF/maturity' = 'L2' } {
     $defender = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
     Where-Object { $_.properties.isEnabled -eq $True })
     $Assert.GreaterOrEqual($defender, '.', 1).Reason($LocalizedData.SubResourceNotFound, 'Microsoft.Security/DefenderForStorageSettings')

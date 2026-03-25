@@ -94,6 +94,7 @@ metadata:
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: NS-2
+    Azure.WAF/maturity: L2
 spec:
   type:
     - Microsoft.App/managedEnvironments
@@ -115,6 +116,8 @@ metadata:
     release: GA
     ruleSet: 2023_03
     Azure.WAF/pillar: Security
+  labels:
+    Azure.WAF/maturity: L2
 spec:
   with:
     - Azure.ContainerApp.WithIngress

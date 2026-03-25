@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Ensure variables are encrypted
-Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-5' } {
+Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-5'; 'Azure.WAF/maturity' = 'L2' } {
     $variables = GetSubResources -ResourceType 'Microsoft.Automation/automationAccounts/variables';
     if ($variables.Length -eq 0) {
         return $Assert.Pass();
@@ -18,7 +18,7 @@ Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Auto
 }
 
 # Synopsis: Ensure webhook expiry is not longer than one year
-Rule 'Azure.Automation.WebHookExpiry' -Ref 'AZR-000087' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Automation.WebHookExpiry' -Ref 'AZR-000087' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
     $webhooks = GetSubResources -ResourceType 'Microsoft.Automation/automationAccounts/webhooks';
     if ($webhooks.Length -eq 0) {
         return $Assert.Pass();
