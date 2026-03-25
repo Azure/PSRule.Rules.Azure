@@ -51,8 +51,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-C', 'capp-E', 'capp-F';
         }
 
         It 'Azure.ContainerApp.ManagedIdentity' {
@@ -68,8 +68,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D', 'capp-E', 'capp-F';
         }
 
         It 'Azure.ContainerApp.PublicAccess' {
@@ -102,8 +102,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-D';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-D', 'capp-E', 'capp-F';
         }
 
         It 'Azure.ContainerApp.Storage' {
@@ -136,8 +136,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-C', 'capp-D';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-C', 'capp-D', 'capp-E', 'capp-F';
         }
 
         It 'Azure.ContainerApp.RestrictIngress' {
@@ -155,8 +155,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'capp-D';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'capp-D', 'capp-E', 'capp-F';
         }
 
         It 'Azure.ContainerApp.APIVersion' {
@@ -171,8 +171,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D', 'capp-E', 'capp-F';
         }
 
         It 'Azure.ContainerApp.MinReplicas' {
@@ -186,8 +186,24 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D', 'capp-E', 'capp-F';
+        }
+
+        It 'Azure.ContainerApp.HealthProbe' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.HealthProbe' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B', 'capp-C', 'capp-D', 'capp-F';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'capp-E';
         }
 
         It 'Azure.ContainerApp.AvailabilityZone' {

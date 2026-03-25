@@ -48,6 +48,24 @@ Rule 'Azure.ContainerApp.JobNaming' -Ref 'AZR-000512' -Type 'Microsoft.App/jobs'
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_CONTAINER_APP_JOB_NAME_FORMAT, $True);
 }
 
+# Synopsis: Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks.
+Rule 'Azure.ContainerApp.HealthProbe' -Ref 'AZR-000535' -Type 'Microsoft.App/containerApps' -If { IsHttpIngress } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    $containers = @($TargetObject.properties.template.containers)
+    foreach ($container in $containers) {
+        foreach ($probeType in 'Liveness', 'Readiness') {
+            $probes = @($container.probes | Where-Object { $_.type -eq $probeType })
+            if ($probes.Length -eq 0) {
+                $Assert.Fail()
+            }
+            else {
+                foreach ($probe in $probes) {
+                    $Assert.HasFieldValue($probe, 'httpGet')
+                }
+            }
+        }
+    }
+}
+
 #endregion Rules
 
 #region Helper functions
@@ -57,6 +75,16 @@ function global:HasIngress {
     param ()
     process {
         $Assert.HasField($TargetObject, 'properties.configuration.ingress').Result
+    }
+}
+
+function global:IsHttpIngress {
+    [CmdletBinding()]
+    param ()
+    process {
+        $ingress = $TargetObject.properties.configuration.ingress
+        if ($null -eq $ingress) { return $False }
+        ($ingress.transport -in 'http', 'http2') -or ($ingress.targetPort -in 80, 8080, 443)
     }
 }
 
