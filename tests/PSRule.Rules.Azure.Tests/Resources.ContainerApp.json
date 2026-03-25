@@ -665,5 +665,92 @@
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-G",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-G",
+    "Identity": {
+      "type": "SystemAssigned",
+      "userAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "Canada Central",
+    "ManagedBy": null,
+    "ResourceName": "capp-G",
+    "Name": "capp-G",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "configuration": {
+        "activeRevisionsMode": "Single",
+        "ingress": {
+          "fqdn": "capp-G.env-A.canadacentral.azurecontainerapps.io",
+          "allowInsecure": false,
+          "external": false,
+          "ipSecurityRestrictions": [
+            {
+              "action": "Allow",
+              "description": "ClientIPAddress_1",
+              "ipAddressRange": "10.1.1.1/32",
+              "name": "ClientIPAddress_1"
+            }
+          ],
+          "targetPort": 443,
+          "transport": "http2",
+          "traffic": [
+            {
+              "weight": 100,
+              "latestRevision": true
+            }
+          ]
+        }
+      },
+      "template": {
+        "revisionSuffix": "",
+        "containers": [
+          {
+            "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+            "name": "simple-hello-world-container",
+            "resources": {
+              "cpu": 0.25,
+              "memory": ".5Gi"
+            },
+            "probes": [
+              {
+                "type": "Liveness",
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": 443
+                },
+                "initialDelaySeconds": 3,
+                "periodSeconds": 3
+              },
+              {
+                "type": "Readiness",
+                "httpGet": {
+                  "path": "/healthz",
+                  "port": 443
+                },
+                "initialDelaySeconds": 3,
+                "periodSeconds": 3
+              }
+            ]
+          }
+        ],
+        "scale": {
+          "minReplicas": 2,
+          "maxReplicas": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.App/containerApps",
+    "ResourceType": "Microsoft.App/containerApps",
+    "apiVersion": "2024-03-01",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]
