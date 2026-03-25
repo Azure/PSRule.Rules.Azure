@@ -178,14 +178,14 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F', 'vm-H';
-            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'vm-E';
+            $ruleResult.Length | Should -Be 1;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'vm-G', 'vm-I';
-            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'offerSaysLinux', 'offerInConfig', 'vm-A', 'vm-B', 'vm-C', 'vm-D', 'vm-F', 'vm-G', 'vm-H', 'vm-I';
+            $ruleResult.Length | Should -Be 13;
         }
 
         It 'Azure.VM.DiskAttached' {
@@ -1131,13 +1131,14 @@ Describe 'Azure.VM' -Tag 'VM' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B';
+            $ruleResult | Should -BeNullOrEmpty;
+
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -BeNullOrEmpty;
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B';
         }
 
         It 'Azure.VM.DiskAttached' {
