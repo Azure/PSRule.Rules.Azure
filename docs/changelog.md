@@ -30,6 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.47.0:
+
+- New rules:
+  - Azure Container Registry:
+    - Check that audit diagnostic logs are enabled for Container Registry by @copilot.
+      [#3536](https://github.com/Azure/PSRule.Rules.Azure/issues/3536)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
