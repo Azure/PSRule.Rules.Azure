@@ -3,6 +3,7 @@
 
 using System.CommandLine;
 using System.Reflection;
+using PSRule.Rules.Azure.Tool.Resources;
 
 namespace PSRule.Rules.Azure.Tool;
 
@@ -20,25 +21,29 @@ internal sealed class ClientBuilder
     private readonly Option<bool> _Global_WaitForDebugger;
     private readonly Option<bool> _Global_InGitHubActions;
     private readonly Option<string> _Global_WorkspacePath;
+    private readonly Option<string> _Export_OutputPath;
+    private readonly Option<string> _Export_TenantId;
 
-    private ClientBuilder(RootCommand cmd)
+    private ClientBuilder(RootCommand cmd, IConsole? console = null)
     {
         Command = cmd;
+        Console = console ?? new Console();
 
         // Global options.
         _Global_Option = new Option<string>("--option")
         {
-            Description = Resources.CmdStrings.Global_Option_Description,
-            DefaultValueFactory = _ => "ps-rule.yaml"
+            Description = CmdStrings.Global_Option_Description,
+            DefaultValueFactory = _ => "ps-rule.yaml",
+            Recursive = true,
         };
         _Global_Debug = new Option<bool>("--debug")
         {
-            Description = Resources.CmdStrings.Global_Debug_Description,
+            Description = CmdStrings.Global_Debug_Description,
             Recursive = true,
         };
         _Global_WorkspacePath = new Option<string>("--workspace-path")
         {
-            Description = Resources.CmdStrings.Global_WorkspacePath_Description,
+            Description = CmdStrings.Global_WorkspacePath_Description,
             DefaultValueFactory = _ => System.Environment.CurrentDirectory,
             Recursive = true,
         };
@@ -67,17 +72,19 @@ internal sealed class ClientBuilder
     /// </summary>
     public RootCommand Command { get; }
 
+    public IConsole Console { get; }
+
     /// <summary>
     /// Creates a new root command for the PSRule Azure client.
     /// </summary>
     /// <returns>The configured <see cref="RootCommand"/>.</returns>
-    public static RootCommand New()
+    public static Command New(IConsole? console = null)
     {
-        var cmd = new RootCommand(string.Concat(Resources.CmdStrings.Cmd_Description, " v", Version))
+        var cmd = new RootCommand(string.Concat(CmdStrings.Cmd_Description, " v", Version))
         {
 
         };
-        var builder = new ClientBuilder(cmd);
+        var builder = new ClientBuilder(cmd, console);
         return builder.Command;
     }
 
@@ -90,7 +97,7 @@ internal sealed class ClientBuilder
         if (string.IsNullOrWhiteSpace(workspacePath) || !Directory.Exists(workspacePath))
             throw new ArgumentException($"The workspace path '{workspacePath}' does not exist.");
 
-        return new ClientContext(workspacePath, debug);
+        return new ClientContext(Console, workspacePath, debug);
     }
 
     private static Uri? GetRegistryUri(string? registry)

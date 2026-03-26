@@ -1,26 +1,17 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System.CommandLine;
 using System.Threading.Tasks;
 
-namespace PSRule.Rules.Azure.BuildTool
-{
-    static class Program
-    {
-        /// <summary>
-        /// Entry point for build tool.
-        /// </summary>
-        static async Task Main(string[] args)
-        {
-            await Build().InvokeAsync(args);
-        }
+namespace PSRule.Rules.Azure.BuildTool;
 
-        private static Command Build()
-        {
-            var builder = ClientBuilder.New();
-            builder.AddProviderResource();
-            return builder.Command;
-        }
+static class Program
+{
+    /// <summary>
+    /// Entry point for tool.
+    /// </summary>
+    static async Task<int> Main(string[] args)
+    {
+        return await ClientBuilder.New().Parse(args).InvokeAsync();
     }
 }
