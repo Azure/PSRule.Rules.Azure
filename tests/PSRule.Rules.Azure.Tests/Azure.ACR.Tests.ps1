@@ -314,8 +314,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult.Length | Should -Be 1;
         }
 
-        It 'Azure.ACR.Logs' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.Logs' };
+        It 'Azure.ACR.AuditLogs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.AuditLogs' };
 
             # Fail - no diagnostic settings or disabled logs
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
