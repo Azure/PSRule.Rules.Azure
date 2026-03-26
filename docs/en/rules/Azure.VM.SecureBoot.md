@@ -11,11 +11,11 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Sec
 
 ## SYNOPSIS
 
-Virtual machines should use Trusted Launch with Secure Boot enabled.
+Virtual machines should use Trusted Launch or Confidential VM with Secure Boot enabled.
 
 ## DESCRIPTION
 
-Trusted Launch protects against advanced and persistent attack techniques by combining technologies that can be independently enabled like Secure Boot and virtualized version of trusted platform module (vTPM).
+Trusted Launch protects against advanced and persistent attack techniques by combining technologies that can be independently enabled like Secure Boot and a virtualized version of the Trusted Platform Module (TPM).
 
 Secure Boot, which is implemented in platform firmware, protects against the installation of malware-based rootkits and boot kits.
 Secure Boot ensures that only signed operating systems and drivers can boot.
@@ -25,7 +25,7 @@ Setting the security type to `ConfidentialVM` is also acceptable.
 
 ## RECOMMENDATION
 
-Consider enabling Trusted Launch with Secure Boot for virtual machines to protect against boot-level attacks.
+Consider enabling Trusted Launch or Confidential VM with Secure Boot for virtual machines to protect against boot-level attacks.
 
 ## EXAMPLES
 

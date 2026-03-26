@@ -43,12 +43,14 @@ Describe 'Azure.VM.SecureBoot' -Tag 'VM', 'SecureBoot' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'vm-secureBoot-fail-none', 'vm-secureBoot-fail-disabled';
+            $ruleResult.TargetName | Should -Contain 'vm-secureBoot-fail-none';
+            $ruleResult.TargetName | Should -Contain 'vm-secureBoot-fail-disabled';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'vm-secureBoot-pass', 'vm-secureBoot-confidential';
+            $ruleResult.TargetName | Should -Contain 'vm-secureBoot-pass';
+            $ruleResult.TargetName | Should -Contain 'vm-secureBoot-confidential';
         }
 
         It 'Azure.VMSS.SecureBoot' {
@@ -57,12 +59,14 @@ Describe 'Azure.VM.SecureBoot' -Tag 'VM', 'SecureBoot' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'vmss-secureBoot-fail-none', 'vmss-secureBoot-fail-disabled';
+            $ruleResult.TargetName | Should -Contain 'vmss-secureBoot-fail-none';
+            $ruleResult.TargetName | Should -Contain 'vmss-secureBoot-fail-disabled';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'vmss-secureBoot-pass', 'vmss-secureBoot-confidential';
+            $ruleResult.TargetName | Should -Contain 'vmss-secureBoot-pass';
+            $ruleResult.TargetName | Should -Contain 'vmss-secureBoot-confidential';
         }
     }
 }
