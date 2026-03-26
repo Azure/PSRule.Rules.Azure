@@ -61,8 +61,8 @@ Describe 'Azure.VM.SecureBoot' -Tag 'VM', 'SecureBoot' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vmss-secureBoot-pass';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-secureBoot-pass', 'vmss-secureBoot-confidential';
         }
     }
 }
