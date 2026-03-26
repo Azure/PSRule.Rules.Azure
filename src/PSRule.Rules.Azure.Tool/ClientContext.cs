@@ -5,8 +5,10 @@ using Microsoft.Extensions.Logging;
 
 namespace PSRule.Rules.Azure.Tool;
 
-internal sealed class ClientContext(string workspacePath, bool debug)
+internal sealed class ClientContext(IConsole console, string workspacePath, bool debug)
 {
+    public IConsole Console { get; } = console ?? throw new ArgumentNullException(nameof(console));
+
     public string WorkspacePath { get; } = workspacePath;
 
     public ILogger Logger { get; } = LoggerFactory.Create(builder =>
