@@ -1,4 +1,5 @@
 ---
+reviewed: 2026-03-26
 severity: Important
 pillar: Security
 category: SE:08 Hardening resources
@@ -22,6 +23,89 @@ Linux Azure Fleet virtual machine profiles should have password authentication d
 Consider disabling password-based authentication on Linux Azure Fleet VM profiles and instead use public keys.
 
 ## EXAMPLES
+
+### Configure with Bicep
+
+To deploy an Azure Fleet that passes this rule:
+
+- Set the `properties.computeProfile.baseVirtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication` property to `true`.
+
+For example:
+
+```bicep
+resource linux_fleet 'Microsoft.AzureFleet/fleets@2024-11-01' = {
+  name: name
+  location: location
+  properties: {
+    computeProfile: {
+      baseVirtualMachineProfile: {
+        osProfile: {
+          computerNamePrefix: 'fleet'
+          adminUsername: adminUsername
+          linuxConfiguration: {
+            disablePasswordAuthentication: true
+            provisionVMAgent: true
+            ssh: {
+              publicKeys: [
+                {
+                  path: '/home/azureuser/.ssh/authorized_keys'
+                  keyData: sshPublicKey
+                }
+              ]
+            }
+          }
+        }
+        storageProfile: {
+          imageReference: {
+            publisher: 'MicrosoftCblMariner'
+            offer: 'azure-linux-3'
+            sku: 'azure-linux-3-gen2'
+            version: 'latest'
+          }
+          osDisk: {
+            createOption: 'FromImage'
+            caching: 'ReadWrite'
+            managedDisk: {
+              storageAccountType: 'Premium_LRS'
+            }
+          }
+        }
+        networkProfile: {
+          networkInterfaceConfigurations: [
+            {
+              name: 'netconfig'
+              properties: {
+                ipConfigurations: [
+                  {
+                    name: 'ipconfig'
+                    properties: {
+                      primary: true
+                      subnet: {
+                        id: subnetId
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+    vmSizesProfile: [
+      {
+        name: 'Standard_D8ds_v6'
+        rank: 0
+      }
+    ]
+    regularPriorityProfile: {
+      minCapacity: 1
+      capacity: 5
+      allocationStrategy: 'Prioritized'
+    }
+  }
+}
+```
 
 ### Configure with Azure template
 
@@ -108,92 +192,9 @@ For example:
 }
 ```
 
-### Configure with Bicep
-
-To deploy an Azure Fleet that passes this rule:
-
-- Set the `properties.computeProfile.baseVirtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication` property to `true`.
-
-For example:
-
-```bicep
-resource linux_fleet 'Microsoft.AzureFleet/fleets@2024-11-01' = {
-  name: name
-  location: location
-  properties: {
-    computeProfile: {
-      baseVirtualMachineProfile: {
-        osProfile: {
-          computerNamePrefix: 'fleet'
-          adminUsername: adminUsername
-          linuxConfiguration: {
-            disablePasswordAuthentication: true
-            provisionVMAgent: true
-            ssh: {
-              publicKeys: [
-                {
-                  path: '/home/azureuser/.ssh/authorized_keys'
-                  keyData: sshPublicKey
-                }
-              ]
-            }
-          }
-        }
-        storageProfile: {
-          imageReference: {
-            publisher: 'MicrosoftCblMariner'
-            offer: 'Cbl-Mariner'
-            sku: 'cbl-mariner-2-gen2'
-            version: 'latest'
-          }
-          osDisk: {
-            createOption: 'FromImage'
-            caching: 'ReadWrite'
-            managedDisk: {
-              storageAccountType: 'Premium_LRS'
-            }
-          }
-        }
-        networkProfile: {
-          networkInterfaceConfigurations: [
-            {
-              name: 'netconfig'
-              properties: {
-                ipConfigurations: [
-                  {
-                    name: 'ipconfig'
-                    properties: {
-                      primary: true
-                      subnet: {
-                        id: subnetId
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    }
-    vmSizesProfile: [
-      {
-        name: 'Standard_D8ds_v6'
-        rank: 0
-      }
-    ]
-    regularPriorityProfile: {
-      minCapacity: 1
-      capacity: 5
-      allocationStrategy: 'Prioritized'
-    }
-  }
-}
-```
-
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
-- [Azure security baseline for Linux Virtual Machines](https://learn.microsoft.com/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
+- [Azure security baseline for Linux Virtual Machines](https://learn.microsoft.com/security/benchmark/azure/baselines/virtual-machines-linux-virtual-machines-security-baseline)
 - [Detailed steps: Create and manage SSH keys for authentication to a Linux VM in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.azurefleet/fleets)

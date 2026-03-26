@@ -109,8 +109,8 @@ resource linux_fleet 'Microsoft.AzureFleet/fleets@2024-11-01' = {
         storageProfile: {
           imageReference: {
             publisher: 'MicrosoftCblMariner'
-            offer: 'Cbl-Mariner'
-            sku: 'cbl-mariner-2-gen2'
+            offer: 'azure-linux-3'
+            sku: 'azure-linux-3-gen2'
             version: 'latest'
           }
           osDisk: {

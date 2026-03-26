@@ -32,7 +32,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Azure Fleet:
-    - Check for public key usage on Linux fleet VM profiles by @copilot.
+    - Check for public key usage on Linux fleet VM profiles by @BernieWhite.
       [#3343](https://github.com/Azure/PSRule.Rules.Azure/issues/3343)
 - Updated rules:
   - Azure Kubernetes Service:
