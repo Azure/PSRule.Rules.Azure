@@ -553,6 +553,6 @@ AZR-000531 | [Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNami
 AZR-000532 | [Azure.EventHub.AvailabilityZone](Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | GA
 AZR-000533 | [Azure.Redis.MigrateAMR](Azure.Redis.MigrateAMR.md) | Azure Cache for Redis is being retired. Migrate to Azure Managed Redis. | GA
 AZR-000534 | [Azure.RedisEnterprise.MigrateAMR](Azure.RedisEnterprise.MigrateAMR.md) | Azure Cache for Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis. | GA
-AZR-000536 | [Azure.ServiceBus.ReplicaLocation](Azure.ServiceBus.ReplicaLocation.md) | Service Bus namespace replica locations should be within allowed regions. | GA
+AZR-000540 | [Azure.ServiceBus.ReplicaLocation](Azure.ServiceBus.ReplicaLocation.md) | Service Bus namespace replica locations should be within allowed regions. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

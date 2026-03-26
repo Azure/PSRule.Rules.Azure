@@ -1,5 +1,5 @@
 ---
-reviewed: 2026-03-25
+reviewed: 2026-03-26
 severity: Important
 pillar: Security
 category: SE:01 Security baseline
@@ -12,7 +12,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Servic
 
 ## SYNOPSIS
 
-Service Bus namespace replica locations should be within allowed regions.
+The replica location determines the country or region where the data is stored and processed.
 
 ## DESCRIPTION
 
@@ -44,20 +44,23 @@ To deploy namespaces that pass this rule:
 For example:
 
 ```bicep
-resource sb 'Microsoft.ServiceBus/namespaces@2023-01-01-preview' = {
-  name: serviceBusName
-  location: primaryLocation
+resource withReplication 'Microsoft.ServiceBus/namespaces@2025-05-01-preview' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   sku: {
     name: 'Premium'
-    tier: 'Premium'
-    capacity: 1
   }
   properties: {
+    disableLocalAuth: true
+    minimumTlsVersion: '1.2'
     geoDataReplication: {
-      maxReplicationLagDurationInSeconds: maxReplicationLagInSeconds
+      maxReplicationLagDurationInSeconds: 300
       locations: [
         {
-          locationName: primaryLocation
+          locationName: location
           roleType: 'Primary'
         }
         {
@@ -81,20 +84,23 @@ For example:
 ```json
 {
   "type": "Microsoft.ServiceBus/namespaces",
-  "apiVersion": "2023-01-01-preview",
-  "name": "[parameters('serviceBusName')]",
-  "location": "[parameters('primaryLocation')]",
+  "apiVersion": "2025-05-01-preview",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
   "sku": {
-    "name": "Premium",
-    "tier": "Premium",
-    "capacity": 1
+    "name": "Premium"
   },
   "properties": {
+    "disableLocalAuth": true,
+    "minimumTlsVersion": "1.2",
     "geoDataReplication": {
-      "maxReplicationLagDurationInSeconds": "[parameters('maxReplicationLagInSeconds')]",
+      "maxReplicationLagDurationInSeconds": 300,
       "locations": [
         {
-          "locationName": "[parameters('primaryLocation')]",
+          "locationName": "[parameters('location')]",
           "roleType": "Primary"
         },
         {
@@ -111,6 +117,9 @@ For example:
 
 This rule requires one or more allowed regions to be configured.
 By default, all regions are allowed.
+
+Also note that Service Bus geo-replication requires a Premium SKU namespace.
+As a result, this rule only applies to namespaces using the Premium SKU that already have geo-replication configured.
 
 ### Rule configuration
 
