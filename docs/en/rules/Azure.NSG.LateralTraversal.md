@@ -121,6 +121,7 @@ To suppress this rule for NSGs protecting subnets expected to allow outbound man
 ## LINKS
 
 - [SE:04 Segmentation](https://learn.microsoft.com/azure/well-architected/security/segmentation)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Logically segment subnets](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Plan virtual networks](https://learn.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#segmentation)
 - [Network security groups](https://learn.microsoft.com/azure/virtual-network/security-overview)

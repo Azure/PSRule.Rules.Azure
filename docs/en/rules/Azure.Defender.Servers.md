@@ -87,6 +87,7 @@ Set-AzSecurityPricing -Name 'VirtualMachines' -PricingTier 'Standard'
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Introduction to Microsoft Defender for Containers](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-servers-introduction)
 - [Azure Monitor agent auto-provisioning](https://learn.microsoft.com/azure/defender-for-cloud/auto-deploy-azure-monitoring-agent)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/pricings)

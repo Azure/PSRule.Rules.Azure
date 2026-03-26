@@ -114,6 +114,7 @@ From November 2022 - PHP is only supported on Linux-based plans.
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Set PHP Version](https://learn.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#set-php-version)
 - [PHP on App Service](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites)

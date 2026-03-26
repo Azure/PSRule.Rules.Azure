@@ -75,6 +75,7 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Use Microsoft Entra ID for storage authentication](https://learn.microsoft.com/azure/security/fundamentals/identity-management-best-practices#use-microsoft-entra-id-for-storage-authentication)
 - [Configure anonymous read access for containers and blobs](https://learn.microsoft.com/azure/storage/blobs/anonymous-read-access-configure)
 - [Remediate anonymous read access to blob data](https://learn.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent)

@@ -81,6 +81,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2023-11-15' = {
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)  
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Configure Azure Private Link for an Azure Cosmos DB account](https://learn.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)
 - [Azure security baseline for Azure Cosmos DB](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline)
 - [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#ns-2-secure-cloud-services-with-network-controls)

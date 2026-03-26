@@ -214,6 +214,7 @@ az network vnet subnet update -n '<subnet_name>' -g '<resource_group>' --vnet-na
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Default outbound access](https://learn.microsoft.com/azure/virtual-network/ip-services/default-outbound-access)
 - [Plan for inbound and outbound internet connectivity](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-inbound-and-outbound-internet-connectivity)
 - [What is Azure NAT Gateway?](https://learn.microsoft.com/azure/nat-gateway/nat-overview)

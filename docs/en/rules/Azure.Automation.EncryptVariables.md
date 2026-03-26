@@ -32,3 +32,4 @@ Key Vault improves security by tightly controlling access to secrets and improvi
 ## LINKS
 
 - [Variable assets in Azure Automation](https://learn.microsoft.com/azure/automation/shared-resources/variables)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)

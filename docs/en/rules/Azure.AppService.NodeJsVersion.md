@@ -160,6 +160,7 @@ resource windowsWeb 'Microsoft.Web/sites@2022-09-01' = {
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Upgrade your App Service apps to Node 20 LTS by 30 April 2025](https://azure.microsoft.com/updates/action-required-upgrade-your-app-service-apps-to-node-20-lts-by-30-april-2025/)
 - [Node.js on App Service](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/node_support.md)
 - [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.web/sites)

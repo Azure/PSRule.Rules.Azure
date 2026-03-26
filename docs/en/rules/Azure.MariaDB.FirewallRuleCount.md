@@ -31,6 +31,7 @@ This rule fails when the number of configured firewall rules exceeds ten (10).
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure Database for MariaDB server firewall rules](https://learn.microsoft.com/azure/mariadb/concepts-firewall-rules)
 - [Create and manage Azure Database for MariaDB firewall rules by using the Azure portal](https://learn.microsoft.com/azure/mariadb/howto-manage-firewall-portal)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/firewallrules)

@@ -32,6 +32,7 @@ This rule fails when the number of configured firewall rules exceeds ten (10).
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Create and manage Azure Database for MySQL firewall rules by using the Azure portal](https://learn.microsoft.com/azure/mysql/single-server/how-to-manage-firewall-using-portal)
 - [Create and manage Azure Database for MySQL VNet service endpoints and VNet rules by using the Azure portal](https://learn.microsoft.com/azure/mysql/single-server/how-to-manage-vnet-using-portal)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers)

@@ -167,4 +167,5 @@ For example:
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/Microsoft.VirtualMachineImages/imageTemplates)

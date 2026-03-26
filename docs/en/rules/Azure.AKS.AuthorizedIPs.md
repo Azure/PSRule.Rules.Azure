@@ -200,6 +200,7 @@ Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -ApiServer
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Secure access to the API server using authorized IP address ranges in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/api-server-authorized-ip-ranges)
 - [Best practices for cluster security and upgrades in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-security#secure-access-to-the-api-server-and-cluster-nodes)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

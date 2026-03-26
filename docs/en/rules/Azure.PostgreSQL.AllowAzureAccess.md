@@ -30,4 +30,5 @@ Determine if access from Azure services is required for the services connecting 
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Firewall rules in Azure Database for PostgreSQL](https://learn.microsoft.com/azure/postgresql/concepts-firewall-rules#connecting-from-azure)

@@ -126,6 +126,7 @@ If you don't need external ingress, enable this rule by:
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Networking in Azure Container Apps environment](https://learn.microsoft.com/azure/container-apps/networking)
 - [Ingress in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ingress-overview)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#ingress)

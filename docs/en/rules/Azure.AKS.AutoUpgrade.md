@@ -199,6 +199,7 @@ To address this issue at runtime use the following policies:
 ## LINKS
 
 - [OE:09 Task automation](https://learn.microsoft.com/azure/well-architected/operational-excellence/automate-tasks)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions)
 - [Support policies for Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/support-policies)
 - [Automatically upgrade an Azure Kubernetes Service (AKS) cluster](https://learn.microsoft.com/azure/aks/auto-upgrade-cluster)

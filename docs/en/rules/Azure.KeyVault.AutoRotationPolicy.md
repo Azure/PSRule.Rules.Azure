@@ -132,6 +132,7 @@ This rule only applies to pre-flight validation of Azure templates and Bicep fil
 ## LINKS
 
 - [SE:09 Application secrets](https://learn.microsoft.com/azure/well-architected/security/application-secrets)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [IM-3: Manage application identities securely and automatically](https://learn.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management#im-3-manage-application-identities-securely-and-automatically)
 - [Configure cryptographic key auto-rotation in Azure Key Vault](https://learn.microsoft.com/azure/key-vault/keys/how-to-configure-key-rotation)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)

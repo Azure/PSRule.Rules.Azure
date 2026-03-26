@@ -34,5 +34,6 @@ This rule is only applicable for the Azure Database for MySQL Single Server depl
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure Database for MySQL server firewall rules](https://learn.microsoft.com/azure/mysql/concepts-firewall-rules#connecting-from-azure)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers)

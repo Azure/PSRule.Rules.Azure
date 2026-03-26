@@ -88,6 +88,7 @@ Set-AzSecurityPricing -Name 'AppServices' -PricingTier 'Standard'
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Securing applications and PaaS deployments](https://learn.microsoft.com/azure/security/fundamentals/paas-deployments)
 - [Introduction to Microsoft Defender for App Service](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-app-service-introduction)
 - [App Service security best practices](https://learn.microsoft.com/azure/security/fundamentals/paas-applications-using-app-services)

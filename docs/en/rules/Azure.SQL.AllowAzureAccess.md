@@ -33,5 +33,6 @@ Determine if access from Azure services is required for the services connecting 
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Connections from inside Azure](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql#connections-from-inside-azure)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers)

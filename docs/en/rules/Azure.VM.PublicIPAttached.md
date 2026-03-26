@@ -96,6 +96,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2023-11-01' = {
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Plan for inbound and outbound internet connectivity](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-inbound-and-outbound-internet-connectivity)
 - [Dissociate public IP address from a VM](https://learn.microsoft.com/azure/virtual-network/ip-services/remove-public-ip-address-vm)
 - [Azure Bastion](https://learn.microsoft.com/azure/bastion/bastion-overview)

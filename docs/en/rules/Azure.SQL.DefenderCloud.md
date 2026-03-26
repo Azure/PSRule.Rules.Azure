@@ -70,6 +70,7 @@ Set-AzSqlDatabaseThreatDetectionPolicy -ResourceGroupName '<resource_group>' -Se
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [SQL Advanced Threat Protection](https://learn.microsoft.com/azure/azure-sql/database/threat-detection-overview)
 - [Microsoft Defender for SQL](https://learn.microsoft.com/azure/azure-sql/database/azure-defender-for-sql)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)

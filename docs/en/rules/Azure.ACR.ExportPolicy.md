@@ -153,6 +153,7 @@ such as in the case of public registries.
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Data loss prevention for Azure Container Registry](https://learn.microsoft.com/azure/container-registry/data-loss-prevention)
 - [Azure Security Benchmark - Monitor anomalies and threats targeting sensitive data](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#dp-2-monitor-anomalies-and-threats-targeting-sensitive-data)
 - [Azure Policy - Container registries should have exports disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_ExportPolicy_AuditDeny.json)

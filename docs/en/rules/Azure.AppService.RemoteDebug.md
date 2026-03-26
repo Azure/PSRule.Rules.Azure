@@ -112,6 +112,7 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [PV-2: Audit and enforce secure configurations](https://learn.microsoft.com/security/benchmark/azure/baselines/app-service-security-baseline#pv-2-audit-and-enforce-secure-configurations)
 - [Configure general settings](https://learn.microsoft.com/azure/app-service/configure-common#configure-general-settings)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites)

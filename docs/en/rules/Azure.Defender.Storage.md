@@ -126,6 +126,7 @@ Currently only the `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Ge
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Storage security guide](https://learn.microsoft.com/azure/storage/blobs/security-recommendations)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for Storage](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-introduction)

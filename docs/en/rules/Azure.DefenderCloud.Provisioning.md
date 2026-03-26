@@ -32,3 +32,4 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 ## LINKS
 
 - [Quickstart: Configure auto provisioning for agents and extensions from Microsoft Defender for Cloud](https://learn.microsoft.com/azure/defender-for-cloud/enable-data-collection)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)

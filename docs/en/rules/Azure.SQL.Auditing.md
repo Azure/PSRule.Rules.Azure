@@ -138,6 +138,7 @@ To address this issue at runtime use the following policies:
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [LT-3: Enable logging for security investigation](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-sql-security-baseline#logging-and-threat-detection)
 - [Auditing for Azure SQL Database and Azure Synapse Analytics](https://learn.microsoft.com/azure/azure-sql/database/auditing-overview)
 - [What is Microsoft Sentinel?](https://learn.microsoft.com/azure/sentinel/overview)

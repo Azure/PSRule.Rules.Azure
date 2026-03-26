@@ -102,5 +102,6 @@ Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway 
 ## LINKS
 
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [OWASP ModSecurity Core Rule Set](https://owasp.org/www-project-modsecurity-core-rule-set/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways)

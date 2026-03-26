@@ -114,6 +114,7 @@ For example:
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure Cache for Redis with Azure Private Link](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-private-link)
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Migrate from VNet injection caches to Private Link caches](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-vnet-migration)

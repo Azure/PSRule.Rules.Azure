@@ -28,5 +28,6 @@ Enable automatic updates at deployment time, then reconfigure as required to mee
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Automatic Guest Patching for Azure Virtual Machines and Scale Sets](https://learn.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)

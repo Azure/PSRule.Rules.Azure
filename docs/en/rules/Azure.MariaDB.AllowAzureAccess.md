@@ -122,5 +122,6 @@ resource mariaDbServerFirewallRule 'Microsoft.DBforMariaDB/servers/firewallRules
 ## LINKS
 
 - [Network security and containment](https://learn.microsoft.com/azure/architecture/framework/security/design-network)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure Database for MariaDB firewall rules](https://learn.microsoft.com/azure/mariadb/concepts-firewall-rules#connecting-from-azure)
 - [Template reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/firewallrules)

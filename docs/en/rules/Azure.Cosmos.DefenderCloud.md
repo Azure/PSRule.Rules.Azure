@@ -81,6 +81,7 @@ When Microsoft Defender for Cosmos DB is enabled at the subscription level, the 
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for Azure Cosmos DB](https://learn.microsoft.com/azure/defender-for-cloud/concept-defender-for-cosmos)
 - [Enable Microsoft Defender for Azure Cosmos DB](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-enable-cosmos-protections)

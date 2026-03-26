@@ -35,4 +35,5 @@ This rule applies when analyzing API Management Services (in-flight) and running
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Create and publish a product](https://learn.microsoft.com/azure/api-management/api-management-howto-add-products)

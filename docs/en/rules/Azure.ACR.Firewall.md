@@ -107,6 +107,7 @@ you must enable trusted Microsoft services for the vulnerability assessment feat
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Restrict access using private endpoint](https://learn.microsoft.com/azure/container-registry/container-registry-private-link)
 - [Restrict access using firewall rules](https://learn.microsoft.com/azure/container-registry/container-registry-access-selected-networks)
 - [Allow trusted services to securely access a network-restricted container registry](https://learn.microsoft.com/azure/container-registry/allow-access-trusted-services)

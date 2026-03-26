@@ -225,6 +225,7 @@ It also helps you to identify such fixes shipped to a core add-on, and node imag
 ## LINKS
 
 - [SE:01-Security Baseline](https://learn.microsoft.com/azure/well-architected/security/establish-baseline)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Automatically upgrade AKS cluster node OS images](https://learn.microsoft.com/azure/aks/auto-upgrade-node-os-image?tabs=azure-cli)
 - [Upgrade Azure Kubernetes Service (AKS) node images](https://learn.microsoft.com/azure/aks/node-image-upgrade)
 - [Apply security and kernel updates to Linux nodes in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/node-updates-kured)

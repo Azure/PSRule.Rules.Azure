@@ -98,6 +98,7 @@ resource product 'Microsoft.ApiManagement/service/products@2022-08-01' = {
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#protect-nonidentity-based-secrets)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Create and publish a product](https://learn.microsoft.com/azure/api-management/api-management-howto-add-products)
 - [Subscriptions in Azure API Management](https://learn.microsoft.com/azure/api-management/api-management-subscriptions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/products)

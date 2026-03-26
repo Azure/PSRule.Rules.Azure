@@ -77,6 +77,7 @@ resource script 'Microsoft.Compute/virtualMachines/extensions@2015-06-15' = {
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Windows Custom Script Extensions](https://learn.microsoft.com/azure/virtual-machines/extensions/custom-script-windows)
 - [Linux Custom Script Extensions](https://learn.microsoft.com/azure/virtual-machines/extensions/custom-script-linux)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions)

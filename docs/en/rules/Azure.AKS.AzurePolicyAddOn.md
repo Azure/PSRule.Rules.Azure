@@ -247,6 +247,7 @@ Azure Policy for AKS Engine and Arc enabled Kubernetes are currently in preview.
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Understand Azure Policy for Kubernetes clusters](https://learn.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes)
 - [Secure your Azure Kubernetes Service (AKS) clusters with Azure Policy](https://learn.microsoft.com/azure/aks/use-azure-policy)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

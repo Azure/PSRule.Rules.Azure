@@ -95,5 +95,6 @@ If you use the `module` keyword your deployments always use the `inner` evaluati
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.resources/deployments?pivots=deployment-language-bicep)
 - [Deployment Function Scopes](https://learn.microsoft.com/azure/azure-resource-manager/templates/scope-functions?tabs=azure-powershell#function-resolution-in-scopes)

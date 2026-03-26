@@ -106,6 +106,7 @@ To address this issue at runtime use the following policies:
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Restrict user access to data operations in Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/how-to-restrict-user-data)
 - [Secure access to data in Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/secure-access-to-data)
 - [How does Azure Cosmos DB secure my database?](https://learn.microsoft.com/azure/cosmos-db/database-security#how-does-azure-cosmos-db-secure-my-database)

@@ -152,6 +152,7 @@ If no rules are defined at all, the rule will not pass as it expects at least on
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-container-apps-security-baseline#ns-2-secure-cloud-services-with-network-controls)
 - [Networking in Azure Container Apps environment](https://learn.microsoft.com/azure/container-apps/networking)
 - [IP restrictions](https://learn.microsoft.com/azure/container-apps/ingress-overview#ip-restrictions)

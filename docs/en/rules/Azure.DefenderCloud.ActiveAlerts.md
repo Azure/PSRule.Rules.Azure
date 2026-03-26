@@ -33,5 +33,6 @@ This rule checks for active security alerts in-flight in a subscription that are
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Manage and respond to security alerts](https://learn.microsoft.com/azure/defender-for-cloud/managing-and-responding-alerts)
 - [What is Microsoft Sentinel?](https://learn.microsoft.com/azure/sentinel/overview)

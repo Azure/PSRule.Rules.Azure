@@ -87,6 +87,7 @@ Firewall rules can be used with VNET injected caches, but not private endpoints.
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure best practices for network security](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices)
 - [Azure Cache for Redis network isolation options](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-network-isolation)
 - [Limitations of firewall rules](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-network-isolation#limitations-of-firewall-rules)

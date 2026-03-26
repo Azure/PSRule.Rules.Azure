@@ -107,6 +107,7 @@ Currently only REST APIs published in Azure API Management is supported. Not all
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-introduction)
 - [Support and prerequisites for Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-prepare)

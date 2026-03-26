@@ -84,6 +84,7 @@ resource databricks 'Microsoft.Databricks/workspaces@2023-02-01' = {
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)  
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure Databricks WorkspaceProperties](https://learn.microsoft.com/azure/templates/Microsoft.Databricks/workspaces?pivots=deployment-language-bicep#:~:text=WorkspaceCustomParameters-,publicNetworkAccess,-The%20network%20access)
 - [Azure Databricks Private Link Overview](https://learn.microsoft.com/azure/databricks/security/network/classic/private-link)
 - [Network access](https://learn.microsoft.com/azure/databricks/security/network/)

@@ -82,6 +82,7 @@ The Classic configuration option is enabled by deploying the `Microsoft.Sql/serv
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [SQL vulnerability assessment helps you identify database vulnerabilities](https://learn.microsoft.com/azure/defender-for-cloud/sql-azure-vulnerability-assessment-overview)
 - [What's the difference between the express and classic configuration?](https://learn.microsoft.com/azure/defender-for-cloud/sql-azure-vulnerability-assessment-overview#whats-the-difference-between-the-express-and-classic-configuration)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers)

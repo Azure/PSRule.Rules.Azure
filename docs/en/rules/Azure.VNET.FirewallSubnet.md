@@ -115,6 +115,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-05-01' = {
 ## LINKS
 
 - [Azure features for segmentation](https://learn.microsoft.com/azure/well-architected/security/design-network-segmentation#azure-features-for-segmentation)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Hub-spoke network topology in Azure](https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
 - [Define an Azure network topology](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/define-an-azure-network-topology)
 - [What is Azure Firewall?](https://learn.microsoft.com/azure/firewall/overview)

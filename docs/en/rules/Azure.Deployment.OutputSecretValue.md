@@ -109,6 +109,7 @@ When using Bicep, the built-in linter will also automatically check for common c
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Secure outputs in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/outputs#secure-outputs)
 - [Test cases for ARM templates](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-test-cases#outputs-cant-include-secrets)
 - [Outputs should not contain secrets](https://learn.microsoft.com/azure/azure-resource-manager/bicep/linter-rule-outputs-should-not-contain-secrets)

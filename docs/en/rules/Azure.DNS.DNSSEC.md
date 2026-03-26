@@ -81,6 +81,7 @@ This rule only applies to Azure Public DNS zones.
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [DNSSEC overview](https://learn.microsoft.com/azure/dns/dnssec)
 - [DNSSEC – What Is It and Why Is It Important?](https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/dnszones/dnssecconfigs)

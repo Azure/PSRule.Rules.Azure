@@ -24,3 +24,7 @@ Consider limiting the number of assignment inherited from Management Groups by s
 
 Azure Blueprints can be used to rollout standard RBAC assignments to common resources.
 Additionally RBAC assignments can be deployed using Azure Resource Manager templates.
+
+## LINKS
+
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)

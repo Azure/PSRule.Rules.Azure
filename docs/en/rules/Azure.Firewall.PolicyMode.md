@@ -83,6 +83,7 @@ In order to take advantage of URL filtering with `HTTPS` traffic included in thr
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [NS-1: Establish network segmentation boundaries](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-firewall-security-baseline#ns-1-establish-network-segmentation-boundaries)
 - [Azure Firewall threat intelligence-based filtering](https://learn.microsoft.com/azure/firewall/threat-intel)
 - [Rule processing logic](https://learn.microsoft.com/azure/firewall/rule-processing#threat-intelligence)

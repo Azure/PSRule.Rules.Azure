@@ -106,5 +106,6 @@ az security contact update -n 'default' --emails 'security@contoso.com'
 ## LINKS
 
 - [SE:12 Incident response](https://learn.microsoft.com/azure/well-architected/security/incident-response)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Quickstart: Configure email notifications for security alerts](https://learn.microsoft.com/azure/defender-for-cloud/configure-email-notifications)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/securitycontacts)

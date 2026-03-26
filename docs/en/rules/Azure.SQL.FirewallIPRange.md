@@ -36,6 +36,7 @@ This rule assesses the combined IP addresses from each Allowed IP firewall entry
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure SQL Database and Azure Synapse IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql)
 - [Create and manage IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql#create-and-manage-ip-firewall-rules)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/firewallrules)

@@ -27,6 +27,7 @@ Consider using Privileged Identity Management (PIM) to activate privileged roles
 ## LINKS
 
 - [What is Azure AD Privileged Identity Management?](https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Discover Azure resources to manage in Privileged Identity Management](https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-discover-resources)
 - [Configure Azure resource role settings in Privileged Identity Management](https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-configure-role-settings)
 - [Lower exposure of privileged accounts](https://learn.microsoft.com/azure/security/fundamentals/identity-management-best-practices#lower-exposure-of-privileged-accounts)

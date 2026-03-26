@@ -90,6 +90,7 @@ resource compute_instance 'Microsoft.MachineLearningServices/workspaces/computes
 ## LINKS
 
 - [WAF - Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Managed compute in a managed virtual network](https://learn.microsoft.com/azure/machine-learning/how-to-managed-network-compute)
 - [ML - Network security and isolation](https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security#network-security-and-isolation)
 - [ML Compute](https://learn.microsoft.com/azure/machine-learning/azure-machine-learning-glossary#compute)

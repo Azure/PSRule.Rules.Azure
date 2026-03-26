@@ -111,6 +111,7 @@ For example:
 ## LINKS
 
 - [SE:09 Application secrets](https://learn.microsoft.com/azure/well-architected/security/application-secrets)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [IM-8: Restrict the exposure of credential and secrets](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-app-configuration-security-baseline#im-8-restrict-the-exposure-of-credential-and-secrets)
 - [Use Key Vault references in an ASP.NET Core app](https://learn.microsoft.com/azure/azure-app-configuration/use-key-vault-references-dotnet-core)
 - [Reload secrets and certificates from Key Vault automatically](https://learn.microsoft.com/azure/azure-app-configuration/reload-key-vault-secrets-dotnet)

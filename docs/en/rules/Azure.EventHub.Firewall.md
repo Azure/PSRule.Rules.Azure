@@ -96,6 +96,7 @@ The firewall feature isn't supported in the `basic` tier.
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure security baseline for Event Hub](https://learn.microsoft.com/security/benchmark/azure/baselines/event-hubs-security-baseline)
 - [NS-1: Establish network segmentation boundaries](https://learn.microsoft.com/security/benchmark/azure/baselines/event-hubs-security-baseline#ns-1-establish-network-segmentation-boundaries)
 - [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/event-hubs-security-baseline#ns-1-establish-network-segmentation-boundaries)

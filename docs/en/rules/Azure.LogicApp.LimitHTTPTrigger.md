@@ -102,5 +102,6 @@ This rule currently only applies to Logic Apps using consumption plans.
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Secure access and data in Azure Logic Apps](https://learn.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
 - [Azure security baseline for Logic Apps](https://learn.microsoft.com/azure/logic-apps/security-baseline#network-security)

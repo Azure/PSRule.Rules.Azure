@@ -125,6 +125,7 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Configure ASP.NET](https://learn.microsoft.com/azure/app-service/configure-language-dotnet-framework)
 - [Configure an ASP.NET Core app for Azure App Service](https://learn.microsoft.com/azure/app-service/configure-language-dotnetcore)
 - [.NET Support Policy](https://dotnet.microsoft.com/platform/support/policy)

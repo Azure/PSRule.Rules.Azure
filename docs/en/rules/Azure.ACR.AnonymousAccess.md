@@ -143,6 +143,7 @@ For example: You are a software vendor and intend to distribute container images
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Make your container registry content publicly available](https://learn.microsoft.com/azure/container-registry/anonymous-pull-access)
 - [Azure security baseline for Container Registry](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline)
 - [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#im-1-use-centralized-identity-and-authentication-system)

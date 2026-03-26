@@ -131,5 +131,6 @@ Azure Database for PostgreSQL Flexible Server deployment model does not currentl
 ## LINKS
 
 - [Security operations](https://learn.microsoft.com/azure/architecture/framework/security/security-operations)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Enable Microsoft Defender for open-source relational databases](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-usage)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/servers/securityalertpolicies)

@@ -173,6 +173,7 @@ This rule applies to Azure Front Door Premium/ Standard/ Classic profiles.
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [LT-4: Enable logging for security investigation](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-front-door-security-baseline#lt-4-enable-logging-for-security-investigation)
 - [Monitor metrics and logs in Azure Front Door](https://learn.microsoft.com/azure/frontdoor/front-door-diagnostics?pivots=front-door-standard-premium)
 - [Monitor metrics and logs in Azure Front Door Classic](https://learn.microsoft.com/azure/frontdoor/front-door-diagnostics?pivots=front-door-classic)

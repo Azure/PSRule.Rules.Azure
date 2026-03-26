@@ -116,6 +116,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2024-03-01' = {
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-container-apps-security-baseline)
 - [Networking in Azure Container Apps environment](https://learn.microsoft.com/azure/container-apps/networking)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/managedenvironments#vnetconfiguration)

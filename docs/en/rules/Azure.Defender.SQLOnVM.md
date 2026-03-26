@@ -83,6 +83,7 @@ Set-AzSecurityPricing -Name 'SqlServerVirtualMachines' -PricingTier 'Standard'
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Introduction to Microsoft Defender for SQL Servers on machines](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-sql-usage)
 - [Security considerations for SQL Server on Azure Virtual Machines](https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/security-considerations-best-practices?view=azuresql)
 - [Azure Security Benchmark - Data protection](https://learn.microsoft.com/security/benchmark/azure/security-controls-v2-data-protection)

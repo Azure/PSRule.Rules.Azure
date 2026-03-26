@@ -197,6 +197,7 @@ To address this issue at runtime use the following policies:
 ## LINKS
 
 - [RE:01 Simplicity and efficiency](https://learn.microsoft.com/azure/well-architected/reliability/simplify)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Introduction to Azure managed disks](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview)
 - [Reliability in Virtual Machines](https://learn.microsoft.com/azure/reliability/reliability-virtual-machines)
 - [Using disks in Azure Resource Manager Templates](https://learn.microsoft.com/azure/virtual-machines/using-managed-disks-template-deployments)

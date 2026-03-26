@@ -85,6 +85,7 @@ For cases where you are creating and destroying backups and vaults on a regulary
 ## LINKS
 
 - [Security design principles](https://learn.microsoft.com/azure/well-architected/security/security-principles)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Immutable vault for Azure Backup](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-concept?tabs=backup-vault)
 - [Restricted operations](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-concept?tabs=backup-vault#restricted-operations)
 - [Manage Azure Backup Immutable vault operations](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-how-to-manage?tabs=backup-vault)

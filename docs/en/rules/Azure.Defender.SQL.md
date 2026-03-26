@@ -97,6 +97,7 @@ Set-AzSecurityPricing -Name 'SqlServers' -PricingTier 'Standard'
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure SQL Database and security](https://learn.microsoft.com/azure/architecture/framework/services/data/azure-sql-database-well-architected-framework#azure-sql-database-and-security)
 - [Introduction to Microsoft Defender for SQL](https://learn.microsoft.com/azure/azure-sql/database/azure-defender-for-sql?view=azuresql)
 - [Azure security baseline for Azure SQL](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-sql-security-baseline)

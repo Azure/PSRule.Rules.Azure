@@ -108,5 +108,6 @@ Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway 
 ## LINKS
 
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Application Gateway WAF modes](https://learn.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-modes)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways)

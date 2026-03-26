@@ -221,6 +221,7 @@ resource asg 'Microsoft.Network/applicationSecurityGroups@2023-09-01' = {
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Network Security Groups](https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview)
 - [Service Tags Overview](https://learn.microsoft.com/azure/virtual-network/service-tags-overview)
 - [Logically segment subnets](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)

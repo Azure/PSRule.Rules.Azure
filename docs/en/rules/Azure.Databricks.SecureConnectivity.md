@@ -92,6 +92,7 @@ resource databricks 'Microsoft.Databricks/workspaces@2023-02-01' = {
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)  
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Secure cluster connectivity (No Public IP / NPIP)](https://learn.microsoft.com/azure/databricks/security/network/secure-cluster-connectivity)
 - [Network access](https://learn.microsoft.com/azure/databricks/security/network/)
 - [Azure Databricks architecture overview](https://learn.microsoft.com/azure/databricks/getting-started/overview)

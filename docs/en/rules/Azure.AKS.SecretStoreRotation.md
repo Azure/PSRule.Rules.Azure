@@ -192,6 +192,7 @@ az aks update --enable-secret-rotation -n '<name>' -g '<resource_group>'
 ## LINKS
 
 - [Key and secret management considerations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-keys#operational-considerations)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Operational considerations](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-keys#operational-considerations)
 - [Use the Azure Key Vault Provider for Secrets Store CSI Driver in an AKS cluster](https://learn.microsoft.com/azure/aks/csi-secrets-store-driver)
 - [Automate the rotation of a secret for resources that use one set of authentication credentials](https://learn.microsoft.com/azure/key-vault/secrets/tutorial-rotation)

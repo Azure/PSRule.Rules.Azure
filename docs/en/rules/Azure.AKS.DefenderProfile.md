@@ -86,6 +86,7 @@ Outbound access so that the Defender profile can connect to Microsoft Defender f
 ## LINKS
 
 - [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Introduction to Microsoft Defender for Containers](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
 - [Defender for Containers architecture](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-architecture?tabs=defender-for-container-arch-aks)
 - [Deploy the Defender profile](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-enable?tabs=aks-deploy-arm%2Ck8s-deploy-asc%2Ck8s-verify-asc%2Ck8s-remove-arc%2Caks-removeprofile-api&pivots=defender-for-container-aks#deploy-the-defender-profile)

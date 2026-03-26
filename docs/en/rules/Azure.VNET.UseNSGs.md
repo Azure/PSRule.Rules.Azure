@@ -171,6 +171,7 @@ configuration:
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Network Security Best Practices](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Azure Firewall FAQ](https://learn.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups--nsgs--supported-on-the-azurefirewallsubnet)
 - [Forced tunneling configuration](https://learn.microsoft.com/azure/firewall/forced-tunneling#forced-tunneling-configuration)

@@ -82,5 +82,6 @@ extensionProfile: {
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Azure VMSS Extensions Overview](https://learn.microsoft.com/azure/virtual-machines/extensions/overview)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)
