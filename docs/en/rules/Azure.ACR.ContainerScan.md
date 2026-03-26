@@ -99,6 +99,7 @@ This rule applies when analyzing resources deployed (in-flight) to Azure and doe
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Introduction to Microsoft Defender for container registries](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-container-registries-introduction)
 - [Container security in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
 - [Secure the images and run time](https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
