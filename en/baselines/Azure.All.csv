@@ -153,6 +153,7 @@
 "Azure.ContainerApp.DisableAffinity","Disable session affinity to prevent unbalanced distribution.","Awareness","Performance Efficiency","-"
 "Azure.ContainerApp.EnvNaming","Container App Environment resources without a standard naming convention may be difficult to identify and manage.","Awareness","Operational Excellence","L2"
 "Azure.ContainerApp.ExternalIngress","Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment.","Important","Security","-"
+"Azure.ContainerApp.HealthProbe","Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks.","Important","Reliability","-"
 "Azure.ContainerApp.Insecure","Ensure insecure inbound traffic is not permitted to the container app.","Important","Security","L1"
 "Azure.ContainerApp.JobNaming","Container App Job resources without a standard naming convention may be difficult to identify and manage.","Awareness","Operational Excellence","L2"
 "Azure.ContainerApp.ManagedIdentity","Ensure managed identity is used for authentication.","Important","Security","L1"
