@@ -36,6 +36,9 @@ What's changed since v1.47.0:
   - Azure Container Registry:
     - Check that audit diagnostic logs are enabled for Container Registry by @copilot.
       [#3536](https://github.com/Azure/PSRule.Rules.Azure/issues/3536)
+  - Container Apps:
+    - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress.
+      [#3714](https://github.com/Azure/PSRule.Rules.Azure/issues/3714)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
