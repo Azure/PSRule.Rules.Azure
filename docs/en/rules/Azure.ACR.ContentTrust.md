@@ -118,7 +118,7 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
-- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
+- [Security: Level 5](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level5)
 - [Content trust in Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-content-trust)
 - [Content trust in Docker](https://docs.docker.com/engine/security/trust/content_trust/)
 - [Overview of customer-managed keys](https://learn.microsoft.com/azure/container-registry/tutorial-customer-managed-keys#before-you-enable-a-customer-managed-key)

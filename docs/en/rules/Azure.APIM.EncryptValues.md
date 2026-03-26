@@ -94,6 +94,6 @@ The identity needs permissions to get and list secrets from the Key Vault. Also 
 ## LINKS
 
 - [Key storage](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-keys#key-storage)
-- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
+- [Security: Level 1](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level1)
 - [Prerequisites for key vault integration](https://learn.microsoft.com/azure/api-management/api-management-howto-properties?tabs=azure-portal#prerequisites-for-key-vault-integration)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/namedvalues#keyvaultcontractcreatepropertiesorkeyvaultcontractpr)

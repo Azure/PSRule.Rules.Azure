@@ -82,7 +82,7 @@ Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/s
 }
 
 # Synopsis: Encrypt all API Management named values with Key Vault secrets.
-Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-8', 'DP-7'); 'Azure.WAF/maturity' = 'L2' } {
+Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-8', 'DP-7'); 'Azure.WAF/maturity' = 'L1' } {
     $namedValues = @($TargetObject)
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
         $namedValues = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/namedValues')
