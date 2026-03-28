@@ -11,17 +11,23 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.S
 
 ## SYNOPSIS
 
-Virtual machine scale sets should use Trusted Launch or Confidential VM with Secure Boot enabled.
+Operating systems or drivers may be maliciously modified or injected if an actor gains access to VM/ OS storage or build media.
 
 ## DESCRIPTION
 
-Trusted Launch protects against advanced and persistent attack techniques by combining technologies that can be independently enabled like Secure Boot and a virtualized version of the Trusted Platform Module (TPM).
+Azure Virtual Machine Scale Sets (VMSS) are able to run a wide range of operating systems including many distributions of Windows and Linux.
+A malicious actor may attempt to tamper or inject operating system and driver components to gain access to resources and persist between reboots.
 
-Secure Boot, which is implemented in platform firmware, protects against the installation of malware-based rootkits and boot kits.
-Secure Boot ensures that only signed operating systems and drivers can boot.
-It establishes a "root of trust" for the software stack on your VM.
+When a VMSS instance is started, Azure is able to verify if:
 
-Setting the security type to `ConfidentialVM` is also acceptable.
+1. The operating system and drivers are originate from a trusted source.
+2. These components are in their original unaltered state.
+
+Azure is able to perform this verification by Secure Boot and Trusted Launch features.
+These features verify the cryptographic signatures of early boot components before they start.
+
+Secure Boot and Trusted Launch are on by default for many configurations.
+However, if you are running an older configuration these features may need to be enabled.
 
 ## RECOMMENDATION
 
