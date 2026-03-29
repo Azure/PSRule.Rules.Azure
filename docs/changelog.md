@@ -48,6 +48,8 @@ What's changed since v1.47.0:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
       [#3708](https://github.com/Azure/PSRule.Rules.Azure/issues/3708)
+- Improved documentation for expansion internals with a high-level flow diagram and code references by @Copilot.
+  [#3715](https://github.com/Azure/PSRule.Rules.Azure/issues/3715)
 
 ## v1.47.0
 

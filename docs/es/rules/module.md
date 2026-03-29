@@ -641,7 +641,7 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.VNET.FirewallSubnet](Azure.VNET.FirewallSubnet.md) | Use Azure Firewall to filter network traffic to and from Azure resources. | Important | Error
 
-### SE:01 Security baseline
+### SE:01 Security Baseline
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
