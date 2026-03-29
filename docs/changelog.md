@@ -32,13 +32,18 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.47.0:
 
+- New features:
+  - Added March 2026 baselines `Azure.GA_2026_03`, `Azure.Preview_2026_03`, and `Azure.CAF_2026_03` by @BernieWhite.
+    [#3709](https://github.com/Azure/PSRule.Rules.Azure/issues/3709)
+    - Includes rules released before or during March 2026.
+    - Marked `Azure.GA_2025_12` and `Azure.Preview_2025_12` baselines as obsolete.
 - New rules:
   - Azure Container Registry:
-    - Check that audit diagnostic logs are enabled for Container Registry by @copilot.
-      [#3536](https://github.com/Azure/PSRule.Rules.Azure/issues/3536)
+    - Check that audit diagnostic logs are enabled for Container Registry by @BernieWhite.
+      [#3445](https://github.com/Azure/PSRule.Rules.Azure/issues/3445)
   - Container Apps:
-    - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress.
-      [#3714](https://github.com/Azure/PSRule.Rules.Azure/issues/3714)
+    - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress by @BernieWhite.
+      [#3111](https://github.com/Azure/PSRule.Rules.Azure/issues/3111)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
