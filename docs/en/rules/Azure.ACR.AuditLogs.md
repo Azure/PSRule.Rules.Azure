@@ -5,7 +5,7 @@ pillar: Security
 category: SE:10 Monitoring and threat detection
 resource: Container Registry
 resourceType: Microsoft.ContainerRegistry/registries,Microsoft.Insights/diagnosticSettings
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Logs/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.AuditLogs/
 ---
 
 # Audit Container Registry access

@@ -206,6 +206,40 @@ spec:
     field: properties.template.scale.minReplicas
     greaterOrEquals: 2
 
+---
+# Synopsis: Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.HealthProbe
+  ref: AZR-000537
+  tags:
+    release: GA
+    ruleSet: 2026_06
+    Azure.WAF/pillar: Reliability
+spec:
+  with:
+    - Azure.ContainerApp.IsHttpIngress
+  condition:
+    field: properties.template.containers
+    allOf:
+      - field: probes
+        anyOf:
+          - allOf:
+              - field: type
+                equals: Liveness
+              - field: httpGet
+                hasValue: true
+        count: 1
+      - field: probes
+        anyOf:
+          - allOf:
+              - field: type
+                equals: Readiness
+              - field: httpGet
+                hasValue: true
+        count: 1
+
 #endregion Rules
 
 #region Selectors
@@ -223,5 +257,30 @@ spec:
         equals: Microsoft.App/containerApps
       - field: properties.configuration.ingress
         exists: true
+
+---
+# Synopsis: Get container apps with HTTP-based ingress.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.ContainerApp.IsHttpIngress
+spec:
+  if:
+    allOf:
+      - type: '.'
+        equals: Microsoft.App/containerApps
+      - field: properties.configuration.ingress
+        exists: true
+      - anyOf:
+          - field: properties.configuration.ingress.transport
+            in:
+              - http
+              - http2
+          - field: properties.configuration.ingress.targetPort
+            equals: 80
+          - field: properties.configuration.ingress.targetPort
+            equals: 8080
+          - field: properties.configuration.ingress.targetPort
+            equals: 443
 
 #endregion Selectors
