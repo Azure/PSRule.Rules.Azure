@@ -16,11 +16,12 @@ Microsoft Azure Well-Architected Framework - Security pillar Level 1 maturity ba
 
 The following rules are included within the `Azure.Pillar.Security.L1` baseline.
 
-This baseline includes a total of 85 rules.
+This baseline includes a total of 86 rules.
 
 Name | Synopsis | Severity | Maturity
 ---- | -------- | -------- | --------
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical | L1
+[Azure.ACR.AuditLogs](../rules/Azure.ACR.AuditLogs.md) | Ensure container registry audit diagnostic logs are enabled. | Important | L1
 [Azure.ADX.DiskEncryption](../rules/Azure.ADX.DiskEncryption.md) | Use disk encryption for Azure Data Explorer (ADX) clusters. | Important | L1
 [Azure.ADX.ManagedIdentity](../rules/Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | Important | L1
 [Azure.AI.DisableLocalAuth](../rules/Azure.AI.DisableLocalAuth.md) | Access keys allow depersonalized access to Azure AI using a shared secret. | Important | L1

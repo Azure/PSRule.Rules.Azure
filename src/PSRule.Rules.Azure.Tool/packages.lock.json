@@ -89,11 +89,11 @@
       },
       "Microsoft.PSRule.Types": {
         "type": "Direct",
-        "requested": "[3.0.0-b0453, )",
-        "resolved": "3.0.0-b0453",
-        "contentHash": "OKyOyXDJfCnZ27CsOYBPI7NM8nMYzkcarABkjUrMbNv7/fEv4WukyKhnv1/fFZJnjQvCxM8T6TuepMBPjGVnUA==",
+        "requested": "[3.0.0-b0755, )",
+        "resolved": "3.0.0-b0755",
+        "contentHash": "ZEM7b9mTi+I6vMc76pkaZ9sCz88Kiw4FSlBrAcwe8O57zDAuZEOlvSAd+47m6KU4bzidcjdflw4lHQ4vu4MMeA==",
         "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
+          "Newtonsoft.Json": "13.0.4",
           "YamlDotNet": "16.3.0"
         }
       },
