@@ -27,6 +27,7 @@ Please read our [contributing guidelines][2] and [code of conduct][3] to learn h
 - [Writing documentation](writing-documentation.md) &mdash; Guidelines for writing and improving documentation.
 - [Getting started with documentation](getting-started-with-documentation.md) &mdash; How to get started contributing to documentation.
 - [Get started contributing](get-started-contributing.md) &mdash; How to get started contributing to the project.
+- [Expansion internals](expansion-internals.md) &mdash; Internals of the expansion process for developers and contributors.
 
   [1]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/LICENSE
   [2]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/CONTRIBUTING.md

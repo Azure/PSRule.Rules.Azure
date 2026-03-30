@@ -16,12 +16,13 @@ Rules for GA Azure features that align to the Microsoft Cloud Security Benchmark
 
 The following rules are included within the `Azure.MCSB.v1` baseline.
 
-This baseline includes a total of 145 rules.
+This baseline includes a total of 146 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical
 [Azure.ACR.AnonymousAccess](../rules/Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | Important
+[Azure.ACR.AuditLogs](../rules/Azure.ACR.AuditLogs.md) | Ensure container registry audit diagnostic logs are enabled. | Important
 [Azure.ACR.ContainerScan](../rules/Azure.ACR.ContainerScan.md) | Container images or their base images may have vulnerabilities discovered after they are built. | Critical
 [Azure.ACR.ExportPolicy](../rules/Azure.ACR.ExportPolicy.md) | Export policy on Azure container registry may allow artifact exfiltration. | Important
 [Azure.ACR.Firewall](../rules/Azure.ACR.Firewall.md) | Container Registry without restrictions can be accessed from any network location including the Internet. | Important
