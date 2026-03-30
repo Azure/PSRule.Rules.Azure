@@ -44,11 +44,14 @@ What's changed since v1.47.0:
   - Container Apps:
     - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress by @BernieWhite.
       [#3111](https://github.com/Azure/PSRule.Rules.Azure/issues/3111)
+  - Service Bus:
+    - Added `Azure.ServiceBus.ReplicaLocation` to check that geo-replication replica locations are within allowed regions.
+      [#3343](https://github.com/Azure/PSRule.Rules.Azure/issues/3343)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
       [#3708](https://github.com/Azure/PSRule.Rules.Azure/issues/3708)
-- Improved documentation for expansion internals with a high-level flow diagram and code references by @Copilot.
+- Improved documentation for expansion internals with a high-level flow diagram and code references by @BernieWhite.
   [#3715](https://github.com/Azure/PSRule.Rules.Azure/issues/3715)
 
 ## v1.47.0

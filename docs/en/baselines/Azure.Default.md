@@ -10,13 +10,14 @@ Default baseline for that includes the latest rules for Azure GA features that i
 
 The following rules are included within the `Azure.Default` baseline.
 
-This baseline includes a total of 517 rules.
+This baseline includes a total of 520 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACI.Naming](../rules/Azure.ACI.Naming.md) | Container Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical
 [Azure.ACR.AnonymousAccess](../rules/Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | Important
+[Azure.ACR.AuditLogs](../rules/Azure.ACR.AuditLogs.md) | Ensure container registry audit diagnostic logs are enabled. | Important
 [Azure.ACR.ContainerScan](../rules/Azure.ACR.ContainerScan.md) | Container images or their base images may have vulnerabilities discovered after they are built. | Critical
 [Azure.ACR.ExportPolicy](../rules/Azure.ACR.ExportPolicy.md) | Export policy on Azure container registry may allow artifact exfiltration. | Important
 [Azure.ACR.Firewall](../rules/Azure.ACR.Firewall.md) | Container Registry without restrictions can be accessed from any network location including the Internet. | Important
@@ -160,6 +161,7 @@ Name | Synopsis | Severity
 [Azure.ContainerApp.DisableAffinity](../rules/Azure.ContainerApp.DisableAffinity.md) | Disable session affinity to prevent unbalanced distribution. | Awareness
 [Azure.ContainerApp.EnvNaming](../rules/Azure.ContainerApp.EnvNaming.md) | Container App Environment resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ContainerApp.ExternalIngress](../rules/Azure.ContainerApp.ExternalIngress.md) | Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment. | Important
+[Azure.ContainerApp.HealthProbe](../rules/Azure.ContainerApp.HealthProbe.md) | Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks. | Important
 [Azure.ContainerApp.Insecure](../rules/Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important
 [Azure.ContainerApp.JobNaming](../rules/Azure.ContainerApp.JobNaming.md) | Container App Job resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ContainerApp.ManagedIdentity](../rules/Azure.ContainerApp.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important
@@ -397,6 +399,7 @@ Name | Synopsis | Severity
 [Azure.ServiceBus.AuditLogs](../rules/Azure.ServiceBus.AuditLogs.md) | Ensure namespaces audit diagnostic logs are enabled. | Important
 [Azure.ServiceBus.DisableLocalAuth](../rules/Azure.ServiceBus.DisableLocalAuth.md) | Authenticate Service Bus publishers and consumers with Entra ID identities. | Important
 [Azure.ServiceBus.MinTLS](../rules/Azure.ServiceBus.MinTLS.md) | Service Bus namespaces should reject TLS versions older than 1.2. | Important
+[Azure.ServiceBus.ReplicaLocation](../rules/Azure.ServiceBus.ReplicaLocation.md) | The replica location determines the country or region where the data is stored and processed. | Important
 [Azure.ServiceBus.Usage](../rules/Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | Important
 [Azure.ServiceFabric.AAD](../rules/Azure.ServiceFabric.AAD.md) | Use Entra ID client authentication for Service Fabric clusters. | Critical
 [Azure.ServiceFabric.ManagedNaming](../rules/Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness

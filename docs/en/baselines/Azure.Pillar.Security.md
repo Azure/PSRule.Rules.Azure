@@ -14,12 +14,13 @@ Microsoft Azure Well-Architected Framework - Security pillar specific baseline.
 
 The following rules are included within the `Azure.Pillar.Security` baseline.
 
-This baseline includes a total of 232 rules.
+This baseline includes a total of 234 rules.
 
 Name | Synopsis | Severity | Maturity
 ---- | -------- | -------- | --------
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical | L1
 [Azure.ACR.AnonymousAccess](../rules/Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | Important | -
+[Azure.ACR.AuditLogs](../rules/Azure.ACR.AuditLogs.md) | Ensure container registry audit diagnostic logs are enabled. | Important | L1
 [Azure.ACR.ContainerScan](../rules/Azure.ACR.ContainerScan.md) | Container images or their base images may have vulnerabilities discovered after they are built. | Critical | -
 [Azure.ACR.ExportPolicy](../rules/Azure.ACR.ExportPolicy.md) | Export policy on Azure container registry may allow artifact exfiltration. | Important | -
 [Azure.ACR.Firewall](../rules/Azure.ACR.Firewall.md) | Container Registry without restrictions can be accessed from any network location including the Internet. | Important | -
@@ -212,6 +213,7 @@ Name | Synopsis | Severity | Maturity
 [Azure.ServiceBus.AuditLogs](../rules/Azure.ServiceBus.AuditLogs.md) | Ensure namespaces audit diagnostic logs are enabled. | Important | L1
 [Azure.ServiceBus.DisableLocalAuth](../rules/Azure.ServiceBus.DisableLocalAuth.md) | Authenticate Service Bus publishers and consumers with Entra ID identities. | Important | L1
 [Azure.ServiceBus.MinTLS](../rules/Azure.ServiceBus.MinTLS.md) | Service Bus namespaces should reject TLS versions older than 1.2. | Important | L1
+[Azure.ServiceBus.ReplicaLocation](../rules/Azure.ServiceBus.ReplicaLocation.md) | The replica location determines the country or region where the data is stored and processed. | Important | -
 [Azure.ServiceFabric.AAD](../rules/Azure.ServiceFabric.AAD.md) | Use Entra ID client authentication for Service Fabric clusters. | Critical | L1
 [Azure.ServiceFabric.ProtectionLevel](../rules/Azure.ServiceFabric.ProtectionLevel.md) | Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks. | Important | L1
 [Azure.SignalR.ManagedIdentity](../rules/Azure.SignalR.ManagedIdentity.md) | Configure SignalR Services to use managed identities to access Azure resources securely. | Important | L1
