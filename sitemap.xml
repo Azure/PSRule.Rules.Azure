@@ -2353,10 +2353,6 @@
          <lastmod>2026-03-30</lastmod>
     </url>
     <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.DiskCaching/</loc>
-         <lastmod>2026-03-30</lastmod>
-    </url>
-    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.DiskName/</loc>
          <lastmod>2026-03-30</lastmod>
     </url>
@@ -2382,6 +2378,10 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Naming/</loc>
+         <lastmod>2026-03-30</lastmod>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.OSDiskCache/</loc>
          <lastmod>2026-03-30</lastmod>
     </url>
     <url>
