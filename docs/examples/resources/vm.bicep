@@ -29,7 +29,7 @@ param subnetId string
 param amaIdentityId string
 
 // An example virtual machine running Windows Server and one data disk attached.
-resource vm 'Microsoft.Compute/virtualMachines@2024-11-01' = {
+resource vm 'Microsoft.Compute/virtualMachines@2025-04-01' = {
   name: name
   location: location
   identity: {
@@ -94,7 +94,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2024-11-01' = {
 }
 
 // An example of a VM managed disk.
-resource dataDisk 'Microsoft.Compute/disks@2023-10-02' = {
+resource dataDisk 'Microsoft.Compute/disks@2025-01-02' = {
   name: name
   location: location
   sku: {
@@ -109,7 +109,7 @@ resource dataDisk 'Microsoft.Compute/disks@2023-10-02' = {
 }
 
 // An example of configuring a VM extension for the Azure Monitor Agent.
-resource windowsAgent 'Microsoft.Compute/virtualMachines/extensions@2024-03-01' = {
+resource windowsAgent 'Microsoft.Compute/virtualMachines/extensions@2025-04-01' = {
   parent: vm
   name: 'AzureMonitorWindowsAgent'
   location: location
@@ -156,7 +156,7 @@ resource config 'Microsoft.Maintenance/configurationAssignments@2023-04-01' = {
 }
 
 // An example virtual machine with Azure Hybrid Benefit.
-resource vm_with_benefit 'Microsoft.Compute/virtualMachines@2024-07-01' = {
+resource vm_with_benefit 'Microsoft.Compute/virtualMachines@2025-04-01' = {
   name: name
   location: location
   zones: [
@@ -204,7 +204,7 @@ resource vm_with_benefit 'Microsoft.Compute/virtualMachines@2024-07-01' = {
 param nicName string
 
 // An example network interface
-resource nic 'Microsoft.Network/networkInterfaces@2023-06-01' = {
+resource nic 'Microsoft.Network/networkInterfaces@2025-05-01' = {
   name: nicName
   location: location
   properties: {
@@ -223,7 +223,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2023-06-01' = {
 }
 
 // An example virtual machine running Azure Linux.
-resource linux 'Microsoft.Compute/virtualMachines@2024-03-01' = {
+resource linux 'Microsoft.Compute/virtualMachines@2025-04-01' = {
   name: name
   location: location
   identity: {
@@ -231,7 +231,7 @@ resource linux 'Microsoft.Compute/virtualMachines@2024-03-01' = {
   }
   properties: {
     hardwareProfile: {
-      vmSize: 'Standard_D8d_v5'
+      vmSize: 'Standard_D8ds_v6'
     }
     osProfile: {
       computerName: name
@@ -244,8 +244,8 @@ resource linux 'Microsoft.Compute/virtualMachines@2024-03-01' = {
     storageProfile: {
       imageReference: {
         publisher: 'MicrosoftCblMariner'
-        offer: 'Cbl-Mariner'
-        sku: 'cbl-mariner-2-gen2'
+        offer: 'azure-linux-3'
+        sku: 'azure-linux-3-gen2'
         version: 'latest'
       }
       osDisk: {
