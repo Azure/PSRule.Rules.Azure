@@ -393,6 +393,7 @@
 "Azure.ServiceBus.DisableLocalAuth","Authenticate Service Bus publishers and consumers with Entra ID identities.","Important","Security","L1"
 "Azure.ServiceBus.GeoReplica","Enhance resilience to regional outages by replicating namespaces.","Important","Reliability","-"
 "Azure.ServiceBus.MinTLS","Service Bus namespaces should reject TLS versions older than 1.2.","Important","Security","L1"
+"Azure.ServiceBus.ReplicaLocation","The replica location determines the country or region where the data is stored and processed.","Important","Security","-"
 "Azure.ServiceBus.Usage","Regularly remove unused resources to reduce costs.","Important","Cost Optimization","-"
 "Azure.ServiceFabric.AAD","Use Entra ID client authentication for Service Fabric clusters.","Critical","Security","L1"
 "Azure.ServiceFabric.ManagedNaming","Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage.","Awareness","Operational Excellence","L2"

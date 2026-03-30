@@ -2105,6 +2105,10 @@
          <lastmod>2026-03-30</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceBus.ReplicaLocation/</loc>
+         <lastmod>2026-03-30</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceBus.Usage/</loc>
          <lastmod>2026-03-30</lastmod>
     </url>
