@@ -1,104 +1,104 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-A",
-        "ResourceName": "script-A",
-        "Name": "script-A",
-        "Kind": "AzurePowerShell",
-        "Properties": {
-            "azPowerShellVersion": "9.7",
-            "retentionInterval": "P1D",
-            "scriptContent": "Write-Host 'Hello World'"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Resources/deploymentScripts",
-        "ResourceType": "Microsoft.Resources/deploymentScripts",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-A",
+    "ResourceName": "script-A",
+    "Name": "script-A",
+    "Kind": "AzurePowerShell",
+    "Properties": {
+      "azPowerShellVersion": "9.7",
+      "retentionInterval": "P1D",
+      "scriptContent": "Write-Host 'Hello World'"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-B",
-        "ResourceName": "script-B",
-        "Name": "script-B",
-        "Kind": "AzurePowerShell",
-        "Properties": {
-            "azPowerShellVersion": "9.7",
-            "retentionInterval": "P1D",
-            "primaryScriptUri": "https://contoso.com/scripts/deploy.ps1"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Resources/deploymentScripts",
-        "ResourceType": "Microsoft.Resources/deploymentScripts",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Resources/deploymentScripts",
+    "ResourceType": "Microsoft.Resources/deploymentScripts",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-B",
+    "ResourceName": "script-B",
+    "Name": "script-B",
+    "Kind": "AzurePowerShell",
+    "Properties": {
+      "azPowerShellVersion": "9.7",
+      "retentionInterval": "P1D",
+      "primaryScriptUri": "https://contoso.com/scripts/deploy.ps1"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-C",
-        "ResourceName": "script-C",
-        "Name": "script-C",
-        "Kind": "AzurePowerShell",
-        "Properties": {
-            "azPowerShellVersion": "9.7",
-            "retentionInterval": "P1D",
-            "primaryScriptUri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/refs/heads/main/scripts/pipeline-deps.ps1"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Resources/deploymentScripts",
-        "ResourceType": "Microsoft.Resources/deploymentScripts",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Resources/deploymentScripts",
+    "ResourceType": "Microsoft.Resources/deploymentScripts",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-C",
+    "ResourceName": "script-C",
+    "Name": "script-C",
+    "Kind": "AzurePowerShell",
+    "Properties": {
+      "azPowerShellVersion": "9.7",
+      "retentionInterval": "P1D",
+      "primaryScriptUri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/refs/heads/main/scripts/pipeline-deps.ps1"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-D",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-D",
-        "ResourceName": "script-D",
-        "Name": "script-D",
-        "Kind": "AzurePowerShell",
-        "Properties": {
-            "azPowerShellVersion": "9.7",
-            "retentionInterval": "P1D",
-            "primaryScriptUri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Resources/deploymentScripts",
-        "ResourceType": "Microsoft.Resources/deploymentScripts",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Resources/deploymentScripts",
+    "ResourceType": "Microsoft.Resources/deploymentScripts",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-D",
+    "ResourceName": "script-D",
+    "Name": "script-D",
+    "Kind": "AzurePowerShell",
+    "Properties": {
+      "azPowerShellVersion": "11.0",
+      "retentionInterval": "P1D",
+      "primaryScriptUri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-E",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-E",
-        "ResourceName": "script-E",
-        "Name": "script-E",
-        "Kind": "AzurePowerShell",
-        "Properties": {
-            "azPowerShellVersion": "9.7",
-            "retentionInterval": "P1D",
-            "primaryScriptUri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1",
-            "supportingScriptUris": [
-                "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/refs/heads/main/scripts/helper.ps1"
-            ]
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Resources/deploymentScripts",
-        "ResourceType": "Microsoft.Resources/deploymentScripts",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Resources/deploymentScripts",
+    "ResourceType": "Microsoft.Resources/deploymentScripts",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-E",
+    "ResourceName": "script-E",
+    "Name": "script-E",
+    "Kind": "AzurePowerShell",
+    "Properties": {
+      "azPowerShellVersion": "11.0",
+      "retentionInterval": "P1D",
+      "primaryScriptUri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1",
+      "supportingScriptUris": [
+        "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/refs/heads/main/scripts/helper.ps1"
+      ]
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-F",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-F",
-        "ResourceName": "script-F",
-        "Name": "script-F",
-        "Kind": "AzurePowerShell",
-        "Properties": {
-            "azPowerShellVersion": "9.7",
-            "retentionInterval": "P1D",
-            "primaryScriptUri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1",
-            "supportingScriptUris": [
-                "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/helper.ps1"
-            ]
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Resources/deploymentScripts",
-        "ResourceType": "Microsoft.Resources/deploymentScripts",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Resources/deploymentScripts",
+    "ResourceType": "Microsoft.Resources/deploymentScripts",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-F",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Resources/deploymentScripts/script-F",
+    "ResourceName": "script-F",
+    "Name": "script-F",
+    "Kind": "AzurePowerShell",
+    "Properties": {
+      "azPowerShellVersion": "9.7",
+      "retentionInterval": "P1D",
+      "primaryScriptUri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1",
+      "supportingScriptUris": [
+        "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/helper.ps1"
+      ]
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Resources/deploymentScripts",
+    "ResourceType": "Microsoft.Resources/deploymentScripts",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

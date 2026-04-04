@@ -1,67 +1,67 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-A",
-        "ResourceName": "runbook-A",
-        "Name": "runbook-A",
-        "Properties": {
-            "runbookType": "PowerShell",
-            "state": "Published"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts/runbooks",
-        "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-A",
+    "ResourceName": "runbook-A",
+    "Name": "runbook-A",
+    "Properties": {
+      "runbookType": "PowerShell",
+      "state": "Published"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-B",
-        "ResourceName": "runbook-B",
-        "Name": "runbook-B",
-        "Properties": {
-            "runbookType": "PowerShell",
-            "publishContentLink": {
-                "uri": "https://contoso.com/scripts/runbook.ps1"
-            },
-            "state": "Published"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts/runbooks",
-        "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-B",
+    "ResourceName": "runbook-B",
+    "Name": "runbook-B",
+    "Properties": {
+      "runbookType": "PowerShell",
+      "publishContentLink": {
+        "uri": "https://contoso.com/scripts/runbook.ps1"
+      },
+      "state": "Published"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-C",
-        "ResourceName": "runbook-C",
-        "Name": "runbook-C",
-        "Properties": {
-            "runbookType": "PowerShell",
-            "publishContentLink": {
-                "uri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/refs/heads/main/scripts/pipeline-deps.ps1"
-            },
-            "state": "Published"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts/runbooks",
-        "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-C",
+    "ResourceName": "runbook-C",
+    "Name": "runbook-C",
+    "Properties": {
+      "runbookType": "PowerShell",
+      "publishContentLink": {
+        "uri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/refs/heads/main/scripts/pipeline-deps.ps1"
+      },
+      "state": "Published"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-D",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-D",
-        "ResourceName": "runbook-D",
-        "Name": "runbook-D",
-        "Properties": {
-            "runbookType": "PowerShell",
-            "publishContentLink": {
-                "uri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1"
-            },
-            "state": "Published"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts/runbooks",
-        "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-A/runbooks/runbook-D",
+    "ResourceName": "runbook-D",
+    "Name": "runbook-D",
+    "Properties": {
+      "runbookType": "PowerShell",
+      "publishContentLink": {
+        "uri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1"
+      },
+      "state": "Published"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

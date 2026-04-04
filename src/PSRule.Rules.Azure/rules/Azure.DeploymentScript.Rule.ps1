@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Deployment scripts should use a pinned URL to prevent supply chain attacks.
-Rule 'Azure.DeploymentScript.Pinned' -Ref 'AZR-000536' -Type 'Microsoft.Resources/deploymentScripts' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.DeploymentScript.Pinned' -Ref 'AZR-000536' -Type 'Microsoft.Resources/deploymentScripts' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2'; } {
     $pinnedPattern = '^https://raw\.githubusercontent\.com/[^/]+/[^/]+/[0-9a-f]{40}/';
 
     $uris = @();

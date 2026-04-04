@@ -131,7 +131,7 @@ Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automati
 }
 
 # Synopsis: Automation runbook scripts should use a pinned URL to prevent supply chain attacks.
-Rule 'Azure.Automation.RunbookPinned' -Ref 'AZR-000543' -Type 'Microsoft.Automation/automationAccounts/runbooks' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.Automation.RunbookPinned' -Ref 'AZR-000543' -Type 'Microsoft.Automation/automationAccounts/runbooks' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2'; } {
     $pinnedPattern = '^https://raw\.githubusercontent\.com/[^/]+/[^/]+/[0-9a-f]{40}/';
     $uri = $TargetObject.properties.publishContentLink.uri;
     if ($Null -eq $uri -or $uri -notLike 'https://raw.githubusercontent.com/*') {

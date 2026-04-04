@@ -1,5 +1,5 @@
 ---
-reviewed: 2026-03-25
+reviewed: 2026-04-04
 severity: Important
 pillar: Security
 category: SE:02 Secured development lifecycle
@@ -77,8 +77,14 @@ For example:
 }
 ```
 
+## NOTES
+
+This rule currently only evaluates content hosted on GitHub, with URLs starting with `https://raw.githubusercontent.com/`.
+Please log a feature request on if you would like to see support for other hosting providers or URL formats.
+
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Security: Level 1](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level1)
 - [Use deployment scripts in ARM templates](https://learn.microsoft.com/azure/azure-resource-manager/templates/deployment-script-template)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.resources/deploymentscripts)
