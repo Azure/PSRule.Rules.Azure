@@ -1001,6 +1001,10 @@
          <lastmod>2026-04-04</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.RunbookPinned/</loc>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.WebHookExpiry/</loc>
          <lastmod>2026-04-04</lastmod>
     </url>
@@ -1278,6 +1282,10 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.SecureValue/</loc>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DeploymentScript.Pinned/</loc>
          <lastmod>2026-04-04</lastmod>
     </url>
     <url>

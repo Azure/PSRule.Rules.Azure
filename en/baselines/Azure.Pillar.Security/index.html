@@ -3648,6 +3648,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -7618,6 +7622,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../rules/Azure.Automation.RunbookPinned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure.Automation.RunbookPinned
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../rules/Azure.Automation.WebHookExpiry/" class="md-nav__link">
         
   
@@ -9558,6 +9590,34 @@
     
   
     Azure.Deployment.SecureValue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rules/Azure.DeploymentScript.Pinned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure.DeploymentScript.Pinned
   
 
     
@@ -21793,7 +21853,7 @@
 <p>Microsoft Azure Well-Architected Framework - Security pillar specific baseline.</p>
 <h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">#</a></h2>
 <p>The following rules are included within the <code>Azure.Pillar.Security</code> baseline.</p>
-<p>This baseline includes a total of 234 rules.</p>
+<p>This baseline includes a total of 236 rules.</p>
 <table>
 <thead>
 <tr>
@@ -22219,6 +22279,12 @@
 <td>L1</td>
 </tr>
 <tr>
+<td><a href="../../rules/Azure.Automation.RunbookPinned/">Azure.Automation.RunbookPinned</a></td>
+<td>Runbooks that use external scripts from an unpinned URL may be modified to execute malicious code.</td>
+<td>Important</td>
+<td>L2</td>
+</tr>
+<tr>
 <td><a href="../../rules/Azure.Automation.WebHookExpiry/">Azure.Automation.WebHookExpiry</a></td>
 <td>Do not create webhooks with an expiry time greater than 1 year (default).</td>
 <td>Awareness</td>
@@ -22457,6 +22523,12 @@
 <td>A secret property set from a non-secure value may leak the secret into deployment history or logs.</td>
 <td>Critical</td>
 <td>-</td>
+</tr>
+<tr>
+<td><a href="../../rules/Azure.DeploymentScript.Pinned/">Azure.DeploymentScript.Pinned</a></td>
+<td>Deployment scripts that use external scripts from an unpinned URL may be modified to execute malicious code.</td>
+<td>Important</td>
+<td>L2</td>
 </tr>
 <tr>
 <td><a href="../../rules/Azure.DNS.DNSSEC/">Azure.DNS.DNSSEC</a></td>

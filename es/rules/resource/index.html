@@ -3641,6 +3641,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -7611,6 +7615,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../en/rules/Azure.Automation.RunbookPinned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure.Automation.RunbookPinned
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../en/rules/Azure.Automation.WebHookExpiry/" class="md-nav__link">
         
   
@@ -9551,6 +9583,34 @@
     
   
     Azure.Deployment.SecureValue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../en/rules/Azure.DeploymentScript.Pinned/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure.DeploymentScript.Pinned
   
 
     
@@ -22188,6 +22248,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deployment-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dev-box" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -23498,6 +23569,12 @@
 <tr>
 <td><a href="Azure.Automation.PlatformLogs.md">Azure.Automation.PlatformLogs</a></td>
 <td>Ensure automation account platform diagnostic logs are enabled.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="Azure.Automation.RunbookPinned.md">Azure.Automation.RunbookPinned</a></td>
+<td>Runbooks that use external scripts from an unpinned URL may be modified to execute malicious code.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
@@ -25016,6 +25093,25 @@
 <td><a href="Azure.Deployment.SecureValue.md">Azure.Deployment.SecureValue</a></td>
 <td>A secret property set from a non-secure value may leak the secret into deployment history or logs.</td>
 <td>Critical</td>
+<td>Error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deployment-script">Deployment Script<a class="headerlink" href="#deployment-script" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Azure.DeploymentScript.Pinned.md">Azure.DeploymentScript.Pinned</a></td>
+<td>Deployment scripts that use external scripts from an unpinned URL may be modified to execute malicious code.</td>
+<td>Important</td>
 <td>Error</td>
 </tr>
 </tbody>
