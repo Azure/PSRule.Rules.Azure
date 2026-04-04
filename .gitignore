@@ -20,5 +20,6 @@ data/types_index.json
 *.diagsession
 *.log
 *.min.json
+*.user
 docs/**/rules/metadata.json
 docs/**/rules/avm_versions.json

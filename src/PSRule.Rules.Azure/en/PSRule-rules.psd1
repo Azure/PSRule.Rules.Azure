@@ -80,6 +80,7 @@
     FleetPublicKey = "The Azure Fleet '{0}' should have password authentication disabled."
     ACRSoftDeletePolicy = "The container registry '{0}' should have soft delete policy enabled."
     ACRSoftDeletePolicyRetention = "The container registry '{0}' should have retention period value between one to 90 days for the soft delete policy."
+    ContainerRegistryAuditDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
 
     AppConfigStoresDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
     AppConfigPurgeProtection = "The app configuration store '{0}' should have purge protection enabled." 

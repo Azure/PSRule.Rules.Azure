@@ -1875,7 +1875,7 @@
           "osType": "Windows",
           "name": "vm-E_OsDisk_1_0000000000000000000000000000000",
           "createOption": "FromImage",
-          "caching": "ReadWrite",
+          "caching": "ReadOnly",
           "managedDisk": {
             "storageAccountType": "StandardSSD_LRS",
             "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-E_OsDisk_1_0000000000000000000000000000000"
@@ -2058,7 +2058,6 @@
           "osType": "Windows",
           "name": "vm-F_OsDisk_1_0000000000000000000000000000000",
           "createOption": "FromImage",
-          "caching": "ReadWrite",
           "managedDisk": {
             "storageAccountType": "Premium_ZRS",
             "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/vm-F_OsDisk_1_0000000000000000000000000000000"

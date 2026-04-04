@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "ps-rule-azure export show": {
+      "commandName": "Project",
+      "commandLineArgs": "export show",
+      "workingDirectory": "../../"
+    },
+    "ps-rule-azure export resource": {
+      "commandName": "Project",
+      "commandLineArgs": "export resource",
+      "workingDirectory": "../../"
+    }
+  }
+}
