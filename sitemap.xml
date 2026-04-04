@@ -1393,6 +1393,10 @@
          <lastmod>2026-04-04</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Fleet.PublicKey/</loc>
+         <lastmod>2026-04-04</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.Logs/</loc>
          <lastmod>2026-04-04</lastmod>
     </url>

@@ -272,7 +272,7 @@
 "Azure.VM.UseManagedDisks","Virtual machines (VMs) should use managed disks.","Important","Security","-"
 "Azure.VMSS.ComputerName","Virtual Machine Scale Set (VMSS) computer name should meet naming requirements.","Awareness","Operational Excellence","-"
 "Azure.VMSS.Name","Virtual Machine Scale Set (VMSS) names should meet naming requirements.","Awareness","Operational Excellence","-"
-"Azure.VMSS.PublicKey","Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities.","Important","Security","-"
+"Azure.VMSS.PublicKey","Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities.","Important","Security","L2"
 "Azure.VNET.LocalDNS","Virtual networks (VNETs) should use DNS servers deployed within the same Azure region.","Important","Reliability","-"
 "Azure.VNET.Name","Azure Resource Manager (ARM) has requirements for Virtual Network names.","Awareness","Operational Excellence","-"
 "Azure.VNET.PeerState","VNET peering connections must be connected.","Important","Operational Excellence","-"
