@@ -2135,6 +2135,11 @@
           "storageUri": "https://storage-A.blob.core.windows.net/"
         }
       },
+      "securityProfile": {
+        "uefiSettings": {
+          "secureBootEnabled": false
+        }
+      },
       "licenseType": "Windows_Server"
     },
     "resources": [
@@ -2324,6 +2329,11 @@
           "storageUri": "https://storage-A.blob.core.windows.net/"
         }
       },
+      "securityProfile": {
+        "uefiSettings": {
+          "secureBootEnabled": true
+        }
+      },
       "licenseType": "Windows_Client"
     },
     "ResourceGroupName": "test-rg",
@@ -2410,6 +2420,13 @@
           "storageUri": "https://storage-A.blob.core.windows.net/"
         }
       },
+      "securityProfile": {
+        "securityType": "ConfidentialVM",
+        "uefiSettings": {
+          "secureBootEnabled": true,
+          "vTpmEnabled": true
+        }
+      },
       "licenseType": "Windows_Server"
     }
   },
@@ -2465,6 +2482,13 @@
         "bootDiagnostics": {
           "enabled": true,
           "storageUri": "https://storage-A.blob.core.windows.net/"
+        }
+      },
+      "securityProfile": {
+        "securityType": "TrustedLaunch",
+        "uefiSettings": {
+          "secureBootEnabled": true,
+          "vTpmEnabled": true
         }
       },
       "licenseType": "Windows_Server"

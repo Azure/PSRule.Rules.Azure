@@ -1,4 +1,5 @@
 ---
+reviewed: 2026-04-04
 severity: Important
 pillar: Security
 category: SE:08 Hardening resources
@@ -7,7 +8,7 @@ resourceType: Microsoft.Compute/virtualMachineScaleSets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.SecureBoot/
 ---
 
-# VMSS should use Secure Boot
+# VMSS Secure Boot is not enabled
 
 ## SYNOPSIS
 
@@ -34,6 +35,35 @@ However, if you are running an older configuration these features may need to be
 Consider enabling Trusted Launch or Confidential VM with Secure Boot for virtual machine scale sets to protect against boot-level attacks.
 
 ## EXAMPLES
+
+### Configure with Bicep
+
+To deploy virtual machine scale sets that pass this rule:
+
+- Set the `properties.virtualMachineProfile.securityProfile.securityType` property to `TrustedLaunch` or `ConfidentialVM`.
+- Set the `properties.virtualMachineProfile.securityProfile.uefiSettings.secureBootEnabled` property to `true`.
+
+For example:
+
+```bicep
+resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2024-03-01' = {
+  name: name
+  location: location
+  properties: {
+    virtualMachineProfile: {
+      securityProfile: {
+        securityType: 'TrustedLaunch'
+        uefiSettings: {
+          secureBootEnabled: true
+          vTpmEnabled: true
+        }
+      }
+    }
+  }
+}
+```
+
+<!-- external:avm avm/res/compute/virtual-machine-scale-set secureBootEnabled,securityType -->
 
 ### Configure with Azure template
 
@@ -64,35 +94,21 @@ For example:
 }
 ```
 
-### Configure with Bicep
+## NOTES
 
-To deploy virtual machine scale sets that pass this rule:
+Currently there are a few limitations (see documentation for up to date details), including:
 
-- Set the `properties.virtualMachineProfile.securityProfile.securityType` property to `TrustedLaunch` or `ConfidentialVM`.
-- Set the `properties.virtualMachineProfile.securityProfile.uefiSettings.secureBootEnabled` property to `true`.
-
-For example:
-
-```bicep
-resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2024-03-01' = {
-  name: name
-  location: location
-  properties: {
-    virtualMachineProfile: {
-      securityProfile: {
-        securityType: 'TrustedLaunch'
-        uefiSettings: {
-          secureBootEnabled: true
-          vTpmEnabled: true
-        }
-      }
-    }
-  }
-}
-```
+- A supported VMSS SKU and operating system is required.
+- SecureBoot and Trusted Launch is only supported on Generation 2 VM images.
+- Upgrading an existing VMSS is not generally available in all configurations.
+- The following VM features aren't supported with Trusted Launch:
+  - Managed Image (use an image from an Azure Compute Gallery instead).
+  - Linux VM Hibernation.
 
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Security: Level 2](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level2)
 - [Trusted Launch for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/trusted-launch)
+- [Enable Trusted launch on existing Uniform scale set](https://learn.microsoft.com/azure/virtual-machines/trusted-launch-existing-vmss)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets#securityprofile)
