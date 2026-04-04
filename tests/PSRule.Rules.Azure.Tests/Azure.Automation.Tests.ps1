@@ -140,13 +140,13 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'automation-a/runbook-b', 'automation-a/runbook-e';
+            $ruleResult.TargetName | Should -Be 'runbook-b', 'runbook-e';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'automation-a/runbook-a', 'automation-a/runbook-c', 'automation-a/runbook-d';
+            $ruleResult.TargetName | Should -Be 'runbook-a', 'runbook-c', 'runbook-d';
         }
     }
 
