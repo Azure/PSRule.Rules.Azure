@@ -38,15 +38,21 @@ What's changed since v1.47.0:
     - Includes rules released before or during March 2026.
     - Marked `Azure.GA_2025_12` and `Azure.Preview_2025_12` baselines as obsolete.
 - New rules:
+  - Automation Account:
+    - Added `Azure.Automation.RunbookPinned` to check runbook external scripts use pinned commit hash URLs to prevent supply chain attacks.
+      [#3324](https://github.com/Azure/PSRule.Rules.Azure/issues/3324)
   - Azure Container Registry:
     - Check that audit diagnostic logs are enabled for Container Registry by @BernieWhite.
       [#3445](https://github.com/Azure/PSRule.Rules.Azure/issues/3445)
   - Container Apps:
     - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress by @BernieWhite.
       [#3111](https://github.com/Azure/PSRule.Rules.Azure/issues/3111)
+  - Deployment Script:
+    - Added `Azure.DeploymentScript.Pinned` to check deployment script external script URIs use pinned commit hash URLs to prevent supply chain attacks.
+      [#3324](https://github.com/Azure/PSRule.Rules.Azure/issues/3324)
   - Service Bus:
     - Added `Azure.ServiceBus.ReplicaLocation` to check that geo-replication replica locations are within allowed regions.
-      [#3343](https://github.com/Azure/PSRule.Rules.Azure/issues/3343)
+      [#3381](https://github.com/Azure/PSRule.Rules.Azure/issues/3381)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
