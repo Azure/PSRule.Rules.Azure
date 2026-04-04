@@ -44,6 +44,8 @@ What's changed since v1.47.0:
   - Azure Container Registry:
     - Check that audit diagnostic logs are enabled for Container Registry by @BernieWhite.
       [#3445](https://github.com/Azure/PSRule.Rules.Azure/issues/3445)
+  - Azure Fleet:
+    - Check for public key usage on Linux fleet VM profiles by @BernieWhite.
   - Container Apps:
     - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress by @BernieWhite.
       [#3111](https://github.com/Azure/PSRule.Rules.Azure/issues/3111)

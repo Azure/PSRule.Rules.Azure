@@ -19,6 +19,9 @@ param secret string
 @description('The ID of the subnet where the fleet will be deployed.')
 param subnetId string
 
+@description('The SSH public key for the local administrator account.')
+param sshPublicKey string
+
 // An example of creating a fleet resource with a Trusted Launch security profile.
 resource windows_fleet 'Microsoft.AzureFleet/fleets@2024-11-01' = {
   name: name
@@ -38,6 +41,85 @@ resource windows_fleet 'Microsoft.AzureFleet/fleets@2024-11-01' = {
           computerNamePrefix: 'fleet'
           adminUsername: adminUsername
           adminPassword: secret
+        }
+        networkProfile: {
+          networkInterfaceConfigurations: [
+            {
+              name: 'netconfig'
+              properties: {
+                ipConfigurations: [
+                  {
+                    name: 'ipconfig'
+                    properties: {
+                      primary: true
+                      subnet: {
+                        id: subnetId
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+    vmSizesProfile: [
+      {
+        name: 'Standard_D8ds_v6'
+        rank: 0
+      }
+    ]
+    regularPriorityProfile: {
+      minCapacity: 1
+      capacity: 5
+      allocationStrategy: 'Prioritized'
+    }
+  }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
+}
+
+// An example of creating a Linux fleet resource with SSH public key authentication.
+resource linux_fleet 'Microsoft.AzureFleet/fleets@2024-11-01' = {
+  name: name
+  location: location
+  properties: {
+    computeProfile: {
+      baseVirtualMachineProfile: {
+        osProfile: {
+          computerNamePrefix: 'fleet'
+          adminUsername: adminUsername
+          linuxConfiguration: {
+            disablePasswordAuthentication: true
+            provisionVMAgent: true
+            ssh: {
+              publicKeys: [
+                {
+                  path: '/home/azureuser/.ssh/authorized_keys'
+                  keyData: sshPublicKey
+                }
+              ]
+            }
+          }
+        }
+        storageProfile: {
+          imageReference: {
+            publisher: 'MicrosoftCblMariner'
+            offer: 'azure-linux-3'
+            sku: 'azure-linux-3-gen2'
+            version: 'latest'
+          }
+          osDisk: {
+            createOption: 'FromImage'
+            caching: 'ReadWrite'
+            managedDisk: {
+              storageAccountType: 'Premium_LRS'
+            }
+          }
         }
         networkProfile: {
           networkInterfaceConfigurations: [
