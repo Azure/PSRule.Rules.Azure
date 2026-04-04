@@ -131,6 +131,38 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
         }
     }
 
+    Context 'With Location Configuration' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+                Option = @{
+                    'Configuration.AZURE_RESOURCE_ALLOWED_LOCATIONS' = @('centraluseuap', 'norwayeast')
+                }
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.ServiceBus.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+        }
+
+        It 'Azure.ServiceBus.ReplicaLocation' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ServiceBus.ReplicaLocation' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'servicens-E';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'servicens-C', 'servicens-D';
+        }
+    }
+
     Context 'With Template' {
         BeforeAll {
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.ServiceBus.json;

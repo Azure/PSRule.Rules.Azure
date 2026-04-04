@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.25.53.49325",
-      "templateHash": "11141900091582778494"
+      "version": "0.41.2.15936",
+      "templateHash": "5825917393636321245"
     }
   },
   "parameters": {
@@ -21,12 +21,18 @@
       "metadata": {
         "description": "The location resources will be deployed."
       }
+    },
+    "secondaryLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "The secondary location for geo-replication."
+      }
     }
   },
   "resources": [
     {
       "type": "Microsoft.ServiceBus/namespaces",
-      "apiVersion": "2022-10-01-preview",
+      "apiVersion": "2025-05-01-preview",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -37,7 +43,49 @@
       },
       "properties": {
         "disableLocalAuth": true,
-        "minimumTlsVersion": "1.2"
+        "minimumTlsVersion": "1.2",
+        "geoDataReplication": {
+          "maxReplicationLagDurationInSeconds": 300,
+          "locations": [
+            {
+              "locationName": "[parameters('location')]",
+              "roleType": "Primary"
+            },
+            {
+              "locationName": "[parameters('secondaryLocation')]",
+              "roleType": "Secondary"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2025-05-01-preview",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "Premium"
+      },
+      "properties": {
+        "disableLocalAuth": true,
+        "minimumTlsVersion": "1.2",
+        "geoDataReplication": {
+          "maxReplicationLagDurationInSeconds": 300,
+          "locations": [
+            {
+              "locationName": "[parameters('location')]",
+              "roleType": "Primary"
+            },
+            {
+              "locationName": "[parameters('secondaryLocation')]",
+              "roleType": "Secondary"
+            }
+          ]
+        }
       }
     }
   ]
