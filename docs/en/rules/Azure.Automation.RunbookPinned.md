@@ -4,7 +4,7 @@ severity: Important
 pillar: Security
 category: SE:02 Secured development lifecycle
 resource: Automation Account
-resourceType: Microsoft.Automation/automationAccounts/runbooks
+resourceType: Microsoft.Automation/automationAccounts/runbooks,Microsoft.Automation/automationAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.RunbookPinned/
 ---
 
