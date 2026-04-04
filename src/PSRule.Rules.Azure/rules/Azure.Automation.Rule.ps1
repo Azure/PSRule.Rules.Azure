@@ -129,3 +129,41 @@ Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automati
         'AllMetrics'
     )
 }
+
+# Synopsis: Automation runbook scripts should use a pinned URL to prevent supply chain attacks.
+Rule 'Azure.Automation.RunbookPinned' -Ref 'AZR-000543' -Type 'Microsoft.Automation/automationAccounts', 'Microsoft.Automation/automationAccounts/runbooks' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2'; } {
+    $pinnedPattern = '^https://raw\.githubusercontent\.com/[^/]+/[^/]+/[0-9a-f]{40}/';
+
+    # Collect runbook objects. If the current target is an automation account, get its runbooks
+    # via GetSubResources. Otherwise treat the current target as the runbook to evaluate.
+    $runbooks = @($TargetObject);
+
+    if ($TargetObject.Type -like 'Microsoft.Automation/automationAccounts') {
+        $runbooks = @(GetSubResources -ResourceType 'Microsoft.Automation/automationAccounts/runbooks');
+    }
+
+    # If no runbooks found, nothing to evaluate.
+    if ($runbooks.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    $runbooksToCheck = @();
+
+    foreach ($runbook in $runbooks) {
+        if ($Null -eq $runbook.properties) { continue }
+        $uri = $runbook.properties.publishContentLink.uri
+        if ($Null -eq $uri) { continue }
+        if ($uri -notLike 'https://raw.githubusercontent.com/*') { continue }
+        $runbooksToCheck += [pscustomobject]@{ Uri = $uri; Path = $runbook._PSRule.path }
+    }
+
+    if ($runbooksToCheck.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    foreach ($item in $runbooksToCheck) {
+        $assert = $Assert.Create($item.Uri -match $pinnedPattern, $LocalizedData.GitHubRawScriptUnpinned, $item.Uri);
+
+        if ($Null -ne $item.Path) { $assert.PathPrefix($item.Path) }
+    }
+}

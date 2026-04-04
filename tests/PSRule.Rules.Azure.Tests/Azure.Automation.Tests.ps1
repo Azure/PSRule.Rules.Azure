@@ -129,8 +129,24 @@ Describe 'Azure.Automation' -Tag Automation {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'automation-a', 'automation-d', 'automation-e';
+            $ruleResult.Length | Should -Be 3;
+        }
+
+        It 'Azure.Automation.RunbookPinned' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Automation.RunbookPinned' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -Be 'runbook-C';
+            $ruleResult.Length | Should -Be 1;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'runbook-A', 'runbook-B', 'runbook-D', 'automation-a', 'automation-b', 'automation-c', 'automation-d', 'automation-e', 'automation-f', 'automation-g';
+            $ruleResult.Length | Should -Be 10;
         }
     }
 
