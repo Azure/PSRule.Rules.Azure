@@ -330,6 +330,18 @@ Rule 'Azure.VM.ASDistributeTraffic' -Ref 'AZR-000451' -Type 'Microsoft.Compute/v
 
 #endregion Availability Set
 
+#region Secure Boot
+
+# Synopsis: VMs should use Trusted Launch with Secure Boot enabled.
+Rule 'Azure.VM.SecureBoot' -Ref 'AZR-000538' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.In($TargetObject, 'properties.securityProfile.securityType', @('TrustedLaunch', 'ConfidentialVM')).
+        Reason($LocalizedData.VMSecureBoot, $PSRule.TargetName)
+    $Assert.HasFieldValue($TargetObject, 'properties.securityProfile.uefiSettings.secureBootEnabled', $True).
+        Reason($LocalizedData.VMSecureBootEnabled, $PSRule.TargetName)
+}
+
+#endregion Secure Boot
+
 #region Helper functions
 
 function global:HasPublisherMicrosoftSQLServer {

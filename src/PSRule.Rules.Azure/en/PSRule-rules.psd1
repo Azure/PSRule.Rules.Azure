@@ -134,4 +134,8 @@
     KeyValueShouldNotContainSecrets = "The key value '{0}' property should not contain secrets."
     CacheRedisMigrateAMR = "Azure Cache for Redis is being retired. Migrate to Azure Managed Redis."
     RedisEnterpriseMigrateAMR = "Azure Cache for Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis."
+    VMSecureBoot = "The virtual machine '{0}' should set the 'securityType' property to 'TrustedLaunch' or 'ConfidentialVM'."
+    VMSecureBootEnabled = "The virtual machine '{0}' should have Secure Boot enabled."
+    VMSSSecureBoot = "The virtual machine scale set '{0}' should set the 'securityType' property to 'TrustedLaunch' or 'ConfidentialVM'."
+    VMSSSecureBootEnabled = "The virtual machine scale set '{0}' should have Secure Boot enabled."
 }

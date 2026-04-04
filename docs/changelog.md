@@ -47,6 +47,12 @@ What's changed since v1.47.0:
   - Service Bus:
     - Added `Azure.ServiceBus.ReplicaLocation` to check that geo-replication replica locations are within allowed regions.
       [#3343](https://github.com/Azure/PSRule.Rules.Azure/issues/3343)
+  - Virtual Machine:
+    - Check that virtual machines have Secure Boot enabled by @coder999999999.
+      [#3728](https://github.com/Azure/PSRule.Rules.Azure/issues/3728)
+  - Virtual Machine Scale Sets:
+    - Check that virtual machine scale sets have Secure Boot enabled by @coder999999999.
+      [#3730](https://github.com/Azure/PSRule.Rules.Azure/issues/3730)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
