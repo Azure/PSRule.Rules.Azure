@@ -30,7 +30,23 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.47.0:
+
+- New features:
+  - Added March 2026 baselines `Azure.GA_2026_03`, `Azure.Preview_2026_03`, and `Azure.CAF_2026_03` by @BernieWhite.
+    [#3709](https://github.com/Azure/PSRule.Rules.Azure/issues/3709)
+    - Includes rules released before or during March 2026.
+    - Marked `Azure.GA_2025_12` and `Azure.Preview_2025_12` baselines as obsolete.
 - New rules:
+  - Azure Container Registry:
+    - Check that audit diagnostic logs are enabled for Container Registry by @BernieWhite.
+      [#3445](https://github.com/Azure/PSRule.Rules.Azure/issues/3445)
+  - Container Apps:
+    - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress by @BernieWhite.
+      [#3111](https://github.com/Azure/PSRule.Rules.Azure/issues/3111)
+  - Service Bus:
+    - Added `Azure.ServiceBus.ReplicaLocation` to check that geo-replication replica locations are within allowed regions.
+      [#3343](https://github.com/Azure/PSRule.Rules.Azure/issues/3343)
   - Virtual Machine:
     - Check that virtual machines have Secure Boot enabled by @coder999999999.
       [#3728](https://github.com/Azure/PSRule.Rules.Azure/issues/3728)
@@ -41,6 +57,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
       [#3708](https://github.com/Azure/PSRule.Rules.Azure/issues/3708)
+  - Virtual Machine:
+    - Updated `Azure.VM.DiskCaching` to check for `ReadWrite` caching on OS disks instead only by @BernieWhite.
+      [#3673](https://github.com/Azure/PSRule.Rules.Azure/issues/3673)
+      - Renamed the rule from `Azure.VM.DiskCaching` to `Azure.VM.OSDiskCache` to reflect updated scope.
+      - Updates to provide more complete documentation.
+- Engineering
+  - Improved documentation for expansion internals with a high-level flow diagram and code references by @BernieWhite.
+    [#3715](https://github.com/Azure/PSRule.Rules.Azure/issues/3715)
 
 ## v1.47.0
 

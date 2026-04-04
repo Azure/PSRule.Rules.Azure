@@ -23,24 +23,8 @@ Rule 'Azure.VM.UseManagedDisks' -Ref 'AZR-000238' -Type 'Microsoft.Compute/virtu
 }
 
 # Synopsis: Check disk caching is configured correctly for the workload
-Rule 'Azure.VM.DiskCaching' -Ref 'AZR-000242' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
-    # Check OS disk
-    $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.osDisk.caching', 'ReadWrite');
-
-    # Check data disks
-    $dataDisks = @($TargetObject.properties.storageProfile.dataDisks | Where-Object {
-            $Null -ne $_
-        })
-    if ($dataDisks.Length -gt 0) {
-        foreach ($disk in $dataDisks) {
-            if ($disk.managedDisk.storageAccountType -eq 'Premium_LRS') {
-                $Assert.HasFieldValue($disk, 'caching', 'ReadOnly');
-            }
-            else {
-                $Assert.HasFieldValue($disk, 'caching', 'None');
-            }
-        }
-    }
+Rule 'Azure.VM.OSDiskCache' -Ref 'AZR-000242' -Alias 'Azure.VM.DiskCaching' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } -Labels @{ 'Azure.WAF/maturity' = 'L1'; } {
+    $Assert.HasDefaultValue($TargetObject, 'properties.storageProfile.osDisk.caching', 'ReadWrite')
 }
 
 # Synopsis: Use Hybrid Use Benefit

@@ -1,23 +1,24 @@
 ---
+export: true
+moduleVersion: v1.48.0
 generated: true
 ---
 
-# Azure.Preview
+# Azure.GA_2026_03
 
-Includes the latest rules for Azure GA and preview features that is updated each release.
+Include rules released March 2026 or prior for Azure GA features.
 
 ## Rules
 
-The following rules are included within the `Azure.Preview` baseline.
+The following rules are included within the `Azure.GA_2026_03` baseline.
 
-This baseline includes a total of 528 rules.
+This baseline includes a total of 517 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
 [Azure.ACI.Naming](../rules/Azure.ACI.Naming.md) | Container Instance resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical
 [Azure.ACR.AnonymousAccess](../rules/Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | Important
-[Azure.ACR.AuditLogs](../rules/Azure.ACR.AuditLogs.md) | Ensure container registry audit diagnostic logs are enabled. | Important
 [Azure.ACR.ContainerScan](../rules/Azure.ACR.ContainerScan.md) | Container images or their base images may have vulnerabilities discovered after they are built. | Critical
 [Azure.ACR.ExportPolicy](../rules/Azure.ACR.ExportPolicy.md) | Export policy on Azure container registry may allow artifact exfiltration. | Important
 [Azure.ACR.Firewall](../rules/Azure.ACR.Firewall.md) | Container Registry without restrictions can be accessed from any network location including the Internet. | Important
@@ -26,10 +27,7 @@ Name | Synopsis | Severity
 [Azure.ACR.MinSku](../rules/Azure.ACR.MinSku.md) | The Basic SKU provides limited performance and features for production container registry workloads. | Important
 [Azure.ACR.Name](../rules/Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness
 [Azure.ACR.Naming](../rules/Azure.ACR.Naming.md) | Container Registry resources without a standard naming convention may be difficult to identify and manage. | Awareness
-[Azure.ACR.Quarantine](../rules/Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Important
 [Azure.ACR.ReplicaLocation](../rules/Azure.ACR.ReplicaLocation.md) | The replication location determines the country or region where container images and metadata are stored and processed. | Important
-[Azure.ACR.Retention](../rules/Azure.ACR.Retention.md) | Use a retention policy to cleanup untagged manifests. | Important
-[Azure.ACR.SoftDelete](../rules/Azure.ACR.SoftDelete.md) | Container registry artifacts are permanently lost when accidentally deleted without soft delete protection. | Important
 [Azure.ACR.Usage](../rules/Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important
 [Azure.ADX.DiskEncryption](../rules/Azure.ADX.DiskEncryption.md) | Use disk encryption for Azure Data Explorer (ADX) clusters. | Important
 [Azure.ADX.ManagedIdentity](../rules/Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | Important
@@ -144,8 +142,6 @@ Name | Synopsis | Severity
 [Azure.AppService.WebProbe](../rules/Azure.AppService.WebProbe.md) | Configure and enable instance health probes. | Important
 [Azure.AppService.WebProbePath](../rules/Azure.AppService.WebProbePath.md) | Configure a dedicated path for health probe requests. | Important
 [Azure.AppService.WebSecureFtp](../rules/Azure.AppService.WebSecureFtp.md) | Web apps should disable insecure FTP and configure SFTP when required. | Important
-[Azure.Arc.Kubernetes.Defender](../rules/Azure.Arc.Kubernetes.Defender.md) | Deploy Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters. | Important
-[Azure.Arc.Server.MaintenanceConfig](../rules/Azure.Arc.Server.MaintenanceConfig.md) | Use a maintenance configuration for Arc-enabled servers. | Important
 [Azure.ASE.AvailabilityZone](../rules/Azure.ASE.AvailabilityZone.md) | Deploy app service environments using availability zones in supported regions to ensure high availability and resilience. | Important
 [Azure.ASE.MigrateV3](../rules/Azure.ASE.MigrateV3.md) | Use ASEv3 as replacement for the classic app service environment versions ASEv1 and ASEv2. | Important
 [Azure.ASG.Name](../rules/Azure.ASG.Name.md) | Application Security Group (ASG) names should meet naming requirements. | Awareness
@@ -166,7 +162,6 @@ Name | Synopsis | Severity
 [Azure.ContainerApp.DisableAffinity](../rules/Azure.ContainerApp.DisableAffinity.md) | Disable session affinity to prevent unbalanced distribution. | Awareness
 [Azure.ContainerApp.EnvNaming](../rules/Azure.ContainerApp.EnvNaming.md) | Container App Environment resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ContainerApp.ExternalIngress](../rules/Azure.ContainerApp.ExternalIngress.md) | Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment. | Important
-[Azure.ContainerApp.HealthProbe](../rules/Azure.ContainerApp.HealthProbe.md) | Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks. | Important
 [Azure.ContainerApp.Insecure](../rules/Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important
 [Azure.ContainerApp.JobNaming](../rules/Azure.ContainerApp.JobNaming.md) | Container App Job resources without a standard naming convention may be difficult to identify and manage. | Awareness
 [Azure.ContainerApp.ManagedIdentity](../rules/Azure.ContainerApp.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important
@@ -212,7 +207,6 @@ Name | Synopsis | Severity
 [Azure.Defender.SQL](../rules/Azure.Defender.SQL.md) | Enable Microsoft Defender for SQL servers. | Critical
 [Azure.Defender.SQLOnVM](../rules/Azure.Defender.SQLOnVM.md) | Enable Microsoft Defender for SQL servers on machines. | Critical
 [Azure.Defender.Storage](../rules/Azure.Defender.Storage.md) | Enable Microsoft Defender for Storage. | Critical
-[Azure.Defender.Storage.DataScan](../rules/Azure.Defender.Storage.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical
 [Azure.Defender.Storage.MalwareScan](../rules/Azure.Defender.Storage.MalwareScan.md) | Enable Malware Scanning in Microsoft Defender for Storage. | Critical
 [Azure.DefenderCloud.ActiveAlerts](../rules/Azure.DefenderCloud.ActiveAlerts.md) | Alerts that have not received a response may indicate a security issue that requires attention. | Important
 [Azure.DefenderCloud.Provisioning](../rules/Azure.DefenderCloud.Provisioning.md) | Enable auto-provisioning on to improve Microsoft Defender for Cloud insights. | Important
@@ -404,9 +398,7 @@ Name | Synopsis | Severity
 [Azure.Search.SKU](../rules/Azure.Search.SKU.md) | Use the basic and standard tiers for entry level workloads. | Critical
 [Azure.ServiceBus.AuditLogs](../rules/Azure.ServiceBus.AuditLogs.md) | Ensure namespaces audit diagnostic logs are enabled. | Important
 [Azure.ServiceBus.DisableLocalAuth](../rules/Azure.ServiceBus.DisableLocalAuth.md) | Authenticate Service Bus publishers and consumers with Entra ID identities. | Important
-[Azure.ServiceBus.GeoReplica](../rules/Azure.ServiceBus.GeoReplica.md) | Enhance resilience to regional outages by replicating namespaces. | Important
 [Azure.ServiceBus.MinTLS](../rules/Azure.ServiceBus.MinTLS.md) | Service Bus namespaces should reject TLS versions older than 1.2. | Important
-[Azure.ServiceBus.ReplicaLocation](../rules/Azure.ServiceBus.ReplicaLocation.md) | The replica location determines the country or region where the data is stored and processed. | Important
 [Azure.ServiceBus.Usage](../rules/Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | Important
 [Azure.ServiceFabric.AAD](../rules/Azure.ServiceFabric.AAD.md) | Use Entra ID client authentication for Service Fabric clusters. | Critical
 [Azure.ServiceFabric.ManagedNaming](../rules/Azure.ServiceFabric.ManagedNaming.md) | Service Fabric managed cluster resources without a standard naming convention may be difficult to identify and manage. | Awareness
@@ -442,7 +434,6 @@ Name | Synopsis | Severity
 [Azure.Storage.BlobAccessType](../rules/Azure.Storage.BlobAccessType.md) | Use containers configured with a private access type that requires authorization. | Important
 [Azure.Storage.BlobPublicAccess](../rules/Azure.Storage.BlobPublicAccess.md) | Storage Accounts should only accept authorized requests. | Important
 [Azure.Storage.ContainerSoftDelete](../rules/Azure.Storage.ContainerSoftDelete.md) | Enable container soft delete on Storage Accounts. | Important
-[Azure.Storage.Defender.DataScan](../rules/Azure.Storage.Defender.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical
 [Azure.Storage.Defender.MalwareScan](../rules/Azure.Storage.Defender.MalwareScan.md) | Enable Malware Scanning in Microsoft Defender for Storage. | Critical
 [Azure.Storage.DefenderCloud](../rules/Azure.Storage.DefenderCloud.md) | Enable Microsoft Defender for Storage for storage accounts. | Critical
 [Azure.Storage.FileShareSoftDelete](../rules/Azure.Storage.FileShareSoftDelete.md) | Enable soft delete on Storage Accounts file shares. | Important

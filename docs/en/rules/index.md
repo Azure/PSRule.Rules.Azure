@@ -553,5 +553,8 @@ AZR-000531 | [Azure.ServiceFabric.ManagedNaming](Azure.ServiceFabric.ManagedNami
 AZR-000532 | [Azure.EventHub.AvailabilityZone](Azure.EventHub.AvailabilityZone.md) | Use zone redundant Event Hub namespaces in supported regions to improve reliability. | GA
 AZR-000533 | [Azure.Redis.MigrateAMR](Azure.Redis.MigrateAMR.md) | Azure Cache for Redis is being retired. Migrate to Azure Managed Redis. | GA
 AZR-000534 | [Azure.RedisEnterprise.MigrateAMR](Azure.RedisEnterprise.MigrateAMR.md) | Azure Cache for Redis Enterprise and Enterprise Flash are being retired. Migrate to Azure Managed Redis. | GA
+AZR-000535 | [Azure.ACR.AuditLogs](Azure.ACR.AuditLogs.md) | Ensure container registry audit diagnostic logs are enabled. | GA
+AZR-000537 | [Azure.ContainerApp.HealthProbe](Azure.ContainerApp.HealthProbe.md) | Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks. | GA
+AZR-000540 | [Azure.ServiceBus.ReplicaLocation](Azure.ServiceBus.ReplicaLocation.md) | The replica location determines the country or region where the data is stored and processed. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
