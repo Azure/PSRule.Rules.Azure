@@ -5,6 +5,22 @@
 # Validation rules for Automation Accounts
 #
 
+# Synopsis: Ensure automation runbooks use pinned script dependencies.
+Rule 'Azure.Automation.Runbook.NotPinnedUri' -Ref 'AZR-000541' -Type 'Microsoft.Automation/automationAccounts/runbooks' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } {
+    if ($Null -eq $TargetObject.properties.publishContentLink -or
+        [string]::IsNullOrEmpty($TargetObject.properties.publishContentLink.uri)) {
+        return $Assert.Pass();
+    }
+
+    $uri = $TargetObject.properties.publishContentLink.uri;
+
+    if ($uri -notmatch '^https://raw\.githubusercontent\.com/') {
+        return $Assert.Pass();
+    }
+
+    $Assert.Match($TargetObject, 'properties.publishContentLink.uri', '^https://raw\.githubusercontent\.com/[^/]+/[^/]+/[0-9a-f]{40}/');
+}
+
 # Synopsis: Ensure variables are encrypted
 Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-5' } {
     $variables = GetSubResources -ResourceType 'Microsoft.Automation/automationAccounts/variables';

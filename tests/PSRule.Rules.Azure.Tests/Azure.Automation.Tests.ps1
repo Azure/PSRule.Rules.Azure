@@ -132,6 +132,22 @@ Describe 'Azure.Automation' -Tag Automation {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'automation-a', 'automation-d', 'automation-e';
         }
+
+        It 'Azure.Automation.Runbook.NotPinnedUri' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Automation.Runbook.NotPinnedUri' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'automation-a/runbook-b', 'automation-a/runbook-e';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'automation-a/runbook-a', 'automation-a/runbook-c', 'automation-a/runbook-d';
+        }
     }
 
     Context 'With Configuration Option' {

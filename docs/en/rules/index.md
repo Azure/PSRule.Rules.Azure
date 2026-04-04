@@ -556,5 +556,6 @@ AZR-000534 | [Azure.RedisEnterprise.MigrateAMR](Azure.RedisEnterprise.MigrateAMR
 AZR-000535 | [Azure.ACR.AuditLogs](Azure.ACR.AuditLogs.md) | Ensure container registry audit diagnostic logs are enabled. | GA
 AZR-000537 | [Azure.ContainerApp.HealthProbe](Azure.ContainerApp.HealthProbe.md) | Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks. | GA
 AZR-000540 | [Azure.ServiceBus.ReplicaLocation](Azure.ServiceBus.ReplicaLocation.md) | The replica location determines the country or region where the data is stored and processed. | GA
+AZR-000541 | [Azure.Automation.Runbook.NotPinnedUri](Azure.Automation.Runbook.NotPinnedUri.md) | Ensure automation runbooks use pinned script dependencies. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

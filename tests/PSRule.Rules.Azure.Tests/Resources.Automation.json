@@ -752,5 +752,135 @@
         "ETag": null
       }
     ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-a",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-a",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "runbook-a",
+    "Name": "automation-a/runbook-a",
+    "Plan": null,
+    "Properties": {
+      "runbookType": "PowerShell",
+      "logVerbose": false,
+      "logProgress": false
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-b",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-b",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "runbook-b",
+    "Name": "automation-a/runbook-b",
+    "Plan": null,
+    "Properties": {
+      "runbookType": "PowerShell",
+      "publishContentLink": {
+        "uri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/refs/heads/main/scripts/pipeline-deps.ps1",
+        "version": "1.0.0.0",
+        "contentHash": null
+      },
+      "logVerbose": false,
+      "logProgress": false
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-c",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-c",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "runbook-c",
+    "Name": "automation-a/runbook-c",
+    "Plan": null,
+    "Properties": {
+      "runbookType": "PowerShell",
+      "publishContentLink": {
+        "uri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/8dc395b739a8be00571d039c0af9df88d85c1e2a/scripts/pipeline-deps.ps1",
+        "version": "1.0.0.0",
+        "contentHash": null
+      },
+      "logVerbose": false,
+      "logProgress": false
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-d",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-d",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "runbook-d",
+    "Name": "automation-a/runbook-d",
+    "Plan": null,
+    "Properties": {
+      "runbookType": "PowerShell",
+      "publishContentLink": {
+        "uri": "https://example.com/scripts/pipeline-deps.ps1",
+        "version": "1.0.0.0",
+        "contentHash": null
+      },
+      "logVerbose": false,
+      "logProgress": false
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-e",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a/runbooks/runbook-e",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "runbook-e",
+    "Name": "automation-a/runbook-e",
+    "Plan": null,
+    "Properties": {
+      "runbookType": "PowerShell",
+      "publishContentLink": {
+        "uri": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/main/scripts/pipeline-deps.ps1",
+        "version": "1.0.0.0",
+        "contentHash": null
+      },
+      "logVerbose": false,
+      "logProgress": false
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts/runbooks",
+    "ResourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]
