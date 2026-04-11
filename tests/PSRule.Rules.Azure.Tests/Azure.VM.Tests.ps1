@@ -622,6 +622,20 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.TargetName | Should -BeIn 'vm-B', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F', 'vm-G', 'vm-H', 'vm-I';
             $ruleResult.Length | Should -Be 13;
         }
+
+        It 'Azure.VM.SecureBoot' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.SecureBoot' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F', 'vm-G';
+            $ruleResult.Length | Should -Be 12;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.TargetName | Should -BeIn 'vm-H', 'vm-I';
+            $ruleResult.Length | Should -Be 2
+        }
     }
 
     Context 'Resource name - VM' {

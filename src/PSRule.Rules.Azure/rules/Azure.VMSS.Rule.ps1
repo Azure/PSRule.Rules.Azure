@@ -150,6 +150,14 @@ Rule 'Azure.VMSS.PublicIPAttached' -Ref 'AZR-000450' -Type 'Microsoft.Compute/vi
     }
 }
 
+# Synopsis: VMSS should use Trusted Launch with Secure Boot enabled.
+Rule 'Azure.VMSS.SecureBoot' -Ref 'AZR-000539' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.In($TargetObject, 'properties.virtualMachineProfile.securityProfile.securityType', @('TrustedLaunch', 'ConfidentialVM')).
+        Reason($LocalizedData.VMSSSecureBoot, $PSRule.TargetName)
+    $Assert.HasFieldValue($TargetObject, 'properties.virtualMachineProfile.securityProfile.uefiSettings.secureBootEnabled', $True).
+        Reason($LocalizedData.VMSSSecureBootEnabled, $PSRule.TargetName)
+}
+
 #endregion Rules
 
 #endregion Virtual machine scale set
