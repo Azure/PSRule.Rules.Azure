@@ -13,11 +13,11 @@
       },
       "Azure.Identity.Broker": {
         "type": "Direct",
-        "requested": "[1.5.0, )",
-        "resolved": "1.5.0",
-        "contentHash": "1QnjGLKGTeD760+C+Ftn+wq74tzd7jAoSZg+GFLNWtbdTqEU8PnG9yi8W2XrQcvTPX72KqKRj5AnG42g1QdvFg==",
+        "requested": "[1.6.0, )",
+        "resolved": "1.6.0",
+        "contentHash": "6FEpeGMIE5D6fCu00knP051t42ahlLse4Zs21MNQ7XYKq3xKI5wZe2ntmyT6nhWMUShLEjD0zZfkvQkjUg8K3g==",
         "dependencies": {
-          "Azure.Identity": "1.20.0",
+          "Azure.Core": "1.53.0",
           "Microsoft.Identity.Client.Broker": "4.83.3"
         }
       },
