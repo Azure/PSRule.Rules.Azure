@@ -1,0 +1,135 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.10.0",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "azapi_resource.storage_with_body_string",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "storage_with_body_string",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Storage/storageAccounts@2023-01-01",
+            "name": "strwithbodystring",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": "eastus",
+            "body": "{\"sku\":{\"name\":\"Standard_GRS\"},\"properties\":{\"minimumTlsVersion\":\"TLS1_2\"}}",
+            "tags": null,
+            "identity": null
+          }
+        },
+        {
+          "address": "azapi_resource.no_type",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "no_type",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": null,
+            "name": "broken",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": "eastus",
+            "body": {},
+            "tags": null,
+            "identity": null
+          }
+        },
+        {
+          "address": "azapi_resource.no_name",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "no_name",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Storage/storageAccounts@2023-01-01",
+            "name": null,
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": "eastus",
+            "body": {},
+            "tags": null,
+            "identity": null
+          }
+        },
+        {
+          "address": "azapi_resource.type_no_version",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "type_no_version",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "noversion",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": "eastus",
+            "body": {
+              "sku": {
+                "name": "Standard_LRS"
+              }
+            },
+            "tags": null,
+            "identity": null
+          }
+        },
+        {
+          "address": "azapi_update_resource.update_storage",
+          "mode": "managed",
+          "type": "azapi_update_resource",
+          "name": "update_storage",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Storage/storageAccounts@2023-01-01",
+            "name": "updatedstorage",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": null,
+            "body": {
+              "properties": {
+                "minimumTlsVersion": "TLS1_2"
+              }
+            },
+            "tags": null,
+            "identity": null
+          }
+        },
+        {
+          "address": "azapi_resource.null_body",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "null_body",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Resources/resourceGroups@2023-07-01",
+            "name": "myrg",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000",
+            "location": "eastus",
+            "body": null,
+            "tags": {
+              "env": "test"
+            },
+            "identity": null
+          }
+        },
+        {
+          "address": "azapi_data_plane_resource.dp",
+          "mode": "managed",
+          "type": "azapi_data_plane_resource",
+          "name": "dp",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Synapse/workspaces/sqlPools@2021-06-01",
+            "name": "mypool",
+            "body": {}
+          }
+        }
+      ]
+    }
+  }
+}

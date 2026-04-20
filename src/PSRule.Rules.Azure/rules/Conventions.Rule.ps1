@@ -177,3 +177,37 @@ Export-PSRuleConvention 'Azure.ExpandBicepParam' -If { $Configuration.AZURE_BICE
 }
 
 #endregion Bicep
+
+#region Terraform
+
+# Synopsis: Expand Azure resources from Terraform plan JSON files.
+Export-PSRuleConvention 'Azure.ExpandTerraformPlan' -If {
+    $Configuration.AZURE_TERRAFORM_PLAN_EXPANSION -eq $True -and
+    ($TargetObject.Extension -eq '.json' -or $TargetObject.Extension -eq '.jsonc') -and
+    [PSRule.Rules.Azure.Runtime.Helper]::IsTerraformPlanFile(
+        $PSRule.GetContentFirstOrDefault($TargetObject)
+    )
+} -Begin {
+    Write-Verbose "[Azure.ExpandTerraformPlan] -- Expanding Terraform plan: $($TargetObject.FullName)";
+    try {
+        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetTerraformPlanResources(
+            $TargetObject.FullName
+        );
+        if ($Null -ne $data) {
+            Write-Verbose "[Azure.ExpandTerraformPlan] -- Importing $($data.Length) Terraform resources.";
+            $PSRule.Import($data);
+        }
+    }
+    catch [PSRule.Rules.Azure.Data.Terraform.TerraformPlanException] {
+        Write-Error -Exception $_.Exception;
+    }
+    catch [System.IO.FileNotFoundException] {
+        Write-Error -Exception $_.Exception;
+    }
+    catch {
+        Write-Error -Message "Failed to expand Terraform plan '$($TargetObject.FullName)'. $($_.Exception.Message)" -ErrorId 'Azure.ExpandTerraformPlan.ConventionException';
+    }
+    Write-Verbose "[Azure.ExpandTerraformPlan] -- Complete expanding Terraform plan: $($TargetObject.FullName)";
+}
+
+#endregion Terraform

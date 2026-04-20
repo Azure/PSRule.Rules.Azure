@@ -13,6 +13,7 @@ using PSRule.Rules.Azure.Data.APIM;
 using PSRule.Rules.Azure.Data.Bicep;
 using PSRule.Rules.Azure.Data.Network;
 using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Data.Terraform;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Pipeline.Output;
 
@@ -234,6 +235,28 @@ public static class Helper
         var doc = new XmlDocument();
         doc.Load(reader);
         return doc;
+    }
+
+    /// <summary>
+    /// Check if a parsed JSON content object is a Terraform plan file.
+    /// </summary>
+    public static bool IsTerraformPlanFile(PSObject content)
+    {
+        if (content == null)
+            return false;
+
+        var formatVersion = content.Properties["format_version"]?.Value?.ToString();
+        var hasPlannedValues = content.Properties["planned_values"] != null;
+        return formatVersion != null && formatVersion.StartsWith("1.") && hasPlannedValues;
+    }
+
+    /// <summary>
+    /// Expand resources from a Terraform plan JSON file.
+    /// </summary>
+    public static PSObject[] GetTerraformPlanResources(string planFile)
+    {
+        var helper = new TerraformPlanHelper();
+        return helper.ProcessPlanFile(planFile);
     }
 
     #region Helper methods

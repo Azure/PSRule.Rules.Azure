@@ -32,6 +32,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.47.0:
 
+- New features:
+  - Added Terraform plan expansion support for AzAPI provider resources by @polatengin.
+    [#1193](https://github.com/Azure/PSRule.Rules.Azure/issues/1193)
+    - Expands `azapi_resource` and `azapi_update_resource` from Terraform plan JSON files into ARM format for rule evaluation.
+    - Enable with configuration option `AZURE_TERRAFORM_PLAN_EXPANSION`.
 - New rules:
   - Azure Container Registry:
     - Check that audit diagnostic logs are enabled for Container Registry by @copilot.

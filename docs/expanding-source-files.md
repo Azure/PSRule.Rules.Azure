@@ -45,9 +45,13 @@ Source expansion is supported with:
   See [Using Bicep source][2] for a detailed explanation of how to do this.
 - **Azure Bicep modules with tests** &mdash; Reusable Bicep modules can be expanded with tests.
   See [Using Bicep source][2] for a detailed explanation of how to do this.
+- **Terraform plan JSON** &mdash; Terraform plan files generated with `terraform show -json` are detected and expanded.
+  Azure resources from the AzAPI provider are converted to ARM format for analysis.
+  See [Using Terraform][4] for a detailed explanation of how to do this.
 
   [1]: using-templates.md
   [2]: using-bicep.md
+  [4]: using-terraform.md
 
 ### Limitations
 
