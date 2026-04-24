@@ -58,6 +58,9 @@ What's changed since v1.47.0:
   - Virtual Machine:
     - Check that virtual machines have Secure Boot enabled by @coder999999999.
       [#3728](https://github.com/Azure/PSRule.Rules.Azure/issues/3728)
+- Bug fixes:
+  - Improved Bicep expansion errors to surface captured CLI restore failures during timeout windows instead of always falling back to the generic timeout message.
+    [#2896](https://github.com/Azure/PSRule.Rules.Azure/issues/2896)
   - Virtual Machine Scale Sets:
     - Check that virtual machine scale sets have Secure Boot enabled by @coder999999999.
       [#3730](https://github.com/Azure/PSRule.Rules.Azure/issues/3730)
