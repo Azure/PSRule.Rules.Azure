@@ -102,6 +102,7 @@ The following limitations apply to Terraform plan expansion:
 - Only `azapi_resource` and `azapi_update_resource` types are supported. The `azurerm` provider is not yet supported.
 - Raw `.tf` files cannot be analyzed directly. You must first generate a plan JSON file.
 - **Unknown-at-plan-time values** &mdash; Properties that Terraform cannot resolve until after `apply` (e.g., resource IDs, FQDNs) will be absent from analysis.
+  - As a result, using the `hashicorp/random` to generate resource names dynamically is currently not supported.
 - **Ephemeral values** &mdash; Terraform 1.10+ ephemeral values are redacted from plan JSON and will not be available.
 - **Sensitive values** &mdash; Values marked as sensitive in Terraform are redacted in the plan JSON.
 - **No runtime property projection** &mdash; Unlike Bicep expansion, runtime-only properties (e.g., `principalId`) are not projected.
