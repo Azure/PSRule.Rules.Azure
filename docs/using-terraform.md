@@ -53,7 +53,7 @@ configuration:
 Analyze the plan JSON file with PSRule:
 
 ```bash
-Assert-PSRule -InputPath './tfplan.json' -Module PSRule.Rules.Azure
+Assert-PSRule -InputPath './tfplan.json' -Format File -Module PSRule.Rules.Azure
 ```
 
 Or using the CLI:
