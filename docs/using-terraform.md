@@ -59,7 +59,7 @@ Assert-PSRule -InputPath './tfplan.json' -Module PSRule.Rules.Azure
 Or using the CLI:
 
 ```bash
-ps-rule run -InputPath './tfplan.json' --module PSRule.Rules.Azure
+ps-rule run --input-path './tfplan.json' --module PSRule.Rules.Azure
 ```
 
 ## How it works
