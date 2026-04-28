@@ -37,17 +37,49 @@ What's changed since v1.47.0:
     [#1193](https://github.com/Azure/PSRule.Rules.Azure/issues/1193)
     - Expands `azapi_resource` and `azapi_update_resource` from Terraform plan JSON files into ARM format for rule evaluation.
     - Enable with configuration option `AZURE_TERRAFORM_PLAN_EXPANSION`.
+  - Added March 2026 baselines `Azure.GA_2026_03`, `Azure.Preview_2026_03`, and `Azure.CAF_2026_03` by @BernieWhite.
+    [#3709](https://github.com/Azure/PSRule.Rules.Azure/issues/3709)
+    - Includes rules released before or during March 2026.
+    - Marked `Azure.GA_2025_12` and `Azure.Preview_2025_12` baselines as obsolete.
 - New rules:
+  - Automation Account:
+    - Added `Azure.Automation.RunbookPinned` to check runbook external scripts use pinned commit hash URLs to prevent supply chain attacks.
+      [#3324](https://github.com/Azure/PSRule.Rules.Azure/issues/3324)
   - Azure Container Registry:
-    - Check that audit diagnostic logs are enabled for Container Registry by @copilot.
-      [#3536](https://github.com/Azure/PSRule.Rules.Azure/issues/3536)
+    - Check that audit diagnostic logs are enabled for Container Registry by @BernieWhite.
+      [#3445](https://github.com/Azure/PSRule.Rules.Azure/issues/3445)
+  - Azure Fleet:
+    - Check for public key usage on Linux fleet VM profiles by @BernieWhite.
   - Container Apps:
-    - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress.
-      [#3714](https://github.com/Azure/PSRule.Rules.Azure/issues/3714)
+    - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress by @BernieWhite.
+      [#3111](https://github.com/Azure/PSRule.Rules.Azure/issues/3111)
+  - Deployment Script:
+    - Added `Azure.DeploymentScript.Pinned` to check deployment script external script URIs use pinned commit hash URLs to prevent supply chain attacks.
+      [#3324](https://github.com/Azure/PSRule.Rules.Azure/issues/3324)
+  - Service Bus:
+    - Added `Azure.ServiceBus.ReplicaLocation` to check that geo-replication replica locations are within allowed regions.
+      [#3381](https://github.com/Azure/PSRule.Rules.Azure/issues/3381)
+  - Virtual Machine:
+    - Check that virtual machines have Secure Boot enabled by @coder999999999.
+      [#3728](https://github.com/Azure/PSRule.Rules.Azure/issues/3728)
+  - Virtual Machine Scale Sets:
+    - Check that virtual machine scale sets have Secure Boot enabled by @coder999999999.
+      [#3730](https://github.com/Azure/PSRule.Rules.Azure/issues/3730)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.33.7` as the minimum version by @BernieWhite.
       [#3708](https://github.com/Azure/PSRule.Rules.Azure/issues/3708)
+  - Virtual Machine:
+    - Updated `Azure.VM.DiskCaching` to check for `ReadWrite` caching on OS disks instead only by @BernieWhite.
+      [#3673](https://github.com/Azure/PSRule.Rules.Azure/issues/3673)
+      - Renamed the rule from `Azure.VM.DiskCaching` to `Azure.VM.OSDiskCache` to reflect updated scope.
+      - Updates to provide more complete documentation.
+- Engineering
+  - Improved documentation for expansion internals with a high-level flow diagram and code references by @BernieWhite.
+    [#3715](https://github.com/Azure/PSRule.Rules.Azure/issues/3715)
+- Bug fixes:
+  - Improved Bicep expansion errors to surface captured CLI restore failures during timeout windows instead of always falling back to the generic timeout message.
+    [#2896](https://github.com/Azure/PSRule.Rules.Azure/issues/2896)
 
 ## v1.47.0
 

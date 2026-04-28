@@ -45,7 +45,7 @@ Rule 'Azure.VMSS.ComputerName' -Ref 'AZR-000262' -Type 'Microsoft.Compute/virtua
 }
 
 # Synopsis: Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities.
-Rule 'Azure.VMSS.PublicKey' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { VMSSHasLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-4' } {
+Rule 'Azure.VMSS.PublicKey' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { VMSSHasLinuxOS } -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2'; } {
     $Assert.In($TargetObject, 'properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication', $True).
     Reason($LocalizedData.VMSSPublicKey, $PSRule.TargetName)
 }
@@ -148,6 +148,14 @@ Rule 'Azure.VMSS.PublicIPAttached' -Ref 'AZR-000450' -Type 'Microsoft.Compute/vi
             $Assert.HasDefaultValue($config, 'properties.publicIPAddressConfiguration.name', $null).Reason($LocalizedData.VMSSPublicIPAttached)
         }
     }
+}
+
+# Synopsis: VMSS should use Trusted Launch with Secure Boot enabled.
+Rule 'Azure.VMSS.SecureBoot' -Ref 'AZR-000539' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2026_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.WAF/maturity' = 'L2' } {
+    $Assert.In($TargetObject, 'properties.virtualMachineProfile.securityProfile.securityType', @('TrustedLaunch', 'ConfidentialVM')).
+        Reason($LocalizedData.VMSSSecureBoot, $PSRule.TargetName)
+    $Assert.HasFieldValue($TargetObject, 'properties.virtualMachineProfile.securityProfile.uefiSettings.secureBootEnabled', $True).
+        Reason($LocalizedData.VMSSSecureBootEnabled, $PSRule.TargetName)
 }
 
 #endregion Rules

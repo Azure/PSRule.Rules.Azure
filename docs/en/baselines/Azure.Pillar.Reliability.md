@@ -14,7 +14,7 @@ Microsoft Azure Well-Architected Framework - Reliability pillar specific baselin
 
 The following rules are included within the `Azure.Pillar.Reliability` baseline.
 
-This baseline includes a total of 101 rules.
+This baseline includes a total of 102 rules.
 
 Name | Synopsis | Severity | Maturity
 ---- | -------- | -------- | --------
@@ -47,6 +47,7 @@ Name | Synopsis | Severity | Maturity
 [Azure.ASE.AvailabilityZone](../rules/Azure.ASE.AvailabilityZone.md) | Deploy app service environments using availability zones in supported regions to ensure high availability and resilience. | Important | -
 [Azure.AVD.ScheduleAgentUpdate](../rules/Azure.AVD.ScheduleAgentUpdate.md) | Define a windows for agent updates to minimize disruptions to users. | Important | -
 [Azure.ContainerApp.AvailabilityZone](../rules/Azure.ContainerApp.AvailabilityZone.md) | Use Container Apps environments that are zone redundant to improve reliability. | Important | -
+[Azure.ContainerApp.HealthProbe](../rules/Azure.ContainerApp.HealthProbe.md) | Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks. | Important | -
 [Azure.ContainerApp.MinReplicas](../rules/Azure.ContainerApp.MinReplicas.md) | Use multiple replicas to remove a single point of failure. | Important | -
 [Azure.ContainerApp.Storage](../rules/Azure.ContainerApp.Storage.md) | Use of Azure Files volume mounts to persistent storage container data. | Awareness | -
 [Azure.Cosmos.AvailabilityZone](../rules/Azure.Cosmos.AvailabilityZone.md) | Use zone redundant Cosmos DB accounts in supported regions to improve reliability. | Important | L1

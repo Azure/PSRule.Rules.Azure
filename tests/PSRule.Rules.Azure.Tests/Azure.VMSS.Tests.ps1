@@ -204,6 +204,21 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -Be 'vmss-003', 'vmss-004', 'vmss-005', 'vmss-006/instance-B';
         }
+
+        It 'Azure.VMSS.SecureBoot' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.SecureBoot' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002', 'vmss-003';
+            $ruleResult.Length | Should -Be 3;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            
+            $ruleResult.TargetName | Should -BeIn 'vmss-004', 'vmss-005';
+            $ruleResult.Length | Should -Be 2;
+        }
     }
 
     Context 'Resource name - Azure.VMSS.Name' {

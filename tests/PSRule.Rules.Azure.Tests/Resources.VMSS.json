@@ -315,6 +315,11 @@
               }
             }
           ]
+        },
+        "securityProfile": {
+          "uefiSettings": {
+            "secureBootEnabled": false
+          }
         }
       },
       "provisioningState": "Succeeded",
@@ -566,6 +571,11 @@
               }
             }
           ]
+        },
+        "securityProfile": {
+          "uefiSettings": {
+            "secureBootEnabled": true
+          }
         }
       },
       "provisioningState": "Succeeded",
@@ -756,6 +766,13 @@
               }
             }
           ]
+        },
+        "securityProfile": {
+          "securityType": "TrustedLaunch",
+          "uefiSettings": {
+            "secureBootEnabled": true,
+            "vTpmEnabled": true
+          }
         }
       },
       "provisioningState": "Succeeded",
@@ -931,6 +948,13 @@
               }
             }
           ]
+        },
+        "securityProfile": {
+          "securityType": "ConfidentialVM",
+          "uefiSettings": {
+            "secureBootEnabled": true,
+            "vTpmEnabled": true
+          }
         }
       },
       "provisioningState": "Succeeded",

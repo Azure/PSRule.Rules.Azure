@@ -44,6 +44,46 @@ The main components of the expansion process are:
   - **Materialized properties** &mdash; Some resources types have properties that are affected by multiple deployments or
     child resources. These must be calculated to determine the final state value of the property.
 
+### High-level flow
+
+The following diagram shows the high-level flow of the expansion process from source file to expanded resources.
+
+```mermaid
+flowchart TD
+    A["Input file (.bicep / .bicepparam / .json)"] --> B{Is Bicep source?}
+    B -->|Yes| C["Build with Bicep CLI\n(bicep build / bicep build-params)"]
+    B -->|No| D[Read ARM template JSON]
+    C --> D
+    D --> E["Load parameters\n(parameter file + AZURE_PARAMETER_DEFAULTS)"]
+    E --> F["Visit deployment\n(DeploymentVisitor)"]
+    F --> G["Process definitions\n(parameters, variables, functions, types)"]
+    G --> H["Build dependency graph\n(ResourceDependencyGraph)"]
+    H --> I[Visit each resource in dependency order]
+    I --> J{Is nested deployment?}
+    J -->|Yes| K["Visit nested deployment recursively\n(inner / outer scope)"]
+    J -->|No| L["Evaluate condition\nExpand copy loops"]
+    L --> M["Resolve property expressions\n(ExpressionBuilder)"]
+    M --> N[Emit resource to context]
+    K --> N
+    N --> O{More resources?}
+    O -->|Yes| I
+    O -->|No| P["Post-process\n(MaterializedDeploymentVisitor)\nNest children, materialize properties"]
+    P --> Q[Output expanded resources]
+```
+
+### Key components
+
+The key source code components involved in the expansion process are:
+
+ Component | Source file | Description
+---------- | ----------- | -----------
+`BicepHelper` | `src/PSRule.Rules.Azure/Data/Bicep/BicepHelper.cs` | Invokes the Bicep CLI and coordinates expansion of Bicep and ARM files.
+`DeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/DeploymentVisitor.cs` | The core visitor that walks the ARM deployment structure.
+`MaterializedDeploymentVisitor` | `src/PSRule.Rules.Azure/Arm/Deployments/MaterializedDeploymentVisitor.cs` | Extends `DeploymentVisitor` to handle post-processing of emitted resources.
+`ResourceDependencyGraph` | `src/PSRule.Rules.Azure/Arm/Deployments/ResourceDependencyGraph.cs` | Builds and resolves the dependency graph for resources in a deployment.
+`ExpressionBuilder` | `src/PSRule.Rules.Azure/Arm/Expressions/ExpressionBuilder.cs` | Parses and evaluates ARM template expressions.
+`Functions` | `src/PSRule.Rules.Azure/Arm/Expressions/Functions.cs` | Implementations of ARM template built-in functions used during expression evaluation.
+
 ## Building Bicep
 
 Azure Bicep code syntax is a domain specific language provides a higher level of abstraction over ARM deployments.
@@ -54,6 +94,14 @@ PSRule for Azure uses the Bicep CLI to build Bicep files into ARM deployments re
 As a result, the Bicep CLI must be installed and available prior to running the expansion process.
 
 To build a Bicep file, the Bicep CLI is invoked with `bicep build` or `bicep build-params` command.
+
+!!! Implementation
+    The `BicepHelper` class (`src/PSRule.Rules.Azure/Data/Bicep/BicepHelper.cs`) is responsible for:
+
+    - Discovering the Bicep CLI.
+    - Spawning the Bicep CLI process.
+    - Calling `ProcessFile` for a `.bicep` file or `ProcessParamFile` for a `.bicepparam` file.
+    - Passing the resulting ARM template JSON to the deployment visitor for expansion.
 
 ### CLI discovery
 
@@ -94,6 +142,10 @@ Secrets are a good example of this, as they should not be specified in the param
 Definitions are the building blocks of the ARM deployment and may be reference by resources or other definitions.
 For most cases, definitions are lazy loaded into the context of the deployment during expansion.
 
+!!! Implementation
+    The `LazyParameter`, `LazyVariable`, and `LazyOutput` classes (in `src/PSRule.Rules.Azure/Arm/Deployments/`) implement this lazy loading pattern,
+    deferring evaluation of each definition until it is first referenced.
+
 Exceptions to this are when copy loops are used to define variables and parameters.
 Otherwise the definitions are not resolved until they are referenced by a resource.
 
@@ -106,6 +158,10 @@ Similarly, a deployment may return outputs that are used in the parent deploymen
 
 As a result, each resource must be visited based on a dependency graph so that dependencies are resolved
 before dependant resources.
+
+!!! Implementation
+    The `ResourceDependencyGraph` class (`src/PSRule.Rules.Azure/Arm/Deployments/ResourceDependencyGraph.cs`) builds this graph
+    from the `dependsOn` properties declared in the template, and performs a topological sort to produce the correct visit order.
 
 ## Visiting each resource
 
@@ -145,6 +201,16 @@ This allows the expression to be evaluated by calling each function recursively 
 For each function to be understood by the expansion process, it must be implemented in the PSRule for Azure code base.
 
 When an expression is called, context about the deployment is passed into the root function of the expression.
+
+!!! Implementation
+    The key classes for expression evaluation are:
+
+    - `ExpressionParser` (`src/PSRule.Rules.Azure/Arm/Expressions/ExpressionParser.cs`) &mdash;
+      Tokenizes and parses ARM expression strings into an `ExpressionStream`.
+    - `ExpressionBuilder` (`src/PSRule.Rules.Azure/Arm/Expressions/ExpressionBuilder.cs`) &mdash;
+      Builds a callable expression tree from the parsed tokens.
+    - `Functions` (`src/PSRule.Rules.Azure/Arm/Expressions/Functions.cs`) &mdash;
+      Contains implementations of all supported ARM template built-in functions.
 
 ### Context properties
 

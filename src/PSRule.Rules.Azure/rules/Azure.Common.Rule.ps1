@@ -240,6 +240,21 @@ function global:VMSSHasLinuxOS {
     }
 }
 
+function global:FleetHasLinuxOS {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -ne 'Microsoft.AzureFleet/fleets' -or $TargetObject.Properties.computeProfile.baseVirtualMachineProfile.storageProfile.osDisk.osType -eq 'Windows') {
+            return $False;
+        }
+
+        return $TargetObject.Properties.computeProfile.baseVirtualMachineProfile.storageProfile.osDisk.osType -eq 'Linux' -or
+        $Assert.HasFieldValue($TargetObject, 'properties.computeProfile.baseVirtualMachineProfile.osProfile.linuxConfiguration').Result -or
+            (IsLinuxOffering($TargetObject.Properties.computeProfile.baseVirtualMachineProfile.storageProfile.imageReference))
+    }
+}
+
 $Global:FlagSupportsTagWarning = $True;
 
 # Determines if the object supports tags

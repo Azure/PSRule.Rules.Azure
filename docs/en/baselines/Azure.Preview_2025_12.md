@@ -1,10 +1,13 @@
 ---
 export: true
 moduleVersion: v1.47.0
+obsolete: true
 generated: true
 ---
 
 # Azure.Preview_2025_12
+
+<!-- OBSOLETE -->
 
 Include rules released December 2025 or prior for Azure preview only features.
 

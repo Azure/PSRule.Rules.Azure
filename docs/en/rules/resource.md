@@ -380,6 +380,7 @@ Name | Synopsis | Severity | Level
 [Azure.ContainerApp.AvailabilityZone](Azure.ContainerApp.AvailabilityZone.md) | Use Container Apps environments that are zone redundant to improve reliability. | Important | Error
 [Azure.ContainerApp.DisableAffinity](Azure.ContainerApp.DisableAffinity.md) | Disable session affinity to prevent unbalanced distribution. | Awareness | Error
 [Azure.ContainerApp.ExternalIngress](Azure.ContainerApp.ExternalIngress.md) | Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment. | Important | Error
+[Azure.ContainerApp.HealthProbe](Azure.ContainerApp.HealthProbe.md) | Container app ingress that uses HTTP should have HTTP health probes configured for liveness and readiness checks. | Important | Error
 [Azure.ContainerApp.Insecure](Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important | Error
 [Azure.ContainerApp.ManagedIdentity](Azure.ContainerApp.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important | Error
 [Azure.ContainerApp.MinReplicas](Azure.ContainerApp.MinReplicas.md) | Use multiple replicas to remove a single point of failure. | Important | Error
@@ -413,6 +414,7 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ACR.AdminUser](Azure.ACR.AdminUser.md) | The local admin account allows depersonalized access to a container registry using a shared secret. | Critical | Error
 [Azure.ACR.AnonymousAccess](Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | Important | Error
+[Azure.ACR.AuditLogs](Azure.ACR.AuditLogs.md) | Ensure container registry audit diagnostic logs are enabled. | Important | Error
 [Azure.ACR.ContainerScan](Azure.ACR.ContainerScan.md) | Container images or their base images may have vulnerabilities discovered after they are built. | Critical | Error
 [Azure.ACR.ContentTrust](Azure.ACR.ContentTrust.md) | Docker content trust allows images to be signed and verified when pulled from a container registry. | Important | Error
 [Azure.ACR.ExportPolicy](Azure.ACR.ExportPolicy.md) | Export policy on Azure container registry may allow artifact exfiltration. | Important | Error
@@ -787,6 +789,7 @@ Name | Synopsis | Severity | Level
 [Azure.ServiceBus.DisableLocalAuth](Azure.ServiceBus.DisableLocalAuth.md) | Authenticate Service Bus publishers and consumers with Entra ID identities. | Important | Error
 [Azure.ServiceBus.GeoReplica](Azure.ServiceBus.GeoReplica.md) | Enhance resilience to regional outages by replicating namespaces. | Important | Error
 [Azure.ServiceBus.MinTLS](Azure.ServiceBus.MinTLS.md) | Service Bus namespaces should reject TLS versions older than 1.2. | Important | Error
+[Azure.ServiceBus.ReplicaLocation](Azure.ServiceBus.ReplicaLocation.md) | The replica location determines the country or region where the data is stored and processed. | Important | Error
 [Azure.ServiceBus.Usage](Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | Important | Error
 
 ## Service Fabric
