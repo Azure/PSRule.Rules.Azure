@@ -399,7 +399,7 @@ internal sealed class BicepHelper
         {
             if (!bicep.WaitForExit(out var exitCode) || exitCode != 0)
             {
-                var error = bicep.HasExited ? bicep.GetError() : PSRuleResources.BicepCompileTimeout;
+                var error = GetCompileErrorMessage(bicep);
                 throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCompileError, bicep.Version, path, error), null, path, bicep.Version);
             }
 
@@ -417,6 +417,12 @@ internal sealed class BicepHelper
         {
             bicep.Dispose();
         }
+    }
+
+    internal static string GetCompileErrorMessage(BicepProcess bicep)
+    {
+        var error = bicep.GetError();
+        return string.IsNullOrWhiteSpace(error) ? PSRuleResources.BicepCompileTimeout : error;
     }
 
     private static JObject ReadJsonFile(string path)

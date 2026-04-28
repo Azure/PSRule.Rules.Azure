@@ -73,6 +73,9 @@ What's changed since v1.47.0:
 - Engineering
   - Improved documentation for expansion internals with a high-level flow diagram and code references by @BernieWhite.
     [#3715](https://github.com/Azure/PSRule.Rules.Azure/issues/3715)
+- Bug fixes:
+  - Improved Bicep expansion errors to surface captured CLI restore failures during timeout windows instead of always falling back to the generic timeout message.
+    [#2896](https://github.com/Azure/PSRule.Rules.Azure/issues/2896)
 
 ## v1.47.0
 
