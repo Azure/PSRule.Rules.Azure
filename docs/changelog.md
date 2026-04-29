@@ -33,6 +33,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.47.0:
 
 - New features:
+  - **Experimental:** Added Terraform plan expansion support for AzAPI provider resources by @polatengin.
+    [#1193](https://github.com/Azure/PSRule.Rules.Azure/issues/1193)
+    - Expands `azapi_resource` and `azapi_update_resource` from Terraform plan JSON files into ARM format for rule evaluation.
+    - Enable with configuration option `AZURE_TERRAFORM_PLAN_EXPANSION`.
   - Added March 2026 baselines `Azure.GA_2026_03`, `Azure.Preview_2026_03`, and `Azure.CAF_2026_03` by @BernieWhite.
     [#3709](https://github.com/Azure/PSRule.Rules.Azure/issues/3709)
     - Includes rules released before or during March 2026.

@@ -39,6 +39,9 @@ spec:
     AZURE_BICEP_MINIMUM_VERSION: '0.4.451'
     AZURE_BICEP_CHECK_TOOL: false
 
+    # Enable expansion from Terraform plan JSON files.
+    AZURE_TERRAFORM_PLAN_EXPANSION: false
+
     # Configures minimum AKS cluster version.
     AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.33.7'
 
@@ -147,6 +150,7 @@ spec:
     - Azure.BicepInstall
     - Azure.ExpandBicep
     - Azure.ExpandBicepParam
+    - Azure.ExpandTerraformPlan
   rule:
     baseline: Azure.Default
   output:

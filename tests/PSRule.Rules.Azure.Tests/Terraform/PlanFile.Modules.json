@@ -1,0 +1,92 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.7.0",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "azapi_resource.root_storage",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "root_storage",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Storage/storageAccounts@2023-01-01",
+            "name": "rootstorage",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": "eastus",
+            "body": {
+              "sku": {
+                "name": "Standard_LRS"
+              },
+              "properties": {
+                "minimumTlsVersion": "TLS1_2"
+              }
+            },
+            "tags": null,
+            "identity": null
+          }
+        }
+      ],
+      "child_modules": [
+        {
+          "address": "module.network",
+          "resources": [
+            {
+              "address": "module.network.azapi_resource.vnet",
+              "mode": "managed",
+              "type": "azapi_resource",
+              "name": "vnet",
+              "provider_name": "registry.terraform.io/azure/azapi",
+              "schema_version": 0,
+              "values": {
+                "type": "Microsoft.Network/virtualNetworks@2023-09-01",
+                "name": "modulevnet",
+                "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+                "location": "eastus",
+                "body": {
+                  "properties": {
+                    "addressSpace": {
+                      "addressPrefixes": ["10.0.0.0/16"]
+                    }
+                  }
+                },
+                "tags": null,
+                "identity": null
+              }
+            }
+          ],
+          "child_modules": [
+            {
+              "address": "module.network.module.subnets",
+              "resources": [
+                {
+                  "address": "module.network.module.subnets.azapi_resource.subnet",
+                  "mode": "managed",
+                  "type": "azapi_resource",
+                  "name": "subnet",
+                  "provider_name": "registry.terraform.io/azure/azapi",
+                  "schema_version": 0,
+                  "values": {
+                    "type": "Microsoft.Network/virtualNetworks/subnets@2023-09-01",
+                    "name": "nestedsubnet",
+                    "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/modulevnet",
+                    "location": null,
+                    "body": {
+                      "properties": {
+                        "addressPrefix": "10.0.1.0/24"
+                      }
+                    },
+                    "tags": null,
+                    "identity": null
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

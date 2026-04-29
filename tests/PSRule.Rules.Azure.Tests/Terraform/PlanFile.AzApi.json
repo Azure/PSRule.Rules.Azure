@@ -1,0 +1,159 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.7.0",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "azapi_resource.storage",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "storage",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Storage/storageAccounts@2023-01-01",
+            "name": "mystorageaccount",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": "eastus",
+            "body": {
+              "kind": "StorageV2",
+              "sku": {
+                "name": "Standard_LRS"
+              },
+              "properties": {
+                "minimumTlsVersion": "TLS1_2",
+                "supportsHttpsTrafficOnly": true,
+                "allowBlobPublicAccess": false
+              }
+            },
+            "tags": {
+              "environment": "production"
+            },
+            "identity": {
+              "type": "SystemAssigned",
+              "identity_ids": null
+            }
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "azapi_resource.acr",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "acr",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.ContainerRegistry/registries@2023-07-01",
+            "name": "myregistry",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": "westeurope",
+            "body": {
+              "sku": {
+                "name": "Premium"
+              },
+              "properties": {
+                "adminUserEnabled": false,
+                "publicNetworkAccess": "Disabled"
+              }
+            },
+            "tags": null,
+            "identity": null
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "azapi_resource.vnet_subnet",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "subnet",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Network/virtualNetworks/subnets@2023-09-01",
+            "name": "mysubnet",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet",
+            "location": null,
+            "body": {
+              "properties": {
+                "addressPrefix": "10.0.1.0/24"
+              }
+            },
+            "tags": null,
+            "identity": null
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "azapi_resource.identity_example",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "identity_example",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Web/sites@2023-01-01",
+            "name": "mywebapp",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg",
+            "location": "eastus",
+            "body": {
+              "properties": {
+                "httpsOnly": true
+              }
+            },
+            "tags": {
+              "owner": "team-a"
+            },
+            "identity": {
+              "type": "SystemAssigned, UserAssigned",
+              "identity_ids": [
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myid1",
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myid2"
+              ]
+            }
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "data.azapi_resource.existing",
+          "mode": "data",
+          "type": "azapi_resource",
+          "name": "existing",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Storage/storageAccounts@2023-01-01",
+            "name": "existingstorage",
+            "parent_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg"
+          }
+        },
+        {
+          "address": "azapi_resource_action.start",
+          "mode": "managed",
+          "type": "azapi_resource_action",
+          "name": "start",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 0,
+          "values": {
+            "type": "Microsoft.Compute/virtualMachines@2023-03-01",
+            "resource_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/myvm",
+            "action": "start"
+          }
+        },
+        {
+          "address": "random_string.suffix",
+          "mode": "managed",
+          "type": "random_string",
+          "name": "suffix",
+          "provider_name": "registry.terraform.io/hashicorp/random",
+          "schema_version": 2,
+          "values": {
+            "length": 6,
+            "special": false
+          }
+        }
+      ]
+    }
+  }
+}
