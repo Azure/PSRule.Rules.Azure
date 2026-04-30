@@ -30,6 +30,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.48.0-B0088 (pre-release)
+
 What's changed since v1.47.0:
 
 - New features:
