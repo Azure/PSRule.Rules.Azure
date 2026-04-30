@@ -24,6 +24,22 @@
     "displayName": "Container Registry anonymous pull access is enabled"
   },
   {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:10 Monitoring and threat detection",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "ruleId": "Azure.ACR.AuditLogs",
+    "displayName": "Audit Container Registry access"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:10 Monitoring and threat detection",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "ruleId": "Azure.ACR.AuditLogs",
+    "displayName": "Audit Container Registry access"
+  },
+  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:10 Monitoring and threat detection",
@@ -1544,6 +1560,22 @@
     "displayName": "Automation accounts should collect platform diagnostic logs"
   },
   {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:02 Secured development lifecycle",
+    "resourceType": "Microsoft.Automation/automationAccounts",
+    "ruleId": "Azure.Automation.RunbookPinned",
+    "displayName": "Automation runbook is not pinned"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:02 Secured development lifecycle",
+    "resourceType": "Microsoft.Automation/automationAccounts/runbooks",
+    "ruleId": "Azure.Automation.RunbookPinned",
+    "displayName": "Automation runbook is not pinned"
+  },
+  {
     "severity": "Awareness",
     "pillar": "Security",
     "category": "Identity and access management",
@@ -1662,6 +1694,14 @@
     "resourceType": "Microsoft.App/containerApps",
     "ruleId": "Azure.ContainerApp.ExternalIngress",
     "displayName": "Disable external ingress"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:07 Self-preservation",
+    "resourceType": "Microsoft.App/containerApps",
+    "ruleId": "Azure.ContainerApp.HealthProbe",
+    "displayName": "Use HTTP health probes for HTTP-based ingress"
   },
   {
     "severity": "Important",
@@ -2105,6 +2145,14 @@
   },
   {
     "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:02 Secured development lifecycle",
+    "resourceType": "Microsoft.Resources/deploymentScripts",
+    "ruleId": "Azure.DeploymentScript.Pinned",
+    "displayName": "Deployment script is not pinned"
+  },
+  {
+    "severity": "Important",
     "pillar": "Cost Optimization",
     "category": "CO:04 Spending guardrails",
     "resourceType": "Microsoft.DevCenter/projects",
@@ -2334,6 +2382,14 @@
     "resourceType": "Microsoft.Network/firewallPolicies",
     "ruleId": "Azure.Firewall.PolicyName",
     "displayName": "Use valid Firewall policy names"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:08 Hardening resources",
+    "resourceType": "Microsoft.AzureFleet/fleets",
+    "ruleId": "Azure.Fleet.PublicKey",
+    "displayName": "Azure Fleet password-based authentication is enabled"
   },
   {
     "severity": "Important",
@@ -3857,6 +3913,14 @@
   },
   {
     "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:01 Security baseline",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "ruleId": "Azure.ServiceBus.ReplicaLocation",
+    "displayName": "Service Bus namespace replica location is not allowed"
+  },
+  {
+    "severity": "Important",
     "pillar": "Cost Optimization",
     "category": "CO:14 Consolidation",
     "resourceType": "Microsoft.ServiceBus/namespaces",
@@ -4488,14 +4552,6 @@
     "displayName": "Remove unused managed disks"
   },
   {
-    "severity": "Important",
-    "pillar": "Performance Efficiency",
-    "category": "PE:07 Code and infrastructure",
-    "resourceType": "Microsoft.Compute/virtualMachines",
-    "ruleId": "Azure.VM.DiskCaching",
-    "displayName": "Configure host caching"
-  },
-  {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
     "category": "Repeatable infrastructure",
@@ -4568,6 +4624,14 @@
     "displayName": "Virtual Machine must use standard naming"
   },
   {
+    "severity": "Important",
+    "pillar": "Performance Efficiency",
+    "category": "PE:08 Data performance",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "ruleId": "Azure.VM.OSDiskCache",
+    "displayName": "Virtual Machine OS disk read write caching is not enabled"
+  },
+  {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
     "category": "OE:04 Continuous integration",
@@ -4606,6 +4670,14 @@
     "resourceType": "Microsoft.Compute/virtualMachines/extensions",
     "ruleId": "Azure.VM.ScriptExtensions",
     "displayName": "Securely pass secrets to Custom Script Extensions for Virtual Machine"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:08 Hardening resources",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "ruleId": "Azure.VM.SecureBoot",
+    "displayName": "Virtual Machine Secure Boot is not enabled"
   },
   {
     "severity": "Important",
@@ -4742,6 +4814,14 @@
     "resourceType": "Microsoft.Compute/virtualMachineScaleSets/extensions",
     "ruleId": "Azure.VMSS.ScriptExtensions",
     "displayName": "Securely pass secrets to Custom Script Extensions for Virtual Machine Scale Sets"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:08 Hardening resources",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "ruleId": "Azure.VMSS.SecureBoot",
+    "displayName": "VMSS Secure Boot is not enabled"
   },
   {
     "severity": "Important",

@@ -4,6 +4,10 @@
 # Note:
 # This script generates a JSON output of rules to resource types mapping.
 
+Invoke-Build Build
+
+Import-Module .\out\modules\PSRule.Rules.Azure\ -Force
+
 $rules = (Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All | ForEach-Object {
     if ($_.Info.Annotations['resourceType'] -ne $null) {
 
