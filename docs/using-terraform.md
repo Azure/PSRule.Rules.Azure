@@ -8,21 +8,31 @@ PSRule for Azure supports analyzing Azure resources defined in Terraform configu
 
 This enables pre-flight validation of Terraform-managed Azure resources against Azure Well-Architected Framework (WAF) rules.
 
+!!! Experimental "Experimental - [Learn more][1]"
+    _Terraform plan expansion_ is a work in progress, and not ready for production use.
+    We are actively working on improving this experience, and would love to hear your feedback.
+
+    As always if you find bugs/ errors or if something just doesn't work as your expect it to, please let us know.
+    You can log a bug on GitHub or [provide feedback here][2].
+
+  [1]: versioning.md#experimental-features
+  [2]: https://github.com/Azure/PSRule.Rules.Azure/discussions
+
 ## Overview
 
-Terraform plan expansion parses the output of `terraform show -json` and converts Azure resources from the [AzAPI provider][1] into ARM-format representations.
+Terraform plan expansion parses the output of `terraform show -json` and converts Azure resources from the [AzAPI provider][3] into ARM-format representations.
 These are then evaluated by the same PSRule rules used for ARM templates and Bicep files.
 
-  [1]: https://registry.terraform.io/providers/Azure/azapi/latest/docs
+  [3]: https://registry.terraform.io/providers/Azure/azapi/latest/docs
 
 ## Supported providers
 
 Currently, the following Terraform providers are supported:
 
-| Provider | Support |
-|----------|---------|
-| **AzAPI** (`azure/azapi`) | `azapi_resource` and `azapi_update_resource` are converted to ARM format. |
-| **AzureRM** (`hashicorp/azurerm`) | Not yet supported. Planned for a future release. |
+ Provider                          | Support
+----------                         | --------
+ **AzAPI** (`azure/azapi`)         | `azapi_resource` and `azapi_update_resource` are converted to ARM format.
+ **AzureRM** (`hashicorp/azurerm`) | Not yet supported. Planned for a future release.
 
 The AzAPI provider is a thin wrapper over the Azure ARM REST API, meaning its `body` property is already in ARM-compatible format.
 This makes it the highest-fidelity provider for PSRule analysis.
@@ -75,16 +85,16 @@ When `AZURE_TERRAFORM_PLAN_EXPANSION` is enabled and a JSON file matching the Te
 
 The converter performs the following mappings from AzAPI to ARM format:
 
-| AzAPI property | ARM property | Notes |
-|---|---|---|
-| `type` (e.g., `Microsoft.Storage/storageAccounts@2023-01-01`) | `type` + `apiVersion` | Split at `@` |
-| `name` | `name` | Direct |
-| `location` | `location` | Direct; omitted if null |
-| `parent_id` + `type` + `name` | `id` | Constructed resource ID |
-| `body.*` | Merged to resource root | `properties`, `sku`, etc. |
-| `tags` | `tags` | Top-level takes precedence over `body.tags` |
-| `identity.type` | `identity.type` | Direct |
-| `identity.identity_ids` | `identity.userAssignedIdentities` | Array converted to object |
+AzAPI property | ARM property | Notes
+-------------- | ------------ | -----
+`type` (e.g., `Microsoft.Storage/storageAccounts@2023-01-01`) | `type` + `apiVersion` | Split at `@`
+`name` | `name` | Direct
+`location` | `location` | Direct; omitted if null
+`parent_id` + `type` + `name` | `id` | Constructed resource ID
+`body.*` | Merged to resource root | `properties`, `sku`, etc.
+`tags` | `tags` | Top-level takes precedence over `body.tags`
+`identity.type` | `identity.type` | Direct
+`identity.identity_ids` | `identity.userAssignedIdentities` | Array converted to object
 
 ### Excluded resource types
 
