@@ -18,6 +18,7 @@
     },
     "resourceType": "healthBots",
     "apiVersions": [
+      "2025-11-01",
       "2025-05-25",
       "2024-02-01",
       "2023-05-01",
@@ -46,6 +47,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-11-01",
       "2025-05-25",
       "2024-02-01",
       "2023-05-01",
@@ -61,6 +63,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-11-01",
       "2025-05-25",
       "2024-02-01",
       "2023-05-01",
@@ -90,6 +93,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-11-01",
       "2025-05-25",
       "2024-02-01",
       "2023-05-01",

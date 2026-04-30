@@ -3,6 +3,9 @@
     "aliases": null,
     "resourceType": "assetEndpointProfiles",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview",
       "2024-11-01",
@@ -14,6 +17,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -25,6 +29,9 @@
     "aliases": null,
     "resourceType": "assets",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview",
       "2024-11-01",
@@ -36,6 +43,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -47,6 +55,10 @@
     "aliases": null,
     "resourceType": "billingContainers",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2026-02-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-08-01-preview",
       "2025-07-01-preview",
@@ -71,6 +83,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -89,6 +102,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -100,6 +114,10 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2026-02-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-08-01-preview",
       "2025-07-01-preview",
@@ -123,6 +141,9 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview",
       "2024-11-01",
@@ -134,6 +155,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -145,6 +167,9 @@
     "aliases": null,
     "resourceType": "namespaces",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview"
     ],
@@ -153,6 +178,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -164,6 +190,9 @@
     "aliases": null,
     "resourceType": "namespaces/assets",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview"
     ],
@@ -172,6 +201,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -181,8 +211,47 @@
   },
   {
     "aliases": null,
+    "resourceType": "namespaces/credentials",
+    "apiVersions": [
+      "2026-03-01-preview",
+      "2025-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "namespaces/credentials/policies",
+    "apiVersions": [
+      "2026-03-01-preview",
+      "2025-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "namespaces/devices",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview"
     ],
@@ -191,6 +260,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -202,6 +272,9 @@
     "aliases": null,
     "resourceType": "namespaces/discoveredAssets",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview"
     ],
@@ -210,6 +283,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -221,6 +295,9 @@
     "aliases": null,
     "resourceType": "namespaces/discoveredDevices",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview"
     ],
@@ -229,6 +306,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -240,6 +318,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2026-02-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-08-01-preview",
       "2025-07-01-preview",
@@ -263,6 +345,10 @@
     "aliases": null,
     "resourceType": "operationStatuses",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2026-02-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-08-01-preview",
       "2025-07-01-preview",
@@ -284,6 +370,9 @@
     "aliases": null,
     "resourceType": "schemaRegistries",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview",
       "2024-09-01-preview"
@@ -293,6 +382,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -304,6 +394,9 @@
     "aliases": null,
     "resourceType": "schemaRegistries/schemas",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview",
       "2024-09-01-preview"
@@ -313,6 +406,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",
@@ -324,6 +418,9 @@
     "aliases": null,
     "resourceType": "schemaRegistries/schemas/schemaVersions",
     "apiVersions": [
+      "2026-04-01",
+      "2026-03-01-preview",
+      "2025-11-01-preview",
       "2025-10-01",
       "2025-07-01-preview",
       "2024-09-01-preview"
@@ -333,6 +430,7 @@
       "East US 2",
       "Germany West Central",
       "North Europe",
+      "South Central US",
       "West Europe",
       "West US",
       "West US 2",

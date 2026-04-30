@@ -3,8 +3,7 @@
     "aliases": null,
     "resourceType": "catalogs",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"
@@ -15,8 +14,7 @@
     "aliases": null,
     "resourceType": "catalogs/certificates",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"
@@ -27,8 +25,7 @@
     "aliases": null,
     "resourceType": "catalogs/images",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"
@@ -39,8 +36,7 @@
     "aliases": null,
     "resourceType": "catalogs/products",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"
@@ -51,8 +47,7 @@
     "aliases": null,
     "resourceType": "catalogs/products/devicegroups",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"
@@ -63,8 +58,7 @@
     "aliases": null,
     "resourceType": "catalogs/products/devicegroups/deployments",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"
@@ -75,8 +69,7 @@
     "aliases": null,
     "resourceType": "catalogs/products/devicegroups/devices",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"
@@ -87,8 +80,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"
@@ -99,8 +91,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "East US 2",
@@ -114,8 +105,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2024-04-01",
-      "2022-09-01-preview"
+      "2024-04-01"
     ],
     "locations": [
       "global"

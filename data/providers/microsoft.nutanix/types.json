@@ -17,7 +17,10 @@
       "Germany West Central",
       "Japan East",
       "North Central US",
+      "North Europe",
       "Qatar Central",
+      "South Africa North",
+      "South Central US",
       "South India",
       "Southeast Asia",
       "Sweden Central",
@@ -26,7 +29,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -58,7 +62,10 @@
       "Germany West Central",
       "Japan East",
       "North Central US",
+      "North Europe",
       "Qatar Central",
+      "South Africa North",
+      "South Central US",
       "South India",
       "Southeast Asia",
       "UAE North",
@@ -66,7 +73,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -87,7 +95,10 @@
       "Germany West Central",
       "Japan East",
       "North Central US",
+      "North Europe",
       "Qatar Central",
+      "South Africa North",
+      "South Central US",
       "South India",
       "Southeast Asia",
       "UAE North",
@@ -95,7 +106,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },

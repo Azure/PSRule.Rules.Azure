@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2026-02-01",
+      "2025-11-01",
       "2025-04-01-preview",
       "2024-10-01-preview",
       "2024-02-01-preview"
@@ -14,6 +16,8 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2026-02-01",
+      "2025-11-01",
       "2025-04-01-preview",
       "2024-10-01-preview"
     ],
@@ -51,6 +55,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-02-01",
+      "2025-11-01",
       "2025-05-04-preview",
       "2025-04-01-preview",
       "2024-10-01-preview",
@@ -60,9 +66,20 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DurableTask/schedulers/endpoint": "properties.endpoint",
+      "Microsoft.DurableTask/schedulers/ipAllowlist": "properties.ipAllowlist",
+      "Microsoft.DurableTask/schedulers/ipAllowlist[*]": "properties.ipAllowlist[*]",
+      "Microsoft.DurableTask/schedulers/provisioningState": "properties.provisioningState",
+      "Microsoft.DurableTask/schedulers/sku": "properties.sku",
+      "Microsoft.DurableTask/schedulers/sku.capacity": "properties.sku.capacity",
+      "Microsoft.DurableTask/schedulers/sku.name": "properties.sku.name",
+      "Microsoft.DurableTask/schedulers/sku.redundancyState": "properties.sku.redundancyState"
+    },
     "resourceType": "schedulers",
     "apiVersions": [
+      "2026-02-01",
+      "2025-11-01",
       "2025-04-01-preview",
       "2024-10-01-preview"
     ],
@@ -98,9 +115,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "schedulers/retentionpolicies",
+    "resourceType": "schedulers/privateEndpointConnections",
     "apiVersions": [
-      "2025-04-01-preview"
+      "2026-02-01"
     ],
     "locations": [
       "Australia East",
@@ -134,8 +151,93 @@
   },
   {
     "aliases": null,
+    "resourceType": "schedulers/privateLinkResources",
+    "apiVersions": [
+      "2026-02-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.DurableTask/schedulers/retentionPolicies/provisioningState": "properties.provisioningState",
+      "Microsoft.DurableTask/schedulers/retentionPolicies/retentionPolicies": "properties.retentionPolicies",
+      "Microsoft.DurableTask/schedulers/retentionPolicies/retentionPolicies[*]": "properties.retentionPolicies[*]",
+      "Microsoft.DurableTask/schedulers/retentionPolicies/retentionPolicies[*].orchestrationState": "properties.retentionPolicies[*].orchestrationState",
+      "Microsoft.DurableTask/schedulers/retentionPolicies/retentionPolicies[*].retentionPeriodInDays": "properties.retentionPolicies[*].retentionPeriodInDays"
+    },
+    "resourceType": "schedulers/retentionpolicies",
+    "apiVersions": [
+      "2026-02-01",
+      "2025-11-01",
+      "2025-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.DurableTask/schedulers/taskHubs/dashboardUrl": "properties.dashboardUrl",
+      "Microsoft.DurableTask/schedulers/taskHubs/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "schedulers/taskhubs",
     "apiVersions": [
+      "2026-02-01",
+      "2025-11-01",
       "2025-04-01-preview",
       "2024-10-01-preview"
     ],

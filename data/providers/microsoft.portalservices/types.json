@@ -1,0 +1,111 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "assistant",
+    "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-01-preview",
+      "2024-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "compilefile",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "copilotSettings",
+    "apiVersions": [
+      "2025-09-10-preview",
+      "2025-08-01-preview",
+      "2024-09-01-preview",
+      "2024-08-01-preview",
+      "2024-07-01-preview",
+      "2024-04-01-preview",
+      "2024-04-01"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "dashboards",
+    "apiVersions": [
+      "2024-04-01-preview",
+      "2024-01-01-preview",
+      "2023-10-01-preview",
+      "2023-08-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Europe",
+      "UK South",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2024-04-01-preview",
+      "2023-01-01-preview",
+      "2022-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/OperationStatuses",
+    "apiVersions": [
+      "2024-04-01-preview",
+      "2023-01-01-preview",
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2 EUAP",
+      "North Europe",
+      "UK South",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-01-preview",
+      "2024-07-01-preview",
+      "2024-04-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "settings",
+    "apiVersions": [
+      "2025-09-01-preview",
+      "2025-04-01-preview",
+      "2024-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]

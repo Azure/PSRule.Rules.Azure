@@ -569,7 +569,7 @@
     "aliases": null,
     "resourceType": "search",
     "apiVersions": [
-      "2025-01-01",
+      "2025-05-01",
       "2023-01-01-preview",
       "2022-02-02"
     ],

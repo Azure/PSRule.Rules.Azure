@@ -1,5 +1,14 @@
 [
   {
+    "aliases": null,
+    "resourceType": "associatedBillingAccounts",
+    "apiVersions": [
+      "2025-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.AzureActiveDirectory/b2cDirectories/sku": "sku",
       "Microsoft.AzureActiveDirectory/b2cDirectories/sku.name": "sku.name",
@@ -103,6 +112,17 @@
       "2025-04-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "entraTenants",
+    "apiVersions": [
+      "2025-04-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   },
   {

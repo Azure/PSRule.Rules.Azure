@@ -28,8 +28,7 @@
     },
     "resourceType": "deidServices",
     "apiVersions": [
-      "2024-09-20",
-      "2024-02-28-preview"
+      "2024-09-20"
     ],
     "locations": [
       "Canada Central",
@@ -57,8 +56,7 @@
     },
     "resourceType": "deidServices/privateEndpointConnections",
     "apiVersions": [
-      "2024-09-20",
-      "2024-02-28-preview"
+      "2024-09-20"
     ],
     "locations": [
       "Canada Central",
@@ -76,8 +74,7 @@
     "aliases": null,
     "resourceType": "deidServices/privateLinkResources",
     "apiVersions": [
-      "2024-09-20",
-      "2024-02-28-preview"
+      "2024-09-20"
     ],
     "locations": [
       "Canada Central",
@@ -95,8 +92,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2024-09-20",
-      "2024-02-28-preview"
+      "2024-09-20"
     ],
     "locations": [
       "global"
@@ -107,8 +103,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2024-09-20",
-      "2024-02-28-preview"
+      "2024-09-20"
     ],
     "locations": [
       "Canada Central",
@@ -127,8 +122,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2024-09-20",
-      "2024-02-28-preview"
+      "2024-09-20"
     ],
     "locations": [
       "global"

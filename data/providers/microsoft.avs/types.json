@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -18,6 +19,7 @@
     "aliases": null,
     "resourceType": "locations/checkQuotaAvailability",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -29,6 +31,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -44,6 +47,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -70,6 +74,7 @@
     "aliases": null,
     "resourceType": "locations/checkTrialAvailability",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -81,6 +86,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -96,6 +102,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -122,6 +129,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -133,6 +141,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -143,10 +152,12 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -173,6 +184,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -247,6 +259,7 @@
     },
     "resourceType": "privateClouds",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -260,6 +273,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -275,6 +289,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -298,6 +313,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Belgium Central",
         "zones": [
           "1",
           "2",
@@ -410,6 +433,14 @@
       },
       {
         "location": "Malaysia West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "New Zealand North",
         "zones": [
           "1",
           "2",
@@ -541,6 +572,7 @@
     },
     "resourceType": "privateClouds/addons",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -552,6 +584,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -567,6 +600,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -598,6 +632,7 @@
     },
     "resourceType": "privateClouds/authorizations",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -609,6 +644,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -624,6 +660,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -650,6 +687,7 @@
     "aliases": null,
     "resourceType": "privateClouds/cloudLinks",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -660,6 +698,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -675,6 +714,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -709,6 +749,7 @@
     },
     "resourceType": "privateClouds/clusters",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -721,6 +762,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -736,6 +778,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -776,6 +819,7 @@
     },
     "resourceType": "privateClouds/clusters/datastores",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -787,6 +831,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -802,6 +847,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -828,6 +874,7 @@
     "aliases": null,
     "resourceType": "privateClouds/clusters/placementPolicies",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -837,6 +884,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -852,6 +900,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -878,6 +927,7 @@
     "aliases": null,
     "resourceType": "privateClouds/clusters/virtualMachines",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -887,6 +937,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -902,6 +953,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -928,12 +980,14 @@
     "aliases": null,
     "resourceType": "privateClouds/eventGridFilters",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01"
     ],
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -949,6 +1003,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -982,6 +1037,7 @@
     },
     "resourceType": "privateClouds/globalReachConnections",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -993,6 +1049,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1008,6 +1065,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1037,6 +1095,7 @@
     },
     "resourceType": "privateClouds/hcxEnterpriseSites",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1048,6 +1107,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1063,6 +1123,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1089,12 +1150,14 @@
     "aliases": null,
     "resourceType": "privateClouds/iscsiPaths",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01"
     ],
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1110,6 +1173,103 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateClouds/licenses",
+    "apiVersions": [
+      "2025-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Belgium Central",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Malaysia West",
+      "New Zealand North",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateClouds/maintenances",
+    "apiVersions": [
+      "2025-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Belgium Central",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1136,6 +1296,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptExecutions",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1146,6 +1307,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1161,6 +1323,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1187,6 +1350,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptPackages",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1197,6 +1361,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1212,6 +1377,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1238,6 +1404,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptPackages/scriptCmdlets",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1248,6 +1415,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1263,6 +1431,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1289,6 +1458,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1300,6 +1470,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1315,6 +1486,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1352,6 +1524,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dhcpConfigurations",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1363,6 +1536,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1378,6 +1552,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1414,6 +1589,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dnsServices",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1425,6 +1601,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1440,6 +1617,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1476,6 +1654,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dnsZones",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1487,6 +1666,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1502,6 +1682,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1528,6 +1709,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/gateways",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1539,6 +1721,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1554,6 +1737,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1588,6 +1772,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/portMirroringProfiles",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1599,6 +1784,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1614,6 +1800,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1640,6 +1827,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/publicIPs",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1650,6 +1838,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1665,6 +1854,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1704,6 +1894,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/segments",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1715,6 +1906,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1730,6 +1922,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1756,6 +1949,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/virtualMachines",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1767,6 +1961,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1782,6 +1977,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1815,6 +2011,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/vmGroups",
     "apiVersions": [
+      "2025-09-01",
       "2024-09-01",
       "2023-09-01",
       "2023-03-01",
@@ -1826,6 +2023,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -1841,6 +2039,7 @@
       "Japan West",
       "Korea Central",
       "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",

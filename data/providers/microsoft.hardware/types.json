@@ -1,0 +1,78 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2025-12-04-preview",
+      "2023-02-22-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "orderPreview",
+    "apiVersions": [
+      "2026-02-26-preview",
+      "2025-12-04-preview",
+      "2023-07-12-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "orders",
+    "apiVersions": [
+      "2026-02-26-preview",
+      "2025-12-04-preview",
+      "2023-07-12-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2025-12-04-preview",
+      "2023-07-12-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "returnPreview",
+    "apiVersions": [
+      "2026-02-26-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "returns",
+    "apiVersions": [
+      "2026-02-26-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  }
+]

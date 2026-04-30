@@ -14,6 +14,7 @@
     "aliases": null,
     "resourceType": "impactCategories",
     "apiVersions": [
+      "2026-01-01-preview",
       "2025-01-01-preview",
       "2024-05-01-preview",
       "2023-12-01-preview",
@@ -29,6 +30,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2026-01-01-preview",
       "2025-01-01-preview",
       "2024-05-01-preview",
       "2023-12-01-preview",
@@ -45,6 +47,7 @@
     "aliases": null,
     "resourceType": "workloadImpacts",
     "apiVersions": [
+      "2026-01-01-preview",
       "2025-01-01-preview",
       "2024-05-01-preview",
       "2023-12-01-preview",
@@ -60,6 +63,7 @@
     "aliases": null,
     "resourceType": "workloadImpacts/insights",
     "apiVersions": [
+      "2026-01-01-preview",
       "2025-01-01-preview",
       "2024-05-01-preview",
       "2023-12-01-preview"

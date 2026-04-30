@@ -12,6 +12,38 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2025-11-19-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "North Europe",
+      "Southeast Asia",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/notificationSessions",
+    "apiVersions": [
+      "2025-11-19-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "North Europe",
+      "Southeast Asia",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2022-03-15-privatepreview"

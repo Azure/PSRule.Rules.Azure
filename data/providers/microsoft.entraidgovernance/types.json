@@ -20,5 +20,16 @@
       "global"
     ],
     "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "scimapiconsumptions",
+    "apiVersions": [
+      "2025-10-17-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
   }
 ]

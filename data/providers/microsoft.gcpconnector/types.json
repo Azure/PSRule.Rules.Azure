@@ -1,12 +1,33 @@
 [
   {
     "aliases": null,
+    "resourceType": "bigQueryDatasets",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "cloudFunctions",
     "apiVersions": [
       "2025-12-01-preview"
     ],
     "locations": [
-      "West Central US"
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "UK South",
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": []
   },
@@ -17,7 +38,28 @@
       "2025-12-01-preview"
     ],
     "locations": [
-      "West Central US"
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "containerClusters",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "UK South",
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": []
   },
@@ -28,6 +70,22 @@
       "2025-12-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
     "zoneMappings": []
   },
   {
@@ -50,12 +108,33 @@
   },
   {
     "aliases": null,
+    "resourceType": "sqlAdminInstances",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "storageBuckets",
     "apiVersions": [
       "2025-12-01-preview"
     ],
     "locations": [
-      "West Central US"
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "UK South",
+      "West Central US",
+      "West Europe"
     ],
     "zoneMappings": []
   }

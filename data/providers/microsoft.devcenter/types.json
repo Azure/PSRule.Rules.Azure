@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -30,6 +32,8 @@
     "aliases": null,
     "resourceType": "checkScopedNameAvailability",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -70,6 +74,8 @@
     },
     "resourceType": "devcenters",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -100,6 +106,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -116,6 +123,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -130,6 +138,8 @@
     },
     "resourceType": "devcenters/attachednetworks",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -160,6 +170,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -176,6 +187,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -211,6 +223,8 @@
     },
     "resourceType": "devcenters/catalogs",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -241,6 +255,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -257,6 +272,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -280,6 +296,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -296,6 +313,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -304,6 +322,8 @@
     "aliases": null,
     "resourceType": "devcenters/catalogs/environmentDefinitions",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -327,6 +347,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -343,6 +364,87 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "devcenters/catalogs/imagedefinitions",
+    "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
+      "2025-07-01-preview",
+      "2025-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Europe",
+      "Poland Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "devcenters/catalogs/imagedefinitions/builds",
+    "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
+      "2025-07-01-preview",
+      "2025-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Europe",
+      "Poland Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -351,6 +453,8 @@
     "aliases": null,
     "resourceType": "devcenters/catalogs/tasks",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -373,6 +477,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -389,42 +494,7 @@
       "UAE North",
       "UK South",
       "West Europe",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "devcenters/curationprofiles",
-    "apiVersions": [
-      "2024-10-01-preview",
-      "2024-08-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Korea Central",
-      "North Europe",
-      "Poland Central",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Spain Central",
-      "Sweden Central",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -460,6 +530,8 @@
     },
     "resourceType": "devcenters/devboxdefinitions",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -490,6 +562,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -506,6 +579,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -517,6 +591,8 @@
     },
     "resourceType": "devcenters/environmentTypes",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -547,6 +623,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -563,6 +640,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -574,6 +652,8 @@
     },
     "resourceType": "devcenters/galleries",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -604,6 +684,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -620,6 +701,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -628,6 +710,8 @@
     "aliases": null,
     "resourceType": "devcenters/galleries/images",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -658,6 +742,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -674,6 +759,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -682,6 +768,8 @@
     "aliases": null,
     "resourceType": "devcenters/galleries/images/versions",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -712,6 +800,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -728,6 +817,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -736,6 +826,8 @@
     "aliases": null,
     "resourceType": "devcenters/images",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -766,6 +858,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -782,6 +875,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -800,6 +894,8 @@
     },
     "resourceType": "devcenters/projectpolicies",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -814,6 +910,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -830,6 +927,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -838,6 +936,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -866,6 +966,8 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -896,6 +998,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -912,6 +1015,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -920,6 +1024,8 @@
     "aliases": null,
     "resourceType": "Locations/usages",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -955,6 +1061,8 @@
     },
     "resourceType": "networkconnections",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -985,6 +1093,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1001,6 +1110,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1009,6 +1119,8 @@
     "aliases": null,
     "resourceType": "networkconnections/healthchecks",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1039,6 +1151,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1055,6 +1168,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1063,6 +1177,8 @@
     "aliases": null,
     "resourceType": "networkconnections/outboundNetworkDependenciesEndpoints",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1089,6 +1205,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1105,6 +1222,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1113,6 +1231,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1168,6 +1288,8 @@
     },
     "resourceType": "projects",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1198,6 +1320,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1214,6 +1337,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1222,6 +1346,8 @@
     "aliases": null,
     "resourceType": "projects/allowedEnvironmentTypes",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1251,6 +1377,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1267,6 +1394,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1275,6 +1403,8 @@
     "aliases": null,
     "resourceType": "projects/attachednetworks",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1305,6 +1435,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1321,6 +1452,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1356,6 +1488,8 @@
     },
     "resourceType": "projects/catalogs",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1376,6 +1510,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1392,6 +1527,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1400,6 +1536,8 @@
     "aliases": null,
     "resourceType": "projects/catalogs/environmentDefinitions",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1420,6 +1558,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1436,6 +1575,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1444,6 +1584,8 @@
     "aliases": null,
     "resourceType": "projects/catalogs/imagedefinitions",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1461,6 +1603,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1477,6 +1620,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1485,6 +1629,8 @@
     "aliases": null,
     "resourceType": "projects/catalogs/imagedefinitions/builds",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1501,6 +1647,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1517,6 +1664,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1525,6 +1673,8 @@
     "aliases": null,
     "resourceType": "projects/devboxdefinitions",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1555,6 +1705,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1571,6 +1722,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1588,6 +1740,8 @@
     },
     "resourceType": "projects/environmentTypes",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1618,6 +1772,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1634,6 +1789,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1642,6 +1798,8 @@
     "aliases": null,
     "resourceType": "projects/images",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1659,6 +1817,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1675,6 +1834,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1683,6 +1843,8 @@
     "aliases": null,
     "resourceType": "projects/images/versions",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1700,6 +1862,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1716,6 +1879,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1724,6 +1888,8 @@
     "aliases": null,
     "resourceType": "projects/listskus",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1741,6 +1907,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1757,6 +1924,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1809,6 +1977,8 @@
     },
     "resourceType": "projects/pools",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1839,6 +2009,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1855,6 +2026,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -1872,6 +2044,8 @@
     },
     "resourceType": "projects/pools/schedules",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-10-01-preview",
       "2025-07-01-preview",
       "2025-04-01-preview",
       "2025-02-01",
@@ -1902,6 +2076,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
@@ -1918,6 +2093,7 @@
       "UAE North",
       "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []

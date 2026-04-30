@@ -1,6 +1,16 @@
 [
   {
     "aliases": null,
+    "resourceType": "applicableConditionalCredits",
+    "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "applicableContributors",
     "apiVersions": [
       "2025-05-01-preview",
@@ -13,6 +23,8 @@
     "aliases": null,
     "resourceType": "applicableCredits",
     "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-beta",
       "2023-11-01-preview",
       "2023-11-01-beta"
     ],
@@ -55,8 +67,20 @@
   },
   {
     "aliases": null,
+    "resourceType": "conditionalCredits",
+    "apiVersions": [
+      "2025-05-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "credits",
     "apiVersions": [
+      "2025-05-01-preview",
       "2023-11-01-preview"
     ],
     "locations": [
@@ -80,6 +104,17 @@
     "resourceType": "discounts",
     "apiVersions": [
       "2024-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "freeServices",
+    "apiVersions": [
+      "2025-12-01-preview"
     ],
     "locations": [
       "global"
@@ -289,6 +324,8 @@
     "aliases": null,
     "resourceType": "validate",
     "apiVersions": [
+      "2025-05-01-preview",
+      "2025-05-01-beta",
       "2023-11-01-preview",
       "2023-11-01-beta",
       "2023-07-01-preview",

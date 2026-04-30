@@ -34,8 +34,11 @@
       "Australia East",
       "Central India",
       "East US",
+      "Germany West Central",
+      "Italy North",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UAE North",
       "West Europe",
       "West US"
@@ -87,8 +90,11 @@
     "locations": [
       "Australia East",
       "Central India",
+      "Central US EUAP",
       "East US",
       "East US 2 EUAP",
+      "Germany West Central",
+      "Italy North",
       "South Central US",
       "Southeast Asia",
       "UAE North",

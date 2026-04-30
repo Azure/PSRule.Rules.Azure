@@ -3,8 +3,12 @@
     "aliases": null,
     "resourceType": "CheckNameAvailability",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
+      "2024-09-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
@@ -35,6 +39,9 @@
     },
     "resourceType": "CommunicationServices",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-05-01-preview",
       "2025-05-01",
       "2025-01-25-preview",
@@ -77,6 +84,10 @@
     },
     "resourceType": "CommunicationServices/SmtpUsernames",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
+      "2025-01-25-preview",
       "2024-09-01-preview"
     ],
     "locations": [
@@ -91,8 +102,12 @@
     },
     "resourceType": "EmailServices",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
+      "2024-09-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
@@ -161,8 +176,12 @@
     },
     "resourceType": "EmailServices/Domains",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
+      "2024-09-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
@@ -186,6 +205,9 @@
     },
     "resourceType": "EmailServices/Domains/SenderUsernames",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
       "2023-06-01-preview",
@@ -208,6 +230,9 @@
     },
     "resourceType": "EmailServices/Domains/SuppressionLists",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
       "2023-06-01-preview"
@@ -228,6 +253,9 @@
     },
     "resourceType": "EmailServices/Domains/SuppressionLists/SuppressionListAddresses",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
       "2023-06-01-preview"
@@ -241,8 +269,12 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
+      "2024-09-01-preview",
       "2023-11-21-preview",
       "2023-11-06-preview",
       "2023-06-01-preview",
@@ -263,8 +295,12 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
+      "2024-09-01-preview",
       "2023-12-25-preview",
       "2023-11-21-preview",
       "2023-11-06-preview",
@@ -280,6 +316,8 @@
       "2020-08-20"
     ],
     "locations": [
+      "North Europe",
+      "West Europe",
       "West US 2"
     ],
     "zoneMappings": []
@@ -300,8 +338,12 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
+      "2024-09-01-preview",
       "2023-12-25-preview",
       "2023-11-21-preview",
       "2023-11-06-preview",
@@ -323,8 +365,12 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2026-03-18",
+      "2025-09-01-preview",
+      "2025-09-01",
       "2025-01-25-preview",
       "2024-11-01-preview",
+      "2024-09-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",

@@ -3,7 +3,17 @@
     "aliases": null,
     "resourceType": "canCreate",
     "apiVersions": [
+      "2025-07-01-preview",
       "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "canTransact",
+    "apiVersions": [
+      "2025-07-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -21,24 +31,67 @@
     "aliases": null,
     "resourceType": "cloudServices",
     "apiVersions": [
+      "2025-07-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
+      "Australia Central",
+      "Australia Central 2",
       "Australia East",
+      "Australia Southeast",
+      "Austria East",
       "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
       "Canada East",
+      "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US 2",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
+      "South Africa West",
       "South Central US",
+      "South India",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
+      "UK West",
       "West Central US",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "coterminousDates",
+    "apiVersions": [
+      "2025-07-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -58,18 +111,51 @@
       "2023-01-01-preview"
     ],
     "locations": [
+      "Australia Central",
+      "Australia Central 2",
       "Australia East",
+      "Australia Southeast",
+      "Austria East",
       "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
       "Canada East",
+      "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US 2",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Indonesia Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
+      "New Zealand North",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
+      "South Africa West",
       "South Central US",
+      "South India",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
+      "UK West",
       "West Central US",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -103,6 +189,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-07-01-preview",
       "2024-09-30-preview",
       "2023-01-01-preview"
     ],
@@ -131,6 +218,8 @@
     "aliases": null,
     "resourceType": "saasResources",
     "apiVersions": [
+      "2026-03-31-preview",
+      "2025-07-01-preview",
       "2024-09-30-preview"
     ],
     "locations": [
@@ -142,7 +231,47 @@
     "aliases": null,
     "resourceType": "tenantLevelCanCreate",
     "apiVersions": [
+      "2026-03-31-preview",
+      "2025-07-01-preview",
       "2024-09-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "tenantLevelCanTransact",
+    "apiVersions": [
+      "2026-03-31-preview",
+      "2025-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "tenantLevelCoterminousDates",
+    "apiVersions": [
+      "2026-03-31-preview",
+      "2025-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateFuturePriceEligibility",
+    "apiVersions": [
+      "2026-03-31-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "validatePromotions",
+    "apiVersions": [
+      "2026-03-31-preview"
     ],
     "locations": [],
     "zoneMappings": []

@@ -5,6 +5,9 @@
   "austriaeast": {
     "zones": 3
   },
+  "belgiumcentral": {
+    "zones": 3
+  },
   "brazilsouth": {
     "zones": 3
   },
@@ -18,6 +21,9 @@
     "zones": 3
   },
   "chilecentral": {
+    "zones": 3
+  },
+  "denmarkeast": {
     "zones": 3
   },
   "eastasia": {

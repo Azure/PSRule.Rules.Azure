@@ -1,8 +1,43 @@
 [
   {
     "aliases": null,
+    "resourceType": "changeactivityevents",
+    "apiVersions": [
+      "2026-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.ChangeSafety/changeRecords/changeType": "properties.changeType",
+      "Microsoft.ChangeSafety/changeRecords/status": "properties.status"
+    },
+    "resourceType": "changerecords",
+    "apiVersions": [
+      "2026-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.ChangeSafety/changeRecords/stageProgressions/stageReference": "properties.stageReference",
+      "Microsoft.ChangeSafety/changeRecords/stageProgressions/status": "properties.status"
+    },
+    "resourceType": "changerecords/stageprogressions",
+    "apiVersions": [
+      "2026-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "changestates",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-09-01-preview",
       "2025-03-01-preview"
     ],
     "locations": [],
@@ -12,6 +47,8 @@
     "aliases": null,
     "resourceType": "changestates/stageprogressions",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-09-01-preview",
       "2025-03-01-preview"
     ],
     "locations": [],
@@ -21,6 +58,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-09-01-preview",
       "2025-03-01-preview",
       "2024-10-01-preview"
     ],
@@ -31,11 +70,19 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-09-01-preview",
       "2025-03-01-preview",
       "2024-10-01-preview"
     ],
     "locations": [
-      "East US 2"
+      "Brazil South",
+      "East Asia",
+      "East US 2",
+      "North Europe",
+      "UK South",
+      "West Central US",
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -43,6 +90,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-09-01-preview",
       "2025-03-01-preview",
       "2024-10-01-preview"
     ],
@@ -63,8 +112,41 @@
   },
   {
     "aliases": null,
+    "resourceType": "saferollouts",
+    "apiVersions": [
+      "2026-01-01-preview",
+      "2025-03-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "saferollouts/stages",
+    "apiVersions": [
+      "2026-01-01-preview",
+      "2025-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "saferollouts/steps",
+    "apiVersions": [
+      "2025-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "stagemaps",
     "apiVersions": [
+      "2026-01-01-preview",
+      "2025-09-01-preview",
       "2025-03-01-preview"
     ],
     "locations": [],
@@ -74,16 +156,22 @@
     "aliases": null,
     "resourceType": "validations",
     "apiVersions": [
-      "2025-01-15-preview"
+      "2026-01-01-preview",
+      "2025-01-15-preview",
+      "2024-10-01-preview"
     ],
-    "locations": [],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "validators",
     "apiVersions": [
-      "2025-01-15-preview"
+      "2026-01-01-preview",
+      "2025-01-15-preview",
+      "2024-10-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -92,7 +180,9 @@
     "aliases": null,
     "resourceType": "validators/versions",
     "apiVersions": [
-      "2025-01-15-preview"
+      "2026-01-01-preview",
+      "2025-01-15-preview",
+      "2024-10-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

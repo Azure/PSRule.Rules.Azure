@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "configTemplates",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -16,6 +17,7 @@
     "aliases": null,
     "resourceType": "configTemplates/configTemplateMetadatas",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-15-preview",
       "2025-08-01"
     ],
@@ -29,6 +31,7 @@
     "aliases": null,
     "resourceType": "configTemplates/versions",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -42,6 +45,7 @@
     "aliases": null,
     "resourceType": "configTemplates/versions/configTemplateSchemas",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-15-preview",
       "2025-08-01"
     ],
@@ -55,6 +59,7 @@
     "aliases": null,
     "resourceType": "configurationReferences",
     "apiVersions": [
+      "2025-12-01-preview",
       "2025-08-01",
       "2025-06-01",
       "2024-09-01-preview"
@@ -66,8 +71,33 @@
     "aliases": null,
     "resourceType": "configurations",
     "apiVersions": [
+      "2025-12-01-preview",
       "2025-08-01",
       "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations/arcGatewayConfigurations",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations/connectivityConfigurations",
+    "apiVersions": [
+      "2025-12-01-preview"
     ],
     "locations": [
       "East US",
@@ -94,6 +124,54 @@
     "apiVersions": [
       "2025-08-01",
       "2025-06-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations/networkConfigurations",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations/provisioningConfigurations",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations/securityConfigurations",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configurations/timeServerConfigurations",
+    "apiVersions": [
+      "2025-12-01-preview"
     ],
     "locations": [
       "East US",
@@ -146,6 +224,7 @@
     "aliases": null,
     "resourceType": "contexts",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -171,6 +250,7 @@
     "aliases": null,
     "resourceType": "contexts/siteReferences",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -236,6 +316,7 @@
     "aliases": null,
     "resourceType": "jobs",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -355,6 +436,7 @@
     "aliases": null,
     "resourceType": "schemas",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -394,6 +476,7 @@
     "aliases": null,
     "resourceType": "schemas/versions",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -410,6 +493,17 @@
       "2023-08-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "SiteKeys",
+    "apiVersions": [
+      "2026-04-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   },
   {
@@ -431,6 +525,7 @@
     "aliases": null,
     "resourceType": "solutionTemplates",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -444,6 +539,7 @@
     "aliases": null,
     "resourceType": "solutionTemplates/versions",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -457,6 +553,7 @@
     "aliases": null,
     "resourceType": "solutionTemplates/versions/solutionSchemas",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-15-preview",
       "2025-08-01"
     ],
@@ -470,6 +567,7 @@
     "aliases": null,
     "resourceType": "targets",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -483,6 +581,7 @@
     "aliases": null,
     "resourceType": "targets/solutions",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -496,6 +595,7 @@
     "aliases": null,
     "resourceType": "targets/solutions/instances",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -509,6 +609,7 @@
     "aliases": null,
     "resourceType": "targets/solutions/instances/histories",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],
@@ -522,6 +623,7 @@
     "aliases": null,
     "resourceType": "targets/solutions/versions",
     "apiVersions": [
+      "2026-03-01",
       "2025-08-01",
       "2025-06-01"
     ],

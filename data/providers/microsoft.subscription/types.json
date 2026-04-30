@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "acceptChangeTenant",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-01-01-privatepreview",
       "2019-10-01-preview"
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "acceptOwnership",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview"
@@ -25,6 +27,7 @@
     "aliases": null,
     "resourceType": "acceptOwnershipStatus",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview"
@@ -38,6 +41,7 @@
     },
     "resourceType": "aliases",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview",
@@ -51,6 +55,7 @@
     "aliases": null,
     "resourceType": "cancel",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2020-09-01",
@@ -64,6 +69,7 @@
     "aliases": null,
     "resourceType": "changeTenantRequest",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-01-01-privatepreview",
       "2019-10-01-preview"
@@ -75,6 +81,7 @@
     "aliases": null,
     "resourceType": "changeTenantStatus",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-01-01-privatepreview",
       "2019-10-01-preview"
@@ -106,6 +113,7 @@
     "aliases": null,
     "resourceType": "enable",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2020-09-01",
@@ -119,6 +127,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2019-10-01-preview"
     ],
@@ -129,6 +138,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2017-11-01-preview"
@@ -140,6 +150,7 @@
     "aliases": null,
     "resourceType": "policies",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview"
@@ -151,6 +162,7 @@
     "aliases": null,
     "resourceType": "rename",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2020-09-01",
@@ -178,6 +190,7 @@
     "aliases": null,
     "resourceType": "SubscriptionOperations",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview",
@@ -193,6 +206,7 @@
     "aliases": null,
     "resourceType": "subscriptions",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview",
@@ -205,6 +219,7 @@
     "aliases": null,
     "resourceType": "supportPlans",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview"
     ],
     "locations": [],
@@ -214,6 +229,7 @@
     "aliases": null,
     "resourceType": "transfers",
     "apiVersions": [
+      "2025-11-01-preview",
       "2024-08-01-preview"
     ],
     "locations": [],

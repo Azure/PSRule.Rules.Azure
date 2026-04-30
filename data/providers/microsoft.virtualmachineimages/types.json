@@ -42,6 +42,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Central India",
@@ -97,6 +98,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Central India",
@@ -148,6 +150,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Central India",
@@ -204,11 +207,13 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -259,6 +264,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Central India",
@@ -314,6 +320,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Canada Central",
       "Central India",

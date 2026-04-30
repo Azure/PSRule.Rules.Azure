@@ -7,6 +7,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -105,6 +106,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -169,6 +171,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -280,6 +283,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -316,6 +320,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -404,33 +409,7 @@
     ],
     "locations": [
       "France Central",
-      "Germany West Central",
-      "Israel Central",
-      "Italy North",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UK South",
-      "UK West",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "businessApplicationAgents",
-    "apiVersions": [
-      "2025-07-01-preview",
-      "2025-04-01-preview",
-      "2025-01-01-preview",
-      "2024-10-01-preview",
-      "2024-04-01-preview"
-    ],
-    "locations": [
-      "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -485,6 +464,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -531,6 +511,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -578,6 +559,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -621,6 +603,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -664,6 +647,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -711,34 +695,7 @@
     ],
     "locations": [
       "France Central",
-      "Germany West Central",
-      "Israel Central",
-      "Italy North",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UK South",
-      "UK West",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "contenttranslators",
-    "apiVersions": [
-      "2025-07-01-preview",
-      "2025-04-01-preview",
-      "2025-01-01-preview",
-      "2024-10-01-preview",
-      "2024-04-01-preview",
-      "2024-01-01-preview"
-    ],
-    "locations": [
-      "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -787,6 +744,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -896,6 +854,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -948,6 +907,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1001,6 +961,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1028,6 +989,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1086,6 +1048,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1139,6 +1102,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1192,6 +1156,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1230,6 +1195,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1274,6 +1240,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1311,6 +1278,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1354,6 +1322,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1454,6 +1423,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1512,6 +1482,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1571,6 +1542,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1620,6 +1592,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1672,6 +1645,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1734,6 +1708,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1828,6 +1803,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1869,6 +1845,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1924,6 +1901,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -1981,6 +1959,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2039,6 +2018,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2102,6 +2082,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2141,6 +2122,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2234,6 +2216,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2272,6 +2255,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2310,6 +2294,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2348,6 +2333,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",
@@ -2386,6 +2372,7 @@
     ],
     "locations": [
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Italy North",

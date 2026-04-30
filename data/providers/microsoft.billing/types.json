@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "billingAccounts",
     "apiVersions": [
+      "2026-03-01-preview",
       "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
@@ -21,7 +22,18 @@
     "aliases": null,
     "resourceType": "billingAccounts/addresses",
     "apiVersions": [
+      "2026-03-01-preview",
+      "2024-08-01-preview",
       "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/addresses/versions",
+    "apiVersions": [
+      "2026-03-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -65,6 +77,15 @@
     "apiVersions": [
       "2020-12-15-privatepreview",
       "2020-12-15-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/associatedBillingAccounts",
+    "apiVersions": [
+      "2026-03-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -116,6 +137,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles",
     "apiVersions": [
+      "2026-03-01-preview",
       "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
@@ -186,6 +208,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/billingRequests",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01"
     ],
     "locations": [],
@@ -234,6 +257,16 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/chargeRevisions",
+    "apiVersions": [
+      "2026-03-01-preview",
+      "2025-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/createBillingRoleAssignment",
     "apiVersions": [
       "2024-04-01",
@@ -271,6 +304,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/customers/billingRequests",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01"
     ],
     "locations": [],
@@ -523,6 +557,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/invoiceSections/billingRequests",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01"
     ],
     "locations": [],
@@ -590,6 +625,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/invoiceSections/policies",
+    "apiVersions": [
+      "2026-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/invoiceSections/products",
     "apiVersions": [
       "2024-04-01",
@@ -632,6 +676,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/invoiceSections/transfers",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-11-01-privatepreview",
       "2020-05-01",
@@ -645,6 +690,15 @@
     "resourceType": "billingAccounts/billingProfiles/invoiceSections/validateDeleteInvoiceSectionEligibility",
     "apiVersions": [
       "2020-11-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/invoicingPreferences",
+    "apiVersions": [
+      "2024-08-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -671,6 +725,8 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/paymentMethodLinks",
     "apiVersions": [
+      "2026-03-01-preview",
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2021-10-01",
@@ -737,6 +793,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/purchaseOrderMappings",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/purchaseOrders",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/reservations",
     "apiVersions": [
       "2024-04-01-beta",
@@ -796,6 +870,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingRequests",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01"
     ],
     "locations": [],
@@ -843,6 +918,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingSubscriptions",
     "apiVersions": [
+      "2026-03-01-preview",
       "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
@@ -941,8 +1017,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/customerAliases",
+    "apiVersions": [
+      "2026-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/customers",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
@@ -1052,6 +1138,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/customers/transfers",
     "apiVersions": [
+      "2024-08-01-preview",
       "2020-11-01-privatepreview",
       "2019-10-01-preview"
     ],
@@ -1062,6 +1149,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/customers/transferSupportedAccounts",
     "apiVersions": [
+      "2024-08-01-preview",
       "2020-11-01-privatepreview"
     ],
     "locations": [],
@@ -1435,6 +1523,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/invoicingPreferences",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/licenseReservations",
     "apiVersions": [
       "2024-08-01-preview"
@@ -1495,6 +1592,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/operationResults",
     "apiVersions": [
+      "2026-03-01-preview",
       "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
@@ -1504,6 +1602,15 @@
       "2020-05-01",
       "2019-10-01-preview",
       "2018-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/partnerChangeRequests",
+    "apiVersions": [
+      "2024-08-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -1613,6 +1720,24 @@
     "resourceType": "billingAccounts/promotionalCredits",
     "apiVersions": [
       "2020-11-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/purchaseOrderMappings",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/purchaseOrders",
+    "apiVersions": [
+      "2024-08-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -1772,6 +1897,7 @@
     "aliases": null,
     "resourceType": "billingRequests",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01"
     ],
     "locations": [],
@@ -1954,6 +2080,7 @@
     "aliases": null,
     "resourceType": "transfers",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-11-01-privatepreview",
       "2020-05-01",

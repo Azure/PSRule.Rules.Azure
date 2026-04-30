@@ -1,0 +1,58 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "Central India",
+      "East US 2",
+      "Germany West Central",
+      "Korea Central",
+      "Sweden Central",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "Central India",
+      "East US 2",
+      "Germany West Central",
+      "Korea Central",
+      "Sweden Central",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  }
+]
