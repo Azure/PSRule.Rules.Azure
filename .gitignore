@@ -12,6 +12,7 @@ dist/
 **/__pycache__/
 **/*.egg-info/
 **/build/
+**/.terraform/
 BenchmarkDotNet.Artifacts/
 results/
 .venv/
@@ -21,5 +22,9 @@ data/types_index.json
 *.log
 *.min.json
 *.user
+.terraform.lock.hcl
+.terraform.tfstate.lock.info
+terraform.tfstate
+tfplan
 docs/**/rules/metadata.json
 docs/**/rules/avm_versions.json

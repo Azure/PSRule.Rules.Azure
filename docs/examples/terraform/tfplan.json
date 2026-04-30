@@ -1,0 +1,669 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.14.9",
+  "variables": {
+    "container_registry_name": {
+      "value": ""
+    },
+    "resource_group_location": {
+      "value": "eastus"
+    },
+    "resource_group_name_prefix": {
+      "value": "rg"
+    }
+  },
+  "planned_values": {
+    "outputs": {
+      "azure_container_registry_name": {
+        "sensitive": false
+      },
+      "resource_group_name": {
+        "sensitive": false
+      }
+    },
+    "root_module": {
+      "resources": [
+        {
+          "address": "azapi_resource.example",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "example",
+          "provider_name": "registry.terraform.io/azure/azapi",
+          "schema_version": 2,
+          "values": {
+            "body": {
+              "properties": {
+                "adminUserEnabled": true
+              },
+              "sku": {
+                "name": "Standard"
+              }
+            },
+            "create_headers": null,
+            "create_query_parameters": null,
+            "delete_headers": null,
+            "delete_query_parameters": null,
+            "identity": [
+              {
+                "identity_ids": [
+                  null
+                ],
+                "type": "SystemAssigned, UserAssigned"
+              }
+            ],
+            "ignore_casing": false,
+            "ignore_missing_property": true,
+            "ignore_null_property": false,
+            "ignore_other_items_in_list": null,
+            "list_unique_id_property": null,
+            "location": "eastus",
+            "locks": null,
+            "read_headers": null,
+            "read_query_parameters": null,
+            "replace_triggers_external_values": null,
+            "replace_triggers_refs": null,
+            "response_export_values": [
+              "properties.loginServer",
+              "properties.policies.quarantinePolicy.status"
+            ],
+            "retry": null,
+            "schema_validation_enabled": true,
+            "sensitive_body": null,
+            "sensitive_body_version": null,
+            "tags": {
+              "Key": "Value"
+            },
+            "timeouts": null,
+            "type": "Microsoft.ContainerRegistry/registries@2020-11-01-preview",
+            "update_headers": null,
+            "update_query_parameters": null
+          },
+          "sensitive_values": {
+            "body": {
+              "properties": {},
+              "sku": {}
+            },
+            "identity": [
+              {
+                "identity_ids": [
+                  false
+                ]
+              }
+            ],
+            "response_export_values": [
+              false,
+              false
+            ],
+            "tags": {}
+          }
+        },
+        {
+          "address": "azurerm_resource_group.rg",
+          "mode": "managed",
+          "type": "azurerm_resource_group",
+          "name": "rg",
+          "provider_name": "registry.terraform.io/hashicorp/azurerm",
+          "schema_version": 0,
+          "values": {
+            "location": "eastus",
+            "managed_by": null,
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "azurerm_user_assigned_identity.example",
+          "mode": "managed",
+          "type": "azurerm_user_assigned_identity",
+          "name": "example",
+          "provider_name": "registry.terraform.io/hashicorp/azurerm",
+          "schema_version": 1,
+          "values": {
+            "isolation_scope": null,
+            "location": "eastus",
+            "name": "example",
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "random_pet.rg_name",
+          "mode": "managed",
+          "type": "random_pet",
+          "name": "rg_name",
+          "provider_name": "registry.terraform.io/hashicorp/random",
+          "schema_version": 0,
+          "values": {
+            "keepers": null,
+            "length": 2,
+            "prefix": "rg",
+            "separator": "-"
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "random_string.acr_name",
+          "mode": "managed",
+          "type": "random_string",
+          "name": "acr_name",
+          "provider_name": "registry.terraform.io/hashicorp/random",
+          "schema_version": 2,
+          "values": {
+            "keepers": null,
+            "length": 10,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": false,
+            "numeric": false,
+            "override_special": null,
+            "special": false,
+            "upper": false
+          },
+          "sensitive_values": {}
+        }
+      ]
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "azapi_resource.example",
+      "mode": "managed",
+      "type": "azapi_resource",
+      "name": "example",
+      "provider_name": "registry.terraform.io/azure/azapi",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "body": {
+            "properties": {
+              "adminUserEnabled": true
+            },
+            "sku": {
+              "name": "Standard"
+            }
+          },
+          "create_headers": null,
+          "create_query_parameters": null,
+          "delete_headers": null,
+          "delete_query_parameters": null,
+          "identity": [
+            {
+              "identity_ids": [
+                null
+              ],
+              "type": "SystemAssigned, UserAssigned"
+            }
+          ],
+          "ignore_casing": false,
+          "ignore_missing_property": true,
+          "ignore_null_property": false,
+          "ignore_other_items_in_list": null,
+          "list_unique_id_property": null,
+          "location": "eastus",
+          "locks": null,
+          "read_headers": null,
+          "read_query_parameters": null,
+          "replace_triggers_external_values": null,
+          "replace_triggers_refs": null,
+          "response_export_values": [
+            "properties.loginServer",
+            "properties.policies.quarantinePolicy.status"
+          ],
+          "retry": null,
+          "schema_validation_enabled": true,
+          "sensitive_body": null,
+          "sensitive_body_version": null,
+          "tags": {
+            "Key": "Value"
+          },
+          "timeouts": null,
+          "type": "Microsoft.ContainerRegistry/registries@2020-11-01-preview",
+          "update_headers": null,
+          "update_query_parameters": null
+        },
+        "after_unknown": {
+          "body": {
+            "properties": {},
+            "sku": {}
+          },
+          "id": true,
+          "identity": [
+            {
+              "identity_ids": [
+                true
+              ],
+              "principal_id": true,
+              "tenant_id": true
+            }
+          ],
+          "name": true,
+          "output": true,
+          "parent_id": true,
+          "response_export_values": [
+            false,
+            false
+          ],
+          "tags": {}
+        },
+        "before_sensitive": false,
+        "after_sensitive": {
+          "body": {
+            "properties": {},
+            "sku": {}
+          },
+          "identity": [
+            {
+              "identity_ids": [
+                false
+              ]
+            }
+          ],
+          "response_export_values": [
+            false,
+            false
+          ],
+          "tags": {}
+        }
+      }
+    },
+    {
+      "address": "azurerm_resource_group.rg",
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "rg",
+      "provider_name": "registry.terraform.io/hashicorp/azurerm",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "location": "eastus",
+          "managed_by": null,
+          "tags": null,
+          "timeouts": null
+        },
+        "after_unknown": {
+          "id": true,
+          "name": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "azurerm_user_assigned_identity.example",
+      "mode": "managed",
+      "type": "azurerm_user_assigned_identity",
+      "name": "example",
+      "provider_name": "registry.terraform.io/hashicorp/azurerm",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "isolation_scope": null,
+          "location": "eastus",
+          "name": "example",
+          "tags": null,
+          "timeouts": null
+        },
+        "after_unknown": {
+          "client_id": true,
+          "id": true,
+          "principal_id": true,
+          "resource_group_name": true,
+          "tenant_id": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "random_pet.rg_name",
+      "mode": "managed",
+      "type": "random_pet",
+      "name": "rg_name",
+      "provider_name": "registry.terraform.io/hashicorp/random",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "keepers": null,
+          "length": 2,
+          "prefix": "rg",
+          "separator": "-"
+        },
+        "after_unknown": {
+          "id": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "random_string.acr_name",
+      "mode": "managed",
+      "type": "random_string",
+      "name": "acr_name",
+      "provider_name": "registry.terraform.io/hashicorp/random",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "keepers": null,
+          "length": 10,
+          "lower": true,
+          "min_lower": 0,
+          "min_numeric": 0,
+          "min_special": 0,
+          "min_upper": 0,
+          "number": false,
+          "numeric": false,
+          "override_special": null,
+          "special": false,
+          "upper": false
+        },
+        "after_unknown": {
+          "id": true,
+          "result": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    }
+  ],
+  "output_changes": {
+    "azure_container_registry_name": {
+      "actions": [
+        "create"
+      ],
+      "before": null,
+      "after_unknown": true,
+      "before_sensitive": false,
+      "after_sensitive": false
+    },
+    "resource_group_name": {
+      "actions": [
+        "create"
+      ],
+      "before": null,
+      "after_unknown": true,
+      "before_sensitive": false,
+      "after_sensitive": false
+    }
+  },
+  "configuration": {
+    "provider_config": {
+      "azapi": {
+        "name": "azapi",
+        "full_name": "registry.terraform.io/azure/azapi",
+        "version_constraint": "~\u003e 2.0"
+      },
+      "azurerm": {
+        "name": "azurerm",
+        "full_name": "registry.terraform.io/hashicorp/azurerm",
+        "version_constraint": "~\u003e 4.0",
+        "expressions": {
+          "features": [
+            {}
+          ],
+          "resource_provider_registrations": {
+            "constant_value": "none"
+          }
+        }
+      },
+      "random": {
+        "name": "random",
+        "full_name": "registry.terraform.io/hashicorp/random",
+        "version_constraint": "~\u003e 3.0"
+      }
+    },
+    "root_module": {
+      "outputs": {
+        "azure_container_registry_name": {
+          "expression": {
+            "references": [
+              "azapi_resource.example.name",
+              "azapi_resource.example"
+            ]
+          }
+        },
+        "resource_group_name": {
+          "expression": {
+            "references": [
+              "azurerm_resource_group.rg.name",
+              "azurerm_resource_group.rg"
+            ]
+          }
+        }
+      },
+      "resources": [
+        {
+          "address": "azapi_resource.example",
+          "mode": "managed",
+          "type": "azapi_resource",
+          "name": "example",
+          "provider_config_key": "azapi",
+          "expressions": {
+            "body": {
+              "constant_value": {
+                "properties": {
+                  "adminUserEnabled": true
+                },
+                "sku": {
+                  "name": "Standard"
+                }
+              }
+            },
+            "identity": [
+              {
+                "identity_ids": {
+                  "references": [
+                    "azurerm_user_assigned_identity.example.id",
+                    "azurerm_user_assigned_identity.example"
+                  ]
+                },
+                "type": {
+                  "constant_value": "SystemAssigned, UserAssigned"
+                }
+              }
+            ],
+            "location": {
+              "references": [
+                "azurerm_resource_group.rg.location",
+                "azurerm_resource_group.rg"
+              ]
+            },
+            "name": {
+              "references": [
+                "var.container_registry_name",
+                "random_string.acr_name.result",
+                "random_string.acr_name"
+              ]
+            },
+            "parent_id": {
+              "references": [
+                "azurerm_resource_group.rg.id",
+                "azurerm_resource_group.rg"
+              ]
+            },
+            "response_export_values": {
+              "constant_value": [
+                "properties.loginServer",
+                "properties.policies.quarantinePolicy.status"
+              ]
+            },
+            "tags": {
+              "constant_value": {
+                "Key": "Value"
+              }
+            },
+            "type": {
+              "constant_value": "Microsoft.ContainerRegistry/registries@2020-11-01-preview"
+            }
+          },
+          "schema_version": 2
+        },
+        {
+          "address": "azurerm_resource_group.rg",
+          "mode": "managed",
+          "type": "azurerm_resource_group",
+          "name": "rg",
+          "provider_config_key": "azurerm",
+          "expressions": {
+            "location": {
+              "references": [
+                "var.resource_group_location"
+              ]
+            },
+            "name": {
+              "references": [
+                "random_pet.rg_name.id",
+                "random_pet.rg_name"
+              ]
+            }
+          },
+          "schema_version": 0
+        },
+        {
+          "address": "azurerm_user_assigned_identity.example",
+          "mode": "managed",
+          "type": "azurerm_user_assigned_identity",
+          "name": "example",
+          "provider_config_key": "azurerm",
+          "expressions": {
+            "location": {
+              "references": [
+                "azurerm_resource_group.rg.location",
+                "azurerm_resource_group.rg"
+              ]
+            },
+            "name": {
+              "constant_value": "example"
+            },
+            "resource_group_name": {
+              "references": [
+                "azurerm_resource_group.rg.name",
+                "azurerm_resource_group.rg"
+              ]
+            }
+          },
+          "schema_version": 1
+        },
+        {
+          "address": "random_pet.rg_name",
+          "mode": "managed",
+          "type": "random_pet",
+          "name": "rg_name",
+          "provider_config_key": "random",
+          "expressions": {
+            "prefix": {
+              "references": [
+                "var.resource_group_name_prefix"
+              ]
+            }
+          },
+          "schema_version": 0
+        },
+        {
+          "address": "random_string.acr_name",
+          "mode": "managed",
+          "type": "random_string",
+          "name": "acr_name",
+          "provider_config_key": "random",
+          "expressions": {
+            "length": {
+              "constant_value": 10
+            },
+            "numeric": {
+              "constant_value": false
+            },
+            "special": {
+              "constant_value": false
+            },
+            "upper": {
+              "constant_value": false
+            }
+          },
+          "schema_version": 2
+        }
+      ],
+      "variables": {
+        "container_registry_name": {
+          "default": "",
+          "description": "Name of the container registry."
+        },
+        "resource_group_location": {
+          "default": "eastus",
+          "description": "Location of the resource group."
+        },
+        "resource_group_name_prefix": {
+          "default": "rg",
+          "description": "Prefix of the resource group name that's combined with a random ID so name is unique in your Azure subscription."
+        }
+      }
+    }
+  },
+  "relevant_attributes": [
+    {
+      "resource": "azapi_resource.example",
+      "attribute": [
+        "name"
+      ]
+    },
+    {
+      "resource": "azurerm_user_assigned_identity.example",
+      "attribute": [
+        "id"
+      ]
+    },
+    {
+      "resource": "random_string.acr_name",
+      "attribute": [
+        "result"
+      ]
+    },
+    {
+      "resource": "azurerm_resource_group.rg",
+      "attribute": [
+        "location"
+      ]
+    },
+    {
+      "resource": "random_pet.rg_name",
+      "attribute": [
+        "id"
+      ]
+    },
+    {
+      "resource": "azurerm_resource_group.rg",
+      "attribute": [
+        "id"
+      ]
+    },
+    {
+      "resource": "azurerm_resource_group.rg",
+      "attribute": [
+        "name"
+      ]
+    }
+  ],
+  "timestamp": "2026-04-25T06:49:04Z",
+  "applyable": true,
+  "complete": true,
+  "errored": false
+}
