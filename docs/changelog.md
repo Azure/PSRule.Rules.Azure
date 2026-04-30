@@ -43,7 +43,7 @@ What's changed since v1.47.0:
     - Marked `Azure.GA_2025_12` and `Azure.Preview_2025_12` baselines as obsolete.
 - New rules:
   - Automation Account:
-    - Added `Azure.Automation.RunbookPinned` to check runbook external scripts use pinned commit hash URLs to prevent supply chain attacks.
+    - Added `Azure.Automation.RunbookPinned` to check runbook external scripts use pinned commit hash by @BernieWhite.
       [#3324](https://github.com/Azure/PSRule.Rules.Azure/issues/3324)
   - Azure Container Registry:
     - Check that audit diagnostic logs are enabled for Container Registry by @BernieWhite.
@@ -54,10 +54,10 @@ What's changed since v1.47.0:
     - Check that liveness and readiness health probes use HTTP checks for HTTP-based ingress by @BernieWhite.
       [#3111](https://github.com/Azure/PSRule.Rules.Azure/issues/3111)
   - Deployment Script:
-    - Added `Azure.DeploymentScript.Pinned` to check deployment script external script URIs use pinned commit hash URLs to prevent supply chain attacks.
+    - Added `Azure.DeploymentScript.Pinned` to check deployment script external script to use pinned commit hash by @BernieWhite.
       [#3324](https://github.com/Azure/PSRule.Rules.Azure/issues/3324)
   - Service Bus:
-    - Added `Azure.ServiceBus.ReplicaLocation` to check that geo-replication replica locations are within allowed regions.
+    - Added `Azure.ServiceBus.ReplicaLocation` to check that geo-replication replica locations are within allowed regions by @BernieWhite.
       [#3381](https://github.com/Azure/PSRule.Rules.Azure/issues/3381)
   - Virtual Machine:
     - Check that virtual machines have Secure Boot enabled by @coder999999999.
@@ -77,8 +77,18 @@ What's changed since v1.47.0:
 - Engineering
   - Improved documentation for expansion internals with a high-level flow diagram and code references by @BernieWhite.
     [#3715](https://github.com/Azure/PSRule.Rules.Azure/issues/3715)
+  - Bump Azure.Identity to 1.21.0.
+    [#3751](https://github.com/Azure/PSRule.Rules.Azure/pull/3751)
+  - Bump Azure.Core to 1.54.0
+    [#3778](https://github.com/Azure/PSRule.Rules.Azure/pull/3778)
+  - Bump Azure.Identity.Broker to 1.5.0.
+    [#3744](https://github.com/Azure/PSRule.Rules.Azure/pull/3744)
+  - Bump Microsoft.Extensions.Hosting to 10.0.7.
+    [#3769](https://github.com/Azure/PSRule.Rules.Azure/pull/3769)
+  - Bump Microsoft.Extensions.Logging.Console to 10.0.7.
+    [#3777](https://github.com/Azure/PSRule.Rules.Azure/pull/3777)
 - Bug fixes:
-  - Improved Bicep expansion errors to surface captured CLI restore failures during timeout windows instead of always falling back to the generic timeout message.
+  - Improved Bicep expansion errors to surface captured CLI restore failures during timeout windows by @polatengin.
     [#2896](https://github.com/Azure/PSRule.Rules.Azure/issues/2896)
 
 ## v1.47.0
@@ -324,9 +334,9 @@ What's changed since v1.46.0:
     - Renamed `Azure.Cosmos.DisableLocalAuth` to `Azure.Cosmos.NoSQLLocalAuth` to reflect it applies only to NoSQL API by @BernieWhite.
       [#3576](https://github.com/Azure/PSRule.Rules.Azure/issues/3576)
 - Engineering:
-  - Bump Microsoft.Extensions.Logging.Console from 8.0.0 to 10.0.1
+  - Bump Microsoft.Extensions.Logging.Console to 10.0.1.
     [#3627](https://github.com/Azure/PSRule.Rules.Azure/issues/3627)
-  - Bump Microsoft.Extensions.Hosting from 9.0.10 to 10.0.1
+  - Bump Microsoft.Extensions.Hosting to 10.0.1.
     [#3626](https://github.com/Azure/PSRule.Rules.Azure/issues/3626)
 
 ## v1.46.0

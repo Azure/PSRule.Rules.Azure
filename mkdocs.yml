@@ -59,6 +59,7 @@ nav:
       - Expanding source files: expanding-source-files.md
       - Using templates: using-templates.md
       - Using Bicep source: using-bicep.md
+      - Using Terraform source: using-terraform.md
       - Creating your pipeline: creating-your-pipeline.md
     - Testing deployed resources:
       - Exporting rule data: export-rule-data.md
