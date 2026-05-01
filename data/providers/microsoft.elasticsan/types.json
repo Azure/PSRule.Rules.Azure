@@ -32,6 +32,7 @@
     },
     "resourceType": "elasticSans",
     "apiVersions": [
+      "2025-09-01",
       "2024-07-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
@@ -40,28 +41,51 @@
       "2021-11-20-preview"
     ],
     "locations": [
+      "Australia Central",
+      "Australia Central 2",
       "Australia East",
+      "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
+      "Canada East",
       "Central India",
       "Central US",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
+      "Japan West",
       "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
       "North Europe",
       "Norway East",
+      "Norway West",
+      "Poland Central",
+      "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
+      "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -147,6 +171,14 @@
         ]
       },
       {
+        "location": "Italy North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Japan East",
         "zones": [
           "1",
@@ -155,7 +187,23 @@
         ]
       },
       {
+        "location": "Japan West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Mexico Central",
         "zones": [
           "1",
           "2",
@@ -172,6 +220,22 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Qatar Central",
         "zones": [
           "1",
           "2",
@@ -196,6 +260,14 @@
       },
       {
         "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Spain Central",
         "zones": [
           "1",
           "2",
@@ -298,6 +370,7 @@
     },
     "resourceType": "elasticSans/volumeGroups",
     "apiVersions": [
+      "2025-09-01",
       "2024-07-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
@@ -306,28 +379,51 @@
       "2021-11-20-preview"
     ],
     "locations": [
+      "Australia Central",
+      "Australia Central 2",
       "Australia East",
+      "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
+      "Canada East",
       "Central India",
       "Central US",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
+      "Japan West",
       "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
       "North Europe",
       "Norway East",
+      "Norway West",
+      "Poland Central",
+      "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
+      "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -413,6 +509,14 @@
         ]
       },
       {
+        "location": "Italy North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Japan East",
         "zones": [
           "1",
@@ -421,7 +525,23 @@
         ]
       },
       {
+        "location": "Japan West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Mexico Central",
         "zones": [
           "1",
           "2",
@@ -438,6 +558,22 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Qatar Central",
         "zones": [
           "1",
           "2",
@@ -462,6 +598,14 @@
       },
       {
         "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Spain Central",
         "zones": [
           "1",
           "2",
@@ -530,6 +674,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-09-01",
       "2024-07-01-preview",
       "2024-06-01-preview",
       "2021-11-20-preview"
@@ -541,6 +686,7 @@
     "aliases": null,
     "resourceType": "locations/asyncoperations",
     "apiVersions": [
+      "2025-09-01",
       "2024-07-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
@@ -549,28 +695,51 @@
       "2021-11-20-preview"
     ],
     "locations": [
+      "Australia Central",
+      "Australia Central 2",
       "Australia East",
+      "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
+      "Canada East",
       "Central India",
       "Central US",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
+      "Japan West",
       "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
       "North Europe",
       "Norway East",
+      "Norway West",
+      "Poland Central",
+      "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
+      "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -580,6 +749,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-09-01",
       "2024-07-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
@@ -588,28 +758,51 @@
       "2021-11-20-preview"
     ],
     "locations": [
+      "Australia Central",
+      "Australia Central 2",
       "Australia East",
+      "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
+      "Canada East",
       "Central India",
       "Central US",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
+      "Japan West",
       "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
       "North Europe",
       "Norway East",
+      "Norway West",
+      "Poland Central",
+      "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
+      "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],

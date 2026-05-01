@@ -16,7 +16,6 @@
     },
     "resourceType": "diagnosticSettings",
     "apiVersions": [
-      "2017-05-01-preview",
       "2017-04-01-preview",
       "2017-04-01"
     ],
@@ -27,7 +26,6 @@
     "aliases": null,
     "resourceType": "diagnosticSettingsCategories",
     "apiVersions": [
-      "2017-05-01-preview",
       "2017-04-01-preview",
       "2017-04-01"
     ],
@@ -38,7 +36,6 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2017-05-01-preview",
       "2017-04-01",
       "2017-03-01",
       "2016-09-01",
@@ -59,7 +56,6 @@
     "aliases": null,
     "resourceType": "tenants",
     "apiVersions": [
-      "2017-05-01-preview",
       "2017-04-01",
       "2017-03-01",
       "2016-09-01",

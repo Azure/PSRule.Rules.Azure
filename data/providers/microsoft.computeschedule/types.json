@@ -14,7 +14,11 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-08-01-preview",
@@ -27,7 +31,11 @@
     "aliases": null,
     "resourceType": "locations/notifications",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -55,10 +63,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -101,7 +112,11 @@
     "aliases": null,
     "resourceType": "locations/regionalNotifications",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -117,10 +132,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -163,7 +181,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesCancelOperations",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -179,10 +201,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -225,7 +250,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesExecuteCreate",
     "apiVersions": [
-      "2025-05-01"
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
+      "2025-05-01",
+      "2025-04-15-preview"
     ],
     "locations": [
       "Australia Central",
@@ -238,10 +267,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -278,13 +310,290 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": []
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Denmark East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Italy North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "New Zealand North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Spain Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UAE North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
   },
   {
     "aliases": null,
     "resourceType": "locations/virtualMachinesExecuteDeallocate",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -300,10 +609,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -346,7 +658,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesExecuteDelete",
     "apiVersions": [
-      "2025-05-01"
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
+      "2025-05-01",
+      "2025-04-15-preview"
     ],
     "locations": [
       "Australia Central",
@@ -359,10 +675,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -405,7 +724,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesExecuteHibernate",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -421,10 +744,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -467,7 +793,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesExecuteStart",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -483,10 +813,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -529,7 +862,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesGetOperationErrors",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -545,10 +882,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -591,7 +931,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesGetOperationStatus",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -607,10 +951,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -653,7 +1000,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesSubmitDeallocate",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -669,10 +1020,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -715,7 +1069,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesSubmitHibernate",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -731,10 +1089,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",
@@ -777,7 +1138,11 @@
     "aliases": null,
     "resourceType": "locations/virtualMachinesSubmitStart",
     "apiVersions": [
+      "2026-04-15-preview",
+      "2026-03-01-preview",
+      "2026-01-01-preview",
       "2025-05-01",
+      "2025-04-15-preview",
       "2024-10-01",
       "2024-08-15-preview",
       "2024-06-01-preview"
@@ -793,10 +1158,13 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Israel Central",

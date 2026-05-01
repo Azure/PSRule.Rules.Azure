@@ -30,6 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.48.0-B0088:
+
+- General improvements:
+  - Updated provider data by @BernieWhite.
+    [#3790](https://github.com/Azure/PSRule.Rules.Azure/issues/3790)
+
 ## v1.48.0-B0088 (pre-release)
 
 What's changed since v1.47.0:

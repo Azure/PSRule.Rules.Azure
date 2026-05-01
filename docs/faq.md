@@ -64,13 +64,13 @@ Currently PSRule for Azure supports testing Azure resources from IaC with:
 - Azure Resource Manager (ARM) templates.
 - Azure Bicep deployments.
 
-Checking Terraform from HashiCorp Configuration Language (HCL) is supported for limited non-production use with the [Terraform plan expansion][3].
+Terraform from HashiCorp Configuration Language (HCL) is supported for limited non-production use with the [Terraform plan expansion][3].
 This feature is currently experimental and supports resources from the AzAPI provider.
 
 Another supported method for testing Terraform-managed resources is to export resource data from Azure after deployment.
 PSRule for Azure can be used to check the Azure resources **in-flight**.
 
-This methods works for Azure resources regardless of how they are deployed.
+This method works for Azure resources regardless of how they are deployed.
 Use this method for analyzing resources deployed via the Azure Portal, Terraform, Pulumi, or other tools.
 
 For instructions on how to do this see [Exporting rule data][4].

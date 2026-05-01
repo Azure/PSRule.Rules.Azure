@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "appliances",
     "apiVersions": [
+      "2025-03-01-preview",
       "2022-10-27",
       "2021-10-31-preview"
     ],
@@ -34,6 +35,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-03-01-preview",
       "2022-10-27",
       "2022-04-15-preview",
       "2021-10-31-preview",
@@ -46,6 +48,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2025-03-01-preview",
       "2022-10-27",
       "2021-10-31-preview",
       "2020-07-15-privatepreview"
@@ -78,6 +81,7 @@
     "aliases": null,
     "resourceType": "locations/operationsstatus",
     "apiVersions": [
+      "2025-03-01-preview",
       "2022-10-27",
       "2021-10-31-preview",
       "2020-07-15-privatepreview"
@@ -110,6 +114,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-03-01-preview",
       "2022-10-27",
       "2022-04-15-preview",
       "2021-10-31-preview",
@@ -123,6 +128,7 @@
     "aliases": null,
     "resourceType": "telemetryconfig",
     "apiVersions": [
+      "2025-03-01-preview",
       "2022-10-27"
     ],
     "locations": [],

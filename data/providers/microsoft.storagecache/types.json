@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "amlFilesystems",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01",
       "2024-03-01",
@@ -21,11 +22,13 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -116,6 +119,14 @@
         ]
       },
       {
+        "location": "Indonesia Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Italy North",
         "zones": [
           "1",
@@ -141,6 +152,14 @@
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -257,6 +276,7 @@
     "aliases": null,
     "resourceType": "amlFilesystems/autoExportJobs",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01"
     ],
@@ -270,11 +290,13 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -297,6 +319,7 @@
     "aliases": null,
     "resourceType": "amlFilesystems/autoImportJobs",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01"
     ],
     "locations": [
@@ -309,11 +332,54 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
+      "Mexico Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "amlFilesystems/expansionJobs",
+    "apiVersions": [
+      "2026-01-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Indonesia Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -336,6 +402,7 @@
     "aliases": null,
     "resourceType": "amlFilesystems/importJobs",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01",
       "2024-03-01"
@@ -350,11 +417,13 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -471,6 +540,8 @@
     },
     "resourceType": "caches",
     "apiVersions": [
+      "2026-01-01",
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
@@ -684,6 +755,8 @@
     },
     "resourceType": "caches/storageTargets",
     "apiVersions": [
+      "2026-01-01",
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",
@@ -730,6 +803,7 @@
     "aliases": null,
     "resourceType": "checkAmlFSSubnets",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01",
       "2024-03-01",
@@ -748,11 +822,13 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -775,6 +851,7 @@
     "aliases": null,
     "resourceType": "getRequiredAmlFSSubnetsSize",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01",
       "2024-03-01",
@@ -793,11 +870,13 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -820,6 +899,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01",
       "2024-03-01",
@@ -847,6 +927,7 @@
     "aliases": null,
     "resourceType": "locations/ascoperations",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01",
       "2024-03-01",
@@ -878,11 +959,13 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -905,6 +988,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01",
       "2024-03-01",
@@ -927,11 +1011,13 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -954,6 +1040,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-01-01",
       "2025-07-01",
       "2024-07-01",
       "2024-03-01",
@@ -985,11 +1072,13 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "North Central US",
       "North Europe",
@@ -1012,6 +1101,8 @@
     "aliases": null,
     "resourceType": "usageModels",
     "apiVersions": [
+      "2026-01-01",
+      "2025-07-01",
       "2024-07-01",
       "2024-03-01",
       "2023-11-01-preview",

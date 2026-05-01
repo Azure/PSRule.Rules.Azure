@@ -53,6 +53,7 @@
     },
     "resourceType": "accounts",
     "apiVersions": [
+      "2025-10-01-preview",
       "2024-07-01-preview",
       "2024-01-01-preview",
       "2023-12-01-preview",
@@ -76,12 +77,7 @@
     "zoneMappings": []
   },
   {
-    "aliases": {
-      "Microsoft.Maps/accounts/creators/consumedStorageUnitSizeInBytes": "properties.consumedStorageUnitSizeInBytes",
-      "Microsoft.Maps/accounts/creators/provisioningState": "properties.provisioningState",
-      "Microsoft.Maps/accounts/creators/storageUnits": "properties.storageUnits",
-      "Microsoft.Maps/accounts/creators/totalStorageUnitSizeInBytes": "properties.totalStorageUnitSizeInBytes"
-    },
+    "aliases": null,
     "resourceType": "accounts/creators",
     "apiVersions": [
       "2024-07-01-preview",
@@ -107,6 +103,7 @@
     "aliases": null,
     "resourceType": "accounts/eventGridFilters",
     "apiVersions": [
+      "2025-10-01-preview",
       "2024-07-01-preview",
       "2024-01-01-preview",
       "2023-12-01-preview",
@@ -130,8 +127,98 @@
   },
   {
     "aliases": null,
+    "resourceType": "accounts/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2025-10-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Global",
+      "North Europe",
+      "West Central US",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/privateEndpointConnections",
+    "apiVersions": [
+      "2025-10-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Global",
+      "North Europe",
+      "West Central US",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2025-10-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2025-10-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Europe",
+      "West Central US",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2025-10-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Europe",
+      "West Central US",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-10-01-preview",
       "2024-07-01-preview",
       "2024-01-01-preview",
       "2023-12-01-preview",
@@ -143,6 +230,17 @@
       "2020-02-01-preview",
       "2018-05-01",
       "2017-01-01-preview"
+    ],
+    "locations": [
+      "Global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationStatuses",
+    "apiVersions": [
+      "2023-12-01-preview"
     ],
     "locations": [
       "Global"

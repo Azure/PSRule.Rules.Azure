@@ -55,6 +55,7 @@
     "aliases": null,
     "resourceType": "MySQLSites",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-12-30-preview"
     ],
     "locations": [
@@ -92,6 +93,7 @@
     "aliases": null,
     "resourceType": "MySQLSites/agents",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-12-30-preview"
     ],
     "locations": [
@@ -167,6 +169,7 @@
     "aliases": null,
     "resourceType": "MySQLSites/MySQLServers",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-12-30-preview"
     ],
     "locations": [

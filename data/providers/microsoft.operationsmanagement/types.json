@@ -1,16 +1,5 @@
 [
   {
-    "aliases": {
-      "Microsoft.OperationsManagement/managementassociations/applicationId": "properties.applicationId"
-    },
-    "resourceType": "managementassociations",
-    "apiVersions": [
-      "2015-11-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
@@ -37,6 +26,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -48,6 +38,7 @@
       "East US",
       "East Us 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",
@@ -98,6 +89,7 @@
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
+      "Austria East",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -109,6 +101,7 @@
       "East US",
       "East Us 2",
       "France Central",
+      "France South",
       "Germany North",
       "Germany West Central",
       "Indonesia Central",

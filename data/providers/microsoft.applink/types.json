@@ -15,10 +15,15 @@
       "2025-08-01-preview"
     ],
     "locations": [
+      "Central US",
       "East US",
+      "East US 2",
+      "North Europe",
+      "Southeast Asia",
       "UK South",
       "West Central US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },

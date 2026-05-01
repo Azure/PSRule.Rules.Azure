@@ -10,6 +10,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "licenseSummary",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "licenseSummaryOperationResults",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
       "2024-06-01-preview"
@@ -29,7 +47,49 @@
   },
   {
     "aliases": null,
+    "resourceType": "refreshLicenseSummary",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "softwareBenefits",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "softwareLicenses",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "softwareLicenses/productDownloadOptions",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "softwareLicenses/productKeys",
     "apiVersions": [
       "2024-06-01-preview"
     ],
@@ -47,6 +107,55 @@
     "locations": [
       "global"
     ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "softwareSubscriptions/productDownloadOptions",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "softwareSubscriptions/productKeys",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateSoftwareBenefitCreate",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateSoftwareLicenseCreate",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateSoftwareSubscriptionCreate",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": []
   }
 ]

@@ -45,6 +45,7 @@
     },
     "resourceType": "fileShares",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -53,20 +54,32 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "fileShares/snapshots",
+    "resourceType": "fileShares/fileShareSnapshots",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -75,13 +88,24 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
@@ -89,6 +113,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [],
@@ -98,6 +123,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -106,13 +132,24 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
@@ -120,6 +157,7 @@
     "aliases": null,
     "resourceType": "locations/getLimits",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -128,13 +166,24 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
@@ -142,6 +191,7 @@
     "aliases": null,
     "resourceType": "locations/getProvisioningRecommendation",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -150,13 +200,24 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
@@ -164,6 +225,7 @@
     "aliases": null,
     "resourceType": "locations/getUsageData",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -172,13 +234,24 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
@@ -186,6 +259,7 @@
     "aliases": null,
     "resourceType": "locations/partitions",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -194,13 +268,24 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
@@ -208,6 +293,7 @@
     "aliases": null,
     "resourceType": "locations/partitions/operationResults",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -216,13 +302,24 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
@@ -230,6 +327,7 @@
     "aliases": null,
     "resourceType": "locations/partitions/operations",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
@@ -238,13 +336,24 @@
       "Australia Southeast",
       "East Asia",
       "East US",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   },
@@ -252,23 +361,33 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-09-01-preview",
       "2025-06-01-preview"
     ],
     "locations": [
       "Australia Central",
       "Australia East",
       "Australia Southeast",
-      "Central US EUAP",
       "East Asia",
       "East US",
-      "East US 2 EUAP",
+      "France Central",
+      "France South",
       "Germany North",
+      "Italy North",
+      "Korea Central",
       "Korea South",
       "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "South Africa North",
       "South Africa West",
       "South India",
       "Southeast Asia",
-      "UAE Central"
+      "Sweden Central",
+      "UAE Central",
+      "UK South",
+      "UK West"
     ],
     "zoneMappings": []
   }

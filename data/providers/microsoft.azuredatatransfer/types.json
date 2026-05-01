@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "connections",
     "apiVersions": [
+      "2025-10-10-preview",
       "2025-05-30-preview",
       "2025-05-21",
       "2025-04-11-preview",
@@ -19,6 +20,9 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany West Central",
+      "Poland Central",
       "West US",
       "West US 2",
       "West US 3"
@@ -29,6 +33,7 @@
     "aliases": null,
     "resourceType": "connections/flows",
     "apiVersions": [
+      "2025-10-10-preview",
       "2025-05-30-preview",
       "2025-05-21",
       "2025-04-11-preview",
@@ -45,6 +50,9 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany West Central",
+      "Poland Central",
       "West US",
       "West US 2",
       "West US 3"
@@ -55,6 +63,7 @@
     "aliases": null,
     "resourceType": "listApprovedSchemas",
     "apiVersions": [
+      "2025-10-10-preview",
       "2025-05-30-preview",
       "2025-05-21",
       "2025-04-11-preview",
@@ -70,8 +79,19 @@
   },
   {
     "aliases": null,
+    "resourceType": "listFlowProfiles",
+    "apiVersions": [
+      "2025-10-10-preview",
+      "2025-05-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-10-10-preview",
       "2025-05-30-preview",
       "2025-05-21",
       "2025-04-11-preview",
@@ -91,6 +111,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-10-10-preview",
       "2025-05-30-preview",
       "2025-05-21",
       "2025-04-11-preview",
@@ -107,6 +128,9 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany West Central",
+      "Poland Central",
       "West US",
       "West US 2",
       "West US 3"
@@ -117,6 +141,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-10-10-preview",
       "2025-05-30-preview",
       "2025-05-21",
       "2025-04-11-preview",
@@ -136,6 +161,7 @@
     "aliases": null,
     "resourceType": "pipelines",
     "apiVersions": [
+      "2025-10-10-preview",
       "2025-05-30-preview",
       "2025-05-21",
       "2025-04-11-preview",
@@ -152,6 +178,9 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany West Central",
+      "Poland Central",
       "West US",
       "West US 2",
       "West US 3"
@@ -168,6 +197,9 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany West Central",
+      "Poland Central",
       "West US",
       "West US 2",
       "West US 3"
@@ -178,6 +210,7 @@
     "aliases": null,
     "resourceType": "validateSchema",
     "apiVersions": [
+      "2025-10-10-preview",
       "2025-05-30-preview",
       "2025-05-21",
       "2025-04-11-preview",

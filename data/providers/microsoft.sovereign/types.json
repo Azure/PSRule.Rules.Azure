@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2026-03-15-preview",
       "2025-02-27-preview",
       "2024-10-31-preview",
       "2024-03-31-preview",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2026-03-15-preview",
       "2025-02-27-preview",
       "2024-10-31-preview",
       "2024-03-31-preview",
@@ -29,6 +31,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2026-03-15-preview",
       "2025-02-27-preview",
       "2024-10-31-preview",
       "2024-03-31-preview",
@@ -46,6 +49,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2026-03-15-preview",
       "2025-02-27-preview",
       "2024-10-31-preview",
       "2024-03-31-preview",
@@ -60,6 +64,7 @@
     "aliases": null,
     "resourceType": "transparencyLogs",
     "apiVersions": [
+      "2026-03-15-preview",
       "2024-10-31-preview",
       "2024-03-31-preview"
     ],

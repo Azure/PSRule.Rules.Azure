@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2026-03-01-preview",
       "2025-08-01-preview",
       "2023-07-15-preview",
       "2023-06-30-preview",
@@ -42,6 +43,7 @@
     "aliases": null,
     "resourceType": "checkProvisioningServiceNameAvailability",
     "apiVersions": [
+      "2026-03-01-preview",
       "2025-02-01-preview",
       "2023-03-01-preview",
       "2022-12-12",
@@ -212,6 +214,7 @@
     },
     "resourceType": "IotHubs",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-07-15-preview",
       "2023-06-30-preview",
       "2023-06-30",
@@ -342,6 +345,7 @@
     "aliases": null,
     "resourceType": "IotHubs/failover",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-07-15-preview",
       "2023-06-30-preview",
       "2023-06-30",
@@ -470,6 +474,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2026-03-01-preview",
       "2025-08-01-preview",
       "2023-07-15-preview",
       "2023-06-30-preview",
@@ -567,6 +572,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-08-01-preview",
       "2023-07-15-preview",
       "2023-06-30-preview",
       "2023-06-30",
@@ -646,6 +652,7 @@
     "aliases": null,
     "resourceType": "locations/provisioningServiceOperationResults",
     "apiVersions": [
+      "2025-02-01-preview",
       "2023-03-01-preview",
       "2022-12-12",
       "2022-02-05",
@@ -670,6 +677,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -695,6 +703,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-03-01-preview",
       "2025-08-01-preview",
       "2023-07-15-preview",
       "2023-06-30-preview",
@@ -733,6 +742,7 @@
     "aliases": null,
     "resourceType": "provisioningServiceOperationResults",
     "apiVersions": [
+      "2026-03-01-preview",
       "2025-02-01-preview",
       "2023-03-01-preview",
       "2022-12-12",
@@ -809,6 +819,7 @@
     },
     "resourceType": "ProvisioningServices",
     "apiVersions": [
+      "2025-02-01-preview",
       "2023-03-01-preview",
       "2022-12-12",
       "2022-02-05",
@@ -833,6 +844,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -858,6 +870,7 @@
     "aliases": null,
     "resourceType": "usages",
     "apiVersions": [
+      "2026-03-01-preview",
       "2025-08-01-preview",
       "2023-07-15-preview",
       "2023-06-30-preview",

@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "availableAccounts",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-03-01-preview",
       "2024-12-01-preview",
       "2024-09-01",
@@ -27,6 +29,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -54,6 +58,8 @@
     "aliases": null,
     "resourceType": "operationStatuses",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -82,6 +88,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -109,6 +117,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/authorizedApplications",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -128,6 +138,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/checkinmanifest",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -155,6 +167,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/customRollouts",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -182,6 +196,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/defaultRollouts",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -209,6 +225,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/manifests",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -221,6 +239,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/newRegionFrontloadRelease",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -249,6 +269,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/resourceActions",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",
@@ -276,6 +298,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/resourceTypeRegistrations",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-10-01",
       "2025-09-01-preview",
       "2025-06-01-preview",
       "2025-03-01-preview",

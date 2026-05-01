@@ -69,6 +69,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-06-01-preview",
       "2025-01-01-preview",
       "2024-12-01-preview",
@@ -90,6 +91,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-06-01-preview",
       "2025-01-01-preview",
       "2024-10-01-preview",
@@ -441,6 +443,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-06-01-preview",
       "2025-01-01-preview",
       "2024-12-01-preview",

@@ -122,6 +122,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -134,6 +135,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -141,6 +143,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -198,6 +201,14 @@
         ]
       },
       {
+        "location": "Belgium Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Brazil South",
         "zones": [
           "1",
@@ -231,6 +242,14 @@
       },
       {
         "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Denmark East",
         "zones": [
           "1",
           "2",
@@ -580,6 +599,7 @@
     },
     "resourceType": "clusters/applications",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -592,6 +612,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -599,6 +620,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -656,6 +678,14 @@
         ]
       },
       {
+        "location": "Belgium Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Brazil South",
         "zones": [
           "1",
@@ -689,6 +719,14 @@
       },
       {
         "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Denmark East",
         "zones": [
           "1",
           "2",
@@ -933,6 +971,7 @@
     "aliases": null,
     "resourceType": "clusters/operationresults",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -945,6 +984,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -952,6 +992,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -997,6 +1038,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -1028,6 +1070,7 @@
     "aliases": null,
     "resourceType": "locations/azureasyncoperations",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -1040,6 +1083,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -1047,6 +1091,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -1092,6 +1137,7 @@
     "aliases": null,
     "resourceType": "locations/billingSpecs",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -1104,6 +1150,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -1111,6 +1158,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -1156,6 +1204,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -1168,6 +1217,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -1175,6 +1225,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -1220,6 +1271,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -1263,6 +1315,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -1275,6 +1328,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -1282,6 +1336,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -1367,6 +1422,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -1379,6 +1435,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -1386,6 +1443,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",
@@ -1431,6 +1489,7 @@
     "aliases": null,
     "resourceType": "locations/validateCreateRequest",
     "apiVersions": [
+      "2025-01-15-preview",
       "2024-08-01-preview",
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -1443,6 +1502,7 @@
       "Australia East",
       "Australia Southeast",
       "Austria East",
+      "Belgium Central",
       "Brazil South",
       "Brazil Southeast",
       "Canada Central",
@@ -1450,6 +1510,7 @@
       "Central India",
       "Central US",
       "Chile Central",
+      "Denmark East",
       "East Asia",
       "East US",
       "East US 2",

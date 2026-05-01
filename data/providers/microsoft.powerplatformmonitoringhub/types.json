@@ -1,0 +1,13 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "powerapps",
+    "apiVersions": [
+      "2026-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  }
+]

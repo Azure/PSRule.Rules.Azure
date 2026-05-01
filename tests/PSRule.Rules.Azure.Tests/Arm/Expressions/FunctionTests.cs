@@ -849,12 +849,12 @@ public sealed class FunctionTests
         var actual1 = Functions.Providers(context, ["Microsoft.Web", "sites"]) as ResourceProviderType;
         Assert.NotNull(actual1);
         Assert.Equal("sites", actual1.ResourceType);
-        Assert.Equal("2024-11-01", actual1.ApiVersions[0]);
+        Assert.Equal("2026-03-01-preview", actual1.ApiVersions[0]);
         Assert.Equal("Australia Central", actual1.Locations[0]);
 
         var actual2 = Functions.Providers(context, ["Microsoft.Web"]) as ResourceProviderType[];
         Assert.NotNull(actual1);
-        Assert.Equal(108, actual2.Length);
+        Assert.Equal(110, actual2.Length);
 
         var actual3 = Functions.Providers(context, ["microsoft.web", "Sites"]) as ResourceProviderType;
         Assert.NotNull(actual3);

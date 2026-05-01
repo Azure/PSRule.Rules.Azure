@@ -73,8 +73,6 @@
       "Australia",
       "Brazil",
       "Canada",
-      "Central US",
-      "East US",
       "East US 2 EUAP",
       "Europe",
       "France",
@@ -91,8 +89,7 @@
       "Switzerland",
       "UAE",
       "UK",
-      "United States",
-      "West US"
+      "United States"
     ],
     "zoneMappings": []
   }

@@ -88,6 +88,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -118,6 +119,176 @@
       "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockAgentAliases",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockAgents",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockApplicationInferenceProfiles",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockBlueprints",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockDataAutomationProjects",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockDataSources",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockFlowAliases",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockGuardrails",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockKnowledgeBases",
+    "apiVersions": [
+      "2025-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bedrockPrompts",
+    "apiVersions": [
+      "2025-12-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -482,12 +653,43 @@
     ],
     "locations": [
       "Australia East",
+      "Australia Southeast",
       "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
       "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
       "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
+      "UK West",
       "West Central US",
-      "West Europe"
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -1055,6 +1257,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1186,6 +1389,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1298,6 +1502,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1361,9 +1566,45 @@
   },
   {
     "aliases": null,
+    "resourceType": "lambdaEventInvokeConfigs",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "lambdaFunctionCodeLocations",
     "apiVersions": [
       "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "lambdaFunctionConfigurations",
+    "apiVersions": [
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1399,6 +1640,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "lambdaPermissions",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "licenseManagerLicenses",
     "apiVersions": [
       "2024-08-01-preview",
@@ -1410,6 +1669,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1456,6 +1716,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
@@ -1467,6 +1728,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
@@ -1477,6 +1739,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1684,6 +1947,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1692,6 +1956,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-12-01-preview",
       "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
@@ -2073,6 +2338,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -2090,6 +2356,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -2278,6 +2545,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -2314,6 +2582,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []

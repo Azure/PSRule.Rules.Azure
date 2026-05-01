@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "advisorScore",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
@@ -19,6 +20,7 @@
     "aliases": null,
     "resourceType": "assessments",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2024-11-18-preview",
       "2023-09-01-preview"
@@ -30,6 +32,7 @@
     "aliases": null,
     "resourceType": "assessmentTypes",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2024-11-18-preview",
       "2023-09-01-preview"
@@ -41,6 +44,7 @@
     "aliases": null,
     "resourceType": "configurations",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
@@ -57,8 +61,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "criticalResources",
+    "apiVersions": [
+      "2025-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "generateRecommendations",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
@@ -79,6 +93,7 @@
     "aliases": null,
     "resourceType": "metadata",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2025-05-01-alpha",
       "2025-01-01-alpha",
@@ -105,6 +120,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2025-05-01-alpha",
       "2025-01-01-alpha",
@@ -134,6 +150,7 @@
     "aliases": null,
     "resourceType": "predict",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
@@ -149,6 +166,8 @@
     "aliases": null,
     "resourceType": "recommendations",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2026-02-01-alpha",
       "2025-05-01-preview",
       "2025-05-01-alpha",
       "2025-01-01",
@@ -170,6 +189,8 @@
     "aliases": null,
     "resourceType": "resiliencyReviews",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-05-01-preview",
       "2024-11-18-preview",
       "2023-09-01-preview"
     ],
@@ -178,8 +199,28 @@
   },
   {
     "aliases": null,
+    "resourceType": "risks",
+    "apiVersions": [
+      "2025-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "riskTypes",
+    "apiVersions": [
+      "2025-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "suppressions",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2026-02-01-alpha",
       "2025-05-01-preview",
       "2025-01-01",
       "2024-11-18-preview",
@@ -200,6 +241,8 @@
     "aliases": null,
     "resourceType": "triageRecommendations",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-05-01-preview",
       "2024-11-18-preview",
       "2023-09-01-preview"
     ],
@@ -210,6 +253,8 @@
     "aliases": null,
     "resourceType": "triageResources",
     "apiVersions": [
+      "2026-02-01-preview",
+      "2025-05-01-preview",
       "2024-11-18-preview"
     ],
     "locations": [],
@@ -219,6 +264,7 @@
     "aliases": null,
     "resourceType": "workloads",
     "apiVersions": [
+      "2026-02-01-preview",
       "2025-05-01-preview",
       "2024-11-18-preview",
       "2023-09-01-preview"

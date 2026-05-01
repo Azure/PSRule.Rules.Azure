@@ -1,23 +1,9 @@
 [
   {
     "aliases": null,
-    "resourceType": "edgeSites",
-    "apiVersions": [
-      "2024-03-01-preview",
-      "2022-06-01-preview",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "South Central US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "geoCatalogs",
     "apiVersions": [
+      "2026-04-15",
       "2025-02-11-preview",
       "2024-01-31-preview"
     ],
@@ -31,76 +17,15 @@
   },
   {
     "aliases": null,
-    "resourceType": "globalCommunicationsSites",
-    "apiVersions": [
-      "2024-03-01-preview",
-      "2022-06-01-preview",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "South Central US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "groundStations",
-    "apiVersions": [
-      "2024-03-01-preview",
-      "2022-06-01-preview",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "South Central US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "l2Connections",
-    "apiVersions": [
-      "2024-03-01-preview",
-      "2022-06-01-preview",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "South Central US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2022-11-01"
+      "2026-04-15",
+      "2025-07-01-preview",
+      "2025-02-11-preview",
+      "2024-01-31-preview"
     ],
     "locations": [
-      "global",
-      "South Central US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/operationResults",
-    "apiVersions": [
-      "2024-03-01-preview",
-      "2022-11-01",
-      "2022-06-01-preview",
-      "2022-03-01"
-    ],
-    "locations": [
-      "South Central US",
-      "West US 2",
-      "West US 3"
+      "global"
     ],
     "zoneMappings": []
   },
@@ -108,11 +33,14 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2026-04-15",
+      "2025-07-01-preview",
       "2025-02-11-preview",
       "2024-01-31-preview"
     ],
     "locations": [
       "Canada Central",
+      "Central US",
       "East US",
       "North Central US",
       "UK South",
@@ -124,16 +52,13 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2026-04-15",
+      "2025-07-01-preview",
       "2025-02-11-preview",
-      "2024-01-31-preview",
-      "2022-11-01",
-      "2022-03-01",
-      "2021-04-04-preview"
+      "2024-01-31-preview"
     ],
     "locations": [
-      "South Central US",
-      "West US 2",
-      "West US 3"
+      "global"
     ],
     "zoneMappings": []
   }

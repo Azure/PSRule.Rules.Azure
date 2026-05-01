@@ -3,10 +3,12 @@
     "aliases": null,
     "resourceType": "healthmodels",
     "apiVersions": [
-      "2025-05-01-preview"
+      "2026-01-01-preview"
     ],
     "locations": [
       "Canada Central",
+      "Central US",
+      "Sweden Central",
       "UK South"
     ],
     "zoneMappings": []
@@ -15,10 +17,12 @@
     "aliases": null,
     "resourceType": "healthmodels/authenticationsettings",
     "apiVersions": [
-      "2025-05-01-preview"
+      "2026-01-01-preview"
     ],
     "locations": [
       "Canada Central",
+      "Central US",
+      "Sweden Central",
       "UK South"
     ],
     "zoneMappings": []
@@ -27,10 +31,12 @@
     "aliases": null,
     "resourceType": "healthmodels/discoveryrules",
     "apiVersions": [
-      "2025-05-01-preview"
+      "2026-01-01-preview"
     ],
     "locations": [
       "Canada Central",
+      "Central US",
+      "Sweden Central",
       "UK South"
     ],
     "zoneMappings": []
@@ -39,10 +45,12 @@
     "aliases": null,
     "resourceType": "healthmodels/entities",
     "apiVersions": [
-      "2025-05-01-preview"
+      "2026-01-01-preview"
     ],
     "locations": [
       "Canada Central",
+      "Central US",
+      "Sweden Central",
       "UK South"
     ],
     "zoneMappings": []
@@ -51,10 +59,12 @@
     "aliases": null,
     "resourceType": "healthmodels/relationships",
     "apiVersions": [
-      "2025-05-01-preview"
+      "2026-01-01-preview"
     ],
     "locations": [
       "Canada Central",
+      "Central US",
+      "Sweden Central",
       "UK South"
     ],
     "zoneMappings": []
@@ -63,10 +73,12 @@
     "aliases": null,
     "resourceType": "healthmodels/signaldefinitions",
     "apiVersions": [
-      "2025-05-01-preview"
+      "2026-01-01-preview"
     ],
     "locations": [
       "Canada Central",
+      "Central US",
+      "Sweden Central",
       "UK South"
     ],
     "zoneMappings": []
@@ -75,6 +87,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2026-01-01-preview",
       "2025-05-01-preview",
       "2023-10-01-preview"
     ],
@@ -85,13 +98,17 @@
     "aliases": null,
     "resourceType": "Locations/operationstatuses",
     "apiVersions": [
+      "2026-01-01-preview",
       "2025-05-01-preview",
       "2023-10-01-preview"
     ],
     "locations": [
       "Canada Central",
+      "Central US",
       "East US",
       "East US 2",
+      "Norway East",
+      "Sweden Central",
       "UK South"
     ],
     "zoneMappings": []
@@ -100,6 +117,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2026-01-01-preview",
       "2025-05-01-preview",
       "2023-10-01-preview"
     ],

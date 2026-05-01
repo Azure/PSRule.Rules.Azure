@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-12-15-preview",
+      "2025-11-01-preview",
       "2025-08-11-preview",
       "2025-02-15-preview",
       "2025-01-01-preview",
@@ -17,6 +19,8 @@
     "aliases": null,
     "resourceType": "Locations/CheckNameAvailability",
     "apiVersions": [
+      "2025-12-15-preview",
+      "2025-11-01-preview",
       "2025-08-11-preview",
       "2025-02-15-preview",
       "2025-01-01-preview",
@@ -31,6 +35,8 @@
     "aliases": null,
     "resourceType": "Locations/Offerings",
     "apiVersions": [
+      "2025-12-15-preview",
+      "2025-11-01-preview",
       "2025-08-11-preview",
       "2025-01-01-preview",
       "2023-11-13-preview",
@@ -39,16 +45,9 @@
     ],
     "locations": [
       "East US",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
       "North Europe",
-      "UK South",
-      "UK West",
-      "West Central US",
       "West Europe",
-      "West US",
-      "West US 2"
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -56,6 +55,8 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-12-15-preview",
+      "2025-11-01-preview",
       "2025-08-11-preview",
       "2025-02-15-preview",
       "2025-01-01-preview",
@@ -67,16 +68,9 @@
       "Central US EUAP",
       "East US",
       "East US 2 EUAP",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
       "North Europe",
-      "UK South",
-      "UK West",
-      "West Central US",
       "West Europe",
-      "West US",
-      "West US 2"
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -84,6 +78,8 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-12-15-preview",
+      "2025-11-01-preview",
       "2025-08-11-preview",
       "2025-02-15-preview",
       "2025-01-01-preview",
@@ -98,6 +94,8 @@
     "aliases": null,
     "resourceType": "suiteOffers",
     "apiVersions": [
+      "2025-12-15-preview",
+      "2025-11-01-preview",
       "2025-08-11-preview"
     ],
     "locations": [],
@@ -107,6 +105,8 @@
     "aliases": null,
     "resourceType": "Workspaces",
     "apiVersions": [
+      "2025-12-15-preview",
+      "2025-11-01-preview",
       "2025-08-11-preview",
       "2025-01-01-preview",
       "2023-11-13-preview",
@@ -115,16 +115,9 @@
     ],
     "locations": [
       "East US",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
       "North Europe",
-      "UK South",
-      "UK West",
-      "West Central US",
       "West Europe",
-      "West US",
-      "West US 2"
+      "West US"
     ],
     "zoneMappings": []
   }

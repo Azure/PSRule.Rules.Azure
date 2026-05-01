@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-10-01-preview",
       "2023-08-01-preview",
       "2023-08-01"
     ],
@@ -26,6 +27,7 @@
     "aliases": null,
     "resourceType": "offers",
     "apiVersions": [
+      "2025-10-01-preview",
       "2023-08-01-preview",
       "2023-08-01"
     ],
@@ -36,6 +38,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-10-01-preview",
       "2023-08-01-preview",
       "2023-08-01",
       "2023-06-01-preview",
@@ -48,6 +51,7 @@
     "aliases": null,
     "resourceType": "publishers",
     "apiVersions": [
+      "2025-10-01-preview",
       "2023-08-01-preview",
       "2023-08-01"
     ],
