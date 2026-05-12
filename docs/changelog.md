@@ -35,6 +35,8 @@ What's changed since pre-release v1.48.0-B0088:
 - General improvements:
   - Updated provider data by @BernieWhite.
     [#3790](https://github.com/Azure/PSRule.Rules.Azure/issues/3790)
+  - Added support for Bicep `resourceType` parameter metadata.
+    [#1474](https://github.com/Azure/PSRule.Rules.Azure/issues/1474)
 
 ## v1.48.0-B0088 (pre-release)
 

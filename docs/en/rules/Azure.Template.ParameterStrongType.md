@@ -15,18 +15,21 @@ Set the parameter value to a value that matches the specified strong type.
 ## DESCRIPTION
 
 Template string parameters can optionally specify a strong type.
+Bicep can also emit resource type metadata for string parameters.
 When parameter files are expanded, if the parameter value does not match the type this rule fails.
 Support is provided by PSRule for Azure for the following types:
 
 - Resource type - Specify a resource type.
   For example `Microsoft.OperationalInsights/workspaces`.
   If a resource type is specified the parameter value must be a resource id of that type.
+  This can be set by using `metadata.strongType` or Bicep `metadata.resourceType`.
+  For `metadata.resourceType`, any API version after `@` is ignored.
 - Location - Specify `location` as the strong type.
   If `location` is specified, the parameter value must be a valid Azure location.
 
 ## RECOMMENDATION
 
-Consider updating the parameter value to a value that matches the specifed strong type.
+Consider updating the parameter value to a value that matches the specified strong type.
 
 ## LINKS
 
