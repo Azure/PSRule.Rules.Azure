@@ -369,6 +369,20 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
     }
 
     [Fact]
+    public void ResourceTypeParameter()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Template.ResourceType.1.json"), null);
+        Assert.NotNull(resources);
+        Assert.Equal(2, resources.Length);
+
+        var actual = resources[0];
+        Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+        Assert.Single(actual["_PSRule"]["issue"].Value<JArray>());
+        Assert.Equal("PSRule.Rules.Azure.Template.ParameterStrongType", actual["_PSRule"]["issue"][0]["type"].Value<string>());
+        Assert.Equal("vnetId", actual["_PSRule"]["issue"][0]["name"].Value<string>());
+    }
+
+    [Fact]
     public void StrongTypeNestedParameter()
     {
         var resources = ProcessTemplate(GetSourcePath("Template.Bicep.2.json"), null, PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml")));
