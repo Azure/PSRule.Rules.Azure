@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
-    <PackageReference Include="System.CommandLine" Version="2.0.7" />
+    <PackageReference Include="System.CommandLine" Version="2.0.8" />
     <PackageReference Include="Azure.Identity" Version="1.21.0" />
     <PackageReference Include="Azure.Identity.Broker" Version="1.6.0" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.6.1" />
