@@ -149,6 +149,16 @@ public sealed class ExpressionBuilderTests
         Assert.NotNull(actual);
     }
 
+    [Fact]
+    public void BuildExpressionWithRoleDefinitions()
+    {
+        var context = GetContext();
+
+        var actual = Build(context, "[roleDefinitions('Contributor').id]") as string;
+
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Authorization/roleDefinitions/Contributor", actual);
+    }
+
     private static object Build(TemplateContext context, string expression)
     {
         var builder = new ExpressionBuilder();
