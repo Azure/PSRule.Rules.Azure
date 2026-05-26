@@ -999,6 +999,23 @@ public sealed class FunctionTests
         Assert.Throws<ExpressionArgumentException>(() => Functions.ManagementGroupResourceId(context, ["Unit.Test/type", 1]));
     }
 
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void RoleDefinitions()
+    {
+        var context = GetContext();
+
+        var actual = Functions.RoleDefinitions(context, ["Contributor"]) as JObject;
+        Assert.NotNull(actual);
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Authorization/roleDefinitions/Contributor", actual["id"].Value<string>());
+        Assert.Equal("Contributor", actual["roleDefinitionId"].Value<string>());
+
+        Assert.Throws<ExpressionArgumentException>(() => Functions.RoleDefinitions(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.RoleDefinitions(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.RoleDefinitions(context, ["Contributor", "Owner"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.RoleDefinitions(context, [1]));
+    }
+
     #endregion Resource
 
     #region Scope
