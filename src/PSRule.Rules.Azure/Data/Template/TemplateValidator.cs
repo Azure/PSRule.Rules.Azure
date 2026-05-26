@@ -15,6 +15,7 @@ internal sealed class TemplateValidator
 {
     private const string PROPERTY_METADATA = "metadata";
     private const string PROPERTY_STRONG_TYPE = "strongType";
+    private const string PROPERTY_RESOURCE_TYPE = "resourceType";
     private const string STRONG_TYPE_LOCATION = "location";
 
     private const string ISSUE_PARAMETER_STRONG_TYPE = "PSRule.Rules.Azure.Template.ParameterStrongType";
@@ -26,6 +27,7 @@ internal sealed class TemplateValidator
     private const string RESOURCE_TYPE_RESOURCE_GROUPS = "resourceGroups";
 
     private const string SLASH = "/";
+    private const char API_VERSION_SEPARATOR = '@';
 
     private ISet<string> _Locations;
 
@@ -108,12 +110,23 @@ internal sealed class TemplateValidator
     private static bool TryStrongType(JObject parameter, out string strongType)
     {
         strongType = null;
-        if (parameter.TryGetProperty(PROPERTY_METADATA, out JObject metadata) &&
-            metadata.TryGetProperty(PROPERTY_STRONG_TYPE, out JValue st) &&
+        if (!parameter.TryGetProperty(PROPERTY_METADATA, out JObject metadata))
+            return false;
+
+        if (metadata.TryGetProperty(PROPERTY_STRONG_TYPE, out JValue st) &&
             st.Value<string>() is string value)
             strongType = value;
+        else if (metadata.TryGetProperty(PROPERTY_RESOURCE_TYPE, out JValue rt) &&
+            rt.Value<string>() is string resourceType)
+            strongType = ResourceTypeWithoutApiVersion(resourceType);
 
         return strongType != null;
+    }
+
+    private static string ResourceTypeWithoutApiVersion(string resourceType)
+    {
+        var index = resourceType.IndexOf(API_VERSION_SEPARATOR);
+        return index < 0 ? resourceType : resourceType.Substring(0, index);
     }
 
     private void IsValidLocation(IValidationContext context, JObject parameter, string parameterName, object value)

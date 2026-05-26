@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountId": {
+      "type": "string",
+      "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Storage/storageAccounts/store1",
+      "metadata": {
+        "resourceType": "Microsoft.Storage/storageAccounts@2021-04-01"
+      }
+    },
+    "vnetId": {
+      "type": "string",
+      "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet1",
+      "metadata": {
+        "resourceType": "Microsoft.Storage/storageAccounts@2021-04-01"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
+      "name": "sttest001",
+      "location": "eastus",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2"
+    }
+  ]
+}
