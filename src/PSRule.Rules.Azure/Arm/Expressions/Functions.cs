@@ -42,6 +42,7 @@ internal static class Functions
     private const string PROPERTY_PORT = "port";
     private const string PROPERTY_PATH = "path";
     private const string PROPERTY_QUERY = "query";
+    private const string PROPERTY_ID = "id";
     private const string PROPERTY_ROLE_NAME = "roleName";
     private const string PROPERTY_ROLE_DEFINITION_ID = "roleDefinitionId";
 
