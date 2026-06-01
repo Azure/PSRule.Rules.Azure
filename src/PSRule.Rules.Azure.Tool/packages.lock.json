@@ -13,11 +13,11 @@
       },
       "Azure.Identity.Broker": {
         "type": "Direct",
-        "requested": "[1.6.0, )",
-        "resolved": "1.6.0",
-        "contentHash": "6FEpeGMIE5D6fCu00knP051t42ahlLse4Zs21MNQ7XYKq3xKI5wZe2ntmyT6nhWMUShLEjD0zZfkvQkjUg8K3g==",
+        "requested": "[1.7.0, )",
+        "resolved": "1.7.0",
+        "contentHash": "8LyppC9m3z1B+41V7p8JUWH902NwuJl0k+UEIQ5r7pCIVX3JWO1LGRHYVnXELEMet8fCAo5HGI9FS31XlRRSqg==",
         "dependencies": {
-          "Azure.Core": "1.53.0",
+          "Azure.Core": "1.57.0",
           "Microsoft.Identity.Client.Broker": "4.83.3"
         }
       },
@@ -110,15 +110,15 @@
       },
       "Azure.Core": {
         "type": "Transitive",
-        "resolved": "1.53.0",
-        "contentHash": "x9c/toFMOtRrlTdFuE7rlGCVAduQzWVfKmLz5juj41zJAXEhYD5hluiUyyAEzJ6OxpBnKtiaBztzwpZITAVjtg==",
+        "resolved": "1.57.0",
+        "contentHash": "POStMP+rxaAEYScwGBpIUcnEpSj/3ctYmCmt2IqU3recuAjjddEgTq4q4TLImEdQCfsFr/HpEuYjiY/wKeAprQ==",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "10.0.3",
           "Microsoft.Extensions.Configuration.Abstractions": "10.0.3",
           "Microsoft.Extensions.Hosting.Abstractions": "10.0.3",
           "Microsoft.Identity.Client": "4.83.1",
           "Microsoft.Identity.Client.Extensions.Msal": "4.83.1",
-          "System.ClientModel": "1.10.0",
+          "System.ClientModel": "1.13.0",
           "System.Diagnostics.DiagnosticSource": "10.0.3",
           "System.Memory.Data": "10.0.3",
           "System.Text.Encodings.Web": "10.0.3",
@@ -490,8 +490,8 @@
       },
       "System.ClientModel": {
         "type": "Transitive",
-        "resolved": "1.10.0",
-        "contentHash": "lBEWs54F5Y5pZ9hC+8z4S/X76957ex+DPk7WecRHlbIHtrPfbRMMlOgI3iDn4Jpb3bSxvBnKaaHoD59auFjlBA==",
+        "resolved": "1.13.0",
+        "contentHash": "UneZiqYV3vmsCQJ2bO3fEzSGqK84kxEOOLN0OGDxxhAzef91gZLBQ5J8tgP0oTuwYmUSvwXGzvuq3Cvkedv8tA==",
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "10.0.3",
           "Microsoft.Extensions.Hosting.Abstractions": "10.0.3",
