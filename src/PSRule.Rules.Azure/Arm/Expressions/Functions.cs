@@ -48,6 +48,7 @@ internal static class Functions
 
     private const string FUNCTION_LIST_WITH_SECURE_OUTPUTS = "listOutputsWithSecureValues";
     private const string RESOURCE_TYPE_ROLE_DEFINITIONS = "Microsoft.Authorization/roleDefinitions";
+    private const string ROLE_DEFINITION_ID_PLACEHOLDER = "00000000-0000-0000-0000-000000000000";
 
     private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
     private const string FORMAT_AZURE_DATETIME = "M/d/yyyy h:mm:ss tt";
@@ -1288,12 +1289,24 @@ internal static class Functions
         if (!ExpressionHelpers.TryString(args[0], out var roleName))
             throw ArgumentInvalidString(nameof(RoleDefinitions), PROPERTY_ROLE_NAME);
 
-        var id = SubscriptionResourceId(context, new object[] { RESOURCE_TYPE_ROLE_DEFINITIONS, roleName }) as string;
+        var id = RoleDefinitionResourceId(context, ROLE_DEFINITION_ID_PLACEHOLDER);
         return new JObject
         {
             [PROPERTY_ID] = id,
-            [PROPERTY_ROLE_DEFINITION_ID] = roleName,
+            [PROPERTY_ROLE_DEFINITION_ID] = ROLE_DEFINITION_ID_PLACEHOLDER,
         };
+    }
+
+    private static string RoleDefinitionResourceId(ITemplateContext context, string roleDefinitionId)
+    {
+        var args = new object[] { RESOURCE_TYPE_ROLE_DEFINITIONS, roleDefinitionId };
+        if (context.Deployment != null && context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup)
+            return ManagementGroupResourceId(context, args) as string;
+
+        if (context.Deployment != null && context.Deployment.DeploymentScope == DeploymentScope.Tenant)
+            return TenantResourceId(context, args) as string;
+
+        return SubscriptionResourceId(context, args) as string;
     }
 
     #endregion Resource
