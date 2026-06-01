@@ -154,9 +154,9 @@ public sealed class ExpressionBuilderTests
     {
         var context = GetContext();
 
-        var actual = Build(context, "[roleDefinitions('Contributor').id]") as string;
+        var actual = Build(context, "[roleDefinitions('Contributor').id]") as JValue;
 
-        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Authorization/roleDefinitions/Contributor", actual);
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Authorization/roleDefinitions/Contributor", actual.Value<string>());
     }
 
     private static object Build(TemplateContext context, string expression)
