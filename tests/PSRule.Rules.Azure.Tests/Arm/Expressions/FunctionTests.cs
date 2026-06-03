@@ -1014,7 +1014,7 @@ public sealed class FunctionTests
         context = GetContext();
         context.EnterDeployment("unit-test", JObject.Parse("{ \"$schema\": \"https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#\", \"contentVersion\": \"1.0.0.0\" }"), isNested: false);
         actual = Functions.RoleDefinitions(context, ["Contributor"]) as JObject;
-        Assert.Equal($"/providers/Microsoft.Management/managementGroups/psrule-test/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}", actual["id"].Value<string>());
+        Assert.Equal($"/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}", actual["id"].Value<string>());
 
         context = GetContext();
         context.EnterDeployment("unit-test", JObject.Parse("{ \"$schema\": \"https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#\", \"contentVersion\": \"1.0.0.0\" }"), isNested: false);
