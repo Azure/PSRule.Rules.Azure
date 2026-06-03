@@ -999,6 +999,34 @@ public sealed class FunctionTests
         Assert.Throws<ExpressionArgumentException>(() => Functions.ManagementGroupResourceId(context, ["Unit.Test/type", 1]));
     }
 
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void RoleDefinitions()
+    {
+        var context = GetContext();
+        var roleDefinitionId = "00000000-0000-0000-0000-000000000000";
+
+        var actual = Functions.RoleDefinitions(context, ["Contributor"]) as JObject;
+        Assert.NotNull(actual);
+        Assert.Equal($"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}", actual["id"].Value<string>());
+        Assert.Equal(roleDefinitionId, actual["roleDefinitionId"].Value<string>());
+
+        context = GetContext();
+        context.EnterDeployment("unit-test", JObject.Parse("{ \"$schema\": \"https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#\", \"contentVersion\": \"1.0.0.0\" }"), isNested: false);
+        actual = Functions.RoleDefinitions(context, ["Contributor"]) as JObject;
+        Assert.Equal($"/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}", actual["id"].Value<string>());
+
+        context = GetContext();
+        context.EnterDeployment("unit-test", JObject.Parse("{ \"$schema\": \"https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#\", \"contentVersion\": \"1.0.0.0\" }"), isNested: false);
+        actual = Functions.RoleDefinitions(context, ["Contributor"]) as JObject;
+        Assert.Equal($"/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}", actual["id"].Value<string>());
+
+        Assert.Throws<ExpressionArgumentException>(() => Functions.RoleDefinitions(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.RoleDefinitions(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.RoleDefinitions(context, ["Contributor", "Owner"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.RoleDefinitions(context, [1]));
+    }
+
     #endregion Resource
 
     #region Scope

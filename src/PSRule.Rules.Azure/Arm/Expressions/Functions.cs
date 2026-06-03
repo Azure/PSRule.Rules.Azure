@@ -42,8 +42,13 @@ internal static class Functions
     private const string PROPERTY_PORT = "port";
     private const string PROPERTY_PATH = "path";
     private const string PROPERTY_QUERY = "query";
+    private const string PROPERTY_ID = "id";
+    private const string PROPERTY_ROLE_NAME = "roleName";
+    private const string PROPERTY_ROLE_DEFINITION_ID = "roleDefinitionId";
 
     private const string FUNCTION_LIST_WITH_SECURE_OUTPUTS = "listOutputsWithSecureValues";
+    private const string RESOURCE_TYPE_ROLE_DEFINITIONS = "Microsoft.Authorization/roleDefinitions";
+    private const string ROLE_DEFINITION_ID_PLACEHOLDER = "00000000-0000-0000-0000-000000000000";
 
     private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
     private const string FORMAT_AZURE_DATETIME = "M/d/yyyy h:mm:ss tt";
@@ -136,6 +141,7 @@ internal static class Functions
         new FunctionDescriptor("subscriptionResourceId", SubscriptionResourceId),
         new FunctionDescriptor("tenantResourceId", TenantResourceId),
         new FunctionDescriptor("managementGroupResourceId", ManagementGroupResourceId),
+        new FunctionDescriptor("roleDefinitions", RoleDefinitions),
 
         // Scope
         new FunctionDescriptor("resourceGroup", ResourceGroup),
@@ -1270,6 +1276,37 @@ internal static class Functions
 
         var managementGroupName = context.ManagementGroup.Name;
         return ResourceHelper.CombineResourceId(managementGroupName, resourceType, name);
+    }
+
+    /// <summary>
+    /// roleDefinitions(roleName)
+    /// </summary>
+    internal static object RoleDefinitions(ITemplateContext context, object[] args)
+    {
+        if (CountArgs(args) != 1)
+            throw ArgumentsOutOfRange(nameof(RoleDefinitions), args);
+
+        if (!ExpressionHelpers.TryString(args[0], out var roleName))
+            throw ArgumentInvalidString(nameof(RoleDefinitions), PROPERTY_ROLE_NAME);
+
+        var id = RoleDefinitionResourceId(context, ROLE_DEFINITION_ID_PLACEHOLDER);
+        return new JObject
+        {
+            [PROPERTY_ID] = id,
+            [PROPERTY_ROLE_DEFINITION_ID] = ROLE_DEFINITION_ID_PLACEHOLDER,
+        };
+    }
+
+    private static string RoleDefinitionResourceId(ITemplateContext context, string roleDefinitionId)
+    {
+        var args = new object[] { RESOURCE_TYPE_ROLE_DEFINITIONS, roleDefinitionId };
+        if (context.Deployment != null && context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup)
+            return ManagementGroupResourceId(context, args) as string;
+
+        if (context.Deployment != null && context.Deployment.DeploymentScope == DeploymentScope.Tenant)
+            return TenantResourceId(context, args) as string;
+
+        return SubscriptionResourceId(context, args) as string;
     }
 
     #endregion Resource
