@@ -163,17 +163,20 @@ jobs:
         with:
           global-json-file: global.json
 
-      - name: Install dependencies
+      - name: Install dependencies (Python)
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install wheel
           python3 -m pip install -r requirements-docs.txt
 
-      - name: Build docs
-        run: |
-          Install-Module InvokeBuild -MinimumVersion 5.4.0 -Scope CurrentUser -Force
-          Invoke-Build BuildDocs
+      - name: Install dependencies (PowerShell)
         shell: pwsh
+        timeout-minutes: 3
+        run: ./scripts/pipeline-deps.ps1
+
+      - name: Build docs
+        shell: pwsh
+        run: Invoke-Build BuildDocs
 
       - name: Build site
         run: mkdocs build
