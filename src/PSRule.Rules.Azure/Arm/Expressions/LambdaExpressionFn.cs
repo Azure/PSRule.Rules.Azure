@@ -238,6 +238,18 @@ internal sealed class LambdaExpressionFn
         return result;
     }
 
+    internal bool TryInvokeBoolean(ITemplateContext context, object value, out bool result)
+    {
+        result = false;
+        var lambdaContext = GetArgs2(context, out var varName, out var predicate);
+        if (lambdaContext == null)
+            return false;
+
+        lambdaContext.LambdaVariable(varName, value);
+        result = AsBoolean(lambdaContext, predicate);
+        return true;
+    }
+
     #endregion Lambda functions
 
     #region Helper methods
