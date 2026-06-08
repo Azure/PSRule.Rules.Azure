@@ -637,8 +637,10 @@ internal abstract partial class DeploymentVisitor
             if (!Parameters.TryGetValue(parameterName, out var value))
                 return;
 
-            if (value.Type.Type == TypePrimitive.String && !string.IsNullOrEmpty(value.GetValue() as string))
-                _Validator.ValidateParameter(this, value.Type, parameterName, parameter, value.GetValue() as string);
+            if (value.Type.Type is TypePrimitive.SecureString or TypePrimitive.SecureObject)
+                return;
+
+            _Validator.ValidateParameter(this, value.Type, parameterName, parameter, value.GetValue());
         }
 
         internal void CheckOutput(string outputName, JObject output)

@@ -39,6 +39,8 @@ What's changed since pre-release v1.48.0-B0088:
     [#1474](https://github.com/Azure/PSRule.Rules.Azure/issues/1474)
   - Added support for the Bicep `roleDefinitions` function.
     [#3776](https://github.com/Azure/PSRule.Rules.Azure/issues/3776)
+  - Added support for Bicep decorator value constraints.
+    [#3649](https://github.com/Azure/PSRule.Rules.Azure/issues/3649)
 
 ## v1.48.0-B0088 (pre-release)
 

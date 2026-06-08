@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "skuName": {
+      "type": "string",
+      "defaultValue": "Basic",
+      "allowedValues": [
+        "Standard",
+        "Premium"
+      ]
+    },
+    "namePrefix": {
+      "type": "string",
+      "defaultValue": "app",
+      "minLength": 4,
+      "maxLength": 8
+    },
+    "replicaCount": {
+      "type": "int",
+      "defaultValue": 0,
+      "minValue": 1,
+      "maxValue": 5
+    },
+    "zones": {
+      "type": "array",
+      "defaultValue": [
+        "1",
+        "2",
+        "3"
+      ],
+      "maxLength": 2
+    },
+    "validatedName": {
+      "type": "string",
+      "defaultValue": "bar",
+      "validate": [
+        "[lambda('value', startsWith(lambdaVariables('value'), 'foo'))]",
+        "Name must start with foo."
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "Namespace/resourceType",
+      "apiVersion": "2020-05-01",
+      "name": "decorator-constraint-test"
+    }
+  ],
+  "outputs": {
+    "validatedOutput": {
+      "type": "string",
+      "value": "bar",
+      "validate": [
+        "[lambda('value', startsWith(lambdaVariables('value'), 'foo'))]",
+        "Output must start with foo."
+      ]
+    }
+  }
+}
