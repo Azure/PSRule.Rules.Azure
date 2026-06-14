@@ -383,6 +383,25 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
     }
 
     [Fact]
+    public void ValueConstraint()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Template.Decorators.1.json"), null);
+        Assert.NotNull(resources);
+        Assert.Equal(2, resources.Length);
+
+        var actual = resources[0];
+        var issues = actual["_PSRule"]["issue"].Value<JArray>();
+        Assert.Equal(6, issues.Count);
+        Assert.All(issues, issue => Assert.Equal("PSRule.Rules.Azure.Template.ValueConstraint", issue["type"].Value<string>()));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "skuName" && issue["message"].Value<string>().Contains("allowedValues"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "namePrefix" && issue["message"].Value<string>().Contains("minLength"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "replicaCount" && issue["message"].Value<string>().Contains("minValue"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "zones" && issue["message"].Value<string>().Contains("maxLength"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "validatedName" && issue["message"].Value<string>() == "Name must start with foo.");
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "validatedOutput" && issue["message"].Value<string>() == "Output must start with foo.");
+    }
+
+    [Fact]
     public void StrongTypeNestedParameter()
     {
         var resources = ProcessTemplate(GetSourcePath("Template.Bicep.2.json"), null, PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml")));

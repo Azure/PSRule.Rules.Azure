@@ -236,6 +236,11 @@ Rule 'Azure.Template.ParameterStrongType' -Ref 'AZR-000227' -Type 'Microsoft.Res
     $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ParameterStrongType'));
 }
 
+# Synopsis: Set parameter and output values to satisfy template constraints.
+Rule 'Azure.Template.ValueConstraint' -Ref 'AZR-000544' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2026_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+    $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ValueConstraint'));
+}
+
 # Synopsis: Template expressions should not exceed the maximum length.
 Rule 'Azure.Template.ExpressionLength' -Ref 'AZR-000228' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ExpressionLength'));
