@@ -1,0 +1,155 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "definitions": {
+    "nameType": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 24
+    },
+    "skuType": {
+      "type": "string",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS"
+      ]
+    },
+    "countType": {
+      "type": "int",
+      "minValue": 1,
+      "maxValue": 5
+    },
+    "tagMapType": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 2
+      }
+    },
+    "configType": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/nameType"
+        },
+        "sku": {
+          "$ref": "#/definitions/skuType"
+        },
+        "count": {
+          "$ref": "#/definitions/countType",
+          "nullable": true
+        },
+        "tags": {
+          "$ref": "#/definitions/tagMapType",
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "tupleType": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "int"
+        }
+      ],
+      "items": false
+    },
+    "stringArrayType": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "allowedValues": [
+          "one",
+          "two"
+        ]
+      }
+    },
+    "nullableNameType": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "parameters": {
+    "validConfig": {
+      "$ref": "#/definitions/configType",
+      "defaultValue": {
+        "name": "abc",
+        "sku": "Standard_LRS",
+        "tags": {
+          "env": "dev"
+        }
+      }
+    },
+    "invalidConfig": {
+      "$ref": "#/definitions/configType",
+      "defaultValue": {
+        "name": "ab",
+        "sku": "Basic",
+        "count": 0,
+        "tags": {
+          "e": "x"
+        },
+        "extra": "not allowed"
+      }
+    },
+    "missingNameConfig": {
+      "$ref": "#/definitions/configType",
+      "defaultValue": {
+        "sku": "Standard_GRS"
+      }
+    },
+    "validTuple": {
+      "$ref": "#/definitions/tupleType",
+      "defaultValue": [
+        "name",
+        1
+      ]
+    },
+    "invalidTuple": {
+      "$ref": "#/definitions/tupleType",
+      "defaultValue": [
+        "name",
+        "not-an-int",
+        "extra"
+      ]
+    },
+    "validArray": {
+      "$ref": "#/definitions/stringArrayType",
+      "defaultValue": [
+        "one",
+        "two"
+      ]
+    },
+    "invalidArray": {
+      "$ref": "#/definitions/stringArrayType",
+      "defaultValue": [
+        "one",
+        "three"
+      ]
+    },
+    "nullableName": {
+      "$ref": "#/definitions/nullableNameType",
+      "defaultValue": null
+    },
+    "invalidNullName": {
+      "$ref": "#/definitions/nameType",
+      "defaultValue": null
+    }
+  },
+  "resources": {},
+  "outputs": {
+    "validOutput": {
+      "$ref": "#/definitions/nameType",
+      "value": "abc"
+    },
+    "invalidOutput": {
+      "$ref": "#/definitions/nameType",
+      "value": "ab"
+    }
+  }
+}
