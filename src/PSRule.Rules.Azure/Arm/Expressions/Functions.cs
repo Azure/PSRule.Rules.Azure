@@ -2193,13 +2193,13 @@ internal static class Functions
             throw ArgumentsOutOfRange(nameof(Filter), args);
 
         args[0] = GetExpression(context, args[0]);
-        if (args[0] is Mock.MockResourceSubnetArray subnetArray)
+        if (args[0] is Mock.IMockResourceCollection resourceCollection)
         {
             args[1] = GetExpression(context, args[1]);
-            if (args[1] is not LambdaExpressionFn subnetLambda)
+            if (args[1] is not LambdaExpressionFn resourceLambda)
                 throw ArgumentFormatInvalid(nameof(Filter));
 
-            return subnetLambda.Filter(context, [subnetArray.CreateSubnet()]);
+            return resourceLambda.Filter(context, [resourceCollection.CreateItem()]);
         }
 
         if (args[0] is IMock && ExpressionHelpers.TryJArray(args[0], out var mockArray))
