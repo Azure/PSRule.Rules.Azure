@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.28.1.47646",
-      "templateHash": "15571924133724598642"
+      "version": "0.44.1.10279",
+      "templateHash": "14528339337082392016"
     }
   },
   "parameters": {
@@ -85,7 +85,7 @@
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2022-09-01",
+      "apiVersion": "2025-04-01",
       "name": "vnet",
       "properties": {
         "expressionEvaluationOptions": {
@@ -98,8 +98,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.28.1.47646",
-              "templateHash": "5110598302669187937"
+              "version": "0.44.1.10279",
+              "templateHash": "4925140954080731669"
             }
           },
           "variables": {
@@ -151,7 +151,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2022-09-01",
+      "apiVersion": "2025-04-01",
       "name": "child2",
       "properties": {
         "expressionEvaluationOptions": {
@@ -160,7 +160,7 @@
         "mode": "Incremental",
         "parameters": {
           "subnetId": {
-            "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2022-09-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, 'subnet1')))[0].id]"
+            "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2025-04-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, 'subnet1')))[0].id]"
           }
         },
         "template": {
@@ -169,8 +169,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.28.1.47646",
-              "templateHash": "12131810097188199000"
+              "version": "0.44.1.10279",
+              "templateHash": "15596612554824335806"
             }
           },
           "parameters": {
@@ -205,7 +205,11 @@
     },
     "vnetId": {
       "type": "string",
-      "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2022-09-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, parameters('environment'))))[0].id]"
+      "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2025-04-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, parameters('environment'))))[0].id]"
+    },
+    "vnetLiteralId": {
+      "type": "string",
+      "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2025-04-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, 'subnet1')))[0].id]"
     },
     "mockFilter": {
       "type": "array",
