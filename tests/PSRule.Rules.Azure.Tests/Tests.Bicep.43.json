@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.44.1.10279",
+      "templateHash": "16183770348240396948"
+    }
+  },
+  "parameters": {
+    "vnetRgName": {
+      "type": "string",
+      "defaultValue": "rg-network"
+    },
+    "vnetName": {
+      "type": "string",
+      "defaultValue": "vnet-issue-2159"
+    },
+    "subnetName": {
+      "type": "string",
+      "defaultValue": "app"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2022-09-01",
+      "name": "plan-issue-2159",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Y1",
+        "tier": "Dynamic"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2022-09-01",
+      "name": "func-issue-2159",
+      "location": "[resourceGroup().location]",
+      "kind": "functionapp",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'plan-issue-2159')]",
+        "virtualNetworkSubnetId": "[filter(reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('vnetRgName')), 'Microsoft.Network/virtualNetworks', parameters('vnetName')), '2023-02-01').subnets, lambda('s', equals(lambdaVariables('s').name, parameters('subnetName'))))[0].id]",
+        "siteConfig": {}
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', 'plan-issue-2159')]"
+      ]
+    }
+  ]
+}
