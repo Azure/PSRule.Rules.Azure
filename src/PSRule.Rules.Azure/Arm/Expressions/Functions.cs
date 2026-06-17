@@ -1150,6 +1150,9 @@ internal static class Functions
         if (resource is DeploymentValue deployment)
             return full ? deployment : deployment.Properties;
 
+        if (resource.Existing && !resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out _))
+            return full ? new Mock.MockResource(resource.Id) : new Mock.MockResource(resource.Id)[PROPERTY_PROPERTIES];
+
         if (!full && resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var properties))
             return new Mock.MockObject(properties);
 
@@ -2190,6 +2193,15 @@ internal static class Functions
             throw ArgumentsOutOfRange(nameof(Filter), args);
 
         args[0] = GetExpression(context, args[0]);
+        if (args[0] is Mock.MockResourceSubnetArray subnetArray)
+        {
+            args[1] = GetExpression(context, args[1]);
+            if (args[1] is not LambdaExpressionFn subnetLambda)
+                throw ArgumentFormatInvalid(nameof(Filter));
+
+            return subnetLambda.Filter(context, [subnetArray.CreateSubnet()]);
+        }
+
         if (args[0] is IMock && ExpressionHelpers.TryJArray(args[0], out var mockArray))
             return mockArray;
 
