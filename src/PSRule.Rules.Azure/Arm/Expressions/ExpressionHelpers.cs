@@ -285,6 +285,9 @@ internal static class ExpressionHelpers
         if (IsNull(o1) || IsNull(o2))
             return IsNull(o1) && IsNull(o2);
 
+        if (TryBindString(o1, o2) || TryBindString(o2, o1))
+            return true;
+
         // Arrays
         if (o1 is Array array1 && o2 is Array array2)
             return SequenceEqual(array1, array2);
@@ -309,12 +312,22 @@ internal static class ExpressionHelpers
         return ObjectEquals(o1, o2);
     }
 
+    private static bool TryBindString(object target, object value)
+    {
+        if (target is not Mock.MockBoundString boundString || !TryString(value, out var s, allowMocks: false))
+            return false;
+
+        return boundString.Bind(s);
+    }
+
     /// <summary>
     /// Wrap a literal string that could be interpreted as an expression in a later evaluation.
     /// If the input string starts with '[' and ends with ']' it should be escaped.
     /// </summary>
     internal static object WrapLiteralString(object o)
     {
+        if (o is IMock) return o;
+
         if (!TryString(o, out var s, allowMocks: false)) return o;
 
         return !s.IsExpressionString() ? s : string.Concat('[', s);
@@ -326,6 +339,8 @@ internal static class ExpressionHelpers
     /// </summary>
     internal static object UnwrapLiteralString(object o)
     {
+        if (o is IMock) return o;
+
         if (!TryString(o, out var s, allowMocks: false)) return o;
 
         return s == null || s.Length <= 3 || s[0] != '[' || s[1] != '[' || s[s.Length - 1] != ']' ? s : s.Substring(1);
