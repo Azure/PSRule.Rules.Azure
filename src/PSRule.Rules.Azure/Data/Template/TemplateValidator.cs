@@ -19,9 +19,17 @@ internal sealed class TemplateValidator
     private const string PROPERTY_MIN_VALUE = "minValue";
     private const string PROPERTY_MAX_VALUE = "maxValue";
     private const string PROPERTY_VALIDATE = "validate";
+    private const string PROPERTY_TYPE = "type";
+    private const string PROPERTY_PROPERTIES = "properties";
+    private const string PROPERTY_ADDITIONAL_PROPERTIES = "additionalProperties";
+    private const string PROPERTY_PREFIX_ITEMS = "prefixItems";
+    private const string PROPERTY_ITEMS = "items";
+    private const string PROPERTY_REF = "$ref";
+    private const string PROPERTY_NULLABLE = "nullable";
     private const string PROPERTY_METADATA = "metadata";
     private const string PROPERTY_STRONG_TYPE = "strongType";
     private const string PROPERTY_RESOURCE_TYPE = "resourceType";
+    private const string CONSTRAINT_REQUIRED = "required";
     private const string STRONG_TYPE_LOCATION = "location";
 
     private const string ISSUE_VALUE_CONSTRAINT = "PSRule.Rules.Azure.Template.ValueConstraint";
@@ -63,12 +71,206 @@ internal sealed class TemplateValidator
         if (schema == null)
             return;
 
+        if (IsNullValue(value) && IsNullable(context, schema))
+            return;
+
+        if (IsNullValue(value) && HasTypeConstraint(schema))
+        {
+            AddConstraintIssue(context, name, schema, PROPERTY_NULLABLE);
+            return;
+        }
+
+        if (TryDefinition(context, schema, out var definition))
+            ValueConstraints(context, name, definition, value);
+
+        if (!TypeConstraint(context, name, schema, value))
+            return;
+
         AllowedValues(context, name, schema, value);
         LengthConstraint(context, name, schema, value, PROPERTY_MIN_LENGTH, (actual, expected) => actual < expected);
         LengthConstraint(context, name, schema, value, PROPERTY_MAX_LENGTH, (actual, expected) => actual > expected);
         ValueConstraint(context, name, schema, value, PROPERTY_MIN_VALUE, (actual, expected) => actual < expected);
         ValueConstraint(context, name, schema, value, PROPERTY_MAX_VALUE, (actual, expected) => actual > expected);
         ValidateConstraint(context, name, schema, value);
+        ObjectConstraints(context, name, schema, value);
+        ArrayConstraints(context, name, schema, value);
+    }
+
+    private static bool TryDefinition(IValidationContext context, JObject schema, out JObject definition)
+    {
+        definition = null;
+        if (context is not ITemplateContext templateContext ||
+            !schema.TryStringProperty(PROPERTY_REF, out var id) ||
+            !templateContext.TryDefinition(id, out var typeDefinition) ||
+            typeDefinition.Definition == null)
+            return false;
+
+        definition = typeDefinition.Definition;
+        return true;
+    }
+
+    private static bool HasTypeConstraint(JObject schema)
+    {
+        return schema.TryStringProperty(PROPERTY_REF, out _) || schema.TryTypeProperty(out _);
+    }
+
+    private static bool IsNullable(IValidationContext context, JObject schema)
+    {
+        if (schema.TryBoolProperty(PROPERTY_NULLABLE, out var nullable) && nullable.Value)
+            return true;
+
+        return TryDefinition(context, schema, out var definition) && IsNullable(context, definition);
+    }
+
+    private static bool IsNullValue(object value)
+    {
+        return value == null || value is JToken token && token.Type == JTokenType.Null;
+    }
+
+    private static bool TypeConstraint(IValidationContext context, string name, JObject schema, object value)
+    {
+        if (!schema.TryTypeProperty(out var type) || !TypeHelpers.TryTypePrimitive(type, out var primitive) || !primitive.HasValue)
+            return true;
+
+        var valid = primitive.Value switch
+        {
+            TypePrimitive.String or TypePrimitive.SecureString => ExpressionHelpers.TryString(value, out _),
+            TypePrimitive.Int => ExpressionHelpers.TryLong(value, out _),
+            TypePrimitive.Bool => ExpressionHelpers.TryBool(value, out _),
+            TypePrimitive.Array => ExpressionHelpers.TryArray(value, out _),
+            TypePrimitive.Object or TypePrimitive.SecureObject => TryObject(value, out _),
+            _ => true,
+        };
+
+        if (!valid)
+            AddConstraintIssue(context, name, schema, PROPERTY_TYPE);
+
+        return valid;
+    }
+
+    private static bool TryObject(object value, out JObject obj)
+    {
+        obj = value as JObject;
+        return obj != null;
+    }
+
+    private static void ObjectConstraints(IValidationContext context, string name, JObject schema, object value)
+    {
+        if (!schema.TryObjectProperty(PROPERTY_PROPERTIES, out var properties) &&
+            !schema.TryGetProperty<JToken>(PROPERTY_ADDITIONAL_PROPERTIES, out _))
+            return;
+
+        if (!TryObject(value, out var obj))
+        {
+            AddConstraintIssue(context, name, schema, PROPERTY_TYPE);
+            return;
+        }
+
+        if (properties != null)
+            ObjectProperties(context, name, properties, obj);
+
+        AdditionalProperties(context, name, schema, properties, obj);
+    }
+
+    private static void ObjectProperties(IValidationContext context, string name, JObject properties, JObject value)
+    {
+        foreach (var property in properties.Properties())
+        {
+            if (property.Value is not JObject propertySchema)
+                continue;
+
+            var propertyName = string.Concat(name, ".", property.Name);
+            if (!value.TryGetValue(property.Name, StringComparison.OrdinalIgnoreCase, out var propertyValue))
+            {
+                if (!IsNullable(context, propertySchema))
+                    AddConstraintIssue(context, propertyName, propertySchema, CONSTRAINT_REQUIRED);
+
+                continue;
+            }
+
+            ValueConstraints(context, propertyName, propertySchema, propertyValue);
+        }
+    }
+
+    private static void AdditionalProperties(IValidationContext context, string name, JObject schema, JObject properties, JObject value)
+    {
+        if (!schema.TryGetProperty<JToken>(PROPERTY_ADDITIONAL_PROPERTIES, out var additionalProperties))
+            return;
+
+        if (additionalProperties.Type == JTokenType.Boolean && !additionalProperties.Value<bool>())
+        {
+            foreach (var property in value.Properties())
+                if (!IsDefinedProperty(properties, property.Name))
+                    AddConstraintIssue(context, string.Concat(name, ".", property.Name), schema, PROPERTY_ADDITIONAL_PROPERTIES);
+
+            return;
+        }
+
+        if (additionalProperties is not JObject additionalPropertiesSchema)
+            return;
+
+        foreach (var property in value.Properties())
+            if (!IsDefinedProperty(properties, property.Name))
+                ValueConstraints(context, string.Concat(name, ".", property.Name), additionalPropertiesSchema, property.Value);
+    }
+
+    private static bool IsDefinedProperty(JObject properties, string propertyName)
+    {
+        return properties != null && properties.ContainsKeyInsensitive(propertyName);
+    }
+
+    private static void ArrayConstraints(IValidationContext context, string name, JObject schema, object value)
+    {
+        if (!schema.TryArrayProperty(PROPERTY_PREFIX_ITEMS, out var prefixItems) &&
+            !schema.TryGetProperty<JToken>(PROPERTY_ITEMS, out _))
+            return;
+
+        if (!ExpressionHelpers.TryArray(value, out var array))
+        {
+            AddConstraintIssue(context, name, schema, PROPERTY_TYPE);
+            return;
+        }
+
+        if (prefixItems != null)
+            PrefixItems(context, name, prefixItems, array);
+
+        Items(context, name, schema, prefixItems?.Count ?? 0, array);
+    }
+
+    private static void PrefixItems(IValidationContext context, string name, JArray prefixItems, Array value)
+    {
+        for (var i = 0; i < prefixItems.Count; i++)
+        {
+            var itemName = string.Concat(name, "[", i, "]");
+            if (i >= value.Length)
+            {
+                AddConstraintIssue(context, itemName, prefixItems[i] as JObject ?? new JObject(), CONSTRAINT_REQUIRED);
+                continue;
+            }
+
+            if (prefixItems[i] is JObject itemSchema)
+                ValueConstraints(context, itemName, itemSchema, value.GetValue(i));
+        }
+    }
+
+    private static void Items(IValidationContext context, string name, JObject schema, int start, Array value)
+    {
+        if (!schema.TryGetProperty<JToken>(PROPERTY_ITEMS, out var items))
+            return;
+
+        if (items.Type == JTokenType.Boolean && !items.Value<bool>())
+        {
+            for (var i = start; i < value.Length; i++)
+                AddConstraintIssue(context, string.Concat(name, "[", i, "]"), schema, PROPERTY_ITEMS);
+
+            return;
+        }
+
+        if (items is not JObject itemSchema)
+            return;
+
+        for (var i = start; i < value.Length; i++)
+            ValueConstraints(context, string.Concat(name, "[", i, "]"), itemSchema, value.GetValue(i));
     }
 
     private static void AllowedValues(IValidationContext context, string name, JObject schema, object value)

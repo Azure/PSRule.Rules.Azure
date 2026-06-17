@@ -41,6 +41,8 @@ What's changed since pre-release v1.48.0-B0088:
     [#3776](https://github.com/Azure/PSRule.Rules.Azure/issues/3776)
   - Added support for Bicep decorator value constraints.
     [#3649](https://github.com/Azure/PSRule.Rules.Azure/issues/3649)
+  - Added validation for Bicep custom type constraints.
+    [#1922](https://github.com/Azure/PSRule.Rules.Azure/issues/1922)
 
 ## v1.48.0-B0088 (pre-release)
 

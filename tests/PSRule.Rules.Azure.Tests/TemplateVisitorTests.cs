@@ -402,6 +402,32 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
     }
 
     [Fact]
+    public void CustomTypeValueConstraint()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Template.CustomTypes.1.json"), null);
+        Assert.NotNull(resources);
+        Assert.Single(resources);
+
+        var actual = resources[0];
+        Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+        var issues = actual["_PSRule"]["issue"].Value<JArray>();
+        Assert.Equal(11, issues.Count);
+        Assert.All(issues, issue => Assert.Equal("PSRule.Rules.Azure.Template.ValueConstraint", issue["type"].Value<string>()));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidConfig.name" && issue["message"].Value<string>().Contains("minLength"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidConfig.sku" && issue["message"].Value<string>().Contains("allowedValues"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidConfig.count" && issue["message"].Value<string>().Contains("minValue"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidConfig.tags.e" && issue["message"].Value<string>().Contains("minLength"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidConfig.extra" && issue["message"].Value<string>().Contains("additionalProperties"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "missingNameConfig.name" && issue["message"].Value<string>().Contains("required"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidTuple[1]" && issue["message"].Value<string>().Contains("type"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidTuple[2]" && issue["message"].Value<string>().Contains("items"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidArray[1]" && issue["message"].Value<string>().Contains("allowedValues"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidNullName" && issue["message"].Value<string>().Contains("nullable"));
+        Assert.Contains(issues, issue => issue["name"].Value<string>() == "invalidOutput" && issue["message"].Value<string>().Contains("minLength"));
+        Assert.DoesNotContain(issues, issue => issue["name"].Value<string>().StartsWith("valid") || issue["name"].Value<string>() == "nullableName");
+    }
+
+    [Fact]
     public void StrongTypeNestedParameter()
     {
         var resources = ProcessTemplate(GetSourcePath("Template.Bicep.2.json"), null, PSRuleOption.FromFileOrDefault(GetSourcePath("ps-rule-options.yaml")));
@@ -818,6 +844,7 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
     {
         var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.14.json"), null);
         Assert.NotNull(resources);
+        Assert.DoesNotContain(resources, resource => resource["_PSRule"].Value<JObject>().ContainsKey("issue"));
     }
 
     [Fact]
