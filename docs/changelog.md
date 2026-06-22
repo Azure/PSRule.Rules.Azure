@@ -30,18 +30,20 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.48.0-B0228 (pre-release)
+
 What's changed since pre-release v1.48.0-B0088:
 
 - General improvements:
   - Updated provider data by @BernieWhite.
     [#3790](https://github.com/Azure/PSRule.Rules.Azure/issues/3790)
-  - Added support for Bicep `resourceType` parameter metadata.
+  - Added support for Bicep `resourceType` parameter metadata by @polatengin.
     [#1474](https://github.com/Azure/PSRule.Rules.Azure/issues/1474)
-  - Added support for the Bicep `roleDefinitions` function.
+  - Added support for the Bicep `roleDefinitions` function by @polatengin.
     [#3776](https://github.com/Azure/PSRule.Rules.Azure/issues/3776)
-  - Added support for Bicep decorator value constraints.
+  - Added support for Bicep decorator value constraints by @polatengin.
     [#3649](https://github.com/Azure/PSRule.Rules.Azure/issues/3649)
-  - Added validation for Bicep custom type constraints.
+  - Added validation for Bicep custom type constraints by @polatengin.
     [#1922](https://github.com/Azure/PSRule.Rules.Azure/issues/1922)
 
 ## v1.48.0-B0088 (pre-release)
