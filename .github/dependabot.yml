@@ -32,6 +32,10 @@ updates:
       interval: daily
     labels:
       - ci-quality
+    groups:
+      codeql-actions:
+        patterns:
+          - 'github/codeql-action/*' # group github/codeql-action/* actions for Dependabot to update these together in one PR
   # Maintain dependencies for Python
   - package-ecosystem: pip
     directory: '/'
