@@ -30,6 +30,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+  - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
+    [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+
 ## v1.48.0-B0228 (pre-release)
 
 What's changed since pre-release v1.48.0-B0088:

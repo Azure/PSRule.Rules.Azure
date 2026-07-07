@@ -767,6 +767,10 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
         Assert.Equal("Evie", firstOldDogs["value"]["name"].Value<string>());
         Assert.True(templateContext.RootDeployment.TryOutput("firstOldDogsEmpty", out JObject firstOldDogsEmpty));
         Assert.True(firstOldDogsEmpty["value"].Type == JTokenType.Null);
+        Assert.True(templateContext.RootDeployment.TryOutput("vnetId", out JObject vnetId));
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1", vnetId["value"].Value<string>());
+        Assert.True(templateContext.RootDeployment.TryOutput("vnetLiteralId", out JObject vnetLiteralId));
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1", vnetLiteralId["value"].Value<string>());
 
         // Map
         Assert.True(templateContext.RootDeployment.TryOutput("dogNames", out JObject dogNames));
@@ -900,6 +904,19 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
     {
         var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.21.json"), null, out _);
         Assert.Equal(2, resources.Length);
+    }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2159
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WhenFilterExistingVNetSubnets_ShouldInferSubnetId()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.43.json"), null, out _);
+
+        var actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Web/sites");
+        Assert.NotNull(actual);
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-network/providers/Microsoft.Network/virtualNetworks/vnet-issue-2159/subnets/app", actual["properties"]["virtualNetworkSubnetId"].Value<string>());
     }
 
     [Fact]

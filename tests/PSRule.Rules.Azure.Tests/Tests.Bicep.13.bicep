@@ -54,6 +54,7 @@ module child2 'Tests.Bicep.13.child2.bicep' = {
 }
 
 output vnetId string = filter(vnet.outputs.subnets, s => s.name == environment)[0].id
+output vnetLiteralId string = filter(vnet.outputs.subnets, s => s.name == 'subnet1')[0].id
 output mockFilter array = (filter(
   reference(
     '${resourceId('Microsoft.HybridCompute/machines', 'node1')}/providers/microsoft.azurestackhci/edgeDevices/default',

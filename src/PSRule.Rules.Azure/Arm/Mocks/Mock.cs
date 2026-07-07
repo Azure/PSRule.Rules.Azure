@@ -103,7 +103,7 @@ internal sealed class Mock
                 Add("name", new JValue(name));
             }
 
-            var properties = new MockUnknownObject();
+            var properties = new MockResourceProperties(resourceId ?? string.Empty);
             Add("properties", properties);
         }
 
@@ -114,6 +114,156 @@ internal sealed class Mock
         public override string GetString()
         {
             return "Resource";
+        }
+    }
+
+    internal interface IMockResourceCollection
+    {
+        MockResourcePropertyItem CreateItem();
+    }
+
+    internal sealed class MockResourceProperties : MockUnknownObject
+    {
+        private readonly string _ResourceId;
+
+        public MockResourceProperties(string resourceId)
+            : base()
+        {
+            _ResourceId = resourceId;
+        }
+
+        protected override JToken CreateUnknownProperty(object key)
+        {
+            return key is string propertyName ? new MockResourceProperty(_ResourceId, propertyName, IsSecret) : base.CreateUnknownProperty(key);
+        }
+    }
+
+    internal sealed class MockResourceProperty : MockUnknownObject, IMockResourceCollection
+    {
+        private readonly string _ResourceId;
+        private readonly string _PropertyName;
+        private MockResourcePropertyArray? _Array;
+
+        public MockResourceProperty(string resourceId, string propertyName, bool secret)
+            : base(secret)
+        {
+            _ResourceId = resourceId;
+            _PropertyName = propertyName;
+        }
+
+        public override JToken? GetValue(TypePrimitive type)
+        {
+            return type == TypePrimitive.Array ? ToArray() : base.GetValue(type);
+        }
+
+        private MockResourcePropertyArray ToArray()
+        {
+            return _Array ??= new MockResourcePropertyArray(_ResourceId, _PropertyName, IsSecret);
+        }
+
+        public MockResourcePropertyItem CreateItem()
+        {
+            return new MockResourcePropertyItem(_ResourceId, _PropertyName, IsSecret);
+        }
+    }
+
+    internal sealed class MockResourcePropertyArray : MockArray, IMockResourceCollection
+    {
+        private readonly string _ResourceId;
+        private readonly string _PropertyName;
+
+        public MockResourcePropertyArray(string resourceId, string propertyName, bool secret)
+            : base(secret)
+        {
+            _ResourceId = resourceId;
+            _PropertyName = propertyName;
+        }
+
+        public MockResourcePropertyItem CreateItem()
+        {
+            return new MockResourcePropertyItem(_ResourceId, _PropertyName, IsSecret);
+        }
+    }
+
+    internal sealed class MockResourcePropertyItem : MockUnknownObject
+    {
+        private const string PROPERTY_ID = "id";
+        private const string PROPERTY_NAME = "name";
+        private const string PROPERTY_TYPE = "type";
+
+        private readonly string _ResourceId;
+        private readonly string _PropertyName;
+        private MockBoundString? _Name;
+
+        public MockResourcePropertyItem(string resourceId, string propertyName, bool secret)
+            : base(secret)
+        {
+            _ResourceId = resourceId;
+            _PropertyName = propertyName;
+        }
+
+        public override JToken? GetValue(object key)
+        {
+            key = GetBaseObject(key);
+            if (key is string propertyName)
+            {
+                if (StringComparer.OrdinalIgnoreCase.Equals(propertyName, PROPERTY_NAME))
+                    return _Name ??= new MockBoundString();
+
+                if (StringComparer.OrdinalIgnoreCase.Equals(propertyName, PROPERTY_ID))
+                {
+                    var itemName = _Name?.BoundValue;
+                    return new MockValue(string.IsNullOrEmpty(itemName) ? string.Empty : string.Concat(_ResourceId, "/", _PropertyName, "/", itemName), IsSecret);
+                }
+
+                if (StringComparer.OrdinalIgnoreCase.Equals(propertyName, PROPERTY_TYPE))
+                    return new MockValue(GetItemType(), IsSecret);
+            }
+            return base.GetValue(key);
+        }
+
+        private string GetItemType()
+        {
+            var resourceType = ResourceHelper.GetResourceType(_ResourceId);
+            return string.IsNullOrEmpty(resourceType) ? string.Empty : string.Concat(resourceType, "/", _PropertyName);
+        }
+    }
+
+    internal sealed class MockBoundString : JValue, IMock
+    {
+        public MockBoundString()
+            : base(string.Empty) { }
+
+        TypePrimitive IMock.BaseType => TypePrimitive.String;
+
+        public bool IsSecret => false;
+
+        public string BoundValue => Value as string ?? string.Empty;
+
+        public bool Bind(string value)
+        {
+            Value = value;
+            return true;
+        }
+
+        public TValue? GetValue<TValue>()
+        {
+            return GetSimpleValue<TValue>(this);
+        }
+
+        public JToken? GetValue(TypePrimitive type)
+        {
+            return type == TypePrimitive.None || type == TypePrimitive.String ? this : null;
+        }
+
+        public JToken? GetValue(object key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetString()
+        {
+            return BoundValue;
         }
     }
 
@@ -327,9 +477,13 @@ internal sealed class Mock
                 if (key is string s_key && TryWellKnownStringProperty(this, s_key, out var s_value))
                     result = s_value;
                 else
-                    result = new MockUnknownObject(IsSecret);
+                    result = CreateUnknownProperty(key);
 
                 base[key] = result;
+            }
+            else if (result is IMock)
+            {
+                return result;
             }
             else if (result is JObject jObject)
             {
@@ -363,6 +517,11 @@ internal sealed class Mock
         public virtual string GetString()
         {
             return "Object";
+        }
+
+        protected virtual JToken CreateUnknownProperty(object key)
+        {
+            return new MockUnknownObject(IsSecret);
         }
     }
 
