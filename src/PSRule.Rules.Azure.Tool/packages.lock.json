@@ -617,7 +617,7 @@
         "type": "Project",
         "dependencies": {
           "Newtonsoft.Json": "[13.0.3, )",
-          "YamlDotNet": "[11.2.1, )"
+          "YamlDotNet": "[11.2.5-unity-compatible-0001, )"
         }
       }
     },

@@ -85,9 +85,9 @@
       },
       "YamlDotNet": {
         "type": "Direct",
-        "requested": "[11.2.1, )",
-        "resolved": "11.2.1",
-        "contentHash": "tBt8K+korVfrjH9wyDEhiLKxbs8qoLCLIFwvYgkSUuMC9//w3z0cFQ8LQAI/5MCKq+BMil0cfRTRvPeE7eXhQw=="
+        "requested": "[11.2.5-unity-compatible-0001, )",
+        "resolved": "11.2.5-unity-compatible-0001",
+        "contentHash": "hTuH4pqV4FSfae9YDAC8dYsqseNwdgwE+Q1aEg5blGCII+Sr5OEvKSPM2LW/Ri8vtfQViYHXMqadfzFsxGkPnQ=="
       },
       "Microsoft.Bcl.AsyncInterfaces": {
         "type": "Transitive",

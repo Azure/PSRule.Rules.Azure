@@ -30,8 +30,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.48.0-B0228:
+
+- General improvements:
   - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
     [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+- Engineering:
+  - Bump YamlDotNet to 11.2.5.
 
 ## v1.48.0-B0228 (pre-release)
 
