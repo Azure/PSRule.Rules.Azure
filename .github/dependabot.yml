@@ -25,6 +25,7 @@ updates:
           - Microsoft.PowerShell.SDK
     ignore:
       - dependency-name: gitversion.tool
+      - dependency-name: YamlDotNet # Ignore YamlDotNet updates until the next major release to avoid breaking changes in PSRule
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: github-actions
     directory: '/'
