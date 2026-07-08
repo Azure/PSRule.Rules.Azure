@@ -40,6 +40,7 @@ The following rules are deprecated and will be removed in v2:
 
 Reference ID | Name                             | Deprecated from | Reason
 ------------ | ----                             | --------------- | ------
+AZR-000004   | Azure.ACR.GeoReplica             | v1.48.0         | Zone redundancy is automatic in supported regions and the `zoneRedundancy` property is being deprecated. [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
 AZR-000009   | Azure.ACR.ContentTrust           | v1.45.0         | No longer applicable to ACR. [#3443](https://github.com/Azure/PSRule.Rules.Azure/issues/3443)
 AZR-000050   | Azure.APIM.ProductTerms          | v1.41.0         | No clear linkage to WAF.
 AZR-000217   | Azure.Template.UseParameters     | v1.36.0         | Linting already handled by Bicep linter. No clear linkage to WAF.
