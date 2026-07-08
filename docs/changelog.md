@@ -30,8 +30,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-  - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
-    [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+- Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
+  [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+
+- Updated rules:
+  - Container Registry:
+    - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
+      [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
 
 ## v1.48.0-B0228 (pre-release)
 
