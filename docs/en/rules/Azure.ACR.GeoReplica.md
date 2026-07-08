@@ -1,5 +1,6 @@
 ---
 reviewed: 2025-07-12
+deprecated: true
 severity: Important
 pillar: Reliability
 category: RE:05 High-availability multi-region design
@@ -13,6 +14,18 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Ge
 ## SYNOPSIS
 
 Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start.
+
+## DEPRECATION
+
+<!-- deprecation:note
+Azure Container Registry zone redundancy is automatically enabled in supported regions.
+The `zoneRedundancy` property is deprecated and no longer affects supported regions.
+
+This rule is deprecated from v1.48.0.
+By default, PSRule will not evaluate this rule unless explicitly enabled.
+See [https://aka.ms/ps-rule-azure/deprecations](https://aka.ms/ps-rule-azure/deprecations).
+See [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846).
+-->
 
 ## DESCRIPTION
 
@@ -54,7 +67,6 @@ resource registry 'Microsoft.ContainerRegistry/registries@2025-05-01-preview' = 
     adminUserEnabled: false
     anonymousPullEnabled: false
     publicNetworkAccess: 'Disabled'
-    zoneRedundancy: 'Enabled'
     policies: {
       quarantinePolicy: {
         status: 'enabled'
@@ -80,7 +92,6 @@ resource registryReplica 'Microsoft.ContainerRegistry/registries/replications@20
   location: secondaryLocation
   properties: {
     regionEndpointEnabled: true
-    zoneRedundancy: 'Enabled'
   }
 }
 ```
@@ -112,7 +123,6 @@ For example to configure a container registry:
     "adminUserEnabled": false,
     "anonymousPullEnabled": false,
     "publicNetworkAccess": "Disabled",
-    "zoneRedundancy": "Enabled",
     "policies": {
       "quarantinePolicy": {
         "status": "enabled"
@@ -142,8 +152,7 @@ For example to configure a container registry replica:
   "name": "[format('{0}/{1}', parameters('name'), parameters('secondaryLocation'))]",
   "location": "[parameters('secondaryLocation')]",
   "properties": {
-    "regionEndpointEnabled": true,
-    "zoneRedundancy": "Enabled"
+    "regionEndpointEnabled": true
   },
   "dependsOn": [
     "[resourceId('Microsoft.ContainerRegistry/registries', parameters('name'))]"
