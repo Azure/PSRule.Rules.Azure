@@ -1,5 +1,4 @@
 "Name","Synopsis","Severity","Pillar","Maturity"
-"Azure.ACR.GeoReplica","Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start.","Important","Reliability","-"
 "Azure.ACR.MinSku","The Basic SKU provides limited performance and features for production container registry workloads.","Important","Reliability","-"
 "Azure.ADX.SLA","Use SKUs that include an SLA when configuring Azure Data Explorer (ADX) clusters.","Important","Reliability","-"
 "Azure.AKS.AvailabilityZone","AKS clusters deployed with virtual machine scale sets should use availability zones in supported regions for high availability.","Important","Reliability","-"
