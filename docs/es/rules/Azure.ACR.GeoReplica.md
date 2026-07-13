@@ -1,4 +1,5 @@
 ---
+deprecated: true
 severity: Importante
 pillar: Confiabilidad
 category: Protección de datos
@@ -11,6 +12,16 @@ online version: https://azure.github.io/PSRule.Rules.Azure/es/rules/Azure.ACR.Ge
 ## Sinopsis
 
 Utilice registros de contenedores replicados geográficamente para complementar las implementaciones de contenedores en varias regiones.
+
+## Desuso
+
+Azure Container Registry habilita automáticamente la redundancia de zona en las regiones admitidas.
+La propiedad `zoneRedundancy` está en desuso y ya no afecta a las regiones admitidas.
+
+Esta regla está en desuso desde v1.48.0.
+De forma predeterminada, PSRule no evaluará esta regla a menos que se habilite explícitamente.
+Consulte [https://aka.ms/ps-rule-azure/deprecations](https://aka.ms/ps-rule-azure/deprecations).
+Consulte [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846).
 
 ## Descripción
 

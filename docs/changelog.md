@@ -35,6 +35,10 @@ What's changed since pre-release v1.48.0-B0228:
 - General improvements:
   - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
     [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+- Updated rules:
+  - Container Registry:
+    - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
+      [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
 - Engineering:
   - Bump YamlDotNet to 11.2.5.
 
