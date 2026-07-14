@@ -352,20 +352,20 @@
     "displayName": "Enable AKS Container insights"
   },
   {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "OE:04 Continuous integration",
-    "resourceType": "Microsoft.ContainerService/managedClusters",
-    "ruleId": "Azure.AKS.DNSPrefix",
-    "displayName": "Use valid AKS cluster DNS prefix"
-  },
-  {
     "severity": "Important",
     "pillar": "Security",
     "category": "Azure resources",
     "resourceType": "Microsoft.ContainerService/managedClusters",
     "ruleId": "Azure.AKS.DefenderProfile",
     "displayName": "Enable Defender profile"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Continuous integration",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "ruleId": "Azure.AKS.DNSPrefix",
+    "displayName": "Use valid AKS cluster DNS prefix"
   },
   {
     "severity": "Important",
@@ -632,6 +632,22 @@
     "displayName": "Kubernetes Cluster version is old"
   },
   {
+    "severity": "Important",
+    "pillar": "Cost Optimization",
+    "category": "CO:06 Usage and billing increments",
+    "resourceType": "Microsoft.Insights/scheduledQueryRules",
+    "ruleId": "Azure.Alert.HighFrequencyQuery",
+    "displayName": "Scheduled Query Alert is configured to use a high frequency query"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Cost Optimization",
+    "category": "CO:13 Personnel time",
+    "resourceType": "Microsoft.Insights/metricAlerts",
+    "ruleId": "Azure.Alert.MetricAutoMitigate",
+    "displayName": "Metric Alert requires manual mitigation"
+  },
+  {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
     "category": "OE:04 Tools and processes",
@@ -657,22 +673,6 @@
   },
   {
     "severity": "Important",
-    "pillar": "Security",
-    "category": "Design",
-    "resourceType": "Microsoft.ApiManagement/service",
-    "ruleId": "Azure.APIM.CORSPolicy",
-    "displayName": "Avoid wildcards in APIM CORS policies"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "Design",
-    "resourceType": "Microsoft.ApiManagement/service/policies",
-    "ruleId": "Azure.APIM.CORSPolicy",
-    "displayName": "Avoid wildcards in APIM CORS policies"
-  },
-  {
-    "severity": "Important",
     "pillar": "Reliability",
     "category": "RE:04 Target metrics",
     "resourceType": "Microsoft.ApiManagement/service",
@@ -686,6 +686,22 @@
     "resourceType": "Microsoft.ApiManagement/service",
     "ruleId": "Azure.APIM.Ciphers",
     "displayName": "Use secure ciphers for API Management"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "Design",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "ruleId": "Azure.APIM.CORSPolicy",
+    "displayName": "Avoid wildcards in APIM CORS policies"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "Design",
+    "resourceType": "Microsoft.ApiManagement/service/policies",
+    "ruleId": "Azure.APIM.CORSPolicy",
+    "displayName": "Avoid wildcards in APIM CORS policies"
   },
   {
     "severity": "Critical",
@@ -937,54 +953,6 @@
   },
   {
     "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:05 Regions and availability zones",
-    "resourceType": "Microsoft.Web/hostingEnvironments",
-    "ruleId": "Azure.ASE.AvailabilityZone",
-    "displayName": "Deploy app service environments using availability zones"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Operational Excellence",
-    "category": "Infrastructure provisioning",
-    "resourceType": "Microsoft.Web/hostingEnvironments",
-    "ruleId": "Azure.ASE.MigrateV3",
-    "displayName": "Migrate to App Service Environment v3"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
-    "resourceType": "Microsoft.Network/applicationSecurityGroups",
-    "ruleId": "Azure.ASG.Name",
-    "displayName": "Use valid ASG names"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:04 Target metrics",
-    "resourceType": "Microsoft.DesktopVirtualization/hostPools",
-    "ruleId": "Azure.AVD.ScheduleAgentUpdate",
-    "displayName": "Schedule agent updates for host pools"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Cost Optimization",
-    "category": "CO:06 Usage and billing increments",
-    "resourceType": "Microsoft.Insights/scheduledQueryRules",
-    "ruleId": "Azure.Alert.HighFrequencyQuery",
-    "displayName": "Scheduled Query Alert is configured to use a high frequency query"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Cost Optimization",
-    "category": "CO:13 Personnel time",
-    "resourceType": "Microsoft.Insights/metricAlerts",
-    "ruleId": "Azure.Alert.MetricAutoMitigate",
-    "displayName": "Metric Alert requires manual mitigation"
-  },
-  {
-    "severity": "Important",
     "pillar": "Security",
     "category": "SE:10 Monitoring and threat detection",
     "resourceType": "Microsoft.AppConfiguration/configurationStores",
@@ -1056,14 +1024,6 @@
     "displayName": "App Configuration Store replica location is not allowed"
   },
   {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:04 Target metrics",
-    "resourceType": "Microsoft.AppConfiguration/configurationStores",
-    "ruleId": "Azure.AppConfig.SKU",
-    "displayName": "Use production App Configuration SKU"
-  },
-  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:09 Application secrets",
@@ -1078,6 +1038,14 @@
     "resourceType": "Microsoft.AppConfiguration/configurationStores/keyValues",
     "ruleId": "Azure.AppConfig.SecretLeak",
     "displayName": "App Configuration Store key value is secret"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:04 Target metrics",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "ruleId": "Azure.AppConfig.SKU",
+    "displayName": "Use production App Configuration SKU"
   },
   {
     "severity": "Important",
@@ -1248,22 +1216,6 @@
     "displayName": "Use workspace-based App Insights resources"
   },
   {
-    "severity": "Awareness",
-    "pillar": "Performance Efficiency",
-    "category": "PE:05 Scaling and partitioning",
-    "resourceType": "Microsoft.Web/sites",
-    "ruleId": "Azure.AppService.ARRAffinity",
-    "displayName": "Disable Application Request Routing"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Performance Efficiency",
-    "category": "PE:05 Scaling and partitioning",
-    "resourceType": "Microsoft.Web/sites/slots",
-    "ruleId": "Azure.AppService.ARRAffinity",
-    "displayName": "Disable Application Request Routing"
-  },
-  {
     "severity": "Important",
     "pillar": "Reliability",
     "category": "Application design",
@@ -1278,6 +1230,22 @@
     "resourceType": "Microsoft.Web/sites/slots",
     "ruleId": "Azure.AppService.AlwaysOn",
     "displayName": "Use App Service Always On"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Performance Efficiency",
+    "category": "PE:05 Scaling and partitioning",
+    "resourceType": "Microsoft.Web/sites",
+    "ruleId": "Azure.AppService.ARRAffinity",
+    "displayName": "Disable Application Request Routing"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Performance Efficiency",
+    "category": "PE:05 Scaling and partitioning",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "ruleId": "Azure.AppService.ARRAffinity",
+    "displayName": "Disable Application Request Routing"
   },
   {
     "severity": "Important",
@@ -1513,6 +1481,30 @@
   },
   {
     "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Regions and availability zones",
+    "resourceType": "Microsoft.Web/hostingEnvironments",
+    "ruleId": "Azure.ASE.AvailabilityZone",
+    "displayName": "Deploy app service environments using availability zones"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Operational Excellence",
+    "category": "Infrastructure provisioning",
+    "resourceType": "Microsoft.Web/hostingEnvironments",
+    "ruleId": "Azure.ASE.MigrateV3",
+    "displayName": "Migrate to App Service Environment v3"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "Repeatable infrastructure",
+    "resourceType": "Microsoft.Network/applicationSecurityGroups",
+    "ruleId": "Azure.ASG.Name",
+    "displayName": "Use valid ASG names"
+  },
+  {
+    "severity": "Important",
     "pillar": "Security",
     "category": "Monitor",
     "resourceType": "Microsoft.Automation/automationAccounts",
@@ -1601,11 +1593,11 @@
   },
   {
     "severity": "Important",
-    "pillar": "Security",
-    "category": "Security design principles",
-    "resourceType": "Microsoft.DataProtection/backupVaults",
-    "ruleId": "Azure.BV.Immutable",
-    "displayName": "Immutability"
+    "pillar": "Reliability",
+    "category": "RE:04 Target metrics",
+    "resourceType": "Microsoft.DesktopVirtualization/hostPools",
+    "ruleId": "Azure.AVD.ScheduleAgentUpdate",
+    "displayName": "Schedule agent updates for host pools"
   },
   {
     "severity": "Awareness",
@@ -1614,6 +1606,14 @@
     "resourceType": "Microsoft.Network/bastionHosts",
     "ruleId": "Azure.Bastion.Name",
     "displayName": "Use valid names"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "Security design principles",
+    "resourceType": "Microsoft.DataProtection/backupVaults",
+    "ruleId": "Azure.BV.Immutable",
+    "displayName": "Immutability"
   },
   {
     "severity": "Awareness",
@@ -1912,20 +1912,28 @@
     "displayName": "Cosmos DB for Table account resources must use standard naming"
   },
   {
-    "severity": "Important",
+    "severity": "Critical",
     "pillar": "Security",
-    "category": "SE:08 Hardening resources",
-    "resourceType": "Microsoft.Network/dnsZones",
-    "ruleId": "Azure.DNS.DNSSEC",
-    "displayName": "DNS Zone is not signed"
+    "category": "SE:06 Network controls",
+    "resourceType": "Microsoft.Databricks/workspaces",
+    "ruleId": "Azure.Databricks.PublicAccess",
+    "displayName": "Azure Databricks workspaces should disable public network access"
   },
   {
-    "severity": "Important",
+    "severity": "Critical",
     "pillar": "Security",
-    "category": "SE:08 Hardening resources",
-    "resourceType": "Microsoft.Network/dnsZones/dnssecConfigs",
-    "ruleId": "Azure.DNS.DNSSEC",
-    "displayName": "DNS Zone is not signed"
+    "category": "SE:06 Network controls",
+    "resourceType": "Microsoft.Databricks/workspaces",
+    "ruleId": "Azure.Databricks.SecureConnectivity",
+    "displayName": "Enable secure connectivity for Databricks workspaces"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Performance Efficiency",
+    "category": "PE:03 Selecting services",
+    "resourceType": "Microsoft.Databricks/workspaces",
+    "ruleId": "Azure.Databricks.SKU",
+    "displayName": "Ensure Databricks workspaces are non-trial SKUs for production workloads"
   },
   {
     "severity": "Awareness",
@@ -1942,30 +1950,6 @@
     "resourceType": "Microsoft.DataFactory/factories",
     "ruleId": "Azure.DataFactory.Version",
     "displayName": "Use Data Factory v2"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "SE:06 Network controls",
-    "resourceType": "Microsoft.Databricks/workspaces",
-    "ruleId": "Azure.Databricks.PublicAccess",
-    "displayName": "Azure Databricks workspaces should disable public network access"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Performance Efficiency",
-    "category": "PE:03 Selecting services",
-    "resourceType": "Microsoft.Databricks/workspaces",
-    "ruleId": "Azure.Databricks.SKU",
-    "displayName": "Ensure Databricks workspaces are non-trial SKUs for production workloads"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "SE:06 Network controls",
-    "resourceType": "Microsoft.Databricks/workspaces",
-    "ruleId": "Azure.Databricks.SecureConnectivity",
-    "displayName": "Enable secure connectivity for Databricks workspaces"
   },
   {
     "severity": "Critical",
@@ -2040,22 +2024,6 @@
     "displayName": "Set Microsoft Defender for open-source relational databases to the Standard tier"
   },
   {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "SE:10 Monitoring and threat detection",
-    "resourceType": "Microsoft.Security/pricings",
-    "ruleId": "Azure.Defender.SQL",
-    "displayName": "Configure Microsoft Defender for SQL to the Standard tier"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "SE:10 Monitoring and threat detection",
-    "resourceType": "Microsoft.Security/pricings",
-    "ruleId": "Azure.Defender.SQLOnVM",
-    "displayName": "Configure Microsoft Defender for SQL Servers on machines to the Standard tier"
-  },
-  {
     "severity": "Important",
     "pillar": "Security",
     "category": "SE:12 Incident response",
@@ -2070,6 +2038,22 @@
     "resourceType": "Microsoft.Security/pricings",
     "ruleId": "Azure.Defender.Servers",
     "displayName": "Configure Microsoft Defender for Servers to the Standard tier and P2"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:10 Monitoring and threat detection",
+    "resourceType": "Microsoft.Security/pricings",
+    "ruleId": "Azure.Defender.SQL",
+    "displayName": "Configure Microsoft Defender for SQL to the Standard tier"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:10 Monitoring and threat detection",
+    "resourceType": "Microsoft.Security/pricings",
+    "ruleId": "Azure.Defender.SQLOnVM",
+    "displayName": "Configure Microsoft Defender for SQL Servers on machines to the Standard tier"
   },
   {
     "severity": "Critical",
@@ -2174,6 +2158,22 @@
     "resourceType": "Microsoft.DevCenter/projects",
     "ruleId": "Azure.DevBox.ProjectLimit",
     "displayName": "Limit number of Dev Boxes per user"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:08 Hardening resources",
+    "resourceType": "Microsoft.Network/dnsZones",
+    "ruleId": "Azure.DNS.DNSSEC",
+    "displayName": "DNS Zone is not signed"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:08 Hardening resources",
+    "resourceType": "Microsoft.Network/dnsZones/dnssecConfigs",
+    "ruleId": "Azure.DNS.DNSSEC",
+    "displayName": "DNS Zone is not signed"
   },
   {
     "severity": "Important",
@@ -2394,14 +2394,6 @@
   {
     "severity": "Important",
     "pillar": "Security",
-    "category": "SE:08 Hardening resources",
-    "resourceType": "Microsoft.AzureFleet/fleets",
-    "ruleId": "Azure.Fleet.SecureBoot",
-    "displayName": "Azure Fleet Secure Boot is not enabled"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
     "category": "SE:10 Monitoring and threat detection",
     "resourceType": "Microsoft.Cdn/profiles",
     "ruleId": "Azure.FrontDoor.Logs",
@@ -2459,14 +2451,6 @@
     "severity": "Important",
     "pillar": "Reliability",
     "category": "Health modeling",
-    "resourceType": "Microsoft.Network/Frontdoors/HealthProbeSettings",
-    "ruleId": "Azure.FrontDoor.Probe",
-    "displayName": "Use Health Probes for Front Door backends"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "Health modeling",
     "resourceType": "Microsoft.Network/frontDoors",
     "ruleId": "Azure.FrontDoor.Probe",
     "displayName": "Use Health Probes for Front Door backends"
@@ -2476,8 +2460,8 @@
     "pillar": "Reliability",
     "category": "Health modeling",
     "resourceType": "Microsoft.Network/Frontdoors/HealthProbeSettings",
-    "ruleId": "Azure.FrontDoor.ProbeMethod",
-    "displayName": "Use HEAD health probes for Front Door backends"
+    "ruleId": "Azure.FrontDoor.Probe",
+    "displayName": "Use Health Probes for Front Door backends"
   },
   {
     "severity": "Important",
@@ -2492,6 +2476,14 @@
     "pillar": "Reliability",
     "category": "Health modeling",
     "resourceType": "Microsoft.Network/Frontdoors/HealthProbeSettings",
+    "ruleId": "Azure.FrontDoor.ProbeMethod",
+    "displayName": "Use HEAD health probes for Front Door backends"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "Health modeling",
+    "resourceType": "Microsoft.Network/frontDoors",
     "ruleId": "Azure.FrontDoor.ProbePath",
     "displayName": "Use a Dedicated Health Endpoint for Front Door backends"
   },
@@ -2499,7 +2491,7 @@
     "severity": "Important",
     "pillar": "Reliability",
     "category": "Health modeling",
-    "resourceType": "Microsoft.Network/frontDoors",
+    "resourceType": "Microsoft.Network/Frontdoors/HealthProbeSettings",
     "ruleId": "Azure.FrontDoor.ProbePath",
     "displayName": "Use a Dedicated Health Endpoint for Front Door backends"
   },
@@ -2873,62 +2865,6 @@
   },
   {
     "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:05 Redundancy",
-    "resourceType": "Microsoft.DocumentDB/cassandraClusters",
-    "ruleId": "Azure.MICassandra.AvailabilityZone",
-    "displayName": "Use zone redundant Managed Instance for Apache Cassandra clusters"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:05 Redundancy",
-    "resourceType": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
-    "ruleId": "Azure.MICassandra.AvailabilityZone",
-    "displayName": "Use zone redundant Managed Instance for Apache Cassandra clusters"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Cost Optimization",
-    "category": "CO:06 Usage and billing increments",
-    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
-    "ruleId": "Azure.ML.ComputeIdleShutdown",
-    "displayName": "Configure idle shutdown for compute instances"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "Connectivity",
-    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
-    "ruleId": "Azure.ML.ComputeVnet",
-    "displayName": "Host ML Compute in VNet"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "Authentication",
-    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
-    "ruleId": "Azure.ML.DisableLocalAuth",
-    "displayName": "Disable local authentication on ML Compute"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "Connectivity",
-    "resourceType": "Microsoft.MachineLearningServices/workspaces",
-    "ruleId": "Azure.ML.PublicAccess",
-    "displayName": "ML Workspace has public access disabled"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "Identity and Access Management",
-    "resourceType": "Microsoft.MachineLearningServices/workspaces",
-    "ruleId": "Azure.ML.UserManagedIdentity",
-    "displayName": "Azure Machine Learning workspaces should use user-assigned managed identity"
-  },
-  {
-    "severity": "Important",
     "pillar": "Security",
     "category": "Network security and containment",
     "resourceType": "Microsoft.DBforMariaDB/servers",
@@ -3070,6 +3006,62 @@
     "resourceType": "Microsoft.DBforMariaDB/servers/virtualNetworkRules",
     "ruleId": "Azure.MariaDB.VNETRuleName",
     "displayName": "Use valid VNET rule names"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Redundancy",
+    "resourceType": "Microsoft.DocumentDB/cassandraClusters",
+    "ruleId": "Azure.MICassandra.AvailabilityZone",
+    "displayName": "Use zone redundant Managed Instance for Apache Cassandra clusters"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Redundancy",
+    "resourceType": "Microsoft.DocumentDB/cassandraClusters/dataCenters",
+    "ruleId": "Azure.MICassandra.AvailabilityZone",
+    "displayName": "Use zone redundant Managed Instance for Apache Cassandra clusters"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Cost Optimization",
+    "category": "CO:06 Usage and billing increments",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
+    "ruleId": "Azure.ML.ComputeIdleShutdown",
+    "displayName": "Configure idle shutdown for compute instances"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "Connectivity",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
+    "ruleId": "Azure.ML.ComputeVnet",
+    "displayName": "Host ML Compute in VNet"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "Authentication",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
+    "ruleId": "Azure.ML.DisableLocalAuth",
+    "displayName": "Disable local authentication on ML Compute"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "Connectivity",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces",
+    "ruleId": "Azure.ML.PublicAccess",
+    "displayName": "ML Workspace has public access disabled"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "Identity and Access Management",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces",
+    "ruleId": "Azure.ML.UserManagedIdentity",
+    "displayName": "Azure Machine Learning workspaces should use user-assigned managed identity"
   },
   {
     "severity": "Critical",
@@ -3625,46 +3617,6 @@
   },
   {
     "severity": "Important",
-    "pillar": "Security",
-    "category": "Security design principles",
-    "resourceType": "Microsoft.RecoveryServices/vaults",
-    "ruleId": "Azure.RSV.Immutable",
-    "displayName": "Immutability"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
-    "resourceType": "Microsoft.RecoveryServices/vaults",
-    "ruleId": "Azure.RSV.Name",
-    "displayName": "Use valid names"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "Design",
-    "resourceType": "Microsoft.RecoveryServices/vaults",
-    "ruleId": "Azure.RSV.ReplicationAlert",
-    "displayName": "Use geo-replicated storage"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "Design",
-    "resourceType": "Microsoft.RecoveryServices/vaults",
-    "ruleId": "Azure.RSV.StorageType",
-    "displayName": "Use geo-replicated storage"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "Design",
-    "resourceType": "Microsoft.RecoveryServices/vaults/backupconfig",
-    "ruleId": "Azure.RSV.StorageType",
-    "displayName": "Use geo-replicated storage"
-  },
-  {
-    "severity": "Important",
     "pillar": "Reliability",
     "category": "RE:05 Regions and availability zones",
     "resourceType": "Microsoft.Cache/redis",
@@ -3830,6 +3782,206 @@
     "resourceType": "Microsoft.Network/routeTables",
     "ruleId": "Azure.Route.Naming",
     "displayName": "Route tables must use standard naming"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "Security design principles",
+    "resourceType": "Microsoft.RecoveryServices/vaults",
+    "ruleId": "Azure.RSV.Immutable",
+    "displayName": "Immutability"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "Repeatable infrastructure",
+    "resourceType": "Microsoft.RecoveryServices/vaults",
+    "ruleId": "Azure.RSV.Name",
+    "displayName": "Use valid names"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "Design",
+    "resourceType": "Microsoft.RecoveryServices/vaults",
+    "ruleId": "Azure.RSV.ReplicationAlert",
+    "displayName": "Use geo-replicated storage"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "Design",
+    "resourceType": "Microsoft.RecoveryServices/vaults",
+    "ruleId": "Azure.RSV.StorageType",
+    "displayName": "Use geo-replicated storage"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "Design",
+    "resourceType": "Microsoft.RecoveryServices/vaults/backupconfig",
+    "ruleId": "Azure.RSV.StorageType",
+    "displayName": "Use geo-replicated storage"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:06 Data partitioning",
+    "resourceType": "Microsoft.Search/searchServices",
+    "ruleId": "Azure.Search.IndexSLA",
+    "displayName": "Search index update SLA minimum replicas"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.Search/searchServices",
+    "ruleId": "Azure.Search.ManagedIdentity",
+    "displayName": "Search services uses a managed identity"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Continuous integration",
+    "resourceType": "Microsoft.Search/searchServices",
+    "ruleId": "Azure.Search.Name",
+    "displayName": "Azure AI Search name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Search/searchServices",
+    "ruleId": "Azure.Search.Naming",
+    "displayName": "AI Search services must use standard naming"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:06 Data partitioning",
+    "resourceType": "Microsoft.Search/searchServices",
+    "ruleId": "Azure.Search.QuerySLA",
+    "displayName": "Search query SLA minimum replicas"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Performance Efficiency",
+    "category": "PE:02 Capacity planning",
+    "resourceType": "Microsoft.Search/searchServices",
+    "ruleId": "Azure.Search.SKU",
+    "displayName": "AI Search minimum SKU"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "Monitor",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "ruleId": "Azure.ServiceBus.AuditLogs",
+    "displayName": "Audit Service Bus data plane access"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "Monitor",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "ruleId": "Azure.ServiceBus.AuditLogs",
+    "displayName": "Audit Service Bus data plane access"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "ruleId": "Azure.ServiceBus.DisableLocalAuth",
+    "displayName": "Use identity-based authentication for Service Bus namespaces"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:05 Redundancy",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "ruleId": "Azure.ServiceBus.GeoReplica",
+    "displayName": "Geo-replication"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:07 Encryption",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "ruleId": "Azure.ServiceBus.MinTLS",
+    "displayName": "Enforce namespaces to minimum use TLS 1.2 version"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:01 Security baseline",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "ruleId": "Azure.ServiceBus.ReplicaLocation",
+    "displayName": "Service Bus namespace replica location is not allowed"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Cost Optimization",
+    "category": "CO:14 Consolidation",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "ruleId": "Azure.ServiceBus.Usage",
+    "displayName": "Remove unused Service Bus namespaces"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.ServiceFabric/clusters",
+    "ruleId": "Azure.ServiceFabric.AAD",
+    "displayName": "Use Entra ID authentication with Service Fabric clusters"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ServiceFabric/managedClusters",
+    "ruleId": "Azure.ServiceFabric.ManagedNaming",
+    "displayName": "Service Fabric managed cluster resources must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.ServiceFabric/clusters",
+    "ruleId": "Azure.ServiceFabric.Naming",
+    "displayName": "Service Fabric cluster resources must use standard naming"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:07 Encryption",
+    "resourceType": "Microsoft.ServiceFabric/clusters",
+    "ruleId": "Azure.ServiceFabric.ProtectionLevel",
+    "displayName": "Service Fabric Cluster allows unencrypted node to node communication"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "Authentication",
+    "resourceType": "Microsoft.SignalRService/signalR",
+    "ruleId": "Azure.SignalR.ManagedIdentity",
+    "displayName": "Use managed identities for SignalR Services"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "Repeatable infrastructure",
+    "resourceType": "Microsoft.SignalRService/SignalR",
+    "ruleId": "Azure.SignalR.Name",
+    "displayName": "Use valid SignalR service names"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Reliability",
+    "category": "RE:04 Target metrics",
+    "resourceType": "Microsoft.SignalRService/signalR",
+    "ruleId": "Azure.SignalR.SLA",
+    "displayName": "Use an SLA for SignalR Services"
   },
   {
     "severity": "Critical",
@@ -4113,166 +4265,6 @@
   },
   {
     "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:06 Data partitioning",
-    "resourceType": "Microsoft.Search/searchServices",
-    "ruleId": "Azure.Search.IndexSLA",
-    "displayName": "Search index update SLA minimum replicas"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "SE:05 Identity and access management",
-    "resourceType": "Microsoft.Search/searchServices",
-    "ruleId": "Azure.Search.ManagedIdentity",
-    "displayName": "Search services uses a managed identity"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "OE:04 Continuous integration",
-    "resourceType": "Microsoft.Search/searchServices",
-    "ruleId": "Azure.Search.Name",
-    "displayName": "Azure AI Search name must be valid"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "OE:04 Tools and processes",
-    "resourceType": "Microsoft.Search/searchServices",
-    "ruleId": "Azure.Search.Naming",
-    "displayName": "AI Search services must use standard naming"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:06 Data partitioning",
-    "resourceType": "Microsoft.Search/searchServices",
-    "ruleId": "Azure.Search.QuerySLA",
-    "displayName": "Search query SLA minimum replicas"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Performance Efficiency",
-    "category": "PE:02 Capacity planning",
-    "resourceType": "Microsoft.Search/searchServices",
-    "ruleId": "Azure.Search.SKU",
-    "displayName": "AI Search minimum SKU"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "Monitor",
-    "resourceType": "Microsoft.Insights/diagnosticSettings",
-    "ruleId": "Azure.ServiceBus.AuditLogs",
-    "displayName": "Audit Service Bus data plane access"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "Monitor",
-    "resourceType": "Microsoft.ServiceBus/namespaces",
-    "ruleId": "Azure.ServiceBus.AuditLogs",
-    "displayName": "Audit Service Bus data plane access"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "SE:05 Identity and access management",
-    "resourceType": "Microsoft.ServiceBus/namespaces",
-    "ruleId": "Azure.ServiceBus.DisableLocalAuth",
-    "displayName": "Use identity-based authentication for Service Bus namespaces"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:05 Redundancy",
-    "resourceType": "Microsoft.ServiceBus/namespaces",
-    "ruleId": "Azure.ServiceBus.GeoReplica",
-    "displayName": "Geo-replication"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "SE:07 Encryption",
-    "resourceType": "Microsoft.ServiceBus/namespaces",
-    "ruleId": "Azure.ServiceBus.MinTLS",
-    "displayName": "Enforce namespaces to minimum use TLS 1.2 version"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "SE:01 Security baseline",
-    "resourceType": "Microsoft.ServiceBus/namespaces",
-    "ruleId": "Azure.ServiceBus.ReplicaLocation",
-    "displayName": "Service Bus namespace replica location is not allowed"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Cost Optimization",
-    "category": "CO:14 Consolidation",
-    "resourceType": "Microsoft.ServiceBus/namespaces",
-    "ruleId": "Azure.ServiceBus.Usage",
-    "displayName": "Remove unused Service Bus namespaces"
-  },
-  {
-    "severity": "Critical",
-    "pillar": "Security",
-    "category": "SE:05 Identity and access management",
-    "resourceType": "Microsoft.ServiceFabric/clusters",
-    "ruleId": "Azure.ServiceFabric.AAD",
-    "displayName": "Use Entra ID authentication with Service Fabric clusters"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "OE:04 Tools and processes",
-    "resourceType": "Microsoft.ServiceFabric/managedClusters",
-    "ruleId": "Azure.ServiceFabric.ManagedNaming",
-    "displayName": "Service Fabric managed cluster resources must use standard naming"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "OE:04 Tools and processes",
-    "resourceType": "Microsoft.ServiceFabric/clusters",
-    "ruleId": "Azure.ServiceFabric.Naming",
-    "displayName": "Service Fabric cluster resources must use standard naming"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "SE:07 Encryption",
-    "resourceType": "Microsoft.ServiceFabric/clusters",
-    "ruleId": "Azure.ServiceFabric.ProtectionLevel",
-    "displayName": "Service Fabric Cluster allows unencrypted node to node communication"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Security",
-    "category": "Authentication",
-    "resourceType": "Microsoft.SignalRService/signalR",
-    "ruleId": "Azure.SignalR.ManagedIdentity",
-    "displayName": "Use managed identities for SignalR Services"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
-    "resourceType": "Microsoft.SignalRService/SignalR",
-    "ruleId": "Azure.SignalR.Name",
-    "displayName": "Use valid SignalR service names"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Reliability",
-    "category": "RE:04 Target metrics",
-    "resourceType": "Microsoft.SignalRService/signalR",
-    "ruleId": "Azure.SignalR.SLA",
-    "displayName": "Use an SLA for SignalR Services"
-  },
-  {
-    "severity": "Important",
     "pillar": "Security",
     "category": "SE:05 Identity and access management",
     "resourceType": "Microsoft.Storage/storageAccounts",
@@ -4482,6 +4474,14 @@
   {
     "severity": "Important",
     "pillar": "Operational Excellence",
+    "category": "OE:10 Automation design",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "ruleId": "Azure.VM.Agent",
+    "displayName": "Virtual Machine agent is not provisioned"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Operational Excellence",
     "category": "OE:07 Monitoring system",
     "resourceType": "Microsoft.Compute/virtualMachines",
     "ruleId": "Azure.VM.AMA",
@@ -4526,14 +4526,6 @@
     "resourceType": "Microsoft.Compute/availabilitySets",
     "ruleId": "Azure.VM.ASName",
     "displayName": "Use valid Availability Set names"
-  },
-  {
-    "severity": "Important",
-    "pillar": "Operational Excellence",
-    "category": "OE:10 Automation design",
-    "resourceType": "Microsoft.Compute/virtualMachines",
-    "ruleId": "Azure.VM.Agent",
-    "displayName": "Virtual Machine agent is not provisioned"
   },
   {
     "severity": "Important",
@@ -4673,14 +4665,6 @@
   },
   {
     "severity": "Important",
-    "pillar": "Performance Efficiency",
-    "category": "Design for performance",
-    "resourceType": "Microsoft.Compute/virtualMachines",
-    "ruleId": "Azure.VM.SQLServerDisk",
-    "displayName": "Configure Premium disks or above"
-  },
-  {
-    "severity": "Important",
     "pillar": "Security",
     "category": "SE:02 Secured development lifecycle",
     "resourceType": "Microsoft.Compute/virtualMachines/extensions",
@@ -4702,6 +4686,14 @@
     "resourceType": "Microsoft.Compute/virtualMachines",
     "ruleId": "Azure.VM.ShouldNotBeStopped",
     "displayName": "Virtual Machine is stopped but still allocated"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Performance Efficiency",
+    "category": "Design for performance",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "ruleId": "Azure.VM.SQLServerDisk",
+    "displayName": "Configure Premium disks or above"
   },
   {
     "severity": "Important",
@@ -5064,6 +5056,14 @@
     "displayName": "Migrate from legacy VPN gateway SKUs"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "Repeatable infrastructure",
+    "resourceType": "Microsoft.Network/virtualWans",
+    "ruleId": "Azure.vWAN.Name",
+    "displayName": "Use valid vWAN names"
+  },
+  {
     "severity": "Important",
     "pillar": "Security",
     "category": "Authentication",
@@ -5078,13 +5078,5 @@
     "resourceType": "Microsoft.SignalRService/webPubSub",
     "ruleId": "Azure.WebPubSub.SLA",
     "displayName": "Use an SLA for Web PubSub Services"
-  },
-  {
-    "severity": "Awareness",
-    "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
-    "resourceType": "Microsoft.Network/virtualWans",
-    "ruleId": "Azure.vWAN.Name",
-    "displayName": "Use valid vWAN names"
   }
 ]
