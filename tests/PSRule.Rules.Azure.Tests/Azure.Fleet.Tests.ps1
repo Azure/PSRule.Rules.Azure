@@ -63,14 +63,14 @@ Describe 'Azure.Fleet' -Tag 'Fleet' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'fleet-001', 'fleet-002', 'fleet-003';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'fleet-001', 'fleet-002', 'fleet-003', 'fleet-006', 'fleet-007';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'fleet-004', 'fleet-005';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'fleet-004', 'fleet-005', 'fleet-008';
         }
     }
 }
