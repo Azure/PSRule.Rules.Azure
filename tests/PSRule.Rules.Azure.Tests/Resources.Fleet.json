@@ -83,7 +83,12 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.AzureFleet/fleets",
-    "Tags": {}
+    "Tags": {},
+    "properties": {
+      "computeProfile": {
+        "baseVirtualMachineProfile": {}
+      }
+    }
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-002",
@@ -161,7 +166,12 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.AzureFleet/fleets",
-    "Tags": {}
+    "Tags": {},
+    "properties": {
+      "computeProfile": {
+        "baseVirtualMachineProfile": {}
+      }
+    }
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-003",
@@ -236,7 +246,12 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.AzureFleet/fleets",
-    "Tags": {}
+    "Tags": {},
+    "properties": {
+      "computeProfile": {
+        "baseVirtualMachineProfile": {}
+      }
+    }
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-004",
@@ -320,6 +335,11 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.AzureFleet/fleets",
-    "Tags": {}
+    "Tags": {},
+    "properties": {
+      "computeProfile": {
+        "baseVirtualMachineProfile": {}
+      }
+    }
   }
 ]
