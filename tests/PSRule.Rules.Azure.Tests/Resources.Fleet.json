@@ -64,6 +64,14 @@
                 }
               }
             ]
+          },
+          "securityProfile": {
+            "securityType": "TrustedLaunch",
+            "encryptionAtHost": true,
+            "uefiSettings": {
+              "secureBootEnabled": true,
+              "vTpmEnabled": true
+            }
           }
         }
       },
@@ -83,12 +91,7 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.AzureFleet/fleets",
-    "Tags": {},
-    "properties": {
-      "computeProfile": {
-        "baseVirtualMachineProfile": {}
-      }
-    }
+    "Tags": {}
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-002",
@@ -166,12 +169,7 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.AzureFleet/fleets",
-    "Tags": {},
-    "properties": {
-      "computeProfile": {
-        "baseVirtualMachineProfile": {}
-      }
-    }
+    "Tags": {}
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-003",
@@ -246,12 +244,7 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.AzureFleet/fleets",
-    "Tags": {},
-    "properties": {
-      "computeProfile": {
-        "baseVirtualMachineProfile": {}
-      }
-    }
+    "Tags": {}
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.AzureFleet/fleets/fleet-004",
@@ -268,14 +261,6 @@
     "Properties": {
       "computeProfile": {
         "baseVirtualMachineProfile": {
-          "securityProfile": {
-            "securityType": "TrustedLaunch",
-            "encryptionAtHost": true,
-            "uefiSettings": {
-              "secureBootEnabled": true,
-              "vTpmEnabled": true
-            }
-          },
           "osProfile": {
             "computerNamePrefix": "fleet",
             "adminUsername": "azureuser",
@@ -335,11 +320,6 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.AzureFleet/fleets",
-    "Tags": {},
-    "properties": {
-      "computeProfile": {
-        "baseVirtualMachineProfile": {}
-      }
-    }
+    "Tags": {}
   }
 ]
