@@ -53,8 +53,24 @@ Describe 'Azure.Fleet' -Tag 'Fleet' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'fleet-001';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'fleet-001', 'fleet-005';
+        }
+
+        It 'Azure.Fleet.SecureBoot' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Fleet.SecureBoot' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'fleet-001', 'fleet-002', 'fleet-003', 'fleet-006', 'fleet-007';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'fleet-004', 'fleet-005', 'fleet-008';
         }
     }
 }
