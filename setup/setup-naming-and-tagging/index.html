@@ -22182,23 +22182,23 @@ A list of supported resource types and their configuration values is provided at
 The regular expression is used to match part or the entire the name of the resource.</p>
 <p>For example, to set the naming format for a resource group to start with <code>rg-</code> use the following configuration:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^rg-&#39;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">'^rg-'</span>
 </span></code></pre></div>
 <p>In regular expressions, the <code>^</code> character is used to match the start of a string, equivalent to a prefix.
 The regular expression is case sensitive.</p>
 <p>To create a case insensitive match, use the <code>(?i)</code> modifier at the start of the regular expression.
 In the following example the <code>(?i)</code> modifier is used to allow the resource group name to start with <code>rg-</code> or <code>RG-</code>.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^(?i)rg-&#39;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">'^(?i)rg-'</span>
 </span></code></pre></div>
 <p>Similarly, you can use the <code>$</code> character to match the end of a string, equivalent to a suffix.</p>
 <p>For example, to set the naming format for a resource group to end with <code>-rg</code> use the following configuration:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-rg$&#39;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">'-rg$'</span>
 </span></code></pre></div>
 <p>To match both the start and end of a string use both <code>^</code> and <code>$</code>, for example:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^rg-[a-z0-9]{5,10}-(prod|dev|shared)-[0-9]{3}$&#39;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">'^rg-[a-z0-9]{5,10}-(prod|dev|shared)-[0-9]{3}$'</span>
 </span></code></pre></div>
 <h3 id="configuring-required-tags">Configuring required tags<a class="headerlink" href="#configuring-required-tags" title="Permanent link">#</a></h3>
 <p>To configure required tags use the following configuration values to specify a list of required tags names:</p>
@@ -22212,7 +22212,7 @@ In the following example the <code>(?i)</code> modifier is used to allow the res
 This configuration value is used to specify the format of the tag value and constrain the value to a specific format.</p>
 <p>For example, if you have a tag named <code>Env</code>, you can specify the format of the value with the configuration value <code>AZURE_TAG_FORMAT_FOR_ENV</code>.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">AZURE_TAG_FORMAT_FOR_ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^(prod|dev|test)$&#39;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">AZURE_TAG_FORMAT_FOR_ENV</span><span class="p">:</span><span class="w"> </span><span class="s">'^(prod|dev|test)$'</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -22269,19 +22269,19 @@ Additionally, there were some lessons learned from the original PSRule for <abbr
 <p>Configuration values for resource names are configured by a regular expression.</p>
 <p>For example:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^rg-&#39;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">'^rg-'</span>
 </span></code></pre></div>
 <p>This configuration sets the resource group name to start with <code>rg-</code>.
 But the resource group name can be anything after the prefix.</p>
 <p>Previously this was configured as one or more static prefixes.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w"> </span><span class="nt">CAF_ResourceGroupPrefix</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&#39;rg-&#39;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w"> </span><span class="nt">CAF_ResourceGroupPrefix</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">'rg-'</span><span class="w"> </span><span class="p p-Indicator">]</span>
 </span></code></pre></div>
 <p>In regular expressions, the <code>^</code> character is used to match the start of a string, equivalent to a prefix.
 The regular expression is case sensitive.</p>
 <p>To create a case insensitive match, use the <code>(?i)</code> modifier at the start of the regular expression.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^(?i)rg-&#39;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_NAME_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">'^(?i)rg-'</span>
 </span></code></pre></div>
 <h3 id="migrating-required-tags">Migrating required tags<a class="headerlink" href="#migrating-required-tags" title="Permanent link">#</a></h3>
 <p>To configure required tags use the following configuration values to specify a list of required tags names:</p>
@@ -22296,13 +22296,13 @@ Additionally, the <code>CAF_EnvironmentTag</code> was used to constrain the valu
 These previously <code>CAF_</code> prefixed configuration values are no longer use.</p>
 <p>Instead use the following configuration values to require specific tags such as an environment tag:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_REQUIRED_TAGS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&#39;Env&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;Criticality&#39;</span><span class="w"> </span><span class="p p-Indicator">]</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_REQUIRED_TAGS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&#39;Env&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;Criticality&#39;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP_REQUIRED_TAGS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">'Env'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'Criticality'</span><span class="w"> </span><span class="p p-Indicator">]</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_REQUIRED_TAGS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">'Env'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'Criticality'</span><span class="w"> </span><span class="p p-Indicator">]</span>
 </span></code></pre></div>
 <p>To constrain the value of a tag use a configuration value named with the format <code>AZURE_TAG_FORMAT_FOR_&lt;TAG_NAME&gt;</code>.</p>
 <p>For example, to constrain the value of the <code>Env</code> tag to be either <code>prod</code>, <code>dev</code>, or <code>test</code> use the following configuration:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">AZURE_TAG_FORMAT_FOR_ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^(prod|dev|test)$&#39;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">AZURE_TAG_FORMAT_FOR_ENV</span><span class="p">:</span><span class="w"> </span><span class="s">'^(prod|dev|test)$'</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

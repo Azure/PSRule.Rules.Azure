@@ -22035,13 +22035,13 @@ Before continuing, complete <a href="../export-rule-data/">Exporting rule data</
 <h2 id="analyzing-exported-state">Analyzing exported state<a class="headerlink" href="#analyzing-exported-state" title="Permanent link">#</a></h2>
 <p>The state of resources can be analyzed for exported state by using the <code>Invoke-PSRule</code> PowerShell cmdlet.</p>
 <p>For example:</p>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Invoke-PSRule</span> <span class="n">-InputPath</span> <span class="s1">&#39;out/&#39;</span> <span class="n">-Module</span> <span class="s1">&#39;PSRule.Rules.Azure&#39;</span><span class="p">;</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Invoke-PSRule</span> <span class="n">-InputPath</span> <span class="s1">'out/'</span> <span class="n">-Module</span> <span class="s1">'PSRule.Rules.Azure'</span><span class="p">;</span>
 </span></code></pre></div>
 <p>To filter results to only failed rules, use <code>Invoke-PSRule -Outcome Fail</code>.
 Passed, failed and error results are shown by default.</p>
 <p>For example:</p>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># Only show failed results</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">Invoke-PSRule</span> <span class="n">-InputPath</span> <span class="s1">&#39;out/&#39;</span> <span class="n">-Module</span> <span class="s1">&#39;PSRule.Rules.Azure&#39;</span> <span class="n">-Outcome</span> <span class="n">Fail</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">Invoke-PSRule</span> <span class="n">-InputPath</span> <span class="s1">'out/'</span> <span class="n">-Module</span> <span class="s1">'PSRule.Rules.Azure'</span> <span class="n">-Outcome</span> <span class="n">Fail</span><span class="p">;</span>
 </span></code></pre></div>
 <p>The output of this example is:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>   TargetName: storage
@@ -22055,7 +22055,7 @@ Passed, failed and error results are shown by default.</p>
 <p>A summary of results can be displayed by using <code>Invoke-PSRule -As Summary</code>.</p>
 <p>For example:</p>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Display as summary results</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">Invoke-PSRule</span> <span class="n">-InputPath</span> <span class="s1">&#39;out/&#39;</span> <span class="n">-Module</span> <span class="s1">&#39;PSRule.Rules.Azure&#39;</span> <span class="o">-As</span> <span class="n">Summary</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">Invoke-PSRule</span> <span class="n">-InputPath</span> <span class="s1">'out/'</span> <span class="n">-Module</span> <span class="s1">'PSRule.Rules.Azure'</span> <span class="o">-As</span> <span class="n">Summary</span><span class="p">;</span>
 </span></code></pre></div>
 <p>The output of this example is:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>RuleName                            Pass  Fail  Outcome

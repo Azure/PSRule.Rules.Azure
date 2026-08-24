@@ -22035,7 +22035,7 @@ The exported state is processed later during analysis.</p>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">Get-AzContext</span><span class="p">;</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c"># STEP 3: Exports Azure resources to JSON files</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">Export-AzRuleData</span> <span class="n">-OutputPath</span> <span class="s1">&#39;out/&#39;</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">Export-AzRuleData</span> <span class="n">-OutputPath</span> <span class="s1">'out/'</span><span class="p">;</span>
 </span></code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -22065,7 +22065,7 @@ If you have multiple version of the Azure PowerShell modules installed, you can 
 </ul>
 <p>For example:</p>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># Export data from two specific subscriptions</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">Export-AzRuleData</span> <span class="n">-Subscription</span> <span class="s1">&#39;Contoso Production&#39;</span><span class="p">,</span> <span class="s1">&#39;Contoso Non-production&#39;</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">Export-AzRuleData</span> <span class="n">-Subscription</span> <span class="s1">'Contoso Production'</span><span class="p">,</span> <span class="s1">'Contoso Non-production'</span><span class="p">;</span>
 </span></code></pre></div>
 <p>To export specific resource data use:</p>
 <ul>
@@ -22074,7 +22074,7 @@ If you have multiple version of the Azure PowerShell modules installed, you can 
 </ul>
 <p>For example:</p>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Export information from two resource groups within the current subscription context</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">Export-AzRuleData</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;rg-app1-web&#39;</span><span class="p">,</span> <span class="s1">&#39;rg-app1-db&#39;</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">Export-AzRuleData</span> <span class="n">-ResourceGroupName</span> <span class="s1">'rg-app1-web'</span><span class="p">,</span> <span class="s1">'rg-app1-db'</span><span class="p">;</span>
 </span></code></pre></div>
 <p>To export resource data for all subscription contexts use:</p>
 <ul>
@@ -22098,7 +22098,7 @@ for more information.</p>
 </ul>
 <p>For example:</p>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c"># Export security alerts from the specified subscription</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">Export-AzRuleData</span> <span class="n">-Subscription</span> <span class="s1">&#39;Contoso Production&#39;</span> <span class="n">-ExportSecurityAlerts</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">Export-AzRuleData</span> <span class="n">-Subscription</span> <span class="s1">'Contoso Production'</span> <span class="n">-ExportSecurityAlerts</span><span class="p">;</span>
 </span></code></pre></div>
 
 

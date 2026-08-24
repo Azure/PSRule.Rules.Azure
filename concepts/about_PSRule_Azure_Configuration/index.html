@@ -22125,8 +22125,8 @@ The rule <code>Azure.Resource.AllowedRegions</code> is skipped when no allowed l
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># YAML: Set the AZURE_RESOURCE_ALLOWED_LOCATIONS configuration option to Australia East, Australia South East</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">configuration</span><span class="p">:</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_ALLOWED_LOCATIONS</span><span class="p">:</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;australiaeast&#39;</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;australiasoutheast&#39;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'australiaeast'</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'australiasoutheast'</span>
 </span></code></pre></div>
 <h3 id="azure_apim_minimum_certificate_lifetime">AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME<a class="headerlink" href="#azure_apim_minimum_certificate_lifetime" title="Permanent link">#</a></h3>
 <p>This configuration option determines the minimum number of days allowed before certificate expiry.
@@ -22198,17 +22198,17 @@ Any properties that are not provided with use the defaults as specified below.</
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># YAML: The default AZURE_RESOURCE_GROUP configuration option</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nt">configuration</span><span class="p">:</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ps-rule-test-rg&#39;</span>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eastus&#39;</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">'ps-rule-test-rg'</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">'eastus'</span>
 </span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="nt">properties</span><span class="p">:</span>
-</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">      </span><span class="nt">provisioningState</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Succeeded&#39;</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">      </span><span class="nt">provisioningState</span><span class="p">:</span><span class="w"> </span><span class="s">'Succeeded'</span>
 </span></code></pre></div>
 <p>Example:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># YAML: Override the location of the resource group object.</span>
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nt">configuration</span><span class="p">:</span>
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;australiasoutheast&#39;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">'australiasoutheast'</span>
 </span></code></pre></div>
 <h3 id="azure_subscription">AZURE_SUBSCRIPTION<a class="headerlink" href="#azure_subscription" title="Permanent link">#</a></h3>
 <p>This configuration option sets the subscription object used by the <code>subscription()</code> function.
@@ -22228,15 +22228,15 @@ Any properties that are not provided with use the defaults as specified below.</
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># YAML: The default AZURE_SUBSCRIPTION configuration option</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nt">configuration</span><span class="p">:</span>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span><span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span><span class="nt">subscriptionId</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="nt">tenantId</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Subscription&#39;</span>
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;NotDefined&#39;</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span><span class="nt">subscriptionId</span><span class="p">:</span><span class="w"> </span><span class="s">'ffffffff-ffff-ffff-ffff-ffffffffffff'</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="nt">tenantId</span><span class="p">:</span><span class="w"> </span><span class="s">'ffffffff-ffff-ffff-ffff-ffffffffffff'</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">'PSRule</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Subscription'</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">'NotDefined'</span>
 </span></code></pre></div>
 <p>Example:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># YAML: Override the display name of the subscription object</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span><span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;My</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">subscription&#39;</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">'My</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">subscription'</span>
 </span></code></pre></div>
 <h3 id="azure_policy_ignore_list">AZURE_POLICY_IGNORE_LIST<a class="headerlink" href="#azure_policy_ignore_list" title="Permanent link">#</a></h3>
 <p>This configuration option configures a custom list policy definitions to ignore when exporting policy to rules.
@@ -22260,8 +22260,8 @@ The built-in list can be found <a href="https://github.com/Azure/PSRule.Rules.Az
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># YAML: Add a custom policy definition to ignore</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nt">configuration</span><span class="p">:</span>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span><span class="nt">AZURE_POLICY_IGNORE_LIST</span><span class="p">:</span>
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9&#39;</span>
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0&#39;</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9'</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0'</span>
 </span></code></pre></div>
 <h3 id="azure_policy_rule_prefix">AZURE_POLICY_RULE_PREFIX<a class="headerlink" href="#azure_policy_rule_prefix" title="Permanent link">#</a></h3>
 <p>This configuration option sets the prefix for names of exported rules.
@@ -22274,11 +22274,11 @@ Configure this option to change the prefix, which defaults to <code>Azure</code>
 <p>Default:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># YAML: The default AZURE_POLICY_RULE_PREFIX configuration option</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure&#39;</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="s">'Azure'</span>
 </span></code></pre></div>
 <p>Example:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># YAML: Override the prefix of exported policy rules</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AzureCustomPrefix&#39;</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="s">'AzureCustomPrefix'</span>
 </span></code></pre></div>
 <h3 id="azure_apim_min_api_version">AZURE_APIM_MIN_API_VERSION<a class="headerlink" href="#azure_apim_min_api_version" title="Permanent link">#</a></h3>
 <p>This configuration option sets the minimum API version used for control plane API calls to API Management instances.
@@ -22290,12 +22290,12 @@ Configure this option to change the minimum API version, which defaults to <code
 <p>Default:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># YAML: The default AZURE_APIM_MIN_API_VERSION configuration option</span>
 </span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2021-08-01&#39;</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">'2021-08-01'</span>
 </span></code></pre></div>
 <p>Example:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to &#39;2021-12-01-preview&#39;</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to '2021-12-01-preview'</span>
 </span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2021-12-01-preview&#39;</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">'2021-12-01-preview'</span>
 </span></code></pre></div>
 <h3 id="azure_cosmos_defender_per_account">AZURE_COSMOS_DEFENDER_PER_ACCOUNT<a class="headerlink" href="#azure_cosmos_defender_per_account" title="Permanent link">#</a></h3>
 <p>This configuration option enables validation for that each Cosmos DB account is associated with a Microsoft Defender for Cosmos DB resource level plan.

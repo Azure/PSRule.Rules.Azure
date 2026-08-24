@@ -22213,7 +22213,7 @@ You can log a bug on GitHub or <a href="https://github.com/Azure/PSRule.Rules.Az
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c"># Connect to Azure</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">Connect-AzAccount</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">Set-AzContext</span> <span class="n">-Subscription</span> <span class="s1">&#39;&lt;subscriptionId&gt;&#39;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">Set-AzContext</span> <span class="n">-Subscription</span> <span class="s1">'&lt;subscriptionId&gt;'</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c"># Export assignments</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nb">Export-AzPolicyAssignmentData</span>
@@ -22223,7 +22223,7 @@ You can log a bug on GitHub or <a href="https://github.com/Azure/PSRule.Rules.Az
 To run this command an <code>-AssignmentFile</code> parameter with the path to the assignment JSON file generated in the previous step.</p>
 <p>After the command completes a new file <code>*.Rule.jsonc</code> should be generated containing generated rules.</p>
 <p>For example:</p>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Export-AzPolicyAssignmentRuleData</span> <span class="n">-AssignmentFile</span> <span class="s1">&#39;.\nnnn.assignment.json&#39;</span>
+<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Export-AzPolicyAssignmentRuleData</span> <span class="n">-AssignmentFile</span> <span class="s1">'.\nnnn.assignment.json'</span>
 </span></code></pre></div>
 <h2 id="running-policy-rules">Running policy rules<a class="headerlink" href="#running-policy-rules" title="Permanent link">#</a></h2>
 <p>Rules and an initial baseline are generated in a file ending in <code>.Rule.jsonc</code>.

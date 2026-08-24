@@ -22598,7 +22598,7 @@ This metadata is used by baselines to include rules and by the documentation sys
 <li><code>deprecated</code> &mdash; Rules for features that are no longer recommended or are being phased out.</li>
 </ul>
 <p>For example:</p>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">-Tag</span> <span class="p">@{</span> <span class="n">release</span> <span class="p">=</span> <span class="s1">&#39;GA&#39;</span><span class="p">;</span> <span class="p">}</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">-Tag</span> <span class="p">@{</span> <span class="n">release</span> <span class="p">=</span> <span class="s1">'GA'</span><span class="p">;</span> <span class="p">}</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">tag</span><span class="p">:</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">release</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GA</span>
@@ -22608,7 +22608,7 @@ This metadata is used by baselines to include rules and by the documentation sys
 Used by quarterly baselines to provide stable checkpoints.</p>
 <p>A valid rule set used the format <code>yyyy_mm</code> where <code>yyyy</code> is the year and <code>mm</code> is the month (<code>03</code>, <code>06</code>, <code>09</code>, <code>12</code>).</p>
 <p>For example:</p>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">-Tag</span> <span class="p">@{</span> <span class="n">ruleSet</span> <span class="p">=</span> <span class="s1">&#39;2025_06&#39;</span><span class="p">;</span> <span class="p">}</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">-Tag</span> <span class="p">@{</span> <span class="n">ruleSet</span> <span class="p">=</span> <span class="s1">'2025_06'</span><span class="p">;</span> <span class="p">}</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">tag</span><span class="p">:</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">ruleSet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2025_06</span>
@@ -22624,7 +22624,7 @@ The following are valid pillars accepted by this tag:</p>
 <li><code>Operational Excellence</code> &mdash; Rules that improve operational practices.</li>
 </ul>
 <p><strong>Example:</strong></p>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">-Tag</span> <span class="p">@{</span> <span class="s1">&#39;Azure.WAF/pillar&#39;</span> <span class="p">=</span> <span class="s1">&#39;Security&#39;</span><span class="p">;</span> <span class="p">}</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">-Tag</span> <span class="p">@{</span> <span class="s1">'Azure.WAF/pillar'</span> <span class="p">=</span> <span class="s1">'Security'</span><span class="p">;</span> <span class="p">}</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">tag</span><span class="p">:</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">Azure.WAF/pillar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security</span>
@@ -22634,13 +22634,13 @@ The following are valid pillars accepted by this tag:</p>
 <h4 id="azuremcsbv1control"><code>Azure.MCSB.v1/control</code><a class="headerlink" href="#azuremcsbv1control" title="Permanent link">#</a></h4>
 <p>Maps the rule to Microsoft Cloud Security Benchmark (MCSB) version 1 controls.</p>
 <p>For example, for a single control:</p>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">-Labels</span> <span class="p">@{</span> <span class="s1">&#39;Azure.MCSB.v1/control&#39;</span> <span class="p">=</span> <span class="s1">&#39;DP-4&#39;</span> <span class="p">}</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">-Labels</span> <span class="p">@{</span> <span class="s1">'Azure.MCSB.v1/control'</span> <span class="p">=</span> <span class="s1">'DP-4'</span> <span class="p">}</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">labels</span><span class="p">:</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">Azure.MCSB.v1/control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DP-4</span>
 </span></code></pre></div>
 <p>For example, multiple controls:</p>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">-Labels</span> <span class="p">@{</span> <span class="s1">&#39;Azure.MCSB.v1/control&#39;</span> <span class="p">=</span> <span class="p">@(</span><span class="s1">&#39;DP-2&#39;</span><span class="p">,</span> <span class="s1">&#39;LT-1&#39;</span><span class="p">)</span> <span class="p">}</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">-Labels</span> <span class="p">@{</span> <span class="s1">'Azure.MCSB.v1/control'</span> <span class="p">=</span> <span class="p">@(</span><span class="s1">'DP-2'</span><span class="p">,</span> <span class="s1">'LT-1'</span><span class="p">)</span> <span class="p">}</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">labels</span><span class="p">:</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">Azure.MCSB.v1/control</span><span class="p">:</span>
@@ -22655,7 +22655,7 @@ Valid values include:</p>
 <li><code>tagging</code> &mdash; Rules related to resource tagging standards.</li>
 </ul>
 <p>For example:</p>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">-Labels</span> <span class="p">@{</span> <span class="s1">&#39;Azure.CAF&#39;</span> <span class="p">=</span> <span class="s1">&#39;naming&#39;</span> <span class="p">}</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">-Labels</span> <span class="p">@{</span> <span class="s1">'Azure.CAF'</span> <span class="p">=</span> <span class="s1">'naming'</span> <span class="p">}</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">labels</span><span class="p">:</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">Azure.CAF</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">naming</span>
@@ -22671,7 +22671,7 @@ Valid values include:</p>
 <li><code>L5</code> &mdash; Level 5 maturity requirements.</li>
 </ul>
 <p>For example:</p>
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">-Labels</span> <span class="p">@{</span> <span class="s1">&#39;Azure.WAF/maturity&#39;</span> <span class="p">=</span> <span class="s1">&#39;L1&#39;</span><span class="p">;</span> <span class="p">}</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">-Labels</span> <span class="p">@{</span> <span class="s1">'Azure.WAF/maturity'</span> <span class="p">=</span> <span class="s1">'L1'</span><span class="p">;</span> <span class="p">}</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">labels</span><span class="p">:</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nt">Azure.WAF/maturity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">L1</span>

@@ -22255,10 +22255,10 @@ This makes it the highest-fidelity provider for PSRule analysis.</p>
 </span></code></pre></div>
 <h3 id="step-3-run-psrule">Step 3: Run PSRule<a class="headerlink" href="#step-3-run-psrule" title="Permanent link">#</a></h3>
 <p>Analyze the plan JSON file with PSRule:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Assert-PSRule<span class="w"> </span>-InputPath<span class="w"> </span><span class="s1">&#39;./tfplan.json&#39;</span><span class="w"> </span>-Format<span class="w"> </span>File<span class="w"> </span>-Module<span class="w"> </span>PSRule.Rules.Azure
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Assert-PSRule<span class="w"> </span>-InputPath<span class="w"> </span><span class="s1">'./tfplan.json'</span><span class="w"> </span>-Format<span class="w"> </span>File<span class="w"> </span>-Module<span class="w"> </span>PSRule.Rules.Azure
 </span></code></pre></div>
 <p>Or using the CLI:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ps-rule<span class="w"> </span>run<span class="w"> </span>--input-path<span class="w"> </span><span class="s1">&#39;./tfplan.json&#39;</span><span class="w"> </span>--module<span class="w"> </span>PSRule.Rules.Azure
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ps-rule<span class="w"> </span>run<span class="w"> </span>--input-path<span class="w"> </span><span class="s1">'./tfplan.json'</span><span class="w"> </span>--module<span class="w"> </span>PSRule.Rules.Azure
 </span></code></pre></div>
 <h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
 <p>When <code>AZURE_TERRAFORM_PLAN_EXPANSION</code> is enabled and a JSON file matching the Terraform plan schema is detected, PSRule:</p>

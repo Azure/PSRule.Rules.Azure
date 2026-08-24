@@ -21935,7 +21935,7 @@ Use comments to add context.</p>
 <p class="admonition-title">Example <code>ps-rule.yaml</code></p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">requires</span><span class="p">:</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="c1"># Require a minimum of PSRule for Azure v1.34.2</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">PSRule.Rules.Azure</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.34.2&#39;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">PSRule.Rules.Azure</span><span class="p">:</span><span class="w"> </span><span class="s">'&gt;=1.34.2'</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">configuration</span><span class="p">:</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="c1"># Enable expansion of Azure Template files.</span>
@@ -21951,13 +21951,13 @@ Use comments to add context.</p>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nt">AZURE_BICEP_CHECK_TOOL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="c1"># Optionally, configure the minimum version of the Bicep CLI.</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="nt">AZURE_BICEP_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.28.1&#39;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="nt">AZURE_BICEP_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">'0.28.1'</span>
 </span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
 </span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="c1"># Configure the minimum AKS cluster version.</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="nt">AZURE_AKS_CLUSTER_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1.30.6&#39;</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="nt">AZURE_AKS_CLUSTER_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">'1.30.6'</span>
 </span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
 </span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="nt">rule</span><span class="p">:</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="c1"># Enable custom rules that don&#39;t exist in the baseline</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="c1"># Enable custom rules that don't exist in the baseline</span>
 </span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="nt">includeLocal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="nt">exclude</span><span class="p">:</span>
 </span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="c1"># Ignore the following rules for all resources</span>
@@ -22001,7 +22001,7 @@ Where <code>&lt;PARENT&gt;</code> is the parent class and <code>&lt;NAME&gt;</co
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">env</span><span class="p">:</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">PSRULE_OUTPUT_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yaml</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">PSRULE_RULE_EXCLUDE</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">PSRULE_RULE_EXCLUDE</span><span class="p">:</span><span class="w"> </span><span class="s">'Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone'</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -22011,19 +22011,19 @@ Where <code>&lt;PARENT&gt;</code> is the parent class and <code>&lt;NAME&gt;</co
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_OUTPUT_FORMAT</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yaml</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_RULE_EXCLUDE</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">'Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone'</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$Env:PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span> <span class="p">=</span> <span class="s1">&#39;true&#39;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$Env:PSRULE_OUTPUT_FORMAT</span> <span class="p">=</span> <span class="s1">&#39;Yaml&#39;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">$Env:PSRULE_RULE_EXCLUDE</span> <span class="p">=</span> <span class="s1">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$Env:PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span> <span class="p">=</span> <span class="s1">'true'</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$Env:PSRULE_OUTPUT_FORMAT</span> <span class="p">=</span> <span class="s1">'Yaml'</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">$Env:PSRULE_RULE_EXCLUDE</span> <span class="p">=</span> <span class="s1">'Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone'</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span><span class="o">=</span><span class="nb">true</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_OUTPUT_FORMAT</span><span class="o">=</span>Yaml
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_RULE_EXCLUDE</span><span class="o">=</span><span class="s1">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_RULE_EXCLUDE</span><span class="o">=</span><span class="s1">'Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone'</span>
 </span></code></pre></div>
 </div>
 </div>

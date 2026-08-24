@@ -22260,19 +22260,19 @@ A placeholder value is used instead.</li>
 <p>Recursively scan the current working path and export linked templates.</p>
 <h3 id="example-3">Example 3<a class="headerlink" href="#example-3" title="Permanent link">#</a></h3>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$subscription</span> <span class="p">=</span> <span class="p">@{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  <span class="n">subscriptionId</span> <span class="p">=</span> <span class="s1">&#39;nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn&#39;</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="n">displayName</span> <span class="p">=</span> <span class="s1">&#39;My Azure Subscription&#39;</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  <span class="n">tenantId</span> <span class="p">=</span> <span class="s1">&#39;nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn&#39;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  <span class="n">subscriptionId</span> <span class="p">=</span> <span class="s1">'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn'</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="n">displayName</span> <span class="p">=</span> <span class="s1">'My Azure Subscription'</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  <span class="n">tenantId</span> <span class="p">=</span> <span class="s1">'nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn'</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">Get-AzRuleTemplateLink</span> <span class="p">|</span> <span class="nb">Export-AzRuleTemplateData</span> <span class="n">-Subscription</span> <span class="nv">$subscription</span><span class="p">;</span>
 </span></code></pre></div>
 <p>Export linked templates from the current working path using a specific subscription.</p>
 <h3 id="example-4">Example 4<a class="headerlink" href="#example-4" title="Permanent link">#</a></h3>
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$rg</span> <span class="p">=</span> <span class="p">@{</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  <span class="n">name</span> <span class="p">=</span> <span class="s1">&#39;my-test-rg&#39;</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  <span class="n">location</span> <span class="p">=</span> <span class="s1">&#39;australiaeast&#39;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  <span class="n">name</span> <span class="p">=</span> <span class="s1">'my-test-rg'</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  <span class="n">location</span> <span class="p">=</span> <span class="s1">'australiaeast'</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  <span class="n">tags</span> <span class="p">=</span> <span class="p">@{</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">env</span> <span class="p">=</span> <span class="s1">&#39;prod&#39;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">env</span> <span class="p">=</span> <span class="s1">'prod'</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  <span class="p">}</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">Get-AzRuleTemplateLink</span> <span class="p">|</span> <span class="nb">Export-AzRuleTemplateData</span> <span class="n">-ResourceGroup</span> <span class="nv">$rg</span><span class="p">;</span>

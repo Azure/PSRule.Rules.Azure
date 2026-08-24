@@ -22219,16 +22219,16 @@ When setting <code>PSRULE_AZURE_BICEP_PATH</code> specify the full path to the B
 File names used for Bicep binaries include <code>bicep</code>, or <code>bicep.exe</code>.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_AZURE_BICEP_PATH</span><span class="o">=</span><span class="s1">&#39;/usr/local/bin/bicep&#39;</span>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_AZURE_BICEP_PATH</span><span class="o">=</span><span class="s1">'/usr/local/bin/bicep'</span>
 </span></code></pre></div>
-<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$Env:PSRULE_AZURE_BICEP_PATH</span> <span class="p">=</span> <span class="s1">&#39;/usr/local/bin/bicep&#39;</span><span class="p">;</span>
+<div class="language-powershell highlight"><span class="filename">PowerShell</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$Env:PSRULE_AZURE_BICEP_PATH</span> <span class="p">=</span> <span class="s1">'/usr/local/bin/bicep'</span><span class="p">;</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><span class="filename">GitHub Actions</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">env</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">PSRULE_AZURE_BICEP_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/local/bin/bicep&#39;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">PSRULE_AZURE_BICEP_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">'/usr/local/bin/bicep'</span>
 </span></code></pre></div>
 <div class="language-yaml highlight"><span class="filename">Azure Pipelines</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">variables</span><span class="p">:</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_AZURE_BICEP_PATH</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/usr/local/bin/bicep&#39;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">'/usr/local/bin/bicep'</span>
 </span></code></pre></div>
 </div>
 <h3 id="using-azure-cli">Using Azure CLI<a class="headerlink" href="#using-azure-cli" title="Permanent link">#</a></h3>
@@ -22258,7 +22258,7 @@ This is explained in <a href="https://learn.microsoft.com/azure/azure-resource-m
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-powershell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">$Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI</span> <span class="p">=</span> <span class="s1">&#39;true&#39;</span>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">$Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI</span> <span class="p">=</span> <span class="s1">'true'</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -22339,7 +22339,7 @@ Additionally, you can set the minimum version required using the <code>Configura
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">AZURE_BICEP_CHECK_TOOL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span><span class="c1"># Optionally, configure the minimum version of the Bicep CLI.</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="nt">AZURE_BICEP_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.33.93&#39;</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span><span class="nt">AZURE_BICEP_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">'0.33.93'</span>
 </span></code></pre></div>
 <h3 id="configuring-minimum-version">Configuring minimum version<a class="headerlink" href="#configuring-minimum-version" title="Permanent link">#</a></h3>
 <p><span class="badge"><span class="badge__icon"><a href="../../changelog/#v1250" title="Minimum version"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.75 1a.75.75 0 0 1 .75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 0 1 0 2.65l-3.187 2.75a1.75 1.75 0 0 1-1.143.425H12.5v9.25a.75.75 0 0 1-1.5 0V13H3.75A1.75 1.75 0 0 1 2 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 0 1 .75-.75m7.282 4.5H3.75a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h15.282c.06 0 .118-.021.163-.06l3.188-2.75a.248.248 0 0 0 0-.38l-3.188-2.75a.25.25 0 0 0-.163-.06"/></svg></span></a></span><span class="badge__text"><a href="../../changelog/#v1250">v1.25.0</a></span></span></p>
@@ -22360,7 +22360,7 @@ By default, the minimum version is set to <code>0.4.451</code>.</p>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="nt">AZURE_BICEP_CHECK_TOOL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
 </span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span><span class="c1"># Configure the minimum version of the Bicep CLI.</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span><span class="nt">AZURE_BICEP_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.33.93&#39;</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span><span class="nt">AZURE_BICEP_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">'0.33.93'</span>
 </span></code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
