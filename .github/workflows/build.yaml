@@ -8,9 +8,9 @@
 name: Build
 on:
   push:
-    branches: [ main, 'release/*' ]
+    branches: [main, 'release/*']
   pull_request:
-    branches: [ main, 'release/*' ]
+    branches: [main, 'release/*']
   schedule:
     - cron: '26 21 * * 0' # At 09:26 PM, on Sunday each week
   workflow_dispatch: {}
@@ -29,50 +29,52 @@ jobs:
       contents: read
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-    - name: Checkout
-      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+        with:
+          global-json-file: global.json
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
-      with:
-        global-json-file: global.json
+      - name: Install dependencies
+        shell: pwsh
+        timeout-minutes: 3
+        run: |
+          ./scripts/pipeline-deps.ps1;
+          Import-Module ./scripts/dependencies.psm1 -Force;
+          Install-Dependencies -Dev -Repository 'PSGallery' -TrustRepository;
 
-    - name: Install dependencies
-      shell: pwsh
-      timeout-minutes: 3
-      run: ./scripts/pipeline-deps.ps1
+      - name: Build module
+        shell: pwsh
+        timeout-minutes: 5
+        run: Invoke-Build -Configuration Release -AssertStyle GitHubActions
 
-    - name: Build module
-      shell: pwsh
-      timeout-minutes: 5
-      run: Invoke-Build -Configuration Release -AssertStyle GitHubActions
+      - name: Upload module
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: Module
+          path: ./out/modules/PSRule.Rules.Azure/*
+          retention-days: 3
+          if-no-files-found: error
 
-    - name: Upload module
-      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-      with:
-        name: Module
-        path: ./out/modules/PSRule.Rules.Azure/*
-        retention-days: 3
-        if-no-files-found: error
+      # - name: Upload Test Results
+      #   uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      #   if: always()
+      #   with:
+      #     name: Module.DotNet.TestResults
+      #     path: ./reports/*.trx
+      #     retention-days: 3
+      #     if-no-files-found: error
 
-    # - name: Upload Test Results
-    #   uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-    #   if: always()
-    #   with:
-    #     name: Module.DotNet.TestResults
-    #     path: ./reports/*.trx
-    #     retention-days: 3
-    #     if-no-files-found: error
-
-    - name: Upload PSRule Results
-      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-      if: always()
-      with:
-        name: Results-PSRule
-        path: ./reports/ps-rule*.xml
-        retention-days: 3
-        if-no-files-found: error
+      - name: Upload PSRule Results
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: Results-PSRule
+          path: ./reports/ps-rule*.xml
+          retention-days: 3
+          if-no-files-found: error
 
   test_module:
     name: 🧪 Test module (${{ matrix.rid }}-${{ matrix.shell }})
@@ -86,9 +88,9 @@ jobs:
       fail-fast: false
 
       matrix:
-        os: [ 'ubuntu-latest' ]
-        rid: [ 'linux-x64' ]
-        shell: [ 'pwsh' ]
+        os: ['ubuntu-latest']
+        rid: ['linux-x64']
+        shell: ['pwsh']
         include:
           - os: windows-latest
             rid: win-x64
@@ -107,44 +109,49 @@ jobs:
             shell: pwsh
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-    - name: Checkout
-      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+        with:
+          global-json-file: global.json
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
-      with:
-        global-json-file: global.json
+      - if: ${{ matrix.shell == 'pwsh' }}
+        name: Install dependencies (PowerShell)
+        shell: pwsh
+        timeout-minutes: 3
+        run: |
+          ./scripts/pipeline-deps.ps1;
+          Import-Module ./scripts/dependencies.psm1 -Force;
+          Install-Dependencies -Dev -Repository 'PSGallery' -TrustRepository;
 
-    - if: ${{ matrix.shell == 'pwsh' }}
-      name: Install dependencies (PowerShell)
-      shell: pwsh
-      timeout-minutes: 3
-      run: ./scripts/pipeline-deps.ps1
+      - if: ${{ matrix.shell == 'powershell' }}
+        name: Install dependencies (Windows PowerShell)
+        shell: powershell
+        timeout-minutes: 5
+        run: |
+          ./scripts/pipeline-deps.ps1;
+          Import-Module ./scripts/dependencies.psm1 -Force;
+          Install-Dependencies -Dev -Repository 'PSGallery' -TrustRepository;
 
-    - if: ${{ matrix.shell == 'powershell' }}
-      name: Install dependencies (Windows PowerShell)
-      shell: powershell
-      timeout-minutes: 3
-      run: ./scripts/pipeline-deps.ps1
+      - name: Download module
+        uses: actions/download-artifact@v8
+        with:
+          name: Module
+          path: ./out/modules/PSRule.Rules.Azure
 
-    - name: Download module
-      uses: actions/download-artifact@v8
-      with:
-        name: Module
-        path: ./out/modules/PSRule.Rules.Azure
+      - if: ${{ matrix.shell == 'pwsh' }}
+        name: Test module (PowerShell)
+        shell: pwsh
+        timeout-minutes: 15
+        run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
 
-    - if: ${{ matrix.shell == 'pwsh' }}
-      name: Test module (PowerShell)
-      shell: pwsh
-      timeout-minutes: 15
-      run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
-
-    - if: ${{ matrix.shell == 'powershell' }}
-      name: Test module (Windows PowerShell)
-      shell: powershell
-      timeout-minutes: 30
-      run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
+      - if: ${{ matrix.shell == 'powershell' }}
+        name: Test module (Windows PowerShell)
+        shell: powershell
+        timeout-minutes: 30
+        run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
 
   build_docs:
     name: Build docs
@@ -172,7 +179,10 @@ jobs:
       - name: Install dependencies (PowerShell)
         shell: pwsh
         timeout-minutes: 3
-        run: ./scripts/pipeline-deps.ps1
+        run: |
+          ./scripts/pipeline-deps.ps1;
+          Import-Module ./scripts/dependencies.psm1 -Force;
+          Install-Dependencies -Dev -Repository 'PSGallery' -TrustRepository;
 
       - name: Build docs
         shell: pwsh
