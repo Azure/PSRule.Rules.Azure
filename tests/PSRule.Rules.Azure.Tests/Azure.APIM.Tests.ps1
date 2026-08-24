@@ -274,6 +274,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.CertificateExpiry' };
 
             # Fail
+            # Note: Certificate for apim-p fails every year in August, which is but design.
+            # Bump the certificate expiry one year in Resources.APIM.json to fix the test.
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.TargetName | Should -Be 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O';

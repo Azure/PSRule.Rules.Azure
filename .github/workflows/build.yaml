@@ -121,13 +121,19 @@ jobs:
         name: Install dependencies (PowerShell)
         shell: pwsh
         timeout-minutes: 3
-        run: ./scripts/pipeline-deps.ps1
+        run: |
+          ./scripts/pipeline-deps.ps1;
+          Import-Module ./scripts/dependencies.psm1 -Force;
+          Install-Dependencies -Dev -Repository 'PSGallery' -TrustRepository;
 
       - if: ${{ matrix.shell == 'powershell' }}
         name: Install dependencies (Windows PowerShell)
         shell: powershell
-        timeout-minutes: 3
-        run: ./scripts/pipeline-deps.ps1
+        timeout-minutes: 5
+        run: |
+          ./scripts/pipeline-deps.ps1;
+          Import-Module ./scripts/dependencies.psm1 -Force;
+          Install-Dependencies -Dev -Repository 'PSGallery' -TrustRepository;
 
       - name: Download module
         uses: actions/download-artifact@v8
@@ -173,7 +179,10 @@ jobs:
       - name: Install dependencies (PowerShell)
         shell: pwsh
         timeout-minutes: 3
-        run: ./scripts/pipeline-deps.ps1
+        run: |
+          ./scripts/pipeline-deps.ps1;
+          Import-Module ./scripts/dependencies.psm1 -Force;
+          Install-Dependencies -Dev -Repository 'PSGallery' -TrustRepository;
 
       - name: Build docs
         shell: pwsh
