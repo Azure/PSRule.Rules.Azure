@@ -20,9 +20,9 @@
       },
       "System.CommandLine": {
         "type": "Direct",
-        "requested": "[2.0.9, )",
-        "resolved": "2.0.9",
-        "contentHash": "SW0WhEk4NFVZ4lOnsLrHQOV/7s0eTidezNybHQWXfqhuXWB17X3RXbrifeWBbUx1iu+NcYchVSufmW7svjUEnA=="
+        "requested": "[2.0.11, )",
+        "resolved": "2.0.11",
+        "contentHash": "Pmg3/T0M37ZS3ovwPHtfBNTCdqNpnxo+tnZMg8JDHVR0qD8KwcPUKlheEiZysb1En8IyH7yDoa9QDq97Ny/vhQ=="
       },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",
