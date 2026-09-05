@@ -1,0 +1,29 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for FileShares
+#
+
+#region Rules
+
+---
+# Synopsis: Disable export of artifacts from container registries.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Share.PublicAccess
+  ref: AZR-000538
+  tags:
+    release: preview
+    ruleSet: 2026_03
+    Azure.WAF/pillar: Security
+
+spec:
+  type:
+    - Microsoft.Kusto/clusters
+  condition:
+    allOf:
+      - field: properties.publicNetworkAccess
+        equals: Disabled
+#endregion Rules
