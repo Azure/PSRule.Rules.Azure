@@ -718,6 +718,7 @@ public sealed class FunctionTests
         };
 
         Assert.Equal("two", (Functions.TryGet(context, [testObject2, 1]) as JValue).Value<string>());
+        Assert.Null(Functions.TryGet(context, [testObject2, "addressPrefixes"]));
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, null));
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, []));
