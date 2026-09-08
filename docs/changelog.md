@@ -39,6 +39,9 @@ What's changed since pre-release v1.48.0-B0228:
   - Container Registry:
     - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
       [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
+- Bug fixes:
+  - Fixed `cidrHost` and `cidrSubnet` failing on unresolved virtual network, subnet, and IPAM pool address prefixes by @oWretch.
+    [#3907](https://github.com/Azure/PSRule.Rules.Azure/issues/3907)
 - Engineering:
   - Bump YamlDotNet to 11.2.5.
 

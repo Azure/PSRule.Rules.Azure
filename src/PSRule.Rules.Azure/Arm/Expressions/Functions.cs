@@ -1151,10 +1151,13 @@ internal static class Functions
             return full ? deployment : deployment.Properties;
 
         if (resource.Existing && !resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out _))
-            return full ? new Mock.MockResource(resource.Id) : new Mock.MockResource(resource.Id)[PROPERTY_PROPERTIES];
+        {
+            var mockResourceId = GetResourceIdOrSymbolicName(resource);
+            return full ? new Mock.MockResource(mockResourceId, resource.Type) : new Mock.MockResource(mockResourceId, resource.Type)[PROPERTY_PROPERTIES];
+        }
 
         if (!full && resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var properties))
-            return new Mock.MockObject(properties);
+            return new Mock.MockResourceObject(properties, GetResourceIdOrSymbolicName(resource), resource.Type);
 
         return new Mock.MockObject(full ? resource.Value : new JObject());
     }
@@ -2660,9 +2663,26 @@ internal static class Functions
             resourceId = resourceIdOrSymbolicName;
 
         if (context.TryGetResource(resourceIdOrSymbolicName, out var resource) && resource != null)
-            resourceId = resource.Id;
+            resourceId = GetResourceIdOrSymbolicName(resource);
 
         return resourceId != null;
+    }
+
+    /// <summary>
+    /// Get the resource ID of a resource, falling back to the symbolic name.
+    /// The ID of an existing resource is expanded on demand and may not be resolvable, for example when
+    /// the scope of the resource depends on a value that is not known during expansion.
+    /// </summary>
+    private static string GetResourceIdOrSymbolicName(IResourceValue resource)
+    {
+        try
+        {
+            return resource.Id;
+        }
+        catch
+        {
+            return resource.SymbolicName;
+        }
     }
 
     private static int Compare(object left, object right)

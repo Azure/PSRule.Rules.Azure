@@ -889,6 +889,115 @@ public sealed class FunctionTests
 
     [Fact]
     [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void ReferenceWithNetworkAddressPlaceholders()
+    {
+        var context = GetContext();
+        var vnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001";
+        var subnetId = string.Concat(vnetId, "/subnets/subnet-001");
+
+        var vnet = Functions.Reference(context, [vnetId]) as Mock.MockObject;
+        Assert.NotNull(vnet);
+        var vnetPrefixes = vnet["addressSpace"]["addressPrefixes"] as Mock.MockArray;
+        Assert.NotNull(vnetPrefixes);
+        Assert.Equal("192.0.2.0/24", vnetPrefixes[0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [vnetPrefixes[0], 3]) as string);
+        Assert.Throws<ExpressionArgumentException>(() => Functions.CidrHost(context, [vnetPrefixes, 3]));
+
+        var subnet = Functions.Reference(context, [subnetId]) as Mock.MockObject;
+        Assert.NotNull(subnet);
+        Assert.Equal("192.0.2.0/28", subnet["addressPrefix"].Value<string>());
+        var subnetPrefixes = subnet["addressPrefixes"] as Mock.MockArray;
+        Assert.NotNull(subnetPrefixes);
+        Assert.Equal("192.0.2.0/28", subnetPrefixes[0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [subnetPrefixes[0], 3]) as string);
+
+        var subnetFull = Functions.Reference(context, [subnetId, "2025-07-01", "Full"]) as Mock.MockObject;
+        Assert.NotNull(subnetFull);
+        Assert.Throws<ExpressionArgumentException>(() => Functions.CidrHost(context, [subnetFull["id"], 3]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void ReferenceWithExistingNetworkAddressSymbols()
+    {
+        var context = GetContext();
+        var vnet = new ExistingResourceValue(context, "Microsoft.Network/virtualNetworks", "vnet", JObject.Parse(@"
+{
+  ""name"": ""vnet-001"",
+  ""properties"": {
+    ""ipamPoolPrefixAllocations"": []
+  }
+}"), null);
+        var subnet = new ExistingResourceValue(context, "Microsoft.Network/virtualNetworks/subnets", "vnet::subnet", JObject.Parse(@"
+{
+  ""name"": ""subnet-001"",
+  ""properties"": {
+    ""ipamPoolPrefixAllocations"": []
+  }
+}"), null);
+        var pool = new ExistingResourceValue(context, "Microsoft.Network/networkManagers/ipamPools", "networkManager::platformPool", JObject.Parse(@"
+{
+  ""name"": ""platformPool""
+}"), null);
+        context.AddSymbol(DeploymentSymbol.NewObject("vnet", vnet));
+        context.AddSymbol(DeploymentSymbol.NewObject("vnet::subnet", subnet));
+        context.AddSymbol(DeploymentSymbol.NewObject("networkManager::platformPool", pool));
+
+        var vnetProperties = Functions.Reference(context, ["vnet"]) as Mock.MockObject;
+        Assert.NotNull(vnetProperties);
+        Assert.Equal("192.0.2.0/24", vnetProperties["addressSpace"]["addressPrefixes"][0].Value<string>());
+
+        var subnetProperties = Functions.Reference(context, ["vnet::subnet"]) as Mock.MockObject;
+        Assert.NotNull(subnetProperties);
+        Assert.Equal("192.0.2.0/28", subnetProperties["addressPrefixes"][0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [subnetProperties["addressPrefixes"][0], 3]) as string);
+
+        var poolProperties = Functions.Reference(context, ["networkManager::platformPool"]) as Mock.MockObject;
+        Assert.NotNull(poolProperties);
+        Assert.Equal("192.0.2.0/24", poolProperties["addressPrefixes"][0].Value<string>());
+        Assert.Equal("192.0.2.0/23", Functions.CidrSubnet(context, [poolProperties["addressPrefixes"][0], 23, 0]) as string);
+
+        var subnetResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/ApplicationGatewaySubnet";
+        var deployedSubnet = new ResourceValue(subnetResourceId, "ApplicationGatewaySubnet", "Microsoft.Network/virtualNetworks/subnets", "vnet::deployedSubnet", JObject.Parse(@"
+{
+  ""properties"": {
+    ""ipamPoolPrefixAllocations"": []
+  }
+}"), null);
+        context.AddResource(deployedSubnet);
+        context.AddSymbol(DeploymentSymbol.NewObject("vnet::deployedSubnet", deployedSubnet));
+
+        var deployedSubnetProperties = Functions.Reference(context, ["vnet::deployedSubnet"]) as Mock.MockObject;
+        Assert.NotNull(deployedSubnetProperties);
+        Assert.Equal("192.0.2.0/28", deployedSubnetProperties["addressPrefixes"][0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [deployedSubnetProperties["addressPrefixes"][0], 3]) as string);
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void ReferenceUsesConcreteNetworkAddressProperties()
+    {
+        var context = GetContext();
+        var resourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001";
+        var resource = new ResourceValue(resourceId, "vnet-001", "Microsoft.Network/virtualNetworks", "vnet", JObject.Parse(@"
+{
+  ""properties"": {
+    ""addressSpace"": {
+      ""addressPrefixes"": [
+        ""203.0.113.0/24""
+      ]
+    }
+  }
+}"), null);
+        context.AddResource(resource);
+
+        var actual = Functions.Reference(context, [resourceId]) as Mock.MockObject;
+        Assert.NotNull(actual);
+        Assert.Equal("203.0.113.0/24", actual["addressSpace"]["addressPrefixes"][0].Value<string>());
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
     public void References()
     {
         var context = GetContext();
