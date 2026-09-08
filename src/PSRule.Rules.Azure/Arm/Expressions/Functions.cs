@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 using System.Xml;
@@ -64,6 +65,7 @@ internal static class Functions
         new FunctionDescriptor("contains", Contains),
         new FunctionDescriptor("createArray", CreateArray),
         new FunctionDescriptor("createObject", CreateObject),
+        new FunctionDescriptor("distinct", Distinct),
         new FunctionDescriptor("empty", Empty),
         new FunctionDescriptor("first", First),
         new FunctionDescriptor("flatten", Flatten),
@@ -169,6 +171,7 @@ internal static class Functions
         // last - also in array and object
         new FunctionDescriptor("lastIndexOf", LastIndexOf),
         // length - also in array and object
+        new FunctionDescriptor("like", Like),
         new FunctionDescriptor("newGuid", NewGuid),
         new FunctionDescriptor("padLeft", PadLeft),
         new FunctionDescriptor("replace", Replace),
@@ -392,6 +395,29 @@ internal static class Functions
             properties[i] = new JProperty(name, ExpressionHelpers.GetJToken(args[i * 2 + 1]));
         }
         return new JObject(properties);
+    }
+
+    /// <summary>
+    /// distinct(arrayToModify)
+    /// </summary>
+    /// <remarks>
+    /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#distinct"/>.
+    /// </remarks>
+    internal static object Distinct(ITemplateContext context, object[] args)
+    {
+        if (CountArgs(args) != 1)
+            throw ArgumentsOutOfRange(nameof(Distinct), args);
+
+        if (!ExpressionHelpers.TryJArray(args[0], out var array))
+            throw ArgumentFormatInvalid(nameof(Distinct));
+
+        var result = new JArray();
+        for (var i = 0; i < array.Count; i++)
+        {
+            if (!result.Any(item => JToken.DeepEquals(item, array[i])))
+                result.Add(array[i].DeepClone());
+        }
+        return result;
     }
 
     /// <summary>
@@ -1963,6 +1989,15 @@ internal static class Functions
             throw ArgumentInvalidStringArray(nameof(Join), "inputArray");
 
         return string.Join(delimiter, inputArray);
+    }
+
+    internal static object Like(ITemplateContext context, object[] args)
+    {
+        if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out var stringToCheck) || !ExpressionHelpers.TryString(args[1], out var pattern))
+            throw ArgumentsOutOfRange(nameof(Like), args);
+
+        var expression = $"^{Regex.Escape(pattern).Replace("\\*", ".*")}$";
+        return Regex.IsMatch(stringToCheck, expression, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
     }
 
     internal static object NewGuid(ITemplateContext context, object[] args)
