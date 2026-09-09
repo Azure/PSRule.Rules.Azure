@@ -35,6 +35,10 @@ What's changed since pre-release v1.48.0-B0228:
 - General improvements:
   - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
     [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+- Bug fixes:
+  - Fixed expansion failing with `Hash must be finalized before the hash value is retrieved` when an object output
+    from a cross-scope module is used by a string function such as `guid`.
+    [#3909](https://github.com/Azure/PSRule.Rules.Azure/issues/3909)
 - Updated rules:
   - Container Registry:
     - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
