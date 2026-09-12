@@ -197,6 +197,40 @@ public sealed class FunctionTests
 
     [Fact]
     [Trait(TRAIT, TRAIT_ARRAY)]
+    public void Distinct()
+    {
+        var context = GetContext();
+
+        var actual1 = Functions.Distinct(context, [new JArray(1, 2, 2, 3, 1)]) as JArray;
+        Assert.Equal([1, 2, 3], actual1.Values<int>().ToArray());
+
+        var actual2 = Functions.Distinct(context, [new JArray("apple", "banana", "apple", "cherry")]) as JArray;
+        Assert.Equal(["apple", "banana", "cherry"], actual2.Values<string>().ToArray());
+
+        var actual3 = Functions.Distinct(context, [JArray.Parse("[ { \"name\": \"storage1\", \"type\": \"Microsoft.Storage/storageAccounts\" }, { \"name\": \"vm1\", \"type\": \"Microsoft.Compute/virtualMachines\" }, { \"name\": \"storage1\", \"type\": \"Microsoft.Storage/storageAccounts\" } ]")]) as JArray;
+        Assert.Equal(2, actual3.Count);
+        Assert.Equal("storage1", actual3[0]["name"]);
+        Assert.Equal("vm1", actual3[1]["name"]);
+
+        var actual4 = Functions.Distinct(context, [JArray.Parse("[ [ 1, 2 ], [ 2, 3 ], [ 1, 2 ] ]")]) as JArray;
+        Assert.Equal(2, actual4.Count);
+        Assert.True(JToken.DeepEquals(JArray.Parse("[ 1, 2 ]"), actual4[0]));
+        Assert.True(JToken.DeepEquals(JArray.Parse("[ 2, 3 ]"), actual4[1]));
+
+        var actual5 = Functions.Distinct(context, [new object[] { "one", "two", "one" }]) as JArray;
+        Assert.Equal(["one", "two"], actual5.Values<string>().ToArray());
+
+        var actual6 = Functions.Distinct(context, [new JArray()]) as JArray;
+        Assert.Empty(actual6);
+
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Distinct(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Distinct(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Distinct(context, [new JArray(), new JArray()]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Distinct(context, [1]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_ARRAY)]
     public void Empty()
     {
         var context = GetContext();
@@ -2016,6 +2050,37 @@ public sealed class FunctionTests
         Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, ["test"]));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, [1, 1]));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, [new int[] { 1, 2 }, 1]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_STRING)]
+    public void Like()
+    {
+        var context = GetContext();
+
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "*prod*"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "prod*"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "*01"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-eastus-vm01"]));
+        Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod*"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm??", "prod-eastus-vm??"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-*-vm01"]));
+        Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod-eastus-vm01"]));
+        Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod-**-vm01"]));
+
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "*westus*"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-eastus-vm??"]));
+        Assert.False((bool)Functions.Like(context, ["vm01-eastus-prod", "prod-*-vm01"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-*-vm"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "od-*-vm01"]));
+
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, ["prod-eastus-vm01"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, ["prod-eastus-vm01", "*prod*", "extra"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, [1, "*prod*"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, ["prod-eastus-vm01", 1]));
     }
 
     [Fact]
