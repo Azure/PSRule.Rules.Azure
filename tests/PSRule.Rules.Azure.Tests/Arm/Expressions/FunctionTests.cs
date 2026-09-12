@@ -2064,9 +2064,16 @@ public sealed class FunctionTests
         Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-eastus-vm01"]));
         Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod*"]));
         Assert.True((bool)Functions.Like(context, ["prod-eastus-vm??", "prod-eastus-vm??"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-*-vm01"]));
+        Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod-eastus-vm01"]));
+        Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod-**-vm01"]));
+
         Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "*westus*"]));
         Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod"]));
         Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-eastus-vm??"]));
+        Assert.False((bool)Functions.Like(context, ["vm01-eastus-prod", "prod-*-vm01"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-*-vm"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "od-*-vm01"]));
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, null));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, []));

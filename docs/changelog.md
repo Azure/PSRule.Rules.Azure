@@ -35,7 +35,7 @@ What's changed since pre-release v1.48.0-B0228:
 - General improvements:
   - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
     [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
-  - Added support for the Bicep `distinct` and `like` functions.
+  - Added support for the Bicep `distinct` and `like` functions by @oWretch.
     [#3905](https://github.com/Azure/PSRule.Rules.Azure/issues/3905)
 - Updated rules:
   - Container Registry:

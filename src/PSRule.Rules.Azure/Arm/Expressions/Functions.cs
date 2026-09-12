@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
 using System.Xml;
@@ -1991,13 +1990,55 @@ internal static class Functions
         return string.Join(delimiter, inputArray);
     }
 
+    /// <summary>
+    /// Checks if the string matches a pattern that can contain the '*' wildcard.
+    /// The comparison is case-insensitive.
+    /// like(stringToCheck, pattern)
+    /// </summary>
+    /// <remarks>
+    /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#like"/>.
+    /// </remarks>
     internal static object Like(ITemplateContext context, object[] args)
     {
-        if (args == null || args.Length != 2 || !ExpressionHelpers.TryString(args[0], out var stringToCheck) || !ExpressionHelpers.TryString(args[1], out var pattern))
+        if (args == null || args.Length != 2)
             throw ArgumentsOutOfRange(nameof(Like), args);
 
-        var expression = $"^{Regex.Escape(pattern).Replace("\\*", ".*")}$";
-        return Regex.IsMatch(stringToCheck, expression, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+        if (!ExpressionHelpers.TryString(args[0], out var stringToCheck))
+            throw ArgumentInvalidString(nameof(Like), "stringToCheck");
+
+        if (!ExpressionHelpers.TryString(args[1], out var pattern))
+            throw ArgumentInvalidString(nameof(Like), "pattern");
+
+        // Handle simple cases
+        if (pattern == "*")
+            return true;
+
+        if (!pattern.Contains("*"))
+            return string.Equals(stringToCheck, pattern, StringComparison.OrdinalIgnoreCase);
+
+        // Do the comparison without regex.
+        var endsWithWildcard = pattern[pattern.Length - 1] == '*';
+        var startsWithWildcard = pattern[0] == '*';
+        var parts = pattern.Split('*');
+        var currentIndex = 0;
+
+        if (!startsWithWildcard && !stringToCheck.StartsWith(parts[0], StringComparison.OrdinalIgnoreCase))
+            return false;
+
+        foreach (var part in parts)
+        {
+            if (string.IsNullOrEmpty(part))
+                continue;
+
+            var index = stringToCheck.IndexOf(part, currentIndex, StringComparison.OrdinalIgnoreCase);
+            if (index == -1)
+                return false;
+
+            currentIndex = index + part.Length;
+        }
+
+        // Current index must be at the end of the string when we complete parsing.
+        return endsWithWildcard || currentIndex == stringToCheck.Length;
     }
 
     internal static object NewGuid(ITemplateContext context, object[] args)
