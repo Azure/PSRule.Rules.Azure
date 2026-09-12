@@ -6,7 +6,7 @@
   },
   "devDependencies": {
     "Pester": {
-      "version": "5.7.1"
+      "version": "5.9.1"
     },
     "platyPS": {
       "version": "0.14.2"

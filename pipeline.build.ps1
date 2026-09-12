@@ -49,6 +49,13 @@ if ($Env:BUILD_SOURCEBRANCH -like '*/tags/*' -and $Env:BUILD_SOURCEBRANCHNAME -l
     $Build = $Env:BUILD_SOURCEBRANCHNAME.Substring(1);
 }
 
+$PSUpstream = 'PSGallery';
+if ($Env:PSUPSTREAM -ne $Null -and $Env:PSUPSTREAM -ne '') {
+    $PSUpstream = $Env:PSUPSTREAM;
+}
+
+Write-Host -Object "[Pipeline] -- Using PSUpstream: $PSUpstream" -ForegroundColor Green;
+
 $version = $Build;
 $versionSuffix = [String]::Empty;
 
@@ -560,7 +567,7 @@ task Benchmark {
 
 task Dependencies NuGet, {
     Import-Module $PWD/scripts/dependencies.psm1;
-    Install-Dependencies -Path $PWD/modules.json -Dev;
+    Install-Dependencies -Path $PWD/modules.json -Dev -Repository $PSUpstream;
 }
 
 task ExportData {

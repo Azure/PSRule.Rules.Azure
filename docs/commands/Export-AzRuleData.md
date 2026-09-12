@@ -192,7 +192,7 @@ Accept wildcard characters: False
 
 ### -Tenant
 
-Optionally filter resources by a unique Tenant identifer.
+Optionally filter resources by a unique Tenant identifier.
 
 ```yaml
 Type: String[]
