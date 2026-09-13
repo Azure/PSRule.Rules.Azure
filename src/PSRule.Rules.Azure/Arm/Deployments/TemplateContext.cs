@@ -219,11 +219,32 @@ internal abstract partial class DeploymentVisitor
                 return false;
 
             var resourceId = nameOrResourceId;
+            IResourceValue? symbolResource = null;
             if (_Symbols.TryGetValue(nameOrResourceId, out var symbol) && symbol != null)
-                resourceId = symbol.GetId(0);
+            {
+                symbol.TryGetResource(0, out symbolResource);
+
+                // The ID of an existing resource is expanded on demand and may not be resolvable.
+                try
+                {
+                    resourceId = symbol.GetId(0);
+                }
+                catch
+                {
+                    resourceId = null;
+                }
+            }
 
             if (resourceId != null && _ResourceIds.TryGetValue(resourceId, out resource))
                 return true;
+
+            // Fall back to the resource attached to the symbol. Existing resources are tracked as symbols
+            // but are not added as deployable resources, so they are not in the resource ID lookup.
+            if (symbolResource != null)
+            {
+                resource = symbolResource;
+                return true;
+            }
 
             // Recurse search for resource in the parent deployment by original resource ID only.
             if (Parent != null && ResourceHelper.IsResourceId(nameOrResourceId) && Parent.TryGetResource(nameOrResourceId, out resource))
@@ -240,11 +261,27 @@ internal abstract partial class DeploymentVisitor
                 return false;
 
             var ids = array.GetIds();
-            resources = new IResourceValue[ids.Length];
+            var byId = new IResourceValue[ids.Length];
+            var resolved = true;
             for (var i = 0; i < ids.Length; i++)
-                resources[i] = _ResourceIds[ids[i]];
+            {
+                if (ids[i] == null || !_ResourceIds.TryGetValue(ids[i], out var item))
+                {
+                    resolved = false;
+                    break;
+                }
+                byId[i] = item;
+            }
 
-            return true;
+            if (resolved)
+            {
+                resources = byId;
+                return true;
+            }
+
+            // Fall back to the resources attached to the symbol for existing resources.
+            resources = array.GetResources();
+            return resources.Length > 0;
         }
 
 #nullable restore

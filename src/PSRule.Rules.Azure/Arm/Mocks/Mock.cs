@@ -12,6 +12,52 @@ namespace PSRule.Rules.Azure.Arm.Mocks;
 
 internal sealed class Mock
 {
+    private const string RESOURCE_TYPE_VIRTUAL_NETWORK = "Microsoft.Network/virtualNetworks";
+    private const string RESOURCE_TYPE_SUBNET = "Microsoft.Network/virtualNetworks/subnets";
+    private const string RESOURCE_TYPE_IPAM_POOL = "Microsoft.Network/networkManagers/ipamPools";
+    private const string PATH_VIRTUAL_NETWORK_ADDRESS_PREFIXES = "addressSpace.addressPrefixes";
+    private const string PATH_SUBNET_ADDRESS_PREFIX = "addressPrefix";
+    private const string PATH_SUBNET_ADDRESS_PREFIXES = "addressPrefixes";
+    private const string PLACEHOLDER_VIRTUAL_NETWORK_CIDR = "192.0.2.0/24";
+    private const string PLACEHOLDER_SUBNET_CIDR = "192.0.2.0/28";
+
+    private static readonly MockPlaceholderDescriptor[] _ResourcePlaceholders =
+    [
+        new(RESOURCE_TYPE_VIRTUAL_NETWORK, PATH_VIRTUAL_NETWORK_ADDRESS_PREFIXES, MockPlaceholderKind.Array, [PLACEHOLDER_VIRTUAL_NETWORK_CIDR]),
+        new(RESOURCE_TYPE_SUBNET, PATH_SUBNET_ADDRESS_PREFIX, MockPlaceholderKind.String, [PLACEHOLDER_SUBNET_CIDR]),
+        new(RESOURCE_TYPE_SUBNET, PATH_SUBNET_ADDRESS_PREFIXES, MockPlaceholderKind.Array, [PLACEHOLDER_SUBNET_CIDR]),
+        new(RESOURCE_TYPE_IPAM_POOL, PATH_SUBNET_ADDRESS_PREFIXES, MockPlaceholderKind.Array, [PLACEHOLDER_VIRTUAL_NETWORK_CIDR]),
+    ];
+
+    private enum MockPlaceholderKind
+    {
+        String,
+        Array
+    }
+
+    private sealed class MockPlaceholderDescriptor(string resourceType, string propertyPath, MockPlaceholderKind kind, string[] values)
+    {
+        public string ResourceType { get; } = resourceType;
+
+        public string PropertyPath { get; } = propertyPath;
+
+        public MockPlaceholderKind Kind { get; } = kind;
+
+        private string[] Values { get; } = values;
+
+        public bool TryGetValue(bool secret, out MockValue value)
+        {
+            value = Values.Length > 0 ? new MockValue(Values[0], secret) : null!;
+            return Values.Length > 0;
+        }
+
+        public void AddValues(JArray array, bool secret)
+        {
+            for (var i = 0; i < Values.Length; i++)
+                array.Add(new MockValue(Values[i], secret));
+        }
+    }
+
     /// <summary>
     /// Mock an unknown property or value.
     /// </summary>
@@ -79,10 +125,14 @@ internal sealed class Mock
     internal sealed class MockResource : MockUnknownObject
     {
         public MockResource(string resourceId)
+            : this(resourceId, resourceType: null) { }
+
+        public MockResource(string resourceId, string? resourceType)
             : base()
         {
             ResourceId = resourceId;
-            ResourceHelper.TryResourceIdComponents(resourceId, out var subscriptionId, out var resourceGroupName, out string? resourceType, out string? name);
+            ResourceHelper.TryResourceIdComponents(resourceId, out var subscriptionId, out var resourceGroupName, out string? resourceIdType, out string? name);
+            ResourceType = resourceType ?? resourceIdType ?? string.Empty;
             if (resourceId != null)
             {
                 Add("id", new JValue(resourceId));
@@ -93,9 +143,9 @@ internal sealed class Mock
                 Add("subscriptionId", new JValue(subscriptionId));
             }
 
-            if (resourceType != null)
+            if (ResourceType.Length > 0)
             {
-                Add("type", new JValue(resourceType));
+                Add("type", new JValue(ResourceType));
             }
 
             if (name != null)
@@ -103,11 +153,13 @@ internal sealed class Mock
                 Add("name", new JValue(name));
             }
 
-            var properties = new MockResourceProperties(resourceId ?? string.Empty);
+            var properties = new MockResourceProperties(resourceId ?? string.Empty, ResourceType);
             Add("properties", properties);
         }
 
         public string ResourceId { get; }
+
+        public string ResourceType { get; }
 
         public override JToken? this[object key] { get => base[key]; set => base[key] = value; }
 
@@ -125,58 +177,142 @@ internal sealed class Mock
     internal sealed class MockResourceProperties : MockUnknownObject
     {
         private readonly string _ResourceId;
+        private readonly string _ResourceType;
 
-        public MockResourceProperties(string resourceId)
+        public MockResourceProperties(string resourceId, string resourceType)
             : base()
         {
             _ResourceId = resourceId;
+            _ResourceType = resourceType;
         }
 
         protected override JToken CreateUnknownProperty(object key)
         {
-            return key is string propertyName ? new MockResourceProperty(_ResourceId, propertyName, IsSecret) : base.CreateUnknownProperty(key);
+            return key is string propertyName ? CreateResourceProperty(_ResourceId, _ResourceType, propertyName, propertyName, IsSecret) : base.CreateUnknownProperty(key);
+        }
+    }
+
+    /// <summary>
+    /// The <c>properties</c> of a resource that is known, but may only define a subset of its properties.
+    /// Concrete properties are returned as-is, while known address properties that were not defined in the
+    /// source resolve to a typed placeholder instead of an unknown value.
+    /// </summary>
+    internal sealed class MockResourceObject : MockObject
+    {
+        private readonly string _ResourceId;
+        private readonly string _ResourceType;
+
+        public MockResourceObject(JObject value, string resourceId, string resourceType)
+            : base(value)
+        {
+            _ResourceId = resourceId;
+            _ResourceType = resourceType;
+        }
+
+        protected override JToken CreateUnknownProperty(object key)
+        {
+            return key is string propertyName ? CreateResourceProperty(_ResourceId, _ResourceType, propertyName, propertyName, IsSecret) : base.CreateUnknownProperty(key);
         }
     }
 
     internal sealed class MockResourceProperty : MockUnknownObject, IMockResourceCollection
     {
         private readonly string _ResourceId;
+        private readonly string _ResourceType;
         private readonly string _PropertyName;
+        private readonly string _PropertyPath;
         private MockResourcePropertyArray? _Array;
 
-        public MockResourceProperty(string resourceId, string propertyName, bool secret)
+        public MockResourceProperty(string resourceId, string resourceType, string propertyName, bool secret)
+            : this(resourceId, resourceType, propertyName, propertyName, secret) { }
+
+        internal MockResourceProperty(string resourceId, string resourceType, string propertyName, string propertyPath, bool secret)
             : base(secret)
         {
             _ResourceId = resourceId;
+            _ResourceType = resourceType;
             _PropertyName = propertyName;
+            _PropertyPath = propertyPath;
         }
 
         public override JToken? GetValue(TypePrimitive type)
         {
+            if (type == TypePrimitive.Array && TryGetPlaceholder(out var descriptor) && descriptor.Kind == MockPlaceholderKind.Array)
+                return ToArray();
+
             return type == TypePrimitive.Array ? ToArray() : base.GetValue(type);
+        }
+
+        public override JToken? GetValue(object key)
+        {
+            key = GetBaseObject(key);
+            if (TryGetPlaceholder(out var descriptor))
+            {
+                if (descriptor.Kind == MockPlaceholderKind.Array && key is int)
+                    return ToArray().GetValue(key);
+            }
+            return base.GetValue(key);
+        }
+
+        public override TValue? GetValue<TValue>() where TValue : default
+        {
+            if (typeof(TValue) == typeof(string) &&
+                TryGetPlaceholder(out var descriptor) &&
+                descriptor.Kind == MockPlaceholderKind.String &&
+                descriptor.TryGetValue(IsSecret, out var value) &&
+                value.Value<string>() is TValue result)
+                return result;
+
+            return base.GetValue<TValue>();
         }
 
         private MockResourcePropertyArray ToArray()
         {
-            return _Array ??= new MockResourcePropertyArray(_ResourceId, _PropertyName, IsSecret);
+            return _Array ??= new MockResourcePropertyArray(_ResourceId, _ResourceType, _PropertyName, _PropertyPath, IsSecret);
         }
 
         public MockResourcePropertyItem CreateItem()
         {
             return new MockResourcePropertyItem(_ResourceId, _PropertyName, IsSecret);
         }
+
+        protected override JToken CreateUnknownProperty(object key)
+        {
+            return key is string propertyName ? CreateResourceProperty(_ResourceId, _ResourceType, propertyName, string.Concat(_PropertyPath, ".", propertyName), IsSecret) : base.CreateUnknownProperty(key);
+        }
+
+        private bool TryGetPlaceholder(out MockPlaceholderDescriptor descriptor)
+        {
+            return TryResourcePlaceholder(_ResourceType, _PropertyPath, out descriptor);
+        }
     }
 
     internal sealed class MockResourcePropertyArray : MockArray, IMockResourceCollection
     {
         private readonly string _ResourceId;
+        private readonly string _ResourceType;
         private readonly string _PropertyName;
+        private readonly string _PropertyPath;
 
-        public MockResourcePropertyArray(string resourceId, string propertyName, bool secret)
+        public MockResourcePropertyArray(string resourceId, string resourceType, string propertyName, string propertyPath, bool secret)
             : base(secret)
         {
             _ResourceId = resourceId;
+            _ResourceType = resourceType;
             _PropertyName = propertyName;
+            _PropertyPath = propertyPath;
+
+            if (TryResourcePlaceholder(_ResourceType, _PropertyPath, out var descriptor) && descriptor.Kind == MockPlaceholderKind.Array)
+                descriptor.AddValues(this, secret);
+        }
+
+        public override JToken? GetValue(object key)
+        {
+            key = GetBaseObject(key);
+            if (key is int && TryResourcePlaceholder(_ResourceType, _PropertyPath, out var descriptor) && descriptor.TryGetValue(IsSecret, out var value))
+                return value;
+
+            return base.GetValue(key);
         }
 
         public MockResourcePropertyItem CreateItem()
@@ -359,7 +495,7 @@ internal sealed class Mock
             return type == TypePrimitive.None || type == TypePrimitive.Array ? this : null;
         }
 
-        public JToken? GetValue(object key)
+        public virtual JToken? GetValue(object key)
         {
             if (key is long l)
                 key = (int)l;
@@ -636,6 +772,35 @@ internal sealed class Mock
             return TypePrimitive.Bool;
 
         throw new NotImplementedException();
+    }
+
+    private static JToken CreateResourceProperty(string resourceId, string resourceType, string propertyName, string propertyPath, bool secret)
+    {
+        if (TryResourcePlaceholder(resourceType, propertyPath, out var descriptor))
+        {
+            if (descriptor.Kind == MockPlaceholderKind.Array)
+                return new MockResourcePropertyArray(resourceId, resourceType, propertyName, propertyPath, secret);
+
+            if (descriptor.TryGetValue(secret, out var value))
+                return value;
+        }
+        return new MockResourceProperty(resourceId, resourceType, propertyName, propertyPath, secret);
+    }
+
+    private static bool TryResourcePlaceholder(string resourceType, string propertyPath, out MockPlaceholderDescriptor descriptor)
+    {
+        descriptor = null!;
+        for (var i = 0; i < _ResourcePlaceholders.Length; i++)
+        {
+            var placeholder = _ResourcePlaceholders[i];
+            if (StringComparer.OrdinalIgnoreCase.Equals(resourceType, placeholder.ResourceType) &&
+                StringComparer.OrdinalIgnoreCase.Equals(propertyPath, placeholder.PropertyPath))
+            {
+                descriptor = placeholder;
+                return true;
+            }
+        }
+        return false;
     }
 
     private static bool TryWellKnownStringProperty(JObject o, string key, out JValue? value)
