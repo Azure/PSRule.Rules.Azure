@@ -1,0 +1,11 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "combinedAddressPrefixes": {
+      "type": "array",
+      "value": "[concat(reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, 'other-rg'), 'Microsoft.Network/virtualNetworks', 'vnet1'), '2023-11-01').addressSpace.addressPrefixes, createArray())]"
+    }
+  }
+}
