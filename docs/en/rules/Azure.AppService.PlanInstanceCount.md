@@ -26,7 +26,7 @@ Zone redundancy distributes plan instances across physically separated zones and
 See [Azure.AppService.AvailabilityZone](Azure.AppService.AvailabilityZone.md) for zone-redundancy configuration.
 Use at least two instances for basic failover even when zone redundancy is not enabled.
 
-This rule does not apply to consumption or elastic App Service Plans.
+This rule does not apply to Consumption, Flex Consumption, or Elastic Premium App Service Plans.
 
 ## RECOMMENDATION
 
