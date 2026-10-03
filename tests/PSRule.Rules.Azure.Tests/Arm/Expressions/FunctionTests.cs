@@ -926,7 +926,9 @@ public sealed class FunctionTests
 {
   ""name"": ""vnet-001"",
   ""properties"": {
-    ""ipamPoolPrefixAllocations"": []
+    ""addressSpace"": {
+      ""ipamPoolPrefixAllocations"": []
+    }
   }
 }"), null);
         var subnet = new ExistingResourceValue(context, "Microsoft.Network/virtualNetworks/subnets", "vnet::subnet", JObject.Parse(@"
@@ -972,6 +974,19 @@ public sealed class FunctionTests
         Assert.NotNull(deployedSubnetProperties);
         Assert.Equal("192.0.2.0/28", deployedSubnetProperties["addressPrefixes"][0].Value<string>());
         Assert.Equal("192.0.2.4", Functions.CidrHost(context, [deployedSubnetProperties["addressPrefixes"][0], 3]) as string);
+
+        var deployedSubnetFull = Functions.Reference(context, ["vnet::deployedSubnet", "2025-07-01", "Full"]) as Mock.MockObject;
+        Assert.NotNull(deployedSubnetFull);
+        Assert.Equal("192.0.2.0/28", deployedSubnetFull["properties"]["addressPrefixes"][0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [deployedSubnetFull["properties"]["addressPrefixes"][0], 3]) as string);
+
+        var invalid = new ExistingResourceValue(context, "Microsoft.Network/virtualNetworks", "invalid", JObject.Parse(@"
+ {
+   ""name"": ""[div(1, 0)]"",
+   ""properties"": {}
+ }"), null);
+        context.AddSymbol(DeploymentSymbol.NewObject("invalid", invalid));
+        Assert.Throws<ExpressionEvaluationException>(() => Functions.Reference(context, ["invalid"]));
     }
 
     [Fact]

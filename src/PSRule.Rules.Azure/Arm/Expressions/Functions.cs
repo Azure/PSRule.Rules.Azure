@@ -1152,14 +1152,16 @@ internal static class Functions
 
         if (resource.Existing && !resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out _))
         {
-            var mockResourceId = GetResourceIdOrSymbolicName(resource);
+            var mockResourceId = GetResourceId(resource);
             return full ? new Mock.MockResource(mockResourceId, resource.Type) : new Mock.MockResource(mockResourceId, resource.Type)[PROPERTY_PROPERTIES];
         }
 
         if (!full && resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var properties))
-            return new Mock.MockResourceObject(properties, GetResourceIdOrSymbolicName(resource), resource.Type);
+            return new Mock.MockResourceObject(properties, GetResourceId(resource), resource.Type);
 
-        return new Mock.MockObject(full ? resource.Value : new JObject());
+        return full
+            ? new Mock.MockResourceFullObject(resource.Value, GetResourceId(resource), resource.Type)
+            : new Mock.MockObject(new JObject());
     }
 
     /// <summary>
@@ -2663,23 +2665,22 @@ internal static class Functions
             resourceId = resourceIdOrSymbolicName;
 
         if (context.TryGetResource(resourceIdOrSymbolicName, out var resource) && resource != null)
-            resourceId = GetResourceIdOrSymbolicName(resource);
+            resourceId = GetResourceId(resource);
 
         return resourceId != null;
     }
 
     /// <summary>
-    /// Get the resource ID of a resource, falling back to the symbolic name.
-    /// The ID of an existing resource is expanded on demand and may not be resolvable, for example when
-    /// the scope of the resource depends on a value that is not known during expansion.
+    /// Get the resource ID of a resource, falling back to the symbolic name when the resource scope
+    /// cannot be resolved.
     /// </summary>
-    private static string GetResourceIdOrSymbolicName(IResourceValue resource)
+    private static string GetResourceId(IResourceValue resource)
     {
         try
         {
             return resource.Id;
         }
-        catch
+        catch (TemplateSymbolException)
         {
             return resource.SymbolicName;
         }
