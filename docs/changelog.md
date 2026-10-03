@@ -38,6 +38,9 @@ What's changed since pre-release v1.48.0-B0228:
   - Added support for the Bicep `distinct` and `like` functions by @oWretch.
     [#3905](https://github.com/Azure/PSRule.Rules.Azure/issues/3905)
 - Updated rules:
+  - App Service:
+    - Fixed `Azure.AppService.PlanInstanceCount` to exclude Flex Consumption plans.
+      [#3929](https://github.com/Azure/PSRule.Rules.Azure/issues/3929)
   - Container Registry:
     - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
       [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
