@@ -289,20 +289,18 @@ internal static class Functions
             return result.ToString();
         }
         // Array
-        else if (args[0] is Array || args[0] is JArray)
+        else if (ExpressionHelpers.TryArray(args[0], out var firstArray))
         {
             var result = new List<object>();
-            for (var i = 0; i < args.Length; i++)
+            for (var j = 0; j < firstArray.Length; j++)
+                result.Add(firstArray.GetValue(j));
+
+            for (var i = 1; i < args.Length; i++)
             {
-                if (args[i] is Array array)
+                if (ExpressionHelpers.TryArray(args[i], out var array))
                 {
                     for (var j = 0; j < array.Length; j++)
                         result.Add(array.GetValue(j));
-                }
-                else if (args[i] is JArray jArray)
-                {
-                    for (var j = 0; j < jArray.Count; j++)
-                        result.Add(jArray[j]);
                 }
             }
             return result.ToArray();
@@ -1176,10 +1174,13 @@ internal static class Functions
             return full ? deployment : deployment.Properties;
 
         if (resource.Existing && !resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out _))
-            return full ? new Mock.MockResource(resource.Id) : new Mock.MockResource(resource.Id)[PROPERTY_PROPERTIES];
+        {
+            var mockResourceId = GetResourceIdOrSymbolicName(resource);
+            return full ? new Mock.MockResource(mockResourceId, resource.Type) : new Mock.MockResource(mockResourceId, resource.Type)[PROPERTY_PROPERTIES];
+        }
 
         if (!full && resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var properties))
-            return new Mock.MockObject(properties);
+            return new Mock.MockResourceObject(properties, GetResourceIdOrSymbolicName(resource), resource.Type);
 
         return new Mock.MockObject(full ? resource.Value : new JObject());
     }
@@ -2736,9 +2737,26 @@ internal static class Functions
             resourceId = resourceIdOrSymbolicName;
 
         if (context.TryGetResource(resourceIdOrSymbolicName, out var resource) && resource != null)
-            resourceId = resource.Id;
+            resourceId = GetResourceIdOrSymbolicName(resource);
 
         return resourceId != null;
+    }
+
+    /// <summary>
+    /// Get the resource ID of a resource, falling back to the symbolic name.
+    /// The ID of an existing resource is expanded on demand and may not be resolvable, for example when
+    /// the scope of the resource depends on a value that is not known during expansion.
+    /// </summary>
+    private static string GetResourceIdOrSymbolicName(IResourceValue resource)
+    {
+        try
+        {
+            return resource.Id;
+        }
+        catch
+        {
+            return resource.SymbolicName;
+        }
     }
 
     private static int Compare(object left, object right)
