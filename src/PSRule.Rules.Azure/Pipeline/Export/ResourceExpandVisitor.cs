@@ -123,6 +123,7 @@ internal sealed class ResourceExpandVisitor
     private const string APIVERSION_2024_03_02_PREVIEW = "2024-03-02-preview";
     private const string APIVERSION_2024_05_01_PREVIEW = "2024-05-01-preview";
     private const string APIVERSION_2024_05_01 = "2024-05-01";
+    private const string APIVERSION_2025_09_01_PREVIEW = "2025-09-01-preview";
 
     private readonly ProviderData _ProviderData;
 
@@ -561,7 +562,7 @@ internal sealed class ResourceExpandVisitor
             }
         }
 
-        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_DEFENDER_FOR_STORAGE_SETTINGS, "2022-12-01-preview", ignoreNotFound: true));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_DEFENDER_FOR_STORAGE_SETTINGS, APIVERSION_2025_09_01_PREVIEW, ignoreNotFound: true));
         return true;
     }
 
