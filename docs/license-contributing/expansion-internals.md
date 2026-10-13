@@ -230,3 +230,12 @@ Additionally for secrets the value is intentionally unknown.
 
 PSRule for Azure uses several mocking techniques to allow the expansion process to continue when
 suitable values can not be projected or materialized onto the resource.
+
+For the following resource properties, placeholder values are used during expansion:
+
+Resource type | Property path | Placeholder
+------------- | ------------- | -----------
+`Microsoft.Network/virtualNetworks` | `addressSpace.addressPrefixes` | `["192.0.2.0/24"]`
+`Microsoft.Network/virtualNetworks/subnets` | `addressPrefix` | `"192.0.2.0/28"`
+`Microsoft.Network/virtualNetworks/subnets` | `addressPrefixes` | `["192.0.2.0/28"]`
+`Microsoft.Network/networkManagers/ipamPools` | `addressPrefixes` | `["192.0.2.0/24"]`
