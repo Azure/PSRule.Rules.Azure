@@ -289,20 +289,18 @@ internal static class Functions
             return result.ToString();
         }
         // Array
-        else if (args[0] is Array || args[0] is JArray)
+        else if (ExpressionHelpers.TryArray(args[0], out var firstArray))
         {
             var result = new List<object>();
-            for (var i = 0; i < args.Length; i++)
+            for (var j = 0; j < firstArray.Length; j++)
+                result.Add(firstArray.GetValue(j));
+
+            for (var i = 1; i < args.Length; i++)
             {
-                if (args[i] is Array array)
+                if (ExpressionHelpers.TryArray(args[i], out var array))
                 {
                     for (var j = 0; j < array.Length; j++)
                         result.Add(array.GetValue(j));
-                }
-                else if (args[i] is JArray jArray)
-                {
-                    for (var j = 0; j < jArray.Count; j++)
-                        result.Add(jArray[j]);
                 }
             }
             return result.ToArray();
