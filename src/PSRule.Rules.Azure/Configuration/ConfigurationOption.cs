@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Collections;
 using System.ComponentModel;
 using YamlDotNet.Serialization;
 
@@ -15,6 +16,22 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
     private const string DEFAULT_POLICY_RULE_PREFIX = "Azure";
     private const string DEFAULT_BICEP_MINIMUM_VERSION = "0.4.451";
     private const int DEFAULT_BICEP_FILE_EXPANSION_TIMEOUT = 5;
+    private static readonly Hashtable DEFAULT_VIRTUAL_NETWORK = new()
+    {
+        ["addressSpace"] = new Hashtable
+        {
+            ["addressPrefixes"] = new[] { "192.0.2.0/24" }
+        }
+    };
+    private static readonly Hashtable DEFAULT_VIRTUAL_NETWORK_SUBNET = new()
+    {
+        ["addressPrefix"] = "192.0.2.0/28",
+        ["addressPrefixes"] = new[] { "192.0.2.0/28" }
+    };
+    private static readonly Hashtable DEFAULT_NETWORK_MANAGER_IPAM_POOL = new()
+    {
+        ["addressPrefixes"] = new[] { "192.0.2.0/24" }
+    };
 
     internal static readonly ConfigurationOption Default = new()
     {
@@ -25,6 +42,9 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
         ParameterDefaults = ParameterDefaultsOption.Default,
         Deployment = DeploymentOption.Default,
         Deployer = DeployerOption.Default,
+        VirtualNetwork = DEFAULT_VIRTUAL_NETWORK,
+        VirtualNetworkSubnet = DEFAULT_VIRTUAL_NETWORK_SUBNET,
+        NetworkManagerIpamPool = DEFAULT_NETWORK_MANAGER_IPAM_POOL,
         PolicyRulePrefix = DEFAULT_POLICY_RULE_PREFIX,
         BicepMinimumVersion = DEFAULT_BICEP_MINIMUM_VERSION,
         BicepFileExpansionTimeout = DEFAULT_BICEP_FILE_EXPANSION_TIMEOUT,
@@ -42,6 +62,9 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
         ParameterDefaults = null;
         Deployment = null;
         Deployer = null;
+        VirtualNetwork = null;
+        VirtualNetworkSubnet = null;
+        NetworkManagerIpamPool = null;
         PolicyIgnoreList = null;
         PolicyRulePrefix = null;
         BicepMinimumVersion = null;
@@ -60,6 +83,9 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
         ParameterDefaults = new ParameterDefaultsOption(option.ParameterDefaults);
         Deployment = new DeploymentOption(option.Deployment);
         Deployer = new DeployerOption(option.Deployer);
+        VirtualNetwork = option.VirtualNetwork;
+        VirtualNetworkSubnet = option.VirtualNetworkSubnet;
+        NetworkManagerIpamPool = option.NetworkManagerIpamPool;
         PolicyIgnoreList = (string[])option.PolicyIgnoreList?.Clone();
         PolicyRulePrefix = option.PolicyRulePrefix;
         BicepMinimumVersion = option.BicepMinimumVersion;
@@ -83,6 +109,9 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
             ParameterDefaults == other.ParameterDefaults &&
             Deployment == other.Deployment &&
             Deployer == other.Deployer &&
+            VirtualNetwork == other.VirtualNetwork &&
+            VirtualNetworkSubnet == other.VirtualNetworkSubnet &&
+            NetworkManagerIpamPool == other.NetworkManagerIpamPool &&
             PolicyIgnoreList == other.PolicyIgnoreList &&
             PolicyRulePrefix == other.PolicyRulePrefix &&
             BicepMinimumVersion == other.BicepMinimumVersion &&
@@ -102,6 +131,9 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
             hash = hash * 23 + (ParameterDefaults != null ? ParameterDefaults.GetHashCode() : 0);
             hash = hash * 23 + (Deployment != null ? Deployment.GetHashCode() : 0);
             hash = hash * 23 + (Deployer != null ? Deployer.GetHashCode() : 0);
+            hash = hash * 23 + (VirtualNetwork != null ? VirtualNetwork.GetHashCode() : 0);
+            hash = hash * 23 + (VirtualNetworkSubnet != null ? VirtualNetworkSubnet.GetHashCode() : 0);
+            hash = hash * 23 + (NetworkManagerIpamPool != null ? NetworkManagerIpamPool.GetHashCode() : 0);
             hash = hash * 23 + (PolicyIgnoreList != null ? PolicyIgnoreList.GetHashCode() : 0);
             hash = hash * 23 + (PolicyRulePrefix != null ? PolicyRulePrefix.GetHashCode() : 0);
             hash = hash * 23 + (BicepMinimumVersion != null ? BicepMinimumVersion.GetHashCode() : 0);
@@ -121,11 +153,36 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
             ParameterDefaults = ParameterDefaultsOption.Combine(o1?.ParameterDefaults, o2?.ParameterDefaults),
             Deployment = DeploymentOption.Combine(o1?.Deployment, o2?.Deployment),
             Deployer = DeployerOption.Combine(o1?.Deployer, o2?.Deployer),
+            VirtualNetwork = CombineMockProperties(o1?.VirtualNetwork, o2?.VirtualNetwork),
+            VirtualNetworkSubnet = CombineMockProperties(o1?.VirtualNetworkSubnet, o2?.VirtualNetworkSubnet),
+            NetworkManagerIpamPool = CombineMockProperties(o1?.NetworkManagerIpamPool, o2?.NetworkManagerIpamPool),
             PolicyIgnoreList = o1?.PolicyIgnoreList ?? o2?.PolicyIgnoreList,
             PolicyRulePrefix = o1?.PolicyRulePrefix ?? o2?.PolicyRulePrefix,
             BicepMinimumVersion = o1?.BicepMinimumVersion ?? o2?.BicepMinimumVersion,
             BicepFileExpansionTimeout = o1?.BicepFileExpansionTimeout ?? o2?.BicepFileExpansionTimeout,
         };
+    }
+
+    private static Hashtable CombineMockProperties(IDictionary preferred, IDictionary fallback)
+    {
+        if (preferred == null)
+            return fallback as Hashtable;
+
+        var result = new Hashtable(StringComparer.OrdinalIgnoreCase);
+        if (fallback != null)
+        {
+            foreach (DictionaryEntry entry in fallback)
+                result[entry.Key] = entry.Value;
+        }
+
+        foreach (DictionaryEntry entry in preferred)
+        {
+            result[entry.Key] = entry.Value is IDictionary preferredValue && result[entry.Key] is IDictionary fallbackValue
+                ? CombineMockProperties(preferredValue, fallbackValue)
+                : entry.Value;
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -176,6 +233,27 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
     [DefaultValue(null)]
     [YamlMember(Alias = "AZURE_DEPLOYER", ApplyNamingConventions = false)]
     public DeployerOption Deployer { get; set; }
+
+    /// <summary>
+    /// Configures placeholder properties for mocked virtual network resources.
+    /// </summary>
+    [DefaultValue(null)]
+    [YamlMember(Alias = "AZURE_VIRTUAL_NETWORK", ApplyNamingConventions = false)]
+    public Hashtable VirtualNetwork { get; set; }
+
+    /// <summary>
+    /// Configures placeholder properties for mocked virtual network subnet resources.
+    /// </summary>
+    [DefaultValue(null)]
+    [YamlMember(Alias = "AZURE_VIRTUAL_NETWORK_SUBNET", ApplyNamingConventions = false)]
+    public Hashtable VirtualNetworkSubnet { get; set; }
+
+    /// <summary>
+    /// Configures placeholder properties for mocked network manager IPAM pool resources.
+    /// </summary>
+    [DefaultValue(null)]
+    [YamlMember(Alias = "AZURE_NETWORK_MANAGER_IPAM_POOL", ApplyNamingConventions = false)]
+    public Hashtable NetworkManagerIpamPool { get; set; }
 
     /// <summary>
     /// Configures the policy rule prefix.

@@ -40,6 +40,9 @@ public sealed class OptionsTests
         Assert.Equal("unit-test-mg", actual.Configuration.ManagementGroup.Name);
         Assert.Equal("My test management group", actual.Configuration.ManagementGroup.Properties.DisplayName);
         Assert.Equal("deployment-from-yaml", actual.Configuration.Deployment.Name);
+        Assert.Equal("192.0.2.0/24", ((IList)((IDictionary)actual.Configuration.VirtualNetwork["addressSpace"])["addressPrefixes"])[0]);
+        Assert.Equal("192.0.2.0/28", actual.Configuration.VirtualNetworkSubnet["addressPrefix"]);
+        Assert.Equal("192.0.2.0/24", ((IList)actual.Configuration.NetworkManagerIpamPool["addressPrefixes"])[0]);
         Assert.Equal("AzureCustomPrefix", actual.Configuration.PolicyRulePrefix);
         Assert.Equal("11111111-1111-1111-1111-111111111111", actual.Configuration.Deployer.ObjectId);
         Assert.Equal("11111111-1111-1111-1111-111111111111", actual.Configuration.Deployer.TenantId);

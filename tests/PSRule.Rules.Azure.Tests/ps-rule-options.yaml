@@ -33,6 +33,14 @@ configuration:
   AZURE_DEPLOYER:
     objectId: '11111111-1111-1111-1111-111111111111'
     tenantId: '11111111-1111-1111-1111-111111111111'
+  AZURE_VIRTUAL_NETWORK:
+    addressSpace:
+      addressPrefixes: [ '192.0.2.0/24' ]
+  AZURE_VIRTUAL_NETWORK_SUBNET:
+    addressPrefix: '192.0.2.0/28'
+    addressPrefixes: [ '192.0.2.0/28' ]
+  AZURE_NETWORK_MANAGER_IPAM_POOL:
+    addressPrefixes: [ '192.0.2.0/24' ]
   AZURE_AKS_CLUSTER_MINIMUM_VERSION: '9.99.9'
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
   - location: 'Antarctica North'

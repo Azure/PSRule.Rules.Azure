@@ -35,6 +35,8 @@ internal abstract class NestedTemplateContext(ITemplateContext context) : Resour
 
     public DeployerOption Deployer => _Inner.Deployer;
 
+    public ConfigurationOption Configuration => _Inner.Configuration;
+
     public DiagnosticBehaviors DiagnosticBehaviors => _Inner.DiagnosticBehaviors;
 
     public virtual string Name => _Inner.Name;

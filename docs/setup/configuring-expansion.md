@@ -217,6 +217,49 @@ configuration:
   AZURE_PARAMETER_FILE_METADATA_LINK: true
 ```
 
+### Mocked resource properties
+
+<!-- module:version v1.49.0 -->
+
+When a `reference()` call uses an external resource or an existing resource with no properties, PSRule for Azure uses
+placeholder properties to continue expansion. Configure these options to replace the default placeholder properties for
+the listed resource types. Any property not specified in the option uses its default placeholder value.
+See [Expansion internals](../license-contributing/expansion-internals.md#mocked-properties) for the default values.
+
+#### Virtual network
+
+Configure placeholder properties for `Microsoft.Network/virtualNetworks` resources with `AZURE_VIRTUAL_NETWORK`.
+
+```yaml title='ps-rule.yaml'
+configuration:
+  AZURE_VIRTUAL_NETWORK:
+    addressSpace:
+      addressPrefixes: [ '10.0.0.0/16' ]
+```
+
+#### Virtual network subnet
+
+Configure placeholder properties for `Microsoft.Network/virtualNetworks/subnets` resources with
+`AZURE_VIRTUAL_NETWORK_SUBNET`.
+
+```yaml title='ps-rule.yaml'
+configuration:
+  AZURE_VIRTUAL_NETWORK_SUBNET:
+    addressPrefix: '10.0.0.0/24'
+    addressPrefixes: [ '10.0.0.0/24' ]
+```
+
+#### Network manager IPAM pool
+
+Configure placeholder properties for `Microsoft.Network/networkManagers/ipamPools` resources with
+`AZURE_NETWORK_MANAGER_IPAM_POOL`.
+
+```yaml title='ps-rule.yaml'
+configuration:
+  AZURE_NETWORK_MANAGER_IPAM_POOL:
+    addressPrefixes: [ '10.0.0.0/16' ]
+```
+
 ### Deployment properties
 
 <!-- module:version v1.17.0 -->

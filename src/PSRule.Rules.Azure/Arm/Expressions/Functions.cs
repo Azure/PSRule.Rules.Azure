@@ -1135,8 +1135,8 @@ internal static class Functions
 
         // If the resource is part of the deployment try to get the object
         return context.TryGetResource(resourceId, out var resourceValue)
-            ? GetReferenceResult(resourceValue, full)
-            : full ? new Mock.MockResource(resourceId) : new Mock.MockResource(resourceId)["properties"];
+            ? GetReferenceResult(context, resourceValue, full)
+            : GetReferenceResult(context, resourceId, full);
     }
 
     /// <summary>
@@ -1165,23 +1165,37 @@ internal static class Functions
 
         var result = new object[resources.Length];
         for (var i = 0; i < resources.Length; i++)
-            result[i] = GetReferenceResult(resources[i], full);
+            result[i] = GetReferenceResult(context, resources[i], full);
 
         return result;
     }
 
-    private static object GetReferenceResult(IResourceValue resource, bool full)
+    private static object GetReferenceResult(ITemplateContext context, IResourceValue resource, bool full)
     {
         if (resource is DeploymentValue deployment)
             return full ? deployment : deployment.Properties;
 
         if (resource.Existing && !resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out _))
-            return full ? new Mock.MockResource(resource.Id) : new Mock.MockResource(resource.Id)[PROPERTY_PROPERTIES];
+            return GetReferenceResult(context, resource.Id, full);
 
         if (!full && resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var properties))
             return new Mock.MockObject(properties);
 
         return new Mock.MockObject(full ? resource.Value : new JObject());
+    }
+
+    private static object GetReferenceResult(ITemplateContext context, string resourceId, bool full)
+    {
+        var resourceType = ResourceHelper.GetResourceType(resourceId);
+        var mockProperties = string.Equals(resourceType, "Microsoft.Network/virtualNetworks", StringComparison.OrdinalIgnoreCase)
+            ? context.Configuration.VirtualNetwork
+            : string.Equals(resourceType, "Microsoft.Network/virtualNetworks/subnets", StringComparison.OrdinalIgnoreCase)
+                ? context.Configuration.VirtualNetworkSubnet
+                : string.Equals(resourceType, "Microsoft.Network/networkManagers/ipamPools", StringComparison.OrdinalIgnoreCase)
+                    ? context.Configuration.NetworkManagerIpamPool
+                    : null;
+        var mock = new Mock.MockResource(resourceId, mockProperties == null ? null : JObject.FromObject(mockProperties));
+        return full ? mock : mock[PROPERTY_PROPERTIES];
     }
 
     /// <summary>

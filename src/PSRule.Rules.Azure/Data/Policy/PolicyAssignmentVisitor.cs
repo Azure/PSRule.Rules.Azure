@@ -140,6 +140,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _Validator = new TemplateValidator();
                 _ParameterAssignments = new Dictionary<string, JToken>();
                 Pipeline = context;
+                Configuration = ConfigurationOption.Combine(context?.Option?.Configuration, ConfigurationOption.Default);
                 _FieldPrefix = new Stack<string>();
 
                 ResourceGroup = context?.Option?.Configuration?.ResourceGroup ?? ResourceGroupOption.Default;
@@ -178,6 +179,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             public TenantOption Tenant { get; }
             public ManagementGroupOption ManagementGroup { get; }
             public DeployerOption Deployer { get; }
+            public ConfigurationOption Configuration { get; }
             public DiagnosticBehaviors DiagnosticBehaviors => DiagnosticBehaviors.None;
 
             public string PolicyRulePrefix { get; }

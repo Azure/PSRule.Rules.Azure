@@ -923,6 +923,67 @@ public sealed class FunctionTests
 
     [Fact]
     [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void ReferenceMockProperties()
+    {
+        var context = GetContext();
+        var virtualNetwork = Functions.Reference(context, [
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/microsoft.network/virtualnetworks/vnet-test"
+        ]) as Mock.MockObject;
+        Assert.Equal("192.0.2.0/24", virtualNetwork["addressSpace"]["addressPrefixes"][0].Value<string>());
+
+        var subnet = Functions.Reference(context, [
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test"
+        ]) as Mock.MockObject;
+        Assert.Equal("192.0.2.0/28", subnet["addressPrefix"].Value<string>());
+        Assert.Equal("192.0.2.0/28", subnet["addressPrefixes"][0].Value<string>());
+
+        var ipamPool = Functions.Reference(context, [
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkManagers/manager-test/ipamPools/pool-test"
+        ]) as Mock.MockObject;
+        Assert.Equal("192.0.2.0/24", ipamPool["addressPrefixes"][0].Value<string>());
+
+        var option = new PSRuleOption
+        {
+            Configuration = ConfigurationOption.Combine(new ConfigurationOption
+            {
+                VirtualNetwork = new Hashtable
+                {
+                    ["addressSpace"] = new Hashtable
+                    {
+                        ["addressPrefixes"] = new[] { "10.0.0.0/16" }
+                    }
+                },
+                VirtualNetworkSubnet = new Hashtable
+                {
+                    ["addressPrefix"] = "10.0.0.0/24"
+                },
+                NetworkManagerIpamPool = new Hashtable
+                {
+                    ["addressPrefixes"] = new[] { "10.0.0.0/16" }
+                }
+            }, ConfigurationOption.Default)
+        };
+        context = GetContext(option);
+
+        virtualNetwork = Functions.Reference(context, [
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test"
+        ]) as Mock.MockObject;
+        Assert.Equal("10.0.0.0/16", virtualNetwork["addressSpace"]["addressPrefixes"][0].Value<string>());
+
+        subnet = Functions.Reference(context, [
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-test/subnets/subnet-test"
+        ]) as Mock.MockObject;
+        Assert.Equal("10.0.0.0/24", subnet["addressPrefix"].Value<string>());
+        Assert.Equal("192.0.2.0/28", subnet["addressPrefixes"][0].Value<string>());
+
+        ipamPool = Functions.Reference(context, [
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkManagers/manager-test/ipamPools/pool-test"
+        ]) as Mock.MockObject;
+        Assert.Equal("10.0.0.0/16", ipamPool["addressPrefixes"][0].Value<string>());
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
     public void References()
     {
         var context = GetContext();
@@ -2673,6 +2734,7 @@ public sealed class FunctionTests
             Tenant = option.Configuration.Tenant,
             ManagementGroup = option.Configuration.ManagementGroup,
             Deployer = option.Configuration.Deployer,
+            Configuration = option.Configuration,
         };
         context.Load(JObject.Parse("{ \"parameters\": { \"name\": { \"value\": \"abcdef\" } } }"));
         return context;

@@ -78,7 +78,7 @@ internal sealed class Mock
 
     internal sealed class MockResource : MockUnknownObject
     {
-        public MockResource(string resourceId)
+        public MockResource(string resourceId, JObject? mockProperties = null)
             : base()
         {
             ResourceId = resourceId;
@@ -103,7 +103,7 @@ internal sealed class Mock
                 Add("name", new JValue(name));
             }
 
-            var properties = new MockResourceProperties(resourceId ?? string.Empty);
+            var properties = new MockResourceProperties(resourceId ?? string.Empty, mockProperties);
             Add("properties", properties);
         }
 
@@ -126,10 +126,15 @@ internal sealed class Mock
     {
         private readonly string _ResourceId;
 
-        public MockResourceProperties(string resourceId)
+        public MockResourceProperties(string resourceId, JObject? mockProperties)
             : base()
         {
             _ResourceId = resourceId;
+            if (mockProperties != null)
+            {
+                foreach (var property in mockProperties.Properties())
+                    Add(property.Name, property.Value.DeepClone());
+            }
         }
 
         protected override JToken CreateUnknownProperty(object key)

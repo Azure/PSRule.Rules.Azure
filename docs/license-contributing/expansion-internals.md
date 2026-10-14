@@ -231,7 +231,9 @@ Additionally for secrets the value is intentionally unknown.
 PSRule for Azure uses several mocking techniques to allow the expansion process to continue when
 suitable values can not be projected or materialized onto the resource.
 
-For the following resource properties, placeholder values are used during expansion:
+The following placeholder values are used for the listed resource properties during expansion.
+These defaults can be customized with the options in
+[Configuring expansion](../setup/configuring-expansion.md#mocked-resource-properties).
 
 | Resource type | Property path | Placeholder |
 | ------------- | ------------- | ----------- |

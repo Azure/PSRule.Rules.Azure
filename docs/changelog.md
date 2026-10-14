@@ -33,7 +33,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.48.0-B0228:
 
 - General improvements:
-  - Documented placeholder values used for mocked network resource properties.
+  - Added configuration options for placeholder properties on mocked virtual networks, subnets, and IPAM pools.
     [#3944](https://github.com/Azure/PSRule.Rules.Azure/issues/3944)
   - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
     [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)

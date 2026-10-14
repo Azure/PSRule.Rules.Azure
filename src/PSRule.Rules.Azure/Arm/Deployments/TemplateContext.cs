@@ -115,6 +115,7 @@ internal abstract partial class DeploymentVisitor
             : this()
         {
             Pipeline = pipelineContext;
+            Configuration = ConfigurationOption.Combine(pipelineContext?.Option?.Configuration, ConfigurationOption.Default);
             if (pipelineContext?.Option?.Configuration?.Subscription != null)
                 Subscription = pipelineContext.Option.Configuration.Subscription;
 
@@ -154,6 +155,8 @@ internal abstract partial class DeploymentVisitor
         public ManagementGroupOption ManagementGroup { get; internal set; }
 
         public DeployerOption Deployer { get; internal set; }
+
+        public ConfigurationOption Configuration { get; internal set; } = ConfigurationOption.Default;
 
         public IDictionary<string, object> ParameterDefaults { get; private set; }
 

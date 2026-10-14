@@ -16,6 +16,8 @@ internal interface ITemplateContext : IValidationContext
 {
     string Name { get; }
 
+    ConfigurationOption Configuration { get; }
+
     CopyIndexStore CopyIndex { get; }
 
     /// <summary>
