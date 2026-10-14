@@ -16,6 +16,8 @@ internal interface IDeploymentSymbol
     void Configure(IResourceValue r);
 
     string? GetId(int index);
+
+    bool TryGetResource(int index, out IResourceValue? resource);
 }
 
 #nullable restore
