@@ -251,8 +251,8 @@ function global:IsConsumptionPlan {
     param ()
     process {
         return (
-            $TargetObject.sku.Name -eq 'Y1' -or
-            $TargetObject.sku.Tier -eq 'Dynamic'
+            $TargetObject.sku.Name -in 'Y1', 'FC1' -or
+            $TargetObject.sku.Tier -in 'Dynamic', 'FlexConsumption'
         );
     }
 }
