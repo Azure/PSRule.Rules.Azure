@@ -223,13 +223,11 @@ internal abstract partial class DeploymentVisitor
             if (_Symbols.TryGetValue(nameOrResourceId, out var symbol) && symbol != null)
             {
                 symbol.TryGetResource(0, out symbolResource);
-
-                // The ID of an existing resource is expanded on demand and may not be resolvable.
                 try
                 {
                     resourceId = symbol.GetId(0);
                 }
-                catch
+                catch (TemplateSymbolException)
                 {
                     resourceId = null;
                 }

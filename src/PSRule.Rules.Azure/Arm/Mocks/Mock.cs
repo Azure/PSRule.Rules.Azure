@@ -201,17 +201,69 @@ internal sealed class Mock
     {
         private readonly string _ResourceId;
         private readonly string _ResourceType;
+        private readonly string _PropertyPath;
 
         public MockResourceObject(JObject value, string resourceId, string resourceType)
+            : this(value, resourceId, resourceType, propertyPath: string.Empty) { }
+
+        private MockResourceObject(JObject value, string resourceId, string resourceType, string propertyPath)
+            : base(value)
+        {
+            _ResourceId = resourceId;
+            _ResourceType = resourceType;
+            _PropertyPath = propertyPath;
+        }
+
+        public override JToken? GetValue(object key)
+        {
+            key = GetBaseObject(key);
+            var result = base.GetValue(key);
+            if (key is string propertyName && result?.GetType() == typeof(MockObject))
+            {
+                var propertyPath = string.IsNullOrEmpty(_PropertyPath) ? propertyName : string.Concat(_PropertyPath, ".", propertyName);
+                result = new MockResourceObject((JObject)result, _ResourceId, _ResourceType, propertyPath);
+                base[key] = result;
+            }
+            return result;
+        }
+
+        protected override JToken CreateUnknownProperty(object key)
+        {
+            if (key is not string propertyName)
+                return base.CreateUnknownProperty(key);
+
+            var propertyPath = string.IsNullOrEmpty(_PropertyPath) ? propertyName : string.Concat(_PropertyPath, ".", propertyName);
+            return CreateResourceProperty(_ResourceId, _ResourceType, propertyName, propertyPath, IsSecret);
+        }
+    }
+
+    /// <summary>
+    /// The full representation of a known resource.
+    /// </summary>
+    internal sealed class MockResourceFullObject : MockObject
+    {
+        private readonly string _ResourceId;
+        private readonly string _ResourceType;
+
+        public MockResourceFullObject(JObject value, string resourceId, string resourceType)
             : base(value)
         {
             _ResourceId = resourceId;
             _ResourceType = resourceType;
         }
 
-        protected override JToken CreateUnknownProperty(object key)
+        public override JToken? GetValue(object key)
         {
-            return key is string propertyName ? CreateResourceProperty(_ResourceId, _ResourceType, propertyName, propertyName, IsSecret) : base.CreateUnknownProperty(key);
+            key = GetBaseObject(key);
+            var result = base.GetValue(key);
+            if (key is string propertyName &&
+                StringComparer.OrdinalIgnoreCase.Equals(propertyName, "properties") &&
+                result?.GetType() == typeof(MockObject))
+            {
+                result = new MockResourceObject((JObject)result, _ResourceId, _ResourceType);
+                base[key] = result;
+            }
+            return result;
         }
     }
 
