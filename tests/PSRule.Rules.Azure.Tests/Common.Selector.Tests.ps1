@@ -66,6 +66,7 @@ Describe 'SupportsTags' -Tag 'Common', 'Filters', 'SupportsTags' {
             'Microsoft.Authorization/policyDefinitions'
             'Microsoft.Authorization/policySetDefinitions'
             'Microsoft.Authorization/policyAssignments'
+            'Microsoft.SecurityInsights/dataConnectors'
             'microsoft.insights/diagnosticSettings'
             'Microsoft.KeyVault/vaults/providers/diagnosticSettings'
             'Microsoft.CostManagement/budgets'
