@@ -1,0 +1,105 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.1-experimental",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_EXPERIMENTAL_WARNING": "This template uses ARM features that are experimental. Experimental features should be enabled for testing purposes only, as there are no guarantees about the quality or stability of these features. Do not enable these settings for any production usage, or your production environment may be subject to breaking.",
+    "_EXPERIMENTAL_FEATURES_ENABLED": [
+      "Enable runtime values in tags and SKU"
+    ],
+    "_generator": {
+      "name": "bicep",
+      "version": "0.48.1.52935",
+      "templateHash": "5761478604071696096"
+    }
+  },
+  "functions": [
+    {
+      "namespace": "__bicep",
+      "members": {
+        "getSubnetExistingAddressPrefixes": {
+          "parameters": [
+            {
+              "type": "array",
+              "nullable": true,
+              "name": "subnets"
+            },
+            {
+              "type": "string",
+              "name": "subnetName"
+            }
+          ],
+          "output": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "value": "[tryGet(tryGet(filter(coalesce(parameters('subnets'), createArray()), lambda('subnet', equals(lambdaVariables('subnet').name, parameters('subnetName')))), 0), 'properties', 'addressPrefixes')]"
+          }
+        }
+      }
+    }
+  ],
+  "parameters": {
+    "keepExistingTags": {
+      "type": "bool",
+      "defaultValue": true
+    },
+    "tags": {
+      "type": "object",
+      "defaultValue": {
+        "environment": "test"
+      }
+    },
+    "extraSubnets": {
+      "type": "array",
+      "defaultValue": [
+        {
+          "name": "functionApp",
+          "addressCount": "32"
+        }
+      ]
+    }
+  },
+  "resources": {
+    "storage": {
+      "copy": {
+        "name": "storage",
+        "count": "[length(range(0, 2))]"
+      },
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2025-06-01",
+      "name": "[format('thisnamespacetest{0}', range(0, 2)[copyIndex()])]",
+      "location": "eastus",
+      "tags": "[if(parameters('keepExistingTags'), union(coalesce(tryGet(target('full'), 'tags'), createObject()), parameters('tags')), parameters('tags'))]",
+      "sku": {
+        "name": "[coalesce(tryGet(target('full'), 'sku', 'name'), 'Standard_LRS')]"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "accessTier": "[if(not(empty(target('full'))), target('full').properties.accessTier, 'Cold')]"
+      }
+    },
+    "virtualNetwork": {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2025-07-01",
+      "name": "vnet-test",
+      "location": "eastus",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": "[tryGet(target('full'), 'properties', 'addressSpace', 'addressPrefixes')]",
+          "ipamPoolPrefixAllocations": [
+            {
+              "numberOfIpAddresses": "256",
+              "pool": {
+                "id": "[resourceId('Microsoft.Network/networkManagers/ipamPools', 'vnm-test', 'pool-test')]"
+              }
+            }
+          ]
+        },
+        "subnets": "[concat(createArray(createObject('name', 'App', 'properties', createObject('addressPrefixes', __bicep.getSubnetExistingAddressPrefixes(tryGet(target('full'), 'properties', 'subnets'), 'App'), 'ipamPoolPrefixAllocations', createArray(createObject('numberOfIpAddresses', '128', 'pool', createObject('id', resourceId('Microsoft.Network/networkManagers/ipamPools', 'vnm-test', 'pool-test'))))))), map(parameters('extraSubnets'), lambda('subnet', createObject('name', lambdaVariables('subnet').name, 'properties', createObject('addressPrefixes', __bicep.getSubnetExistingAddressPrefixes(tryGet(target('full'), 'properties', 'subnets'), lambdaVariables('subnet').name), 'ipamPoolPrefixAllocations', createArray(createObject('numberOfIpAddresses', lambdaVariables('subnet').addressCount, 'pool', createObject('id', resourceId('Microsoft.Network/networkManagers/ipamPools', 'vnm-test', 'pool-test')))))))))]"
+      }
+    }
+  }
+}

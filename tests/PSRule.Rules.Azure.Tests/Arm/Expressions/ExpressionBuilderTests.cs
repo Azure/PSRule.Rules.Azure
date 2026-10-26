@@ -4,12 +4,43 @@
 using System;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Arm.Deployments;
+using PSRule.Rules.Azure.Data.Template;
 using static PSRule.Rules.Azure.Arm.Deployments.DeploymentVisitor;
 
 namespace PSRule.Rules.Azure.Arm.Expressions;
 
 public sealed class ExpressionBuilderTests
 {
+    [Theory]
+    [InlineData("[target()]")]
+    [InlineData("[target('full')]")]
+    [InlineData("[target('FULL')]")]
+    [InlineData("[tryGet(target('full'), 'properties', 'addressSpace', 'addressPrefixes')]")]
+    public void BuildExpressionWithTarget_ReturnsNull(string expression)
+    {
+        Assert.Null(Build(GetContext(), expression));
+    }
+
+    [Theory]
+    [InlineData("[not(empty(target('full')))]", false)]
+    [InlineData("[coalesce(tryGet(target('full'), 'sku', 'name'), 'Standard_LRS')]", "Standard_LRS")]
+    [InlineData("[if(not(empty(target('full'))), target('full').properties.accessTier, 'Cold')]", "Cold")]
+    public void BuildExpressionWithTarget_EvaluatesFallback(string expression, object expected)
+    {
+        Assert.Equal(expected, Build(GetContext(), expression));
+    }
+
+    [Theory]
+    [InlineData("[target('full', 'full')]")]
+    [InlineData("[target('invalid')]")]
+    [InlineData("[target(1)]")]
+    [InlineData("[target(null())]")]
+    public void BuildExpressionWithInvalidTarget_Throws(string expression)
+    {
+        var exception = Assert.Throws<TemplateFunctionException>(() => Build(GetContext(), expression));
+        Assert.IsType<ExpressionArgumentException>(exception.InnerException);
+    }
+
     [Fact]
     public void BuildExpression1()
     {

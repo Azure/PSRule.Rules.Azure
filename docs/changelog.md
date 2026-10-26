@@ -42,6 +42,8 @@ What's changed since pre-release v1.48.0-B0228:
     - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
       [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
 - Bug fixes:
+  - Fixed Bicep expansion failing on `this.existingResource()` and `this.exists()` by supporting the ARM `target` function for offline analysis.
+    [#3884](https://github.com/Azure/PSRule.Rules.Azure/issues/3884)
   - Fixed `cidrHost` and `cidrSubnet` failing on unresolved virtual network, subnet, and IPAM pool address prefixes by @oWretch.
     [#3907](https://github.com/Azure/PSRule.Rules.Azure/issues/3907)
   - Fixed `tryGet` throwing instead of returning `null` for a property lookup against an array by @oWretch.
