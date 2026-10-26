@@ -599,16 +599,26 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
             return context.Deployment.DeploymentScope;
         }
 
+        // Handle special case for cross-scope deployments which set an explicit scope, such as a nested management group.
+        ResolveScopeProperty(context, resource, out var scopeTenant, out var scopeManagementGroup, out var scopeSubscriptionId, out var scopeResourceGroupName);
+        if (scopeTenant != null)
+        {
+            managementGroup = null;
+            subscriptionId = null;
+            resourceGroupName = null;
+            return DeploymentScope.Tenant;
+        }
+
         // Handle special case for cross-scope deployments which may have an alternative subscription or resource group set.
         subscriptionId = ResolveDeploymentScopeProperty(context, resource, PROPERTY_SUBSCRIPTION_ID, contextValue:
-            context.Deployment.DeploymentScope == DeploymentScope.Subscription ||
-            context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.Subscription.SubscriptionId : null);
+            scopeSubscriptionId ?? (context.Deployment.DeploymentScope == DeploymentScope.Subscription ||
+            context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.Subscription.SubscriptionId : null));
 
         resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCE_GROUP, contextValue:
-            context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.ResourceGroup.Name : null);
+            scopeResourceGroupName ?? (context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.ResourceGroup.Name : null));
 
         managementGroup = ResolveDeploymentScopeProperty(context, resource, PROPERTY_MANAGEMENT_GROUP, contextValue:
-            context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup ? context.ManagementGroup.Name : null);
+            scopeManagementGroup ?? (context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup ? context.ManagementGroup.Name : null));
 
         // Update the deployment scope.
         if (context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup || resourceGroupName != null)
@@ -625,6 +635,23 @@ internal abstract partial class DeploymentVisitor : ResourceManagerVisitor
         }
 
         return context.Deployment.DeploymentScope;
+    }
+
+    /// <summary>
+    /// Get the target scope components from an explicit <c>scope</c> property set on the resource.
+    /// </summary>
+    private static void ResolveScopeProperty(TemplateContext context, JObject resource, out string tenant, out string managementGroup, out string subscriptionId, out string resourceGroupName)
+    {
+        tenant = null;
+        managementGroup = null;
+        subscriptionId = null;
+        resourceGroupName = null;
+
+        var scopeId = context.ExpandProperty<string>(resource, PROPERTY_SCOPE);
+        if (string.IsNullOrEmpty(scopeId))
+            return;
+
+        ResourceHelper.ResourceIdComponents(scopeId, out tenant, out managementGroup, out subscriptionId, out resourceGroupName, out _, out _);
     }
 
     private static string ResolveDeploymentScopeProperty(TemplateContext context, JObject resource, string propertyName, string contextValue)

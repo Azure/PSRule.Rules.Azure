@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Arm.Deployments;
 
@@ -76,5 +77,28 @@ public sealed class BicepSymbolicNameTests : TemplateVisitorTestsBase
             "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Web/sites/example1-webapp",
             "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Web/sites/example2-webapp"
         ], actual);
+    }
+
+    /// <summary>
+    /// A string sourced from an object typed module output must resolve to a string when
+    /// passed into a nested deployment and consumed by <c>guid()</c>.
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WhenObjectOutputPropertyUsedInGuid_ShouldResolveUniqueNames()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.6.json"), null, out _);
+
+        var actual = resources.Where(r => r["type"].Value<string>() == "Microsoft.Authorization/roleAssignments").ToArray();
+        Assert.Equal(2, actual.Length);
+        Assert.NotEqual(actual[0]["name"].Value<string>(), actual[1]["name"].Value<string>());
+
+        // The role definition ID is sourced from an object typed output of a module deployed to a child management group.
+        foreach (var assignment in actual)
+        {
+            Assert.StartsWith(
+                "/providers/Microsoft.Management/managementGroups/mg-intermediate-root/providers/Microsoft.Authorization/roleDefinitions/",
+                assignment["properties"]["roleDefinitionId"].Value<string>());
+        }
+        System.Console.WriteLine("DUMP0: " + actual[0].ToString());
     }
 }
