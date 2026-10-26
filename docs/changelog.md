@@ -42,6 +42,8 @@ What's changed since pre-release v1.48.0-B0228:
     - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
       [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
 - Bug fixes:
+  - Excluded `Microsoft.SecurityInsights/dataConnectors` from tag rules because data connectors do not support tags.
+    [#3959](https://github.com/Azure/PSRule.Rules.Azure/issues/3959)
   - Fixed `cidrHost` and `cidrSubnet` failing on unresolved virtual network, subnet, and IPAM pool address prefixes by @oWretch.
     [#3907](https://github.com/Azure/PSRule.Rules.Azure/issues/3907)
   - Fixed `tryGet` throwing instead of returning `null` for a property lookup against an array by @oWretch.
