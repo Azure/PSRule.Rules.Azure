@@ -138,6 +138,7 @@ internal static class Functions
         new FunctionDescriptor("providers", Providers),
         new FunctionDescriptor("reference", Reference),
         new FunctionDescriptor("references", References),
+        new FunctionDescriptor("target", Target),
         new FunctionDescriptor("resourceId", ResourceId),
         new FunctionDescriptor("subscriptionResourceId", SubscriptionResourceId),
         new FunctionDescriptor("tenantResourceId", TenantResourceId),
@@ -1166,6 +1167,22 @@ internal static class Functions
             result[i] = GetReferenceResult(resources[i], full);
 
         return result;
+    }
+
+    /// <summary>
+    /// target(['Full'])
+    /// </summary>
+    internal static object Target(ITemplateContext context, object[] args)
+    {
+        var argCount = CountArgs(args);
+        if (argCount > 1)
+            throw ArgumentsOutOfRange(nameof(Target), args);
+
+        if (argCount == 1 && (!ExpressionHelpers.TryString(args[0], out var full) || !string.Equals(full, PROPERTY_FULL, StringComparison.OrdinalIgnoreCase)))
+            throw ArgumentFormatInvalid(nameof(Target));
+
+        // Offline expansion models a new deployment, not the resource state preceding an update.
+        return null;
     }
 
     private static object GetReferenceResult(IResourceValue resource, bool full)
