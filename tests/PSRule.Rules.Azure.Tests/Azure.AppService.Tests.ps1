@@ -278,6 +278,65 @@ Describe 'Azure.AppService' -Tag 'AppService' {
         }
     }
 
+    Context 'Plan instance count' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                Name          = 'Azure.AppService.PlanInstanceCount'
+                Outcome       = 'All'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+        }
+
+        BeforeEach {
+            $testObject = [PSCustomObject]@{
+                name       = 'plan-test'
+                type       = 'Microsoft.Web/serverfarms'
+                apiVersion = '2025-03-01'
+                location   = 'eastus'
+                kind       = 'functionapp'
+                sku        = @{}
+            }
+        }
+
+        It 'Excludes <Name>' -TestCases @(
+            @{ Name = 'FC1 without capacity'; Sku = @{ name = 'FC1' } }
+            @{ Name = 'FC1 with one instance'; Sku = @{ name = 'FC1'; capacity = 1 } }
+            @{ Name = 'FlexConsumption without capacity'; Sku = @{ tier = 'FlexConsumption' } }
+            @{ Name = 'FlexConsumption with one instance'; Sku = @{ tier = 'FlexConsumption'; capacity = 1 } }
+            @{ Name = 'FC1 and FlexConsumption without capacity'; Sku = @{ name = 'FC1'; tier = 'FlexConsumption' } }
+            @{ Name = 'FC1 and FlexConsumption with one instance'; Sku = @{ name = 'FC1'; tier = 'FlexConsumption'; capacity = 1 } }
+            @{ Name = 'lowercase Flex Consumption'; Sku = @{ name = 'fc1'; tier = 'flexconsumption'; capacity = 1 } }
+            @{ Name = 'Y1'; Sku = @{ name = 'Y1' } }
+            @{ Name = 'Dynamic'; Sku = @{ tier = 'Dynamic' } }
+            @{ Name = 'EP1'; Sku = @{ name = 'EP1'; capacity = 1 } }
+            @{ Name = 'EP2'; Sku = @{ name = 'EP2'; capacity = 1 } }
+            @{ Name = 'EP3'; Sku = @{ name = 'EP3'; capacity = 1 } }
+            @{ Name = 'ElasticPremium'; Sku = @{ tier = 'ElasticPremium'; capacity = 1 } }
+        ) {
+            $testObject.sku = $Sku;
+            $ruleResult = @($testObject | Invoke-PSRule @invokeParams);
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult[0].Outcome | Should -Be 'None';
+            $ruleResult[0].OutcomeReason | Should -Be 'PreconditionFail';
+        }
+
+        It 'Evaluates Dedicated plan <Name>' -TestCases @(
+            @{ Name = 'without capacity'; Sku = @{ name = 'S1'; tier = 'Standard' }; Expected = 'Fail' }
+            @{ Name = 'with one instance'; Sku = @{ name = 'S1'; tier = 'Standard'; capacity = 1 }; Expected = 'Fail' }
+            @{ Name = 'with two instances'; Sku = @{ name = 'S1'; tier = 'Standard'; capacity = 2 }; Expected = 'Pass' }
+            @{ Name = 'with three instances'; Sku = @{ name = 'S1'; tier = 'Standard'; capacity = 3 }; Expected = 'Pass' }
+        ) {
+            $testObject.sku = $Sku;
+            $ruleResult = @($testObject | Invoke-PSRule @invokeParams);
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult[0].Outcome | Should -Be $Expected;
+            $ruleResult[0].OutcomeReason | Should -Be 'Processed';
+        }
+    }
+
     Context 'With Template' {
         BeforeAll {
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AppService.json;
