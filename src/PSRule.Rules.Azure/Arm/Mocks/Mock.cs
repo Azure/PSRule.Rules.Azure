@@ -15,11 +15,15 @@ internal sealed class Mock
     private const string RESOURCE_TYPE_VIRTUAL_NETWORK = "Microsoft.Network/virtualNetworks";
     private const string RESOURCE_TYPE_SUBNET = "Microsoft.Network/virtualNetworks/subnets";
     private const string RESOURCE_TYPE_IPAM_POOL = "Microsoft.Network/networkManagers/ipamPools";
+    private const string RESOURCE_TYPE_USER_ASSIGNED_IDENTITY = "Microsoft.ManagedIdentity/userAssignedIdentities";
     private const string PATH_VIRTUAL_NETWORK_ADDRESS_PREFIXES = "addressSpace.addressPrefixes";
     private const string PATH_SUBNET_ADDRESS_PREFIX = "addressPrefix";
     private const string PATH_SUBNET_ADDRESS_PREFIXES = "addressPrefixes";
+    private const string PATH_PRINCIPAL_ID = "principalId";
+    private const string PATH_CLIENT_ID = "clientId";
     private const string PLACEHOLDER_VIRTUAL_NETWORK_CIDR = "192.0.2.0/24";
     private const string PLACEHOLDER_SUBNET_CIDR = "192.0.2.0/28";
+    private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 
     private static readonly MockPlaceholderDescriptor[] _ResourcePlaceholders =
     [
@@ -27,6 +31,8 @@ internal sealed class Mock
         new(RESOURCE_TYPE_SUBNET, PATH_SUBNET_ADDRESS_PREFIX, MockPlaceholderKind.String, [PLACEHOLDER_SUBNET_CIDR]),
         new(RESOURCE_TYPE_SUBNET, PATH_SUBNET_ADDRESS_PREFIXES, MockPlaceholderKind.Array, [PLACEHOLDER_SUBNET_CIDR]),
         new(RESOURCE_TYPE_IPAM_POOL, PATH_SUBNET_ADDRESS_PREFIXES, MockPlaceholderKind.Array, [PLACEHOLDER_VIRTUAL_NETWORK_CIDR]),
+        new(RESOURCE_TYPE_USER_ASSIGNED_IDENTITY, PATH_PRINCIPAL_ID, MockPlaceholderKind.String, [PLACEHOLDER_GUID]),
+        new(RESOURCE_TYPE_USER_ASSIGNED_IDENTITY, PATH_CLIENT_ID, MockPlaceholderKind.String, [PLACEHOLDER_GUID]),
     ];
 
     private enum MockPlaceholderKind
