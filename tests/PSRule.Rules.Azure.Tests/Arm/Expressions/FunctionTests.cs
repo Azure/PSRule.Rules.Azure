@@ -1048,6 +1048,22 @@ public sealed class FunctionTests
 
     [Fact]
     [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void ReferenceWithIdentityPlaceholders()
+    {
+        var context = GetContext();
+        var identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-001";
+
+        var identity = Functions.Reference(context, [identityId]) as Mock.MockObject;
+        Assert.NotNull(identity);
+        Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", identity["principalId"].Value<string>());
+        Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", identity["clientId"].Value<string>());
+        Assert.Equal(JTokenType.String, identity["principalId"].Type);
+        Assert.NotNull(Functions.UniqueString(context, ["vault", identity["principalId"]]));
+        Assert.NotNull(Functions.Guid(context, [identityId, identity["principalId"]]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
     public void References()
     {
         var context = GetContext();

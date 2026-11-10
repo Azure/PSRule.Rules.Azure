@@ -1444,4 +1444,22 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
         Assert.True(templateContext.RootDeployment.TryOutput("combinedAddressPrefixes", out JObject combinedAddressPrefixesOutput));
         Assert.Equal(JTokenType.Array, combinedAddressPrefixesOutput["value"].Type);
     }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3972
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WhenExistingResourcePropertyPassedToModuleAndHashed_ShouldExpand()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.46.json"), null, out _);
+
+        var deployment = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Resources/deployments" && r["name"].Value<string>().StartsWith("ra-", System.StringComparison.Ordinal));
+        Assert.NotNull(deployment);
+        Assert.Matches("^ra-[a-z0-9]{13}$", deployment["name"].Value<string>());
+
+        var assignment = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Authorization/roleAssignments");
+        Assert.NotNull(assignment);
+        Assert.True(System.Guid.TryParse(assignment["name"].Value<string>(), out _));
+        Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", assignment["properties"]["principalId"].Value<string>());
+    }
 }

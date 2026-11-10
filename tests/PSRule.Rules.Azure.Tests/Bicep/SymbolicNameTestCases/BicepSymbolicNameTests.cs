@@ -49,7 +49,7 @@ public sealed class BicepSymbolicNameTests : TemplateVisitorTestsBase
 
         actual = resources[2];
         Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
-        Assert.Equal("02041802-66a9-0a85-7330-8186e16422c7", actual["name"].Value<string>());
+        Assert.Equal("2f5ec487-2ecb-1424-fd53-71891b2f5eac", actual["name"].Value<string>());
     }
 
     /// <summary>
