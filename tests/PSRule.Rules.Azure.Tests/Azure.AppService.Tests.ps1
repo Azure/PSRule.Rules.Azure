@@ -337,6 +337,46 @@ Describe 'Azure.AppService' -Tag 'AppService' {
         }
     }
 
+    Context 'Availability zones' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                Name          = 'Azure.AppService.AvailabilityZone'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppService.AvailabilityZone.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+        }
+
+        It 'Evaluates <Name>' -TestCases @(
+            @{ Name = 'flex-name-enabled'; Expected = 'Pass' }
+            @{ Name = 'flex-name-disabled'; Expected = 'Fail' }
+            @{ Name = 'flex-name-missing'; Expected = 'Fail' }
+            @{ Name = 'flex-tier-enabled'; Expected = 'Pass' }
+            @{ Name = 'flex-tier-disabled'; Expected = 'Fail' }
+            @{ Name = 'flex-tier-missing'; Expected = 'Fail' }
+            @{ Name = 'flex-enabled'; Expected = 'Pass' }
+            @{ Name = 'flex-lowercase'; Expected = 'Pass' }
+            @{ Name = 'flex-unsupported-region'; Expected = 'Pass' }
+            @{ Name = 'standard-enabled'; Expected = 'Fail' }
+        ) {
+            $ruleResult = @($result | Where-Object { $_.TargetName -eq $Name });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult[0].Outcome | Should -Be $Expected;
+            if ($Name -in 'flex-name-disabled', 'flex-name-missing', 'flex-tier-disabled', 'flex-tier-missing') {
+                $ruleResult[0].Detail.Reason.Path | Should -Contain 'properties.zoneRedundant';
+            }
+            if ($Name -in 'flex-name-disabled', 'flex-name-missing') {
+                $ruleResult[0].Detail.Reason.Path | Should -Not -Contain 'sku.name';
+            }
+            if ($Name -in 'flex-tier-disabled', 'flex-tier-missing') {
+                $ruleResult[0].Detail.Reason.Path | Should -Not -Contain 'sku.tier';
+            }
+        }
+    }
+
     Context 'With Template' {
         BeforeAll {
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AppService.json;
