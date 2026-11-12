@@ -48,6 +48,8 @@ What's changed since pre-release v1.48.0-B0228:
     [#3907](https://github.com/Azure/PSRule.Rules.Azure/issues/3907)
   - Fixed cross-scope `existing` resource reference via symbolic name resolving to a malformed mock, breaking `concat()`/`map()` during pre-flight expansion.
     [#3920](https://github.com/Azure/PSRule.Rules.Azure/issues/3920)
+  - Fixed in-flight export of Defender for Storage settings by @saryn17.
+    [#3865](https://github.com/Azure/PSRule.Rules.Azure/issues/3865)
 - Engineering:
   - Bump YamlDotNet to 11.2.5.
 
