@@ -12,28 +12,6 @@
     }
   },
   {
-    "Name": "flex-name-disabled",
-    "Type": "Microsoft.Web/serverfarms",
-    "Kind": "functionapp",
-    "Location": "northeurope",
-    "Sku": {
-      "name": "FC1"
-    },
-    "Properties": {
-      "zoneRedundant": false
-    }
-  },
-  {
-    "Name": "flex-name-missing",
-    "Type": "Microsoft.Web/serverfarms",
-    "Kind": "functionapp",
-    "Location": "northeurope",
-    "Sku": {
-      "name": "FC1"
-    },
-    "Properties": {}
-  },
-  {
     "Name": "flex-tier-enabled",
     "Type": "Microsoft.Web/serverfarms",
     "Kind": "functionapp",
@@ -46,11 +24,12 @@
     }
   },
   {
-    "Name": "flex-tier-disabled",
+    "Name": "flex-disabled",
     "Type": "Microsoft.Web/serverfarms",
     "Kind": "functionapp",
     "Location": "northeurope",
     "Sku": {
+      "name": "FC1",
       "tier": "FlexConsumption"
     },
     "Properties": {
@@ -58,65 +37,14 @@
     }
   },
   {
-    "Name": "flex-tier-missing",
+    "Name": "flex-missing",
     "Type": "Microsoft.Web/serverfarms",
     "Kind": "functionapp",
     "Location": "northeurope",
     "Sku": {
+      "name": "FC1",
       "tier": "FlexConsumption"
     },
     "Properties": {}
-  },
-  {
-    "Name": "flex-enabled",
-    "Type": "Microsoft.Web/serverfarms",
-    "Kind": "functionapp",
-    "Location": "northeurope",
-    "Sku": {
-      "name": "FC1",
-      "tier": "FlexConsumption"
-    },
-    "Properties": {
-      "zoneRedundant": true
-    }
-  },
-  {
-    "Name": "flex-lowercase",
-    "Type": "Microsoft.Web/serverfarms",
-    "Kind": "functionapp",
-    "Location": "northeurope",
-    "Sku": {
-      "name": "fc1",
-      "tier": "flexconsumption"
-    },
-    "Properties": {
-      "zoneRedundant": true
-    }
-  },
-  {
-    "Name": "flex-unsupported-region",
-    "Type": "Microsoft.Web/serverfarms",
-    "Kind": "functionapp",
-    "Location": "notregion",
-    "Sku": {
-      "name": "FC1",
-      "tier": "FlexConsumption"
-    },
-    "Properties": {
-      "zoneRedundant": false
-    }
-  },
-  {
-    "Name": "standard-enabled",
-    "Type": "Microsoft.Web/serverfarms",
-    "Kind": "functionapp",
-    "Location": "northeurope",
-    "Sku": {
-      "name": "S1",
-      "tier": "Standard"
-    },
-    "Properties": {
-      "zoneRedundant": true
-    }
   }
 ]

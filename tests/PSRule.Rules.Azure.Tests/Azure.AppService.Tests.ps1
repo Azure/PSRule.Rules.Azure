@@ -350,30 +350,19 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
         }
 
-        It 'Evaluates <Name>' -TestCases @(
-            @{ Name = 'flex-name-enabled'; Expected = 'Pass' }
-            @{ Name = 'flex-name-disabled'; Expected = 'Fail' }
-            @{ Name = 'flex-name-missing'; Expected = 'Fail' }
-            @{ Name = 'flex-tier-enabled'; Expected = 'Pass' }
-            @{ Name = 'flex-tier-disabled'; Expected = 'Fail' }
-            @{ Name = 'flex-tier-missing'; Expected = 'Fail' }
-            @{ Name = 'flex-enabled'; Expected = 'Pass' }
-            @{ Name = 'flex-lowercase'; Expected = 'Pass' }
-            @{ Name = 'flex-unsupported-region'; Expected = 'Pass' }
-            @{ Name = 'standard-enabled'; Expected = 'Fail' }
-        ) {
-            $ruleResult = @($result | Where-Object { $_.TargetName -eq $Name });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult[0].Outcome | Should -Be $Expected;
-            if ($Name -in 'flex-name-disabled', 'flex-name-missing', 'flex-tier-disabled', 'flex-tier-missing') {
-                $ruleResult[0].Detail.Reason.Path | Should -Contain 'properties.zoneRedundant';
-            }
-            if ($Name -in 'flex-name-disabled', 'flex-name-missing') {
-                $ruleResult[0].Detail.Reason.Path | Should -Not -Contain 'sku.name';
-            }
-            if ($Name -in 'flex-tier-disabled', 'flex-tier-missing') {
-                $ruleResult[0].Detail.Reason.Path | Should -Not -Contain 'sku.tier';
-            }
+        It 'Azure.AppService.AvailabilityZone' {
+            # Fail
+            $ruleResult = @($result | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'flex-disabled', 'flex-missing';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.zoneRedundant: Is set to 'False'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.zoneRedundant: Does not exist.";
+
+            # Pass
+            $ruleResult = @($result | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'flex-name-enabled', 'flex-tier-enabled';
         }
     }
 

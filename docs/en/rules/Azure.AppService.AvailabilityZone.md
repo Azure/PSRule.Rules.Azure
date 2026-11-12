@@ -15,8 +15,7 @@ Deploy app service plan instances using availability zones in supported regions 
 
 ## DESCRIPTION
 
-Dedicated App Service plans support zone redundancy, which distributes your application running within the plan
-across Availablity Zones.
+App Service plans support zone redundancy, which distributes your application running within the plan across Availablity Zones.
 Each Availability Zone is a group of phyiscally separated data centers.
 Deploying your application with zone redundancy:
 
@@ -94,10 +93,9 @@ resource plan 'Microsoft.Web/serverfarms@2022-09-01' = {
 
 ## NOTES
 
-Zone-redundancy is supported for the `PremiumV2`, `PremiumV3`, `Premium0V3`, `PremiumMV3`, `ElasticPremium`
+Zone-redundancy is only supported for the `PremiumV2`, `PremiumV3`, `Premium0V3`, `PremiumMV3`, `ElasticPremium`
 and `FlexConsumption` SKU tiers.
-Azure Functions Flex Consumption plans use the `FC1` SKU and require `properties.zoneRedundant` to be `true`.
-Regional support, scaling, and instance distribution for these plans follow the Azure Functions guidance.
+Azure Functions Flex Consumption plans use the `FC1` SKU and support zone-redundancy in a subset of regions.
 
 ## LINKS
 
