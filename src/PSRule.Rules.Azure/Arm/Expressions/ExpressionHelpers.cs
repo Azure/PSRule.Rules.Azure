@@ -236,7 +236,7 @@ internal static class ExpressionHelpers
             return true;
         }
 
-        if (o is JToken jToken && o is not JValue)
+        if (o is JToken jToken && o is not JValue && o is not JArray)
         {
             var propertyToken = jToken[propertyName];
             if (propertyToken == null)

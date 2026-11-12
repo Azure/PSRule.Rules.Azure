@@ -1417,4 +1417,31 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
         var secondLastPart = secondLastPartOutput["value"].Value<string>();
         Assert.Equal("eastus", secondLastPart);
     }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3920
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WhenExistingResourceReferencedBySymbolicName_ShouldReturnMock()
+    {
+        _ = ProcessTemplate(GetSourcePath("Tests.Bicep.44.json"), null, out var templateContext);
+
+        Assert.True(templateContext.RootDeployment.TryOutput("addressPrefixes", out JObject addressPrefixesOutput));
+        Assert.Equal(JTokenType.Array, addressPrefixesOutput["value"].Type);
+
+        Assert.True(templateContext.RootDeployment.TryOutput("combinedAddressPrefixes", out JObject combinedAddressPrefixesOutput));
+        Assert.Equal(JTokenType.Array, combinedAddressPrefixesOutput["value"].Type);
+
+        Assert.True(templateContext.RootDeployment.TryOutput("mappedAddressPrefixes", out JObject mappedAddressPrefixesOutput));
+        Assert.Equal(JTokenType.Array, mappedAddressPrefixesOutput["value"].Type);
+    }
+
+    [Fact]
+    public void ProcessTemplate_WhenExistingResourceReferencedByResourceId_ShouldReturnMock()
+    {
+        _ = ProcessTemplate(GetSourcePath("Tests.Bicep.45.json"), null, out var templateContext);
+
+        Assert.True(templateContext.RootDeployment.TryOutput("combinedAddressPrefixes", out JObject combinedAddressPrefixesOutput));
+        Assert.Equal(JTokenType.Array, combinedAddressPrefixesOutput["value"].Type);
+    }
 }

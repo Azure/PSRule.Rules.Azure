@@ -53,9 +53,9 @@
       },
       "Microsoft.PowerShell.SDK": {
         "type": "Direct",
-        "requested": "[7.6.5, )",
-        "resolved": "7.6.5",
-        "contentHash": "QQahpTrSQA0Bip0B+tkusI5SUHRYVbORpTlUZVLMWUwsdO2VVyDdpDDUMMbGZB6dw9JbwMA/B7auMAD3D9Ss/g=="
+        "requested": "[7.6.6, )",
+        "resolved": "7.6.6",
+        "contentHash": "daxqvGA8Qx+GX+uthvQWEUwgg++3x9PbA2Ptis4jRBYSKeK1fEwxp72YgXvANeRiAmYeGYx3shwKkO08/AzVeA=="
       },
       "Microsoft.PSRule.Types": {
         "type": "Direct",
