@@ -69,6 +69,12 @@ Automatic nesting a sub-resource requires:
   A placeholder value is used instead.
 - The `reference()` function will return objects for resources within the same template.
   For resources that are not in the same template, a placeholder value is used instead.
+- Bicep `this.existingResource()` and `this.exists()` are evaluated as a new resource deployment.
+  PSRule does not query Azure for the resource state preceding deployment.
+  The underlying ARM `target()` function returns `null`, so `this.existingResource()` returns `null`
+  and `this.exists()` returns `false`.
+  Use safe access (`.?`) and fallback values (`??`), or guard access with `this.exists()`.
+  Existing tags, SKU values, and allocated address prefixes are not retrieved from Azure.
 - Multi-line strings are not supported.
 - Template expressions up to a maximum of 100,000 characters are supported.
 

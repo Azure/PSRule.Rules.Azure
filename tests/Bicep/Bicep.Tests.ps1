@@ -135,6 +135,29 @@ Describe 'Bicep' -Tag 'Bicep' {
             $resource.TargetObject.tags.env | Should -Be 'test';
         }
 
+        It 'Expands this namespace functions from .bicepparam' {
+            $sourceFile = Join-Path -Path $rootPath -ChildPath 'tests/PSRule.Rules.Azure.Tests/Bicep/ThisNamespaceTestCases/Tests.Bicep.1.bicepparam';
+            $service = [PSRule.Rules.Azure.Runtime.Helper]::CreateService('0.48.1', 60);
+            $resources = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepParamResources($service, $sourceFile);
+
+            $storage = @($resources | Where-Object { $_.type -eq 'Microsoft.Storage/storageAccounts' });
+            $storage.Length | Should -Be 2;
+            foreach ($account in $storage) {
+                $account.tags.environment | Should -Be 'production';
+                $account.sku.name | Should -Be 'Standard_LRS';
+                $account.properties.accessTier | Should -Be 'Cold';
+            }
+
+            $network = @($resources | Where-Object { $_.type -eq 'Microsoft.Network/virtualNetworks' });
+            $network.Length | Should -Be 1;
+            $network[0].name | Should -Be 'vnet-test';
+            $network[0].properties.addressSpace.PSObject.Properties.Name | Should -Not -Contain 'addressPrefixes';
+            $network[0].properties.addressSpace.ipamPoolPrefixAllocations[0].numberOfIpAddresses | Should -Be '256';
+            $network[0].properties.subnets.Length | Should -Be 2;
+            $network[0].properties.subnets[0].name | Should -Be 'App';
+            $network[0].properties.subnets[1].name | Should -Be 'functionApp';
+        }
+
         It 'Bicep expand completes with errors' {
             $invokeParams = @{
                 Baseline = 'Azure.All'
