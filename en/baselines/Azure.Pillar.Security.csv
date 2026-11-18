@@ -127,6 +127,7 @@
 "Azure.Firewall.Mode","Deny high confidence malicious IP addresses and domains on classic managed Azure Firewalls.","Critical","Security","-"
 "Azure.Firewall.PolicyMode","Deny high confidence malicious IP addresses, domains and URLs.","Critical","Security","-"
 "Azure.Fleet.PublicKey","Use SSH keys instead of common credentials to secure Linux Azure Fleet VMs against malicious activities.","Important","Security","L2"
+"Azure.Fleet.SecureBoot","Operating systems or drivers may be maliciously modified or injected if an actor gains access to VM/ OS storage or build media.","Important","Security","L2"
 "Azure.FrontDoor.Logs","Audit and monitor access through Azure Front Door profiles.","Important","Security","-"
 "Azure.FrontDoor.ManagedIdentity","Ensure Front Door uses a managed identity to authorize access to Azure resources.","Important","Security","L1"
 "Azure.FrontDoor.MinTLS","Front Door Classic instances should reject TLS versions older than 1.2.","Critical","Security","L1"
