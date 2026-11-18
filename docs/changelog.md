@@ -32,12 +32,19 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.48.0-B0228:
 
+- New rules:
+  - Azure Fleet:
+    - Added `Azure.Fleet.SecureBoot` to require Trusted Launch/Confidential VM with Secure Boot for fleet VM profiles by @l46983284-cpu.
+      [#3729](https://github.com/Azure/PSRule.Rules.Azure/issues/3729)
 - General improvements:
   - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
     [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
   - Added support for the Bicep `distinct` and `like` functions by @oWretch.
     [#3905](https://github.com/Azure/PSRule.Rules.Azure/issues/3905)
 - Updated rules:
+  - App Service:
+    - Fixed `Azure.AppService.PlanInstanceCount` to exclude Flex Consumption plans.
+      [#3929](https://github.com/Azure/PSRule.Rules.Azure/issues/3929)
   - Container Registry:
     - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
       [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
