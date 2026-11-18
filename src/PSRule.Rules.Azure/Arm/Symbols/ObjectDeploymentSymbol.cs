@@ -14,6 +14,7 @@ namespace PSRule.Rules.Azure.Arm.Symbols;
 internal sealed class ObjectDeploymentSymbol : DeploymentSymbol, IDeploymentSymbol
 {
     private Func<string>? _GetId;
+    private IResourceValue? _Resource;
 
     public ObjectDeploymentSymbol(string name, IResourceValue? resource)
         : base(name)
@@ -26,12 +27,19 @@ internal sealed class ObjectDeploymentSymbol : DeploymentSymbol, IDeploymentSymb
 
     public void Configure(IResourceValue resource)
     {
+        _Resource = resource;
         _GetId = () => resource.Id;
     }
 
     public string? GetId(int index)
     {
         return _GetId == null ? null : _GetId();
+    }
+
+    public bool TryGetResource(int index, out IResourceValue? resource)
+    {
+        resource = _Resource;
+        return resource != null;
     }
 }
 

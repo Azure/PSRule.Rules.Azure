@@ -39,10 +39,19 @@ What's changed since pre-release v1.48.0-B0228:
 - General improvements:
   - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
     [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+  - Added support for the Bicep `distinct` and `like` functions by @oWretch.
+    [#3905](https://github.com/Azure/PSRule.Rules.Azure/issues/3905)
 - Updated rules:
   - Container Registry:
     - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
       [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)
+- Bug fixes:
+  - Fixed `cidrHost` and `cidrSubnet` failing on unresolved virtual network, subnet, and IPAM pool address prefixes by @oWretch.
+    [#3907](https://github.com/Azure/PSRule.Rules.Azure/issues/3907)
+  - Fixed `tryGet` throwing instead of returning `null` for a property lookup against an array by @oWretch.
+    [#3907](https://github.com/Azure/PSRule.Rules.Azure/issues/3907)
+  - Fixed cross-scope `existing` resource reference via symbolic name resolving to a malformed mock, breaking `concat()`/`map()` during pre-flight expansion.
+    [#3920](https://github.com/Azure/PSRule.Rules.Azure/issues/3920)
 - Engineering:
   - Bump YamlDotNet to 11.2.5.
 

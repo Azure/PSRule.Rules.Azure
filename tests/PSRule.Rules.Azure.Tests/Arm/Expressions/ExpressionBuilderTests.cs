@@ -159,6 +159,26 @@ public sealed class ExpressionBuilderTests
         Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000", actual.Value<string>());
     }
 
+    [Fact]
+    public void BuildExpressionWithDistinct()
+    {
+        var context = GetContext();
+
+        var actual = Build(context, "[length(distinct(createArray('a', 'b', 'a')))]");
+
+        Assert.Equal((long)2, actual);
+    }
+
+    [Fact]
+    public void BuildExpressionWithLike()
+    {
+        var context = GetContext();
+
+        var actual = Build(context, "[like('prod-eastus-vm01', '*prod*')]");
+
+        Assert.True((bool)actual);
+    }
+
     private static object Build(TemplateContext context, string expression)
     {
         var builder = new ExpressionBuilder();

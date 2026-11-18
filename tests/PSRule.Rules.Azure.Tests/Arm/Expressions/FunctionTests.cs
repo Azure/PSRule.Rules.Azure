@@ -197,6 +197,40 @@ public sealed class FunctionTests
 
     [Fact]
     [Trait(TRAIT, TRAIT_ARRAY)]
+    public void Distinct()
+    {
+        var context = GetContext();
+
+        var actual1 = Functions.Distinct(context, [new JArray(1, 2, 2, 3, 1)]) as JArray;
+        Assert.Equal([1, 2, 3], actual1.Values<int>().ToArray());
+
+        var actual2 = Functions.Distinct(context, [new JArray("apple", "banana", "apple", "cherry")]) as JArray;
+        Assert.Equal(["apple", "banana", "cherry"], actual2.Values<string>().ToArray());
+
+        var actual3 = Functions.Distinct(context, [JArray.Parse("[ { \"name\": \"storage1\", \"type\": \"Microsoft.Storage/storageAccounts\" }, { \"name\": \"vm1\", \"type\": \"Microsoft.Compute/virtualMachines\" }, { \"name\": \"storage1\", \"type\": \"Microsoft.Storage/storageAccounts\" } ]")]) as JArray;
+        Assert.Equal(2, actual3.Count);
+        Assert.Equal("storage1", actual3[0]["name"]);
+        Assert.Equal("vm1", actual3[1]["name"]);
+
+        var actual4 = Functions.Distinct(context, [JArray.Parse("[ [ 1, 2 ], [ 2, 3 ], [ 1, 2 ] ]")]) as JArray;
+        Assert.Equal(2, actual4.Count);
+        Assert.True(JToken.DeepEquals(JArray.Parse("[ 1, 2 ]"), actual4[0]));
+        Assert.True(JToken.DeepEquals(JArray.Parse("[ 2, 3 ]"), actual4[1]));
+
+        var actual5 = Functions.Distinct(context, [new object[] { "one", "two", "one" }]) as JArray;
+        Assert.Equal(["one", "two"], actual5.Values<string>().ToArray());
+
+        var actual6 = Functions.Distinct(context, [new JArray()]) as JArray;
+        Assert.Empty(actual6);
+
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Distinct(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Distinct(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Distinct(context, [new JArray(), new JArray()]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Distinct(context, [1]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_ARRAY)]
     public void Empty()
     {
         var context = GetContext();
@@ -718,6 +752,7 @@ public sealed class FunctionTests
         };
 
         Assert.Equal("two", (Functions.TryGet(context, [testObject2, 1]) as JValue).Value<string>());
+        Assert.Null(Functions.TryGet(context, [testObject2, "addressPrefixes"]));
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, null));
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, []));
@@ -885,6 +920,130 @@ public sealed class FunctionTests
         Assert.Equal(string.Empty, actual.Path);
         Assert.Equal(parentId, actual["id"].Value<string>());
         Assert.Equal("a", actual["name"].Value<string>());
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void ReferenceWithNetworkAddressPlaceholders()
+    {
+        var context = GetContext();
+        var vnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001";
+        var subnetId = string.Concat(vnetId, "/subnets/subnet-001");
+
+        var vnet = Functions.Reference(context, [vnetId]) as Mock.MockObject;
+        Assert.NotNull(vnet);
+        var vnetPrefixes = vnet["addressSpace"]["addressPrefixes"] as Mock.MockArray;
+        Assert.NotNull(vnetPrefixes);
+        Assert.Equal("192.0.2.0/24", vnetPrefixes[0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [vnetPrefixes[0], 3]) as string);
+        Assert.Throws<ExpressionArgumentException>(() => Functions.CidrHost(context, [vnetPrefixes, 3]));
+
+        var subnet = Functions.Reference(context, [subnetId]) as Mock.MockObject;
+        Assert.NotNull(subnet);
+        Assert.Equal("192.0.2.0/28", subnet["addressPrefix"].Value<string>());
+        var subnetPrefixes = subnet["addressPrefixes"] as Mock.MockArray;
+        Assert.NotNull(subnetPrefixes);
+        Assert.Equal("192.0.2.0/28", subnetPrefixes[0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [subnetPrefixes[0], 3]) as string);
+
+        var subnetFull = Functions.Reference(context, [subnetId, "2025-07-01", "Full"]) as Mock.MockObject;
+        Assert.NotNull(subnetFull);
+        Assert.Throws<ExpressionArgumentException>(() => Functions.CidrHost(context, [subnetFull["id"], 3]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void ReferenceWithExistingNetworkAddressSymbols()
+    {
+        var context = GetContext();
+        var vnet = new ExistingResourceValue(context, "Microsoft.Network/virtualNetworks", "vnet", JObject.Parse(@"
+{
+  ""name"": ""vnet-001"",
+  ""properties"": {
+    ""addressSpace"": {
+      ""ipamPoolPrefixAllocations"": []
+    }
+  }
+}"), null);
+        var subnet = new ExistingResourceValue(context, "Microsoft.Network/virtualNetworks/subnets", "vnet::subnet", JObject.Parse(@"
+{
+  ""name"": ""subnet-001"",
+  ""properties"": {
+    ""ipamPoolPrefixAllocations"": []
+  }
+}"), null);
+        var pool = new ExistingResourceValue(context, "Microsoft.Network/networkManagers/ipamPools", "networkManager::platformPool", JObject.Parse(@"
+{
+  ""name"": ""platformPool""
+}"), null);
+        context.AddSymbol(DeploymentSymbol.NewObject("vnet", vnet));
+        context.AddSymbol(DeploymentSymbol.NewObject("vnet::subnet", subnet));
+        context.AddSymbol(DeploymentSymbol.NewObject("networkManager::platformPool", pool));
+
+        var vnetProperties = Functions.Reference(context, ["vnet"]) as Mock.MockObject;
+        Assert.NotNull(vnetProperties);
+        Assert.Equal("192.0.2.0/24", vnetProperties["addressSpace"]["addressPrefixes"][0].Value<string>());
+
+        var subnetProperties = Functions.Reference(context, ["vnet::subnet"]) as Mock.MockObject;
+        Assert.NotNull(subnetProperties);
+        Assert.Equal("192.0.2.0/28", subnetProperties["addressPrefixes"][0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [subnetProperties["addressPrefixes"][0], 3]) as string);
+
+        var poolProperties = Functions.Reference(context, ["networkManager::platformPool"]) as Mock.MockObject;
+        Assert.NotNull(poolProperties);
+        Assert.Equal("192.0.2.0/24", poolProperties["addressPrefixes"][0].Value<string>());
+        Assert.Equal("192.0.2.0/23", Functions.CidrSubnet(context, [poolProperties["addressPrefixes"][0], 23, 0]) as string);
+
+        var subnetResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/ApplicationGatewaySubnet";
+        var deployedSubnet = new ResourceValue(subnetResourceId, "ApplicationGatewaySubnet", "Microsoft.Network/virtualNetworks/subnets", "vnet::deployedSubnet", JObject.Parse(@"
+{
+  ""properties"": {
+    ""ipamPoolPrefixAllocations"": []
+  }
+}"), null);
+        context.AddResource(deployedSubnet);
+        context.AddSymbol(DeploymentSymbol.NewObject("vnet::deployedSubnet", deployedSubnet));
+
+        var deployedSubnetProperties = Functions.Reference(context, ["vnet::deployedSubnet"]) as Mock.MockObject;
+        Assert.NotNull(deployedSubnetProperties);
+        Assert.Equal("192.0.2.0/28", deployedSubnetProperties["addressPrefixes"][0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [deployedSubnetProperties["addressPrefixes"][0], 3]) as string);
+
+        var deployedSubnetFull = Functions.Reference(context, ["vnet::deployedSubnet", "2025-07-01", "Full"]) as Mock.MockObject;
+        Assert.NotNull(deployedSubnetFull);
+        Assert.Equal("192.0.2.0/28", deployedSubnetFull["properties"]["addressPrefixes"][0].Value<string>());
+        Assert.Equal("192.0.2.4", Functions.CidrHost(context, [deployedSubnetFull["properties"]["addressPrefixes"][0], 3]) as string);
+
+        var invalid = new ExistingResourceValue(context, "Microsoft.Network/virtualNetworks", "invalid", JObject.Parse(@"
+ {
+   ""name"": ""[div(1, 0)]"",
+   ""properties"": {}
+ }"), null);
+        context.AddSymbol(DeploymentSymbol.NewObject("invalid", invalid));
+        Assert.Throws<ExpressionEvaluationException>(() => Functions.Reference(context, ["invalid"]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_RESOURCE)]
+    public void ReferenceUsesConcreteNetworkAddressProperties()
+    {
+        var context = GetContext();
+        var resourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001";
+        var resource = new ResourceValue(resourceId, "vnet-001", "Microsoft.Network/virtualNetworks", "vnet", JObject.Parse(@"
+{
+  ""properties"": {
+    ""addressSpace"": {
+      ""addressPrefixes"": [
+        ""203.0.113.0/24""
+      ]
+    }
+  }
+}"), null);
+        context.AddResource(resource);
+
+        var actual = Functions.Reference(context, [resourceId]) as Mock.MockObject;
+        Assert.NotNull(actual);
+        Assert.Equal("203.0.113.0/24", actual["addressSpace"]["addressPrefixes"][0].Value<string>());
     }
 
     [Fact]
@@ -2016,6 +2175,37 @@ public sealed class FunctionTests
         Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, ["test"]));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, [1, 1]));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Join(context, [new int[] { 1, 2 }, 1]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_STRING)]
+    public void Like()
+    {
+        var context = GetContext();
+
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "*prod*"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "prod*"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "*01"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-eastus-vm01"]));
+        Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod*"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm??", "prod-eastus-vm??"]));
+        Assert.True((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-*-vm01"]));
+        Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod-eastus-vm01"]));
+        Assert.True((bool)Functions.Like(context, ["PROD-eastus-vm01", "prod-**-vm01"]));
+
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "*westus*"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-eastus-vm??"]));
+        Assert.False((bool)Functions.Like(context, ["vm01-eastus-prod", "prod-*-vm01"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "prod-*-vm"]));
+        Assert.False((bool)Functions.Like(context, ["prod-eastus-vm01", "od-*-vm01"]));
+
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, ["prod-eastus-vm01"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, ["prod-eastus-vm01", "*prod*", "extra"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, [1, "*prod*"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Like(context, ["prod-eastus-vm01", 1]));
     }
 
     [Fact]
