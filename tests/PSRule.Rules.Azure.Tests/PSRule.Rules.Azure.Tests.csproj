@@ -326,6 +326,9 @@
     <None Update="Tests.Bicep.45.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Bicep\SymbolicNameTestCases\Tests.Bicep.6.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Bicep\SymbolicNameTestCases\Tests.Bicep.1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

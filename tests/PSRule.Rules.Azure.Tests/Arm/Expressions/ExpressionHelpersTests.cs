@@ -29,6 +29,17 @@ public sealed class ExpressionHelpersTests
         Assert.Equal("9c7543ad4767e2", ExpressionHelpers.GetUniqueString(["test", "1234"]));
     }
 
+    /// <summary>
+    /// The hash must still be finalized when the last argument can not be converted to a string.
+    /// </summary>
+    [Fact]
+    public void GetUnique_WhenLastArgumentIsNotAString_ShouldNotThrow()
+    {
+        Assert.Equal("0b0d0856d2b1e9", ExpressionHelpers.GetUniqueString(["test", "123", null]));
+        Assert.Equal("0b0d0856d2b1e9", ExpressionHelpers.GetUniqueString(["test", "123", new JObject()]));
+        Assert.NotNull(ExpressionHelpers.GetUniqueString([]));
+    }
+
     [Theory]
     [InlineData(null, null)]
     [InlineData("test", "test")]

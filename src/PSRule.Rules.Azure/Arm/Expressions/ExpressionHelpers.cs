@@ -970,12 +970,10 @@ internal static class ExpressionHelpers
             if (GetStringForMock(args[i], out var s) || TryString(args[i], out s))
             {
                 var b = Encoding.UTF8.GetBytes(s);
-                if (i == args.Length - 1)
-                    algorithm.TransformFinalBlock(b, 0, b.Length);
-                else
-                    algorithm.TransformBlock(b, 0, b.Length, null, 0);
+                algorithm.TransformBlock(b, 0, b.Length, null, 0);
             }
         }
+        algorithm.TransformFinalBlock([], 0, 0);
         return algorithm.Hash;
     }
 

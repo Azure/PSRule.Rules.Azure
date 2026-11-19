@@ -1,0 +1,162 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.46.1.21595",
+      "templateHash": "9941330578015568133"
+    }
+  },
+  "resources": {
+    "intermediateRoot": {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2023-04-01",
+      "scope": "/",
+      "name": "mg-intermediate-root",
+      "properties": {
+        "displayName": "Intermediate Root"
+      }
+    },
+    "customRoles": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "customRoles",
+      "scope": "[format('Microsoft.Management/managementGroups/{0}', 'mg-intermediate-root')]",
+      "location": "[deployment().location]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.46.1.21595",
+              "templateHash": "14189568142377701359"
+            }
+          },
+          "resources": {
+            "roleDefinition": {
+              "type": "Microsoft.Authorization/roleDefinitions",
+              "apiVersion": "2022-04-01",
+              "name": "[guid('policyReader', managementGroup().id)]",
+              "properties": {
+                "roleName": "Policy Reader",
+                "description": "Read only access to policy.",
+                "type": "CustomRole",
+                "permissions": [
+                  {
+                    "actions": [
+                      "Microsoft.Authorization/policyAssignments/read"
+                    ]
+                  }
+                ],
+                "assignableScopes": [
+                  "[managementGroup().id]"
+                ]
+              }
+            }
+          },
+          "outputs": {
+            "policyReader": {
+              "type": "object",
+              "value": {
+                "id": "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/roleDefinitions', guid('policyReader', managementGroup().id))]",
+                "name": "[guid('policyReader', managementGroup().id)]"
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "intermediateRoot"
+      ]
+    },
+    "roleAssignments": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "roleAssignments",
+      "scope": "[format('Microsoft.Management/managementGroups/{0}', 'mg-intermediate-root')]",
+      "location": "[deployment().location]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "roleAssignments": {
+            "value": [
+              {
+                "principalId": "00000000-0000-0000-0000-000000000001",
+                "roleDefinitionId": "[reference('customRoles').outputs.policyReader.value.id]"
+              },
+              {
+                "principalId": "00000000-0000-0000-0000-000000000002",
+                "roleDefinitionId": "[reference('customRoles').outputs.policyReader.value.id]"
+              }
+            ]
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.46.1.21595",
+              "templateHash": "11034777190322056821"
+            }
+          },
+          "definitions": {
+            "roleAssignmentInput": {
+              "type": "object",
+              "properties": {
+                "principalId": {
+                  "type": "string"
+                },
+                "roleDefinitionId": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "parameters": {
+            "roleAssignments": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/roleAssignmentInput"
+              }
+            }
+          },
+          "resources": {
+            "roleAssignment": {
+              "copy": {
+                "name": "roleAssignment",
+                "count": "[length(parameters('roleAssignments'))]"
+              },
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "name": "[guid(managementGroup().id, parameters('roleAssignments')[copyIndex()].principalId, parameters('roleAssignments')[copyIndex()].roleDefinitionId)]",
+              "properties": {
+                "principalId": "[parameters('roleAssignments')[copyIndex()].principalId]",
+                "principalType": "ServicePrincipal",
+                "roleDefinitionId": "[parameters('roleAssignments')[copyIndex()].roleDefinitionId]"
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "customRoles",
+        "intermediateRoot"
+      ]
+    }
+  }
+}
