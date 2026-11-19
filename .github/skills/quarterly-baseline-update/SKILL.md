@@ -1,3 +1,8 @@
+---
+name: quarterly-baseline-update
+description: quarterly-baseline-update
+disable-model-invocation: true
+---
 Quarterly Baseline Update Instructions
 
 Purpose

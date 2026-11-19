@@ -1,3 +1,8 @@
+---
+name: aks-minimum-version-update
+description: aks-minimum-version-update
+disable-model-invocation: true
+---
 AKS Minimum Version - Update Instructions
 
 Purpose

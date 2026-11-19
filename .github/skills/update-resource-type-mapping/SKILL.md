@@ -1,3 +1,8 @@
+---
+name: update-resource-type-mapping
+description: update-resource-type-mapping
+disable-model-invocation: true
+---
 Update resource-type-mapping static content
 
 Purpose
