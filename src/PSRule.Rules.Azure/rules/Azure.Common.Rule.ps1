@@ -278,6 +278,7 @@ function global:SupportsTags {
             ($TargetType -eq 'Microsoft.OperationsManagement/solutions') -or
             ($TargetType -eq 'Microsoft.Kubernetes/registeredSubscriptions') -or
             ($TargetType -eq 'Microsoft.Network/privateDnsZonesInternal') -or
+            ($TargetType -eq 'Microsoft.SecurityInsights/dataConnectors') -or
             ($TargetType -notLike 'Microsoft.*/*') -or
             ($TargetType -like 'Microsoft.Addons/*') -or
             ($TargetType -like 'Microsoft.Advisor/*') -or

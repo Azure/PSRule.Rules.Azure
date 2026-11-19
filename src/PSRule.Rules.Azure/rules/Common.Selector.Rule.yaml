@@ -79,6 +79,7 @@ spec:
       - Microsoft.OperationsManagement/solutions
       - Microsoft.Kubernetes/registeredSubscriptions
       - Microsoft.Network/privateDnsZonesInternal
+      - Microsoft.SecurityInsights/dataConnectors
     - type: '.'
       notEndsWith:
       - /providers/roleAssignments
