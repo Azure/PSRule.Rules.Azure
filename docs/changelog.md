@@ -57,6 +57,8 @@ What's changed since pre-release v1.48.0-B0228:
     [#3920](https://github.com/Azure/PSRule.Rules.Azure/issues/3920)
   - Fixed in-flight export of Defender for Storage settings by @saryn17.
     [#3865](https://github.com/Azure/PSRule.Rules.Azure/issues/3865)
+  - Fixed `Azure.AppService.AvailabilityZone` rejecting zone-redundant Flex Consumption plans by @Motaghi.
+    [#3958](https://github.com/Azure/PSRule.Rules.Azure/issues/3958)
 - Engineering:
   - Bump YamlDotNet to 11.2.5.
 

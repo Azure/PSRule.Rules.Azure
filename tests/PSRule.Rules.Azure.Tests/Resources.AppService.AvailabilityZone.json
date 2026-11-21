@@ -1,0 +1,50 @@
+[
+  {
+    "Name": "flex-name-enabled",
+    "Type": "Microsoft.Web/serverfarms",
+    "Kind": "functionapp",
+    "Location": "northeurope",
+    "Sku": {
+      "name": "FC1"
+    },
+    "Properties": {
+      "zoneRedundant": true
+    }
+  },
+  {
+    "Name": "flex-tier-enabled",
+    "Type": "Microsoft.Web/serverfarms",
+    "Kind": "functionapp",
+    "Location": "northeurope",
+    "Sku": {
+      "tier": "FlexConsumption"
+    },
+    "Properties": {
+      "zoneRedundant": true
+    }
+  },
+  {
+    "Name": "flex-disabled",
+    "Type": "Microsoft.Web/serverfarms",
+    "Kind": "functionapp",
+    "Location": "northeurope",
+    "Sku": {
+      "name": "FC1",
+      "tier": "FlexConsumption"
+    },
+    "Properties": {
+      "zoneRedundant": false
+    }
+  },
+  {
+    "Name": "flex-missing",
+    "Type": "Microsoft.Web/serverfarms",
+    "Kind": "functionapp",
+    "Location": "northeurope",
+    "Sku": {
+      "name": "FC1",
+      "tier": "FlexConsumption"
+    },
+    "Properties": {}
+  }
+]

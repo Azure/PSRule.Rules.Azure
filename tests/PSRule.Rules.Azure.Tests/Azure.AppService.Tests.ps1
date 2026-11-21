@@ -337,6 +337,35 @@ Describe 'Azure.AppService' -Tag 'AppService' {
         }
     }
 
+    Context 'Availability zones' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                Name          = 'Azure.AppService.AvailabilityZone'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppService.AvailabilityZone.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+        }
+
+        It 'Azure.AppService.AvailabilityZone' {
+            # Fail
+            $ruleResult = @($result | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'flex-disabled', 'flex-missing';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.zoneRedundant: Is set to 'False'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.zoneRedundant: Does not exist.";
+
+            # Pass
+            $ruleResult = @($result | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'flex-name-enabled', 'flex-tier-enabled';
+        }
+    }
+
     Context 'With Template' {
         BeforeAll {
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AppService.json;

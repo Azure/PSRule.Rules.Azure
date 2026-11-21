@@ -198,7 +198,7 @@ Rule 'Azure.AppService.AvailabilityZone' -Ref 'AZR-000442' -Type 'Microsoft.Web/
         return $Assert.Pass()
     }
 
-    # Availability zones are only supported for these Premium SKUs.
+    # Availability zones are supported for these Premium and Flex Consumption SKUs.
     $sku = [PSCustomObject]@{
         name = @(
             'P0v3'
@@ -216,6 +216,7 @@ Rule 'Azure.AppService.AvailabilityZone' -Ref 'AZR-000442' -Type 'Microsoft.Web/
             'EP1'
             'EP2'
             'EP3'
+            'FC1'
         )
         tier = @(
             'Premium0V3'
@@ -223,6 +224,7 @@ Rule 'Azure.AppService.AvailabilityZone' -Ref 'AZR-000442' -Type 'Microsoft.Web/
             'PremiumMV3'
             'PremiumV2'
             'ElasticPremium'
+            'FlexConsumption'
         )
     }
 

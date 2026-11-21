@@ -93,11 +93,14 @@ resource plan 'Microsoft.Web/serverfarms@2022-09-01' = {
 
 ## NOTES
 
-Zone-redundancy is only supported for the `PremiumV2`, `PremiumV3`, `Premium0V3`, `PremiumMV3` and `ElasticPremium` SKU tiers.
+Zone-redundancy is only supported for the `PremiumV2`, `PremiumV3`, `Premium0V3`, `PremiumMV3`, `ElasticPremium`
+and `FlexConsumption` SKU tiers.
+Azure Functions Flex Consumption plans use the `FC1` SKU and support zone-redundancy in a subset of regions.
 
 ## LINKS
 
 - [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Reliability in Azure App Service](https://learn.microsoft.com/azure/reliability/reliability-app-service)
 - [Availability zone support](https://learn.microsoft.com/azure/reliability/reliability-app-service#availability-zone-support)
+- [Reliability in Azure Functions](https://learn.microsoft.com/azure/reliability/reliability-functions#resilience-to-availability-zone-failures)
 - [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.web/serverfarms)
