@@ -346,6 +346,14 @@ Describe 'Azure.DocumentDB' -Tag 'DocumentDB' {
     }
 
     Context 'New rule metadata' {
+        It 'Passes repository authoring validation for DocumentDB rules, including the 2027 rule set' {
+            $rules = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Name 'Azure.DocumentDB.*' -WarningAction Ignore);
+            $authoringResults = @($rules | Invoke-PSRule -Path (Join-Path $rootPath '.ps-rule') -ErrorAction Stop -WarningAction Ignore -Outcome All);
+            $authoringResults.Length | Should -BeGreaterThan 0;
+            @($authoringResults | Where-Object { $_.Outcome -eq 'Fail' }).Length | Should -Be 0;
+            @($authoringResults | Where-Object { $_.RuleName -eq 'Rule.RuleSet' -and $_.Outcome -eq 'Pass' }).Length | Should -Be 11;
+        }
+
         It 'Uses unique references and the next quarterly rule set for all nine new checks' {
             $rules = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Name 'Azure.DocumentDB.*' -WarningAction Ignore);
             $newRules = @($rules | Where-Object { $_.Tag.ruleSet -eq '2027_03' });

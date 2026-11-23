@@ -66,6 +66,8 @@ What's changed since pre-release v1.48.0-B0228:
   - Fixed in-flight export of Defender for Storage settings by @saryn17.
     [#3865](https://github.com/Azure/PSRule.Rules.Azure/issues/3865)
 - Engineering:
+  - Updated authoring validation to accept quarterly rule sets in 2027.
+    [#3984](https://github.com/Azure/PSRule.Rules.Azure/pull/3984)
   - Bump YamlDotNet to 11.2.5.
 
 ## v1.48.0-B0228 (pre-release)

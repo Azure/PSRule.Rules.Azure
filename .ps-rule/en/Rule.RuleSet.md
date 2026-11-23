@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-09-20
+reviewed: 2026-11-23
 online version: https://github.com/Azure/PSRule.Rules.Azure/blob/main/.ps-rule/en/Rule.RuleSet.md
 ---
 
@@ -17,6 +17,9 @@ This is used to include rules in quarterly baselines.
 The rule set tag identifies the quarter that the rule was first released.
 New rules are included in the next quarterly baseline.
 i.e. (YYYY_03, YYYY_06, YYYY_09, YYYY_12)
+
+The authoring validator accepts quarterly rule sets from 2020 through 2027.
+For example, rules introduced for the first quarter of 2027 use `2027_03`.
 
 When updating an existing rule that introduces new significant changes to validation conditions,
 the ruleSet should be bumped to the next quarterly baseline.
