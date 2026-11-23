@@ -1,0 +1,80 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "administratorPassword": {
+      "type": "secureString",
+      "defaultValue": "[newGuid()]"
+    }
+  },
+  "variables": {
+    "identityId": "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'documentdb-encryption')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DocumentDB/mongoClusters",
+      "apiVersion": "2026-06-01",
+      "name": "docdb-template",
+      "location": "eastus",
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[variables('identityId')]": {}
+        }
+      },
+      "properties": {
+        "administrator": {
+          "userName": "clusterAdmin",
+          "password": "[parameters('administratorPassword')]"
+        },
+        "authConfig": {
+          "allowedModes": ["NativeAuth", "MicrosoftEntraID"]
+        },
+        "compute": { "tier": "M40" },
+        "storage": { "sizeGb": 128 },
+        "sharding": { "shardCount": 1 },
+        "highAvailability": { "targetMode": "ZoneRedundantPreferred" },
+        "publicNetworkAccess": "Disabled",
+        "encryption": {
+          "customerManagedKeyEncryption": {
+            "keyEncryptionKeyUrl": "https://documentdb-test.vault.azure.net/keys/documentdb",
+            "keyEncryptionKeyIdentity": {
+              "identityType": "UserAssignedIdentity",
+              "userAssignedIdentityResourceId": "[variables('identityId')]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/mongoClusters/firewallRules",
+      "apiVersion": "2026-06-01",
+      "name": "docdb-template/allow-client",
+      "properties": {
+        "startIpAddress": "203.0.113.1",
+        "endIpAddress": "203.0.113.10"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.DocumentDB/mongoClusters', 'docdb-template')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2021-05-01-preview",
+      "name": "logs",
+      "scope": "[resourceId('Microsoft.DocumentDB/mongoClusters', 'docdb-template')]",
+      "properties": {
+        "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', 'documentdb-logs')]",
+        "logs": [
+          {
+            "category": "vCoreMongoRequests",
+            "enabled": true
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.DocumentDB/mongoClusters', 'docdb-template')]"
+      ]
+    }
+  ]
+}

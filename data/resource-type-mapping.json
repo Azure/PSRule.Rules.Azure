@@ -1856,12 +1856,84 @@
     "displayName": "Azure DocumentDB clusters should use Microsoft Entra ID authentication"
   },
   {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:06 Network controls",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.DocumentDB.PublicAccess",
+    "displayName": "Disable public access to Azure DocumentDB clusters"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:05 Identity and access management",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.DocumentDB.LocalAuth",
+    "displayName": "Disable native authentication on deployed Azure DocumentDB clusters"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.DocumentDB.Name",
+    "displayName": "Azure DocumentDB cluster names must meet naming requirements"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.DocumentDB.Naming",
+    "displayName": "Azure DocumentDB clusters must use a standard naming convention"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:06 Network controls",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.DocumentDB.FirewallRuleCount",
+    "displayName": "Limit Azure DocumentDB firewall rules"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:06 Network controls",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters,Microsoft.DocumentDB/mongoClusters/firewallRules",
+    "ruleId": "Azure.DocumentDB.FirewallIPRange",
+    "displayName": "Limit IP addresses permitted by Azure DocumentDB firewall rules"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:06 Network controls",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters,Microsoft.DocumentDB/mongoClusters/firewallRules",
+    "ruleId": "Azure.DocumentDB.AllowAzureAccess",
+    "displayName": "Restrict Azure-wide access to Azure DocumentDB clusters"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:10 Monitoring and threat detection",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.DocumentDB.DiagnosticLogs",
+    "displayName": "Enable Azure DocumentDB request diagnostic logs"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Security",
+    "category": "SE:07 Encryption",
+    "resourceType": "Microsoft.DocumentDB/mongoClusters",
+    "ruleId": "Azure.DocumentDB.CMK",
+    "displayName": "Use customer-managed keys for Azure DocumentDB when required"
+  },
+  {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
     "category": "OE:04 Tools and processes",
     "resourceType": "Microsoft.DocumentDb/databaseAccounts",
     "ruleId": "Azure.Cosmos.MongoNaming",
-    "displayName": "Cosmos DB for MongoDB account resources must use standard naming"
+    "displayName": "Cosmos DB for MongoDB (RU-based) account resources must use standard naming"
   },
   {
     "severity": "Critical",

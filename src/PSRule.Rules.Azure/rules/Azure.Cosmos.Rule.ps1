@@ -38,7 +38,7 @@ Rule 'Azure.Cosmos.CassandraNaming' -Ref 'AZR-000513' -Type 'Microsoft.DocumentD
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_COSMOS_CASSANDRA_NAME_FORMAT, $True);
 }
 
-# Synopsis: Azure Cosmos DB for MongoDB accounts without a standard naming convention may be difficult to identify and manage.
+# Synopsis: Azure Cosmos DB for MongoDB (RU-based) accounts without a standard naming convention may be difficult to identify and manage.
 Rule 'Azure.Cosmos.MongoNaming' -Ref 'AZR-000514' -Type 'Microsoft.DocumentDb/databaseAccounts' -If { $Configuration['AZURE_COSMOS_MONGO_NAME_FORMAT'] -ne '' -and $TargetObject.kind -eq 'MongoDB' } -Tag @{ release = 'GA'; ruleSet = '2025_12'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming'; 'Azure.WAF/maturity' = 'L2' } {
     $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_COSMOS_MONGO_NAME_FORMAT, $True);
 }
