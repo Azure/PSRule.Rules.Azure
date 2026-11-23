@@ -1,20 +1,25 @@
 ---
-reviewed: 2025-11-27
+reviewed: 2026-11-23
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: Cosmos DB for MongoDB account
+resource: Cosmos DB for MongoDB (RU-based) account
 resourceType: Microsoft.DocumentDb/databaseAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.MongoNaming/
 ---
 
-# Cosmos DB for MongoDB account resources must use standard naming
+# Cosmos DB for MongoDB (RU-based) account resources must use standard naming
 
 ## SYNOPSIS
 
-Cosmos DB for MongoDB account resources without a standard naming convention may be difficult to identify and manage.
+Cosmos DB for MongoDB (RU-based) account resources without a standard naming convention may be difficult to identify and manage.
 
 ## DESCRIPTION
+
+This rule applies to the RU-based MongoDB API on `Microsoft.DocumentDB/databaseAccounts`.
+Azure DocumentDB uses `Microsoft.DocumentDB/mongoClusters` and is checked separately by
+[Azure.DocumentDB.Naming](Azure.DocumentDB.Naming.md).
+The `Microsoft.DocumentDB` resource provider namespace is shared by both services.
 
 An effective naming convention allows operators to quickly identify resources, related systems, and their purpose.
 Identifying resources easily is important to improve operational efficiency, reduce the time to respond to incidents,

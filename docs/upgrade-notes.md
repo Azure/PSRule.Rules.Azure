@@ -6,6 +6,36 @@ discussion: false
 
 This document contains notes to help upgrade from previous versions of PSRule for Azure.
 
+## Azure DocumentDB rule names
+
+Azure Cosmos DB for MongoDB vCore is now Azure DocumentDB.
+The following rules have been renamed to match the service:
+
+- From `Azure.Cosmos.MongoEntraID` to `Azure.DocumentDB.EntraID`.
+- From `Azure.Cosmos.MongoAvailabilityZone` to `Azure.DocumentDB.AvailabilityZone`.
+
+The previous names remain aliases so existing rule selections, exclusions, and suppressions continue to work.
+Update your configuration and scripts to use the new names to avoid alias warnings.
+The rule references, original rule set tags, and validation behavior are unchanged, preserving quarterly baseline membership.
+Both rules still apply to `Microsoft.DocumentDB/mongoClusters`, not Cosmos DB `Microsoft.DocumentDB/databaseAccounts`.
+
+### Additional DocumentDB checks
+
+Nine additional DocumentDB rules are tagged with rule set `2027_03`.
+They are available through `Azure.All` and subsequent quarterly baselines; existing quarterly baselines are unchanged.
+The checks cover public access, Azure-wide firewall access, firewall rule counts and address ranges,
+resource names and naming conventions, request logs, native authentication, and customer-managed keys.
+
+- `Azure.DocumentDB.LocalAuth` only evaluates exported resources because native authentication is required during initial creation.
+- `Azure.DocumentDB.DiagnosticLogs` only evaluates configured M-series compute tiers above M30, where resource logs are supported.
+- `Azure.DocumentDB.Naming` is inactive until `AZURE_DOCUMENTDB_CLUSTER_NAME_FORMAT` is configured.
+- `Azure.DocumentDB.CMK` is opt-in through `AZURE_DOCUMENTDB_REQUIRE_CMK: true`.
+  Service-managed encryption is enabled by default and remains a supported choice.
+
+The rules do not add redundant checks for TLS or automatic backups, which the service enforces.
+Cross-region disaster recovery still requires workload-specific replica topology and recovery testing;
+the presence of a cluster resource alone cannot establish that its source has a healthy replica in another region.
+
 ## Upgrading to v2.0.0
 
 PSRule for Azure v2.0.0 is a planned _future_ release.

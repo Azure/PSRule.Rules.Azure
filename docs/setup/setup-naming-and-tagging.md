@@ -243,6 +243,7 @@ Rule                                | Resource type                             
 `Azure.Cosmos.NoSQLNaming`          | `Microsoft.DocumentDb/databaseAccounts` with NoSQL API | `AZURE_COSMOS_NOSQL_NAME_FORMAT`
 `Azure.Cosmos.PostgreSQLNaming`     | `Microsoft.DBforPostgreSQL/serverGroupsv2`  | `AZURE_COSMOS_POSTGRESQL_NAME_FORMAT`
 `Azure.Cosmos.TableNaming`          | `Microsoft.DocumentDb/databaseAccounts` with Table API | `AZURE_COSMOS_TABLE_NAME_FORMAT`
+`Azure.DocumentDB.Naming`          | `Microsoft.DocumentDB/mongoClusters`        | `AZURE_DOCUMENTDB_CLUSTER_NAME_FORMAT`
 `Azure.EventGrid.DomainNaming`      | `Microsoft.EventGrid/domains`               | `AZURE_EVENTGRID_DOMAIN_NAME_FORMAT`
 `Azure.EventGrid.TopicNaming`       | `Microsoft.EventGrid/topics`, `Microsoft.EventGrid/domains/topics` | `AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT`
 `Azure.EventGrid.SystemTopicNaming` | `Microsoft.EventGrid/systemTopics`          | `AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT`

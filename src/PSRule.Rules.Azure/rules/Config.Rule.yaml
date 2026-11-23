@@ -79,6 +79,9 @@ spec:
     # Enables resource level checks for Defender for Storage.
     AZURE_STORAGE_DEFENDER_PER_ACCOUNT: false
 
+    # Requires customer-managed encryption keys for DocumentDB when organizational policy requires them.
+    AZURE_DOCUMENTDB_REQUIRE_CMK: false
+
     # Enables check for supported VMs use Azure Hybrid Benefit.
     AZURE_VM_USE_AZURE_HYBRID_BENEFIT: false
 
@@ -110,6 +113,7 @@ spec:
     AZURE_COSMOS_NOSQL_NAME_FORMAT: ''
     AZURE_COSMOS_POSTGRESQL_NAME_FORMAT: ''
     AZURE_COSMOS_TABLE_NAME_FORMAT: ''
+    AZURE_DOCUMENTDB_CLUSTER_NAME_FORMAT: ''
     AZURE_EVENTGRID_DOMAIN_NAME_FORMAT: ''
     AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT: ''
     AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT: ''

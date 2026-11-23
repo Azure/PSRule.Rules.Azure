@@ -1,22 +1,22 @@
 ---
-reviewed: 2025-11-03
+reviewed: 2026-11-23
 severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
-resource: Cosmos DB
+resource: Azure DocumentDB
 resourceType: Microsoft.DocumentDB/mongoClusters
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.MongoEntraID/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DocumentDB.EntraID/
 ---
 
-# MongoDB vCore clusters should use Microsoft Entra ID authentication
+# Azure DocumentDB clusters should use Microsoft Entra ID authentication
 
 ## SYNOPSIS
 
-MongoDB vCore clusters should have Microsoft Entra ID authentication enabled.
+Azure DocumentDB clusters should have Microsoft Entra ID authentication enabled.
 
 ## DESCRIPTION
 
-MongoDB vCore clusters support multiple authentication modes including native authentication (connection string) and
+Azure DocumentDB clusters support multiple authentication modes including native authentication (connection string) and
 Microsoft Entra ID authentication.
 Native authentication uses MongoDB credentials (username/password) that are embedded in connection strings and
 managed locally within the cluster.
@@ -30,17 +30,17 @@ Using Microsoft Entra ID authentication provides several security benefits:
 - **Audit and compliance** - Centralized logging and monitoring of authentication events.
 
 Microsoft Entra ID authentication should be enabled to ensure secure and centralized identity management for
-MongoDB vCore clusters.
+Azure DocumentDB clusters.
 
 ## RECOMMENDATION
 
-Consider enabling Microsoft Entra ID authentication on MongoDB vCore clusters.
+Consider enabling Microsoft Entra ID authentication on Azure DocumentDB clusters.
 
 ## EXAMPLES
 
 ### Configure with Azure template
 
-To deploy MongoDB vCore clusters that pass this rule:
+To deploy Azure DocumentDB clusters that pass this rule:
 
 - Set the `properties.authConfig.allowedModes` array to include `MicrosoftEntraID`.
 
@@ -49,10 +49,14 @@ For example:
 ```json
 {
   "type": "Microsoft.DocumentDB/mongoClusters",
-  "apiVersion": "2025-04-01-preview",
+  "apiVersion": "2025-09-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
+    "administrator": {
+      "userName": "[parameters('administratorUserName')]",
+      "password": "[parameters('administratorPassword')]"
+    },
     "serverVersion": "8.0",
     "authConfig": {
       "allowedModes": [
@@ -66,6 +70,9 @@ For example:
     "storage": {
       "sizeGb": 128,
       "type": "PremiumSSD"
+    },
+    "sharding": {
+      "shardCount": 1
     }
   }
 }
@@ -73,17 +80,27 @@ For example:
 
 ### Configure with Bicep
 
-To deploy MongoDB vCore clusters that pass this rule:
+To deploy Azure DocumentDB clusters that pass this rule:
 
 - Set the `properties.authConfig.allowedModes` array to include `MicrosoftEntraID`.
 
 For example:
 
 ```bicep
-resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2025-04-01-preview' = {
+@secure()
+param administratorPassword string
+param administratorUserName string
+param name string
+param location string = resourceGroup().location
+
+resource cluster 'Microsoft.DocumentDB/mongoClusters@2025-09-01' = {
   name: name
   location: location
   properties: {
+    administrator: {
+      userName: administratorUserName
+      password: administratorPassword
+    }
     serverVersion: '8.0'
     authConfig: {
       allowedModes: [
@@ -98,6 +115,9 @@ resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2025-04-01-preview' = 
       sizeGb: 128
       type: 'PremiumSSD'
     }
+    sharding: {
+      shardCount: 1
+    }
   }
 }
 ```
@@ -106,15 +126,17 @@ resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2025-04-01-preview' = 
 
 **Important:** For initial deployment, you must include both `NativeAuth` and `MicrosoftEntraID` in the `allowedModes` array.
 Deploying with only `MicrosoftEntraID` will cause the deployment to fail as the initial setup process requires native authentication.
-After deployment is complete and Entra ID users are configured, you can optionally remove `NativeAuth` for enhanced security.
+Declare `administratorPassword` as a `secureString` parameter in the Azure template.
+After deployment is complete and Entra ID users are configured and can connect, you can optionally remove `NativeAuth` for enhanced security.
+
+This rule applies to Azure DocumentDB, formerly Azure Cosmos DB for MongoDB vCore.
+The resource type remains `Microsoft.DocumentDB/mongoClusters`.
+The previous rule name, `Azure.Cosmos.MongoEntraID`, remains a compatibility alias.
 
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication)
 - [Security: Level 1](https://learn.microsoft.com/azure/well-architected/security/maturity-model?tabs=level1)
-- [Microsoft Entra ID authentication with Azure Cosmos DB for MongoDB vCore](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/entra-authentication)
-- [Configure Microsoft Entra ID authentication for an Azure Cosmos DB for MongoDB vCore cluster](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/how-to-configure-entra-authentication?tabs=portal%2Cazure-portal)
-- [Azure security baseline for Azure Cosmos DB](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline)
-- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#im-1-use-centralized-identity-and-authentication-system)
-- [IM-3: Manage application identities securely and automatically](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#im-3-manage-application-identities-securely-and-automatically)
+- [What is Azure DocumentDB?](https://learn.microsoft.com/azure/documentdb/overview)
+- [Connect to Azure DocumentDB using role-based access control and Microsoft Entra ID](https://learn.microsoft.com/azure/documentdb/how-to-connect-role-based-access-control)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/mongoclusters)

@@ -33,6 +33,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.48.0-B0228:
 
 - New rules:
+  - Azure DocumentDB:
+    - Added network access, firewall, naming, diagnostic logging, deployed-cluster native authentication, and opt-in customer-managed key checks.
+      [#3984](https://github.com/Azure/PSRule.Rules.Azure/pull/3984)
   - Azure Fleet:
     - Added `Azure.Fleet.SecureBoot` to require Trusted Launch/Confidential VM with Secure Boot for fleet VM profiles by @l46983284-cpu.
       [#3729](https://github.com/Azure/PSRule.Rules.Azure/issues/3729)
@@ -42,6 +45,11 @@ What's changed since pre-release v1.48.0-B0228:
   - Added support for the Bicep `distinct` and `like` functions by @oWretch.
     [#3905](https://github.com/Azure/PSRule.Rules.Azure/issues/3905)
 - Updated rules:
+  - Azure DocumentDB:
+    - Renamed the MongoDB vCore authentication and availability zone rules to `Azure.DocumentDB.EntraID` and
+      `Azure.DocumentDB.AvailabilityZone`, retaining compatibility aliases and updating documentation and tests.
+    - Clarified that Cosmos DB MongoDB naming checks apply to RU-based database accounts, not DocumentDB clusters.
+      [#3984](https://github.com/Azure/PSRule.Rules.Azure/pull/3984)
   - App Service:
     - Fixed `Azure.AppService.PlanInstanceCount` to exclude Flex Consumption plans.
       [#3929](https://github.com/Azure/PSRule.Rules.Azure/issues/3929)
@@ -58,6 +66,8 @@ What's changed since pre-release v1.48.0-B0228:
   - Fixed in-flight export of Defender for Storage settings by @saryn17.
     [#3865](https://github.com/Azure/PSRule.Rules.Azure/issues/3865)
 - Engineering:
+  - Updated authoring validation to accept quarterly rule sets in 2027.
+    [#3984](https://github.com/Azure/PSRule.Rules.Azure/pull/3984)
   - Bump YamlDotNet to 11.2.5.
 
 ## v1.48.0-B0228 (pre-release)
