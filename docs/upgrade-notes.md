@@ -6,6 +6,19 @@ discussion: false
 
 This document contains notes to help upgrade from previous versions of PSRule for Azure.
 
+## Azure DocumentDB rule names
+
+Azure Cosmos DB for MongoDB vCore is now Azure DocumentDB.
+The following rules have been renamed to match the service:
+
+- From `Azure.Cosmos.MongoEntraID` to `Azure.DocumentDB.EntraID`.
+- From `Azure.Cosmos.MongoAvailabilityZone` to `Azure.DocumentDB.AvailabilityZone`.
+
+The previous names remain aliases so existing rule selections, exclusions, and suppressions continue to work.
+Update your configuration and scripts to use the new names to avoid alias warnings.
+The rule references, original rule set tags, and validation behavior are unchanged, preserving quarterly baseline membership.
+Both rules still apply to `Microsoft.DocumentDB/mongoClusters`, not Cosmos DB `Microsoft.DocumentDB/databaseAccounts`.
+
 ## Upgrading to v2.0.0
 
 PSRule for Azure v2.0.0 is a planned _future_ release.

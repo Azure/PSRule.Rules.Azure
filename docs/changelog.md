@@ -42,6 +42,9 @@ What's changed since pre-release v1.48.0-B0228:
   - Added support for the Bicep `distinct` and `like` functions by @oWretch.
     [#3905](https://github.com/Azure/PSRule.Rules.Azure/issues/3905)
 - Updated rules:
+  - Azure DocumentDB:
+    - Renamed the MongoDB vCore authentication and availability zone rules to `Azure.DocumentDB.EntraID` and
+      `Azure.DocumentDB.AvailabilityZone`, retaining compatibility aliases and updating documentation and tests.
   - App Service:
     - Fixed `Azure.AppService.PlanInstanceCount` to exclude Flex Consumption plans.
       [#3929](https://github.com/Azure/PSRule.Rules.Azure/issues/3929)

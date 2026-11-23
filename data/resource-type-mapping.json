@@ -1844,16 +1844,16 @@
     "pillar": "Reliability",
     "category": "RE:05 Redundancy",
     "resourceType": "Microsoft.DocumentDB/mongoClusters",
-    "ruleId": "Azure.Cosmos.MongoAvailabilityZone",
-    "displayName": "Use zone redundant Cosmos DB MongoDB vCore clusters"
+    "ruleId": "Azure.DocumentDB.AvailabilityZone",
+    "displayName": "Use zone redundant Azure DocumentDB clusters"
   },
   {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:05 Identity and access management",
     "resourceType": "Microsoft.DocumentDB/mongoClusters",
-    "ruleId": "Azure.Cosmos.MongoEntraID",
-    "displayName": "MongoDB vCore clusters should use Microsoft Entra ID authentication"
+    "ruleId": "Azure.DocumentDB.EntraID",
+    "displayName": "Azure DocumentDB clusters should use Microsoft Entra ID authentication"
   },
   {
     "severity": "Awareness",

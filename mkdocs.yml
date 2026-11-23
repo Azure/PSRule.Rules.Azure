@@ -176,6 +176,8 @@ plugins:
       customization/storing-custom-rules.md: customization/using-custom-rules.md
       en/asb-v3.md: en/mcsb-v1.md
       setup/configuring-options.md: setup/index.md
+      en/rules/Azure.Cosmos.MongoEntraID.md: en/rules/Azure.DocumentDB.EntraID.md
+      en/rules/Azure.Cosmos.MongoAvailabilityZone.md: en/rules/Azure.DocumentDB.AvailabilityZone.md
       CHANGELOG-v1.md: changelog.md
       CHANGELOG-v0.md: https://github.com/Azure/PSRule.Rules.Azure/blob/v0.19.0/CHANGELOG.md
 
