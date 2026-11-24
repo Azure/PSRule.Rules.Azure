@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-01-27
+reviewed: 2026-11-24
 severity: Important
 pillar: Security
 category: SE:07 Encryption
@@ -18,10 +18,11 @@ Monitor Traffic Manager web-based endpoints with HTTPS.
 
 Traffic Manager can use TCP, HTTP or HTTPS to monitor endpoint health.
 For web-based endpoints use HTTPS.
+This rule only applies when the monitor port is `80` or `443`.
 
 If TCP is used, Traffic Manager only checks that it can open a TCP port on the endpoint.
 This alone does not indicate that the endpoint is operational and ready to receive requests.
-Additionally when using HTTP and HTTPS, Traffic Manager check HTTP response codes.
+Additionally when using HTTP and HTTPS, Traffic Manager checks HTTP response codes.
 
 If HTTP is used, Traffic Manager will send unencrypted health checks to the endpoint.
 HTTPS-based health checks additionally check if a certificate is present,
