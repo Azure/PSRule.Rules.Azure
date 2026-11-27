@@ -1564,3 +1564,31 @@ Describe 'Azure.AKS' -Tag AKS {
         }
     }
 }
+
+Describe 'Azure.AKS.Version' -Tag AKS {
+    Context 'Long Term Support' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                Name          = 'Azure.AKS.Version'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AKS.LTS.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
+        }
+
+        It 'passes old versions only when the Premium tier and AKSLongTermSupport plan are both set' {
+            # Fail
+            $ruleResult = @($result | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -HaveCount 3;
+            $ruleResult.TargetName | Should -BeIn 'cluster-lts-B', 'cluster-lts-C', 'cluster-lts-D';
+
+            # Pass
+            $ruleResult = @($result | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-lts-A', 'cluster-lts-E';
+        }
+    }
+}

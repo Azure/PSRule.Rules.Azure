@@ -227,6 +227,9 @@ If you must maintain AKS clusters for longer then the community support period, 
 AKS LTS provides support for a specific Kubernetes version for a longer period of time.
 The first LTS release is 1.27.
 
+This rule passes a cluster that uses the Premium tier (`sku.tier`) with the `AKSLongTermSupport` support plan (`properties.supportPlan`).
+Such a cluster may stay on a Kubernetes version that is older than the configured minimum version.
+
 ### Rule configuration
 
 <!-- module:config rule AZURE_AKS_CLUSTER_MINIMUM_VERSION -->

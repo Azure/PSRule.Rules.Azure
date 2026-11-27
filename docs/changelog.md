@@ -45,6 +45,9 @@ What's changed since pre-release v1.48.0-B0228:
   - App Service:
     - Fixed `Azure.AppService.PlanInstanceCount` to exclude Flex Consumption plans.
       [#3929](https://github.com/Azure/PSRule.Rules.Azure/issues/3929)
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to pass clusters that use the Premium tier with the `AKSLongTermSupport` support plan.
+      [#2443](https://github.com/Azure/PSRule.Rules.Azure/issues/2443)
   - Container Registry:
     - Deprecated `Azure.ACR.GeoReplica` because ACR zone redundancy is automatic in supported regions.
       [#3846](https://github.com/Azure/PSRule.Rules.Azure/issues/3846)

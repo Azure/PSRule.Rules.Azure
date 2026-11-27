@@ -11,7 +11,12 @@ Rule 'Azure.AKS.Version' -Ref 'AZR-000015' -Type 'Microsoft.ContainerService/man
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
         $upgradeChannel = $TargetObject.properties.autoUpgradeProfile.upgradeChannel
         $expectedUpgradeChannels = @('rapid', 'stable')
+        $isLongTermSupport = $TargetObject.sku.tier -eq 'Premium' -and $TargetObject.properties.supportPlan -eq 'AKSLongTermSupport'
         if ($upgradeChannel -in $expectedUpgradeChannels -and !(IsExport)) {
+            $Assert.Pass();
+        }
+        elseif ($isLongTermSupport) {
+            # A cluster on the Premium tier with the LTS support plan can stay on a Long Term Support version.
             $Assert.Pass();
         }
         else {
