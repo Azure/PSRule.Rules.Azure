@@ -1,0 +1,111 @@
+[
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-lts-A",
+    "name": "cluster-lts-A",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "eastus",
+    "sku": {
+      "name": "Base",
+      "tier": "Premium"
+    },
+    "properties": {
+      "kubernetesVersion": "1.27.9",
+      "dnsPrefix": "cluster-lts-A",
+      "agentPoolProfiles": [
+        {
+          "name": "system",
+          "count": 3,
+          "mode": "System"
+        }
+      ],
+      "supportPlan": "AKSLongTermSupport"
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-lts-B",
+    "name": "cluster-lts-B",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "eastus",
+    "sku": {
+      "name": "Base",
+      "tier": "Premium"
+    },
+    "properties": {
+      "kubernetesVersion": "1.27.9",
+      "dnsPrefix": "cluster-lts-B",
+      "agentPoolProfiles": [
+        {
+          "name": "system",
+          "count": 3,
+          "mode": "System"
+        }
+      ],
+      "supportPlan": "KubernetesOfficial"
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-lts-C",
+    "name": "cluster-lts-C",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "eastus",
+    "sku": {
+      "name": "Base",
+      "tier": "Standard"
+    },
+    "properties": {
+      "kubernetesVersion": "1.27.9",
+      "dnsPrefix": "cluster-lts-C",
+      "agentPoolProfiles": [
+        {
+          "name": "system",
+          "count": 3,
+          "mode": "System"
+        }
+      ],
+      "supportPlan": "AKSLongTermSupport"
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-lts-D",
+    "name": "cluster-lts-D",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "eastus",
+    "sku": {
+      "name": "Base",
+      "tier": "Premium"
+    },
+    "properties": {
+      "kubernetesVersion": "1.27.9",
+      "dnsPrefix": "cluster-lts-D",
+      "agentPoolProfiles": [
+        {
+          "name": "system",
+          "count": 3,
+          "mode": "System"
+        }
+      ]
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-lts-E",
+    "name": "cluster-lts-E",
+    "type": "Microsoft.ContainerService/managedClusters",
+    "location": "eastus",
+    "sku": {
+      "name": "Base",
+      "tier": "Premium"
+    },
+    "properties": {
+      "kubernetesVersion": "1.33.7",
+      "dnsPrefix": "cluster-lts-E",
+      "agentPoolProfiles": [
+        {
+          "name": "system",
+          "count": 3,
+          "mode": "System"
+        }
+      ],
+      "supportPlan": "AKSLongTermSupport"
+    }
+  }
+]
