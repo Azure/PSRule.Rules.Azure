@@ -12,6 +12,11 @@ Rule 'Azure.Policy.Descriptors' -Ref 'AZR-000142' -Type 'Microsoft.Authorization
     $Assert.HasFieldValue($TargetObject, 'properties.metadata.category');
 }
 
+# Synopsis: Policy and initiative definitions should set the version metadata.
+Rule 'Azure.Policy.DefinitionVersion' -Ref 'AZR-000555' -Type 'Microsoft.Authorization/policyDefinitions', 'Microsoft.Authorization/policySetDefinitions' -Tag @{ release = 'GA'; ruleSet = '2026_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+    $Assert.HasFieldValue($TargetObject, 'properties.metadata.version');
+}
+
 # Synopsis: Policy assignments require a display name and description.
 Rule 'Azure.Policy.AssignmentDescriptors' -Ref 'AZR-000143' -Type 'Microsoft.Authorization/policyAssignments' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.displayName');

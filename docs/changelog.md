@@ -36,6 +36,9 @@ What's changed since pre-release v1.48.0-B0228:
   - Azure Fleet:
     - Added `Azure.Fleet.SecureBoot` to require Trusted Launch/Confidential VM with Secure Boot for fleet VM profiles by @l46983284-cpu.
       [#3729](https://github.com/Azure/PSRule.Rules.Azure/issues/3729)
+  - Azure Policy:
+    - Added `Azure.Policy.DefinitionVersion` to check policy and initiative definitions set the version metadata.
+      [#728](https://github.com/Azure/PSRule.Rules.Azure/issues/728)
 - General improvements:
   - Added support for resolving filtered subnet IDs from existing virtual networks during Bicep expansion.
     [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
