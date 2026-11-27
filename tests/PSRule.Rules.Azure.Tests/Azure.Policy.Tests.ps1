@@ -52,6 +52,22 @@ Describe 'Azure.Policy' -Tag Policy {
             $ruleResult.TargetName | Should -BeIn 'initiative-001', 'policy-001';
         }
 
+        It 'Azure.Policy.DefinitionVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.DefinitionVersion' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'initiative-002', 'initiative-003', 'policy-002', 'policy-003';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'initiative-001', 'policy-001';
+        }
+
         It 'Azure.Policy.AssignmentDescriptors' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Policy.AssignmentDescriptors' };
 
